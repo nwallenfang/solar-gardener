@@ -1,11 +1,60 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=11 format=2]
 
-[sub_resource type="CubeMesh" id=1]
+[ext_resource path="res://Assets/Sprites/space_env.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Materials/SunMaterial.tres" type="Material" id=2]
+[ext_resource path="res://Logic/Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Logic/Player/InterpolatedCamera.gd" type="Script" id=4]
+
+[sub_resource type="SphereMesh" id=2]
+
+[sub_resource type="PanoramaSky" id=4]
+panorama = ExtResource( 1 )
+
+[sub_resource type="Environment" id=5]
+background_mode = 2
+background_sky = SubResource( 4 )
+background_energy = 3.0
+ambient_light_color = Color( 1, 1, 1, 1 )
+ambient_light_sky_contribution = 0.7
+tonemap_mode = 2
+glow_enabled = true
+glow_bloom = 0.4
+
+[sub_resource type="PlaneMesh" id=6]
+size = Vector2( 20, 20 )
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0.137255, 0.301961, 0.121569, 1 )
+
+[sub_resource type="BoxShape" id=8]
+extents = Vector3( 10.0639, 1, 10.1013 )
 
 [node name="World" type="Spatial"]
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
-mesh = SubResource( 1 )
+[node name="InterpolatedCamera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.993791, 0.111261, 0, -0.111261, 0.993791, -1.08716, 2.84526, 87.483 )
+script = ExtResource( 4 )
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.02353 )
+[node name="Sun" type="MeshInstance" parent="."]
+transform = Transform( 17.2859, 0, 0, 0, 17.2859, 0, 0, 0, 17.2859, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 2 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 5 )
+
+[node name="Planet" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 80.3443 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Planet"]
+mesh = SubResource( 6 )
+material/0 = SubResource( 7 )
+
+[node name="StaticBody" type="StaticBody" parent="Planet/MeshInstance"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Planet/MeshInstance/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.00689, 0 )
+shape = SubResource( 8 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.822243, 80.3443 )

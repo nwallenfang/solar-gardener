@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Logic/Sound/ManagedSound.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Logic/Sound/AudioManager.gd" type="Script" id=2]
+
+[node name="Audio" type="Node"]
+script = ExtResource( 2 )
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="event_pickup" parent="Sounds" instance=ExtResource( 1 )]
+volume_db = 9.0
+mixer_bus = "SFX"
+
+[node name="Players" type="Node" parent="."]
+__meta__ = {
+"_editor_description_": "gets filled with AudioPlayers in _ready of AudioManager"
+}

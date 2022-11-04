@@ -11,8 +11,9 @@ var game_state = State.INGAME setget set_game_state
 var main_scene_running = false
 var main_scene = null
 # is set when main_scene_running
-var UI = null
-
+var UI: UI = null
+var player: Player = null
+var invert_y_axis = false
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("open_settings"):  # show/hide settings UI
@@ -32,15 +33,18 @@ func set_game_state(state):
 	var prev_state = game_state
 	match state:
 		State.INGAME:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			game_state = State.INGAME
 		State.MAIN_MENU:
 			game_state = State.MAIN_MENU
 		State.SETTINGS:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			UI.show_settings()
 			game_state = State.SETTINGS
 			
 	if prev_state == State.SETTINGS and game_state != State.SETTINGS:
-		UI.hide_settings()
+		pass
+#		UI.hide_settings()
 
 
 func is_ingame():

@@ -19,18 +19,17 @@ func _ready():
 		var audio_player_with_info = AUDIO_PLAYER_WITH_INFO.instance()
 		$Players.add_child(audio_player_with_info, true)
 		available.append(audio_player_with_info)
-
+	
+	print("Loading Sounds:")
 	var dir = Directory.new()
 	if dir.open(sound_directoy) == OK:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 
 		while file_name != "":
-			print(file_name)
 			if file_name.ends_with(".ogg") or (OS.has_feature("standalone") and file_name.ends_with(".import")):
 				if OS.has_feature("standalone"):  # hack -> see first comment of this file
 					file_name = file_name.split(".import")[0]
-					print("good")
 				var node_name = file_name.split(".")[0]
 				print("Loaded ", file_name)
 				if not $Sounds.has_node(node_name): # sound has no custom config in Sounds

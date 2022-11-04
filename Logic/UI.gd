@@ -1,5 +1,5 @@
 extends CanvasLayer
-
+class_name UI
 
 # Declare member variables here. Examples:
 # var a: int = 2
@@ -16,4 +16,6 @@ func show_settings():
 	
 	
 func hide_settings():
+	Audio.play("event_pickup")
+	Game.game_state = Game.State.INGAME
 	$SettingsUI.hide_settings()

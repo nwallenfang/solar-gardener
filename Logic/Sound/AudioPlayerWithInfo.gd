@@ -9,5 +9,5 @@ func play(start:=0.0):
 	.play(start)
 
 func _on_AudioPlayerWithInfo_finished() -> void:
-	AudioManager.available.append(self)
-	AudioManager.playing.erase(self)
+	Audio.available.append(self)
+	Audio.playing.erase(self)

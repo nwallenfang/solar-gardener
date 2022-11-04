@@ -18,21 +18,34 @@ _global_script_classes=[ {
 "class": "ManagedSound",
 "language": "GDScript",
 "path": "res://Logic/Sound/ManagedSound.gd"
+}, {
+"base": "KinematicBody",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Logic/Player/Player.gd"
+}, {
+"base": "CanvasLayer",
+"class": "UI",
+"language": "GDScript",
+"path": "res://Logic/UI.gd"
 } ]
 _global_script_class_icons={
 "AudioPlayerWithInfo": "",
-"ManagedSound": ""
+"ManagedSound": "",
+"Player": "",
+"UI": ""
 }
 
 [application]
 
 config/name="Game Off 2022"
 run/main_scene="res://Logic/MainScene.tscn"
-config/icon="res://icon.png"
+config/icon="res://Assets/Placeholder/bonsai.png"
 
 [autoload]
 
 Game="*res://Logic/Game.tscn"
+Audio="*res://Logic/Sound/Audio.tscn"
 
 [debug]
 
@@ -44,17 +57,50 @@ gdscript/warnings/return_value_discarded=false
 
 [display]
 
+window/vsync/use_vsync=false
 window/stretch/mode="2d"
 
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
 
+[importer_defaults]
+
+ogg_vorbis={
+"loop": false,
+"loop_offset": 0
+}
+
 [input]
 
 open_settings={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":84,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_forward={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":87,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_backwards={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":83,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":65,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":68,"unicode":0,"echo":false,"script":null)
+ ]
+}
+jump={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":32,"unicode":0,"echo":false,"script":null)
  ]
 }
 
