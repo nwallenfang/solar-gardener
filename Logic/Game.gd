@@ -1,10 +1,13 @@
 extends Node
 
+const MODELS_FOLDER = "res://Assets/Models/"
+
 enum State {
 	INGAME,
 	SETTINGS,
 	MAIN_MENU  # if it's needed 
 }
+
 var game_state = State.INGAME setget set_game_state
 # is set from MainScene, if this is false, a subscene is running individually for testing,
 # if this is true game is running normally

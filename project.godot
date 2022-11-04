@@ -19,6 +19,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Logic/Sound/ManagedSound.gd"
 }, {
+"base": "Resource",
+"class": "PlantProfile",
+"language": "GDScript",
+"path": "res://Plants/PlantProfile.gd"
+}, {
 "base": "KinematicBody",
 "class": "Player",
 "language": "GDScript",
@@ -31,7 +36,8 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "AudioPlayerWithInfo": "",
-"ManagedSound": "",
+"ManagedSound": "res://Assets/Sprites/managed_sound.png",
+"PlantProfile": "",
 "Player": "",
 "UI": ""
 }
@@ -46,6 +52,7 @@ config/icon="res://Assets/Placeholder/bonsai.png"
 
 Game="*res://Logic/Game.tscn"
 Audio="*res://Logic/Sound/Audio.tscn"
+PlantData="*res://Logic/PlantData.tscn"
 
 [debug]
 
@@ -101,6 +108,36 @@ move_right={
 jump={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
+}
+tool1={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":49,"unicode":0,"echo":false,"script":null)
+ ]
+}
+tool2={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":50,"unicode":0,"echo":false,"script":null)
+ ]
+}
+tool3={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":51,"unicode":0,"echo":false,"script":null)
+ ]
+}
+tool4={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":52,"unicode":0,"echo":false,"script":null)
+ ]
+}
+first_action={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+second_action={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 

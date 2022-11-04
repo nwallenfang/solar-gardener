@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Plants/PlantProfile.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = "test"
+sun = 0
+moisture = 0
+nutrients = 0
+group = 0
+prefered_soil = 0
+seed_count = 3

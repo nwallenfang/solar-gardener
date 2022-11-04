@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.921569, 1, 0, 1 )
+
+[sub_resource type="CapsuleMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.180392, 0.564706, 0.0980392, 1 )
+
+[sub_resource type="CylinderMesh" id=4]
+
+[node name="ModelPlaceholderStage1" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 0.123162, 0, 0, 0, -1.73958e-08, 0.39797, 0, -0.123162, -5.38358e-09, 0, 0, 0 )
+material_override = SubResource( 1 )
+mesh = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="MeshInstance"]
+transform = Transform( 2.56325, 0, 0, 0, -5.1382e-09, -2.56325, 0, 0.117548, -1.12043e-07, 0, -4.42141e-08, 1.0115 )
+material_override = SubResource( 3 )
+mesh = SubResource( 4 )
