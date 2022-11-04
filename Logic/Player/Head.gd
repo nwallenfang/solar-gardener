@@ -24,14 +24,6 @@ func _ready() -> void:
 #	set_as_toplevel(true)
 
 
-# Called when there is an input event
-func _input(event: InputEvent) -> void:
-	# Mouse look (only if the mouse is captured).
-	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		mouse_axis = event.relative
-		camera_rotation()
-
-
 func camera_rotation() -> void:
 	var y_axis_factor = 2.0 * float(not Game.invert_y_axis) - 1.0  # felt like writing it convoluted but it's just 1.0 or -1.0 depending
 	if Game.player.movement_disabled:

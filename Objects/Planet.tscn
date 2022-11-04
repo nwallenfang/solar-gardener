@@ -1,11 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Objects/Planet.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
 
 [sub_resource type="SphereMesh" id=9]
 
 [sub_resource type="SpatialMaterial" id=7]
-albedo_color = Color( 0.137255, 0.301961, 0.121569, 1 )
+albedo_texture = ExtResource( 2 )
+uv1_triplanar = true
 
 [sub_resource type="SphereShape" id=11]
 radius = 1.00961

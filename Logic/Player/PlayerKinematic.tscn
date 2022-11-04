@@ -39,3 +39,6 @@ material/0 = SubResource( 4 )
 physics_interpolation_mode = 2
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50645, -0.511479 )
 script = ExtResource( 2 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.837022, 0.547169, 0, -0.547169, 0.837022, 0.0237076, 1.59713, -0.512588 )

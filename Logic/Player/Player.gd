@@ -5,13 +5,15 @@ signal player_got_hurt
 
 
 export var gravity_multiplier := 3.0
-export var speed := 10
+export var speed := 40
 export var acceleration := 8
 export var deceleration := 10
 export(float, 0.0, 1.0, 0.05) var air_control := 0.3
 export var jump_height := 12
 export var jump_extra_frames:float = 0.2
+export var friction := 0.1
 var direction := Vector3()
+var last_strong_direction := Vector3()
 var input_axis := Vector2()
 var velocity := Vector3()
 var snap := Vector3()
@@ -40,7 +42,7 @@ var has_jumped = false
 func _ready():
 	Game.player = self
 	default_scale = self.scale
-	$Mesh.visible = false
+#	$Mesh.visible = false
 	yield(get_tree(), "idle_frame")
 	Game.UI.get_node("UpdateDiagnostics").connect("timeout", self, "fill_diagnostics")
 
@@ -53,11 +55,6 @@ func gravity_direction() -> Vector3:
 		return global_translation.direction_to(Game.planet.global_translation)
 		
 	return Vector3(0.0, -1.0, 0.0).normalized()
-
-### SOME RULES
-##### as to the sphere movement
-# The players up direction (basis.y) should tend to be the same as the vector from planet's center to the player
-	# this should make the player stand perpendicular on the surface
 
 
 # Called every physics tick. 'delta' is constant
@@ -75,84 +72,60 @@ func _physics_process(delta) -> void:
 		
 	
 	
-	direction_input()
+	direction = get_input_direction()
 	gravity_direction = gravity_direction()
 	
-	
-	if is_on_floor():
-		has_jumped = false
-		extra_frame_idx = 0
-		snap = -get_floor_normal() - get_floor_velocity() * delta
-		
-		# Workaround for sliding down after jump on slope
-		if velocity.y < 0:
-			velocity.y = 0
-		
-		if !has_jumped and Input.is_action_just_pressed("jump"):
-			snap = Vector3.ZERO
-			velocity.y = jump_height
-			has_jumped = true
-			
-		used_second_jump = false
-	elif extra_frame_idx < jump_extra_frames:
-		if !has_jumped and Input.is_action_just_pressed("jump"):
-			snap = Vector3.ZERO
-			velocity.y = jump_height
-			has_jumped = true
-		extra_frame_idx += delta
-		velocity += gravity_strength * gravity_direction * delta
-	else:
-		has_jumped = false
-		# Workaround for 'vertical bump' when going off platform
-		if snap != Vector3.ZERO && velocity.y != 0:
-			velocity.y = 0
-		
-		snap = Vector3.ZERO
-		
-		velocity += gravity_strength * gravity_direction * delta
-		
-		if Input.is_action_just_pressed("jump") and double_jump and !used_second_jump:
-			velocity.y = jump_height
-			used_second_jump = true
-			
-	if knockback != Vector3.ZERO:
-		snap = Vector3.ZERO
-		velocity += knockback
-		knockback = Vector3.ZERO
-	
-	accelerate(delta)
-	
+
+	snap = gravity_direction #- get_floor_velocity() * delta  # moving planets?
+	velocity += gravity_strength * gravity_direction * delta
+	orient_player_sphere(delta)
+	velocity = accelerate(velocity, direction, delta)
+#	
 	up_direction = -gravity_direction
 	velocity = move_and_slide_with_snap(velocity, snap, up_direction, 
 			stop_on_slope, 4, floor_max_angle)
 
-func direction_input() -> void:
-	direction = Vector3()
+var forward_dir: Vector3
+func orient_player_sphere(delta: float):
+	var target_up = Game.planet.global_translation.direction_to(global_translation)
+	var v = target_up.cross(Vector3.UP).normalized()
+	var basis = Basis.IDENTITY.rotated(v, -target_up.angle_to(Vector3.UP))
+
+	Game.UI.set_diagnostics(["mouse_axis", mouse_axis])
+	var angle_diff = transform.basis.z.cross(-target_up).cross(target_up).angle_to(basis.z)
+	basis = basis.rotated(target_up, angle_diff)
+	basis = basis.rotated(target_up, -mouse_axis.x * mouse_sensitivity)
+#	basis = basis.rotated(target_up, mouse_axis.y * mouse_sensitivity)
+	mouse_axis = Vector2()
 	transform = transform.orthonormalized()
-	var aim: Basis = get_global_transform().basis
-	direction = aim.z * -input_axis.x + aim.x * input_axis.y
+	transform.basis = basis
 
 
-func accelerate(delta: float) -> void:
+func get_input_direction() -> Vector3:
+	direction = transform.basis.z * -input_axis.x + transform.basis.x * input_axis.y
+#	direction = Vector3(-input_axis.x, 0.0, input_axis.y)
+	return direction
+
+func accelerate(old_velocity: Vector3, direction: Vector3, delta: float) -> Vector3:
 	# Using only the horizontal velocity, interpolate towards the input.
-	var temp_vel := velocity
-	temp_vel.y = 0
+	velocity = velocity * pow((1.0 - friction), delta * 60)
+	velocity += speed * direction * delta
 	
-	var temp_accel: float
-	var target: Vector3 = direction * speed
 	
-	if direction.dot(temp_vel) > 0:
-		temp_accel = acceleration
-	else:
-		temp_accel = deceleration
-	
-	if not is_on_floor():
-		temp_accel *= air_control
-	
-	temp_vel = temp_vel.linear_interpolate(target, temp_accel * delta)
-	
-	velocity.x = temp_vel.x
-	velocity.z = temp_vel.z
+	return velocity
+
+export var mouse_sensitivity := 0.005
+export var y_limit := 90.0
+var mouse_axis := Vector2()
+var rot := Vector3()
+
+# Called when there is an input event
+func _input(event: InputEvent) -> void:
+	# Mouse look (only if the mouse is captured).
+	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		mouse_axis += event.relative
+#		camera_rotation()
+
 
 	
 func get_in_plane_velocity() -> Vector2:
@@ -160,4 +133,5 @@ func get_in_plane_velocity() -> Vector2:
 	return Vector2(global_vel.x, global_vel.z)
 	
 func fill_diagnostics():
-	Game.UI.set_diagnostics(["test_vector", Vector3(1, 2, 3)])
+#	Game.UI.set_diagnostics(["mouse_axis", mouse_axis])
+	pass
