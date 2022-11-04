@@ -30,9 +30,14 @@ _global_script_classes=[ {
 "path": "res://Plants/PlantProfile.gd"
 }, {
 "base": "KinematicBody",
-"class": "Player",
+"class": "PlayerOld",
 "language": "GDScript",
 "path": "res://Logic/Player/Player.gd"
+}, {
+"base": "RigidBody",
+"class": "PlayerRigid",
+"language": "GDScript",
+"path": "res://Logic/Player/gdquest_planet.gd"
 }, {
 "base": "CanvasLayer",
 "class": "UI",
@@ -41,10 +46,11 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "AudioPlayerWithInfo": "",
-"ManagedSound": "res://Assets/Sprites/managed_sound.png",
+"ManagedSound": "",
 "Planet": "",
 "PlantProfile": "",
-"Player": "",
+"PlayerOld": "",
+"PlayerRigid": "",
 "UI": ""
 }
 

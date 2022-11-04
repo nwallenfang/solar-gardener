@@ -21,6 +21,12 @@ margin_right = 22.0
 margin_bottom = 14.0
 text = "FPS"
 
+[node name="TransformDiagnostics" type="Label" parent="Diagnostics"]
+unique_name_in_owner = true
+margin_top = 18.0
+margin_right = 22.0
+margin_bottom = 32.0
+
 [node name="UpdateDiagnostics" type="Timer" parent="."]
 wait_time = 0.3
 
