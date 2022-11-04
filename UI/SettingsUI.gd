@@ -56,17 +56,14 @@ func _on_SoundSlider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(0, linear2db(value))
 
 func hide_settings():
-#	Game.settings_open = false
-#	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	self.visible = false
 	
 func show_settings():
-#	Game.settings_open = false
-#	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	self.visible = true
 
 func _on_DoneButton_pressed():
-	hide_settings()
+	Game.game_state = Game.State.INGAME
+#	hide_settings()
 
 
 func _on_MusicSlider_value_changed(value: float) -> void:

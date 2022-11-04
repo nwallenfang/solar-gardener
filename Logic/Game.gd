@@ -13,6 +13,8 @@ var main_scene = null
 # is set when main_scene_running
 var UI: UI = null
 var player: Player = null
+# current planet
+var planet: Planet = null
 var invert_y_axis = false
 
 func _process(delta: float) -> void:
@@ -24,7 +26,7 @@ func _process(delta: float) -> void:
 				# this is only the correct if you can only enter settings from ingame!!
 				self.game_state = State.INGAME
 
-
+signal changed_state(state)
 func set_game_state(state):
 	# complicated way since there may be special actions needed per state
 	# or sometimes the new state shouldn't be set maybe if it doesn't make sense
@@ -39,11 +41,11 @@ func set_game_state(state):
 			game_state = State.MAIN_MENU
 		State.SETTINGS:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			UI.show_settings()
 			game_state = State.SETTINGS
-			
-	if prev_state == State.SETTINGS and game_state != State.SETTINGS:
-		pass
+	
+	emit_signal("changed_state", state)
+#	if prev_state == State.SETTINGS and game_state != State.SETTINGS:
+#		pass
 #		UI.hide_settings()
 
 

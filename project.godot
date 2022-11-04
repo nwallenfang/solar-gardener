@@ -19,8 +19,18 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Logic/Sound/ManagedSound.gd"
 }, {
-"base": "KinematicBody",
+"base": "Spatial",
+"class": "Planet",
+"language": "GDScript",
+"path": "res://Objects/Planet.gd"
+}, {
+"base": "RigidBody",
 "class": "Player",
+"language": "GDScript",
+"path": "res://Logic/Player/gdquest_planet.gd"
+}, {
+"base": "KinematicBody",
+"class": "PlayerOld",
 "language": "GDScript",
 "path": "res://Logic/Player/Player.gd"
 }, {
@@ -32,7 +42,9 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "AudioPlayerWithInfo": "",
 "ManagedSound": "",
+"Planet": "",
 "Player": "",
+"PlayerOld": "",
 "UI": ""
 }
 
