@@ -1,5 +1,5 @@
 extends KinematicBody
-class_name Player
+class_name PlayerOld
 
 signal player_got_hurt
 
@@ -19,7 +19,7 @@ var up_direction := Vector3.UP
 var stop_on_slope := true
 onready var floor_max_angle: float = deg2rad(45.0)
 # Get the gravity from the project settings to be synced with RigidDynamicBody nodes.
-onready var gravity = (ProjectSettings.get_setting("physics/3d/default_gravity") 
+onready var gravity_strength = (ProjectSettings.get_setting("physics/3d/default_gravity") 
 		* gravity_multiplier)
 
 var knockback := Vector3.ZERO
@@ -42,8 +42,14 @@ func _ready():
 	default_scale = self.scale
 	$Mesh.visible = false
 
+func gravity_direction() -> Vector3:
+	if Game.planet != null:
+		return global_translation.direction_to(Game.planet.global_translation)
+		
+	return Vector3(0.0, -1.0, 0.0).normalized()
 
 # Called every physics tick. 'delta' is constant
+var gravity_direction
 func _physics_process(delta) -> void:
 	if movement_disabled:
 		return 
@@ -58,6 +64,8 @@ func _physics_process(delta) -> void:
 	
 	
 	direction_input()
+	gravity_direction = gravity_direction()
+	
 	
 	if is_on_floor():
 		has_jumped = false
@@ -80,7 +88,7 @@ func _physics_process(delta) -> void:
 			velocity.y = jump_height
 			has_jumped = true
 		extra_frame_idx += delta
-		velocity.y -= gravity * delta
+		velocity += gravity_strength * gravity_direction * delta
 	else:
 		has_jumped = false
 		# Workaround for 'vertical bump' when going off platform
@@ -89,7 +97,7 @@ func _physics_process(delta) -> void:
 		
 		snap = Vector3.ZERO
 		
-		velocity.y -= gravity * delta
+		velocity += gravity_strength * gravity_direction * delta
 		
 		if Input.is_action_just_pressed("jump") and double_jump and !used_second_jump:
 			velocity.y = jump_height
@@ -102,7 +110,7 @@ func _physics_process(delta) -> void:
 	
 	accelerate(delta)
 	
-	
+	up_direction = -gravity_direction
 	velocity = move_and_slide_with_snap(velocity, snap, up_direction, 
 			stop_on_slope, 4, floor_max_angle)
 

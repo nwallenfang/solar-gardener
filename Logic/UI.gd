@@ -8,7 +8,8 @@ class_name UI
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$UpdateDiagnostics.start()
+	Game.connect("changed_state", self, "changed_state")
 
 
 func show_settings():
@@ -17,5 +18,17 @@ func show_settings():
 	
 func hide_settings():
 	Audio.play("event_pickup")
-	Game.game_state = Game.State.INGAME
 	$SettingsUI.hide_settings()
+
+
+func changed_state(state):
+	match state:
+		Game.State.INGAME:
+			hide_settings()
+			$"%Crosshair".visible = true
+		Game.State.SETTINGS:
+			show_settings()
+			$"%Crosshair".visible = false
+
+func _on_UpdateDiagnostics_timeout() -> void:
+	$"%FPS".text = "FPS: %d" % Engine.get_frames_per_second()

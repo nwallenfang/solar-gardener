@@ -1,9 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Logic/Player/gdquest_planet.gd" type="Script" id=1]
+[ext_resource path="res://Logic/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Logic/Player/Head.gd" type="Script" id=2]
-
-[sub_resource type="PhysicsMaterial" id=5]
 
 [sub_resource type="CapsuleShape" id=2]
 radius = 0.5
@@ -16,12 +14,8 @@ radius = 0.5
 [sub_resource type="SpatialMaterial" id=4]
 albedo_color = Color( 0.313726, 0.313726, 0.313726, 1 )
 
-[node name="Player" type="RigidBody"]
-mode = 2
-mass = 2.0
-physics_material_override = SubResource( 5 )
-contacts_reported = 2
-contact_monitor = true
+[node name="Player" type="KinematicBody"]
+physics_interpolation_mode = 2
 script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": "2m tall :)"
