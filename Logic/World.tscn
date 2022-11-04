@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Sprites/space_env.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Materials/SunMaterial.tres" type="Material" id=2]
 [ext_resource path="res://Logic/Player/PlayerKinematic.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Logic/Player/InterpolatedCamera.gd" type="Script" id=4]
 [ext_resource path="res://Objects/Planet.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Logic/World.gd" type="Script" id=6]
 [ext_resource path="res://icon.png" type="Texture" id=7]
@@ -37,15 +36,6 @@ extents = Vector3( 10.0639, 1, 10.1013 )
 [node name="World" type="Spatial"]
 script = ExtResource( 6 )
 
-[node name="InterpolatedCamera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.993791, 0.111261, 0, -0.111261, 0.993791, -1.08716, 2.84526, 87.483 )
-script = ExtResource( 4 )
-
-[node name="ObjectUI" parent="InterpolatedCamera" instance=ExtResource( 8 )]
-
-[node name="Multitool" parent="InterpolatedCamera/ObjectUI" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.091, -0.113, -0.048 )
-
 [node name="Sun" type="MeshInstance" parent="."]
 transform = Transform( 17.2859, 0, 0, 0, 17.2859, 0, 0, 0, 17.2859, 0, 0, 0 )
 mesh = SubResource( 2 )
@@ -72,6 +62,4 @@ shape = SubResource( 8 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 0, 70 )
 
 [node name="PlayerKinematic" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.26324, 0.235101, 69.8204 )
-
-[editable path="InterpolatedCamera/ObjectUI"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 69.7263, 7.11117, 70.0424 )

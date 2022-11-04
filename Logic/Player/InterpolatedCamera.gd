@@ -18,6 +18,7 @@ var lerping_accel = 20.0
 func _process(delta: float) -> void:
 	if is_instance_valid(head):
 		var target_transform: Transform = head.get_global_transform_interpolated()
+		target_transform = target_transform.translated(2.0 * Vector3.LEFT)
 		target_transform.origin =  lerp(interpolated_target, target_transform.origin, min(lerping_accel * delta, 1.0))
 		self.global_transform = target_transform
 		interpolated_target = target_transform.origin

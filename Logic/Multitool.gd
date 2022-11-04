@@ -78,6 +78,7 @@ func process_second_action():
 			pass
 
 func check_on_hover():
+	Game.player_raycast
 	match current_tool:
 		TOOL.NONE:
 			pass
