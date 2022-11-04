@@ -1,0 +1,164 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Fonts/EventNameFontSmaller.tres" type="DynamicFont" id=1]
+[ext_resource path="res://UI/SettingsUI.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.141176, 0.133333, 0.133333, 0.956863 )
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[node name="SettingsUI" type="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.15
+anchor_top = 0.27
+anchor_right = 0.85
+anchor_bottom = 0.73
+custom_styles/panel = SubResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MusicVolumeH" type="HBoxContainer" parent="Panel/VBoxContainer"]
+margin_right = 716.0
+margin_bottom = 41.0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/MusicVolumeH"]
+margin_right = 356.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Music Volume"
+
+[node name="MusicSlider" type="HSlider" parent="Panel/VBoxContainer/MusicVolumeH"]
+margin_left = 360.0
+margin_right = 716.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.01
+value = 0.8
+
+[node name="SFXVolumeH" type="HBoxContainer" parent="Panel/VBoxContainer"]
+margin_top = 45.0
+margin_right = 716.0
+margin_bottom = 86.0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/SFXVolumeH"]
+margin_right = 356.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "SFX Volume"
+
+[node name="SFXSlider" type="HSlider" parent="Panel/VBoxContainer/SFXVolumeH"]
+margin_left = 360.0
+margin_right = 716.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.01
+value = 0.8
+
+[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer"]
+margin_top = 90.0
+margin_right = 716.0
+margin_bottom = 94.0
+
+[node name="Sensitivity" type="HBoxContainer" parent="Panel/VBoxContainer"]
+margin_top = 98.0
+margin_right = 716.0
+margin_bottom = 139.0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/Sensitivity"]
+margin_right = 356.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Mouse Sensitivity"
+
+[node name="SensitivitySlider" type="HSlider" parent="Panel/VBoxContainer/Sensitivity"]
+margin_left = 360.0
+margin_right = 716.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.01
+value = 0.33
+
+[node name="InvertYAxis" type="HBoxContainer" parent="Panel/VBoxContainer"]
+margin_top = 143.0
+margin_right = 716.0
+margin_bottom = 184.0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/InvertYAxis"]
+margin_right = 356.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Invert Y-Axis"
+
+[node name="InvertYButton" type="CheckBox" parent="Panel/VBoxContainer/InvertYAxis"]
+unique_name_in_owner = true
+margin_left = 360.0
+margin_right = 716.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BenchmarkContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+visible = false
+margin_top = 143.0
+margin_right = 716.0
+margin_bottom = 190.0
+
+[node name="Metadata" type="TextEdit" parent="Panel/VBoxContainer/BenchmarkContainer"]
+unique_name_in_owner = true
+margin_right = 448.0
+margin_bottom = 47.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "(benchmark metadata)"
+
+[node name="SaveFPSButton" type="Button" parent="Panel/VBoxContainer/BenchmarkContainer"]
+margin_left = 452.0
+margin_right = 716.0
+margin_bottom = 47.0
+custom_fonts/font = ExtResource( 1 )
+text = "save benchmark"
+
+[node name="HSeparator2" type="HSeparator" parent="Panel/VBoxContainer"]
+margin_top = 188.0
+margin_right = 716.0
+margin_bottom = 225.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="DoneButton" type="Button" parent="Panel/VBoxContainer"]
+margin_top = 229.0
+margin_right = 716.0
+margin_bottom = 276.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "DONE"
+
+[connection signal="value_changed" from="Panel/VBoxContainer/MusicVolumeH/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
+[connection signal="value_changed" from="Panel/VBoxContainer/SFXVolumeH/SFXSlider" to="." method="_on_SFXSlider_value_changed"]
+[connection signal="value_changed" from="Panel/VBoxContainer/Sensitivity/SensitivitySlider" to="." method="_on_SensitivitySlider_value_changed"]
+[connection signal="pressed" from="Panel/VBoxContainer/InvertYAxis/InvertYButton" to="." method="_on_InvertYButton_pressed"]
+[connection signal="focus_entered" from="Panel/VBoxContainer/BenchmarkContainer/Metadata" to="." method="_on_Metadata_focus_entered"]
+[connection signal="pressed" from="Panel/VBoxContainer/BenchmarkContainer/SaveFPSButton" to="." method="_on_SaveFPSButton_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/DoneButton" to="." method="_on_DoneButton_pressed"]
