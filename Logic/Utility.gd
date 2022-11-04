@@ -7,3 +7,6 @@ func get_all_mesh_instance_children(mother_node: Spatial) -> Array:
 			list.append(c)
 		list.append_array(get_all_mesh_instance_children(c))
 	return list
+
+func test_planting_position(pos: Vector3) -> bool:
+	return $PlantingTester.move_and_test(pos)

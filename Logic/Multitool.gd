@@ -17,11 +17,20 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("second_action"):
 		process_first_action()
 	check_on_hover()
-	
 
 func switch_to_tool(new_tool: int):
 	current_tool = new_tool
-	# TODO Animation
+	match current_tool:
+		TOOL.NONE:
+			pass
+		TOOL.PLANT:
+			pass
+		TOOL.MOVE:
+			pass
+		TOOL.ANALYSIS:
+			pass
+		TOOL.BUILD:
+			pass
 
 func process_first_action():
 	match current_tool:
