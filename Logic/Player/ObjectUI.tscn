@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Logic/Multitool.tscn" type="PackedScene" id=1]
+
+[node name="ObjectUI" type="Spatial"]
+
+[node name="Multitool" parent="." instance=ExtResource( 1 )]
