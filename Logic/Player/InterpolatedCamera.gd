@@ -5,6 +5,8 @@ var head: Spatial
 func _ready() -> void:
 #	Game.connect("new_player_set", self, "new_player_set")
 	# get a reference to player head
+	Game.camera = self
+	Game.multitool = $ObjectUI/Multitool
 	yield(get_tree(), "idle_frame")
 	head = Game.player.get_node("Head")
 

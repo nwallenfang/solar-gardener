@@ -18,17 +18,36 @@ func _physics_process(delta):
 		process_first_action()
 	check_on_hover()
 
+# Collision masks
+# 0 - Collision
+# 1 - Gravity
+# 2 - Analysis
+# 3 - Bad Planting
+# 4 - Moveable
+
 func switch_to_tool(new_tool: int):
 	current_tool = new_tool
 	match current_tool:
 		TOOL.NONE:
 			pass
 		TOOL.PLANT:
-			pass
+			Game.player_raycast.set_collision_mask_bit(0, true)
+			Game.player_raycast.set_collision_mask_bit(1, false)
+			Game.player_raycast.set_collision_mask_bit(2, false)
+			Game.player_raycast.set_collision_mask_bit(3, false)
+			Game.player_raycast.set_collision_mask_bit(4, false)
 		TOOL.MOVE:
-			pass
+			Game.player_raycast.set_collision_mask_bit(0, false)
+			Game.player_raycast.set_collision_mask_bit(1, false)
+			Game.player_raycast.set_collision_mask_bit(2, false)
+			Game.player_raycast.set_collision_mask_bit(3, false)
+			Game.player_raycast.set_collision_mask_bit(4, true)
 		TOOL.ANALYSIS:
-			pass
+			Game.player_raycast.set_collision_mask_bit(0, false)
+			Game.player_raycast.set_collision_mask_bit(1, false)
+			Game.player_raycast.set_collision_mask_bit(2, true)
+			Game.player_raycast.set_collision_mask_bit(3, false)
+			Game.player_raycast.set_collision_mask_bit(4, false)
 		TOOL.BUILD:
 			pass
 
@@ -70,3 +89,6 @@ func check_on_hover():
 			pass
 		TOOL.BUILD:
 			pass
+
+func show_plantable(b: bool):
+	print(b)
