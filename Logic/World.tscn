@@ -6,7 +6,6 @@
 [ext_resource path="res://Objects/Planet.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Logic/World.gd" type="Script" id=6]
 [ext_resource path="res://icon.png" type="Texture" id=7]
-[ext_resource path="res://Logic/Player/ObjectUI.tscn" type="PackedScene" id=8]
 
 [sub_resource type="SphereMesh" id=2]
 
@@ -61,5 +60,9 @@ shape = SubResource( 8 )
 [node name="Planet" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 0, 70 )
 
+[node name="Camera" type="Camera" parent="Planet"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21.4744 )
+current = true
+
 [node name="PlayerKinematic" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 69.7263, 7.11117, 70.0424 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 69.7263, 7.2182, 70.0424 )

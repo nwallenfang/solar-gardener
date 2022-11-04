@@ -13,7 +13,7 @@ export var jump_height := 12
 export var jump_extra_frames:float = 0.2
 export var friction := 0.1
 var direction := Vector3()
-var last_strong_direction := Vector3()
+
 var input_axis := Vector2()
 var velocity := Vector3()
 var snap := Vector3()
@@ -85,20 +85,37 @@ func _physics_process(delta) -> void:
 	velocity = move_and_slide_with_snap(velocity, snap, up_direction, 
 			stop_on_slope, 4, floor_max_angle)
 
+
+
+
 var forward_dir: Vector3
+var last_strong_direction: Vector3
+var look_direction := -transform.basis.z
+var last_target_up := Vector3.ZERO
+var target_look := -transform.basis.z
 func orient_player_sphere(delta: float):
 	var target_up = Game.planet.global_translation.direction_to(global_translation)
+	if last_target_up == Vector3.ZERO:
+		last_target_up = target_up
 	var v = target_up.cross(Vector3.UP).normalized()
 	var basis = Basis.IDENTITY.rotated(v, -target_up.angle_to(Vector3.UP))
 
-	Game.UI.set_diagnostics(["mouse_axis", mouse_axis])
-	var angle_diff = transform.basis.z.cross(-target_up).cross(target_up).angle_to(basis.z)
-	basis = basis.rotated(target_up, angle_diff)
-	basis = basis.rotated(target_up, -mouse_axis.x * mouse_sensitivity)
-#	basis = basis.rotated(target_up, mouse_axis.y * mouse_sensitivity)
-	mouse_axis = Vector2()
+	if target_up != last_target_up:
+		var turn_axis : Vector3 = target_up.cross(last_target_up).normalized()
+		var turn_angle : float = last_target_up.angle_to(target_up)
+		look_direction = look_direction.rotated(-turn_axis, turn_angle)
+	look_direction = look_direction.rotated(target_up, -mouse_axis.x * mouse_sensitivity)
+	target_look = look_direction.cross(-target_up).cross(target_up)
+
+	$Head.rotation.x = clamp($Head.rotation.x - mouse_axis.y * y_axis_factor * mouse_sensitivity, -y_limit, y_limit)
+
+	mouse_axis = Vector2() # Reset Mouse Input
+
+	transform.basis = Basis(-target_up.cross(target_look), target_up, -target_look)
 	transform = transform.orthonormalized()
-	transform.basis = basis
+
+	last_target_up = target_up
+
 
 
 func get_input_direction() -> Vector3:
@@ -111,13 +128,12 @@ func accelerate(old_velocity: Vector3, direction: Vector3, delta: float) -> Vect
 	velocity = velocity * pow((1.0 - friction), delta * 60)
 	velocity += speed * direction * delta
 	
-	
 	return velocity
 
+export var y_axis_factor := 1.0
 export var mouse_sensitivity := 0.005
-export var y_limit := 90.0
+export var y_limit := deg2rad(90.0)
 var mouse_axis := Vector2()
-var rot := Vector3()
 
 # Called when there is an input event
 func _input(event: InputEvent) -> void:
