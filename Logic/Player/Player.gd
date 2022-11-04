@@ -41,12 +41,24 @@ func _ready():
 	Game.player = self
 	default_scale = self.scale
 	$Mesh.visible = false
+	yield(get_tree(), "idle_frame")
+	Game.UI.get_node("UpdateDiagnostics").connect("timeout", self, "fill_diagnostics")
 
+var gravity_effect_max_dist = 40  # TODO this should be changed since it depends on planet size
 func gravity_direction() -> Vector3:
 	if Game.planet != null:
+		var dist_to_planet = global_translation.distance_to(Game.planet.global_translation)
+		if dist_to_planet > gravity_effect_max_dist:
+			return Vector3(0.0, -1.0, 0.0).normalized()
 		return global_translation.direction_to(Game.planet.global_translation)
 		
 	return Vector3(0.0, -1.0, 0.0).normalized()
+
+### SOME RULES
+##### as to the sphere movement
+# The players up direction (basis.y) should tend to be the same as the vector from planet's center to the player
+	# this should make the player stand perpendicular on the surface
+
 
 # Called every physics tick. 'delta' is constant
 var gravity_direction
@@ -116,6 +128,7 @@ func _physics_process(delta) -> void:
 
 func direction_input() -> void:
 	direction = Vector3()
+	transform = transform.orthonormalized()
 	var aim: Basis = get_global_transform().basis
 	direction = aim.z * -input_axis.x + aim.x * input_axis.y
 
@@ -145,3 +158,6 @@ func accelerate(delta: float) -> void:
 func get_in_plane_velocity() -> Vector2:
 	var global_vel: Vector3 = velocity
 	return Vector2(global_vel.x, global_vel.z)
+	
+func fill_diagnostics():
+	Game.UI.set_diagnostics(["test_vector", Vector3(1, 2, 3)])

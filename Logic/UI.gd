@@ -19,6 +19,12 @@ func show_settings():
 func hide_settings():
 	Audio.play("event_pickup")
 	$SettingsUI.hide_settings()
+	
+	
+func set_diagnostics(stuff):
+	$"%TransformDiagnostics".text = ""
+	for line in stuff:
+		$"%TransformDiagnostics".text += str(line) + "\n"
 
 
 func changed_state(state):

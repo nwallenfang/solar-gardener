@@ -16,7 +16,7 @@ radius = 0.5
 [sub_resource type="SpatialMaterial" id=4]
 albedo_color = Color( 0.313726, 0.313726, 0.313726, 1 )
 
-[node name="Player" type="RigidBody"]
+[node name="PlayerRigid" type="RigidBody"]
 mode = 2
 mass = 2.0
 physics_material_override = SubResource( 5 )

@@ -1,5 +1,5 @@
 extends RigidBody
-class_name Player
+class_name PlayerRigid
 
 func _ready():
 	Game.player = self
