@@ -4,14 +4,13 @@ class_name PlayerOld
 signal player_got_hurt
 
 
-export var gravity_multiplier := 3.0
+
 export var speed := 30
-export var acceleration := 8
-export var deceleration := 10
+
 export(float, 0.0, 1.0, 0.05) var air_control := 0.3
-export var jump_height := 12
-export var jump_extra_frames:float = 0.2
-export var friction := 0.1
+export var jump_acceleration := 1000
+export var ground_friction := 0.1
+export var air_friction := 0.05
 var direction := Vector3()
 
 var input_axis := Vector2()
@@ -21,30 +20,19 @@ var up_direction := Vector3.UP
 var stop_on_slope := true
 onready var floor_max_angle: float = deg2rad(45.0)
 # Get the gravity from the project settings to be synced with RigidDynamicBody nodes.
+
+export var gravity_multiplier := 3.0
 onready var gravity_strength = (ProjectSettings.get_setting("physics/3d/default_gravity") 
 		* gravity_multiplier)
 
-var knockback := Vector3.ZERO
-
-var double_jump = false
-var used_second_jump = false
-var inverted_controls = false
-var invincible = false
-var infinite_run = false
-
 
 var movement_disabled = false
-var default_scale
-
-var extra_frame_idx = 0
 var has_jumped = false
 
 func _ready():
 	Game.player = self
-	default_scale = self.scale
 	$Mesh.visible = false
 	yield(get_tree(), "idle_frame")
-	Game.UI.get_node("UpdateDiagnostics").connect("timeout", self, "fill_diagnostics")
 
 var gravity_effect_max_dist = 40  # TODO this should be changed since it depends on planet size
 func gravity_direction() -> Vector3:
@@ -63,20 +51,24 @@ func _physics_process(delta) -> void:
 	if movement_disabled:
 		return 
 		
-	
 	input_axis = Input.get_vector("move_backwards", "move_forward",
 			"move_left", "move_right")
-			
-	if infinite_run:
-		input_axis[0] = 1
-		
-	
 	
 	direction = get_input_direction()
 	gravity_direction = gravity_direction()
 	
+	if is_on_floor() and Input.is_action_just_pressed("jump") and !has_jumped:
+		# init jump
+		snap = Vector3.ZERO
+		# player basis y is the player's up direction
+		velocity += jump_acceleration * delta * transform.basis.y
+		has_jumped = true
+	elif is_on_floor():
+		if has_jumped:
+			# end jump
+			has_jumped = false
+		snap = gravity_direction
 
-	snap = gravity_direction #- get_floor_velocity() * delta  # moving planets?
 	velocity += gravity_strength * gravity_direction * delta
 	orient_player_sphere(delta)
 	velocity = accelerate(velocity, direction, delta)
@@ -125,7 +117,11 @@ func get_input_direction() -> Vector3:
 
 func accelerate(old_velocity: Vector3, direction: Vector3, delta: float) -> Vector3:
 	# Using only the horizontal velocity, interpolate towards the input.
-	velocity = velocity * pow((1.0 - friction), delta * 60)
+	# apply ground friction if on floor
+	if is_on_floor():
+		velocity = velocity * pow((1.0 - ground_friction), delta * 60)
+	else:
+		velocity = velocity * pow((1.0 - air_friction), delta * 60)
 	velocity += speed * direction * delta
 	
 	return velocity
@@ -147,7 +143,3 @@ func _input(event: InputEvent) -> void:
 func get_in_plane_velocity() -> Vector2:
 	var global_vel: Vector3 = velocity
 	return Vector2(global_vel.x, global_vel.z)
-	
-func fill_diagnostics():
-#	Game.UI.set_diagnostics(["mouse_axis", mouse_axis])
-	pass

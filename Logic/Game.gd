@@ -4,7 +4,8 @@ const MODELS_FOLDER = "res://Assets/Models/"
 
 enum State {
 	INGAME,
-	SETTINGS,
+	SETTINGS,  # aka paused
+	JOURNAL,
 	MAIN_MENU  # if it's needed 
 }
 
@@ -31,28 +32,24 @@ func _process(delta: float) -> void:
 			elif game_state == State.SETTINGS:
 				# this is only the correct if you can only enter settings from ingame!!
 				self.game_state = State.INGAME
+	if Input.is_action_just_pressed("open_journal"):
+		if game_state == State.INGAME:
+			self.game_state = State.JOURNAL
+		elif game_state == State.JOURNAL:
+			# this is only the correct if you can only enter settings from ingame!!
+			self.game_state = State.INGAME
 
-signal changed_state(state)
+signal changed_state(state, prev_state)
 func set_game_state(state):
 	# complicated way since there may be special actions needed per state
 	# or sometimes the new state shouldn't be set maybe if it doesn't make sense
 	# stuff like mouse capturing could go here so that it's only done in one special position
 	# (though note that on web browsers the first mouse capture has to be done in _input() !)
 	var prev_state = game_state
-	match state:
-		State.INGAME:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			game_state = State.INGAME
-		State.MAIN_MENU:
-			game_state = State.MAIN_MENU
-		State.SETTINGS:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			game_state = State.SETTINGS
+	game_state = state
 	
-	emit_signal("changed_state", state)
-#	if prev_state == State.SETTINGS and game_state != State.SETTINGS:
-#		pass
-#		UI.hide_settings()
+	emit_signal("changed_state", state, prev_state)
+
 
 
 func is_ingame():

@@ -14,29 +14,29 @@ func _ready() -> void:
 	Game.connect("changed_state", self, "changed_state")
 
 
-func show_settings():
-	$SettingsUI.show_settings()
-	
-	
-func hide_settings():
-	Audio.play("event_pickup")
-	$SettingsUI.hide_settings()
-	
-	
 func set_diagnostics(stuff):
 	$"%TransformDiagnostics".text = ""
 	for line in stuff:
 		$"%TransformDiagnostics".text += str(line) + "\n"
 
 
-func changed_state(state):
+func changed_state(state, prev_state):
 	match state:
 		Game.State.INGAME:
-			hide_settings()
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			$SettingsUI.hide_settings()
+			$JournalUI.hide()
 			$"%Crosshair".visible = true
 		Game.State.SETTINGS:
-			show_settings()
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			$SettingsUI.show_settings()
+			$JournalUI.hide()
 			$"%Crosshair".visible = false
+		Game.State.JOURNAL:
+			$"%Crosshair".visible = false
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			$SettingsUI.hide_settings()
+			$JournalUI.show()
 
 func _on_UpdateDiagnostics_timeout() -> void:
 	$"%FPS".text = "FPS: %d" % Engine.get_frames_per_second()
