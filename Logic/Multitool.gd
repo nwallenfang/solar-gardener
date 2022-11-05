@@ -1,6 +1,6 @@
 extends Spatial
 
-enum TOOL {NONE, PLANT, GROW, MOVE, ANALYSIS, BUILD}
+enum TOOL {NONE, PLANT, GROW, MOVE, ANALYSIS, BUILD, HOPPER}
 var current_tool := 0
 
 # Preloads
@@ -29,6 +29,10 @@ var object_to_analyse: Spatial
 var current_analyse_object: Spatial
 var current_analyse_progress := 0.0
 
+# Hopper Variable
+var pre_hopper_tool: int
+var hopper_planet: Planet
+var hopper_pos: Vector3
 
 var first_action_holded := false
 func _physics_process(delta):
@@ -71,6 +75,8 @@ func switch_away_from_tool(old_tool: int):
 		TOOL.ANALYSIS:
 			Game.player_raycast.set_collision_mask_bit(2, false)
 			$Model/Analysis.visible = false
+		TOOL.HOPPER:
+			show_hopable(false)
 
 func switch_to_tool(new_tool: int):
 	if new_tool == current_tool:
@@ -95,6 +101,8 @@ func switch_to_tool(new_tool: int):
 		TOOL.GROW:
 			Game.player_raycast.set_collision_mask_bit(5, true)
 			$Model/Grow.visible = true
+		TOOL.HOPPER:
+			show_hopable(true)
 
 func idle_process(delta: float):
 	match current_tool:
@@ -125,12 +133,20 @@ func process_first_action():
 		TOOL.PLANT:
 			if can_plant:
 				start_planting_animation(plant_spawn_position)
+		TOOL.HOPPER:
+			$Cooldown.start(2)
+			Game.execute_planet_hop(hopper_planet, hopper_pos)
+			switch_to_tool(pre_hopper_tool)
+			
 
 func process_second_action():
 	pass
 
 func check_on_hover():
 	Game.player_raycast.do_cast()
+	if Game.player_raycast.collider is Planet and current_tool != TOOL.HOPPER:
+		pre_hopper_tool = current_tool
+		switch_to_tool(TOOL.HOPPER)
 	match current_tool:
 		TOOL.PLANT:
 			if Game.player_raycast.colliding:
@@ -153,6 +169,12 @@ func check_on_hover():
 					can_analyse = true
 					object_to_analyse = Game.player_raycast.collider
 			show_analysable(can_analyse)
+		TOOL.HOPPER:
+			if not (Game.player_raycast.colliding and Game.player_raycast.collider is Planet):
+				switch_to_tool(pre_hopper_tool)
+			else:
+				hopper_planet = Game.player_raycast.collider
+				hopper_pos = Game.player_raycast.hit_point
 
 func show_analysable(b: bool):
 	Game.UI.crosshair.modulate = Color.green if b else Color.black
@@ -163,7 +185,9 @@ func show_growable(b: bool):
 func show_plantable(b: bool):
 	Game.UI.crosshair.modulate = Color.green if b else Color.black
 
-const DIRT_EXPLOSION = preload("res://Effects/DirtExplosion.tscn")
+func show_hopable(b: bool):
+	Game.UI.crosshair.modulate = Color.blue if b else Color.black
+
 func start_planting_animation(pos: Vector3):
 	show_plantable(false)
 	$Cooldown.start(1)
@@ -176,7 +200,8 @@ func start_planting_animation(pos: Vector3):
 	fake_seed.visible = true
 	fake_seed.global_translation = $SeedPosition.global_translation
 	
-
+const DIRT_EXPLOSION = preload("res://Effects/DirtExplosion.tscn")
+const DIRT_PILE = preload("res://Assets/Models/ModelDirtPile.tscn")
 func spawn_plant(pos: Vector3):
 	var new_plant = PLANT.instance()
 	Game.planet.add_plant(new_plant)
@@ -187,6 +212,11 @@ func spawn_plant(pos: Vector3):
 	var explosion = DIRT_EXPLOSION.instance()
 	Game.planet.add_child(explosion)
 	explosion.global_transform = new_plant.global_transform
+	var pile = DIRT_PILE.instance()
+	Game.planet.add_child(pile)
+	pile.global_translation = pos
+	pile.global_transform.basis = Utility.get_basis_y_alligned(Game.planet.global_translation.direction_to(pos))
+	
 
 func show_analyse_information():
 	# TODO

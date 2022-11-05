@@ -78,7 +78,11 @@ func _physics_process(delta) -> void:
 			stop_on_slope, 4, floor_max_angle)
 
 
-
+func update_look_direction():
+	look_direction = -transform.basis.z
+	target_look = -transform.basis.z
+	mouse_axis = Vector2()
+	last_target_up = Vector3.ZERO
 
 var forward_dir: Vector3
 var last_strong_direction: Vector3

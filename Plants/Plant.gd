@@ -3,9 +3,11 @@ class_name Plant
 
 const DEFAULT_GROW_SPEED = 1.0/20.0
 const BOOSTED_GROW_SPEED = 1.0/2.0
-const DEFAULT_MODEL_SCALE = 1.0
-const GROWTH_UP_SCALE_FACTOR = 1.3
+const DEFAULT_MODEL_SCALE = .9
+const GROWTH_UP_SCALE_FACTOR = 1.2
 const GROWTH_DOWN_SCALE_FACTOR = .7
+const SEED_START_POINT = .05
+const SEED_SINK_DISTANCE = .2
 
 var profile: PlantProfile
 
@@ -35,6 +37,9 @@ func setup():
 	for model in model_array:
 		model.visible = false
 		add_child(model)
+
+	model_seed.translation += Vector3.UP * SEED_START_POINT
+
 	current_model = model_seed
 	current_model.visible = true
 	is_setup = true
@@ -75,9 +80,12 @@ func play_growth_pop_animation(old_stage):
 	# TODO Animation
 
 func update_growth_visuals():
-	var scale_vector := Vector3.ONE
-	if growth_stage_progress <= 0.0:
-		scale_vector *= lerp(DEFAULT_MODEL_SCALE, GROWTH_DOWN_SCALE_FACTOR, -growth_stage_progress)
+	if growth_stage == 0:
+		model_seed.translation.y = SEED_START_POINT - SEED_SINK_DISTANCE * growth_stage_progress
 	else:
-		scale_vector *= lerp(DEFAULT_MODEL_SCALE, GROWTH_UP_SCALE_FACTOR, growth_stage_progress)
-	current_model.scale = scale_vector
+		var scale_vector := Vector3.ONE
+		if growth_stage_progress <= 0.0:
+			scale_vector *= lerp(DEFAULT_MODEL_SCALE, GROWTH_DOWN_SCALE_FACTOR, -growth_stage_progress)
+		else:
+			scale_vector *= lerp(DEFAULT_MODEL_SCALE, GROWTH_UP_SCALE_FACTOR, growth_stage_progress)
+		current_model.scale = scale_vector

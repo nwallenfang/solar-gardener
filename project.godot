@@ -61,7 +61,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "AudioPlayerWithInfo": "",
-"ManagedSound": "",
+"ManagedSound": "res://Assets/Sprites/managed_sound.png",
 "Planet": "",
 "Plant": "",
 "PlantPreference": "",
@@ -189,6 +189,7 @@ open_journal={
 3d_physics/layer_4="BadPlanting"
 3d_physics/layer_5="Moveable"
 3d_physics/layer_6="Grow"
+3d_physics/layer_7="Planet"
 
 [physics]
 

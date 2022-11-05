@@ -4,3 +4,5 @@
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
+
+[node name="WarpTween" type="Tween" parent="."]
