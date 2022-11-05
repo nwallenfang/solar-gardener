@@ -13,7 +13,7 @@ uv1_triplanar = true
 radius = 0.999624
 
 [sub_resource type="SphereShape" id=12]
-radius = 11.4982
+radius = 9.73952
 
 [node name="Planet" type="Spatial"]
 script = ExtResource( 1 )
@@ -30,6 +30,8 @@ shape = SubResource( 11 )
 
 [node name="Area" type="Area" parent="."]
 transform = Transform( 1.24458, 0, 0, 0, 1.24458, 0, 0, 0, 1.24458, 0, 0, 0 )
+collision_layer = 64
+collision_mask = 0
 space_override = 3
 gravity_point = true
 gravity_vec = Vector3( 0, 0, 0 )
