@@ -14,3 +14,6 @@
   - non-commercial license!
 ### 3D Models
 ### Sprites and Icons
+- Cursor by a_person
+  - http://www.rw-designer.com/cursor-set/remake-of-no-tail
+  - public domain
