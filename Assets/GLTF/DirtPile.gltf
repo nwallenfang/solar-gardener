@@ -1,0 +1,104 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v3.3.32",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Pile"
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Cube_cell.145",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "indices" : 3
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 6186,
+            "max" : [
+                0.3057471811771393,
+                0.1552104651927948,
+                0.37398412823677063
+            ],
+            "min" : [
+                -0.32968825101852417,
+                -0.018861189484596252,
+                -0.30527397990226746
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 6186,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 6186,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5123,
+            "count" : 9531,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 74232,
+            "byteOffset" : 0,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 74232,
+            "byteOffset" : 74232,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 49488,
+            "byteOffset" : 148464,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 19062,
+            "byteOffset" : 197952,
+            "target" : 34963
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 217016,
+            "uri" : "DirtPile.bin"
+        }
+    ]
+}

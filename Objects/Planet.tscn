@@ -10,7 +10,7 @@ albedo_texture = ExtResource( 2 )
 uv1_triplanar = true
 
 [sub_resource type="SphereShape" id=11]
-radius = 1.00961
+radius = 0.999624
 
 [sub_resource type="SphereShape" id=12]
 radius = 11.4982
@@ -26,7 +26,6 @@ material/0 = SubResource( 7 )
 [node name="StaticBody" type="StaticBody" parent="MeshInstance"]
 
 [node name="CollisionShape" type="CollisionShape" parent="MeshInstance/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00888467, 0 )
 shape = SubResource( 11 )
 
 [node name="Area" type="Area" parent="."]
