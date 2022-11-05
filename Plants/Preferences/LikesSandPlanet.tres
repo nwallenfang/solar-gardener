@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Sprites/sand_material.png" type="Texture" id=1]
+[ext_resource path="res://Plants/PlantPreference.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+name = "Likes sandy planets"
+description = "This plant grows well on sandy planets."
+icon = ExtResource( 1 )

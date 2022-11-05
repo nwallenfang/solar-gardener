@@ -1,16 +1,18 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://Plants/PlantProfile.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Placeholder/bonsai.png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
-name = "test"
-fluff_base = ""
-fluff_stage2 = ""
+name = "Testy"
+fluff_base = "I'm a test plant whooooooooooooooo. Long words and lots of long texts make for a long fun. Blabal woerj"
+fluff_stage2 = "Whoopsiedaysie"
 fluff_stage3 = ""
-sun = 0
-moisture = 0
+icon = ExtResource( 2 )
+sun = 1
+moisture = 2
 nutrients = 0
-group = 0
+group = 3
 prefered_soil = 0
 seed_count = 3

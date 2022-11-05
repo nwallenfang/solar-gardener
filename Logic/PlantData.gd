@@ -1,8 +1,9 @@
 extends Node
 
-enum PREFERENCE_TYPES {SOIL, SUN, MOISTURE}
+enum PREFERENCE_TYPES {SOIL, SUN, MOISTURE, NUTRIENTS, GROUP}
+#icons: positiv: GRAVEL, DIRT, SAND, LIKES, HATES
 enum PREFERENCE {ALWAYS_TRUE, ALWAYS_FALSE, LIKES, HATES}
-enum SOIL_TYPES {ANY, NONE, GRAVEL, DIRT}
+enum SOIL_TYPES {ANY, NONE, ROCK, DIRT, SAND}
 enum GROWTH_STAGES {SEED = 0, STAGE_1 = 1, STAGE_2 = 2, STAGE_3 = 3, STAGE_4 = 4}
 
 const PROFILE_FOLDER = "res://Plants/Profiles/"
@@ -16,12 +17,14 @@ onready var progress := {
 
 }
 
-
+var plants_initiated_done = false
+signal plants_initiated
 
 func add_test_progress():
-	progress["Seedling"] = [
-		PREFERENCES["Needs Water"]
-	]
+#	progress["Seedling"] = [
+#		PREFERENCES["Likes Water"]
+#	]
+	pass
 
 #signal new_progress(plant_name, preference)
 func add_preference_progress(plant_name: String, progress_type: String):
@@ -38,6 +41,33 @@ func add_preference_progress(plant_name: String, progress_type: String):
 
 func add_stage_progress(plant_name, growth_stage):
 	pass
+	
+func plant_profile_to_preference_list(plant: PlantProfile) -> Array:
+	var preference_list = []
+	if plant.sun == PREFERENCE.LIKES:
+		preference_list.append(PREFERENCES["Likes Sun"])
+	if plant.sun == PREFERENCE.HATES:
+		preference_list.append(PREFERENCES["Hates Sun"])
+	if plant.moisture == PREFERENCE.LIKES:
+		preference_list.append(PREFERENCES["Likes Water"])
+	if plant.moisture == PREFERENCE.HATES:
+		preference_list.append(PREFERENCES["Hates Water"])
+	if plant.nutrients == PREFERENCE.LIKES:
+		preference_list.append(PREFERENCES["Likes Nutrients"])
+	if plant.nutrients == PREFERENCE.HATES:
+		preference_list.append(PREFERENCES["Hates Nutrients"])
+	if plant.group == PREFERENCE.LIKES:
+		preference_list.append(PREFERENCES["Likes Groups"])
+	if plant.group == PREFERENCE.HATES:
+		preference_list.append(PREFERENCES["Hates Groups"])
+	if plant.prefered_soil == SOIL_TYPES.DIRT:
+		preference_list.append(PREFERENCES["Likes dirt planets"])
+	if plant.prefered_soil == SOIL_TYPES.ROCK:
+		preference_list.append(PREFERENCES["Likes rocky planets"])
+	if plant.prefered_soil == SOIL_TYPES.SAND:
+		preference_list.append(PREFERENCES["Likes sandy planets"])
+
+	return preference_list
 
 func setup():
 	var dir = Directory.new()
@@ -68,3 +98,6 @@ func setup():
 			PREFERENCES[new_preferences.name] = new_preferences
 
 	dir.list_dir_end()
+	
+	emit_signal("plants_initiated")
+	plants_initiated_done = true

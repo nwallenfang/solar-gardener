@@ -32,22 +32,23 @@ var current_analyse_progress := 0.0
 
 var first_action_holded := false
 func _physics_process(delta):
-	if $Cooldown.time_left == 0.0:
-		check_on_hover()
-		if Input.is_action_just_pressed("tool1"):
-			switch_to_tool(TOOL.PLANT)
-		if Input.is_action_just_pressed("tool2"):
-			switch_to_tool(TOOL.GROW)
-		if Input.is_action_just_pressed("tool3"):
-			switch_to_tool(TOOL.ANALYSIS)
-		if Input.is_action_just_pressed("tool4"):
-			switch_to_tool(TOOL.BUILD)
-		if Input.is_action_just_pressed("first_action"):
-			process_first_action()
-		first_action_holded = Input.is_action_pressed("first_action")
-		if Input.is_action_just_pressed("second_action"):
-			process_first_action()
-		idle_process(delta)
+	if Game.game_state == Game.State.INGAME:
+		if $Cooldown.time_left == 0.0:
+			check_on_hover()
+			if Input.is_action_just_pressed("tool1"):
+				switch_to_tool(TOOL.PLANT)
+			if Input.is_action_just_pressed("tool2"):
+				switch_to_tool(TOOL.GROW)
+			if Input.is_action_just_pressed("tool3"):
+				switch_to_tool(TOOL.ANALYSIS)
+			if Input.is_action_just_pressed("tool4"):
+				switch_to_tool(TOOL.BUILD)
+			if Input.is_action_just_pressed("first_action"):
+				process_first_action()
+			first_action_holded = Input.is_action_pressed("first_action")
+			if Input.is_action_just_pressed("second_action"):
+				process_first_action()
+			idle_process(delta)
 
 # Collision masks
 # 0 - Collision

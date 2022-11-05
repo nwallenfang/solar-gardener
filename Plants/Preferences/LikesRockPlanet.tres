@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Sprites/rock_material.png" type="Texture" id=1]
+[ext_resource path="res://Plants/PlantPreference.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+name = "Likes rocky planets"
+description = "This plant grows well on rocky planets."
+icon = ExtResource( 1 )

@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Fonts/DiagnosticsText.tres" type="DynamicFont" id=1]
+
+[resource]
+default_font = ExtResource( 1 )
+TooltipLabel/colors/font_color = Color( 0, 0, 0, 1 )
+TooltipLabel/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+TooltipPanel/styles/panel = null
