@@ -4,19 +4,21 @@ enum TOOL {NONE, PLANT, MOVE, ANALYSIS, BUILD}
 var current_tool := 0
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("tool1") and not current_tool == TOOL.PLANT:
-		switch_to_tool(TOOL.PLANT)
-	if Input.is_action_just_pressed("tool2") and not current_tool == TOOL.MOVE:
-		switch_to_tool(TOOL.MOVE)
-	if Input.is_action_just_pressed("tool3") and not current_tool == TOOL.ANALYSIS:
-		switch_to_tool(TOOL.ANALYSIS)
-	if Input.is_action_just_pressed("tool4") and not current_tool == TOOL.BUILD:
-		switch_to_tool(TOOL.BUILD)
-	if Input.is_action_just_pressed("first_action"):
-		process_first_action()
-	if Input.is_action_just_pressed("second_action"):
-		process_first_action()
-	check_on_hover()
+	if $Cooldown.time_left == 0.0:
+		check_on_hover()
+		if Input.is_action_just_pressed("tool1") and not current_tool == TOOL.PLANT:
+			switch_to_tool(TOOL.PLANT)
+		if Input.is_action_just_pressed("tool2") and not current_tool == TOOL.MOVE:
+			switch_to_tool(TOOL.MOVE)
+		if Input.is_action_just_pressed("tool3") and not current_tool == TOOL.ANALYSIS:
+			switch_to_tool(TOOL.ANALYSIS)
+		if Input.is_action_just_pressed("tool4") and not current_tool == TOOL.BUILD:
+			switch_to_tool(TOOL.BUILD)
+		if Input.is_action_just_pressed("first_action"):
+			process_first_action()
+		if Input.is_action_just_pressed("second_action"):
+			process_first_action()
+	
 
 # Collision masks
 # 0 - Collision
@@ -78,7 +80,7 @@ func process_second_action():
 			pass
 
 func check_on_hover():
-	Game.player_raycast
+	Game.player_raycast.do_cast()
 	match current_tool:
 		TOOL.NONE:
 			pass

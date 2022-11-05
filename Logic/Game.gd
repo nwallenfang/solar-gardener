@@ -16,7 +16,7 @@ var main_scene = null
 # is set when main_scene_running
 var UI: UI = null
 var player = null
-var player_raycast: RayCast
+var player_raycast: PlayerRayCast
 var multitool
 var camera: Camera
 # current planet

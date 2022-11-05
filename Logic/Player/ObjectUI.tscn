@@ -5,3 +5,4 @@
 [node name="ObjectUI" type="Spatial"]
 
 [node name="Multitool" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124, -0.139, -0.075 )

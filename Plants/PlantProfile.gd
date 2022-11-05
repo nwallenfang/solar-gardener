@@ -2,6 +2,8 @@ extends Resource
 class_name PlantProfile
 
 export var name: String
+export var fluff: String
+export var icon: Texture
 
 export var sun: int
 export var moisture: int
