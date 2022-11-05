@@ -39,11 +39,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Logic/PlayerRayCast.gd"
 }, {
-"base": "RigidBody",
-"class": "PlayerRigid",
-"language": "GDScript",
-"path": "res://Logic/Player/gdquest_planet.gd"
-}, {
 "base": "CanvasLayer",
 "class": "UI",
 "language": "GDScript",
@@ -56,7 +51,6 @@ _global_script_class_icons={
 "PlantProfile": "",
 "PlayerOld": "",
 "PlayerRayCast": "",
-"PlayerRigid": "",
 "UI": ""
 }
 
