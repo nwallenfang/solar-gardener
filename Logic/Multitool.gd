@@ -162,11 +162,19 @@ func show_growable(b: bool):
 func show_plantable(b: bool):
 	Game.UI.crosshair.modulate = Color.green if b else Color.black
 
+const DIRT_EXPLOSION = preload("res://Effects/DirtExplosion.tscn")
 func start_planting_animation(pos: Vector3):
-	# TODO Fly Animation
-	spawn_plant(pos)
 	show_plantable(false)
 	$Cooldown.start(1)
+	$SeedFlyTween.interpolate_property(fake_seed, "global_translation", fake_seed.global_translation, pos, .2)
+	$SeedFlyTween.start()
+	yield($SeedFlyTween, "tween_all_completed")
+	fake_seed.visible = false
+	spawn_plant(pos)
+	yield(get_tree().create_timer(.6),"timeout")
+	fake_seed.visible = true
+	fake_seed.global_translation = $SeedPosition.global_translation
+	
 
 func spawn_plant(pos: Vector3):
 	var new_plant = PLANT.instance()
@@ -175,6 +183,9 @@ func spawn_plant(pos: Vector3):
 	new_plant.setup()
 	new_plant.global_translation = pos
 	new_plant.global_transform.basis = Utility.get_basis_y_alligned(Game.planet.global_translation.direction_to(pos))
+	var explosion = DIRT_EXPLOSION.instance()
+	Game.planet.add_child(explosion)
+	explosion.global_transform = new_plant.global_transform
 
 func show_analyse_information():
 	# TODO
