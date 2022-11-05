@@ -1,9 +1,10 @@
 extends Spatial
 class_name Plant
 
-const DEFAULT_GROW_SPEED = 1.0/10.0
+const DEFAULT_GROW_SPEED = 1.0/20.0
+const BOOSTED_GROW_SPEED = 1.0/3.0
 const DEFAULT_MODEL_SCALE = 1.0
-const GROWTH_UP_SCALE_FACTOR = 1.3
+const GROWTH_UP_SCALE_FACTOR = 1.5
 const GROWTH_DOWN_SCALE_FACTOR = .7
 
 var profile: PlantProfile
@@ -50,8 +51,13 @@ func growth_process(delta):
 func check_conditions():
 	growth_lock = PlantData.GROWTH_STAGES.STAGE_4
 
+var growth_boost := false
 func grow(delta, factor_sign):
-	growth_stage_progress += DEFAULT_GROW_SPEED * delta * factor_sign
+	if growth_boost:
+		growth_stage_progress += BOOSTED_GROW_SPEED * delta * factor_sign
+	else:
+		growth_stage_progress += DEFAULT_GROW_SPEED * delta * factor_sign
+	growth_boost = false
 	update_growth_visuals()
 	if abs(growth_stage_progress) >= 1.0:
 		$GrowthCooldown.start()
