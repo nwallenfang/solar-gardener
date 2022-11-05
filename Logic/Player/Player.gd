@@ -33,7 +33,6 @@ func _ready():
 	Game.player = self
 	$Mesh.visible = false
 	yield(get_tree(), "idle_frame")
-	Game.UI.get_node("UpdateDiagnostics").connect("timeout", self, "fill_diagnostics")
 
 var gravity_effect_max_dist = 40  # TODO this should be changed since it depends on planet size
 func gravity_direction() -> Vector3:
@@ -69,8 +68,7 @@ func _physics_process(delta) -> void:
 			# end jump
 			has_jumped = false
 		snap = gravity_direction
-	
-	Game.UI.set_diagnostics(["has_jumped", has_jumped, "snap", snap])
+
 	velocity += gravity_strength * gravity_direction * delta
 	orient_player_sphere(delta)
 	velocity = accelerate(velocity, direction, delta)
