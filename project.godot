@@ -46,7 +46,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "AudioPlayerWithInfo": "",
-"ManagedSound": "res://Assets/Sprites/managed_sound.png",
+"ManagedSound": "",
 "Planet": "",
 "PlantProfile": "",
 "PlayerOld": "",
