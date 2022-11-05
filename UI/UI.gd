@@ -10,7 +10,6 @@ onready var crosshair : Sprite
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	crosshair = $"%Crosshair"
-	$UpdateDiagnostics.start()
 	Game.connect("changed_state", self, "changed_state")
 
 
@@ -37,6 +36,3 @@ func changed_state(state, prev_state):
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			$SettingsUI.hide_settings()
 			$JournalUI.show()
-
-func _on_UpdateDiagnostics_timeout() -> void:
-	$"%FPS".text = "FPS: %d" % Engine.get_frames_per_second()

@@ -3,8 +3,16 @@ extends Control
 # TODO later this JournalUI will be used in a ViewportTexture
 
 func _ready() -> void:
-	pass 
-	
+	PlantData.connect("new_progress", self, "new_progress")
+
+
+func new_progress():
+	pass
+
+
+func init():
+	pass
+
 
 func show():
 	# TODO play show Journal animation (tool screen moving towards player cam basically)

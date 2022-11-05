@@ -15,12 +15,14 @@ panorama = ExtResource( 1 )
 [sub_resource type="Environment" id=5]
 background_mode = 2
 background_sky = SubResource( 4 )
-background_energy = 3.0
+background_energy = 0.2
 ambient_light_color = Color( 1, 1, 1, 1 )
 ambient_light_sky_contribution = 0.7
 tonemap_mode = 2
 glow_enabled = true
 glow_bloom = 0.4
+glow_bicubic_upscale = true
+adjustment_enabled = true
 
 [sub_resource type="PlaneMesh" id=6]
 size = Vector2( 20, 20 )

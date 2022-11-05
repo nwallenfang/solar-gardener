@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Assets/Fonts/EventNameFontSmaller.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Fonts/FluffText.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/SettingsUI.gd" type="Script" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -28,20 +28,20 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="MusicVolumeH" type="HBoxContainer" parent="Panel/VBoxContainer"]
-margin_right = 716.0
-margin_bottom = 41.0
+margin_right = 1344.0
+margin_bottom = 52.0
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/MusicVolumeH"]
-margin_right = 356.0
-margin_bottom = 41.0
+margin_right = 670.0
+margin_bottom = 52.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
 text = "Music Volume"
 
 [node name="MusicSlider" type="HSlider" parent="Panel/VBoxContainer/MusicVolumeH"]
-margin_left = 360.0
-margin_right = 716.0
-margin_bottom = 41.0
+margin_left = 674.0
+margin_right = 1344.0
+margin_bottom = 52.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 max_value = 1.0
@@ -49,21 +49,21 @@ step = 0.01
 value = 0.8
 
 [node name="SFXVolumeH" type="HBoxContainer" parent="Panel/VBoxContainer"]
-margin_top = 45.0
-margin_right = 716.0
-margin_bottom = 86.0
+margin_top = 56.0
+margin_right = 1344.0
+margin_bottom = 108.0
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/SFXVolumeH"]
-margin_right = 356.0
-margin_bottom = 41.0
+margin_right = 670.0
+margin_bottom = 52.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
 text = "SFX Volume"
 
 [node name="SFXSlider" type="HSlider" parent="Panel/VBoxContainer/SFXVolumeH"]
-margin_left = 360.0
-margin_right = 716.0
-margin_bottom = 41.0
+margin_left = 674.0
+margin_right = 1344.0
+margin_bottom = 52.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 max_value = 1.0
@@ -71,26 +71,26 @@ step = 0.01
 value = 0.8
 
 [node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer"]
-margin_top = 90.0
-margin_right = 716.0
-margin_bottom = 94.0
+margin_top = 112.0
+margin_right = 1344.0
+margin_bottom = 116.0
 
 [node name="Sensitivity" type="HBoxContainer" parent="Panel/VBoxContainer"]
-margin_top = 98.0
-margin_right = 716.0
-margin_bottom = 139.0
+margin_top = 120.0
+margin_right = 1344.0
+margin_bottom = 172.0
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/Sensitivity"]
-margin_right = 356.0
-margin_bottom = 41.0
+margin_right = 670.0
+margin_bottom = 52.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
 text = "Mouse Sensitivity"
 
 [node name="SensitivitySlider" type="HSlider" parent="Panel/VBoxContainer/Sensitivity"]
-margin_left = 360.0
-margin_right = 716.0
-margin_bottom = 41.0
+margin_left = 674.0
+margin_right = 1344.0
+margin_bottom = 52.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 max_value = 1.0
@@ -98,22 +98,22 @@ step = 0.01
 value = 0.33
 
 [node name="InvertYAxis" type="HBoxContainer" parent="Panel/VBoxContainer"]
-margin_top = 143.0
-margin_right = 716.0
-margin_bottom = 184.0
+margin_top = 176.0
+margin_right = 1344.0
+margin_bottom = 228.0
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/InvertYAxis"]
-margin_right = 356.0
-margin_bottom = 41.0
+margin_right = 670.0
+margin_bottom = 52.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
 text = "Invert Y-Axis"
 
 [node name="InvertYButton" type="CheckBox" parent="Panel/VBoxContainer/InvertYAxis"]
 unique_name_in_owner = true
-margin_left = 360.0
-margin_right = 716.0
-margin_bottom = 41.0
+margin_left = 674.0
+margin_right = 1344.0
+margin_bottom = 52.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -139,16 +139,16 @@ custom_fonts/font = ExtResource( 1 )
 text = "save benchmark"
 
 [node name="HSeparator2" type="HSeparator" parent="Panel/VBoxContainer"]
-margin_top = 188.0
-margin_right = 716.0
-margin_bottom = 225.0
+margin_top = 232.0
+margin_right = 1344.0
+margin_bottom = 362.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="DoneButton" type="Button" parent="Panel/VBoxContainer"]
-margin_top = 229.0
-margin_right = 716.0
-margin_bottom = 276.0
+margin_top = 366.0
+margin_right = 1344.0
+margin_bottom = 496.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

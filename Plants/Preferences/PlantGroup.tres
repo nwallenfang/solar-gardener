@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Plants/PlantPreference.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Placeholder/group_plant.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "Likes Groups"
+description = "This plant Grows well in groups of its own kind."
+icon = ExtResource( 2 )
