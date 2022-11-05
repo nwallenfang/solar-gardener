@@ -1,7 +1,8 @@
 extends Spatial
 class_name Plant
 
-const DEFAULT_GROW_SPEED = 1.0/10.0
+const DEFAULT_GROW_SPEED = 1.0/20.0
+const BOOSTED_GROW_SPEED = 1.0/2.0
 const DEFAULT_MODEL_SCALE = 1.0
 const GROWTH_UP_SCALE_FACTOR = 1.3
 const GROWTH_DOWN_SCALE_FACTOR = .7
@@ -50,19 +51,26 @@ func growth_process(delta):
 func check_conditions():
 	growth_lock = PlantData.GROWTH_STAGES.STAGE_4
 
+var growth_boost := false
 func grow(delta, factor_sign):
-	growth_stage_progress += DEFAULT_GROW_SPEED * delta * factor_sign
+	if growth_boost:
+		growth_stage_progress += BOOSTED_GROW_SPEED * delta * factor_sign
+	else:
+		growth_stage_progress += DEFAULT_GROW_SPEED * delta * factor_sign
+	growth_boost = false
 	update_growth_visuals()
 	if abs(growth_stage_progress) >= 1.0:
 		$GrowthCooldown.start()
 		var old_stage := growth_stage
 		growth_stage = growth_stage + int(factor_sign * 1.1) # "* 1.1" to avoid float error nonsense
 		current_model = model_array[growth_stage]
+		growth_stage_progress = 0.0
 		play_growth_pop_animation(old_stage)
 		
 func play_growth_pop_animation(old_stage):
 	model_array[old_stage].visible = false
 	model_array[old_stage].scale = Vector3.ONE * DEFAULT_MODEL_SCALE
+	current_model.scale = Vector3.ONE * DEFAULT_MODEL_SCALE
 	current_model.visible = true
 	# TODO Animation
 

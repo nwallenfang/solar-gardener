@@ -1,5 +1,5 @@
 extends KinematicBody
-class_name PlayerOld
+class_name Player
 
 signal player_got_hurt
 

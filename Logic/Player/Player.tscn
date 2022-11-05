@@ -14,7 +14,7 @@ radius = 0.5
 [sub_resource type="SpatialMaterial" id=4]
 albedo_color = Color( 0.313726, 0.313726, 0.313726, 1 )
 
-[node name="PlayerKinematic" type="KinematicBody"]
+[node name="Player" type="KinematicBody"]
 physics_interpolation_mode = 2
 script = ExtResource( 1 )
 __meta__ = {

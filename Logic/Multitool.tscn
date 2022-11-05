@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Logic/Multitool.gd" type="Script" id=1]
 
@@ -11,6 +11,14 @@ albedo_color = Color( 0.584314, 0.584314, 0.584314, 1 )
 albedo_color = Color( 1, 0, 0, 1 )
 
 [sub_resource type="SphereMesh" id=4]
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.921569, 1, 0, 1 )
+
+[sub_resource type="CapsuleMesh" id=6]
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0, 1, 0.952941, 1 )
 
 [node name="Multitool" type="Spatial"]
 script = ExtResource( 1 )
@@ -28,9 +36,23 @@ transform = Transform( 2.39371, 0, 0, 0, 2.39371, 1.19209e-07, 0, 2.98023e-08, 0
 material_override = SubResource( 3 )
 mesh = SubResource( 4 )
 
+[node name="Grow" type="MeshInstance" parent="Model"]
+transform = Transform( 0.0258273, 0, 0, 0, 0.0258273, 0, 0, 0, 0.0258273, 0, 0.0645421, -0.135381 )
+visible = false
+material_override = SubResource( 5 )
+mesh = SubResource( 6 )
+
+[node name="Analysis" type="MeshInstance" parent="Model"]
+transform = Transform( 0.0258273, 0, 0, 0, 0.0258273, 0, 0, 0, 0.0258273, 0, 0.0645421, -0.135381 )
+visible = false
+material_override = SubResource( 7 )
+mesh = SubResource( 6 )
+
 [node name="SeedPosition" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.120577, -0.138945 )
 
 [node name="Cooldown" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="SeedFlyTween" type="Tween" parent="."]

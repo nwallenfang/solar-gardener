@@ -1,4 +1,4 @@
 [gd_scene format=2]
 
 [node name="FakeSeed" type="Spatial"]
-transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0 )
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
