@@ -2,9 +2,9 @@ extends Spatial
 class_name Plant
 
 const DEFAULT_GROW_SPEED = 1.0/20.0
-const BOOSTED_GROW_SPEED = 1.0/3.0
+const BOOSTED_GROW_SPEED = 1.0/2.0
 const DEFAULT_MODEL_SCALE = 1.0
-const GROWTH_UP_SCALE_FACTOR = 1.5
+const GROWTH_UP_SCALE_FACTOR = 1.3
 const GROWTH_DOWN_SCALE_FACTOR = .7
 
 var profile: PlantProfile
@@ -64,11 +64,13 @@ func grow(delta, factor_sign):
 		var old_stage := growth_stage
 		growth_stage = growth_stage + int(factor_sign * 1.1) # "* 1.1" to avoid float error nonsense
 		current_model = model_array[growth_stage]
+		growth_stage_progress = 0.0
 		play_growth_pop_animation(old_stage)
 		
 func play_growth_pop_animation(old_stage):
 	model_array[old_stage].visible = false
 	model_array[old_stage].scale = Vector3.ONE * DEFAULT_MODEL_SCALE
+	current_model.scale = Vector3.ONE * DEFAULT_MODEL_SCALE
 	current_model.visible = true
 	# TODO Animation
 
