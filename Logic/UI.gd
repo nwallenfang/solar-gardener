@@ -5,9 +5,11 @@ class_name UI
 # var a: int = 2
 # var b: String = "text"
 
+onready var crosshair : Sprite
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	crosshair = $"%Crosshair"
 	$UpdateDiagnostics.start()
 	Game.connect("changed_state", self, "changed_state")
 

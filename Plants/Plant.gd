@@ -1,6 +1,7 @@
 extends Spatial
+class_name Plant
 
-const DEFAULT_GROW_SPEED = 1.0/30.0
+const DEFAULT_GROW_SPEED = 1.0/10.0
 const DEFAULT_MODEL_SCALE = 1.0
 const GROWTH_UP_SCALE_FACTOR = 1.3
 const GROWTH_DOWN_SCALE_FACTOR = .7
@@ -34,9 +35,13 @@ func setup():
 		model.visible = false
 		add_child(model)
 	current_model = model_seed
+	current_model.visible = true
 	is_setup = true
 
 func _physics_process(delta):
+	growth_process(delta)
+
+func growth_process(delta):
 	if growth_stage == growth_lock:
 		check_conditions()
 	if growth_stage != growth_lock and $GrowthCooldown.time_left == 0.0:

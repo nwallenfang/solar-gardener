@@ -17,7 +17,7 @@ func setup():
 		var file = dir.get_next()
 		if file == "":
 			break
-		else:
+		elif "tres" in file:
 			var new_profile := load(PROFILE_FOLDER + file) as PlantProfile
 			new_profile.setup()
 			profiles[new_profile.name] = new_profile
