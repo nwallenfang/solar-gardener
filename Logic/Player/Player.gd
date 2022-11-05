@@ -5,7 +5,7 @@ signal player_got_hurt
 
 
 export var gravity_multiplier := 3.0
-export var speed := 40
+export var speed := 30
 export var acceleration := 8
 export var deceleration := 10
 export(float, 0.0, 1.0, 0.05) var air_control := 0.3
@@ -42,7 +42,7 @@ var has_jumped = false
 func _ready():
 	Game.player = self
 	default_scale = self.scale
-#	$Mesh.visible = false
+	$Mesh.visible = false
 	yield(get_tree(), "idle_frame")
 	Game.UI.get_node("UpdateDiagnostics").connect("timeout", self, "fill_diagnostics")
 

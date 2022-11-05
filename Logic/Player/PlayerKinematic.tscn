@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Logic/Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://Logic/Player/PlayerCamera.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CapsuleShape" id=2]
 radius = 0.5
@@ -38,5 +39,4 @@ material/0 = SubResource( 4 )
 physics_interpolation_mode = 2
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50645, -0.656005 )
 
-[node name="Camera" type="Camera" parent="Head"]
-current = true
+[node name="PlayerCamera" parent="Head" instance=ExtResource( 2 )]
