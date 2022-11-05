@@ -53,6 +53,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 69.7263, 7.2182, 70.0424 )
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.74748, 0.290656, -0.597321, 0.594837, -0.693144, 0.407088, -0.295707, -0.659599, -0.691004, 0, 32.2732, 0 )
 light_energy = 2.0
+shadow_enabled = true
 directional_shadow_depth_range = 1
 
 [node name="Planet2" parent="." instance=ExtResource( 5 )]

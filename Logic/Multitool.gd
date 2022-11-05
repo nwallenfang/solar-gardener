@@ -8,7 +8,7 @@ const FAKE_SEED = preload("res://Plants/FakeSeed.tscn")
 const PLANT = preload("res://Plants/Plant.tscn")
 
 # Plant Tool Variables
-var target_plant_name := "test"
+var target_plant_name := "Testy"
 var selected_profile : PlantProfile
 var seeds_empty := false
 var can_plant := false

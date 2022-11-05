@@ -1,7 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[sub_resource type="SpatialMaterial" id=2]
-albedo_color = Color( 0.513726, 0.501961, 0.384314, 1 )
+[ext_resource path="res://Assets/Materials/ModelDirtPile.tres" type="Material" id=1]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "DirtPile_Cube_cell145"
@@ -21,5 +20,6 @@ surfaces/0 = {
 
 [node name="Pile" type="MeshInstance" parent="."]
 transform = Transform( 1.11436, 0, 0, 0, 0.936039, 0, 0, 0, 1.11436, 0, -0.0314203, 0 )
-material_override = SubResource( 2 )
+material_override = ExtResource( 1 )
+cast_shadow = 0
 mesh = SubResource( 1 )

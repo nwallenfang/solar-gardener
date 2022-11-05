@@ -32,7 +32,7 @@ var has_jumped = false
 func _ready():
 	Game.player = self
 	$Mesh.visible = false
-	yield(get_tree(), "idle_frame")
+
 
 var gravity_effect_max_dist = 40  # TODO this should be changed since it depends on planet size
 func gravity_direction() -> Vector3:

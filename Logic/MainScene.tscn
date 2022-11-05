@@ -19,6 +19,7 @@ size = Vector2( 1280, 720 )
 handle_input_locally = false
 fxaa = true
 render_target_update_mode = 3
+shadow_atlas_size = 4096
 
 [node name="World" parent="ViewportContainer/Viewport" instance=ExtResource( 1 )]
 
