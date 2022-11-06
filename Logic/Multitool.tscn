@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Logic/Multitool.gd" type="Script" id=1]
 
@@ -20,6 +20,9 @@ albedo_color = Color( 0.921569, 1, 0, 1 )
 [sub_resource type="SpatialMaterial" id=7]
 albedo_color = Color( 0, 1, 0.952941, 1 )
 
+[sub_resource type="SpatialMaterial" id=8]
+albedo_color = Color( 1, 0, 0, 1 )
+
 [node name="Multitool" type="Spatial"]
 script = ExtResource( 1 )
 
@@ -27,7 +30,7 @@ script = ExtResource( 1 )
 
 [node name="DisplayLabel" type="Label3D" parent="Model"]
 unique_name_in_owner = true
-transform = Transform( 0.123691, 0, 0, 0, 0.0536046, 0.111472, 0, -0.111472, 0.0536046, 0, 0.0863203, -0.101317 )
+transform = Transform( 0.123691, 0, 0, 0, 0.0536046, 0.111472, 0, -0.111472, 0.0536046, 0, 0.0785607, -0.0851808 )
 text = "
 "
 
@@ -55,6 +58,13 @@ mesh = SubResource( 6 )
 transform = Transform( 0.0258273, 0, 0, 0, 0.0258273, 0, 0, 0, 0.0258273, 0, 0.0645421, -0.135381 )
 visible = false
 material_override = SubResource( 7 )
+cast_shadow = 0
+mesh = SubResource( 6 )
+
+[node name="Move" type="MeshInstance" parent="Model"]
+transform = Transform( 0.0258273, 0, 0, 0, 0.0258273, 0, 0, 0, 0.0258273, 0, 0.0645421, -0.135381 )
+visible = false
+material_override = SubResource( 8 )
 cast_shadow = 0
 mesh = SubResource( 6 )
 

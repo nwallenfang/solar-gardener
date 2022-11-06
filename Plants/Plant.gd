@@ -6,7 +6,7 @@ const BOOSTED_GROW_SPEED = 1.0/2.0
 const DEFAULT_MODEL_SCALE = .9
 const GROWTH_UP_SCALE_FACTOR = 1.2
 const GROWTH_DOWN_SCALE_FACTOR = .7
-const SEED_START_POINT = .05
+const SEED_START_POINT = .1
 const SEED_SINK_DISTANCE = .2
 
 var profile: PlantProfile
@@ -91,3 +91,19 @@ func update_growth_visuals():
 		else:
 			scale_vector *= lerp(DEFAULT_MODEL_SCALE, GROWTH_UP_SCALE_FACTOR, growth_stage_progress)
 		current_model.scale = scale_vector
+
+const FLYING_PICKUP = preload("res://Objects/FlyingPickup.tscn")
+
+func on_remove():
+	var pickup = FLYING_PICKUP.instance()
+	Game.planet.add_child(pickup)
+	pickup.global_transform.basis = Utility.get_basis_y_aligned(Game.planet.global_translation.direction_to(self.global_translation))
+	pickup.global_translation = self.global_translation
+	pickup.setup_as_seed(profile.name)
+
+	$RemoveTween.interpolate_property(self, "scale", Vector3.ONE, Vector3.ONE * .01, 2.5)
+	$RemoveTween.start()
+	yield(get_tree().create_timer(1.5), "timeout")
+	pickup.start_flying()
+	yield($RemoveTween, "tween_all_completed")
+	queue_free()

@@ -23,19 +23,26 @@ var plant_to_grow: Plant
 # Analysis Variable
 const ANALYSE_TOOL_DISTANCE = 10.0
 const ANALYSE_SPEED = 1.0/2.0
+const SOIL_ANALYSE_SPEED = 1.0/5.0
 var can_analyse := false
 var currently_analysing := false
 var analyse_completed := false
 var object_to_analyse: Spatial
 var current_analyse_object: Spatial
 var current_analyse_progress := 0.0
+var soil_analysing := false
 
 # Hopper Variable
 var pre_hopper_tool: int
 var hopper_planet: Planet
 var hopper_pos: Vector3
 
+# Move Variable
+var can_move := false
+var object_to_move : Spatial
+
 var first_action_holded := false
+var second_action_holded := false
 func _physics_process(delta):
 	if Game.game_state == Game.State.INGAME:
 		if $Cooldown.time_left == 0.0:
@@ -47,12 +54,13 @@ func _physics_process(delta):
 			if Input.is_action_just_pressed("tool3"):
 				switch_to_tool(TOOL.ANALYSIS)
 			if Input.is_action_just_pressed("tool4"):
-				switch_to_tool(TOOL.BUILD)
+				switch_to_tool(TOOL.MOVE)
 			if Input.is_action_just_pressed("first_action"):
 				process_first_action()
 			first_action_holded = Input.is_action_pressed("first_action")
 			if Input.is_action_just_pressed("second_action"):
-				process_first_action()
+				process_second_action()
+			second_action_holded = Input.is_action_pressed("second_action")
 			idle_process(delta)
 
 # Collision masks
@@ -73,6 +81,7 @@ func switch_away_from_tool(old_tool: int):
 				fake_seed.queue_free()
 		TOOL.MOVE:
 			Game.player_raycast.set_collision_mask_bit(4, false)
+			$Model/Move.visible = false
 		TOOL.ANALYSIS:
 			Game.player_raycast.set_collision_mask_bit(2, false)
 			$Model/Analysis.visible = false
@@ -98,6 +107,7 @@ func switch_to_tool(new_tool: int):
 				seeds_empty = true
 		TOOL.MOVE:
 			Game.player_raycast.set_collision_mask_bit(4, true)
+			$Model/Move.visible = true
 		TOOL.ANALYSIS:
 			Game.player_raycast.set_collision_mask_bit(2, true)
 			$Model/Analysis.visible = true
@@ -116,10 +126,13 @@ func idle_process(delta: float):
 				plant_to_grow.growth_boost = true
 		TOOL.ANALYSIS:
 			analyse_completed = false
-			if not currently_analysing:
+			if not currently_analysing and not soil_analysing:
 				if can_analyse and first_action_holded:
 					currently_analysing = true
 					current_analyse_object = object_to_analyse
+					current_analyse_progress = 0.0
+				elif second_action_holded:
+					soil_analysing = true
 					current_analyse_progress = 0.0
 			if currently_analysing:
 				if (not first_action_holded) or object_to_analyse != current_analyse_object or (not can_analyse):
@@ -133,6 +146,18 @@ func idle_process(delta: float):
 						print("Analysis Done of " + str(current_analyse_object))
 						if current_analyse_object.has_method("on_analyse"):
 							current_analyse_object.call("on_analyse")
+			elif soil_analysing:
+				if not second_action_holded:
+					soil_analysing = false
+				else:
+					current_analyse_progress += SOIL_ANALYSE_SPEED * delta
+					if current_analyse_progress >= 1.0:
+						soil_analysing = false
+						analyse_completed = true
+						$Cooldown.start(2)
+						print("Analysis Done of " + str(Game.planet))
+						if Game.planet.has_method("on_analyse"):
+							Game.planet.call("on_analyse")
 			show_analyse_information()
 
 func process_first_action():
@@ -145,10 +170,13 @@ func process_first_action():
 			$Cooldown.start(2)
 			Game.execute_planet_hop(hopper_planet, hopper_pos)
 			switch_to_tool(pre_hopper_tool)
-			
 
 func process_second_action():
-	pass
+	match current_tool:
+		TOOL.MOVE:
+			if object_to_move.has_method("on_remove"):
+				object_to_move.call("on_remove")
+				$Cooldown.start(2)
 
 func check_on_hover():
 	Game.player_raycast.do_cast()
@@ -172,6 +200,13 @@ func check_on_hover():
 					can_grow = true
 					plant_to_grow = Game.player_raycast.collider
 			show_growable(can_grow)
+		TOOL.MOVE:
+			can_move = false
+			if Game.player_raycast.colliding:
+				if Game.player_raycast.hit_point.distance_to(Game.player.global_translation) < GROW_TOOL_DISTANCE:
+					can_move = true
+					object_to_move = Game.player_raycast.collider
+			show_moveable(can_move)
 		TOOL.ANALYSIS:
 			can_analyse = false
 			if Game.player_raycast.colliding:
@@ -185,6 +220,9 @@ func check_on_hover():
 			else:
 				hopper_planet = Game.player_raycast.collider
 				hopper_pos = Game.player_raycast.hit_point
+
+func show_moveable(b: bool):
+	Game.UI.crosshair.modulate = Color.red if b else Color.black
 
 func show_analysable(b: bool):
 	Game.UI.crosshair.modulate = Color.green if b else Color.black
@@ -214,8 +252,6 @@ func start_planting_animation(pos: Vector3):
 	else:
 		seeds_empty = true
 
-	
-	
 const DIRT_EXPLOSION = preload("res://Effects/DirtExplosion.tscn")
 const DIRT_PILE = preload("res://Assets/Models/ModelDirtPile.tscn")
 func spawn_plant(pos: Vector3):
@@ -229,15 +265,14 @@ func spawn_plant(pos: Vector3):
 	Game.planet.add_child(explosion)
 	explosion.global_transform = new_plant.global_transform
 	var pile = DIRT_PILE.instance()
-	Game.planet.add_child(pile)
+	new_plant.add_child(pile)
 	pile.global_translation = pos
 	pile.global_transform.basis = Utility.get_basis_y_aligned(Game.planet.global_translation.direction_to(pos))
-	
 
 func show_analyse_information():
 	# TODO
 	Game.UI.set_diagnostics(["Analysing Object", current_analyse_object, "Analyse Progress", current_analyse_progress * 100.0])
-	if currently_analysing:
+	if currently_analysing or soil_analysing:
 		set_display_label("%.0f%%" % (current_analyse_progress * 100.0))
 	else:
 		set_display_label("100%" if analyse_completed else "")
