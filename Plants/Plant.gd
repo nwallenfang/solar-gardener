@@ -11,11 +11,12 @@ const SEED_SINK_DISTANCE = .2
 
 var profile: PlantProfile
 
+var growth_points: int = 0
 var growth_stage: int = PlantData.GROWTH_STAGES.SEED
 var growth_lock: int = PlantData.GROWTH_STAGES.SEED
 var growth_stage_progress: float = 0.0
 
-var planet: Spatial
+var planet: Planet
 
 var model_seed: Spatial
 var model_stage_1: Spatial
@@ -53,8 +54,68 @@ func growth_process(delta):
 	if growth_stage != growth_lock and $GrowthCooldown.time_left == 0.0:
 		grow(delta, sign(growth_lock - growth_stage))
 
+func calculate_growth_points():
+	var points := 0
+	# SOIL TYPE
+	if profile.prefered_soil == PlantData.SOIL_TYPES.ANY:
+		points += 1
+	elif profile.prefered_soil == PlantData.SOIL_TYPES.NONE:
+		points += 0
+	elif profile.prefered_soil == planet.soil_type:
+		points += 1
+	
+	# SUN
+	if profile.sun == PlantData.PREFERENCE.ALWAYS_FALSE:
+		points += 0
+	elif profile.sun == PlantData.PREFERENCE.ALWAYS_TRUE:
+		points += 1
+	elif profile.sun == PlantData.PREFERENCE.LIKES:
+		points += 1 if planet.sun else 0
+	elif profile.sun == PlantData.PREFERENCE.HATES:
+		points += 1 if not planet.sun else 0
+	
+	# MOIST
+	if profile.moisture == PlantData.PREFERENCE.ALWAYS_FALSE:
+		points += 0
+	elif profile.moisture == PlantData.PREFERENCE.ALWAYS_TRUE:
+		points += 1
+	elif profile.moisture == PlantData.PREFERENCE.LIKES:
+		points += 1 if planet.moist else 0
+	elif profile.moisture == PlantData.PREFERENCE.HATES:
+		points += 1 if not planet.moist else 0
+	
+	# NUTRI
+	if profile.nutrients == PlantData.PREFERENCE.ALWAYS_FALSE:
+		points += 0
+	elif profile.nutrients == PlantData.PREFERENCE.ALWAYS_TRUE:
+		points += 1
+	elif profile.nutrients == PlantData.PREFERENCE.LIKES:
+		points += 1 if planet.nutrients else 0
+	elif profile.nutrients == PlantData.PREFERENCE.HATES:
+		points += 1 if not planet.nutrients else 0
+	
+	# GROUP TODO
+	if profile.group == PlantData.PREFERENCE.ALWAYS_FALSE:
+		points += 0
+	elif profile.group == PlantData.PREFERENCE.ALWAYS_TRUE:
+		points += 1
+	elif profile.group == PlantData.PREFERENCE.LIKES:
+		points += 1 if planet.get_count_of_plant_type(profile.name) >= 5 else 0
+	elif profile.group == PlantData.PREFERENCE.HATES:
+		points += 1 if planet.get_count_of_plant_type(profile.name) < 5 else 0
+	
 func check_conditions():
-	growth_lock = PlantData.GROWTH_STAGES.STAGE_4
+	calculate_growth_points()
+	if growth_points >= profile.points_for_stage_4:
+		growth_lock = PlantData.GROWTH_STAGES.STAGE_4
+	elif growth_points >= profile.points_for_stage_3:
+		growth_lock = PlantData.GROWTH_STAGES.STAGE_3
+	elif growth_points >= profile.points_for_stage_2:
+		growth_lock = PlantData.GROWTH_STAGES.STAGE_2
+	elif growth_points >= profile.points_for_stage_1:
+		growth_lock = PlantData.GROWTH_STAGES.STAGE_1
+	else:
+		growth_lock = PlantData.GROWTH_STAGES.SEED
 
 signal growth_stage_reached()
 var growth_boost := false

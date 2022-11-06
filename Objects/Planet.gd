@@ -22,3 +22,10 @@ func _ready():
 func set_primary_state(b: bool):
 	$Area.set_deferred("monitoring", not b)
 	$Area.set_deferred("monitorable", not b)
+
+func get_count_of_plant_type(plant_name: String) -> int:
+	var count := 0
+	for plant in plant_list:
+		if plant.profile.name == plant_name:
+			count += 1
+	return count
