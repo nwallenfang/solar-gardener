@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SpaceTextur.png-84307dbb8a238458ff10bcb69c454810.stex"
+path="res://.import/skybox.png-c22e91847355929dc07cca0ad835e23b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/SpaceTextur.png"
-dest_files=[ "res://.import/SpaceTextur.png-84307dbb8a238458ff10bcb69c454810.stex" ]
+source_file="res://Assets/Textures/skybox.png"
+dest_files=[ "res://.import/skybox.png-c22e91847355929dc07cca0ad835e23b.stex" ]
 
 [params]
 
@@ -26,10 +26,10 @@ flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
-process/HDR_as_SRGB=false
+process/HDR_as_SRGB=true
 process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
