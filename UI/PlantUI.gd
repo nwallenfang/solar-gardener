@@ -5,7 +5,7 @@ const STAR_FULL = preload("res://Assets/Sprites/star-full.png")
 const STAR_EMPTY = preload("res://Assets/Sprites/star-empty.png")
 
 var plant_name
-var number_of_stars setget set_number_of_stars
+var number_of_stars = 0
 var hovered = false
 
 var plant_profile: PlantProfile
@@ -39,7 +39,7 @@ func set_number_of_stars(number):
 	
 	# TODO update UI
 	for i in range(number_of_stars):
-		var star_texture_rect: TextureRect = get_node("Stars/Star" + str(i+1))
+		var star_texture_rect: TextureRect = get_node("Panel/Stars/Star" + str(i+1))
 		star_texture_rect.texture = STAR_FULL
 
 func _on_Panel_gui_input(event: InputEvent) -> void:

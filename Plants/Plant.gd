@@ -56,6 +56,7 @@ func growth_process(delta):
 func check_conditions():
 	growth_lock = PlantData.GROWTH_STAGES.STAGE_4
 
+signal growth_stage_reached()
 var growth_boost := false
 func grow(delta, factor_sign):
 	if growth_boost:
@@ -71,6 +72,7 @@ func grow(delta, factor_sign):
 		current_model = model_array[growth_stage]
 		growth_stage_progress = 0.0
 		play_growth_pop_animation(old_stage)
+		PlantData.growth_stage_reached(profile.name, growth_stage)
 		
 func play_growth_pop_animation(old_stage):
 	model_array[old_stage].visible = false

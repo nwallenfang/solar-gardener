@@ -6,14 +6,10 @@ var currently_hovering
 
 func _ready() -> void:
 	PlantData.connect("seeds_updated", self, "seed_count_updated")
+	PlantData.connect("growth_stage_reached", self, "growth_staged_reached")
 	if not PlantData.plants_initiated_done:
 		yield(PlantData, "plants_initiated")
 	init()
-
-
-func new_progress(plant_name:String, preference: PlantPreference):
-	# TODO
-	pass
 
 
 func init():
@@ -54,6 +50,12 @@ func plant_hovered(plant_ui):
 func seed_count_updated(plant_name, total_seeds):
 	var plant_ui: PlantUI = get_node("Control/PlantUI" + plant_name)
 	plant_ui.set_seed_count(total_seeds)
+
+func growth_staged_reached(plant_name, growth_stage):
+	var plant_ui: PlantUI = get_node("Control/PlantUI" + plant_name)
+	if growth_stage - 1 > plant_ui.number_of_stars:
+		print("yee :)")
+		plant_ui.set_number_of_stars(growth_stage - 1)
 
 
 func show():
