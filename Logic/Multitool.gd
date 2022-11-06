@@ -25,6 +25,7 @@ const ANALYSE_TOOL_DISTANCE = 10.0
 const ANALYSE_SPEED = 1.0/2.0
 var can_analyse := false
 var currently_analysing := false
+var analyse_completed := false
 var object_to_analyse: Spatial
 var current_analyse_object: Spatial
 var current_analyse_progress := 0.0
@@ -89,10 +90,10 @@ func switch_to_tool(new_tool: int):
 			Game.player_raycast.set_collision_mask_bit(0, true)
 			selected_profile = PlantData.profiles[target_plant_name]
 			if not PlantData.seed_counts[target_plant_name] == 0:
+				seeds_empty = false
 				fake_seed = FAKE_SEED.instance()
 				$SeedPosition.add_child(fake_seed)
-				var seed_model = selected_profile.model_seed.instance()
-				fake_seed.add_child(seed_model)
+				fake_seed.setup(target_plant_name)
 			else:
 				seeds_empty = true
 		TOOL.MOVE:
@@ -108,10 +109,13 @@ func switch_to_tool(new_tool: int):
 
 func idle_process(delta: float):
 	match current_tool:
+		TOOL.PLANT:
+			show_plant_information()
 		TOOL.GROW:
 			if first_action_holded and can_grow:
 				plant_to_grow.growth_boost = true
 		TOOL.ANALYSIS:
+			analyse_completed = false
 			if not currently_analysing:
 				if can_analyse and first_action_holded:
 					currently_analysing = true
@@ -124,6 +128,7 @@ func idle_process(delta: float):
 					current_analyse_progress += ANALYSE_SPEED * delta
 					if current_analyse_progress >= 1.0:
 						currently_analysing = false
+						analyse_completed = true
 						$Cooldown.start(2)
 						print("Analysis Done of " + str(current_analyse_object))
 						if current_analyse_object.has_method("on_analyse"):
@@ -157,6 +162,8 @@ func check_on_hover():
 			else:
 				can_plant = false
 			plant_spawn_position = Game.player_raycast.hit_point
+			if seeds_empty:
+				can_plant = false
 			show_plantable(can_plant)
 		TOOL.GROW:
 			can_grow = false
@@ -225,8 +232,18 @@ func spawn_plant(pos: Vector3):
 	Game.planet.add_child(pile)
 	pile.global_translation = pos
 	pile.global_transform.basis = Utility.get_basis_y_alligned(Game.planet.global_translation.direction_to(pos))
-	
 
 func show_analyse_information():
 	# TODO
 	Game.UI.set_diagnostics(["Analysing Object", current_analyse_object, "Analyse Progress", current_analyse_progress * 100.0])
+	if currently_analysing:
+		set_display_label("%.0f%%" % (current_analyse_progress * 100.0))
+	else:
+		set_display_label("100%" if analyse_completed else "")
+
+func show_plant_information():
+	var seeds_left = PlantData.seed_counts[target_plant_name]
+	set_display_label(str(seeds_left))
+
+func set_display_label(s: String):
+	$"%DisplayLabel".text = s

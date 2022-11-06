@@ -22,12 +22,14 @@ onready var floor_max_angle: float = deg2rad(45.0)
 # Get the gravity from the project settings to be synced with RigidDynamicBody nodes.
 
 export var gravity_multiplier := 3.0
-onready var gravity_strength = (ProjectSettings.get_setting("physics/3d/default_gravity") 
+onready var gravity_strength : float = (ProjectSettings.get_setting("physics/3d/default_gravity") 
 		* gravity_multiplier)
 
 
 var movement_disabled = false
 var has_jumped = false
+
+onready var pickup_point : Spatial = $"%PickupPoint"
 
 func _ready():
 	Game.player = self

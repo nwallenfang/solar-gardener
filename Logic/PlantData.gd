@@ -118,7 +118,7 @@ func plant(plant_name):
 
 
 signal seeds_updated(plant_name, seed_total)  # -> JournalUI is listening
-func give_seeds(plant_name, seed_amount):
+func give_seeds(plant_name: String, seed_amount:int) -> void:
 	seed_counts[plant_name] += seed_amount
 	emit_signal("seeds_updated", plant_name, seed_counts[plant_name])
 
