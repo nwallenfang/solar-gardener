@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="ArrayMesh" id=1]
+resource_name = "Planet01brown_mesh"
+
+[node name="ModelPlanet01brown" type="Spatial"]
+
+[node name="Planet 01 brown" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
