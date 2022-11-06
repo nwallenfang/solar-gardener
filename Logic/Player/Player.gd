@@ -70,8 +70,9 @@ func _physics_process(delta) -> void:
 			# end jump
 			has_jumped = false
 		snap = gravity_direction
-
-	velocity += gravity_strength * gravity_direction * delta
+	
+	if direction.length() > 0.1 or not is_on_floor():
+		velocity += gravity_strength * gravity_direction * delta
 	orient_player_sphere(delta)
 	velocity = accelerate(velocity, direction, delta)
 #	
