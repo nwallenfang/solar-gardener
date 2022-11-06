@@ -71,3 +71,4 @@ mesh = SubResource( 2 )
 material/0 = SubResource( 4 )
 
 [node name="SunAura" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1.07621, 0, 0, 0, -4.70426e-08, -1.07621, 0, 1.07621, -4.70426e-08, 0, 0, 0 )

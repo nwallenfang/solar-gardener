@@ -13,7 +13,6 @@ func _ready() -> void:
 
 
 func init():
-	# later initializing these urself (maybe)
 	var i = 1
 	for plant_name in PlantData.profiles:
 		var plant_ui: PlantUI = get_node("Control/PlantUI" + str(i))
@@ -54,9 +53,18 @@ func seed_count_updated(plant_name, total_seeds):
 func growth_staged_reached(plant_name, growth_stage):
 	var plant_ui: PlantUI = get_node("Control/PlantUI" + plant_name)
 	if growth_stage - 1 > plant_ui.number_of_stars:
-		print("yee :)")
 		plant_ui.set_number_of_stars(growth_stage - 1)
 
+func make_preference_known(plant_name: String, plant_preference: PlantPreference):
+	# find plant ui belonging to this plant
+	for plant_ui in get_tree().get_nodes_in_group("plant_ui"):
+		if plant_ui.plant_name == plant_name:
+			plant_ui.make_preference_known(plant_preference)
+
+func make_preference_list_known(plant_name: String, plant_references: Array):
+	# practical to save on for loops pls use this!
+	# TODO
+	printerr("TODO list_known")
 
 func show():
 	# TODO play show Journal animation (tool screen moving towards player cam basically)

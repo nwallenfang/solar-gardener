@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UI/PlantUI.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Placeholder/plant_icon.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Sprites/star-empty.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Textures/aura_alpha.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Fonts/SeedCount.tres" type="DynamicFont" id=5]
+[ext_resource path="res://UI/PlantPreferenceUI.tscn" type="PackedScene" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.482353, 0.415686, 0.227451, 1 )
@@ -79,11 +80,54 @@ stretch_mode = 6
 [node name="Preferences" type="GridContainer" parent="Panel"]
 unique_name_in_owner = true
 anchor_top = 0.692
-anchor_right = 1.0
+anchor_right = 0.75
 anchor_bottom = 1.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
-columns = 5
+columns = 3
+
+[node name="PlantPreferenceUI1" parent="Panel/Preferences" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 254.0
+margin_bottom = 87.0
+
+[node name="PlantPreferenceUI2" parent="Panel/Preferences" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 258.0
+margin_right = 511.0
+margin_bottom = 87.0
+
+[node name="PlantPreferenceUI3" parent="Panel/Preferences" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 515.0
+margin_right = 768.0
+margin_bottom = 87.0
+
+[node name="PlantPreferenceUI4" parent="Panel/Preferences" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 91.0
+margin_right = 254.0
+margin_bottom = 177.0
+
+[node name="PlantPreferenceUI5" parent="Panel/Preferences" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 258.0
+margin_top = 91.0
+margin_right = 511.0
+margin_bottom = 177.0
+
+[node name="PlantPreferenceUI6" parent="Panel/Preferences" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 515.0
+margin_top = 91.0
+margin_right = 768.0
+margin_bottom = 177.0
 
 [node name="SeedCountBG" type="TextureRect" parent="."]
 anchor_left = 0.648

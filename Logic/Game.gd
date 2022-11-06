@@ -28,7 +28,6 @@ var invert_y_axis = false
 var planet_list := []
 
 func _process(delta: float) -> void:
-	UI.set_diagnostics([game_state, Input.mouse_mode])
 	if Input.is_action_just_pressed("open_settings"):  # show/hide settings UI
 		if main_scene_running:
 			if game_state == State.INGAME:
@@ -46,6 +45,9 @@ func _process(delta: float) -> void:
 	if OS.is_debug_build() and Input.is_action_just_pressed("give_seeds"):
 		print("gib tzieds")
 		PlantData.give_seeds("Seedling", 10)
+	if OS.is_debug_build() and Input.is_action_just_pressed("make_pref_known"):
+		print("pref known")
+		UI.get_node("JournalUI").make_preference_known("Seedling", PlantData.PREFERENCES["Hates Sun"])
 
 signal changed_state(state, prev_state)
 func set_game_state(state):

@@ -4,6 +4,7 @@ class_name PlantUI
 const STAR_FULL = preload("res://Assets/Sprites/star-full.png")
 const STAR_EMPTY = preload("res://Assets/Sprites/star-empty.png")
 
+var number_of_preferences = 0
 var plant_name
 var number_of_stars = 0
 var hovered = false
@@ -13,16 +14,21 @@ var discovered_plant_preferences = []
 
 signal clicked(plant_name)
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
 
-const PREFERENCE_UI = preload("res://UI/PlantPreferenceUI.tscn")
+const max_per_row = 3
 func add_preference(preference: PlantPreference):
-	var preference_ui = PREFERENCE_UI.instance()
-	$"%Preferences".add_child(preference_ui)
-	preference_ui.set_preference_data(preference)
-	$"%Preferences".columns = $"%Preferences".get_child_count()
+	var next_preference = get_node("Panel/Preferences/PlantPreferenceUI" + str(number_of_preferences+1))
+	next_preference.set_preference_data(preference)
+	next_preference.disabled = false
+	number_of_preferences += 1
+
+func make_preference_known(preference: PlantPreference):
+	# find this preference
+	for pref_ui in $"%Preferences".get_children():
+		if pref_ui.preference == preference:
+			pref_ui.make_known()
+			return
+	printerr("plant " + plant_name + " doesn't have the preference " + preference + " ERR")
 
 func get_data_for_plant(new_plant_name):
 	self.plant_name = new_plant_name

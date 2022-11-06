@@ -113,7 +113,7 @@ custom_fonts/font = ExtResource( 4 )
 text = "Hover over a plant to show information."
 autowrap = true
 
-[node name="PlantUI1" parent="Control" instance=ExtResource( 3 )]
+[node name="PlantUI1" parent="Control" groups=["plant_ui"] instance=ExtResource( 3 )]
 anchor_left = 0.0296875
 anchor_top = 0.0583333
 anchor_right = 0.2
@@ -122,7 +122,7 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="PlantUI2" parent="Control" instance=ExtResource( 3 )]
+[node name="PlantUI2" parent="Control" groups=["plant_ui"] instance=ExtResource( 3 )]
 anchor_left = 0.232812
 anchor_top = 0.0583333
 anchor_right = 0.403125
