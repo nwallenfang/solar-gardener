@@ -44,10 +44,10 @@ func _process(delta: float) -> void:
 			
 	if OS.is_debug_build() and Input.is_action_just_pressed("give_seeds"):
 		print("gib tzieds")
-		PlantData.give_seeds("Seedling", 10)
+		PlantData.give_seeds("A Seedling", 10)
 	if OS.is_debug_build() and Input.is_action_just_pressed("make_pref_known"):
 		print("pref known")
-		UI.get_node("JournalUI").make_preference_known("Seedling", PlantData.PREFERENCES["Hates Sun"])
+		UI.get_node("JournalUI").make_preference_known("A Seedling", PlantData.PREFERENCES["Hates Sun"])
 
 signal changed_state(state, prev_state)
 func set_game_state(state):

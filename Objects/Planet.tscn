@@ -42,5 +42,5 @@ shape = SubResource( 12 )
 
 [node name="Amber" parent="." instance=ExtResource( 3 )]
 transform = Transform( 0.0278366, 0.998228, 0.0525869, -0.999604, 0.027584, 0.00552432, 0.00406398, -0.0527199, 0.998601, 7.06496, 0, 0 )
-seed_name = "Testy"
+seed_name = "A Testy"
 seed_count = 1

@@ -9,11 +9,17 @@ var plant_name
 var number_of_stars = 0
 var hovered = false
 
+var discovered = false
+
 var plant_profile: PlantProfile
-var discovered_plant_preferences = []
+
 
 signal clicked(plant_name)
 
+
+func _ready() -> void:
+	$Panel/UndiscoveredOverlay.visible = true
+	$SeedCountBG.visible = false
 
 const max_per_row = 3
 func add_preference(preference: PlantPreference):
@@ -37,6 +43,10 @@ func get_data_for_plant(new_plant_name):
 	
 	
 func set_seed_count(seed_count: int):
+	if not discovered:
+		$Panel/UndiscoveredOverlay.visible = false
+		$SeedCountBG.visible = true
+		discovered = true
 	$"%SeedCount".text = str(seed_count)
 
 
@@ -47,12 +57,12 @@ func set_number_of_stars(number):
 	for i in range(number_of_stars):
 		var star_texture_rect: TextureRect = get_node("Panel/Stars/Star" + str(i+1))
 		star_texture_rect.texture = STAR_FULL
+		star_texture_rect.hint_tooltip = "Grown to Stage " + str(i+2)
 
 func _on_Panel_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		event = event as InputEventMouseButton
 		if event.pressed and event.button_index == BUTTON_LEFT:
-			get_tree().set_input_as_handled()
 			emit_signal("clicked", plant_name)
 
 func _on_Panel_mouse_entered() -> void:
