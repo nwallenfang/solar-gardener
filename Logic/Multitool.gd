@@ -217,14 +217,14 @@ func spawn_plant(pos: Vector3):
 	new_plant.profile = selected_profile
 	new_plant.setup()
 	new_plant.global_translation = pos
-	new_plant.global_transform.basis = Utility.get_basis_y_alligned(Game.planet.global_translation.direction_to(pos))
+	new_plant.global_transform.basis = Utility.get_basis_y_aligned(Game.planet.global_translation.direction_to(pos))
 	var explosion = DIRT_EXPLOSION.instance()
 	Game.planet.add_child(explosion)
 	explosion.global_transform = new_plant.global_transform
 	var pile = DIRT_PILE.instance()
 	Game.planet.add_child(pile)
 	pile.global_translation = pos
-	pile.global_transform.basis = Utility.get_basis_y_alligned(Game.planet.global_translation.direction_to(pos))
+	pile.global_transform.basis = Utility.get_basis_y_aligned(Game.planet.global_translation.direction_to(pos))
 	
 
 func show_analyse_information():

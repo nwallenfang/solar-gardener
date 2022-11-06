@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Effects/PlanetAura.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Effects/SunAura.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Sun.gd" type="Script" id=2]
 
 [sub_resource type="SphereMesh" id=2]
@@ -28,33 +28,25 @@ uniform float value;
 uniform vec4 color1: hint_color;
 uniform vec4 color2: hint_color;
 
-vec3 firePalette(float i){
-
-    float T = 1400. + 1300.*i; // Temperature range (in Kelvin).
-    vec3 L = vec3(7.4, 5.6, 4.4); // Red, green, blue wavelengths (in hundreds of nanometers).
-    L = pow(L,vec3(5.0)) * (exp(1.43876719683e5/(T*L))-1.0);
-    return 1.0 - exp(-5e8/L); // Exposure level. Set to \"50.\" For \"70,\" change the \"5\" to a \"7,\" etc.
-}
 
 void vertex() {
 }
 
 void light() {
-	
+
 }
 
 
 void fragment() {
-//	vec4 albedo_tex = texture(texture_albedo,base_uv);
-	ALBEDO = mix(color1, color2, texture(noise, UV)).rgb;
-//	vec3 emission_tex = texture(texture_emission,base_uv).rgb;
-	EMISSION = emission_energy * normalize(mix(color1, color2, texture(noise, UV + 0.2 * sin(0.2 * TIME)))).rgb; //emission_energy * mix(color1, color2, clamp((0.2*sin(3.0 * TIME + 1.0)) + texture(noise, UV + 0.2 * sin(0.2 * TIME)), 0.2, 0.8)).rgb;
-}
-"
+//    vec4 albedo_tex = texture(texture_albedo,base_uv);
+    ALBEDO = mix(color1, color2, texture(noise, UV)).rgb;
+//    vec3 emission_tex = texture(texture_emission,base_uv).rgb;
+    EMISSION = emission_energy * normalize(mix(color1, color2, texture(noise, UV + 0.2 * sin(0.2 * TIME)))).rgb; //emission_energy * mix(color1, color2, clamp((0.2sin(3.0 TIME + 1.0)) + texture(noise, UV + 0.2 * sin(0.2 * TIME)), 0.2, 0.8)).rgb;
+}"
 
 [sub_resource type="OpenSimplexNoise" id=5]
-period = 9.3
-persistence = 0.207
+period = 4.7
+persistence = 0.163
 
 [sub_resource type="NoiseTexture" id=6]
 seamless = true
@@ -62,10 +54,10 @@ noise = SubResource( 5 )
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = SubResource( 3 )
-shader_param/emission_energy = 1.8
+shader_param/emission_energy = 1.546
 shader_param/value = 1.791
-shader_param/color1 = Color( 0.819608, 0.690196, 0.0980392, 1 )
-shader_param/color2 = Color( 0.564706, 0.309804, 0.0352941, 1 )
+shader_param/color1 = Color( 0.886275, 0.854902, 0.117647, 1 )
+shader_param/color2 = Color( 0.698039, 0.419608, 0.145098, 1 )
 shader_param/noise = SubResource( 6 )
 
 [node name="Sun" type="Spatial"]
@@ -78,5 +70,4 @@ cast_shadow = 0
 mesh = SubResource( 2 )
 material/0 = SubResource( 4 )
 
-[node name="PlanetAura" parent="." instance=ExtResource( 1 )]
-transform = Transform( 71.4835, 0, 0, 0, 71.4835, 0, 0, 0, 71.4835, 0, 0, 0 )
+[node name="SunAura" parent="." instance=ExtResource( 1 )]
