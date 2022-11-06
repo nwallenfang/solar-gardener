@@ -88,11 +88,13 @@ func switch_to_tool(new_tool: int):
 		TOOL.PLANT:
 			Game.player_raycast.set_collision_mask_bit(0, true)
 			selected_profile = PlantData.profiles[target_plant_name]
-			if not seeds_empty:
+			if not PlantData.seed_counts[target_plant_name] == 0:
 				fake_seed = FAKE_SEED.instance()
 				$SeedPosition.add_child(fake_seed)
 				var seed_model = selected_profile.model_seed.instance()
 				fake_seed.add_child(seed_model)
+			else:
+				seeds_empty = true
 		TOOL.MOVE:
 			Game.player_raycast.set_collision_mask_bit(4, true)
 		TOOL.ANALYSIS:
@@ -131,7 +133,8 @@ func idle_process(delta: float):
 func process_first_action():
 	match current_tool:
 		TOOL.PLANT:
-			if can_plant:
+			if can_plant and PlantData.can_plant(target_plant_name):
+				PlantData.plant(target_plant_name)
 				start_planting_animation(plant_spawn_position)
 		TOOL.HOPPER:
 			$Cooldown.start(2)
@@ -150,7 +153,7 @@ func check_on_hover():
 	match current_tool:
 		TOOL.PLANT:
 			if Game.player_raycast.colliding:
-				can_plant = Utility.test_planting_position(Game.player_raycast.hit_point)
+				can_plant = Utility.test_planting_position(Game.player_raycast.hit_point) # and PlantData.can_plant() TODO
 			else:
 				can_plant = false
 			plant_spawn_position = Game.player_raycast.hit_point
@@ -197,8 +200,14 @@ func start_planting_animation(pos: Vector3):
 	fake_seed.visible = false
 	spawn_plant(pos)
 	yield(get_tree().create_timer(.6),"timeout")
-	fake_seed.visible = true
 	fake_seed.global_translation = $SeedPosition.global_translation
+	if not PlantData.seed_counts[target_plant_name] == 0:
+		seeds_empty = false
+		fake_seed.visible = true
+	else:
+		seeds_empty = true
+
+	
 	
 const DIRT_EXPLOSION = preload("res://Effects/DirtExplosion.tscn")
 const DIRT_PILE = preload("res://Assets/Models/ModelDirtPile.tscn")

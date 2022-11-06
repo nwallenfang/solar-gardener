@@ -5,6 +5,7 @@ extends Control
 var currently_hovering
 
 func _ready() -> void:
+	PlantData.connect("seeds_updated", self, "seed_count_updated")
 	if not PlantData.plants_initiated_done:
 		yield(PlantData, "plants_initiated")
 	init()
@@ -26,14 +27,19 @@ func init():
 		for preference in PlantData.plant_profile_to_preference_list(plant_ui.plant_profile):
 			preference = preference as PlantPreference
 			plant_ui.add_preference(preference)
+			plant_ui.name = "PlantUI" + plant_name
 
 		plant_ui.plant_name = plant_name
 	
 func plant_clicked(plant_name):
-	Game.multitool.get_node("Cooldown").start(0.6)
-	Game.multitool.target_plant_name = plant_name
-	Game.multitool.switch_to_tool(Game.multitool.TOOL.PLANT)
-	Game.game_state = Game.State.INGAME
+	# check if seed count > 0
+	if PlantData.seed_counts[plant_name] == 0:
+		Audio.play("event_pickup")
+	else:	
+		Game.multitool.get_node("Cooldown").start(0.6)
+		Game.multitool.target_plant_name = plant_name
+		Game.multitool.switch_to_tool(Game.multitool.TOOL.PLANT)
+		Game.game_state = Game.State.INGAME
 
 func plant_hovered(plant_ui):
 	if currently_hovering != plant_ui:
@@ -44,7 +50,11 @@ func plant_hovered(plant_ui):
 			
 		$"%Title".text = plant_ui.plant_profile.name
 		$"%FluffText".text = plant_ui.plant_profile.fluff_base
-		
+
+func seed_count_updated(plant_name, total_seeds):
+	var plant_ui: PlantUI = get_node("Control/PlantUI" + plant_name)
+	plant_ui.set_seed_count(total_seeds)
+
 
 func show():
 	# TODO play show Journal animation (tool screen moving towards player cam basically)

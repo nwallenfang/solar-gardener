@@ -28,6 +28,7 @@ var invert_y_axis = false
 var planet_list := []
 
 func _process(delta: float) -> void:
+	UI.set_diagnostics([game_state, Input.mouse_mode])
 	if Input.is_action_just_pressed("open_settings"):  # show/hide settings UI
 		if main_scene_running:
 			if game_state == State.INGAME:
@@ -41,6 +42,10 @@ func _process(delta: float) -> void:
 		elif game_state == State.JOURNAL:
 			# this is only the correct if you can only enter settings from ingame!!
 			self.game_state = State.INGAME
+			
+	if OS.is_debug_build() and Input.is_action_just_pressed("give_seeds"):
+		print("gib tzieds")
+		PlantData.give_seeds("Seedling", 10)
 
 signal changed_state(state, prev_state)
 func set_game_state(state):
