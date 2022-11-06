@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Assets/Sprites/aura.png" type="Texture" id=1]
+[ext_resource path="res://Effects/PlanetAura.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Sun.gd" type="Script" id=2]
 
 [sub_resource type="SphereMesh" id=2]
-radial_segments = 24
-rings = 16
+radial_segments = 48
 
 [sub_resource type="Shader" id=3]
 code = "// NOTE: Shader automatically converted from Godot Engine 3.5.1.stable's SpatialMaterial.
@@ -69,111 +68,15 @@ shader_param/color1 = Color( 0.819608, 0.690196, 0.0980392, 1 )
 shader_param/color2 = Color( 0.564706, 0.309804, 0.0352941, 1 )
 shader_param/noise = SubResource( 6 )
 
-[sub_resource type="QuadMesh" id=7]
+[node name="Sun" type="Spatial"]
+script = ExtResource( 2 )
 
-[sub_resource type="Shader" id=8]
-code = "// NOTE: Shader automatically converted from Godot Engine 3.5.1.stable's SpatialMaterial.
-
-shader_type spatial;
-render_mode async_visible,blend_mix,depth_draw_opaque,cull_disabled,diffuse_burley,specular_schlick_ggx;
-uniform vec4 albedo : hint_color;
-uniform vec4 albedo2: hint_color;
-uniform sampler2D texture_albedo : hint_albedo;
-uniform float specular;
-uniform float metallic;
-uniform float roughness : hint_range(0,1);
-uniform float point_size : hint_range(0,128);
-uniform vec3 uv1_scale;
-uniform vec3 uv1_offset;
-uniform vec3 uv2_scale;
-uniform vec3 uv2_offset;
-
-
-uniform sampler2D mask: hint_albedo;
-
-void vertex() {
-	UV=UV*uv1_scale.xy+uv1_offset.xy;
-	MODELVIEW_MATRIX = INV_CAMERA_MATRIX * mat4(CAMERA_MATRIX[0],CAMERA_MATRIX[1],CAMERA_MATRIX[2],WORLD_MATRIX[3]);
-	MODELVIEW_MATRIX = MODELVIEW_MATRIX * mat4(vec4(length(WORLD_MATRIX[0].xyz), 0.0, 0.0, 0.0),vec4(0.0, length(WORLD_MATRIX[1].xyz), 0.0, 0.0),vec4(0.0, 0.0, length(WORLD_MATRIX[2].xyz), 0.0),vec4(0.0, 0.0, 0.0, 1.0));
-}
-
-
-
-
-void fragment() {
-	float mask_val = texture(mask, UV).r;
-//	vec4 albedo_tex = texture(texture_albedo,UV);
-	ALBEDO = mix(albedo.rgb, albedo2.rgb, mask_val + 1.0);
-	METALLIC = metallic;
-	ROUGHNESS = roughness;
-	SPECULAR = specular;
-//	ALPHA_SCISSOR = 0.00;
-	ALPHA = 1.0 - mask_val;
-	EMISSION = 5.0 * albedo.rgb;
-}
-"
-
-[sub_resource type="ShaderMaterial" id=9]
-shader = SubResource( 8 )
-shader_param/albedo = Color( 0.87451, 0.498039, 0.133333, 1 )
-shader_param/albedo2 = Color( 0.960784, 0.831373, 0, 1 )
-shader_param/specular = 0.5
-shader_param/metallic = 0.0
-shader_param/roughness = 1.0
-shader_param/point_size = 1.0
-shader_param/uv1_scale = Vector3( 1, 1, 1 )
-shader_param/uv1_offset = Vector3( 0, 0, 0 )
-shader_param/uv2_scale = Vector3( 1, 1, 1 )
-shader_param/uv2_offset = Vector3( 0, 0, 0 )
-shader_param/mask = ExtResource( 1 )
-
-[sub_resource type="Animation" id=10]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("Aura:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 2.29296, 2.29296, 2.29296 ) ]
-}
-
-[sub_resource type="Animation" id=11]
-resource_name = "aura"
-length = 6.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Aura:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 3, 6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 2.29296, 2.29296, 2.29296 ), Vector3( 2.4, 2.4, 2.4 ), Vector3( 2.29296, 2.29296, 2.29296 ) ]
-}
-
-[node name="Sun" type="MeshInstance"]
+[node name="SunMesh" type="MeshInstance" parent="."]
 transform = Transform( 17.2859, 0, 0, 0, 17.2859, 0, 0, 0, 17.2859, 0, 0, 0 )
 layers = 2
 cast_shadow = 0
 mesh = SubResource( 2 )
 material/0 = SubResource( 4 )
-script = ExtResource( 2 )
 
-[node name="Aura" type="MeshInstance" parent="."]
-transform = Transform( 2.29296, 0, 0, 0, 2.29296, 0, 0, 0, 2.29296, 0, 0, 0 )
-layers = 2
-cast_shadow = 0
-mesh = SubResource( 7 )
-material/0 = SubResource( 9 )
-
-[node name="AuraAnimation" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 10 )
-anims/aura = SubResource( 11 )
+[node name="PlanetAura" parent="." instance=ExtResource( 1 )]
+transform = Transform( 71.4835, 0, 0, 0, 71.4835, 0, 0, 0, 71.4835, 0, 0, 0 )
