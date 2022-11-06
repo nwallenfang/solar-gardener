@@ -9,9 +9,11 @@
   - https://fontlibrary.org/en/font/anita-semi-square
   - License: OFL (SIL Open Font License)
 ### Textures
-- Space HDRI
-  - https://cubebrush.co/era7/products/umh8tq/free-hq-space-hdri-ii
-  - non-commercial license!
+- Space Skybox 
+  - by www.tiron.net
+  - https://tools.wwwtyro.net/space-3d/index.html
+- thanks to cube2sphere!
+  - https://github.com/Xyene/cube2sphere
 ### 3D Models
 ### Sprites and Icons
 - Cursor by a_person
