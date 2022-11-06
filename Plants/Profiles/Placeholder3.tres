@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Seedling"
+name = "Placeholder9"
 fluff_base = "bedhtrhrthrt"
 fluff_stage2 = ""
 fluff_stage3 = ""

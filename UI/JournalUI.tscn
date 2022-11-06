@@ -64,7 +64,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1, 2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 1.04, 1.04 ), Vector2( 1, 1 ) ]
 }
 
 [node name="JournalUI" type="Control"]
@@ -113,41 +113,140 @@ custom_fonts/font = ExtResource( 4 )
 text = "Hover over a plant to show information."
 autowrap = true
 
-[node name="PlantUI1" parent="Control" groups=["plant_ui"] instance=ExtResource( 3 )]
-anchor_left = 0.0296875
-anchor_top = 0.0583333
-anchor_right = 0.2
-anchor_bottom = 0.37
-__meta__ = {
-"_edit_use_anchors_": true
-}
-
-[node name="PlantUI2" parent="Control" groups=["plant_ui"] instance=ExtResource( 3 )]
-anchor_left = 0.232812
-anchor_top = 0.0583333
-anchor_right = 0.403125
-anchor_bottom = 0.37
-__meta__ = {
-"_edit_use_anchors_": true
-}
-
 [node name="HoverMarker" type="Panel" parent="Control"]
 unique_name_in_owner = true
+visible = false
 show_behind_parent = true
 material = SubResource( 2 )
-anchor_left = 0.0585
-anchor_top = 0.113222
-anchor_right = 0.1995
-anchor_bottom = 0.364222
-margin_left = -59.88
-margin_top = -61.52
-margin_right = -65.36
-margin_bottom = -72.24
+anchor_left = 0.0257812
+anchor_top = 0.0402778
+anchor_right = 0.208875
+anchor_bottom = 0.307778
 grow_horizontal = 2
 grow_vertical = 2
-rect_pivot_offset = Vector2( 87, 85 )
+rect_pivot_offset = Vector2( 117, 96.3 )
 mouse_filter = 2
 custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="GridContainer" type="GridContainer" parent="Control"]
+anchor_left = 0.035
+anchor_top = 0.042
+anchor_right = 0.622
+anchor_bottom = 0.936
+margin_right = 40.0
+margin_bottom = 40.0
+columns = 3
+
+[node name="PlantUI1" parent="Control/GridContainer" groups=["plant_ui"] instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 261.0
+margin_bottom = 225.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="PlantUI2" parent="Control/GridContainer" groups=["plant_ui"] instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 265.0
+margin_right = 526.0
+margin_bottom = 225.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="PlantUI3" parent="Control/GridContainer" groups=["plant_ui"] instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 530.0
+margin_right = 791.0
+margin_bottom = 225.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="PlantUI4" parent="Control/GridContainer" groups=["plant_ui"] instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 229.0
+margin_right = 261.0
+margin_bottom = 454.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="PlantUI5" parent="Control/GridContainer" groups=["plant_ui"] instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 265.0
+margin_top = 229.0
+margin_right = 526.0
+margin_bottom = 454.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="PlantUI6" parent="Control/GridContainer" groups=["plant_ui"] instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 530.0
+margin_top = 229.0
+margin_right = 791.0
+margin_bottom = 454.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="PlantUI7" parent="Control/GridContainer" groups=["plant_ui"] instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 458.0
+margin_right = 261.0
+margin_bottom = 683.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="PlantUI8" parent="Control/GridContainer" groups=["plant_ui"] instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 265.0
+margin_top = 458.0
+margin_right = 526.0
+margin_bottom = 683.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="PlantUI9" parent="Control/GridContainer" groups=["plant_ui"] instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 530.0
+margin_top = 458.0
+margin_right = 791.0
+margin_bottom = 683.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": true
 }

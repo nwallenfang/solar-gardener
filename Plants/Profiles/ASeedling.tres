@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Placeholder/plant_icon.png" type="Texture" id=1]
+[ext_resource path="res://Plants/PlantProfile.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+name = "A Seedling"
+fluff_base = "bedhtrhrthrt"
+fluff_stage2 = ""
+fluff_stage3 = ""
+icon = ExtResource( 1 )
+sun = 3
+moisture = 3
+nutrients = 2
+group = 3
+prefered_soil = 4
+seed_count = 3

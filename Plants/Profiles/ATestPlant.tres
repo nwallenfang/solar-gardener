@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Testy"
+name = "A Testy"
 fluff_base = "I'm a test plant whooooooooooooooo. Long words and lots of long texts make for a long fun. Blabal woerj"
 fluff_stage2 = "Whoopsiedaysie"
 fluff_stage3 = ""
