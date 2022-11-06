@@ -7,6 +7,9 @@ const MAX_VELOCITY = 20.0
 var current_velocity := 0.0
 const PICKUP_RANGE = .15
 
+func _ready():
+	$HoverPlayer.play("hover")
+
 const FAKE_SEED = preload("res://Plants/FakeSeed.tscn")
 func setup_as_seed(seed_name: String):
 	identity = seed_name
@@ -22,6 +25,7 @@ func on_pickup():
 func start_flying():
 	$VelocityTween.interpolate_property(self, "current_velocity", 0.0, MAX_VELOCITY, 2.0)
 	$VelocityTween.start()
+	is_flying = true
 
 func _physics_process(delta):
 	if is_flying:

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Objects/Planet.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Objects/Amber.tscn" type="PackedScene" id=3]
 
 [sub_resource type="SphereMesh" id=9]
 
@@ -38,3 +39,8 @@ gravity_vec = Vector3( 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 shape = SubResource( 12 )
+
+[node name="Amber" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.0278366, 0.998228, 0.0525869, -0.999604, 0.027584, 0.00552432, 0.00406398, -0.0527199, 0.998601, 7.06496, 0, 0 )
+seed_name = "Testy"
+seed_count = 1
