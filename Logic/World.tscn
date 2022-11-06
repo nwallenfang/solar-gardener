@@ -1,13 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://game_environment.tres" type="Environment" id=1]
-[ext_resource path="res://Assets/Materials/SunMaterial.tres" type="Material" id=2]
+[ext_resource path="res://Objects/Sun.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Logic/Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/Planet.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Logic/World.gd" type="Script" id=6]
 [ext_resource path="res://icon.png" type="Texture" id=7]
-
-[sub_resource type="SphereMesh" id=2]
 
 [sub_resource type="PlaneMesh" id=6]
 size = Vector2( 20, 20 )
@@ -22,10 +20,7 @@ extents = Vector3( 10.0639, 1, 10.1013 )
 [node name="World" type="Spatial"]
 script = ExtResource( 6 )
 
-[node name="Sun" type="MeshInstance" parent="."]
-transform = Transform( 17.2859, 0, 0, 0, 17.2859, 0, 0, 0, 17.2859, 0, 0, 0 )
-mesh = SubResource( 2 )
-material/0 = ExtResource( 2 )
+[node name="Sun" parent="." instance=ExtResource( 2 )]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 1 )
@@ -53,6 +48,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 69.7263, 7.2182, 70.0424 )
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.74748, 0.290656, -0.597321, 0.594837, -0.693144, 0.407088, -0.295707, -0.659599, -0.691004, 0, 32.2732, 0 )
 light_energy = 2.0
+light_cull_mask = 4294967293
 shadow_enabled = true
 directional_shadow_depth_range = 1
 
