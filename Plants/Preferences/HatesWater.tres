@@ -6,5 +6,5 @@
 [resource]
 script = ExtResource( 1 )
 name = "Hates Water"
-description = "This plant needs to grow on a planet with enough moisture."
+description = "This plan't prefers planets without moisture."
 icon = ExtResource( 2 )

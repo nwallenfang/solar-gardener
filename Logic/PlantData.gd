@@ -17,6 +17,10 @@ onready var progress := {
 
 }
 
+var seed_counts := {
+	
+}
+
 var plants_initiated_done = false
 signal plants_initiated
 
@@ -69,6 +73,7 @@ func plant_profile_to_preference_list(plant: PlantProfile) -> Array:
 
 	return preference_list
 
+
 func setup():
 	var dir = Directory.new()
 	dir.open(PROFILE_FOLDER)
@@ -82,6 +87,7 @@ func setup():
 			var new_profile := load(PROFILE_FOLDER + file) as PlantProfile
 			new_profile.setup()
 			profiles[new_profile.name] = new_profile
+			seed_counts[new_profile.name] = 0
 
 	dir.list_dir_end()
 
@@ -101,3 +107,17 @@ func setup():
 	
 	emit_signal("plants_initiated")
 	plants_initiated_done = true
+
+
+func can_plant(plant_name):
+	return seed_counts[plant_name] > 0
+
+func plant(plant_name):
+	seed_counts[plant_name] -= 1
+	emit_signal("seeds_updated", plant_name, seed_counts[plant_name])
+
+
+signal seeds_updated(plant_name, seed_total)  # -> UI is listening
+func give_seeds(plant_name, seed_amount):
+	seed_counts[plant_name] += seed_amount
+	emit_signal("seeds_updated", plant_name, seed_counts[plant_name])

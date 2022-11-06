@@ -114,27 +114,19 @@ text = "Hover over a plant to show information."
 autowrap = true
 
 [node name="PlantUI1" parent="Control" instance=ExtResource( 3 )]
-anchor_left = 0.0773437
-anchor_top = 0.131944
-anchor_right = 0.197
-anchor_bottom = 0.247
-margin_left = -72.9999
-margin_top = -68.0
-margin_right = -73.222
-margin_bottom = 8.00002
+anchor_left = 0.0296875
+anchor_top = 0.0583333
+anchor_right = 0.2
+anchor_bottom = 0.37
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="PlantUI2" parent="Control" instance=ExtResource( 3 )]
-anchor_left = 0.245312
-anchor_top = 0.131944
-anchor_right = 0.364969
-anchor_bottom = 0.247
-margin_left = -72.9999
-margin_top = -68.0
-margin_right = -73.222
-margin_bottom = 8.00002
+anchor_left = 0.232812
+anchor_top = 0.0583333
+anchor_right = 0.403125
+anchor_bottom = 0.37
 __meta__ = {
 "_edit_use_anchors_": true
 }
