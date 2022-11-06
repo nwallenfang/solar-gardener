@@ -18,3 +18,5 @@ collision_mask = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 shape = SubResource( 1 )
+
+[node name="RemoveTween" type="Tween" parent="."]
