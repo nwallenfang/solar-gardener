@@ -31,10 +31,6 @@ func _ready() -> void:
 	yield(get_tree(), "idle_frame")
 	$ViewportContainer/Viewport.size = get_viewport().size * resolution_scaling_factor
 
-func _process(delta: float) -> void:
-	$UI.set_diagnostics([$ViewportContainer/Viewport.size, get_tree().root.size])
-
-
 # we want the root viewport's size change to be applied to the 3D Viewport
 func root_viewport_size_changed():
 	$ViewportContainer/Viewport.size = get_viewport().size * resolution_scaling_factor

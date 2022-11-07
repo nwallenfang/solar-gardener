@@ -1,6 +1,6 @@
 extends Spatial
 
-enum TOOL {NONE, PLANT, GROW, MOVE, ANALYSIS, BUILD, HOPPER}
+enum TOOL {NONE, PLANT, GROW, ANALYSIS, MOVE, BUILD, HOPPER}
 var current_tool := 0
 
 # Preloads
@@ -93,7 +93,7 @@ func switch_to_tool(new_tool: int):
 		return
 	switch_away_from_tool(current_tool)
 	current_tool = new_tool
-	
+	Game.UI.get_node("Toolbar").switch_to(new_tool)
 	match current_tool:
 		TOOL.PLANT:
 			Game.player_raycast.set_collision_mask_bit(0, true)

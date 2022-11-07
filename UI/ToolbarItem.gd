@@ -1,0 +1,23 @@
+extends Control
+tool
+
+export var active := false setget set_active
+export var deactive_mod: Color = Color("2e2e2e")
+export var active_mod: Color = Color("ffffff")
+export var hotkey: String = "1" setget set_hotkey
+
+func set_active(new):
+	active = new
+	if active:
+		print("activated")
+		if is_inside_tree():
+			$Icon.modulate = active_mod
+	else:
+		print("deactivated")
+		if is_inside_tree():
+			$Icon.modulate = deactive_mod
+
+
+func set_hotkey(new: String):
+	if is_inside_tree():
+		$HotkeyBox/HotkeyLabel.text = new

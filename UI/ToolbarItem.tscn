@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Sprites/UI/generic_button.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Fonts/ToolbarFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://UI/ToolbarItem.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Sprites/seed.png" type="Texture" id=5]
+
+[node name="ToolbarItem" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 4 )
+deactive_mod = Color( 0.180392, 0.180392, 0.180392, 1 )
+
+[node name="Icon" type="TextureRect" parent="."]
+modulate = Color( 0.180392, 0.180392, 0.180392, 1 )
+anchor_right = 1.0
+anchor_bottom = 0.88
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="HotkeyBox" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.85098 )
+anchor_left = 0.396094
+anchor_top = 0.594445
+anchor_right = 0.594094
+anchor_bottom = 0.896445
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.44
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="HotkeyLabel" type="Label" parent="HotkeyBox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 2 )
+text = "1"
+align = 1
+valign = 1
