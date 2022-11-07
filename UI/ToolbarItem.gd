@@ -12,11 +12,9 @@ func _ready() -> void:
 func set_active(new):
 	active = new
 	if active:
-		print("activated")
 		if is_inside_tree():
 			$Icon.modulate = active_mod
 	else:
-		print("deactivated")
 		if is_inside_tree():
 			$Icon.modulate = deactive_mod
 

@@ -174,7 +174,7 @@ func process_first_action():
 func process_second_action():
 	match current_tool:
 		TOOL.MOVE:
-			if object_to_move.has_method("on_remove"):
+			if object_to_move != null and object_to_move.has_method("on_remove"):
 				object_to_move.call("on_remove")
 				$Cooldown.start(2)
 
