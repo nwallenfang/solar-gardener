@@ -74,9 +74,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Game Off 2022"
+config/name="Solar Gardener"
 run/main_scene="res://Logic/MainScene.tscn"
-config/icon="res://Assets/Placeholder/bonsai.png"
+config/icon="res://Assets/Sprites/plant_group.png"
 
 [autoload]
 
@@ -101,6 +101,7 @@ window/size/test_width=1280
 window/size/test_height=720
 window/vsync/use_vsync=false
 window/stretch/mode="2d"
+window/stretch/aspect="expand"
 
 [gui]
 
