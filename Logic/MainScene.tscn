@@ -1,8 +1,63 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Logic/World.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Logic/MainScene.gd" type="Script" id=2]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Shader" id=1]
+code = "// NOTE: Shader automatically converted from Godot Engine 3.5.1.stable's CanvasItemMaterial.
+
+shader_type canvas_item;
+render_mode blend_mix;
+
+float random (vec2 uv) {
+    return fract(sin(dot(uv.xy,
+        vec2(12.9898,78.233))) * 43758.5453123);
+}
+
+float clamp_and_map(float value, float istart, float istop, float ostart, float ostop) {
+    value = clamp(value, istart, istop);
+    return ostart + (ostop - ostart) * ((value - istart) / (istop - istart));
+}
+
+float inv(float f) {
+	return 1.0 - f;
+}
+
+uniform float period = 1.0;
+uniform float target_length = .2;
+uniform int count = 10;
+
+void fragment() {
+	float pi = 3.14159263;
+	
+	vec4 tex = texture(TEXTURE, UV);
+	float dist_to_center = distance(UV, vec2(.5));
+	float total_mask = 1.0;
+	vec2 uv_dir = normalize(UV - vec2(.5));
+	float uv_angle = acos(uv_dir.y) * sign(uv_dir.x);
+	
+	for (int i = 0; i<count; i++) {
+		float current_time = TIME + (period / float(count)) * float(i);
+		float period_start = current_time - mod(current_time, period);
+		float period_progress = mod(current_time, period) / period;
+		
+		float direction = random(vec2(period_start, float(i))) * pi * 2.0 - pi;
+
+		float angle_diff = min(abs(uv_angle - direction), 2.0*pi-abs(uv_angle - direction));
+		float angle_mask = clamp_and_map(angle_diff, 0.006, 0.02, 0.0, 1.0);
+		float target_pos_mask = clamp_and_map(abs(period_progress - dist_to_center), target_length-.05, target_length+.05, 0.0, 1.0);
+		float mask = inv(inv(angle_mask) * inv(target_pos_mask));
+		total_mask = total_mask * mask;
+	}
+	COLOR = mix(tex, vec4(1.0), inv(total_mask) * clamp_and_map(dist_to_center, .35, .7, 0.0, 1.0));
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/period = 1.0
+shader_param/target_length = 0.2
+shader_param/count = 0
 
 [node name="MainScene" type="Control"]
 anchor_right = 1.0
@@ -10,6 +65,7 @@ anchor_bottom = 1.0
 script = ExtResource( 2 )
 
 [node name="ViewportContainer" type="ViewportContainer" parent="."]
+material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 stretch = true
