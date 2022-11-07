@@ -11,6 +11,8 @@ onready var crosshair : Sprite
 func _ready() -> void:
 	crosshair = $"%Crosshair"
 	Game.connect("changed_state", self, "changed_state")
+	if OS.is_debug_build():
+		$Diagnostics.visible = true
 
 
 func set_diagnostics(stuff):
@@ -25,14 +27,27 @@ func changed_state(state, prev_state):
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			$SettingsUI.hide_settings()
 			$JournalUI.hide()
+			$Toolbar.visible = true
+			$HotkeyGuide.visible = true
+			$TutorialPanel.visible = true
+			if OS.is_debug_build():
+				$Diagnostics.visible = false
 			$"%Crosshair".visible = true
 		Game.State.SETTINGS:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			$SettingsUI.show_settings()
 			$JournalUI.hide()
 			$"%Crosshair".visible = false
+			$Toolbar.visible = false
+			$HotkeyGuide.visible = false
+			$TutorialPanel.visible = false
+			$Diagnostics.visible = false
 		Game.State.JOURNAL:
 			$"%Crosshair".visible = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			$SettingsUI.hide_settings()
 			$JournalUI.show()
+			$Toolbar.visible = false
+			$HotkeyGuide.visible = false
+			$TutorialPanel.visible = false
+			$Diagnostics.visible = false

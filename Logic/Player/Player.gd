@@ -3,6 +3,11 @@ class_name Player
 
 signal player_got_hurt
 
+export var min_sensitivity := 0.001
+export var max_sensitivity := 0.015
+export var y_axis_factor := 1.0
+export var mouse_sensitivity := 0.005
+export var y_limit := deg2rad(90.0)
 
 
 export var speed := 30
@@ -133,9 +138,7 @@ func accelerate(old_velocity: Vector3, direction: Vector3, delta: float) -> Vect
 	
 	return velocity
 
-export var y_axis_factor := 1.0
-export var mouse_sensitivity := 0.005
-export var y_limit := deg2rad(90.0)
+
 var mouse_axis := Vector2()
 
 # Called when there is an input event

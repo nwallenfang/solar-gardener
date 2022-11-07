@@ -25,10 +25,10 @@ stretch_mode = 6
 
 [node name="HotkeyBox" type="TextureRect" parent="."]
 modulate = Color( 1, 1, 1, 0.85098 )
-anchor_left = 0.292
-anchor_top = 0.523611
-anchor_right = 0.695
-anchor_bottom = 0.998611
+anchor_left = 0.480469
+anchor_top = 0.592
+anchor_right = 0.883469
+anchor_bottom = 0.997222
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.44

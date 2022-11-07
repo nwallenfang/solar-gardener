@@ -1,4 +1,4 @@
-extends Panel
+extends Control
 
 onready var current_toolbar_item: Node = $HBoxContainer/ToolbarItem1
 
