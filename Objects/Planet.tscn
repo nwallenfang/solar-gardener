@@ -15,7 +15,7 @@ uv1_triplanar = true
 radius = 0.999624
 
 [sub_resource type="SphereShape" id=12]
-radius = 9.73952
+radius = 6.31691
 
 [sub_resource type="ArrayMesh" id=13]
 resource_name = "Planet 01 brown_mesh"
