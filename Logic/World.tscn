@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://game_environment.tres" type="Environment" id=1]
 [ext_resource path="res://Objects/Sun.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Logic/Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Effects/Stars.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Planet.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Logic/World.gd" type="Script" id=6]
 
@@ -36,3 +37,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.2732, 63.2236, -0.0944443 )
 
 [node name="Sun" parent="." instance=ExtResource( 2 )]
 transform = Transform( 2.03594, 0, 0, 0, 2.03594, 0, 0, 0, 2.03594, 0, 0, 0 )
+
+[node name="Stars" parent="." instance=ExtResource( 4 )]
