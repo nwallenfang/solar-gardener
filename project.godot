@@ -84,6 +84,7 @@ Game="*res://Logic/Game.tscn"
 Audio="*res://Logic/Sound/Audio.tscn"
 PlantData="*res://Logic/PlantData.tscn"
 Utility="*res://Logic/Utility.tscn"
+Events="*res://Logic/Events.tscn"
 
 [debug]
 
