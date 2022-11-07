@@ -31,7 +31,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 317.0
 margin_bottom = 720.0
-deactive_mod = Color( 0.180392, 0.180392, 0.180392, 1 )
+hotkey = "1"
 
 [node name="ToolbarItem2" parent="HBoxContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
@@ -39,6 +39,7 @@ anchor_bottom = 0.0
 margin_left = 321.0
 margin_right = 638.0
 margin_bottom = 720.0
+hotkey = "2"
 
 [node name="ToolbarItem3" parent="HBoxContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
@@ -46,6 +47,7 @@ anchor_bottom = 0.0
 margin_left = 642.0
 margin_right = 959.0
 margin_bottom = 720.0
+hotkey = "3"
 
 [node name="ToolbarItem4" parent="HBoxContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
@@ -53,3 +55,4 @@ anchor_bottom = 0.0
 margin_left = 963.0
 margin_right = 1280.0
 margin_bottom = 720.0
+hotkey = "4"

@@ -3,8 +3,8 @@ extends Panel
 onready var current_toolbar_item: Node = $HBoxContainer/ToolbarItem1
 
 func switch_to(new_tool: int):
-	if new_tool == 0:
-		# no tool
+	if new_tool == Game.multitool.TOOL.NONE or new_tool == Game.multitool.TOOL.HOPPER:
+		# tools that aren't on the toolbar
 		current_toolbar_item = null
 		return
 		

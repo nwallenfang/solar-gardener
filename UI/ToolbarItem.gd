@@ -4,8 +4,11 @@ tool
 export var active := false setget set_active
 export var deactive_mod: Color = Color("2e2e2e")
 export var active_mod: Color = Color("ffffff")
-export var hotkey: String = "1" setget set_hotkey
+export var hotkey: String setget set_hotkey
 
+func _ready() -> void:
+	$HotkeyBox/HotkeyLabel.text = hotkey
+	
 func set_active(new):
 	active = new
 	if active:
@@ -19,5 +22,7 @@ func set_active(new):
 
 
 func set_hotkey(new: String):
+	hotkey = new
 	if is_inside_tree():
-		$HotkeyBox/HotkeyLabel.text = new
+		$HotkeyBox/HotkeyLabel.text = hotkey
+
