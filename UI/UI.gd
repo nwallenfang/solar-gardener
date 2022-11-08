@@ -31,7 +31,7 @@ func changed_state(state, prev_state):
 			$HotkeyGuide.visible = true
 			$TutorialPanel.visible = true
 			if OS.is_debug_build():
-				$Diagnostics.visible = false
+				$Diagnostics.visible = true
 			$"%Crosshair".visible = true
 		Game.State.SETTINGS:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

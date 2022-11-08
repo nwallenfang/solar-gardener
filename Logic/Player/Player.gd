@@ -107,7 +107,7 @@ func orient_player_sphere(delta: float):
 	if target_up != last_target_up:
 		var turn_axis : Vector3 = target_up.cross(last_target_up).normalized()
 		var turn_angle : float = last_target_up.angle_to(target_up)
-		look_direction = look_direction.rotated(-turn_axis, turn_angle)
+		look_direction = look_direction.rotated(-turn_axis.normalized(), turn_angle)
 	look_direction = look_direction.rotated(target_up, -mouse_axis.x * mouse_sensitivity)
 	target_look = look_direction.cross(-target_up).cross(target_up)
 

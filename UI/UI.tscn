@@ -125,6 +125,7 @@ text = "Grow a plant"
 align = 1
 
 [node name="Text" type="Label" parent="TutorialPanel/Controls"]
+visible = false
 margin_top = 39.0
 margin_right = 512.0
 margin_bottom = 92.0
