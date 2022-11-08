@@ -4,8 +4,8 @@ class_name Plant
 const DEFAULT_GROW_SPEED = 1.0/20.0
 const BOOSTED_GROW_SPEED = 1.0/2.0
 const DEFAULT_MODEL_SCALE = .9
-const GROWTH_UP_SCALE_FACTOR = 1.2
-const GROWTH_DOWN_SCALE_FACTOR = .7
+const GROWTH_UP_SCALE_FACTOR = 1.15
+const GROWTH_DOWN_SCALE_FACTOR = .9
 const SEED_START_POINT = .1
 const SEED_SINK_DISTANCE = .2
 
@@ -52,6 +52,9 @@ func setup():
 
 func _physics_process(delta):
 	growth_process(delta)
+
+func growth_beam_possible() -> bool:
+	return $GrowthCooldown.time_left == 0.0
 
 func growth_process(delta):
 	if growth_stage == growth_lock:

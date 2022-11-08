@@ -75,4 +75,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.120577, -0.138945 )
 wait_time = 3.0
 one_shot = true
 
+[node name="GrowCooldown" type="Timer" parent="."]
+one_shot = true
+
 [node name="SeedFlyTween" type="Tween" parent="."]
