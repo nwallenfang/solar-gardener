@@ -12,15 +12,27 @@ export var nutrients : bool
 
 export var max_plants : int
 
+onready var planet_light := $PlanetLight
+
 var plant_list := []
 
 func add_plant(plant):
-	add_child(plant)
+	add_child_with_light(plant)
 	plant_list.append(plant)
 
+func configure_light(n: Node):
+	for mi in Utility.get_all_mesh_instance_children(n):
+		(mi as MeshInstance).layers = planet_light.mask_value
 
-func _ready():
+func add_child_with_light(n: Node):
+	add_child(n)
+	configure_light(n)
+
+func setup():
+	var planet_id = Game.planet_list.size()
 	Game.planet_list.append(self)
+	planet_light.setup(planet_id)
+	configure_light(self)
 
 func set_primary_state(b: bool):
 	$PlanetHopArea.set_deferred("monitoring", not b)
