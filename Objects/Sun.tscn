@@ -28,27 +28,26 @@ uniform float value;
 uniform vec4 color1: hint_color;
 uniform vec4 color2: hint_color;
 
-
-void vertex() {
-}
-
-void light() {
-
-}
+uniform float time_noise_speed = 0.01;
 
 
 void fragment() {
-//    vec4 albedo_tex = texture(texture_albedo,base_uv);
-    ALBEDO = mix(color1, color2, texture(noise, UV)).rgb;
-//    vec3 emission_tex = texture(texture_emission,base_uv).rgb;
-    EMISSION = emission_energy * normalize(mix(color1, color2, texture(noise, UV + 0.2 * sin(0.2 * TIME)))).rgb; //emission_energy * mix(color1, color2, clamp((0.2sin(3.0 TIME + 1.0)) + texture(noise, UV + 0.2 * sin(0.2 * TIME)), 0.2, 0.8)).rgb;
+	vec4 noise_uv = texture(noise, UV);
+	vec4 noise_time = texture(noise, vec2(0.01 * TIME));
+	vec4 time_noise_sample = texture(noise, UV + (0.03 * TIME * vec2(0.5, 0.5)));
+    ALBEDO = smoothstep(color1, color2, time_noise_sample).rgb;
+    EMISSION = emission_energy * ALBEDO; //normalize(smoothstep(color1, color2, texture(noise, UV + 0.2 * sin(0.2 * TIME)))).rgb; //emission_energy * mix(color1, color2, clamp((0.2sin(3.0 TIME + 1.0)) + texture(noise, UV + 0.2 * sin(0.2 * TIME)), 0.2, 0.8)).rgb;
 }"
 
 [sub_resource type="OpenSimplexNoise" id=5]
-period = 4.7
-persistence = 0.163
+seed = 3
+octaves = 4
+period = 20.0
+persistence = 0.432
 
 [sub_resource type="NoiseTexture" id=6]
+width = 1024
+height = 1024
 seamless = true
 noise = SubResource( 5 )
 
@@ -56,8 +55,9 @@ noise = SubResource( 5 )
 shader = SubResource( 3 )
 shader_param/emission_energy = 1.5
 shader_param/value = 1.791
-shader_param/color1 = Color( 0.886275, 0.854902, 0.117647, 1 )
-shader_param/color2 = Color( 0.698039, 0.419608, 0.145098, 1 )
+shader_param/color1 = Color( 0.556863, 0.556863, 0.47451, 1 )
+shader_param/color2 = Color( 0.596078, 0.87451, 0.364706, 1 )
+shader_param/time_noise_speed = 0.01
 shader_param/noise = SubResource( 6 )
 
 [node name="Sun" type="Spatial"]

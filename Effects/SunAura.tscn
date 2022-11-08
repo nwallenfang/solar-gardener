@@ -66,7 +66,7 @@ shader = SubResource( 7 )
 shader_param/albedo1 = Color( 0.501961, 0.223529, 0.101961, 1 )
 shader_param/albedo2 = Color( 0.686275, 0.517647, 0.0627451, 1 )
 shader_param/alpha_scissor_threshold = 0.98
-shader_param/emission_energy = 2.26
+shader_param/emission_energy = 2.8
 shader_param/noise = SubResource( 10 )
 
 [sub_resource type="QuadMesh" id=1]
