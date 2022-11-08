@@ -19,6 +19,10 @@ var fake_seed : Spatial
 const GROW_TOOL_DISTANCE = 15.0
 var can_grow := false
 var plant_to_grow: Plant
+var grow_beam_active := false
+var growth_juice := 1.0
+const JUICE_DRAIN = .25
+const JUICE_GAIN = .05
 
 # Analysis Variable
 const ANALYSE_TOOL_DISTANCE = 10.0
@@ -118,12 +122,22 @@ func switch_to_tool(new_tool: int):
 			show_hopable(true)
 
 func idle_process(delta: float):
+	growth_juice = min(1.0, growth_juice + JUICE_GAIN * delta)
+	
 	match current_tool:
 		TOOL.PLANT:
 			show_plant_information()
 		TOOL.GROW:
-			if first_action_holded and can_grow:
+			if first_action_holded and can_grow and $GrowCooldown.time_left == 0.0:
+				grow_beam_active = true
 				plant_to_grow.growth_boost = true
+				growth_juice -= JUICE_DRAIN * delta
+				if growth_juice <= 0.0:
+					growth_juice = 0.0
+					$GrowCooldown.start(2.0)
+			else:
+				grow_beam_active = false
+			show_grow_information()
 		TOOL.ANALYSIS:
 			analyse_completed = false
 			if not currently_analysing and not soil_analysing:
@@ -202,8 +216,8 @@ func check_on_hover():
 			can_grow = false
 			if Game.player_raycast.colliding:
 				if Game.player_raycast.hit_point.distance_to(Game.player.global_translation) < GROW_TOOL_DISTANCE:
-					can_grow = true
-					plant_to_grow = Game.player_raycast.collider
+					plant_to_grow = Game.player_raycast.collider as Plant
+					can_grow = plant_to_grow.growth_beam_possible()
 			show_growable(can_grow)
 		TOOL.MOVE:
 			can_move = false
@@ -213,15 +227,14 @@ func check_on_hover():
 					object_to_move = Game.player_raycast.collider
 			show_moveable(can_move)
 		TOOL.ANALYSIS:
+			can_analyse = false
+			object_to_analyse = null
 			if Game.player_raycast.colliding:
 				if Game.player_raycast.hit_point.distance_to(Game.player.global_translation) < ANALYSE_TOOL_DISTANCE:
 					can_analyse = true
 					object_to_analyse = Game.player_raycast.collider
 					if object_to_analyse is StaticBody:
 						object_to_analyse = Game.planet
-			else:
-				can_analyse = false
-				object_to_analyse = null
 			show_analysable(can_analyse)
 		TOOL.HOPPER:
 			if not (Game.player_raycast.colliding and Game.player_raycast.collider is Planet):
@@ -290,6 +303,9 @@ func show_analyse_information():
 	else:
 		text = text + ("\n100%" if analyse_completed else "")
 	set_display_label(text)
+
+func show_grow_information():
+	set_display_label("%.0f%%" % (growth_juice * 100.0) + ("\n!" if grow_beam_active else ""))
 
 func show_plant_information():
 	var seeds_left = PlantData.seed_counts[target_plant_name]
