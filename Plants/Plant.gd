@@ -27,6 +27,8 @@ var model_stage_4: Spatial
 var model_array: Array
 var current_model: Spatial
 
+var analyse_name : String
+
 var is_setup := false
 func setup():
 	model_seed = profile.model_seed.instance()
@@ -43,6 +45,9 @@ func setup():
 
 	current_model = model_seed
 	current_model.visible = true
+	
+	analyse_name = profile.name
+	
 	is_setup = true
 
 func _physics_process(delta):
