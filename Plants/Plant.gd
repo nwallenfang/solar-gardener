@@ -165,7 +165,7 @@ const FLYING_PICKUP = preload("res://Objects/FlyingPickup.tscn")
 
 func on_remove():
 	var pickup = FLYING_PICKUP.instance()
-	Game.planet.add_child(pickup)
+	Game.planet.add_child_with_light(pickup)
 	pickup.global_transform.basis = Utility.get_basis_y_aligned(Game.planet.global_translation.direction_to(self.global_translation))
 	pickup.global_translation = self.global_translation
 	pickup.setup_as_seed(profile.name)
