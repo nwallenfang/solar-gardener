@@ -13,7 +13,7 @@ func _ready() -> void:
 	Game.connect("changed_state", self, "changed_state")
 	if OS.is_debug_build():
 		$Diagnostics.visible = true
-	get_viewport().connect("size_changed", self, "root_viewport_size_changed")
+#	get_viewport().connect("size_changed", self, "root_viewport_size_changed")
 	
 #	yield(get_tree(), "idle_frame")
 #
@@ -61,6 +61,6 @@ func changed_state(state, prev_state):
 			$Diagnostics.visible = false
 
 
-# we want the root viewport's size change to be applied to the 3D Viewport
-func root_viewport_size_changed():
-	$ViewportContainer/Viewport.size = get_viewport().size
+## we want the root viewport's size change to be applied to the 3D Viewport
+#func root_viewport_size_changed():
+#	$ViewportContainer/Viewport.size = get_viewport().size
