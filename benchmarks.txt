@@ -1,4 +1,2 @@
-[2022-11-04 11:47:54, 'e128894'], main_world, info: (benchmark metadata), fps: TODO
-[2022-11-05 16:14:30, '8b28a03'], main_world, info: check performance, fps: TODO
-[2022-11-05 16:19:45, '8b28a03'], main_world, info: nils check fps, fps: TODO
-[2022-11-05 21:57:06, '6ff1956'], main_world, info: einige Pflanzen, fps: TODO
+[2022-11-08 14:12:35, 'b9068e7'], main_world, info: nils test, fps: 3091.72
+[2022-11-08 14:16:01, 'b9068e7'], main_world, info: Nils 2 planets, 20 plants total, fps: 1495.16

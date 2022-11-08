@@ -17,7 +17,7 @@ environment = ExtResource( 1 )
 transform = Transform( 2.90385, 0, 0, 0, 1, 0, 0, 0, 2.90385, 0, 0, 80.3443 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 83.9161, 5.62469, 89.7421 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 82.8634, 5.06041, 88.3402 )
 
 [node name="Planet" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 83.2806, 0, 89.9754 )

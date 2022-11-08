@@ -42,7 +42,7 @@ func _ready():
 
 
 var gravity_effect_max_dist = 40  # TODO this should be changed since it depends on planet size
-func gravity_direction() -> Vector3:
+func calc_gravity_direction() -> Vector3:
 	if Game.planet != null:
 		var dist_to_planet = global_translation.distance_to(Game.planet.global_translation)
 		if dist_to_planet > gravity_effect_max_dist:
@@ -62,7 +62,7 @@ func _physics_process(delta) -> void:
 			"move_left", "move_right")
 	
 	direction = get_input_direction()
-	gravity_direction = gravity_direction()
+	gravity_direction = calc_gravity_direction()
 	
 	if is_on_floor() and Input.is_action_just_pressed("jump") and !has_jumped:
 		# init jump
@@ -107,7 +107,7 @@ func orient_player_sphere(delta: float):
 	if target_up != last_target_up:
 		var turn_axis : Vector3 = target_up.cross(last_target_up).normalized()
 		var turn_angle : float = last_target_up.angle_to(target_up)
-		look_direction = look_direction.rotated(-turn_axis, turn_angle)
+		look_direction = look_direction.rotated(-turn_axis.normalized(), turn_angle)
 	look_direction = look_direction.rotated(target_up, -mouse_axis.x * mouse_sensitivity)
 	target_look = look_direction.cross(-target_up).cross(target_up)
 
