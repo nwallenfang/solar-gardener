@@ -20,7 +20,7 @@ var UI: UI = null
 var player : Player = null
 var player_raycast: PlayerRayCast
 var multitool
-var camera: Camera
+var camera: PlayerCamera
 # current planet
 var planet: Planet = null
 var invert_y_axis = false
