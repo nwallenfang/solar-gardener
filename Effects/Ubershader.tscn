@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Effects/DirtExplosion.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Effects/Ubershader.gd" type="Script" id=2]
+
+[node name="Ubershader" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="DirtExplosion" parent="." instance=ExtResource( 1 )]
+
+[editable path="DirtExplosion"]
