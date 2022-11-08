@@ -138,7 +138,10 @@ func idle_process(delta: float):
 				if (not first_action_holded) or object_to_analyse != current_analyse_object or (not can_analyse):
 					currently_analysing = false
 				else:
-					current_analyse_progress += ANALYSE_SPEED * delta
+					var speed_factor := 1.0
+					if "analyse_speed_factor" in current_analyse_object:
+						speed_factor = current_analyse_object.get("analyse_speed_factor")
+					current_analyse_progress += ANALYSE_SPEED * delta * speed_factor
 					if current_analyse_progress >= 1.0:
 						currently_analysing = false
 						analyse_completed = true
@@ -150,14 +153,16 @@ func idle_process(delta: float):
 				if not second_action_holded:
 					soil_analysing = false
 				else:
-					current_analyse_progress += SOIL_ANALYSE_SPEED * delta
-					if current_analyse_progress >= 1.0:
-						soil_analysing = false
-						analyse_completed = true
-						$Cooldown.start(2)
-						print("Analysis Done of " + str(Game.planet))
-						if Game.planet.has_method("on_analyse"):
-							Game.planet.call("on_analyse")
+					pass
+					# TODO other type of soil analyse
+#					current_analyse_progress += SOIL_ANALYSE_SPEED * delta
+#					if current_analyse_progress >= 1.0:
+#						soil_analysing = false
+#						analyse_completed = true
+#						$Cooldown.start(2)
+#						print("Analysis Done of " + str(Game.planet))
+#						if Game.planet.has_method("on_analyse"):
+#							Game.planet.call("on_analyse")
 			show_analyse_information()
 
 func process_first_action():
@@ -208,11 +213,15 @@ func check_on_hover():
 					object_to_move = Game.player_raycast.collider
 			show_moveable(can_move)
 		TOOL.ANALYSIS:
-			can_analyse = false
 			if Game.player_raycast.colliding:
 				if Game.player_raycast.hit_point.distance_to(Game.player.global_translation) < ANALYSE_TOOL_DISTANCE:
 					can_analyse = true
 					object_to_analyse = Game.player_raycast.collider
+					if object_to_analyse is StaticBody:
+						object_to_analyse = Game.planet
+			else:
+				can_analyse = false
+				object_to_analyse = null
 			show_analysable(can_analyse)
 		TOOL.HOPPER:
 			if not (Game.player_raycast.colliding and Game.player_raycast.collider is Planet):
@@ -271,12 +280,16 @@ func spawn_plant(pos: Vector3):
 	pile.global_transform.basis = Utility.get_basis_y_aligned(Game.planet.global_translation.direction_to(pos))
 
 func show_analyse_information():
-	# TODO
-	Game.UI.set_diagnostics(["Analysing Object", current_analyse_object, "Analyse Progress", current_analyse_progress * 100.0])
-	if currently_analysing or soil_analysing:
-		set_display_label("%.0f%%" % (current_analyse_progress * 100.0))
+	#Game.UI.set_diagnostics(["Analysing Object", current_analyse_object, "Analyse Progress", current_analyse_progress * 100.0])
+	var text := ""
+	if object_to_analyse != null:
+		if "analyse_name" in object_to_analyse:
+			text = object_to_analyse.get("analyse_name")
+	if currently_analysing:
+		text = text + "\n%.0f%%" % (current_analyse_progress * 100.0)
 	else:
-		set_display_label("100%" if analyse_completed else "")
+		text = text + ("\n100%" if analyse_completed else "")
+	set_display_label(text)
 
 func show_plant_information():
 	var seeds_left = PlantData.seed_counts[target_plant_name]

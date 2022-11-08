@@ -2,6 +2,8 @@ extends Spatial
 class_name Planet
 
 export var planet_name : String
+onready var analyse_name : String = planet_name
+var analyse_speed_factor := .3
 
 export var soil_type : int
 export var sun : bool
@@ -16,12 +18,14 @@ func add_plant(plant):
 	add_child(plant)
 	plant_list.append(plant)
 
+
 func _ready():
 	Game.planet_list.append(self)
 
 func set_primary_state(b: bool):
-	$Area.set_deferred("monitoring", not b)
-	$Area.set_deferred("monitorable", not b)
+	$PlanetHopArea.set_deferred("monitoring", not b)
+	$PlanetHopArea.set_deferred("monitorable", not b)
+	$PlanetHopArea/CollisionShape.disabled = b
 
 func get_count_of_plant_type(plant_name: String) -> int:
 	var count := 0
