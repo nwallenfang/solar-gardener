@@ -4,7 +4,7 @@ tool
 
 enum Style { DEFAULT, SCANNER, ACTION, HOP, PLANT}
 export(Style) var style = Style.DEFAULT setget set_style
-var active_crosshair_sprite: Node
+onready var active_crosshair_sprite: Node = $"%CrosshairDefault"
 
 
 onready var sprites = {

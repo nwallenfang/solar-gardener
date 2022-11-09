@@ -68,24 +68,44 @@ anchor_bottom = 0.98
 [node name="Controls" type="VBoxContainer" parent="HotkeyGuide"]
 anchor_bottom = 1.0
 margin_right = 45.0
+alignment = 2
 
-[node name="Label" type="Label" parent="HotkeyGuide/Controls"]
-margin_right = 186.0
-margin_bottom = 25.0
+[node name="Label2" type="Label" parent="HotkeyGuide/Controls"]
+margin_top = 75.0
+margin_right = 108.0
+margin_bottom = 100.0
 grow_horizontal = 0
 grow_vertical = 0
 custom_fonts/font = ExtResource( 9 )
-text = "Open Settings"
+text = "Journal"
+
+[node name="SettingsC" type="Label" parent="HotkeyGuide/Controls"]
+margin_top = 104.0
+margin_right = 108.0
+margin_bottom = 129.0
+grow_horizontal = 0
+grow_vertical = 0
+custom_fonts/font = ExtResource( 9 )
+text = "Settings"
 
 [node name="Actions" type="VBoxContainer" parent="HotkeyGuide"]
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -45.0
+alignment = 2
 
-[node name="Label2" type="Label" parent="HotkeyGuide/Actions"]
-margin_right = 45.0
-margin_bottom = 25.0
+[node name="Label3" type="Label" parent="HotkeyGuide/Actions"]
+margin_top = 75.0
+margin_right = 49.0
+margin_bottom = 100.0
+custom_fonts/font = ExtResource( 9 )
+text = "TAB"
+
+[node name="Settings" type="Label" parent="HotkeyGuide/Actions"]
+margin_top = 104.0
+margin_right = 49.0
+margin_bottom = 129.0
 custom_fonts/font = ExtResource( 9 )
 text = "F1"
 

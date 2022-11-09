@@ -24,6 +24,8 @@ func _ready() -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		set_process_input(false)
 
+	Input.use_accumulated_input = true
+
 	# custom cursors don't work in web builds atm :(( really sad
 	# https://github.com/godotengine/godot/issues/67925
 	Input.set_custom_mouse_cursor(preload("res://Assets/Sprites/cursor.png"))
@@ -34,3 +36,10 @@ func _ready() -> void:
 # we want the root viewport's size change to be applied to the 3D Viewport
 func root_viewport_size_changed():
 	$ViewportContainer/Viewport.size = get_viewport().size * resolution_scaling_factor
+
+func _notification(what):
+#	if what == MainLoop.NOTIFICATION_WM_FOCUS_IN:
+#		print("focus in")
+	if what == MainLoop.NOTIFICATION_WM_FOCUS_OUT:
+		if OS.has_feature("HTML5"):
+			Game.game_state = Game.State.SETTINGS

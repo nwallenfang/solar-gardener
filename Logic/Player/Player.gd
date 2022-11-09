@@ -116,9 +116,16 @@ func orient_player_sphere(delta: float):
 	mouse_axis = Vector2() # Reset Mouse Input
 
 	transform.basis = Basis(-target_up.cross(target_look), target_up, -target_look)
-	transform = transform.orthonormalized()
 
+	transform = transform.orthonormalized()
+	var test_t := global_transform
+	test_t.origin = Game.planet.to_local(global_translation)
+	test_t = test_t.rotated(Game.planet.rotation_axis, delta * Game.planet.y_rotation_speed)
+	test_t.origin = Game.planet.to_global(test_t.origin)
+	global_transform = test_t
 	last_target_up = target_up
+	
+	look_direction = -transform.basis.z
 
 
 

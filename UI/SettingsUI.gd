@@ -48,7 +48,7 @@ func _on_Metadata_focus_entered() -> void:
 		$"%Metadata".text = ""
 
 func _on_SensitivitySlider_value_changed(value: float) -> void:
-	Game.set_sensitivity(Game.min_sensitivity + value * (Game.max_sensitivity - Game.min_sensitivity))
+	Game.player.mouse_sensitivity = (Game.player.min_sensitivity + value * (Game.player.max_sensitivity - Game.player.min_sensitivity))
 
 
 

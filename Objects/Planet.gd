@@ -10,6 +10,11 @@ export var sun : bool
 export var moist : bool
 export var nutrients : bool
 
+var player_on_planet := false
+
+# degrees per second
+export var rotation_axis: Vector3 = Vector3.UP
+export var y_rotation_speed = deg2rad(3.5)
 export var max_plants : int
 
 onready var planet_light := $PlanetLight
@@ -40,6 +45,7 @@ func setup():
 	configure_light(self)
 
 func set_player_is_on_planet(b: bool):
+	player_on_planet = b
 	$PlanetHopArea.set_deferred("monitoring", not b)
 	$PlanetHopArea.set_deferred("monitorable", not b)
 	$PlanetHopArea/CollisionShape.disabled = b
@@ -54,3 +60,14 @@ func get_count_of_plant_type(plant_name: String) -> int:
 		if plant.profile.name == plant_name:
 			count += 1
 	return count
+
+func _physics_process(delta: float) -> void:
+	self.global_rotate(rotation_axis, delta * y_rotation_speed)
+	
+	# rotate player along with the planet
+	if player_on_planet:
+#		var player_pos_local = to_local(Game.player.global_transform.origin)
+#		var player_pos_rot = player_pos_local.rotated(rotation_axis, delta * y_rotation_speed)
+#		Game.player.global_transform.origin = to_global(player_pos_rot)
+		pass
+		

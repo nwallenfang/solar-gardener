@@ -17,10 +17,10 @@ environment = ExtResource( 1 )
 transform = Transform( 2.90385, 0, 0, 0, 1, 0, 0, 0, 2.90385, 0, 0, 80.3443 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 82.8634, 5.06041, 88.3402 )
+transform = Transform( -0.999769, 0, -0.0215008, 0, 1, 0, 0.0215008, 0, -0.999769, -47.8283, 5.58404, -98.9701 )
 
 [node name="Planet" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 83.2806, 0, 89.9754 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48.764, 0, -98.0153 )
 
 [node name="SpotLight" type="SpotLight" parent="Planet"]
 transform = Transform( -0.606211, 0, -0.795304, 0, 1, 0, 0.795304, 0, -0.606211, -46.833, 0, -36.5093 )

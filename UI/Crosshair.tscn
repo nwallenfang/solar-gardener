@@ -123,7 +123,6 @@ mouse_filter = 2
 
 [node name="CrosshairDefault" type="Sprite" parent="CrosshairContainer/CrosshairControl"]
 unique_name_in_owner = true
-visible = false
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 5 )
 
