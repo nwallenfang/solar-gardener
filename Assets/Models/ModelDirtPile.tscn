@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Assets/Materials/ModelDirtPile.tres" type="Material" id=1]
+[ext_resource path="res://Assets/Models/ModelDirtPile.gd" type="Script" id=2]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "DirtPile_Cube_cell145"
@@ -17,6 +18,7 @@ surfaces/0 = {
 }
 
 [node name="ModelDirtPile" type="Spatial"]
+script = ExtResource( 2 )
 
 [node name="Pile" type="MeshInstance" parent="."]
 transform = Transform( 1.11289, 0, 0, 0, 0.934801, 0, 0, 0, 1.11289, 0, -0.0314203, 0 )
