@@ -304,6 +304,7 @@ func spawn_plant(pos: Vector3):
 	explosion.global_transform = new_plant.global_transform
 	var pile = DIRT_PILE.instance()
 	new_plant.add_child(pile)
+	Game.planet.add_to_lod_list(pile)
 	pile.global_translation = pos
 	pile.global_transform.basis = Utility.get_basis_y_aligned(Game.planet.global_translation.direction_to(pos))
 

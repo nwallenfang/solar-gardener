@@ -16,6 +16,8 @@ onready var planet_light := $PlanetLight
 
 var plant_list := []
 
+var lod_items := []
+
 func add_plant(plant):
 	add_child_with_light(plant)
 	plant_list.append(plant)
@@ -23,6 +25,9 @@ func add_plant(plant):
 func configure_light(n: Node):
 	for mi in Utility.get_all_mesh_instance_children(n):
 		(mi as MeshInstance).layers = planet_light.mask_value
+
+func add_to_lod_list(n: Node):
+	lod_items.append(n)
 
 func add_child_with_light(n: Node):
 	add_child(n)
@@ -34,10 +39,14 @@ func setup():
 	planet_light.setup(planet_id)
 	configure_light(self)
 
-func set_primary_state(b: bool):
+func set_player_is_on_planet(b: bool):
 	$PlanetHopArea.set_deferred("monitoring", not b)
 	$PlanetHopArea.set_deferred("monitorable", not b)
 	$PlanetHopArea/CollisionShape.disabled = b
+	for lod_item in lod_items:
+		lod_item = lod_item as Node
+		if lod_item.has_method("on_lod"):
+			lod_item.call_deferred("on_lod", not b)
 
 func get_count_of_plant_type(plant_name: String) -> int:
 	var count := 0

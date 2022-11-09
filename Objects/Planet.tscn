@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/Models/ModelPlanet_01_dirt.tscn" type="PackedScene" id=5]
 
 [sub_resource type="SphereMesh" id=9]
+resource_local_to_scene = true
 
 [sub_resource type="SpatialMaterial" id=7]
 albedo_texture = ExtResource( 2 )
@@ -23,7 +24,7 @@ script = ExtResource( 1 )
 planet_name = "Dirt Planet"
 
 [node name="UglyGodot" type="MeshInstance" parent="."]
-transform = Transform( 7.01669, 0, 0, 0, 7.01669, 0, 0, 0, 7.01669, 0, 0, 0 )
+transform = Transform( 3.98203, 0, 0, 0, 3.98203, 0, 0, 0, 3.98203, 0.458311, 0, 0 )
 visible = false
 layers = 2
 mesh = SubResource( 9 )

@@ -76,8 +76,8 @@ func execute_planet_hop(new_planet: Planet, pos: Vector3):
 	var dir_to_planet = player.global_translation.direction_to(new_planet.global_translation)
 	pos = new_planet.global_translation + player.global_translation.direction_to(pos).cross(-dir_to_planet).cross(dir_to_planet).normalized() * 11.0
 	set_game_state(State.WARPING)
-	planet.set_primary_state(false)
-	new_planet.set_primary_state(true)
+	planet.set_player_is_on_planet(false)
+	new_planet.set_player_is_on_planet(true)
 	planet = new_planet
 	#player.global_transform = Transform(new_basis, pos)
 	var current_y_looking_angle : float = player.get_node("Head").rotation.x

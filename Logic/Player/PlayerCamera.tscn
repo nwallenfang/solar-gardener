@@ -12,6 +12,7 @@ flags_unshaded = true
 
 [node name="PlayerCamera" type="Camera"]
 physics_interpolation_mode = 2
+far = 500.0
 script = ExtResource( 3 )
 
 [node name="ObjectUI" parent="." instance=ExtResource( 1 )]
