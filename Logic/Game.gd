@@ -21,6 +21,7 @@ var player : Player = null
 var player_raycast: PlayerRayCast
 var multitool
 var camera: PlayerCamera
+var crosshair: Crosshair
 var sun: Spatial
 # current planet
 var planet: Planet = null

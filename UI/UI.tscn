@@ -2,7 +2,7 @@
 
 [ext_resource path="res://UI/UI.gd" type="Script" id=1]
 [ext_resource path="res://UI/SettingsUI.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/Sprites/crosshair.png" type="Texture" id=3]
+[ext_resource path="res://UI/Crosshair.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/JournalUI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Fonts/FluffText.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Assets/Fonts/DiagnosticsText.tres" type="DynamicFont" id=6]
@@ -45,23 +45,7 @@ custom_fonts/font = ExtResource( 6 )
 [node name="FPSUpdateTimer" type="Timer" parent="Diagnostics"]
 wait_time = 0.2
 
-[node name="CrosshairContainer" type="CenterContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-
-[node name="CrosshairControl" type="Control" parent="CrosshairContainer"]
-margin_left = 640.0
-margin_top = 360.0
-margin_right = 640.0
-margin_bottom = 360.0
-mouse_filter = 2
-
-[node name="Crosshair" type="Sprite" parent="CrosshairContainer/CrosshairControl"]
-unique_name_in_owner = true
-modulate = Color( 0, 0, 0, 1 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 3 )
+[node name="CrosshairContainer" parent="." instance=ExtResource( 3 )]
 
 [node name="Toolbar" parent="." instance=ExtResource( 8 )]
 anchor_left = 0.3
@@ -133,5 +117,42 @@ custom_fonts/font = ExtResource( 9 )
 text = "select a seed and use the planting tool."
 align = 1
 autowrap = true
+
+[node name="EventLog" type="Control" parent="."]
+anchor_left = 0.3
+anchor_top = 0.028
+anchor_right = 0.7
+anchor_bottom = 0.156
+margin_top = 518.84
+margin_bottom = 518.84
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Controls" type="VBoxContainer" parent="EventLog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Title" type="Label" parent="EventLog/Controls"]
+margin_right = 512.0
+margin_bottom = 35.0
+grow_horizontal = 0
+grow_vertical = 0
+custom_fonts/font = ExtResource( 12 )
+text = "Grow a plant"
+align = 1
+
+[node name="Text" type="Label" parent="EventLog/Controls"]
+visible = false
+margin_top = 39.0
+margin_right = 512.0
+margin_bottom = 92.0
+custom_fonts/font = ExtResource( 9 )
+text = "select a seed and use the planting tool."
+align = 1
+autowrap = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EventLog"]
 
 [connection signal="timeout" from="Diagnostics/FPSUpdateTimer" to="Diagnostics" method="_on_FPSUpdateTimer_timeout"]

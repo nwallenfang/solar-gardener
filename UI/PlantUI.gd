@@ -62,11 +62,11 @@ func set_number_of_stars(number):
 func _on_Panel_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		event = event as InputEventMouseButton
-		if event.pressed and event.button_index == BUTTON_LEFT:
+		if event.pressed and event.button_index == BUTTON_LEFT and discovered:
 			emit_signal("clicked", plant_name)
 
 func _on_Panel_mouse_entered() -> void:
-	if not hovered:
+	if not hovered and discovered:
 		hovered = true
 		owner.call("plant_hovered", self)
 

@@ -244,19 +244,34 @@ func check_on_hover():
 				hopper_pos = Game.player_raycast.hit_point
 
 func show_moveable(b: bool):
-	Game.UI.crosshair.modulate = Color.red if b else Color.black
+	if b:
+		Game.crosshair.set_style(Game.crosshair.Style.ACTION)
+	else:
+		Game.crosshair.set_style(Game.crosshair.Style.DEFAULT)
 
 func show_analysable(b: bool):
-	Game.UI.crosshair.modulate = Color.green if b else Color.black
+	if b:
+		Game.crosshair.set_style(Game.crosshair.Style.SCANNER)
+	else:
+		Game.crosshair.set_style(Game.crosshair.Style.DEFAULT)
 
 func show_growable(b: bool):
-	Game.UI.crosshair.modulate = Color.green if b else Color.black
+	if b:
+		Game.crosshair.set_style(Game.crosshair.Style.ACTION)
+	else:
+		Game.crosshair.set_style(Game.crosshair.Style.DEFAULT)
 
 func show_plantable(b: bool):
-	Game.UI.crosshair.modulate = Color.green if b else Color.black
+	if b:
+		Game.crosshair.set_style(Game.crosshair.Style.ACTION)
+	else:
+		Game.crosshair.set_style(Game.crosshair.Style.DEFAULT)
 
 func show_hopable(b: bool):
-	Game.UI.crosshair.modulate = Color.blue if b else Color.black
+	if b:
+		Game.crosshair.set_style(Game.crosshair.Style.HOP)
+	else:
+		Game.crosshair.set_style(Game.crosshair.Style.DEFAULT)
 
 func start_planting_animation(pos: Vector3):
 	show_plantable(false)
