@@ -1,15 +1,7 @@
 extends CanvasLayer
 class_name UI
 
-# Declare member variables here. Examples:
-# var a: int = 2
-# var b: String = "text"
-
-onready var crosshair : Sprite
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	crosshair = $"%Crosshair"
 	Game.connect("changed_state", self, "changed_state")
 	if OS.is_debug_build():
 		$Diagnostics.visible = true

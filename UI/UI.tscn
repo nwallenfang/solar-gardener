@@ -45,7 +45,8 @@ custom_fonts/font = ExtResource( 6 )
 [node name="FPSUpdateTimer" type="Timer" parent="Diagnostics"]
 wait_time = 0.2
 
-[node name="CrosshairContainer" parent="." instance=ExtResource( 3 )]
+[node name="Crosshair" parent="." instance=ExtResource( 3 )]
+unique_name_in_owner = true
 
 [node name="Toolbar" parent="." instance=ExtResource( 8 )]
 anchor_left = 0.3

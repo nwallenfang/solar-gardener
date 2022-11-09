@@ -263,7 +263,7 @@ func show_growable(b: bool):
 
 func show_plantable(b: bool):
 	if b:
-		Game.crosshair.set_style(Game.crosshair.Style.ACTION)
+		Game.crosshair.set_style(Game.crosshair.Style.PLANT)
 	else:
 		Game.crosshair.set_style(Game.crosshair.Style.DEFAULT)
 
