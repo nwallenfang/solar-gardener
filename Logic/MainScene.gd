@@ -32,6 +32,11 @@ func _ready() -> void:
 	
 	yield(get_tree(), "idle_frame")
 	$ViewportContainer/Viewport.size = get_viewport().size * resolution_scaling_factor
+	
+	
+	# ########### REMOVE ME
+	yield(get_tree().create_timer(1.0), "timeout")
+	PlantData.give_seeds("A Seedling", 10)
 
 # we want the root viewport's size change to be applied to the 3D Viewport
 func root_viewport_size_changed():

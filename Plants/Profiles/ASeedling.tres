@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource( 2 )
 name = "A Seedling"
-fluff_base = "bedhtrhrthrt"
+fluff_base = "Seedling, a fantastic plant for growing :)"
 fluff_stage2 = ""
 fluff_stage3 = ""
 icon = ExtResource( 1 )
