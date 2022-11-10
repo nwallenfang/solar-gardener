@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Effects/SlingBand.tres" type="Material" id=1]
+[ext_resource path="res://Assets/Materials/SlingBand.tres" type="Material" id=1]
 
 [sub_resource type="QuadMesh" id=1]
 

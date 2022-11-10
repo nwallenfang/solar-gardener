@@ -1,73 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=6 format=2]
 
+[ext_resource path="res://Assets/Materials/SunAura.tres" type="Material" id=1]
 [ext_resource path="res://Effects/SunAura.gd" type="Script" id=2]
-[ext_resource path="res://Effects/AuraShader.tres" type="Material" id=3]
-
-[sub_resource type="Shader" id=7]
-code = "// NOTE: Shader automatically converted from Godot Engine 3.5.1.stable's SpatialMaterial.
-
-shader_type spatial;
-render_mode unshaded, async_visible,blend_mix,depth_draw_opaque,cull_disabled,diffuse_burley,specular_schlick_ggx;
-uniform vec4 albedo1 : hint_color;
-uniform vec4 albedo2 : hint_color;
-uniform sampler2D noise;
-
-uniform float alpha_scissor_threshold;
-uniform float emission_energy = 1.0;
-//const vec2 noise_dir = vec2(0.5, 0.5);
-
-void vertex() {
-}
-
-void circle() {
-	
-}
-
-float clamp_and_map(float value, float istart, float istop, float ostart, float ostop) {
-    value = clamp(value, istart, istop);
-    return ostart + (ostop - ostart) * ((value - istart) / (istop - istart));
-}
-
-vec2 polar_coordinates(vec2 uv, vec2 center, float zoom, float repeat)
-{
-	vec2 dir = uv - center;
-	float radius = length(dir) * 2.0;
-	float angle = atan(dir.y, dir.x) * 1.0/(3.1416 * 2.0);
-	return mod(vec2(radius * zoom, angle * repeat), 1.0);
-}
-
-
-
-void fragment() {
-	vec2 polar_uv = -polar_coordinates(UV.xy, vec2(0.5), 0.3, 1.0);
-	vec2 noise_dir = vec2(.5, (0.5 + 0.5 * sin(0.25 * TIME)) * .005);
-	float sample = texture(noise, 1.8 * polar_uv + 0.06 * TIME * noise_dir).r;
-	float radius_noise = 0.17 * (0.5 + (sample - 1.0));
-	float in_circle = float((UV.x-0.5) * (UV.x-0.5) + (UV.y-0.5)*(UV.y-0.5) - .24 + radius_noise);
-	in_circle = pow(clamp_and_map(in_circle, -0.25, .0, 1.0, 0.0), 2);
-    ALBEDO = mix(albedo1, albedo2, texture(noise, UV)).rgb;
-//    vec3 emission_tex = texture(texture_emission,base_uv).rgb;
-    EMISSION = emission_energy * ALBEDO.rgb;//normalize(mix(albedo1, albedo2, texture(noise, UV + 0.2 * sin(0.2 * TIME)))).rgb; //emission_energy * mix(color1, color2, clamp((0.2sin(3.0 TIME + 1.0)) + texture(noise, UV + 0.2 * sin(0.2 * TIME)), 0.2, 0.8)).rgb;
-	
-	ALPHA = 2.0 * in_circle;
-}
-"
-
-[sub_resource type="OpenSimplexNoise" id=9]
-period = 13.9
-persistence = 0.438
-
-[sub_resource type="NoiseTexture" id=10]
-seamless = true
-noise = SubResource( 9 )
-
-[sub_resource type="ShaderMaterial" id=11]
-shader = SubResource( 7 )
-shader_param/albedo1 = Color( 0.501961, 0.223529, 0.101961, 1 )
-shader_param/albedo2 = Color( 0.686275, 0.517647, 0.0627451, 1 )
-shader_param/alpha_scissor_threshold = 0.98
-shader_param/emission_energy = 2.8
-shader_param/noise = SubResource( 10 )
+[ext_resource path="res://Assets/Materials/AuraShader.tres" type="Material" id=3]
 
 [sub_resource type="QuadMesh" id=1]
 
@@ -97,7 +32,7 @@ script = ExtResource( 2 )
 [node name="Aura1" type="MeshInstance" parent="Mesh"]
 unique_name_in_owner = true
 transform = Transform( 43.0605, 0, 0, 0, -1.92826e-06, 38.1258, 0, -44.1134, -1.66653e-06, 0, 0, 0 )
-material_override = SubResource( 11 )
+material_override = ExtResource( 1 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../..")
 

@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=4 format=2]
 
-[ext_resource path="res://Effects/SlingBand.gdshader" type="Shader" id=1]
+[ext_resource path="res://Assets/Shader/SlingBand.gdshader" type="Shader" id=1]
 
 [sub_resource type="OpenSimplexNoise" id=4]
 seed = 1

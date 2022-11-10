@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Shader/Beam.gdshader" type="Shader" id=1]
+
+[sub_resource type="OpenSimplexNoise" id=3]
+
+[sub_resource type="NoiseTexture" id=4]
+noise = SubResource( 3 )
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/albedo = Color( 0.968627, 1, 0, 1 )
+shader_param/speed = 0.871
+shader_param/activation = 1.0
+shader_param/noise = SubResource( 4 )
