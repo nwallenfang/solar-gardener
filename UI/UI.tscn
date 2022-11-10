@@ -140,6 +140,7 @@ align = 1
 autowrap = true
 
 [node name="EventLog" type="Control" parent="."]
+visible = false
 anchor_left = 0.3
 anchor_top = 0.028
 anchor_right = 0.7
