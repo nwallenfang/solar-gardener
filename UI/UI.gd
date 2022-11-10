@@ -33,6 +33,7 @@ func changed_state(state, prev_state):
 			if OS.is_debug_build():
 				$Diagnostics.visible = true
 			$"%Crosshair".visible = true
+			$GardenerNote.visible = false
 		Game.State.SETTINGS:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			$SettingsUI.show_settings()
@@ -42,6 +43,7 @@ func changed_state(state, prev_state):
 			$HotkeyGuide.visible = false
 			$TutorialPanel.visible = false
 			$Diagnostics.visible = false
+			$GardenerNote.visible = false
 		Game.State.JOURNAL:
 			$"%Crosshair".visible = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -51,8 +53,24 @@ func changed_state(state, prev_state):
 			$HotkeyGuide.visible = false
 			$TutorialPanel.visible = false
 			$Diagnostics.visible = false
+			$GardenerNote.visible = false
+		Game.State.READING_NOTE:
+			$"%Crosshair".visible = false
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			$SettingsUI.hide_settings()
+			$JournalUI.hide()
+			$Toolbar.visible = false
+			$HotkeyGuide.visible = false
+			$TutorialPanel.visible = false
+			$Diagnostics.visible = false
+			
+			$GardenerNote.visible = true
 
 
 ## we want the root viewport's size change to be applied to the 3D Viewport
 #func root_viewport_size_changed():
 #	$ViewportContainer/Viewport.size = get_viewport().size
+
+func set_note_text(text: String):
+	$GardenerNote.set_text(text)
+

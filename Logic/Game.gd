@@ -7,7 +7,8 @@ enum State {
 	SETTINGS,  # aka paused
 	JOURNAL,
 	MAIN_MENU, # if it's needed 
-	WARPING
+	WARPING,
+	READING_NOTE,
 }
 
 var game_state = State.INGAME setget set_game_state

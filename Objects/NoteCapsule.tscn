@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Objects/NoteCapsule.gd" type="Script" id=1]
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.898039, 0.564706, 0.0431373, 0.890196 )
+roughness = 0.19
+
+[sub_resource type="PrismMesh" id=2]
+
+[sub_resource type="CapsuleShape" id=5]
+radius = 0.468582
+height = 0.002
+
+[node name="NoteCapsule" type="Spatial"]
+script = ExtResource( 1 )
+note_text = "They say limitation breeds creativity. But these cliches are too limiting, constricting me to their literal interpretation with barely any room for artistic expression.
+On that note: I'll be off, cultivating different shades of grass for the grass is always greener installation."
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Model" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Model"]
+transform = Transform( 0.210827, 0, 0, 0, 0.210827, 0, 0, 0, 0.210827, 0, 0.594811, 0 )
+material_override = SubResource( 4 )
+mesh = SubResource( 2 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Model"]
+transform = Transform( 0.210827, 0, 0, 0, -0.210827, 1.84311e-08, 0, -1.84311e-08, -0.210827, 0, 0.177495, 0 )
+material_override = SubResource( 4 )
+mesh = SubResource( 2 )
+
+[node name="Area" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0 )
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0342927, 0 )
+shape = SubResource( 5 )

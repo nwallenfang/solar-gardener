@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Objects/Planet.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Objects/Amber.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Effects/PlanetLight.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Models/ModelPlanet_01_dirt.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/NoteCapsule.tscn" type="PackedScene" id=6]
 
 [sub_resource type="SphereMesh" id=9]
 resource_local_to_scene = true
@@ -57,5 +58,8 @@ shape = SubResource( 13 )
 
 [node name="PlanetLight" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.195977, -0.0718746, -0.234811 )
+
+[node name="NoteCapsule" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.57823, 0 )
 
 [editable path="ModelPlanet_01_dirt"]

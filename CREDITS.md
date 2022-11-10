@@ -8,6 +8,9 @@
 - Anita Semi-Square
   - https://fontlibrary.org/en/font/anita-semi-square
   - License: OFL (SIL Open Font License)
+- Rise Starhand
+  - https://fontlibrary.org/en/font/risestarhand
+  - License: OFL (SIL Open Font License)
 ### Textures
 - Space Skybox 
   - by www.tiron.net
