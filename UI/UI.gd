@@ -74,3 +74,8 @@ func changed_state(state, prev_state):
 func set_note_text(text: String):
 	$GardenerNote.set_text(text)
 
+func set_blackscreen_alpha(alpha_in_percent: float): #should start with .99 alpha
+	pass
+
+func set_loading_bar(progress_in_percent: float): #Optional
+	pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://game_environment.tres" type="Environment" id=1]
 [ext_resource path="res://Objects/Sun.tscn" type="PackedScene" id=2]
@@ -6,6 +6,23 @@
 [ext_resource path="res://Effects/Stars.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Planet.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Logic/World.gd" type="Script" id=6]
+[ext_resource path="res://Effects/Ubershader.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "fly"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:intro_flight_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 7.0 ]
+}
 
 [node name="World" type="Spatial"]
 script = ExtResource( 6 )
@@ -17,7 +34,7 @@ environment = ExtResource( 1 )
 transform = Transform( 2.90385, 0, 0, 0, 1, 0, 0, 0, 2.90385, 0, 0, 80.3443 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-transform = Transform( -0.999769, 0, -0.0215008, 0, 1, 0, 0.0215008, 0, -0.999769, -47.8283, 5.58404, -98.9701 )
+transform = Transform( -0.999769, 0, -0.0215008, 0, 1, 0, 0.0215008, 0, -0.999769, -48.7693, 10.5054, -98.0291 )
 
 [node name="Planet" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48.764, 0, -98.0153 )
@@ -42,3 +59,60 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.2732, 63.2236, -0.0944443 )
 transform = Transform( 2.03594, 0, 0, 0, 2.03594, 0, 0, 0, 2.03594, 0, 0, 0 )
 
 [node name="Stars" parent="." instance=ExtResource( 4 )]
+
+[node name="LoadingCams" type="Spatial" parent="."]
+
+[node name="Camera" type="Camera" parent="LoadingCams"]
+transform = Transform( -0.680056, 0, -0.73316, 0, 1, 0, 0.73316, 0, -0.680056, -263.641, 0, -192.133 )
+far = 1000.0
+
+[node name="Camera2" type="Camera" parent="LoadingCams"]
+transform = Transform( -0.789288, 0, -0.614024, 0, 1, 0, 0.614024, 0, -0.789288, -50.3926, 6.66329, -100.057 )
+far = 1000.0
+
+[node name="Camera3" type="Camera" parent="LoadingCams"]
+transform = Transform( -0.876256, 0, 0.481845, 0, 1, 0, -0.481845, 0, -0.876256, -42.6092, 0.227874, -99.1954 )
+far = 1000.0
+
+[node name="Camera4" type="Camera" parent="LoadingCams"]
+transform = Transform( 0.861399, 0, 0.507929, 0, 1, 0, -0.507929, 0, 0.861399, -42.1913, 0.227874, -58.7083 )
+far = 1000.0
+
+[node name="Ubershader" parent="LoadingCams/Camera4" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0626678, 0, -0.981606 )
+
+[node name="IntroFlight" type="Spatial" parent="."]
+
+[node name="Camera0" type="Camera" parent="IntroFlight"]
+transform = Transform( 0.378729, 0, 0.925507, 0, 1, 0, -0.925507, 0, 0.378729, 247.177, 7.30024, 327.692 )
+far = 1000.0
+
+[node name="Camera1" type="Camera" parent="IntroFlight"]
+transform = Transform( 0.930117, 0, 0.367264, 0, 1, 0, -0.367264, 0, 0.930117, 175.982, 7.30024, 322.773 )
+far = 1000.0
+
+[node name="Camera2" type="Camera" parent="IntroFlight"]
+transform = Transform( 0.980802, 0, 0.195005, 0, 1, 0, -0.195005, 0, 0.980802, 41.3665, -9.4695, 188.491 )
+far = 1000.0
+
+[node name="Camera3" type="Camera" parent="IntroFlight"]
+transform = Transform( 0.916837, -0.117392, -0.381613, 0, 0.955798, -0.294024, 0.399261, 0.269572, 0.876311, -34.3239, -16.8972, 93.2799 )
+far = 1000.0
+
+[node name="Camera4" type="Camera" parent="IntroFlight"]
+transform = Transform( 0.647987, -0.165565, -0.743439, 0, 0.976088, -0.217377, 0.761651, 0.140857, 0.632492, 7.77933, 48.1681, 18.276 )
+far = 1000.0
+
+[node name="Camera5" type="Camera" parent="IntroFlight"]
+transform = Transform( 0.959643, 0, 0.281219, 0, 1, 0, -0.281219, 0, 0.959643, 9.92107, 50.6062, -14.7563 )
+
+[node name="Camera6" type="Camera" parent="IntroFlight"]
+transform = Transform( 0.461764, 0, 0.887003, 0, 1, 0, -0.887003, 0, 0.461764, -45.7271, 10.6026, -95.7689 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="IntroFlight"]
+anims/fly = SubResource( 1 )
+
+[node name="FlyCamera" type="Camera" parent="IntroFlight"]
+far = 1000.0
+
+[node name="Tween" type="Tween" parent="IntroFlight"]

@@ -1,6 +1,6 @@
 extends Spatial
 
-func _ready():
+func activate():
 	for c in get_children():
 		if c is Particles:
 			c.one_shot = true

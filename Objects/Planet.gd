@@ -62,12 +62,5 @@ func get_count_of_plant_type(plant_name: String) -> int:
 	return count
 
 func _physics_process(delta: float) -> void:
-	self.global_rotate(rotation_axis, delta * y_rotation_speed)
-	
-	# rotate player along with the planet
-	if player_on_planet:
-#		var player_pos_local = to_local(Game.player.global_transform.origin)
-#		var player_pos_rot = player_pos_local.rotated(rotation_axis, delta * y_rotation_speed)
-#		Game.player.global_transform.origin = to_global(player_pos_rot)
-		pass
-		
+	if Game.game_state != Game.State.LOADING:
+		self.global_rotate(rotation_axis, delta * y_rotation_speed)

@@ -9,9 +9,11 @@ enum State {
 	MAIN_MENU, # if it's needed 
 	WARPING,
 	READING_NOTE,
+	LOADING,
+	INTRO_FLIGHT,
 }
 
-var game_state = State.INGAME setget set_game_state
+var game_state = State.LOADING setget set_game_state
 # is set from MainScene, if this is false, a subscene is running individually for testing,
 # if this is true game is running normally
 var main_scene_running = false

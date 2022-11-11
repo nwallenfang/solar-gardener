@@ -55,11 +55,15 @@ func calc_gravity_direction() -> Vector3:
 # Called every physics tick. 'delta' is constant
 var gravity_direction
 func _physics_process(delta) -> void:
-	if movement_disabled or Game.game_state != Game.State.INGAME:
+	if Game.game_state == Game.State.LOADING or Game.game_state == Game.State.INTRO_FLIGHT:
 		return 
 		
 	input_axis = Input.get_vector("move_backwards", "move_forward",
 			"move_left", "move_right")
+	
+	if movement_disabled or Game.game_state != Game.State.INGAME:
+		input_axis = Vector2.ZERO
+		mouse_axis = Vector2.ZERO
 	
 	direction = get_input_direction()
 	gravity_direction = calc_gravity_direction()
