@@ -70,5 +70,6 @@ func start_intro_flight():
 	yield(get_tree().create_timer(1),"timeout")
 	Game.player.update_look_direction()
 	Game.set_game_state(Game.State.INGAME)
-	
-	
+
+	yield(get_tree().create_timer(2.0), "timeout")
+	Events.tutorial_beginning()

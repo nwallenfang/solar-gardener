@@ -19,3 +19,9 @@ func switch_to(new_tool: int):
 		
 	new_toolbar_item.active = true
 	current_toolbar_item = new_toolbar_item
+
+func activate_tool(new_tool):
+	if new_tool == Game.multitool.TOOL.NONE or new_tool == Game.multitool.TOOL.HOPPER:
+		return
+	var new_toolbar_item = get_node("HBoxContainer/ToolbarItem" + str(new_tool))
+	new_toolbar_item.visible = true

@@ -1,7 +1,18 @@
 extends Spatial
+class_name Multitool
 
 enum TOOL {NONE, PLANT, GROW, ANALYSIS, MOVE, BUILD, HOPPER}
 var current_tool := 0
+var tool_unlocked = {
+	TOOL.NONE: true,
+	TOOL.PLANT: false,
+	TOOL.GROW: false,
+	TOOL.ANALYSIS: true,
+	TOOL.BUILD: false,
+	TOOL.MOVE:false,
+	TOOL.HOPPER:true,
+	TOOL.BUILD:false,
+}
 
 # Preloads
 const FAKE_SEED = preload("res://Plants/FakeSeed.tscn")
@@ -92,7 +103,15 @@ func switch_away_from_tool(old_tool: int):
 		TOOL.HOPPER:
 			show_hopable(false)
 
+func activate_tool(activated_tool: int):
+	Game.UI.get_node("Toolbar").activate_tool(activated_tool)
+	tool_unlocked[activated_tool] = true
+
 func switch_to_tool(new_tool: int):
+	# return immediately if tool isnt activated
+	if not tool_unlocked[new_tool]:
+		return
+	
 	if new_tool == current_tool:
 		return
 	switch_away_from_tool(current_tool)

@@ -26,6 +26,12 @@ func get_event_from_key(key: String) -> Event:
 
 var event_queue := []
 func trigger(key: String):
+	var event = get_event_from_key(key)
+	if event == null:
+		return
+	if event.skip_immediately:
+		execute_event(event)
+		return
 	event_queue.append(key)
 	if event_queue.size() == 1:
 		execute_event(event_queue[0])
@@ -50,6 +56,28 @@ func next():
 
 func setup():
 	events.append(Event.new("test", self, "test"))
+	# just once: amber_collected_tutorial
+	events.append(Event.new("tutorial_seed_planted", self, "tutorial_seed_planted", true))
+	events.append(Event.new("tutorial_amber_collected", self, "tutorial_amber_collected", true))
 
-####
+###########
+# TRIGGER FUNCTIONS
+###########
 
+# doesn't get called from an event, but in the beginning
+func tutorial_beginning():
+	# show amber tutorial box
+	Game.UI.show_tutorial_message("Find Amber", "Scan an Amber relict to find a new plant.")
+
+# Tutorials:
+func tutorial_amber_collected():
+	# unlock next tool 
+	# show next tutorial box
+	Game.multitool.activate_tool(Game.multitool.TOOL.PLANT)
+	Game.multitool.activate_tool(Game.multitool.TOOL.GROW)
+	Game.UI.show_tutorial_message("Plant Seed", "(Stuff after this not implemented yet.)")
+
+func tutorial_seed_planted():
+	# unlock next tool 
+	# show next tutorial box
+	pass

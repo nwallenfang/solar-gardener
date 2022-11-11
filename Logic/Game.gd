@@ -22,7 +22,7 @@ var main_scene = null
 var UI: UI = null
 var player : Player = null
 var player_raycast: PlayerRayCast
-var multitool
+var multitool: Multitool
 var camera: PlayerCamera
 var crosshair: Crosshair
 var sun: Spatial
@@ -53,6 +53,15 @@ func _process(delta: float) -> void:
 	if OS.is_debug_build() and Input.is_action_just_pressed("make_pref_known"):
 		print("pref known")
 		UI.get_node("JournalUI").make_preference_known("A Seedling", PlantData.PREFERENCES["Hates Sun"])
+	if OS.is_debug_build() and Input.is_action_just_pressed("play_intro"):
+		print("play intro")
+		Dialog.play_intro()
+		
+	if OS.is_debug_build() and Input.is_action_just_pressed("unlock_all_tools"):
+		print("unlock all tools")
+		Game.multitool.activate_tool(Game.multitool.TOOL.GROW)
+		Game.multitool.activate_tool(Game.multitool.TOOL.PLANT)
+		
 
 signal changed_state(state, prev_state)
 func set_game_state(state):
