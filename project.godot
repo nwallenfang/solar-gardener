@@ -30,6 +30,11 @@ _global_script_classes=[ {
 "path": "res://Logic/Sound/ManagedSound.gd"
 }, {
 "base": "Spatial",
+"class": "Multitool",
+"language": "GDScript",
+"path": "res://Logic/Multitool.gd"
+}, {
+"base": "Spatial",
 "class": "Planet",
 "language": "GDScript",
 "path": "res://Objects/Planet.gd"
@@ -79,6 +84,7 @@ _global_script_class_icons={
 "Crosshair": "",
 "DialogLine": "",
 "ManagedSound": "res://Assets/Sprites/managed_sound.png",
+"Multitool": "",
 "Planet": "",
 "Plant": "",
 "PlantPreference": "",
