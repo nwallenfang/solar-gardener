@@ -22,7 +22,7 @@ var main_scene = null
 var UI: UI = null
 var player : Player = null
 var player_raycast: PlayerRayCast
-var multitool: Multitool
+var multitool#: Multitool
 var camera: PlayerCamera
 var crosshair: Crosshair
 var sun: Spatial

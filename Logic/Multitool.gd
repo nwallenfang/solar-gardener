@@ -1,5 +1,5 @@
 extends Spatial
-class_name Multitool
+#class_name Multitool
 
 enum TOOL {NONE, PLANT, GROW, ANALYSIS, MOVE, BUILD, HOPPER}
 var current_tool := 0
