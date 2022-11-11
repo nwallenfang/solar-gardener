@@ -19,5 +19,6 @@ func on_analyse():
 	yield(get_tree().create_timer(1.5), "timeout")
 	pickup.start_flying()
 	yield($Tween, "tween_all_completed")
+	Events.trigger("tutorial_amber_collected")
 	queue_free()
 

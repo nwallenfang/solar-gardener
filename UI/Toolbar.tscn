@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UI/ToolbarItem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/Toolbar.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Textures/toolbar_bg.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/seed_transformed.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/grow_beam.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/scanner_icon.png" type="Texture" id=6]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 3 )
@@ -28,29 +31,34 @@ anchor_right = 1.0
 anchor_bottom = 0.902
 
 [node name="ToolbarItem1" parent="HBoxContainer" instance=ExtResource( 1 )]
+visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 252.0
+margin_right = 1280.0
 margin_bottom = 649.0
 hotkey = "1"
+icon = ExtResource( 4 )
 
 [node name="ToolbarItem2" parent="HBoxContainer" instance=ExtResource( 1 )]
+visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 256.0
-margin_right = 509.0
+margin_left = 642.0
+margin_right = 1280.0
 margin_bottom = 649.0
 hotkey = "2"
+icon = ExtResource( 5 )
 
 [node name="ToolbarItem3" parent="HBoxContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 513.0
-margin_right = 766.0
+margin_right = 1280.0
 margin_bottom = 649.0
 hotkey = "3"
+icon = ExtResource( 6 )
 
 [node name="ToolbarItem4" parent="HBoxContainer" instance=ExtResource( 1 )]
+visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 770.0
@@ -59,9 +67,10 @@ margin_bottom = 649.0
 hotkey = "4"
 
 [node name="ToolbarItem5" parent="HBoxContainer" instance=ExtResource( 1 )]
+visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 1027.0
+margin_left = 963.0
 margin_right = 1280.0
 margin_bottom = 649.0
 hotkey = "5"

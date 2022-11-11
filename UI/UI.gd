@@ -74,3 +74,21 @@ func changed_state(state, prev_state):
 func set_note_text(text: String):
 	$GardenerNote.set_text(text)
 
+
+func show_line(text: String, duration: float, another_one_coming:=false):
+	$SubtitleUI.visible = true
+	# TODO play show animation
+	$"%SubtitleText".text = text
+	# TODO play hide animation
+	# TODO if another one is coming up the text shouldn't fade out completely
+	# or smth
+	yield(get_tree().create_timer(duration), "timeout")
+	$SubtitleUI.visible = false
+	
+	
+func show_tutorial_message(title: String, text: String):
+	# TODO fade in
+	$TutorialPanel.visible = true
+	$TutorialPanel.show_tutorial_message(title, text)
+	# TODO fade out when the goal is reached
+#	$TutorialPanel.visible = false

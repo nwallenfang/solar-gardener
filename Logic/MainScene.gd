@@ -33,6 +33,7 @@ func _ready() -> void:
 	yield(get_tree(), "idle_frame")
 	$ViewportContainer/Viewport.size = get_viewport().size * resolution_scaling_factor
 	
+	Events.setup()
 	
 	# ########### REMOVE ME
 	yield(get_tree().create_timer(1.0), "timeout")

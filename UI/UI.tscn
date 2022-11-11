@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://UI/UI.gd" type="Script" id=1]
 [ext_resource path="res://UI/SettingsUI.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://UI/GardenerNote.tscn" type="PackedScene" id=10]
 [ext_resource path="res://UI/TutorialPanel.gd" type="Script" id=11]
 [ext_resource path="res://Assets/Fonts/TutorialTitleFont.tres" type="DynamicFont" id=12]
+[ext_resource path="res://UI/TutorialPanel.tscn" type="PackedScene" id=13]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -110,73 +111,47 @@ margin_bottom = 129.0
 custom_fonts/font = ExtResource( 9 )
 text = "F1"
 
-[node name="TutorialPanel" type="Control" parent="."]
-anchor_left = 0.3
-anchor_top = 0.028
-anchor_right = 0.7
-anchor_bottom = 0.156
-script = ExtResource( 11 )
-
-[node name="Controls" type="VBoxContainer" parent="TutorialPanel"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="Title" type="Label" parent="TutorialPanel/Controls"]
-margin_right = 512.0
-margin_bottom = 35.0
-grow_horizontal = 0
-grow_vertical = 0
-custom_fonts/font = ExtResource( 12 )
-text = "Grow a plant"
-align = 1
-
-[node name="Text" type="Label" parent="TutorialPanel/Controls"]
+[node name="TutorialPanel" parent="." instance=ExtResource( 13 )]
 visible = false
-margin_top = 39.0
-margin_right = 512.0
-margin_bottom = 92.0
-custom_fonts/font = ExtResource( 9 )
-text = "select a seed and use the planting tool."
-align = 1
-autowrap = true
+anchor_left = 0.666
+anchor_top = 0.025
+anchor_right = 0.967
+anchor_bottom = 0.296
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
-[node name="EventLog" type="Control" parent="."]
+[node name="DialogUI" type="Control" parent="."]
 visible = false
-anchor_left = 0.3
-anchor_top = 0.028
-anchor_right = 0.7
-anchor_bottom = 0.156
-margin_top = 518.84
-margin_bottom = 518.84
+anchor_left = 0.05
+anchor_top = 0.749
+anchor_right = 0.95
+anchor_bottom = 0.838
+margin_top = -14.28
+margin_bottom = -14.28
 script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Controls" type="VBoxContainer" parent="EventLog"]
+[node name="Controls" type="VBoxContainer" parent="DialogUI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Title" type="Label" parent="EventLog/Controls"]
-margin_right = 512.0
+[node name="SubtitleText" type="Label" parent="DialogUI/Controls"]
+unique_name_in_owner = true
+margin_right = 1152.0
 margin_bottom = 35.0
 grow_horizontal = 0
 grow_vertical = 0
 custom_fonts/font = ExtResource( 12 )
-text = "Grow a plant"
-align = 1
-
-[node name="Text" type="Label" parent="EventLog/Controls"]
-visible = false
-margin_top = 39.0
-margin_right = 512.0
-margin_bottom = 92.0
-custom_fonts/font = ExtResource( 9 )
-text = "select a seed and use the planting tool."
+text = "Subtitles"
 align = 1
 autowrap = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="EventLog"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DialogUI"]
+
+[node name="SubtitleTimer" type="Timer" parent="DialogUI"]
 
 [node name="GardenerNote" parent="." instance=ExtResource( 10 )]
 visible = false

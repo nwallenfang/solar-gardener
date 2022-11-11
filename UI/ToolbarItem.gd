@@ -5,9 +5,11 @@ export var active := false setget set_active
 export var deactive_mod: Color = Color("2e2e2e")
 export var active_mod: Color = Color("ffffff")
 export var hotkey: String setget set_hotkey
+export var icon: Texture setget set_icon
 
 func _ready() -> void:
 	$HotkeyBox/HotkeyLabel.text = hotkey
+	$Icon.texture = icon
 	
 func set_active(new):
 	active = new
@@ -24,3 +26,7 @@ func set_hotkey(new: String):
 	if is_inside_tree():
 		$HotkeyBox/HotkeyLabel.text = hotkey
 
+func set_icon(new: Texture):
+	icon = new
+	if is_inside_tree():
+		$Icon.texture = icon

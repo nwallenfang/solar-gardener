@@ -18,3 +18,6 @@ func _ready() -> void:
 	for c in get_children():
 		if c is Planet:
 			(c as Planet).setup()
+			
+	yield(get_tree().create_timer(1.0), "timeout")
+	Events.tutorial_beginning()

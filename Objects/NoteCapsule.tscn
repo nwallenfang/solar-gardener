@@ -14,7 +14,7 @@ height = 0.002
 
 [node name="NoteCapsule" type="Spatial"]
 script = ExtResource( 1 )
-note_text = "They say limitation breeds creativity. But these cliches are too limiting, constricting me to their literal interpretation with barely any room for artistic expression.
+note_text = "They say limitation breeds creativity. But this cliche-thing is too limiting, constricting me to their literal interpretation with barely any room for artistic expression.
 On that note: I'll be off, cultivating different shades of grass for the grass is always greener installation."
 
 [node name="Tween" type="Tween" parent="."]
