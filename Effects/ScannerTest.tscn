@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Materials/ScannerGrid.tres" type="Material" id=1]
+
+[sub_resource type="SphereMesh" id=3]
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.454902, 0.454902, 0.454902, 1 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75669, 0 )
+material_overlay = ExtResource( 1 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )

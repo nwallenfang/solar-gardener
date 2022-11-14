@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Plants/Plant.gd" type="Script" id=1]
 
 [sub_resource type="SphereShape" id=1]
-radius = 1.28112
+radius = 0.860162
+
+[sub_resource type="SphereShape" id=2]
+radius = 1.39294
 
 [node name="Plant" type="Spatial"]
 script = ExtResource( 1 )
@@ -17,8 +20,16 @@ collision_layer = 60
 collision_mask = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15071, 0 )
 shape = SubResource( 1 )
 
 [node name="RemoveTween" type="Tween" parent="."]
 
 [node name="GrowthAnimationTween" type="Tween" parent="."]
+
+[node name="BadPlanting" type="Area" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="BadPlanting"]
+shape = SubResource( 2 )

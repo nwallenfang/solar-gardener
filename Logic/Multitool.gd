@@ -78,6 +78,8 @@ func _physics_process(delta):
 			second_action_holded = Input.is_action_pressed("second_action")
 			idle_process(delta)
 
+	show_scanner_grid(currently_analysing)
+
 # Collision masks
 # 0 - Collision
 # 1 - Gravity
@@ -159,13 +161,10 @@ func idle_process(delta: float):
 			show_grow_information()
 		TOOL.ANALYSIS:
 			analyse_completed = false
-			if not currently_analysing and not soil_analysing:
+			if not currently_analysing:
 				if can_analyse and first_action_holded:
 					currently_analysing = true
 					current_analyse_object = object_to_analyse
-					current_analyse_progress = 0.0
-				elif second_action_holded:
-					soil_analysing = true
 					current_analyse_progress = 0.0
 			if currently_analysing:
 				if (not first_action_holded) or object_to_analyse != current_analyse_object or (not can_analyse):
@@ -182,20 +181,6 @@ func idle_process(delta: float):
 						print("Analysis Done of " + str(current_analyse_object))
 						if current_analyse_object.has_method("on_analyse"):
 							current_analyse_object.call("on_analyse")
-			elif soil_analysing:
-				if not second_action_holded:
-					soil_analysing = false
-				else:
-					pass
-					# TODO other type of soil analyse
-#					current_analyse_progress += SOIL_ANALYSE_SPEED * delta
-#					if current_analyse_progress >= 1.0:
-#						soil_analysing = false
-#						analyse_completed = true
-#						$Cooldown.start(2)
-#						print("Analysis Done of " + str(Game.planet))
-#						if Game.planet.has_method("on_analyse"):
-#							Game.planet.call("on_analyse")
 			show_analyse_information()
 
 func process_first_action():
@@ -348,3 +333,25 @@ func show_plant_information():
 
 func set_display_label(s: String):
 	$"%DisplayLabel".text = s
+
+var scanner_grid_last_frame := false
+var scanned_meshes := []
+const SCANNER_GRID = preload("res://Assets/Materials/ScannerGrid.tres")
+func show_scanner_grid(show: bool):
+	if show:
+		if not scanner_grid_last_frame:
+			var dir : Vector3 = Vector3.UP
+			if current_analyse_object != Game.planet:
+				dir = Game.planet.global_translation.direction_to(current_analyse_object.global_translation)
+				scanned_meshes = Utility.get_all_mesh_instance_children(current_analyse_object)
+			else:
+				scanned_meshes = Utility.get_all_mesh_instance_children(Game.planet.get_node("Model"))
+			SCANNER_GRID.set_shader_param("direction", dir)
+			for mi in scanned_meshes:
+				mi.material_overlay = SCANNER_GRID
+	else:
+		if scanner_grid_last_frame:
+			for mi in scanned_meshes:
+				mi.material_overlay = null
+			scanned_meshes = []
+	scanner_grid_last_frame = show

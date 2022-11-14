@@ -1,0 +1,52 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type spatial;
+render_mode unshaded,async_visible,blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : hint_color;
+
+varying vec3 _vertex;
+
+uniform vec3 direction = vec3(0.0, 1.0, 0.0);
+
+float clamp_and_map(float value, float istart, float istop, float ostart, float ostop) {
+    value = clamp(value, istart, istop);
+    return ostart + (ostop - ostart) * ((value - istart) / (istop - istart));
+}
+
+float clamp_map_pow(float value, float istart, float istop, float ostart, float ostop, float power) {
+	float c1 = clamp_and_map(value, istart, istop, 0.0, 1.0);
+	c1 = pow(c1, power);
+	return clamp_and_map(c1, 0.0 , 1.0, ostart, ostop);
+}
+
+float inv(float x) {
+	return 1.0 - x;
+}
+
+void vertex() {
+	_vertex = VERTEX;
+}
+
+void fragment() {
+	vec3 wrld_vertex = (CAMERA_MATRIX * vec4(VERTEX, 1.0)).xyz;
+	
+	float world_value = dot(wrld_vertex, normalize(direction));
+	
+	float t = TIME * 1.0;
+	
+	ALBEDO = albedo.rgb;
+	float slow_grid_base = abs(sin(world_value * 25.0 - t));
+	float slow_grid_mask = inv(clamp_map_pow(slow_grid_base, .07, .3, 0.0, 1.0, .5));
+	float back_grid_base = sin(world_value * 5.0 -  1.9 * t);
+	float back_grid_mask = inv(clamp_map_pow(back_grid_base, -1.5, .7, 0.0, 1.0, .5)) * .4;
+	float fast_grid_base = sin(world_value * 2.0 -  3.2 * t);
+	float fast_grid_mask = inv(clamp_map_pow(fast_grid_base, -1.0, -.98, 0.0, 1.0, .3)) * .9;
+	ALPHA = max(.03, max(fast_grid_mask, max(slow_grid_mask, back_grid_mask)));
+}
+"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/albedo = Color( 0, 0.788235, 1, 1 )
+shader_param/direction = Vector3( 0, 1, 0 )
