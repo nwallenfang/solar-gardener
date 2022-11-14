@@ -40,6 +40,11 @@ _global_script_classes=[ {
 "path": "res://Objects/Planet.gd"
 }, {
 "base": "Spatial",
+"class": "PlanetLight",
+"language": "GDScript",
+"path": "res://Effects/PlanetLight.gd"
+}, {
+"base": "Spatial",
 "class": "Plant",
 "language": "GDScript",
 "path": "res://Plants/Plant.gd"
@@ -86,6 +91,7 @@ _global_script_class_icons={
 "ManagedSound": "res://Assets/Sprites/managed_sound.png",
 "Multitool": "",
 "Planet": "",
+"PlanetLight": "",
 "Plant": "",
 "PlantPreference": "",
 "PlantProfile": "",

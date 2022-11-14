@@ -9,9 +9,8 @@ func _ready() -> void:
 	else:
 		$WorldEnvironment.environment.background_energy = SKY_ENERGY_NATIVE
 	
-
-	Game.planet = $Planet  # this is the starting planet
-	Game.planet.set_player_is_on_planet(true)
+	Game.world = self
+	
 	PlantData.setup()
 	PlantData.add_test_progress()
 	Game.sun = $Sun
@@ -19,7 +18,12 @@ func _ready() -> void:
 		if c is Planet:
 			(c as Planet).setup()
 	
+	Game.planet = $Planet  # this is the starting planet
+	Game.planet.set_player_is_on_planet(true)
+	
 	start_loading()
+
+const INTRO_LENGTH_FACTOR = .2
 
 func start_loading():
 	yield(get_tree().create_timer(.3),"timeout")
@@ -30,7 +34,7 @@ func start_loading():
 		cam.current = true
 		if cam.has_node("Ubershader"):
 			cam.get_node("Ubershader").activate()
-		yield(get_tree().create_timer(.9),"timeout")
+		yield(get_tree().create_timer(.9 * INTRO_LENGTH_FACTOR),"timeout")
 		cam.current = false
 		cam.queue_free()
 		Game.UI.set_loading_bar(float(i)/len(loading_cams))
@@ -62,6 +66,7 @@ func start_intro_flight():
 	$IntroFlight/FlyCamera.current = true
 	$IntroFlight/Tween.interpolate_method(Game.UI, "set_blackscreen_alpha", 1.0, 0.0, 1.5, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 	$IntroFlight/Tween.start()
+	$IntroFlight/AnimationPlayer.playback_speed = 1.0 / INTRO_LENGTH_FACTOR
 	$IntroFlight/AnimationPlayer.play("fly")
 	yield($IntroFlight/AnimationPlayer, "animation_finished")
 	$IntroFlight/FlyCamera.current = false

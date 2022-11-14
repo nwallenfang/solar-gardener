@@ -17,7 +17,7 @@ export var rotation_axis: Vector3 = Vector3.UP
 export var y_rotation_speed = deg2rad(3.5)
 export var max_plants : int
 
-onready var planet_light := $PlanetLight
+var planet_light : PlanetLight
 
 var plant_list := []
 
@@ -38,21 +38,25 @@ func add_child_with_light(n: Node):
 	add_child(n)
 	configure_light(n)
 
+const PLANET_LIGHT = preload("res://Effects/PlanetLight.tscn")
 func setup():
 	var planet_id = Game.planet_list.size()
 	Game.planet_list.append(self)
-	planet_light.setup(planet_id)
+	planet_light = PLANET_LIGHT.instance()
+	Game.world.add_child(planet_light)
+	planet_light.setup(planet_id, self)
 	configure_light(self)
 
 func set_player_is_on_planet(b: bool):
 	player_on_planet = b
-	$PlanetHopArea.set_deferred("monitoring", not b)
-	$PlanetHopArea.set_deferred("monitorable", not b)
-	$PlanetHopArea/CollisionShape.disabled = b
+	$PlanetHopArea.set_deferred("monitoring", not player_on_planet)
+	$PlanetHopArea.set_deferred("monitorable", not player_on_planet)
+	$PlanetHopArea/CollisionShape.disabled = player_on_planet
+	planet_light.set_player_is_on_planet(player_on_planet)
 	for lod_item in lod_items:
 		lod_item = lod_item as Node
 		if lod_item.has_method("on_lod"):
-			lod_item.call_deferred("on_lod", not b)
+			lod_item.call_deferred("on_lod", not player_on_planet)
 
 func get_count_of_plant_type(plant_name: String) -> int:
 	var count := 0
