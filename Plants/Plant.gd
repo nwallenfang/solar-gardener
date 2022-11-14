@@ -142,13 +142,36 @@ func grow(delta, factor_sign):
 		growth_stage_progress = 0.0
 		play_growth_pop_animation(old_stage)
 		PlantData.growth_stage_reached(profile.name, growth_stage)
-		
+
+const GREEN_OVERLAY = preload("res://Assets/Materials/GreenAlphaOverlay.tres")
+const GROW_POP_PARTICLES = preload("res://Effects/GrowPopParticles.tscn")
 func play_growth_pop_animation(old_stage):
+	var old_meshes : Array = Utility.get_all_mesh_instance_children(model_array[old_stage])
+	var new_meshes : Array = Utility.get_all_mesh_instance_children(current_model)
+	for mi in old_meshes:
+		mi = mi as MeshInstance
+		mi.material_overlay = GREEN_OVERLAY.duplicate()
+		$GrowthAnimationTween.interpolate_property(mi.material_overlay, "albedo_color:a", 0.0, 1.0, .7,Tween.TRANS_QUAD,Tween.EASE_OUT)
+	$GrowthAnimationTween.start()
+	yield($GrowthAnimationTween,"tween_all_completed")
 	model_array[old_stage].visible = false
 	model_array[old_stage].scale = Vector3.ONE * DEFAULT_MODEL_SCALE
 	current_model.scale = Vector3.ONE * DEFAULT_MODEL_SCALE
 	current_model.visible = true
-	# TODO Animation
+	for mi in old_meshes:
+		mi = mi as MeshInstance
+		mi.material_overlay = null
+	for mi in new_meshes:
+		mi = mi as MeshInstance
+		mi.material_overlay = GREEN_OVERLAY.duplicate()
+		$GrowthAnimationTween.interpolate_property(mi.material_overlay, "albedo_color:a", 1.0, 0.0, 1.0,Tween.TRANS_QUAD,Tween.EASE_IN)
+	$GrowthAnimationTween.start()
+	var grow_pop_part := GROW_POP_PARTICLES.instance()
+	add_child(grow_pop_part)
+	yield($GrowthAnimationTween,"tween_all_completed")
+	for mi in new_meshes:
+		mi = mi as MeshInstance
+		mi.material_overlay = null
 
 func update_growth_visuals():
 	if growth_stage == 0:

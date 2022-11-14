@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Effects/DirtExplosion.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Effects/Ubershader.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Materials/Beam.tres" type="Material" id=3]
 [ext_resource path="res://Assets/Materials/SlingBand.tres" type="Material" id=4]
+[ext_resource path="res://Effects/GrowPopParticles.tscn" type="PackedScene" id=5]
 
 [sub_resource type="QuadMesh" id=1]
 
@@ -11,6 +12,7 @@
 script = ExtResource( 2 )
 
 [node name="DirtExplosion" parent="." instance=ExtResource( 1 )]
+script = null
 
 [node name="Particles" parent="DirtExplosion" index="0"]
 transform = Transform( 0.296284, 0, 0, 0, 0.296284, 0, 0, 0, 0.296284, 0, -0.173218, 0 )
@@ -26,5 +28,8 @@ mesh = SubResource( 1 )
 [node name="MeshInstance3" type="MeshInstance" parent="."]
 visible = false
 mesh = SubResource( 1 )
+
+[node name="GrowPopParticles" parent="." instance=ExtResource( 5 )]
+script = null
 
 [editable path="DirtExplosion"]

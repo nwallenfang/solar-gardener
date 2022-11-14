@@ -9,7 +9,7 @@ radius = 1.28112
 script = ExtResource( 1 )
 
 [node name="GrowthCooldown" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 2.5
 one_shot = true
 
 [node name="Area" type="Area" parent="."]
@@ -20,3 +20,5 @@ collision_mask = 0
 shape = SubResource( 1 )
 
 [node name="RemoveTween" type="Tween" parent="."]
+
+[node name="GrowthAnimationTween" type="Tween" parent="."]
