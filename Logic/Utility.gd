@@ -23,3 +23,13 @@ func get_basis_y_aligned_with_z(target_up: Vector3, old_look: Vector3) -> Basis:
 	basis = basis.rotated(Vector3.UP.cross(target_up).normalized(), Vector3.UP.angle_to(target_up))
 	var target_look := old_look.cross(-target_up).cross(target_up)
 	return Basis(-target_up.cross(target_look), target_up, -target_look).orthonormalized()
+
+# Function for getting the weights for lerping with more than 2 objects (usefull for things like transformas)
+func get_multi_lerp_weights(distribution: Array) -> Array:
+	var weights := []
+	var current_sum : float = distribution[0]
+	for i in range(1, len(distribution)):
+		var new_element : float = distribution[i]
+		current_sum += new_element
+		weights.append(new_element / current_sum)
+	return weights

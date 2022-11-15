@@ -21,7 +21,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 10 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0, 7.0 ]
+"values": [ 0.0, 8.0 ]
 }
 
 [node name="World" type="Spatial"]
@@ -86,15 +86,15 @@ transform = Transform( 0.980802, 0, 0.195005, 0, 1, 0, -0.195005, 0, 0.980802, 4
 far = 1000.0
 
 [node name="Camera3" type="Camera" parent="IntroFlight"]
-transform = Transform( 0.916837, -0.117392, -0.381613, 0, 0.955798, -0.294024, 0.399261, 0.269572, 0.876311, -34.3239, -16.8972, 93.2799 )
+transform = Transform( 0.916837, -0.117392, -0.381613, 0, 0.955798, -0.294024, 0.399261, 0.269572, 0.876311, -26.7323, -13.3136, 97.7882 )
 far = 1000.0
 
 [node name="Camera4" type="Camera" parent="IntroFlight"]
-transform = Transform( 0.647987, -0.165565, -0.743439, 0, 0.976088, -0.217377, 0.761651, 0.140857, 0.632492, 7.77933, 48.1681, 18.276 )
+transform = Transform( 0.753129, -0.165565, -0.636698, 0.0329293, 0.976088, -0.214868, 0.657048, 0.140857, 0.740572, 9.2304, 55.5193, 22.5081 )
 far = 1000.0
 
 [node name="Camera5" type="Camera" parent="IntroFlight"]
-transform = Transform( 0.959643, 0, 0.281219, 0, 1, 0, -0.281219, 0, 0.959643, 9.92107, 50.6062, -14.7563 )
+transform = Transform( 0.959644, 0, 0.281219, 0, 1, 0, -0.281219, 0, 0.959644, 11.8402, 54.0863, -13.0044 )
 
 [node name="Camera6" type="Camera" parent="IntroFlight"]
 transform = Transform( 0.461764, 0, 0.887003, 0, 1, 0, -0.887003, 0, 0.461764, -45.7271, 10.6026, -95.7689 )
@@ -103,6 +103,7 @@ transform = Transform( 0.461764, 0, 0.887003, 0, 1, 0, -0.887003, 0, 0.461764, -
 anims/fly = SubResource( 1 )
 
 [node name="FlyCamera" type="Camera" parent="IntroFlight"]
+unique_name_in_owner = true
 far = 1000.0
 
 [node name="Tween" type="Tween" parent="IntroFlight"]
