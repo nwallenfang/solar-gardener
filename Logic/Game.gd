@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 #			elif game_state == State.SETTINGS:
 #				# this is only the correct if you can only enter settings from ingame!!
 #				self.game_state = State.INGAME
-	if Input.is_action_just_pressed("open_journal"):
+	if Input.is_action_just_pressed("open_journal") and game_state == State.INGAME:
 		if game_state == State.INGAME:
 			self.game_state = State.JOURNAL
 		elif game_state == State.JOURNAL:
@@ -54,9 +54,6 @@ func _process(delta: float) -> void:
 	if OS.is_debug_build() and Input.is_action_just_pressed("make_pref_known"):
 		print("pref known")
 		UI.get_node("JournalUI").make_preference_known("A Seedling", PlantData.PREFERENCES["Hates Sun"])
-	if OS.is_debug_build() and Input.is_action_just_pressed("play_intro"):
-		print("play intro")
-		Dialog.play_intro()
 		
 	if OS.is_debug_build() and Input.is_action_just_pressed("unlock_all_tools"):
 		print("unlock all tools")

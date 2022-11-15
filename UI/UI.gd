@@ -1,9 +1,10 @@
 extends CanvasLayer
 class_name UI
 
+const DIAGNOSE_ON_WEB := true # set to true if diagnostics should show in web export
 func _ready() -> void:
 	Game.connect("changed_state", self, "changed_state")
-	if OS.is_debug_build():
+	if OS.is_debug_build() or DIAGNOSE_ON_WEB:
 		$Diagnostics.visible = true
 #	get_viewport().connect("size_changed", self, "root_viewport_size_changed")
 	
@@ -13,7 +14,6 @@ func _ready() -> void:
 #		Game.camera.set_screen_texture($ScreenViewport.get_texture())
 #	else:
 #		printerr("Can't set ScreenViewport texture since camera uninitialized.")
-
 
 func set_diagnostics(stuff):
 	$"%TransformDiagnostics".text = ""

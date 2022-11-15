@@ -17,8 +17,9 @@ onready var sprites = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$AnimationPlayer.play("CrosshairScanner")
-	Game.crosshair = self
+	if not Engine.editor_hint:
+		$AnimationPlayer.play("CrosshairScanner")
+		Game.crosshair = self
 
 
 func set_style(new_style: int):

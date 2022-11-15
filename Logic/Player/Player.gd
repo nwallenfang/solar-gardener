@@ -114,11 +114,10 @@ func orient_player_sphere(delta: float):
 		look_direction = look_direction.rotated(-turn_axis.normalized(), turn_angle)
 	look_direction = look_direction.rotated(target_up, -mouse_axis.x * mouse_sensitivity)
 	target_look = look_direction.cross(-target_up).cross(target_up)
-
+#	Game.UI.set_diagnostics(["mouse_axis", mouse_axis])
 	$Head.rotation.x = clamp($Head.rotation.x - mouse_axis.y * y_axis_factor * mouse_sensitivity, -y_limit, y_limit)
-
 	mouse_axis = Vector2() # Reset Mouse Input
-	Game.UI.set_diagnostics(["mouse_axis", mouse_axis])
+
 	transform.basis = Basis(-target_up.cross(target_look), target_up, -target_look)
 
 	transform = transform.orthonormalized()
@@ -151,13 +150,16 @@ func accelerate(old_velocity: Vector3, direction: Vector3, delta: float) -> Vect
 
 
 var mouse_axis := Vector2()
-
+#var previous_position := Vector2()
 # Called when there is an input event
 func _input(event: InputEvent) -> void:
 	# Mouse look (only if the mouse is captured).
-	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED and not event.is_echo():
+		# fix first frame
 		mouse_axis += event.relative
 #		camera_rotation()
+#		previous_position = event.position
+		get_tree().set_input_as_handled()
 
 
 	

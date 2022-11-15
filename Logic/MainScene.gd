@@ -42,8 +42,7 @@ func root_viewport_size_changed():
 	$ViewportContainer/Viewport.size = get_viewport().size * resolution_scaling_factor
 
 func _notification(what):
-#	if what == MainLoop.NOTIFICATION_WM_FOCUS_IN:
-#		print("focus in")
 	if what == MainLoop.NOTIFICATION_WM_FOCUS_OUT:
 		if OS.has_feature("HTML5"):
-			Game.game_state = Game.State.SETTINGS
+			if not Game.game_state == Game.State.INTRO_FLIGHT and not Game.game_state == Game.State.LOADING:
+				Game.game_state = Game.State.SETTINGS
