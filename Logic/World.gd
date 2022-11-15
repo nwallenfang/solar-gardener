@@ -25,7 +25,7 @@ func _ready() -> void:
 
 var INTRO_LENGTH_FACTOR = 3.0
 var TEST_LENGTH_FACTOR = 0.05
-const TEST_INTRO = true
+const TEST_INTRO = false
 func start_loading():
 	if OS.is_debug_build() and (not TEST_INTRO):
 		INTRO_LENGTH_FACTOR = TEST_LENGTH_FACTOR
@@ -63,7 +63,8 @@ func set_flight_offset(x: float):
 
 func start_intro_flight():
 	Game.set_game_state(Game.State.INTRO_FLIGHT)
-	Dialog.play_intro()
+	if (not OS.is_debug_build()) or TEST_INTRO:
+		Dialog.play_intro()
 	for i in range(7):
 		intro_cams.append(get_node("IntroFlight/Camera" + str(i)))
 	intro_cams.append(Game.camera)

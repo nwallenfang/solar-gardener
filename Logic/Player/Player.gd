@@ -118,7 +118,7 @@ func orient_player_sphere(delta: float):
 	$Head.rotation.x = clamp($Head.rotation.x - mouse_axis.y * y_axis_factor * mouse_sensitivity, -y_limit, y_limit)
 
 	mouse_axis = Vector2() # Reset Mouse Input
-
+	Game.UI.set_diagnostics(["mouse_axis", mouse_axis])
 	transform.basis = Basis(-target_up.cross(target_look), target_up, -target_look)
 
 	transform = transform.orthonormalized()
