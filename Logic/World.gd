@@ -23,11 +23,10 @@ func _ready() -> void:
 	
 	start_loading()
 
-var INTRO_LENGTH_FACTOR = 0.5
+var INTRO_LENGTH_FACTOR = 3.0
 var TEST_LENGTH_FACTOR = 0.05
 const TEST_INTRO = true
 func start_loading():
-
 	if OS.is_debug_build() and (not TEST_INTRO):
 		INTRO_LENGTH_FACTOR = TEST_LENGTH_FACTOR
 	yield(get_tree(),"idle_frame")
@@ -39,7 +38,7 @@ func start_loading():
 		cam.current = true
 		if cam.has_node("Ubershader"):
 			cam.get_node("Ubershader").activate()
-		yield(get_tree().create_timer(.4 * INTRO_LENGTH_FACTOR),"timeout")
+		yield(get_tree().create_timer(.2),"timeout")
 		cam.current = false
 		cam.queue_free()
 		Game.UI.set_loading_bar(float(i)/len(loading_cams))
@@ -64,6 +63,7 @@ func set_flight_offset(x: float):
 
 func start_intro_flight():
 	Game.set_game_state(Game.State.INTRO_FLIGHT)
+	Dialog.play_intro()
 	for i in range(7):
 		intro_cams.append(get_node("IntroFlight/Camera" + str(i)))
 	intro_cams.append(Game.camera)

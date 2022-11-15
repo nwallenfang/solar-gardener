@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 1 )
-text = "Back then I was told to make this into the most cliché place ever, greener pastures, all that stuff."
+text = "Watch out for the landing!"
 audio = ExtResource( 2 )
 level_db = 6.0
-extra_duration = 3.0
+extra_duration = 1.0

@@ -1,24 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Logic/Dialog.gd" type="Script" id=1]
-[ext_resource path="res://UI/Dialog/DialogLineDummy.tres" type="Resource" id=2]
-[ext_resource path="res://UI/Dialog/line1.ogg" type="AudioStream" id=3]
-[ext_resource path="res://UI/Dialog/DialogLine.gd" type="Script" id=4]
-
-[sub_resource type="Resource" id=1]
-script = ExtResource( 4 )
-text = "Second line's the charm lel"
-audio = ExtResource( 3 )
-level_db = -1.0
-extra_duration = 1.0
+[ext_resource path="res://UI/Dialog/IntroLine5.tres" type="Resource" id=2]
+[ext_resource path="res://UI/Dialog/IntroLine3.tres" type="Resource" id=3]
+[ext_resource path="res://UI/Dialog/IntroLine4.tres" type="Resource" id=4]
+[ext_resource path="res://UI/Dialog/IntroLine2.tres" type="Resource" id=5]
+[ext_resource path="res://UI/Dialog/IntroLine1.tres" type="Resource" id=6]
+[ext_resource path="res://UI/Dialog/IntroLine6.tres" type="Resource" id=7]
 
 [node name="Dialog" type="Node"]
 script = ExtResource( 1 )
-lines = [ ExtResource( 2 ), SubResource( 1 ) ]
-
-[node name="IntroMessages" type="Node" parent="."]
-
-[node name="Node" type="Node" parent="IntroMessages"]
+lines = [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 7 ) ]
 
 [node name="VoicedLinesPlayer" type="AudioStreamPlayer" parent="."]
 bus = "SFX"

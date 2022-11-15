@@ -82,14 +82,15 @@ func set_loading_bar(progress_in_percent: float): #Optional
 	$"%LoadingLabel".text = "Loading " + str(progress_in_percent*100.0) + "%"
 
 func show_line(text: String, duration: float, another_one_coming:=false):
-	$SubtitleUI.visible = true
+	$DialogUI.visible = true
 	# TODO play show animation
 	$"%SubtitleText".text = text
 	# TODO play hide animation
 	# TODO if another one is coming up the text shouldn't fade out completely
 	# or smth
-	yield(get_tree().create_timer(duration), "timeout")
-	$SubtitleUI.visible = false
+	if not another_one_coming:
+		yield(get_tree().create_timer(duration), "timeout")
+		$DialogUI.visible = false
 	
 	
 func show_tutorial_message(title: String, text: String):

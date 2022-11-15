@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/VOX_Robot_DrillRobot_01.ogg-621866355da2e2bd582c4c3b96f2ab78.oggstr"
+
+[deps]
+
+source_file="res://Assets/Placeholder/VOX_Robot_DrillRobot_01.ogg"
+dest_files=[ "res://.import/VOX_Robot_DrillRobot_01.ogg-621866355da2e2bd582c4c3b96f2ab78.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
