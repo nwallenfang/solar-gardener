@@ -24,6 +24,7 @@ var visuals_every = 5
 var counter = 0
 func _on_FPSUpdateTimer_timeout() -> void:
 	var fps = Engine.get_frames_per_second()
+	$FPS2.text = "FPS: %.0f" % fps
 #	if fps_history.empty():
 #		var start_history = 
 #		fps_history.append_array()
