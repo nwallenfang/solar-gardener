@@ -41,9 +41,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48.764, 0, -98.0153 )
 
 [node name="Planet2" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 128.235, 0, 0.981232 )
+visible = false
 
 [node name="Planet3" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.2732, 63.2236, -0.0944443 )
+visible = false
 
 [node name="Sun" parent="." instance=ExtResource( 2 )]
 transform = Transform( 2.03594, 0, 0, 0, 2.03594, 0, 0, 0, 2.03594, 0, 0, 0 )

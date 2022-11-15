@@ -91,17 +91,17 @@ func switch_away_from_tool(old_tool: int):
 	match old_tool:
 		TOOL.GROW:
 			Game.player_raycast.set_collision_mask_bit(5, false)
-			$Model/Grow.visible = false
+			#$Model/Grow.visible = false
 		TOOL.PLANT:
 			Game.player_raycast.set_collision_mask_bit(0, false)
 			if is_instance_valid(fake_seed):
 				fake_seed.queue_free()
 		TOOL.MOVE:
 			Game.player_raycast.set_collision_mask_bit(4, false)
-			$Model/Move.visible = false
+			#$Model/Move.visible = false
 		TOOL.ANALYSIS:
 			Game.player_raycast.set_collision_mask_bit(2, false)
-			$Model/Analysis.visible = false
+			#$Model/Analysis.visible = false
 		TOOL.HOPPER:
 			show_hopable(false)
 
@@ -132,13 +132,13 @@ func switch_to_tool(new_tool: int):
 				seeds_empty = true
 		TOOL.MOVE:
 			Game.player_raycast.set_collision_mask_bit(4, true)
-			$Model/Move.visible = true
+			#$Model/Move.visible = true
 		TOOL.ANALYSIS:
 			Game.player_raycast.set_collision_mask_bit(2, true)
-			$Model/Analysis.visible = true
+			#$Model/Analysis.visible = true
 		TOOL.GROW:
 			Game.player_raycast.set_collision_mask_bit(5, true)
-			$Model/Grow.visible = true
+			#$Model/Grow.visible = true
 		TOOL.HOPPER:
 			show_hopable(true)
 

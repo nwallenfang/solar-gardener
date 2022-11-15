@@ -17,6 +17,9 @@ script = ExtResource( 3 )
 
 [node name="ObjectUI" parent="." instance=ExtResource( 1 )]
 
+[node name="Multitool" parent="ObjectUI" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.157, -0.152, -0.221 )
+
 [node name="PlayerRayCast" parent="." instance=ExtResource( 2 )]
 
 [node name="UIScreen" type="Spatial" parent="."]
@@ -26,3 +29,5 @@ visible = false
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.962863 )
 mesh = SubResource( 1 )
 material/0 = SubResource( 3 )
+
+[editable path="ObjectUI"]

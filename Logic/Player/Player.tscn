@@ -37,7 +37,7 @@ material/0 = SubResource( 4 )
 
 [node name="Head" type="Spatial" parent="."]
 physics_interpolation_mode = 2
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50645, -0.656005 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50645, -0.330168 )
 
 [node name="PlayerCamera" parent="Head" instance=ExtResource( 2 )]
 far = 600.0
