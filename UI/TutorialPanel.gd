@@ -1,5 +1,7 @@
 extends Control
 
+const tutorial_panel_default_anchors = [0.691, 0.025, 0.967, 0.296]
+
 func _ready():
 	$Panel.visible = false
 

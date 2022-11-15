@@ -1,3 +1,4 @@
 [2022-11-08 14:12:35, 'b9068e7'], main_world, info: nils test, fps: 3091.72
 [2022-11-08 14:16:01, 'b9068e7'], main_world, info: Nils 2 planets, 20 plants total, fps: 1495.16
 [2022-11-15 15:21:14, 'c5d5ad3'], main_world, info: nils with shed, fps: 1265.38
+[2022-11-15 17:10:38, '7a59685'], main_world, info: 2 sheds visible 720p unoptimized, fps: 815.34
