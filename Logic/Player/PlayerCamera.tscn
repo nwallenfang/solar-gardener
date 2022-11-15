@@ -18,7 +18,7 @@ script = ExtResource( 3 )
 [node name="ObjectUI" parent="." instance=ExtResource( 1 )]
 
 [node name="Multitool" parent="ObjectUI" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.157, -0.152, -0.221 )
+transform = Transform( 1.79353, -0.0406614, 0.197312, -0.0286353, 1.69827, 0.610262, -0.199413, -0.609578, 1.68701, 0.241, -0.202, -0.249 )
 
 [node name="PlayerRayCast" parent="." instance=ExtResource( 2 )]
 
