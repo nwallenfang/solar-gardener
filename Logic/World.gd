@@ -46,6 +46,14 @@ func start_loading():
 	yield(get_tree().create_timer(.3), "timeout")
 	start_intro_flight()
 
+func get_four_percent_values(offset: float) -> Array:
+	var values := [0.0, 0.25, 0.25, 0.0]
+	values[0] += lerp(.25, .0, offset)
+	values[1] += lerp(.25, .0, offset)
+	values[2] += lerp(.0, .25, offset)
+	values[3] += lerp(.0, .25, offset)
+	return values
+
 var intro_cams := []
 export var intro_flight_offset : float setget set_flight_offset
 func set_flight_offset(x: float):
@@ -58,30 +66,45 @@ func set_flight_offset(x: float):
 			$IntroFlight/FlyCamera.global_transform = cam_a.global_transform
 		else:
 			var cam_b : Camera = intro_cams[index + 1]
-			
-			$IntroFlight/FlyCamera.global_transform = cam_a.global_transform.interpolate_with(cam_b.global_transform, progress)
+			var cam_0 : Camera = cam_a
+			if index - 1 >= 0:
+				cam_0 = intro_cams[index - 1]
+			var cam_1 : Camera = cam_b
+			if index + 2 < len(intro_cams):
+				cam_1 = intro_cams[index + 2]
+			#$IntroFlight/FlyCamera.global_transform = cam_a.global_transform.interpolate_with(cam_b.global_transform, progress)
+			var lerp_weights : Array = Utility.get_multi_lerp_weights(get_four_percent_values(progress))
+			var target_transform : Transform = cam_0.global_transform.interpolate_with(cam_a.global_transform, lerp_weights[0])
+			target_transform = target_transform.interpolate_with(cam_b.global_transform, lerp_weights[1])
+			target_transform = target_transform.interpolate_with(cam_1.global_transform, lerp_weights[2])
+			$IntroFlight/FlyCamera.global_transform = target_transform
 
 func start_intro_flight():
 	Game.set_game_state(Game.State.INTRO_FLIGHT)
 	if (not OS.is_debug_build()) or TEST_INTRO:
 		Dialog.play_intro()
+	
+	Game.multitool.visible = false
+	
 	for i in range(7):
 		intro_cams.append(get_node("IntroFlight/Camera" + str(i)))
 	intro_cams.append(Game.camera)
+	intro_cams.append(Game.camera)
 	
-	$IntroFlight/FlyCamera.current = true
+	$"%FlyCamera".current = true
 	$IntroFlight/Tween.interpolate_method(Game.UI, "set_blackscreen_alpha", 1.0, 0.0, 1.5, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 	$IntroFlight/Tween.start()
 	$IntroFlight/AnimationPlayer.playback_speed = 1.0 / INTRO_LENGTH_FACTOR
 	$IntroFlight/AnimationPlayer.play("fly")
 	yield($IntroFlight/AnimationPlayer, "animation_finished")
 	Game.UI.get_node("BlackScreen").visible = false
-	$IntroFlight/FlyCamera.current = false
+	$"%FlyCamera".current = false
 	Game.camera.current = true
 	
 	yield(get_tree().create_timer(1),"timeout")
 	Game.player.update_look_direction()
 	Game.set_game_state(Game.State.INGAME)
+	Game.multitool.visible = true
 
 	yield(get_tree().create_timer(2.0), "timeout")
 	Events.tutorial_beginning()
