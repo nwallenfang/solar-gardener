@@ -64,7 +64,7 @@ func setup():
 # TRIGGER FUNCTIONS
 ###########
 
-# doesn't get called from an event, but in the beginning
+# doesn't get called from an event, but in the beginning from MainScene
 func tutorial_beginning():
 	# show amber tutorial box
 	Game.UI.show_tutorial_message("Find Amber", "Scan an Amber relict to find a new plant.")

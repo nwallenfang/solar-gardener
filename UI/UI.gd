@@ -74,11 +74,12 @@ func changed_state(state, prev_state):
 func set_note_text(text: String):
 	$GardenerNote.set_text(text)
 
+
 func set_blackscreen_alpha(alpha_in_percent: float): #should start with .99 alpha
-	pass
+	$BlackScreen.modulate.a = alpha_in_percent
 
 func set_loading_bar(progress_in_percent: float): #Optional
-	pass
+	$"%LoadingLabel".text = "Loading " + str(progress_in_percent*100.0) + "%"
 
 func show_line(text: String, duration: float, another_one_coming:=false):
 	$SubtitleUI.visible = true
@@ -93,7 +94,9 @@ func show_line(text: String, duration: float, another_one_coming:=false):
 	
 func show_tutorial_message(title: String, text: String):
 	# TODO fade in
-	$TutorialPanel.visible = true
+	if Game.game_state == Game.State.INGAME:  
+		# if not INGAME it will be set visible from changed_state
+		$TutorialPanel.visible = true
 	$TutorialPanel.show_tutorial_message(title, text)
 	# TODO fade out when the goal is reached
 #	$TutorialPanel.visible = false

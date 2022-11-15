@@ -23,10 +23,15 @@ func _ready() -> void:
 	
 	start_loading()
 
-const INTRO_LENGTH_FACTOR = .2
-
+var INTRO_LENGTH_FACTOR = 0.5
+var TEST_LENGTH_FACTOR = 0.05
+const TEST_INTRO = true
 func start_loading():
-	yield(get_tree().create_timer(.3),"timeout")
+
+	if OS.is_debug_build() and (not TEST_INTRO):
+		INTRO_LENGTH_FACTOR = TEST_LENGTH_FACTOR
+	yield(get_tree(),"idle_frame")
+	Game.UI.get_node("BlackScreen").visible = true
 	Game.camera.current = false
 	var loading_cams :Array = $LoadingCams.get_children()
 	for i in range(len(loading_cams)):
@@ -34,7 +39,7 @@ func start_loading():
 		cam.current = true
 		if cam.has_node("Ubershader"):
 			cam.get_node("Ubershader").activate()
-		yield(get_tree().create_timer(.9 * INTRO_LENGTH_FACTOR),"timeout")
+		yield(get_tree().create_timer(.4 * INTRO_LENGTH_FACTOR),"timeout")
 		cam.current = false
 		cam.queue_free()
 		Game.UI.set_loading_bar(float(i)/len(loading_cams))
@@ -69,6 +74,7 @@ func start_intro_flight():
 	$IntroFlight/AnimationPlayer.playback_speed = 1.0 / INTRO_LENGTH_FACTOR
 	$IntroFlight/AnimationPlayer.play("fly")
 	yield($IntroFlight/AnimationPlayer, "animation_finished")
+	Game.UI.get_node("BlackScreen").visible = false
 	$IntroFlight/FlyCamera.current = false
 	Game.camera.current = true
 	

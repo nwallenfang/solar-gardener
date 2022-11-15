@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://UI/UI.gd" type="Script" id=1]
 [ext_resource path="res://UI/SettingsUI.tscn" type="PackedScene" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://UI/Toolbar.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/Fonts/HotkeyGuide.tres" type="DynamicFont" id=9]
 [ext_resource path="res://UI/GardenerNote.tscn" type="PackedScene" id=10]
-[ext_resource path="res://UI/TutorialPanel.gd" type="Script" id=11]
 [ext_resource path="res://Assets/Fonts/TutorialTitleFont.tres" type="DynamicFont" id=12]
 [ext_resource path="res://UI/TutorialPanel.tscn" type="PackedScene" id=13]
 
@@ -129,7 +128,6 @@ anchor_right = 0.95
 anchor_bottom = 0.838
 margin_top = -14.28
 margin_bottom = -14.28
-script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -155,5 +153,26 @@ autowrap = true
 
 [node name="GardenerNote" parent="." instance=ExtResource( 10 )]
 visible = false
+
+[node name="BlackScreen" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="BlackScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="LoadingLabel" type="Label" parent="BlackScreen/CenterContainer"]
+unique_name_in_owner = true
+margin_left = 580.0
+margin_top = 331.0
+margin_right = 699.0
+margin_bottom = 389.0
+custom_fonts/font = ExtResource( 5 )
+text = "Loading.."
+align = 1
+valign = 1
 
 [connection signal="timeout" from="Diagnostics/FPSUpdateTimer" to="Diagnostics" method="_on_FPSUpdateTimer_timeout"]
