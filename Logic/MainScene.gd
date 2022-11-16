@@ -6,7 +6,6 @@ var resolution_scaling_factor = 1.0
 
 func _input(event: InputEvent) -> void:
 	if Game.game_state == Game.State.INGAME and event is InputEventMouseButton:
-		print("CAPTURE")
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 #func game_did_something(a, b):

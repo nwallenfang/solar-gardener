@@ -122,6 +122,7 @@ func check_conditions():
 		growth_lock = PlantData.GROWTH_STAGES.STAGE_2
 	elif growth_points >= profile.points_for_stage_1:
 		growth_lock = PlantData.GROWTH_STAGES.STAGE_1
+		Events.trigger("tutorial_plant_reached_stage1")
 	else:
 		growth_lock = PlantData.GROWTH_STAGES.SEED
 
@@ -199,3 +200,7 @@ func on_remove():
 	pickup.start_flying()
 	yield($RemoveTween, "tween_all_completed")
 	queue_free()
+
+func on_analyse():
+	Events.trigger("tutorial_plant_scanned")
+

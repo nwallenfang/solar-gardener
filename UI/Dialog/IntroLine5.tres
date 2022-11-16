@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 1 )
-text = "Enough of my rambling, you should reach the base anytime now!"
+text = "By my calculations you should reach the base anytime now!"
 audio = ExtResource( 2 )
 level_db = 6.0
 extra_duration = 3.0

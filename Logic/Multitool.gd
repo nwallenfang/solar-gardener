@@ -1,7 +1,7 @@
 extends Spatial
 class_name Multitool
 
-enum TOOL {NONE, PLANT, GROW, ANALYSIS, MOVE, BUILD, HOPPER}
+enum TOOL {NONE, ANALYSIS, PLANT, GROW, MOVE, BUILD, HOPPER}
 var current_tool := 0
 var tool_unlocked = {
 	TOOL.NONE: true,
@@ -10,8 +10,14 @@ var tool_unlocked = {
 	TOOL.ANALYSIS: true,
 	TOOL.BUILD: false,
 	TOOL.MOVE:false,
-	TOOL.HOPPER:true,
+	TOOL.HOPPER:false,
 	TOOL.BUILD:false,
+}
+const tooltips := {
+	TOOL.PLANT: ["Click", "Plant a seed"],
+	TOOL.ANALYSIS: ["Click", "Scan object"],
+	TOOL.GROW: ["Click", "Speed up growth"],
+	TOOL.HOPPER: ["Click", "Hop to planet"],
 }
 
 # Preloads
@@ -63,11 +69,11 @@ func _physics_process(delta):
 		if $Cooldown.time_left == 0.0:
 			check_on_hover()
 			if Input.is_action_just_pressed("tool1"):
-				switch_to_tool(TOOL.PLANT)
+				switch_to_tool(TOOL.ANALYSIS)	
 			if Input.is_action_just_pressed("tool2"):
-				switch_to_tool(TOOL.GROW)
+				switch_to_tool(TOOL.PLANT)
 			if Input.is_action_just_pressed("tool3"):
-				switch_to_tool(TOOL.ANALYSIS)
+				switch_to_tool(TOOL.GROW)
 			if Input.is_action_just_pressed("tool4"):
 				switch_to_tool(TOOL.MOVE)
 			if Input.is_action_just_pressed("first_action"):
@@ -109,6 +115,7 @@ func activate_tool(activated_tool: int):
 	Game.UI.get_node("Toolbar").activate_tool(activated_tool)
 	tool_unlocked[activated_tool] = true
 
+signal switched_to(new_tool)
 func switch_to_tool(new_tool: int):
 	# return immediately if tool isnt activated
 	if not tool_unlocked[new_tool]:
@@ -118,7 +125,8 @@ func switch_to_tool(new_tool: int):
 		return
 	switch_away_from_tool(current_tool)
 	current_tool = new_tool
-	Game.UI.get_node("Toolbar").switch_to(new_tool)
+	emit_signal("switched_to", new_tool)
+
 	match current_tool:
 		TOOL.PLANT:
 			Game.player_raycast.set_collision_mask_bit(0, true)
@@ -311,6 +319,7 @@ func spawn_plant(pos: Vector3):
 	Game.planet.add_to_lod_list(pile)
 	pile.global_translation = pos
 	pile.global_transform.basis = Utility.get_basis_y_aligned(Game.planet.global_translation.direction_to(pos))
+	Events.trigger("tutorial_seed_planted")
 
 func show_analyse_information():
 	#Game.UI.set_diagnostics(["Analysing Object", current_analyse_object, "Analyse Progress", current_analyse_progress * 100.0])

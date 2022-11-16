@@ -78,7 +78,18 @@ anchor_bottom = 1.0
 margin_right = 45.0
 alignment = 2
 
-[node name="Label2" type="Label" parent="HotkeyGuide/Controls"]
+[node name="MultitoolC" type="Label" parent="HotkeyGuide/Controls"]
+unique_name_in_owner = true
+visible = false
+margin_top = 46.0
+margin_right = 108.0
+margin_bottom = 71.0
+grow_horizontal = 0
+grow_vertical = 0
+custom_fonts/font = ExtResource( 9 )
+text = "Journal"
+
+[node name="JournalC" type="Label" parent="HotkeyGuide/Controls"]
 margin_top = 75.0
 margin_right = 108.0
 margin_bottom = 100.0
@@ -103,19 +114,28 @@ anchor_bottom = 1.0
 margin_left = -45.0
 alignment = 2
 
-[node name="Label3" type="Label" parent="HotkeyGuide/Actions"]
-margin_top = 75.0
+[node name="MultitoolA" type="Label" parent="HotkeyGuide/Actions"]
+unique_name_in_owner = true
+visible = false
+margin_top = 46.0
 margin_right = 49.0
+margin_bottom = 71.0
+custom_fonts/font = ExtResource( 9 )
+text = "TAB"
+
+[node name="JournalA" type="Label" parent="HotkeyGuide/Actions"]
+margin_top = 75.0
+margin_right = 99.0
 margin_bottom = 100.0
 custom_fonts/font = ExtResource( 9 )
 text = "TAB"
 
-[node name="Settings" type="Label" parent="HotkeyGuide/Actions"]
+[node name="SettingsA" type="Label" parent="HotkeyGuide/Actions"]
 margin_top = 104.0
-margin_right = 49.0
+margin_right = 99.0
 margin_bottom = 129.0
 custom_fonts/font = ExtResource( 9 )
-text = "F1"
+text = "F1 or P"
 
 [node name="TutorialPanel" parent="." instance=ExtResource( 13 )]
 anchor_left = 0.691

@@ -46,7 +46,7 @@ func execute_event(key: String):
 
 func next():
 	if event_queue.size() > 0:
-		events.pop_front()
+		event_queue.pop_front()
 	if not event_queue.empty():
 		execute_event(event_queue[0])
 
@@ -59,6 +59,8 @@ func setup():
 	# just once: amber_collected_tutorial
 	events.append(Event.new("tutorial_seed_planted", self, "tutorial_seed_planted", true))
 	events.append(Event.new("tutorial_amber_collected", self, "tutorial_amber_collected", true))
+	events.append(Event.new("tutorial_plant_reached_stage1", self, "tutorial_plant_reached_stage1", true))
+	events.append(Event.new("tutorial_plant_scanned", self, "tutorial_plant_scanned", true))
 
 ###########
 # TRIGGER FUNCTIONS
@@ -67,17 +69,36 @@ func setup():
 # doesn't get called from an event, but in the beginning from MainScene
 func tutorial_beginning():
 	# show amber tutorial box
-	Game.UI.show_tutorial_message("Find Amber", "Scan an Amber relict to find a new plant.")
+	Game.UI.add_tutorial_message("Scan Amber", "Scan an Amber relict to find a new seed.")
 
 # Tutorials:
 func tutorial_amber_collected():
 	# unlock next tool 
 	# show next tutorial box
 	Game.multitool.activate_tool(Game.multitool.TOOL.PLANT)
-	Game.multitool.activate_tool(Game.multitool.TOOL.GROW)
-	Game.UI.show_tutorial_message("Plant Seed", "(Stuff after this not implemented yet.)")
+	Game.UI.add_tutorial_message("Plant Seed", "Use the planting tool by clicking on the soil.")
+	next()
 
 func tutorial_seed_planted():
 	# unlock next tool 
-	# show next tutorial box
+	Game.UI.add_tutorial_message("Speed up growth", "Use the growth tool to speed up growing.")
+	Game.multitool.activate_tool(Game.multitool.TOOL.GROW)
+	next()
+
+func tutorial_plant_reached_stage1():
+	Game.UI.add_tutorial_message("Scan plants", "Scan a plant to unlock information on its type.")
+	next()
+
+func tutorial_plant_scanned():
+	Game.UI.add_tutorial_message("Look at journal", "Next one, let's go.")
+	# TODO unlock journal
+	next()
+
+func tutorial_growth_reached():
 	pass
+	next()
+	
+	
+func tutorial_completed():
+	Game.multitool.activate_tool(Game.multitool.TOOL.HOPPER)
+	next()

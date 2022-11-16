@@ -4,6 +4,7 @@ class_name UI
 const DIAGNOSE_ON_WEB := true # set to true if diagnostics should show in web export
 func _ready() -> void:
 	Game.connect("changed_state", self, "changed_state")
+	Game.multitool.connect("switched_to", self, "switched_to_tool")
 	if OS.is_debug_build() or DIAGNOSE_ON_WEB:
 		$Diagnostics.visible = true
 #	get_viewport().connect("size_changed", self, "root_viewport_size_changed")
@@ -20,6 +21,17 @@ func set_diagnostics(stuff):
 	for line in stuff:
 		$"%TransformDiagnostics".text += str(line) + "\n"
 
+func switched_to_tool(new_tool: int):
+	$Toolbar.switch_to(new_tool)
+	if new_tool in Game.multitool.tooltips:
+		var tooltip = Game.multitool.tooltips[new_tool]
+		$"%MultitoolA".text = tooltip[0]
+		$"%MultitoolC".text = tooltip[1]
+		$"%MultitoolC".visible = true
+		$"%MultitoolA".visible = true
+	else:
+		$"%MultitoolC".visible = false
+		$"%MultitoolA".visible = false
 
 func changed_state(state, prev_state):
 	match state:
@@ -92,12 +104,28 @@ func show_line(text: String, duration: float, another_one_coming:=false):
 		yield(get_tree().create_timer(duration), "timeout")
 		$DialogUI.visible = false
 	
-	
-func show_tutorial_message(title: String, text: String):
+var showing_right_now = false
+var tutorial_queue = []
+func show_next_message():
+	showing_right_now = true
+	var msg = tutorial_queue.pop_front()
 	# TODO fade in
-	if Game.game_state == Game.State.INGAME:  
-		# if not INGAME it will be set visible from changed_state
-		$TutorialPanel.visible = true
-	$TutorialPanel.show_tutorial_message(title, text)
-	# TODO fade out when the goal is reached
-#	$TutorialPanel.visible = false
+#	if Game.game_state == Game.State.INGAME:  
+#		# if not INGAME it will be set visible from changed_state
+#		$TutorialPanel.visible = true
+	$TutorialPanel.show_tutorial_message(msg["title"], msg["text"])
+
+	yield(get_tree().create_timer(msg["duration"]), "timeout")
+	
+	# TODO fade out 
+	if tutorial_queue.empty():
+		$TutorialPanel.hide_message()
+		showing_right_now = false
+	else:
+		show_next_message()
+		
+func add_tutorial_message(title: String, text: String, duration:=5.5):
+	var msg = {"title":title, "text":text, "duration":duration}
+	tutorial_queue.append(msg)
+	if not showing_right_now:
+		show_next_message()
