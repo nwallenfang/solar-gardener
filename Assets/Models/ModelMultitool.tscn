@@ -1,10 +1,12 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Assets/GLTF/MultitoolDarkShiny.material" type="Material" id=1]
 [ext_resource path="res://Assets/GLTF/MultitoolBrown.material" type="Material" id=2]
 [ext_resource path="res://Assets/GLTF/MultitoolMetal.material" type="Material" id=3]
 [ext_resource path="res://Assets/GLTF/MultitoolCrystal.material" type="Material" id=4]
 [ext_resource path="res://Assets/GLTF/MultitoolBrownDoor.material" type="Material" id=5]
+[ext_resource path="res://Assets/Models/ModelMultitool.gd" type="Script" id=6]
+[ext_resource path="res://Effects/HopperRings.tscn" type="PackedScene" id=7]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Multitool_Cylinder002"
@@ -201,7 +203,55 @@ surfaces/1 = {
 "vertex_count": 48
 }
 
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Antenna:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0.693833 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "off"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Antenna:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0.693833 ), Vector3( 0, 0, 0.193833 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "on"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Antenna:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0.193833 ), Vector3( 0, 0, 0.693833 ) ]
+}
+
 [node name="ModelMultitool" type="Spatial"]
+script = ExtResource( 6 )
 
 [node name="Base" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0 )
@@ -254,3 +304,11 @@ mesh = SubResource( 8 )
 [node name="Arm3" type="MeshInstance" parent="ArmBase3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0991108, 0 )
 mesh = SubResource( 9 )
+
+[node name="HopperRings" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.106309, 0, 0, 0, -9.40693e-09, -0.106309, 0, 0.557079, -1.20289e-08, 0, 0, 0.713598 )
+
+[node name="HopperPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 10 )
+anims/off = SubResource( 11 )
+anims/on = SubResource( 12 )

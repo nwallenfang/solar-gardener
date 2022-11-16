@@ -110,6 +110,8 @@ func switch_away_from_tool(old_tool: int):
 			#$Model/Analysis.visible = false
 		TOOL.HOPPER:
 			show_hopable(false)
+			$ModelMultitool.set_hopper(false)
+			
 
 func activate_tool(activated_tool: int):
 	Game.UI.get_node("Toolbar").activate_tool(activated_tool)
@@ -149,6 +151,7 @@ func switch_to_tool(new_tool: int):
 			#$Model/Grow.visible = true
 		TOOL.HOPPER:
 			show_hopable(true)
+			$ModelMultitool.set_hopper(true)
 
 func idle_process(delta: float):
 	growth_juice = min(1.0, growth_juice + JUICE_GAIN * delta)

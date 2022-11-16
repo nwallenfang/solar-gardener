@@ -32,9 +32,7 @@ transform = Transform( -0.211706, -0.0414277, -2.88782e-08, -0.0367284, 0.187692
 
 [node name="DisplayLabel" type="Label3D" parent="."]
 unique_name_in_owner = true
-transform = Transform( 0.123691, 0, 0, 0, 0.0536046, 0.111472, 0, -0.111472, 0.0536046, 0, 0.0587635, -0.0022788 )
-text = "
-"
+transform = Transform( 0.119351, 0.0134094, -0.0295786, 0, 0.112655, 0.0510718, 0.0324763, -0.04928, 0.108702, -0.00671695, 0.0627408, -0.0122209 )
 
 [node name="ModelPrototype" type="Spatial" parent="."]
 visible = false
