@@ -1,4 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Materials/StarBillboard.tres" type="Material" id=1]
 
 [sub_resource type="Curve" id=1]
 bake_resolution = 200
@@ -18,16 +20,11 @@ scale = 2.0
 scale_random = 0.5
 scale_curve = SubResource( 2 )
 
-[sub_resource type="SpatialMaterial" id=4]
-flags_unshaded = true
-flags_do_not_receive_shadows = true
+[sub_resource type="QuadMesh" id=4]
+material = ExtResource( 1 )
 
-[sub_resource type="SphereMesh" id=5]
-material = SubResource( 4 )
-radius = 0.5
-height = 1.0
-radial_segments = 8
-rings = 6
+[sub_resource type="QuadMesh" id=5]
+material = ExtResource( 1 )
 
 [node name="Stars" type="Spatial"]
 
@@ -38,7 +35,7 @@ lifetime = 30.0
 preprocess = 10.0
 visibility_aabb = AABB( -200.406, -198.688, -200.13, 400.464, 398.298, 400.254 )
 process_material = SubResource( 3 )
-draw_pass_1 = SubResource( 5 )
+draw_pass_1 = SubResource( 4 )
 
 [node name="Particles2" type="Particles" parent="."]
 transform = Transform( 2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0, 0 )
