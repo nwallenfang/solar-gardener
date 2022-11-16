@@ -51,16 +51,23 @@ func setup():
 	is_setup = true
 
 func _physics_process(delta):
-	growth_process(delta)
+	growth_process(delta)  # TODO run more like once a second and not 50 times a second
+	# also give the checking rhythm a random offset for every plant so they don't all get
+	# checked in the same frame
 
 func growth_beam_possible() -> bool:
 	return $GrowthCooldown.time_left == 0.0
 
+var growth_locked_once = false
 func growth_process(delta):
 	if growth_stage == growth_lock:
 		check_conditions()
 	if growth_stage != growth_lock and $GrowthCooldown.time_left == 0.0:
 		grow(delta, sign(growth_lock - growth_stage))
+		
+	if (not growth_locked_once) and growth_stage == growth_lock:
+		Events.trigger("tutorial_growth_reached")
+		growth_locked_once = true
 
 func calculate_growth_points():
 	var points := 0
@@ -122,7 +129,6 @@ func check_conditions():
 		growth_lock = PlantData.GROWTH_STAGES.STAGE_2
 	elif growth_points >= profile.points_for_stage_1:
 		growth_lock = PlantData.GROWTH_STAGES.STAGE_1
-		Events.trigger("tutorial_plant_reached_stage1")
 	else:
 		growth_lock = PlantData.GROWTH_STAGES.SEED
 
@@ -142,6 +148,7 @@ func grow(delta, factor_sign):
 		current_model = model_array[growth_stage]
 		growth_stage_progress = 0.0
 		play_growth_pop_animation(old_stage)
+		Events.trigger("tutorial_plant_reached_stage1")
 		PlantData.growth_stage_reached(profile.name, growth_stage)
 
 const GREEN_OVERLAY = preload("res://Assets/Materials/GreenAlphaOverlay.tres")

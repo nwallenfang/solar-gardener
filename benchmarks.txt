@@ -4,3 +4,5 @@
 [2022-11-15 17:23:47, git-error], main_world, info: shedmitlicht, fps: 2097.24
 [2022-11-15 17:25:52, git-error], main_world, info: shedohnelicht, fps: 2510.10
 [2022-11-15 17:10:38, '7a59685'], main_world, info: 2 sheds visible 720p unoptimized, fps: 815.34
+[2022-11-16 16:10:49, '3fff59b'], main_world, info: 2 planets no stars, fps: 1468.94
+[2022-11-16 16:11:28, '3fff59b'], main_world, info: 2 planets with stars, fps: 831.90

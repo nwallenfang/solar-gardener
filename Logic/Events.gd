@@ -32,7 +32,8 @@ func trigger(key: String):
 	if event.skip_immediately:
 		execute_event(event)
 		return
-	event_queue.append(key)
+	if not key in event_queue:  # so multiple triggers don't mess this whole system up
+		event_queue.append(key)
 	if event_queue.size() == 1:
 		execute_event(event_queue[0])
 
@@ -43,10 +44,13 @@ func execute_event(key: String):
 		event.object.call(event.function_name)
 		if event.skip_immediately:
 			next()
+	else:
+		next()
 
 func next():
 	if event_queue.size() > 0:
-		event_queue.pop_front()
+		var popped_event = event_queue.pop_front()
+		print("popped ", popped_event)
 	if not event_queue.empty():
 		execute_event(event_queue[0])
 
@@ -61,44 +65,62 @@ func setup():
 	events.append(Event.new("tutorial_amber_collected", self, "tutorial_amber_collected", true))
 	events.append(Event.new("tutorial_plant_reached_stage1", self, "tutorial_plant_reached_stage1", true))
 	events.append(Event.new("tutorial_plant_scanned", self, "tutorial_plant_scanned", true))
-
+	events.append(Event.new("tutorial_growth_reached", self, "tutorial_growth_reached", true))
 ###########
 # TRIGGER FUNCTIONS
 ###########
 
+var duration := 5.5
+
 # doesn't get called from an event, but in the beginning from MainScene
 func tutorial_beginning():
 	# show amber tutorial box
-	Game.UI.add_tutorial_message("Scan Amber", "Scan an Amber relict to find a new seed.")
+	Game.UI.add_tutorial_message("Scan Amber", "Scan an Amber relict to find a new seed.", duration)
 
 # Tutorials:
 func tutorial_amber_collected():
 	# unlock next tool 
 	# show next tutorial box
 	Game.multitool.activate_tool(Game.multitool.TOOL.PLANT)
-	Game.UI.add_tutorial_message("Plant Seed", "Use the planting tool by clicking on the soil.")
+	Game.UI.add_tutorial_message("Plant Seed", "Use the planting tool by clicking on the soil.", duration)
+
+	print("next from amber")
 	next()
 
 func tutorial_seed_planted():
 	# unlock next tool 
-	Game.UI.add_tutorial_message("Speed up growth", "Use the growth tool to speed up growing.")
+	Game.UI.add_tutorial_message("Speed up growth", "Use the growth tool to speed up growing.", duration)
 	Game.multitool.activate_tool(Game.multitool.TOOL.GROW)
+
+
+	print("next from seed planted")
 	next()
 
 func tutorial_plant_reached_stage1():
-	Game.UI.add_tutorial_message("Scan plants", "Scan a plant to unlock information on its type.")
+	Game.UI.add_tutorial_message("Scan plants", "Scan a plant to unlock information on its type.", duration)
+
+	print("next from reached stage 1")
 	next()
 
 func tutorial_plant_scanned():
-	Game.UI.add_tutorial_message("Look at journal", "Next one, let's go.")
+	Game.UI.add_tutorial_message("Open the journal", "You can look at the Plant Journal to see information on scanned plants.", duration)
 	# TODO unlock journal
+
+	print("next plant scanned")
 	next()
 
 func tutorial_growth_reached():
-	pass
+	Game.UI.add_tutorial_message("Plant needs", "Plants grow taller the more of their needs are met.", duration)
+	yield(get_tree().create_timer(10.0), "timeout")
+	# TODO show this getting seeds message once more when player has no seeds
+	Game.UI.add_tutorial_message("Getting seeds", "Use the grow-tool on grown plants to harvest seeds.", duration)
+
+	print("next growth reached")
 	next()
 	
 	
 func tutorial_completed():
+	Game.UI.add_tutorial_message("Tutorial completed", "That's it, have fun exploring!")
 	Game.multitool.activate_tool(Game.multitool.TOOL.HOPPER)
+	yield(get_tree().create_timer(duration), "timeout")
 	next()

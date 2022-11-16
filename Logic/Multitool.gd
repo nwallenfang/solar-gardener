@@ -9,9 +9,9 @@ var tool_unlocked = {
 	TOOL.GROW: false,
 	TOOL.ANALYSIS: true,
 	TOOL.BUILD: false,
-	TOOL.MOVE:false,
-	TOOL.HOPPER:false,
-	TOOL.BUILD:false,
+	TOOL.MOVE: false,
+	TOOL.HOPPER: true,
+	TOOL.BUILD: false,
 }
 const tooltips := {
 	TOOL.PLANT: ["Click", "Plant a seed"],
