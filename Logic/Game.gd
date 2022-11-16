@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 #			elif game_state == State.SETTINGS:
 #				# this is only the correct if you can only enter settings from ingame!!
 #				self.game_state = State.INGAME
-	if Input.is_action_just_pressed("open_journal") and game_state == State.INGAME:
+	if Input.is_action_just_pressed("open_journal"):
 		if game_state == State.INGAME:
 			self.game_state = State.JOURNAL
 		elif game_state == State.JOURNAL:

@@ -13,3 +13,6 @@ func show_tutorial_message(title: String, text: String):
 func done_with_tutorials():
 	$Panel.visible = false
 
+
+func hide_message():
+	$Panel.visible = false

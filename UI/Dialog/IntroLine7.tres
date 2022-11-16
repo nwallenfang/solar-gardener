@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 1 )
-text = "If you're hearing this you’re the new Solar Gardener for this system. Fresh out of gardening academy!"
+text = "Watch out for the landing!"
 audio = ExtResource( 2 )
 level_db = 6.0
-extra_duration = 3.0
+extra_duration = 1.0
