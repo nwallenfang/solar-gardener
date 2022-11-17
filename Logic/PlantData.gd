@@ -5,6 +5,7 @@ extends Node
 enum PREFERENCE {ALWAYS_TRUE, ALWAYS_FALSE, LIKES, HATES}
 enum SOIL_TYPES {ANY, NONE, ROCK, DIRT, SAND}
 enum GROWTH_STAGES {SEED = 0, STAGE_1 = 1, STAGE_2 = 2, STAGE_3 = 3, STAGE_4 = 4}
+enum PLANT_TYPES {NONE, THORNY, SHROOM, FLOWER}
 
 const PROFILE_FOLDER = "res://Plants/Profiles/"
 const PREFERENCE_FOLDER = "res://Plants/Preferences/"

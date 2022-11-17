@@ -32,6 +32,7 @@ func _ready() -> void:
 	
 	Events.setup()
 
+
 # we want the root viewport's size change to be applied to the 3D Viewport
 func root_viewport_size_changed():
 	$ViewportContainer/Viewport.size = get_viewport().size * resolution_scaling_factor

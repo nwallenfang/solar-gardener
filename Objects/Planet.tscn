@@ -23,6 +23,9 @@ spheres = [ Plane( 0, 0, 0, 5.39464 ) ]
 [node name="Planet" type="Spatial"]
 script = ExtResource( 1 )
 planet_name = "Dirt Planet"
+soil_type = 3
+nutrients = true
+max_plants = 20
 
 [node name="UglyGodot" type="MeshInstance" parent="."]
 transform = Transform( 3.98203, 0, 0, 0, 3.98203, 0, 0, 0, 3.98203, 0.458311, 0, 0 )

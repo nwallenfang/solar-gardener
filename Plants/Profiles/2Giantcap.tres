@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Plants/PlantProfile.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Placeholder/bonsai.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "Giant-Cap"
+plant_type = 2
+fluff_base = "The Giant-Cap is known the be the biggest mushroom in the galaxy."
+fluff_stage2 = "The Giant-Cap uses its large surface area to collect lots of sunlight."
+fluff_stage3 = "Because of their large size the Giant-Cap prefers to grow without company. "
+icon = ExtResource( 2 )
+sun = 2
+moisture = 1
+nutrients = 3
+group = 3
+prefered_soil = 3
+seed_count = 3
+points_for_stage_1 = 0
+points_for_stage_2 = 1
+points_for_stage_3 = 3
+points_for_stage_4 = 4
