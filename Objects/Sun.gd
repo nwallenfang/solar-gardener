@@ -3,7 +3,6 @@ extends Spatial
 
 # seems nonsensical but gets used for tweening :)
 func linear_to_db(linear: float):
-	Game.UI.set_diagnostics([$Audio3D.unit_db])
 	$Audio3D.unit_db = linear2db(linear)
 
 
