@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Fonts/FluffText.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/SettingsUI.gd" type="Script" id=2]
+[ext_resource path="res://theme.tres" type="Theme" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.141176, 0.133333, 0.133333, 0.956863 )
@@ -9,6 +10,14 @@ expand_margin_left = 10.0
 expand_margin_right = 10.0
 expand_margin_top = 10.0
 expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.901961, 0.901961, 0.901961, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.635294, 0.635294, 0.627451, 1 )
 
 [node name="SettingsUI" type="Control"]
 anchor_right = 1.0
@@ -21,17 +30,18 @@ anchor_bottom = 1.0
 custom_styles/panel = SubResource( 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
-anchor_right = 1.0
+anchor_left = 0.02
+anchor_right = 0.98
 anchor_bottom = 1.0
 size_flags_stretch_ratio = 3.36
 
 [node name="MusicVolumeH" type="HBoxContainer" parent="Panel/VBoxContainer"]
-margin_right = 1280.0
+margin_right = 1228.0
 margin_bottom = 53.0
 alignment = 1
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/MusicVolumeH"]
-margin_right = 638.0
+margin_right = 612.0
 margin_bottom = 53.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
@@ -40,8 +50,8 @@ valign = 1
 autowrap = true
 
 [node name="MusicSlider" type="HSlider" parent="Panel/VBoxContainer/MusicVolumeH"]
-margin_left = 642.0
-margin_right = 1280.0
+margin_left = 616.0
+margin_right = 1228.0
 margin_bottom = 53.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -51,12 +61,12 @@ value = 0.8
 
 [node name="SFXVolumeH" type="HBoxContainer" parent="Panel/VBoxContainer"]
 margin_top = 57.0
-margin_right = 1280.0
+margin_right = 1228.0
 margin_bottom = 110.0
 size_flags_stretch_ratio = 3.36
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/SFXVolumeH"]
-margin_right = 638.0
+margin_right = 612.0
 margin_bottom = 53.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
@@ -64,8 +74,8 @@ text = "SFX Volume"
 valign = 1
 
 [node name="SFXSlider" type="HSlider" parent="Panel/VBoxContainer/SFXVolumeH"]
-margin_left = 642.0
-margin_right = 1280.0
+margin_left = 616.0
+margin_right = 1228.0
 margin_bottom = 53.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -75,17 +85,17 @@ value = 0.8
 
 [node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer"]
 margin_top = 114.0
-margin_right = 1280.0
+margin_right = 1228.0
 margin_bottom = 118.0
 
 [node name="Sensitivity" type="HBoxContainer" parent="Panel/VBoxContainer"]
 margin_top = 122.0
-margin_right = 1280.0
+margin_right = 1228.0
 margin_bottom = 175.0
 size_flags_stretch_ratio = 3.36
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/Sensitivity"]
-margin_right = 638.0
+margin_right = 612.0
 margin_bottom = 53.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
@@ -93,8 +103,8 @@ text = "Mouse Sensitivity"
 valign = 1
 
 [node name="SensitivitySlider" type="HSlider" parent="Panel/VBoxContainer/Sensitivity"]
-margin_left = 642.0
-margin_right = 1280.0
+margin_left = 616.0
+margin_right = 1228.0
 margin_bottom = 53.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -104,12 +114,12 @@ value = 0.33
 
 [node name="InvertYAxis" type="HBoxContainer" parent="Panel/VBoxContainer"]
 margin_top = 179.0
-margin_right = 1280.0
+margin_right = 1228.0
 margin_bottom = 232.0
 size_flags_stretch_ratio = 3.36
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/InvertYAxis"]
-margin_right = 638.0
+margin_right = 612.0
 margin_bottom = 53.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
@@ -118,8 +128,8 @@ valign = 1
 
 [node name="InvertYButton" type="CheckBox" parent="Panel/VBoxContainer/InvertYAxis"]
 unique_name_in_owner = true
-margin_left = 642.0
-margin_right = 1280.0
+margin_left = 616.0
+margin_right = 1228.0
 margin_bottom = 53.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -147,15 +157,75 @@ text = "save benchmark"
 
 [node name="HSeparator2" type="HSeparator" parent="Panel/VBoxContainer"]
 margin_top = 236.0
-margin_right = 1280.0
-margin_bottom = 476.0
+margin_right = 1228.0
+margin_bottom = 413.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.28
+
+[node name="Sensitivity2" type="HBoxContainer" parent="Panel/VBoxContainer"]
+margin_top = 417.0
+margin_right = 1228.0
+margin_bottom = 470.0
+size_flags_stretch_ratio = 4.58
+
+[node name="GraphicsLabel" type="Label" parent="Panel/VBoxContainer/Sensitivity2"]
+margin_right = 612.0
+margin_bottom = 53.0
+hint_tooltip = "Can boost performance especially when playing in high-res window"
+mouse_filter = 1
+size_flags_horizontal = 3
+theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 1 )
+text = "Graphics (render resolution)"
+valign = 1
+
+[node name="GraphicsSlider" type="HSlider" parent="Panel/VBoxContainer/Sensitivity2"]
+margin_left = 616.0
+margin_right = 1228.0
+margin_bottom = 53.0
+hint_tooltip = "Can boost performance especially when playing in high-res window"
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 3 )
+custom_styles/slider = SubResource( 2 )
+min_value = 0.3
+max_value = 1.0
+step = 0.1
+value = 1.0
+tick_count = 8
+ticks_on_borders = true
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/Sensitivity2/GraphicsSlider"]
+anchor_top = -0.226415
+anchor_right = 0.0245098
+anchor_bottom = 0.0377358
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Low"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer/Sensitivity2/GraphicsSlider"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -11.0
+margin_bottom = -11.0
+text = "High"
+align = 2
+
+[node name="HSeparator3" type="HSeparator" parent="Panel/VBoxContainer"]
+margin_top = 474.0
+margin_right = 1228.0
+margin_bottom = 595.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.19
 
 [node name="DoneButton" type="Button" parent="Panel/VBoxContainer"]
-margin_top = 480.0
-margin_right = 1280.0
+margin_top = 599.0
+margin_right = 1228.0
 margin_bottom = 720.0
 grow_horizontal = 2
 size_flags_horizontal = 3
@@ -170,4 +240,5 @@ text = "DONE"
 [connection signal="pressed" from="Panel/VBoxContainer/InvertYAxis/InvertYButton" to="." method="_on_InvertYButton_pressed"]
 [connection signal="focus_entered" from="Panel/VBoxContainer/BenchmarkContainer/Metadata" to="." method="_on_Metadata_focus_entered"]
 [connection signal="pressed" from="Panel/VBoxContainer/BenchmarkContainer/SaveFPSButton" to="." method="_on_SaveFPSButton_pressed"]
+[connection signal="value_changed" from="Panel/VBoxContainer/Sensitivity2/GraphicsSlider" to="." method="_on_GraphicsSlider_value_changed"]
 [connection signal="pressed" from="Panel/VBoxContainer/DoneButton" to="." method="_on_DoneButton_pressed"]
