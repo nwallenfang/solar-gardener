@@ -45,3 +45,6 @@ far = 600.0
 [node name="PickupPoint" type="Spatial" parent="."]
 unique_name_in_owner = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04279, 0 )
+
+[node name="Listener" type="Listener" parent="."]
+current = true

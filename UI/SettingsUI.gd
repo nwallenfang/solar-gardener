@@ -71,4 +71,9 @@ func _on_SFXSlider_value_changed(value: float) -> void:
 
 
 func _on_InvertYButton_pressed() -> void:
-	Game.invert_y_axis = $"%InvertYButton".pressed
+	Game.player.y_axis_factor = -Game.player.y_axis_factor
+
+
+func _on_GraphicsSlider_value_changed(value: float) -> void:
+	Game.main_scene.resolution_scaling_factor = value
+	Game.main_scene.root_viewport_size_changed()

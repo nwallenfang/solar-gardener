@@ -12,6 +12,19 @@ script = ExtResource( 2 )
 volume_db = 9.0
 mixer_bus = "SFX"
 
+[node name="hop_launch" parent="Sounds" instance=ExtResource( 1 )]
+volume_db = -5.0
+mixer_bus = "SFX"
+
+[node name="hop_landing1" parent="Sounds" instance=ExtResource( 1 )]
+mixer_bus = "SFX"
+
+[node name="hop_landing2" parent="Sounds" instance=ExtResource( 1 )]
+mixer_bus = "SFX"
+
+[node name="hop_landing3" parent="Sounds" instance=ExtResource( 1 )]
+mixer_bus = "SFX"
+
 [node name="Players" type="Node" parent="."]
 __meta__ = {
 "_editor_description_": "gets filled with AudioPlayers in _ready of AudioManager"

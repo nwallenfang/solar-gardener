@@ -118,3 +118,6 @@ func add_tutorial_message(title: String, text: String, duration:=5.5):
 	tutorial_queue.append(msg)
 	if not showing_right_now:
 		show_next_message()
+		
+func show_info_line(title, type):
+	$DialogUI.push_info_line()

@@ -69,3 +69,6 @@ func _process(delta):
 		player.sound = $Sounds.get_node(sound_name)
 		player.play()
 		playing.append(player)
+
+	
+	

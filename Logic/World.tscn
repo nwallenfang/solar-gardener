@@ -104,4 +104,4 @@ far = 1000.0
 [node name="Tween" type="Tween" parent="IntroFlight"]
 
 [node name="Planet2" parent="." instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -127.456, 21.4094, 0.397999 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -59.582, 21.4094, 26.8254 )
