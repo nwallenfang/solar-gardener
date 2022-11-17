@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Logic/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Logic/Player/PlayerCamera.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/Sound/SUN.ogg" type="AudioStream" id=3]
 
 [sub_resource type="CapsuleShape" id=2]
 radius = 0.5
@@ -49,8 +48,3 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04279, 0 )
 
 [node name="Listener" type="Listener" parent="."]
 current = true
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-transform = Transform( -0.999769, 0, 0.0215008, 0, 1, 0, -0.0215008, 0, -0.999769, -0.00499725, -3.04165, -0.0139084 )
-stream = ExtResource( 3 )
-unit_db = 19.33

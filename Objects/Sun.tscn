@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Effects/SunAura.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Sun.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sound/SUN.ogg" type="AudioStream" id=3]
 
 [sub_resource type="SphereMesh" id=2]
 radial_segments = 36
@@ -79,3 +80,10 @@ transform = Transform( 1.07621, 0, 0, 0, -4.70426e-08, -1.07621, 0, 1.07621, -4.
 
 [node name="Occluder" type="Occluder" parent="."]
 shape = SubResource( 7 )
+
+[node name="Audio3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 3 )
+unit_db = -80.0
+unit_size = 20.0
+
+[node name="Tween" type="Tween" parent="."]
