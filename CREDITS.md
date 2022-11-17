@@ -11,6 +11,9 @@
 - Rise Starhand
   - https://fontlibrary.org/en/font/risestarhand
   - License: OFL (SIL Open Font License)
+- Dancing Script
+  - https://www.1001freefonts.com/dancing-script.font
+  - License: OFL (SIL Open Font License)
 ### Textures
 - Space Skybox 
   - by www.tiron.net

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/TELEPORT_Landing_Ethereal_5a.ogg-90c4a1f85a5a26015d84a804eb6a0e1b.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sound/TELEPORT_Landing_Ethereal_5a.ogg"
+dest_files=[ "res://.import/TELEPORT_Landing_Ethereal_5a.ogg-90c4a1f85a5a26015d84a804eb6a0e1b.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
