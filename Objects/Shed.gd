@@ -5,7 +5,6 @@ var home_planet : Planet
 func _ready():
 	#yield(get_tree(),"idle_frame")
 	if get_parent() is Planet:
-		print("!")
 		home_planet = get_parent() as Planet
 		home_planet.add_to_lod_list(self)
 
