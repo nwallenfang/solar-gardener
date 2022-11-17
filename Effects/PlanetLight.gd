@@ -11,6 +11,9 @@ func setup(_number: int, _planet: Spatial):
 	number = _number
 	planet = _planet
 	mask_value = int(pow(2, number))
+	
+#	$DirectionalLight.directional_shadow_depth_range
+	$DirectionalLight.directional_shadow_max_distance = 40.0  # depends on planet size
 	$DirectionalLight.light_cull_mask = mask_value
 	$SpotLight.light_cull_mask = mask_value
 	self.global_transform.basis = Utility.get_basis_y_aligned(Game.sun.global_translation.direction_to(planet.global_translation))
