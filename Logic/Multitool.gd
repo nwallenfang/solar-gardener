@@ -97,6 +97,7 @@ func switch_away_from_tool(old_tool: int):
 	match old_tool:
 		TOOL.GROW:
 			Game.player_raycast.set_collision_mask_bit(5, false)
+			$ModelMultitool.set_grow(true)
 			#$Model/Grow.visible = false
 		TOOL.PLANT:
 			Game.player_raycast.set_collision_mask_bit(0, false)
@@ -148,6 +149,7 @@ func switch_to_tool(new_tool: int):
 			#$Model/Analysis.visible = true
 		TOOL.GROW:
 			Game.player_raycast.set_collision_mask_bit(5, true)
+			$ModelMultitool.set_grow(true)
 			#$Model/Grow.visible = true
 		TOOL.HOPPER:
 			show_hopable(true)
@@ -169,6 +171,7 @@ func idle_process(delta: float):
 					$GrowCooldown.start(2.0)
 			else:
 				grow_beam_active = false
+			$ModelMultitool.set_grow_beam_on_target(plant_to_grow if grow_beam_active else null)
 			show_grow_information()
 		TOOL.ANALYSIS:
 			analyse_completed = false

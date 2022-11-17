@@ -6,7 +6,6 @@ class Event:
 	var function_name: String
 	var just_once: bool
 	var skip_immediately: bool
-	
 	var execute_count := 0
 	
 	func _init(_key: String, _object: Node, _function_name: String, _just_once: bool = true, _skip: bool = false):

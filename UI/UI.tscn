@@ -10,7 +10,7 @@
 [ext_resource path="res://UI/Toolbar.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/Fonts/HotkeyGuide.tres" type="DynamicFont" id=9]
 [ext_resource path="res://UI/GardenerNote.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Assets/Fonts/TutorialTitleFont.tres" type="DynamicFont" id=12]
+[ext_resource path="res://UI/DialogUI.tscn" type="PackedScene" id=11]
 [ext_resource path="res://UI/TutorialPanel.tscn" type="PackedScene" id=13]
 
 [node name="UI" type="CanvasLayer"]
@@ -148,36 +148,7 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="DialogUI" type="Control" parent="."]
-visible = false
-anchor_left = 0.05
-anchor_top = 0.749
-anchor_right = 0.95
-anchor_bottom = 0.838
-margin_top = -14.28
-margin_bottom = -14.28
-__meta__ = {
-"_edit_use_anchors_": true
-}
-
-[node name="Controls" type="VBoxContainer" parent="DialogUI"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="SubtitleText" type="Label" parent="DialogUI/Controls"]
-unique_name_in_owner = true
-margin_right = 1152.0
-margin_bottom = 35.0
-grow_horizontal = 0
-grow_vertical = 0
-custom_fonts/font = ExtResource( 12 )
-text = "Subtitles"
-align = 1
-autowrap = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DialogUI"]
-
-[node name="SubtitleTimer" type="Timer" parent="DialogUI"]
+[node name="DialogUI" parent="." instance=ExtResource( 11 )]
 
 [node name="GardenerNote" parent="." instance=ExtResource( 10 )]
 visible = false
