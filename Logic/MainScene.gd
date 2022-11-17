@@ -34,7 +34,7 @@ func _ready() -> void:
 	
 	# ########### REMOVE ME
 	yield(get_tree().create_timer(1.0), "timeout")
-	PlantData.give_seeds("A Seedling", 10)
+	PlantData.give_seeds("Grabroot", 10)
 
 # we want the root viewport's size change to be applied to the 3D Viewport
 func root_viewport_size_changed():

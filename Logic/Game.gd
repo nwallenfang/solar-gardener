@@ -52,10 +52,10 @@ func _process(delta: float) -> void:
 		print("gib tzieds")
 		Game.UI.get_node("DialogUI").push_infoline("Hallo", 0)
 		Game.UI.get_node("DialogUI").push_infoline("Und wieder Hallo", 0)
-		PlantData.give_seeds("A Seedling", 10)
+		PlantData.give_seeds("Grabroot", 10)
 	if OS.is_debug_build() and Input.is_action_just_pressed("make_pref_known"):
 		print("pref known")
-		UI.get_node("JournalUI").make_preference_known("A Seedling", PlantData.PREFERENCES["Hates Sun"])
+		UI.get_node("JournalUI").make_preference_known("Grabroot", PlantData.PREFERENCES["Hates Sun"])
 		
 	if OS.is_debug_build() and Input.is_action_just_pressed("unlock_all_tools"):
 		print("unlock all tools")

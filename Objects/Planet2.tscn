@@ -12,6 +12,8 @@ spheres = [ Plane( 0, 0, 0, 8.56642 ) ]
 [node name="Planet2" type="Spatial"]
 script = ExtResource( 5 )
 planet_name = "Dirt Planet"
+soil_type = 2
+max_plants = 30
 
 [node name="PlanetHopArea" type="Area" parent="."]
 transform = Transform( 1.24458, 0, 0, 0, 1.24458, 0, 0, 0, 1.24458, 0, 0, 0 )

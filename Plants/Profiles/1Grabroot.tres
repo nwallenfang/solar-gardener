@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Placeholder/plant_icon.png" type="Texture" id=1]
+[ext_resource path="res://Plants/PlantProfile.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+name = "Grabroot"
+plant_type = 1
+fluff_base = "The Grabroot is a rare plant which in most cases does not carry any leaves. It grows best in groups and is best harvested 2-3 years prior to the suns supernova. Most races however dislike the taste."
+fluff_stage2 = "The plant may appear to be small, but the majority of biomass lies underground. The roots seem to be designed to pierce even the hardest soils."
+fluff_stage3 = "It is believed that the Grabroot might have a sense of smell. This would explaint their increased growth in pleasently smelling areas."
+icon = ExtResource( 1 )
+sun = 3
+moisture = 1
+nutrients = 3
+group = 2
+prefered_soil = 2
+seed_count = 4
+points_for_stage_1 = 0
+points_for_stage_2 = 2
+points_for_stage_3 = 3
+points_for_stage_4 = 5

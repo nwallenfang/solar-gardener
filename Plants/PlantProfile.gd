@@ -1,26 +1,34 @@
 extends Resource
 class_name PlantProfile
 
+enum PREFERENCE {ALWAYS_TRUE, ALWAYS_FALSE, LIKES, HATES}
+enum SOIL_TYPES {ANY, NONE, ROCK, DIRT, SAND}
+enum GROWTH_STAGES {SEED = 0, STAGE_1 = 1, STAGE_2 = 2, STAGE_3 = 3, STAGE_4 = 4}
+enum PLANT_TYPES {NONE, THORNY, SHROOM, FLOWER}
+
 export var name: String
+
+export(PLANT_TYPES) var plant_type: int
+
 export var fluff_base: String
 export var fluff_stage2: String
 export var fluff_stage3: String
 export var icon: Texture
 
-export var sun: int
-export var moisture: int
-export var nutrients: int
+export(PREFERENCE) var sun: int
+export(PREFERENCE) var moisture: int
+export(PREFERENCE) var nutrients: int
 
-export var group: int
+export(PREFERENCE) var group: int
 
-export var prefered_soil: int
+export(SOIL_TYPES) var prefered_soil: int
 
 export var seed_count: int
 
-var points_for_stage_1: int
-var points_for_stage_2: int
-var points_for_stage_3: int
-var points_for_stage_4: int
+export var points_for_stage_1: int
+export var points_for_stage_2: int
+export var points_for_stage_3: int
+export var points_for_stage_4: int
 
 var model_seed: PackedScene
 var model_stage_1: PackedScene
