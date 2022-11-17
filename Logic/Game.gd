@@ -64,6 +64,10 @@ func _process(delta: float) -> void:
 		Game.multitool.activate_tool(Game.multitool.TOOL.GROW)
 		Game.multitool.activate_tool(Game.multitool.TOOL.PLANT)
 		
+	if OS.is_debug_build() and Input.is_action_just_pressed("play_spatial_audio"):
+		player.get_node("AudioStreamPlayer3D").play()
+		UI.set_diagnostics(["playing", player.get_node("AudioStreamPlayer3D").playing])
+		
 
 signal changed_state(state, prev_state)
 func set_game_state(state):
@@ -102,6 +106,9 @@ func execute_planet_hop(new_planet: Planet, pos: Vector3):
 	$WarpTween.interpolate_property(player, "global_translation", player.global_translation, pos, 1.0, Tween.TRANS_QUAD, Tween.EASE_IN)
 	$WarpTween.interpolate_property(player.get_node("Head"), "rotation:x", current_y_looking_angle, target_y_looking_angle, 1.0, Tween.TRANS_QUAD, Tween.EASE_IN)
 	$WarpTween.start()
+	yield(get_tree(), "idle_frame")
+	Audio.play("hop_launch")
 	yield($WarpTween, "tween_all_completed")
+	Audio.play("hop_landing" + str(1 + randi() % 3))
 	player.update_look_direction()
 	set_game_state(State.INGAME)

@@ -39,6 +39,7 @@ onready var pickup_point : Spatial = $"%PickupPoint"
 func _ready():
 	Game.player = self
 	$Mesh.visible = false
+	$AudioStreamPlayer3D.play()
 
 
 var gravity_effect_max_dist = 40  # TODO this should be changed since it depends on planet size

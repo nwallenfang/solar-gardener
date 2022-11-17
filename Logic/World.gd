@@ -23,6 +23,8 @@ func _ready() -> void:
 	Game.planet.set_player_is_on_planet(true)
 	
 	start_loading()
+	
+#	$Planet/AudioStreamPlayer.play()
 
 var INTRO_LENGTH_FACTOR = 3.0
 var TEST_LENGTH_FACTOR = 0.05
