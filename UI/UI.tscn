@@ -18,6 +18,16 @@
 script = ExtResource( 1 )
 
 [node name="SettingsUI" parent="." instance=ExtResource( 2 )]
+visible = false
+anchor_left = 0.15
+anchor_top = 0.2
+anchor_right = 0.85
+anchor_bottom = 0.717
+margin_top = -25.0
+margin_bottom = -25.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="JournalAndGuideUI" parent="." instance=ExtResource( 4 )]
 visible = false
@@ -33,23 +43,23 @@ script = ExtResource( 7 )
 [node name="FPS" type="Label" parent="Diagnostics"]
 unique_name_in_owner = true
 margin_right = 55.0
-margin_bottom = 58.0
+margin_bottom = 53.0
 custom_fonts/font = ExtResource( 5 )
 text = "FPS"
 
 [node name="FPS2" type="Label" parent="Diagnostics"]
 unique_name_in_owner = true
-margin_top = 62.0
+margin_top = 57.0
 margin_right = 55.0
-margin_bottom = 120.0
+margin_bottom = 110.0
 custom_fonts/font = ExtResource( 5 )
 text = "FPS"
 
 [node name="TransformDiagnostics" type="Label" parent="Diagnostics"]
 unique_name_in_owner = true
-margin_top = 124.0
+margin_top = 114.0
 margin_right = 55.0
-margin_bottom = 152.0
+margin_bottom = 142.0
 custom_fonts/font = ExtResource( 6 )
 
 [node name="FPSUpdateTimer" type="Timer" parent="Diagnostics"]
@@ -168,9 +178,9 @@ anchor_bottom = 1.0
 [node name="LoadingLabel" type="Label" parent="BlackScreen/CenterContainer"]
 unique_name_in_owner = true
 margin_left = 580.0
-margin_top = 331.0
+margin_top = 333.0
 margin_right = 699.0
-margin_bottom = 389.0
+margin_bottom = 386.0
 custom_fonts/font = ExtResource( 5 )
 text = "Loading.."
 align = 1

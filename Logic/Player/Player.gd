@@ -55,20 +55,22 @@ func calc_gravity_direction() -> Vector3:
 # Called every physics tick. 'delta' is constant
 var gravity_direction
 func _physics_process(delta) -> void:
+	var trigger_jump: bool
 	if Game.game_state == Game.State.LOADING or Game.game_state == Game.State.INTRO_FLIGHT:
 		return 
 		
 	input_axis = Input.get_vector("move_backwards", "move_forward",
 			"move_left", "move_right")
-	
+	trigger_jump = is_on_floor() and Input.is_action_just_pressed("jump") and !has_jumped
 	if movement_disabled or Game.game_state != Game.State.INGAME:
 		input_axis = Vector2.ZERO
 		mouse_axis = Vector2.ZERO
+		trigger_jump = false
 	
 	direction = get_input_direction()
 	gravity_direction = calc_gravity_direction()
 	
-	if is_on_floor() and Input.is_action_just_pressed("jump") and !has_jumped:
+	if trigger_jump:
 		# init jump
 		snap = Vector3.ZERO
 		# player basis y is the player's up direction

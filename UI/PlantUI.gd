@@ -10,6 +10,7 @@ var number_of_stars = 0
 var hovered = false
 
 var discovered = false
+var scanned = false
 
 var plant_profile: PlantProfile
 
@@ -36,10 +37,11 @@ func make_preference_known(preference: PlantPreference):
 			return
 	printerr("plant " + plant_name + " doesn't have the preference " + preference + " ERR")
 
-func get_data_for_plant(new_plant_name):
-	self.plant_name = new_plant_name
-	# GET ALL THE DATA FROM PlantData singleton
-	self.number_of_stars = 2
+# delete?
+#func get_data_for_plant(new_plant_name):
+#	self.plant_name = new_plant_name
+#	# GET ALL THE DATA FROM PlantData singleton
+#	self.number_of_stars = 2
 	
 	
 func set_seed_count(seed_count: int):
@@ -48,12 +50,12 @@ func set_seed_count(seed_count: int):
 		$SeedCountBG.visible = true
 		discovered = true
 	$"%SeedCount".text = str(seed_count)
+	$SeedCountBG.hint_tooltip = str(seed_count) + " Seed(s) available"
 
 
 func set_number_of_stars(number):
 	number_of_stars = number
 	
-	# TODO update UI
 	for i in range(number_of_stars):
 		var star_texture_rect: TextureRect = get_node("Panel/Stars/Star" + str(i+1))
 		star_texture_rect.texture = STAR_FULL
@@ -74,3 +76,9 @@ func _on_Panel_mouse_entered() -> void:
 func _on_Panel_mouse_exited() -> void:
 	if hovered:
 		hovered = false
+		
+func got_scanned():
+	scanned = true
+	$Panel.hint_tooltip = plant_profile.name
+	$Panel/Stars.visible = true
+	$Panel/Preferences.visible = true

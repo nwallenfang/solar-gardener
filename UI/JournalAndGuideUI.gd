@@ -8,6 +8,7 @@ export var modulate_disabled: Color = Color("828282")
 export var self_modulate_disabled: Color = Color("5d5d5d")
 export var mod_enabled: Color = Color.white
 
+
 func show():
 	self.visible = true
 	

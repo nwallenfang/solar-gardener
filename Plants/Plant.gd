@@ -209,5 +209,6 @@ func on_remove():
 	queue_free()
 
 func on_analyse():
+	Game.journal.plant_got_scanned(profile.name)
 	Events.trigger("tutorial_plant_scanned")
 
