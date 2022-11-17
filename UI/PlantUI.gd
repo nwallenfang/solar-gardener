@@ -65,10 +65,11 @@ func _on_Panel_gui_input(event: InputEvent) -> void:
 		if event.pressed and event.button_index == BUTTON_LEFT and discovered:
 			emit_signal("clicked", plant_name)
 
+signal plant_got_hovered(plant_ui)
 func _on_Panel_mouse_entered() -> void:
 	if not hovered and discovered:
 		hovered = true
-		owner.call("plant_hovered", self)
+		emit_signal("plant_got_hovered", self)
 
 func _on_Panel_mouse_exited() -> void:
 	if hovered:

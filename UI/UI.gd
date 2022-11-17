@@ -31,7 +31,7 @@ func changed_state(state, prev_state):
 		Game.State.INGAME:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			$SettingsUI.hide_settings()
-			$JournalUI.hide()
+			$JournalAndGuideUI.hide()
 			$Toolbar.visible = true
 			$HotkeyGuide.visible = true
 			$TutorialPanel.visible = true
@@ -42,7 +42,7 @@ func changed_state(state, prev_state):
 		Game.State.SETTINGS:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			$SettingsUI.show_settings()
-			$JournalUI.hide()
+			$JournalAndGuideUI.hide()
 			$"%Crosshair".visible = false
 			$Toolbar.visible = false
 			$HotkeyGuide.visible = false
@@ -53,7 +53,7 @@ func changed_state(state, prev_state):
 			$"%Crosshair".visible = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			$SettingsUI.hide_settings()
-			$JournalUI.show()
+			$JournalAndGuideUI.show()
 			$Toolbar.visible = false
 			$HotkeyGuide.visible = false
 			$TutorialPanel.visible = false
@@ -63,7 +63,7 @@ func changed_state(state, prev_state):
 			$"%Crosshair".visible = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			$SettingsUI.hide_settings()
-			$JournalUI.hide()
+			$JournalAndGuideUI.hide()
 			$Toolbar.visible = false
 			$HotkeyGuide.visible = false
 			$TutorialPanel.visible = false

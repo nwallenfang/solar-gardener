@@ -55,10 +55,11 @@ func _process(delta: float) -> void:
 		PlantData.give_seeds("A Seedling", 10)
 	if OS.is_debug_build() and Input.is_action_just_pressed("make_pref_known"):
 		print("pref known")
-		UI.get_node("JournalUI").make_preference_known("A Seedling", PlantData.PREFERENCES["Hates Sun"])
+		UI.get_node("JournalAndGuideUI/JournalUI").make_preference_known("A Seedling", PlantData.PREFERENCES["Hates Sun"])
 		
 	if OS.is_debug_build() and Input.is_action_just_pressed("unlock_all_tools"):
 		print("unlock all tools")
+		UI.get_node("JournalAndGuideUI").unlock_journal()
 		Game.multitool.activate_tool(Game.multitool.TOOL.GROW)
 		Game.multitool.activate_tool(Game.multitool.TOOL.PLANT)
 		

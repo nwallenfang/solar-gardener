@@ -41,7 +41,7 @@ func add_preference_progress(plant_name: String, progress_type: String):
 	# TODO where to check if this plant even has this type of progress!?
 #	emit_signal(plant_name, PREFERENCES[progress_type])
 	if Game.UI != null:
-		Game.UI.get_node("JournalUI").new_progress(plant_name, PREFERENCES[progress_type])
+		Game.UI.get_node("JournalAndGuideUI/JournalUI").new_progress(plant_name, PREFERENCES[progress_type])
 
 func add_stage_progress(plant_name, growth_stage):
 	pass
