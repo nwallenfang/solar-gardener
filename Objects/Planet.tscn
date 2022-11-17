@@ -15,7 +15,7 @@ albedo_texture = ExtResource( 2 )
 uv1_triplanar = true
 
 [sub_resource type="SphereShape" id=12]
-radius = 7.14494
+radius = 10.887
 
 [sub_resource type="OccluderShapeSphere" id=13]
 spheres = [ Plane( 0, 0, 0, 5.39464 ) ]

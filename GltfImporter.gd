@@ -71,8 +71,9 @@ func _do_import(useless_parameter):
 			
 			for child in get_all_children(old_scene):
 				if child is MeshInstance:
-					var new_mesh_instance = gltf_scene.get_node(old_scene.get_path_to(child)) as MeshInstance
-					child.mesh = new_mesh_instance.mesh
+					if gltf_scene.has_node(old_scene.get_path_to(child)):
+						var new_mesh_instance = gltf_scene.get_node(old_scene.get_path_to(child)) as MeshInstance
+						child.mesh = new_mesh_instance.mesh
 			
 			var packed_scene = PackedScene.new()
 			packed_scene.pack(old_scene)

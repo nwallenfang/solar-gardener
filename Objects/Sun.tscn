@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Effects/SunAura.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Sun.gd" type="Script" id=2]
 
 [sub_resource type="SphereMesh" id=2]
-radial_segments = 48
+radial_segments = 36
+rings = 24
 
 [sub_resource type="Shader" id=3]
 code = "// NOTE: Shader automatically converted from Godot Engine 3.5.1.stable's SpatialMaterial.
@@ -60,6 +61,9 @@ shader_param/color2 = Color( 0.596078, 0.87451, 0.364706, 1 )
 shader_param/time_noise_speed = 0.01
 shader_param/noise = SubResource( 6 )
 
+[sub_resource type="OccluderShapeSphere" id=7]
+spheres = [ Plane( 0, 0, 0, 16.9765 ) ]
+
 [node name="Sun" type="Spatial"]
 script = ExtResource( 2 )
 
@@ -72,3 +76,6 @@ material/0 = SubResource( 4 )
 
 [node name="SunAura" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1.07621, 0, 0, 0, -4.70426e-08, -1.07621, 0, 1.07621, -4.70426e-08, 0, 0, 0 )
+
+[node name="Occluder" type="Occluder" parent="."]
+shape = SubResource( 7 )

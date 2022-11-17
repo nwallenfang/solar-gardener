@@ -3,7 +3,7 @@
 [ext_resource path="res://Assets/Materials/StarBillboard.tres" type="Material" id=1]
 
 [sub_resource type="Curve" id=1]
-bake_resolution = 200
+bake_resolution = 50
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.162921, 0.986364 ), 0.0, 0.0, 0, 0, Vector2( 0.196629, 0.740909 ), 0.0, 0.0, 0, 0, Vector2( 0.494382, 0.695454 ), 0.0, 0.0, 0, 0, Vector2( 0.511236, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.539326, 0.713636 ), 0.0, 0.0, 0, 0, Vector2( 0.853933, 0.695454 ), 0.0, 0.0, 0, 0, Vector2( 0.908918, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=2]

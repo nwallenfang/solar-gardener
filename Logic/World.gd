@@ -17,6 +17,7 @@ func _ready() -> void:
 	for c in get_children():
 		if c is Planet:
 			(c as Planet).setup()
+			(c as Planet).set_player_is_on_planet(false)
 	
 	Game.planet = $Planet  # this is the starting planet
 	Game.planet.set_player_is_on_planet(true)
