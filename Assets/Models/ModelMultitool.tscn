@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Assets/GLTF/MultitoolDarkShiny.material" type="Material" id=1]
 [ext_resource path="res://Assets/GLTF/MultitoolBrown.material" type="Material" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Effects/EnergyBall.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Effects/Beam.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Assets/Materials/Beam.tres" type="Material" id=10]
+[ext_resource path="res://Assets/Shader/EnergyBall.gdshader" type="Shader" id=12]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Multitool_Cylinder002"
@@ -619,6 +620,51 @@ tracks/8/keys = {
 "values": [ Vector3( 0.01, 0.01, 0.01 ), Vector3( 1, 1, 1 ) ]
 }
 
+[sub_resource type="OpenSimplexNoise" id=18]
+persistence = 0.757
+lacunarity = 2.51
+
+[sub_resource type="NoiseTexture" id=19]
+width = 256
+height = 256
+seamless = true
+noise = SubResource( 18 )
+
+[sub_resource type="ShaderMaterial" id=20]
+shader = ExtResource( 12 )
+shader_param/albedo = Color( 1, 0.984314, 0, 1 )
+shader_param/albedo2 = Color( 0, 0.580392, 0.0509804, 1 )
+shader_param/alpha = 1.0
+shader_param/texture_albedo = SubResource( 19 )
+
+[sub_resource type="QuadMesh" id=21]
+
+[sub_resource type="Curve" id=22]
+bake_resolution = 20
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.245552, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.55516, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=23]
+curve = SubResource( 22 )
+
+[sub_resource type="ParticlesMaterial" id=24]
+emission_shape = 1
+emission_sphere_radius = 1.5
+flag_align_y = true
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+radial_accel = -1.0
+scale_curve = SubResource( 23 )
+
+[sub_resource type="SpatialMaterial" id=25]
+flags_unshaded = true
+params_cull_mode = 2
+albedo_color = Color( 0.592157, 0.780392, 0, 1 )
+
+[sub_resource type="QuadMesh" id=26]
+material = SubResource( 25 )
+size = Vector2( 0.05, 1 )
+
 [node name="ModelMultitool" type="Spatial"]
 script = ExtResource( 6 )
 
@@ -748,7 +794,13 @@ unique_name_in_owner = true
 transform = Transform( 1.99574, 0, 0, 0, 1.99574, 0, 0, 0, 1.99574, 0, 0, 0 )
 visible = false
 
+[node name="MeshInstance" parent="GrowBeamOrigin/EnergyBallCombo" index="0"]
+material_override = SubResource( 20 )
+mesh = SubResource( 21 )
+
 [node name="Particles" parent="GrowBeamOrigin/EnergyBallCombo" index="1"]
 visible = false
+process_material = SubResource( 24 )
+draw_pass_1 = SubResource( 26 )
 
 [editable path="GrowBeamOrigin/EnergyBallCombo"]

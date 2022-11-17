@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://game_environment.tres" type="Environment" id=1]
 [ext_resource path="res://Objects/Sun.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Objects/Planet.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Logic/World.gd" type="Script" id=6]
 [ext_resource path="res://Effects/Ubershader.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Objects/Planet2.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fly"
@@ -38,12 +39,6 @@ transform = Transform( -0.999769, 0, -0.0215008, 0, 1, 0, 0.0215008, 0, -0.99976
 
 [node name="Planet" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48.764, 0, -98.0153 )
-
-[node name="Planet2" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 128.235, 0, 0.981232 )
-
-[node name="Planet3" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.2732, 63.2236, -0.0944443 )
 
 [node name="Sun" parent="." instance=ExtResource( 2 )]
 transform = Transform( 2.03594, 0, 0, 0, 2.03594, 0, 0, 0, 2.03594, 0, 0, 0 )
@@ -107,3 +102,6 @@ unique_name_in_owner = true
 far = 1000.0
 
 [node name="Tween" type="Tween" parent="IntroFlight"]
+
+[node name="Planet2" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -127.456, 21.4094, 0.397999 )
