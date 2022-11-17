@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://UI/DialogUI.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Fonts/TutorialTitleFont.tres" type="DynamicFont" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "info_show"
+
+[node name="DialogUI" type="Control"]
+anchor_left = 0.05
+anchor_top = 0.749
+anchor_right = 0.95
+anchor_bottom = 0.838
+margin_top = -14.28
+margin_bottom = -14.28
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+seeds_unlocked_color = Color( 0.647059, 0.47451, 0.372549, 1 )
+plant_unlocked_color = Color( 0.305882, 0.411765, 0.168627, 1 )
+preference_unlocked_color = Color( 0.317647, 0.521569, 0.733333, 1 )
+linger_time = 1.5
+float_time = 1.0
+
+[node name="Controls" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="SubtitleText" type="Label" parent="Controls"]
+unique_name_in_owner = true
+margin_right = 1152.0
+margin_bottom = 35.0
+grow_horizontal = 0
+grow_vertical = 0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Subtitles"
+align = 1
+autowrap = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/info_show = SubResource( 1 )
+
+[node name="SubtitleTimer" type="Timer" parent="."]

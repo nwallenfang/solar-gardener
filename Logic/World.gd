@@ -83,6 +83,8 @@ func start_intro_flight():
 	Game.set_game_state(Game.State.INTRO_FLIGHT)
 	if (not OS.is_debug_build()) or TEST_INTRO:
 		Dialog.play_intro()
+	else:
+		Game.UI.get_node("DialogUI/Controls/SubtitleText").text = ""
 	
 	Game.multitool.visible = false
 	
