@@ -1,7 +1,7 @@
 // NOTE: Shader automatically converted from Godot Engine 3.5.1.stable's SpatialMaterial.
 
 shader_type spatial;
-render_mode unshaded, async_visible,blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+render_mode unshaded, async_visible,blend_mix,depth_draw_opaque,cull_disabled,diffuse_burley,specular_schlick_ggx;
 uniform vec4 albedo : hint_color;
 uniform sampler2D texture_albedo : hint_albedo;
 uniform sampler2D noise: hint_albedo;
@@ -37,5 +37,9 @@ void fragment() {
 	float sinus_dist = abs(sinus_curve * .2 + .5 - UV.y);
 	float sinus_mask = clamp_map_pow(sinus_dist, .0, .2, 1.0, 0.0, .5);
 	
-	ALPHA = max(beam_mask, sinus_mask);
+	float curved_end_value = pow(abs(UV.y - .5), 2.0);
+	float curved_end_mist = min(UV.x, inv(UV.x)) - curved_end_value * .3;
+	float curved_end_mask = clamp_map_pow(curved_end_mist, 0.0, .1, 0.0, 1.0, 1.0);
+	
+	ALPHA = max(beam_mask, sinus_mask) * curved_end_mask;
 }

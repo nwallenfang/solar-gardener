@@ -171,6 +171,7 @@ func idle_process(delta: float):
 					$GrowCooldown.start(2.0)
 			else:
 				grow_beam_active = false
+			$ModelMultitool.set_grow_beam_on_target(plant_to_grow if grow_beam_active else null)
 			show_grow_information()
 		TOOL.ANALYSIS:
 			analyse_completed = false
