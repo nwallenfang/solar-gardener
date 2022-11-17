@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="ArrayMesh" id=1]
+resource_name = "Plant_01_samen_NurbsPath003"
+
+[sub_resource type="Animation" id=2]
+resource_name = "NurbsPath002Action001"
+length = 0.001
+
+[node name="ModelPlant_01_samen" type="Spatial"]
+
+[node name="NurbsPath003" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/NurbsPath002Action001 = SubResource( 2 )
