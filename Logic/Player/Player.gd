@@ -57,7 +57,7 @@ func calc_gravity_direction() -> Vector3:
 var gravity_direction
 func _physics_process(delta) -> void:
 	var trigger_jump: bool
-	if Game.game_state == Game.State.LOADING or Game.game_state == Game.State.INTRO_FLIGHT:
+	if Game.game_state == Game.State.LOADING or Game.game_state == Game.State.INTRO_FLIGHT or Game.game_state == Game.State.WARPING:
 		return 
 		
 	input_axis = Input.get_vector("move_backwards", "move_forward",
