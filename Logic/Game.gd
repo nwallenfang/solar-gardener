@@ -87,7 +87,7 @@ func slerp_player_basis(f: float):
 func execute_planet_hop(new_planet: Planet, pos: Vector3):
 	#pos = new_planet.global_translation + new_planet.global_translation.direction_to(player.global_translation) * 10.0 - player.global_transform.basis.y * 2.0
 	var dir_to_planet = player.global_translation.direction_to(new_planet.global_translation)
-	pos = new_planet.global_translation + player.global_translation.direction_to(pos).cross(-dir_to_planet).cross(dir_to_planet).normalized() * 11.0
+	pos = new_planet.global_translation + player.global_translation.direction_to(pos).cross(-dir_to_planet).cross(dir_to_planet).normalized() * 15.0
 	set_game_state(State.WARPING)
 	planet.set_player_is_on_planet(false)
 	new_planet.set_player_is_on_planet(true)

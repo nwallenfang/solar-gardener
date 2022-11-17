@@ -1,0 +1,145 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v3.2.43",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Planet_03_rocks"
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "name" : "planet_03_rocks_material",
+            "normalTexture" : {
+                "index" : 0
+            },
+            "pbrMetallicRoughness" : {
+                "baseColorTexture" : {
+                    "index" : 1
+                },
+                "metallicFactor" : 0,
+                "roughnessFactor" : 0.7863636612892151
+            }
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "mesh.005",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "indices" : 3,
+                    "material" : 0
+                }
+            ]
+        }
+    ],
+    "textures" : [
+        {
+            "sampler" : 0,
+            "source" : 0
+        },
+        {
+            "sampler" : 0,
+            "source" : 1
+        }
+    ],
+    "images" : [
+        {
+            "mimeType" : "image/png",
+            "name" : "planet_03_rock_normal",
+            "uri" : "planet_03_rock_normal.png"
+        },
+        {
+            "mimeType" : "image/png",
+            "name" : "planet_03_rock_texture",
+            "uri" : "planet_03_rock_texture.png"
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 5633,
+            "max" : [
+                1.3600897789001465,
+                1.2481722831726074,
+                1.3335429430007935
+            ],
+            "min" : [
+                -1.1967568397521973,
+                -1.282405972480774,
+                -1.2518659830093384
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 5633,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 5633,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5123,
+            "count" : 33108,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 67596,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 67596,
+            "byteOffset" : 67596
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 45064,
+            "byteOffset" : 135192
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 66216,
+            "byteOffset" : 180256
+        }
+    ],
+    "samplers" : [
+        {
+            "magFilter" : 9729,
+            "minFilter" : 9987
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 246472,
+            "uri" : "Planet_03_rocks 0.5 quadratic texture.bin"
+        }
+    ]
+}

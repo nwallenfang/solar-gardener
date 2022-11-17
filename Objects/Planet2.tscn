@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Models/ModelPlanet_03_rocks 0.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/Planet.gd" type="Script" id=5]
+
+[sub_resource type="SphereShape" id=12]
+radius = 14.7304
+
+[sub_resource type="OccluderShapeSphere" id=13]
+spheres = [ Plane( 0, 0, 0, 8.56642 ) ]
+
+[node name="Planet2" type="Spatial"]
+script = ExtResource( 5 )
+planet_name = "Dirt Planet"
+
+[node name="PlanetHopArea" type="Area" parent="."]
+transform = Transform( 1.24458, 0, 0, 0, 1.24458, 0, 0, 0, 1.24458, 0, 0, 0 )
+collision_layer = 64
+collision_mask = 0
+space_override = 3
+gravity_point = true
+gravity_vec = Vector3( 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="PlanetHopArea"]
+shape = SubResource( 12 )
+
+[node name="Occluder" type="Occluder" parent="."]
+shape = SubResource( 13 )
+
+[node name="ModelPlanet_03_rocks 0" parent="." instance=ExtResource( 1 )]
+transform = Transform( 7.94478, 0, 0, 0, 7.94478, 0, 0, 0, 7.94478, 0, 0, 0 )
