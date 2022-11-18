@@ -61,10 +61,14 @@ func setup():
 	events.append(Event.new("test", self, "test"))
 	# just once: amber_collected_tutorial
 	events.append(Event.new("tutorial_seed_planted", self, "tutorial_seed_planted", true))
+	events.append(Event.new("seed_planted", self, "seed_planted", false))
 	events.append(Event.new("tutorial_amber_collected", self, "tutorial_amber_collected", true))
 	events.append(Event.new("tutorial_plant_reached_stage1", self, "tutorial_plant_reached_stage1", true))
+	events.append(Event.new("tutorial_plant_reached_stage2", self, "tutorial_plant_reached_stage2", true))
 	events.append(Event.new("tutorial_plant_scanned", self, "tutorial_plant_scanned", true))
 	events.append(Event.new("tutorial_growth_reached", self, "tutorial_growth_reached", true))
+
+
 ###########
 # TRIGGER FUNCTIONS
 ###########
@@ -83,7 +87,6 @@ func tutorial_amber_collected():
 	Game.multitool.activate_tool(Game.multitool.TOOL.PLANT)
 	Game.UI.add_tutorial_message("Plant Seed", "Use the planting tool by clicking on the soil.", duration)
 
-	print("next from amber")
 	next()
 
 func tutorial_seed_planted():
@@ -91,20 +94,24 @@ func tutorial_seed_planted():
 	Game.UI.add_tutorial_message("Speed up growth", "Use the growth tool to speed up growing.", duration)
 	Game.multitool.activate_tool(Game.multitool.TOOL.GROW)
 
-	print("next from seed planted")
+	next()
+
+func seed_planted():
 	next()
 
 func tutorial_plant_reached_stage1():
 	Game.UI.add_tutorial_message("Scan plants", "Scan a plant to unlock information on its type.", duration)
 
-	print("next from reached stage 1")
+	next()
+
+var first_plant
+func tutorial_plant_reached_stage2():
 	next()
 
 func tutorial_plant_scanned():
 	Game.UI.add_tutorial_message("Open the journal", "You can look at the Plant Journal to see information on scanned plants.", duration)
 	Game.UI.get_node("JournalAndGuideUI").unlock_journal()
 
-	print("next plant scanned")
 	next()
 
 func tutorial_growth_reached():
@@ -113,12 +120,13 @@ func tutorial_growth_reached():
 	# TODO show this getting seeds message once more when player has no seeds
 	Game.UI.add_tutorial_message("Getting seeds", "Use the grow-tool on grown plants to harvest seeds.", duration)
 
-	print("next growth reached")
 	next()
 	
-	
+
+func check_for_tutorial_completed():
+	if Game.planet.plant_list.size() > 8 and get_event_from_key("tutorial_plant_reached_stage2")
+
 func tutorial_completed():
-	Game.UI.add_tutorial_message("Tutorial completed", "That's it, have fun exploring!")
+	Game.UI.add_tutorial_message("Tutorial completed", "That's it, have fun exploring other planets!")
 	Game.multitool.activate_tool(Game.multitool.TOOL.HOPPER)
-	yield(get_tree().create_timer(duration), "timeout")
 	next()

@@ -154,7 +154,7 @@ func grow(delta, factor_sign):
 		current_model = model_array[growth_stage]
 		growth_stage_progress = 0.0
 		play_growth_pop_animation(old_stage)
-		Events.trigger("tutorial_plant_reached_stage1")
+		Events.trigger("tutorial_plant_reached_stage" + str(growth_stage))
 		PlantData.growth_stage_reached(profile.name, growth_stage)
 
 const GREEN_OVERLAY = preload("res://Assets/Materials/GreenAlphaOverlay.tres")

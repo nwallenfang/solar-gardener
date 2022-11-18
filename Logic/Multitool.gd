@@ -325,6 +325,7 @@ func spawn_plant(pos: Vector3):
 	pile.global_translation = pos
 	pile.global_transform.basis = Utility.get_basis_y_aligned(Game.planet.global_translation.direction_to(pos))
 	Events.trigger("tutorial_seed_planted")
+	Events.trigger("seed_planted")
 
 func show_analyse_information():
 	#Game.UI.set_diagnostics(["Analysing Object", current_analyse_object, "Analyse Progress", current_analyse_progress * 100.0])
