@@ -33,7 +33,7 @@ func init():
 func plant_clicked(plant_name):
 	Game.multitool.get_node("Cooldown").start(0.6)
 	Game.multitool.target_plant_name = plant_name
-	Game.multitool.switch_to_tool(Game.multitool.TOOL.PLANT)
+	Game.multitool.switch_tool(Game.multitool.TOOL.PLANT)
 	Game.multitool.show_plant_information()
 	Game.game_state = Game.State.INGAME
 	$"%HoverMarker".visible = false
