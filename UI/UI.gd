@@ -39,6 +39,7 @@ func changed_state(state, prev_state):
 				$Diagnostics.visible = true
 			$"%Crosshair".visible = true
 			$GardenerNote.visible = false
+			$SkipCutsceneLabel.visible = false
 		Game.State.SETTINGS:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			$SettingsUI.show_settings()
@@ -69,7 +70,12 @@ func changed_state(state, prev_state):
 			$TutorialPanel.visible = false
 			$Diagnostics.visible = false
 			$GardenerNote.visible = true
-
+		Game.State.INTRO_FLIGHT:
+			$"%Crosshair".visible = false
+			$HotkeyGuide.visible = false
+			$TutorialPanel.visible = false
+			$Toolbar.visible = false
+			$SkipCutsceneLabel.visible = true
 
 func set_note_text(text: String):
 	$GardenerNote.set_text(text)
@@ -83,15 +89,8 @@ func set_loading_bar(progress_in_percent: float): #Optional
 
 func show_line(text: String, duration: float, another_one_coming:=false):
 	$DialogUI.visible = true
-	# TODO play show animation
-	$"%SubtitleText".text = text
-	# TODO play hide animation
-	# TODO if another one is coming up the text shouldn't fade out completely
-	# or smth
-	if not another_one_coming:
-		yield(get_tree().create_timer(duration), "timeout")
-		$"%SubtitleText".text = ""
-#		$DialogUI.visible = false
+	$DialogUI.show_dialogline(text, duration, another_one_coming)
+
 	
 var showing_right_now = false
 var tutorial_queue = []
@@ -121,3 +120,9 @@ func add_tutorial_message(title: String, text: String, duration:=5.5):
 		
 func show_info_line(title, type):
 	$DialogUI.push_info_line()
+	
+func skip_button_held():
+	$"%SkipCutsceneText".rect_scale = Vector2(1.2, 1.2)
+	
+func skip_button_released():
+	$"%SkipCutsceneText".rect_scale = Vector2(1.0, 1.0)

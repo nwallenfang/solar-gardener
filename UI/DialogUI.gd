@@ -58,3 +58,16 @@ func show_infoline():
 	else:
 		showing = false
 		
+func hide_line():
+	$"%SubtitleText".text = ""
+
+
+func show_dialogline(text: String, duration: float, another_one_coming:=false):
+	# TODO play show animation
+	$"%SubtitleText".text = text
+	# TODO play hide animation
+	# TODO if another one is coming up the text shouldn't fade out completely
+	# or smth
+	if not another_one_coming:
+		yield(get_tree().create_timer(duration), "timeout")
+		$"%SubtitleText".text = ""

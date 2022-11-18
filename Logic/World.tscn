@@ -105,3 +105,7 @@ far = 1000.0
 
 [node name="Planet2" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -59.582, 21.4094, 26.8254 )
+
+[node name="SkipCutscene" type="Timer" parent="."]
+
+[connection signal="timeout" from="SkipCutscene" to="." method="_on_SkipCutscene_timeout"]

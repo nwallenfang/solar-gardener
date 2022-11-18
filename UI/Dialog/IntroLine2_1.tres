@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 1 )
-text = "I was once tasked with gardening in this system myself."
+text = "But these days are over. For you there is only a single goal:"
 audio = ExtResource( 2 )
 level_db = 6.0
-extra_duration = 3.0
+extra_duration = 2.0

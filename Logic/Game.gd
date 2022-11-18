@@ -4,9 +4,8 @@ const MODELS_FOLDER = "res://Assets/Models/"
 
 enum State {
 	INGAME,
-	SETTINGS,  # aka paused
+	SETTINGS,  # not paused
 	JOURNAL,
-	MAIN_MENU, # if it's needed 
 	WARPING,
 	READING_NOTE,
 	LOADING,
