@@ -54,6 +54,11 @@ var growth_locked_once := false
 func _physics_process(delta):
 	if growth_stage != growth_lock and $GrowthCooldown.time_left == 0.0:
 		grow(delta, sign(growth_lock - growth_stage))
+	
+	if growth_stage == growth_lock:
+		if growth_boost:
+			flush_seeds()
+			growth_boost = false
 		
 	if (not growth_locked_once) and growth_stage == growth_lock:
 		Events.trigger("tutorial_growth_reached")
@@ -111,7 +116,7 @@ func calculate_growth_points():
 	elif profile.group == PlantData.PREFERENCE.LIKES:
 		points += 1 if planet.get_count_of_plant_type(profile.name) >= 5 else 0
 	elif profile.group == PlantData.PREFERENCE.HATES:
-		points += 1 if planet.get_count_of_plant_type(profile.name) < 5 else 0
+		points += 1 if planet.get_count_of_plant_type(profile.name) < 3 else 0
 	
 func check_conditions():
 	calculate_growth_points()
@@ -210,4 +215,39 @@ func growth_beam_possible() -> bool:
 	return true
 	#return $GrowthCooldown.time_left == 0.0
 
+#func on_analyse():
+#	var pickup = FLYING_PICKUP.instance()
+#	Game.planet.add_child_with_light(pickup)
+#	pickup.global_transform.basis = Utility.get_basis_y_aligned(Game.planet.global_translation.direction_to(self.global_translation))
+#	pickup.global_translation = self.global_translation
+#	pickup.setup_as_seed(seed_name)
+#	# TODO Seed count?
+#	$Tween.interpolate_property($Model, "scale", Vector3.ONE, Vector3.ONE * .01, 3.0)
+#	$Tween.start()
+#	yield(get_tree().create_timer(1.5), "timeout")
+#	pickup.start_flying()
+#	yield($Tween, "tween_all_completed")
+#	Events.trigger("tutorial_amber_collected")
 
+func flush_seeds():
+	if $SeedFlushCooldown.time_left == 0.0:
+		$SeedFlushCooldown.start()
+		var empty_spaces := []
+		for c in current_model.get_children():
+			c = c as Node
+			if "empty" in c.name.to_lower() and c is Spatial:
+				empty_spaces.append(c)
+		var pickups := []
+		for empty in empty_spaces:
+			var pickup = FLYING_PICKUP.instance()
+			Game.planet.add_child_with_light(pickup)
+			pickup.global_transform.basis = Utility.get_basis_y_aligned(Game.planet.global_translation.direction_to(self.global_translation))
+			pickup.global_translation = empty.global_translation
+			pickup.setup_as_seed(profile.name)
+			pickups.append(pickup)
+			$SeedGrowTween.interpolate_property(self, "scale", Vector3.ONE, Vector3.ONE * .01, 2.5)
+		$SeedGrowTween.start()
+		yield(get_tree().create_timer(1.0), "timeout")
+		for pickup in pickups:
+			pickup.start_flying()
+	
