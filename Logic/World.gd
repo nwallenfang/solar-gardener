@@ -28,7 +28,7 @@ func _ready() -> void:
 
 var INTRO_LENGTH_FACTOR = 3.0
 var TEST_LENGTH_FACTOR = 0.05
-const TEST_INTRO = true
+const TEST_INTRO = false
 func start_loading():
 	if OS.is_debug_build() and (not TEST_INTRO):
 		INTRO_LENGTH_FACTOR = TEST_LENGTH_FACTOR
@@ -102,14 +102,13 @@ func start_intro_flight():
 	$IntroFlight/AnimationPlayer.playback_speed = 1.0 / INTRO_LENGTH_FACTOR
 	$IntroFlight/AnimationPlayer.play("fly")
 	yield($IntroFlight/AnimationPlayer, "animation_finished")
-	
+	Game.UI.get_node("BlackScreen").visible = false
 	end_intro_flight()
 	
 func end_intro_flight():
-	Game.UI.get_node("BlackScreen").visible = false
 	$"%FlyCamera".current = false
 	Game.camera.current = true
-	
+	Game.UI.get_node("SkipCutsceneLabel").visible = false
 	yield(get_tree().create_timer(1),"timeout")
 	Game.player.update_look_direction()
 	Game.set_game_state(Game.State.INGAME)
@@ -139,3 +138,4 @@ func _on_SkipCutscene_timeout() -> void:
 	$IntroFlight/Tween.interpolate_method(Game.UI, "set_blackscreen_alpha", 1.0, 0.0, 1.3, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 	$IntroFlight/Tween.start()
 	yield($IntroFlight/Tween, "tween_all_completed")
+	Game.UI.get_node("BlackScreen").visible = false
