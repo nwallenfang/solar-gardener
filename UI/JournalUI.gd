@@ -42,7 +42,7 @@ func plant_clicked(plant_name):
 
 export(String, MULTILINE) var not_scanned_yet_fluff
 func plant_hovered(plant_ui: PlantUI):
-	if currently_hovering != plant_ui and plant_ui.discovered:
+	if plant_ui.discovered:
 		currently_hovering = plant_ui
 		$"%HoverMarker".visible = true
 		$"%HoverMarker".rect_global_position = plant_ui.rect_global_position - Vector2(12, 1)
@@ -91,6 +91,9 @@ func make_preference_list_known(plant_name: String, plant_references: Array):
 	printerr("TODO list_known")
 
 
+func show():
+	if currently_hovering != null:
+		plant_hovered(currently_hovering)
 
 func hide():
 #	$"%HoverMarker".visible = false

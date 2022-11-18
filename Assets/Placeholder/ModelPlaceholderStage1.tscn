@@ -21,3 +21,9 @@ mesh = SubResource( 2 )
 transform = Transform( 2.56325, 0, 0, 0, -5.1382e-09, -2.56325, 0, 0.117548, -1.12043e-07, 0, -4.42141e-08, 1.0115 )
 material_override = SubResource( 3 )
 mesh = SubResource( 4 )
+
+[node name="Empty1" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.226812, 0.509489, 0 )
+
+[node name="Empty2" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.194237, 0.509489, 0 )

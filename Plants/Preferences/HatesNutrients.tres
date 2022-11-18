@@ -6,5 +6,5 @@
 [resource]
 script = ExtResource( 2 )
 name = "Hates Nutrients"
-description = "Can't grow in environment with special nutrients."
+description = "Prefers planets without nutriens"
 icon = ExtResource( 1 )
