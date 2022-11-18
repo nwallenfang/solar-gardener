@@ -7,6 +7,7 @@ enum GROWTH_STAGES {SEED = 0, STAGE_1 = 1, STAGE_2 = 2, STAGE_3 = 3, STAGE_4 = 4
 enum PLANT_TYPES {NONE, THORNY, SHROOM, FLOWER}
 
 export var name: String
+export var mesh_file_name: String
 
 export(PLANT_TYPES) var plant_type: int
 

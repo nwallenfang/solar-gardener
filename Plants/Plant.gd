@@ -50,24 +50,18 @@ func setup():
 	
 	is_setup = true
 
+var growth_locked_once := false
 func _physics_process(delta):
-	growth_process(delta)  # TODO run more like once a second and not 50 times a second
-	# also give the checking rhythm a random offset for every plant so they don't all get
-	# checked in the same frame
-
-func growth_beam_possible() -> bool:
-	return $GrowthCooldown.time_left == 0.0
-
-var growth_locked_once = false
-func growth_process(delta):
-	if growth_stage == growth_lock:
-		check_conditions()
 	if growth_stage != growth_lock and $GrowthCooldown.time_left == 0.0:
 		grow(delta, sign(growth_lock - growth_stage))
 		
 	if (not growth_locked_once) and growth_stage == growth_lock:
 		Events.trigger("tutorial_growth_reached")
 		growth_locked_once = true
+
+func _on_CheckConditionsTimer_timeout():
+	if growth_stage == growth_lock:
+		check_conditions()
 
 func calculate_growth_points():
 	var points := 0
@@ -211,4 +205,9 @@ func on_remove():
 func on_analyse():
 	Game.journal.plant_got_scanned(profile.name)
 	Events.trigger("tutorial_plant_scanned")
+
+func growth_beam_possible() -> bool:
+	return true
+	#return $GrowthCooldown.time_left == 0.0
+
 

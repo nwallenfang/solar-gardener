@@ -33,3 +33,9 @@ collision_mask = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="BadPlanting"]
 shape = SubResource( 2 )
+
+[node name="CheckConditionsTimer" type="Timer" parent="."]
+process_mode = 0
+autostart = true
+
+[connection signal="timeout" from="CheckConditionsTimer" to="." method="_on_CheckConditionsTimer_timeout"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="ArrayMesh" id=1]
+resource_name = "plant01_samen_v2_Cone001"
+
+[sub_resource type="Animation" id=2]
+resource_name = "ConeAction001"
+length = 0.001
+
+[node name="Modelplant01_samen_v2" type="Spatial"]
+
+[node name="Cone001" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/ConeAction001 = SubResource( 2 )

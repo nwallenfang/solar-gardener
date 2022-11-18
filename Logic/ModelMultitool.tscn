@@ -1,16 +1,16 @@
 [gd_scene load_steps=38 format=2]
 
-[ext_resource path="res://Assets/GLTF/MultitoolDarkShiny.material" type="Material" id=1]
-[ext_resource path="res://Assets/GLTF/MultitoolBrown.material" type="Material" id=2]
-[ext_resource path="res://Assets/GLTF/MultitoolMetal.material" type="Material" id=3]
-[ext_resource path="res://Assets/GLTF/MultitoolCrystal.material" type="Material" id=4]
-[ext_resource path="res://Assets/GLTF/MultitoolBrownDoor.material" type="Material" id=5]
-[ext_resource path="res://Assets/Models/ModelMultitool.gd" type="Script" id=6]
-[ext_resource path="res://Effects/HopperRings.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Effects/EnergyBall.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Effects/Beam.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Assets/Materials/Beam.tres" type="Material" id=10]
-[ext_resource path="res://Assets/Shader/EnergyBall.gdshader" type="Shader" id=12]
+[ext_resource path="res://Assets/Materials/Beam.tres" type="Material" id=1]
+[ext_resource path="res://Effects/Beam.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Effects/HopperRings.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Effects/EnergyBall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Logic/ModelMultitool.gd" type="Script" id=5]
+[ext_resource path="res://Assets/GLTF/MultitoolMetal.material" type="Material" id=6]
+[ext_resource path="res://Assets/GLTF/MultitoolDarkShiny.material" type="Material" id=7]
+[ext_resource path="res://Assets/GLTF/MultitoolBrown.material" type="Material" id=8]
+[ext_resource path="res://Assets/GLTF/MultitoolBrownDoor.material" type="Material" id=9]
+[ext_resource path="res://Assets/GLTF/MultitoolCrystal.material" type="Material" id=10]
+[ext_resource path="res://Assets/Shader/EnergyBall.gdshader" type="Shader" id=11]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Multitool_Cylinder002"
@@ -21,7 +21,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 1368,
-"material": ExtResource( 2 ),
+"material": ExtResource( 8 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 364
@@ -33,7 +33,7 @@ surfaces/1 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 852,
-"material": ExtResource( 3 ),
+"material": ExtResource( 6 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 384
@@ -45,7 +45,7 @@ surfaces/2 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 474,
-"material": ExtResource( 1 ),
+"material": ExtResource( 7 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 166
@@ -60,7 +60,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 84,
-"material": ExtResource( 5 ),
+"material": ExtResource( 9 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 40
@@ -75,7 +75,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 1500,
-"material": ExtResource( 3 ),
+"material": ExtResource( 6 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 528
@@ -90,7 +90,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 774,
-"material": ExtResource( 1 ),
+"material": ExtResource( 7 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 264
@@ -102,7 +102,7 @@ surfaces/1 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 144,
-"material": ExtResource( 3 ),
+"material": ExtResource( 6 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 48
@@ -117,7 +117,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 2148,
-"material": ExtResource( 1 ),
+"material": ExtResource( 7 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 521
@@ -129,7 +129,7 @@ surfaces/1 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 144,
-"material": ExtResource( 3 ),
+"material": ExtResource( 6 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 48
@@ -144,7 +144,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 930,
-"material": ExtResource( 2 ),
+"material": ExtResource( 8 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 192
@@ -159,7 +159,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 264,
-"material": ExtResource( 4 ),
+"material": ExtResource( 10 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 178
@@ -171,7 +171,7 @@ surfaces/1 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 162,
-"material": ExtResource( 1 ),
+"material": ExtResource( 7 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 98
@@ -186,7 +186,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 2628,
-"material": ExtResource( 3 ),
+"material": ExtResource( 6 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 644
@@ -201,7 +201,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 84,
-"material": ExtResource( 5 ),
+"material": ExtResource( 9 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 40
@@ -631,7 +631,7 @@ seamless = true
 noise = SubResource( 18 )
 
 [sub_resource type="ShaderMaterial" id=20]
-shader = ExtResource( 12 )
+shader = ExtResource( 11 )
 shader_param/albedo = Color( 1, 0.984314, 0, 1 )
 shader_param/albedo2 = Color( 0, 0.580392, 0.0509804, 1 )
 shader_param/alpha = 1.0
@@ -666,7 +666,7 @@ material = SubResource( 25 )
 size = Vector2( 0.05, 1 )
 
 [node name="ModelMultitool" type="Spatial"]
-script = ExtResource( 6 )
+script = ExtResource( 5 )
 
 [node name="Base" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0 )
@@ -692,10 +692,10 @@ mesh = SubResource( 9 )
 [node name="ArmPoint1" type="Spatial" parent="Wheel/ArmBase1/Arm1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.201171, -1.78814e-07 )
 
-[node name="EnergyBall" parent="Wheel/ArmBase1/Arm1/ArmPoint1" instance=ExtResource( 8 )]
+[node name="EnergyBall" parent="Wheel/ArmBase1/Arm1/ArmPoint1" instance=ExtResource( 4 )]
 visible = false
 
-[node name="Beam1" parent="Wheel/ArmBase1/Arm1/ArmPoint1" instance=ExtResource( 9 )]
+[node name="Beam1" parent="Wheel/ArmBase1/Arm1/ArmPoint1" instance=ExtResource( 2 )]
 unique_name_in_owner = true
 transform = Transform( -9.72274e-09, 4.70762e-10, -0.222691, 0.0107697, 0.22243, 3.55271e-15, 0.22243, -0.0107697, -9.73413e-09, 0, 0, 0 )
 visible = false
@@ -712,10 +712,10 @@ mesh = SubResource( 9 )
 [node name="ArmPoint2" type="Spatial" parent="Wheel/ArmBase2/Arm2"]
 transform = Transform( 1, 1.42109e-14, 0, -1.42109e-14, 1, -8.94069e-08, -5.68434e-14, 8.9407e-08, 1, 0, 0.201607, 7.45058e-08 )
 
-[node name="EnergyBall" parent="Wheel/ArmBase2/Arm2/ArmPoint2" instance=ExtResource( 8 )]
+[node name="EnergyBall" parent="Wheel/ArmBase2/Arm2/ArmPoint2" instance=ExtResource( 4 )]
 visible = false
 
-[node name="Beam2" parent="Wheel/ArmBase2/Arm2/ArmPoint2" instance=ExtResource( 9 )]
+[node name="Beam2" parent="Wheel/ArmBase2/Arm2/ArmPoint2" instance=ExtResource( 2 )]
 unique_name_in_owner = true
 transform = Transform( 0.217869, 0.0130828, -4.15004e-08, 0.0120358, -0.236822, 1.26713e-08, -2.86475e-08, -3.61543e-08, -0.237183, 0, 0, 0 )
 visible = false
@@ -732,10 +732,10 @@ mesh = SubResource( 9 )
 [node name="ArmPoint3" type="Spatial" parent="Wheel/ArmBase3/Arm3"]
 transform = Transform( 1, 0, 7.10546e-15, 0, 1, -8.9407e-08, 0, 8.9407e-08, 1, 1.78814e-07, 0.206564, 1.04308e-07 )
 
-[node name="EnergyBall" parent="Wheel/ArmBase3/Arm3/ArmPoint3" instance=ExtResource( 8 )]
+[node name="EnergyBall" parent="Wheel/ArmBase3/Arm3/ArmPoint3" instance=ExtResource( 4 )]
 visible = false
 
-[node name="Beam3" parent="Wheel/ArmBase3/Arm3/ArmPoint3" instance=ExtResource( 9 )]
+[node name="Beam3" parent="Wheel/ArmBase3/Arm3/ArmPoint3" instance=ExtResource( 2 )]
 unique_name_in_owner = true
 transform = Transform( -0.214928, -0.00880407, -3.93536e-08, 0.00932381, -0.202949, -5.15249e-08, -3.656e-08, -1.96955e-08, 0.20314, 0, 0, 0 )
 visible = false
@@ -756,7 +756,7 @@ mesh = SubResource( 6 )
 transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, -0.0990454, 0.101967, 0.222169 )
 mesh = SubResource( 7 )
 
-[node name="HopperRings" parent="." instance=ExtResource( 7 )]
+[node name="HopperRings" parent="." instance=ExtResource( 3 )]
 transform = Transform( 0.106309, 0, 0, 0, -9.40693e-09, -0.106309, 0, 0.557079, -1.20289e-08, 0, 0, 0.713598 )
 
 [node name="HopperPlayer" type="AnimationPlayer" parent="."]
@@ -783,13 +783,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.997767 )
 
 [node name="GrowBeam" type="ImmediateGeometry" parent="GrowBeamOrigin"]
 unique_name_in_owner = true
-material_override = ExtResource( 10 )
+material_override = ExtResource( 1 )
 
 [node name="GrowBeamDirectionOffset" type="Spatial" parent="GrowBeamOrigin"]
 unique_name_in_owner = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.2, 0 )
 
-[node name="EnergyBallCombo" parent="GrowBeamOrigin" instance=ExtResource( 8 )]
+[node name="EnergyBallCombo" parent="GrowBeamOrigin" instance=ExtResource( 4 )]
 unique_name_in_owner = true
 transform = Transform( 1.99574, 0, 0, 0, 1.99574, 0, 0, 0, 1.99574, 0, 0, 0 )
 visible = false
