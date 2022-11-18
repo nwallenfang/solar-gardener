@@ -11,6 +11,8 @@ export var mod_enabled: Color = Color.white
 
 func show():
 	self.visible = true
+	if not guide_tab_active and journal_unlocked:
+		$JournalUI.show()
 	
 	
 func hide():

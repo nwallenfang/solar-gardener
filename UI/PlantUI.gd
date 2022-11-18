@@ -31,13 +31,13 @@ func add_preference(preference: PlantPreference):
 	next_preference.disabled = false
 	number_of_preferences += 1
 
-func make_preference_known(preference: PlantPreference):
+func make_preference_known(preference_name: String):
 	# find this preference
 	for pref_ui in $"%Preferences".get_children():
-		if pref_ui.preference == preference:
+		if pref_ui.preference.name == preference_name:
 			pref_ui.make_known()
 			return
-	printerr("plant " + plant_name + " doesn't have the preference " + preference + " ERR")
+	printerr("plant " + plant_name + " doesn't have the preference " + preference_name + " ERR")
 
 # delete?
 #func get_data_for_plant(new_plant_name):

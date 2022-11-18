@@ -68,7 +68,7 @@ func _on_CheckConditionsTimer_timeout():
 	if growth_stage == growth_lock:
 		check_conditions()
 
-var cheat = true
+var cheat = false
 func calculate_growth_points():
 	var points := 0
 	# SOIL TYPE
@@ -78,6 +78,13 @@ func calculate_growth_points():
 		points += 0
 	elif profile.prefered_soil == planet.soil_type:
 		points += 1
+		match planet.soil_type:
+			PlantData.SOIL_TYPES.ROCK:
+				Game.journal.make_preference_known(profile.name, "Likes rocky planets")
+			PlantData.SOIL_TYPES.DIRT:
+				Game.journal.make_preference_known(profile.name, "Likes dirt planets")
+			PlantData.SOIL_TYPES.SAND:
+				Game.journal.make_preference_known(profile.name, "Likes sandy planets")
 	
 	# SUN
 	if profile.sun == PlantData.PREFERENCE.ALWAYS_FALSE:
@@ -86,18 +93,20 @@ func calculate_growth_points():
 		points += 1
 	elif profile.sun == PlantData.PREFERENCE.LIKES:
 		points += 1 if planet.sun else 0
+		Game.journal.make_preference_known(profile.name, "Likes Sun")
 	elif profile.sun == PlantData.PREFERENCE.HATES:
 		points += 1 if not planet.sun else 0
+		Game.journal.make_preference_known(profile.name, "Hates Sun")
 	
 	# MOIST
-	if profile.moisture == PlantData.PREFERENCE.ALWAYS_FALSE:
-		points += 0
-	elif profile.moisture == PlantData.PREFERENCE.ALWAYS_TRUE:
-		points += 1
-	elif profile.moisture == PlantData.PREFERENCE.LIKES:
-		points += 1 if planet.moist else 0
-	elif profile.moisture == PlantData.PREFERENCE.HATES:
-		points += 1 if not planet.moist else 0
+#	if profile.moisture == PlantData.PREFERENCE.ALWAYS_FALSE:
+#		points += 0
+#	elif profile.moisture == PlantData.PREFERENCE.ALWAYS_TRUE:
+#		points += 1
+#	elif profile.moisture == PlantData.PREFERENCE.LIKES:
+#		points += 1 if planet.moist else 0
+#	elif profile.moisture == PlantData.PREFERENCE.HATES:
+#		points += 1 if not planet.moist else 0
 	
 	# NUTRI
 	if profile.nutrients == PlantData.PREFERENCE.ALWAYS_FALSE:
@@ -105,9 +114,13 @@ func calculate_growth_points():
 	elif profile.nutrients == PlantData.PREFERENCE.ALWAYS_TRUE:
 		points += 1
 	elif profile.nutrients == PlantData.PREFERENCE.LIKES:
-		points += 1 if planet.nutrients else 0
+		if planet.nutrients:
+			points += 1
+			Game.journal.make_preference_known(profile.name, "Likes Nutrients")
 	elif profile.nutrients == PlantData.PREFERENCE.HATES:
-		points += 1 if not planet.nutrients else 0
+		if not planet.nutrients:
+			points += 1
+			Game.journal.make_preference_known(profile.name, "Hates Nutrients")
 	
 	# GROUP TODO
 	if profile.group == PlantData.PREFERENCE.ALWAYS_FALSE:
@@ -115,9 +128,13 @@ func calculate_growth_points():
 	elif profile.group == PlantData.PREFERENCE.ALWAYS_TRUE:
 		points += 1
 	elif profile.group == PlantData.PREFERENCE.LIKES:
-		points += 1 if planet.get_count_of_plant_type(profile.name) >= 5 else 0
+		if planet.get_count_of_plant_type(profile.name) >= 5:
+			points += 1
+			Game.journal.make_preference_known(profile.name, "Likes Groups")
 	elif profile.group == PlantData.PREFERENCE.HATES:
-		points += 1 if planet.get_count_of_plant_type(profile.name) < 3 else 0
+		if planet.get_count_of_plant_type(profile.name) < 3:
+			points += 1
+			Game.journal.make_preference_known(profile.name, "Hates Groups")
 		
 	# CHEAT
 	if cheat:

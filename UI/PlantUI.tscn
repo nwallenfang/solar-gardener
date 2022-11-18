@@ -2,7 +2,7 @@
 
 [ext_resource path="res://UI/PlantUI.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Placeholder/plant_icon.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Sprites/star-empty.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/star-empty-bg.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Textures/aura_alpha.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Fonts/SeedCount.tres" type="DynamicFont" id=5]
 [ext_resource path="res://UI/PlantPreferenceUI.tscn" type="PackedScene" id=6]

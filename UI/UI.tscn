@@ -218,10 +218,10 @@ anchor_bottom = 1.0
 
 [node name="LoadingLabel" type="Label" parent="BlackScreen/CenterContainer"]
 unique_name_in_owner = true
-margin_left = 580.0
-margin_top = 333.0
+margin_left = 581.0
+margin_top = 340.0
 margin_right = 699.0
-margin_bottom = 386.0
+margin_bottom = 379.0
 custom_fonts/font = ExtResource( 5 )
 text = "Loading.."
 align = 1
