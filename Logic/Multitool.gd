@@ -11,7 +11,6 @@ var tool_unlocked = {
 	TOOL.BUILD: false,
 	TOOL.MOVE: false,
 	TOOL.HOPPER: true,
-	TOOL.BUILD: false,
 }
 const tooltips := {
 	TOOL.PLANT: ["Click", "Plant a seed"],
@@ -62,29 +61,46 @@ var hopper_pos: Vector3
 var can_move := false
 var object_to_move : Spatial
 
+# Input Variables
 var first_action_holded := false
 var second_action_holded := false
+
+# Cooldown
+var waiting_for_something := false
+func has_cooldown() -> bool:
+	return $Cooldown.time_left == 0.0 and not waiting_for_something
+
+func wait_for_animation_finished():
+	waiting_for_something = true
+	yield($ModelMultitool,"animation_finished")
+	waiting_for_something = false
+
 func _physics_process(delta):
 	if Game.game_state == Game.State.INGAME:
-		if $Cooldown.time_left == 0.0:
+		if has_cooldown():
 			check_on_hover()
-			if Input.is_action_just_pressed("tool1"):
-				switch_to_tool(TOOL.ANALYSIS)	
-			if Input.is_action_just_pressed("tool2"):
-				switch_to_tool(TOOL.PLANT)
-			if Input.is_action_just_pressed("tool3"):
-				switch_to_tool(TOOL.GROW)
-			if Input.is_action_just_pressed("tool4"):
-				switch_to_tool(TOOL.MOVE)
-			if Input.is_action_just_pressed("first_action"):
-				process_first_action()
-			first_action_holded = Input.is_action_pressed("first_action")
-			if Input.is_action_just_pressed("second_action"):
-				process_second_action()
-			second_action_holded = Input.is_action_pressed("second_action")
+			check_intput()
 			idle_process(delta)
 
 	show_scanner_grid(currently_analysing)
+
+
+func check_intput():
+	if Input.is_action_just_pressed("tool1"):
+		switch_tool(TOOL.ANALYSIS)	
+	if Input.is_action_just_pressed("tool2"):
+		switch_tool(TOOL.PLANT)
+	if Input.is_action_just_pressed("tool3"):
+		switch_tool(TOOL.GROW)
+	if Input.is_action_just_pressed("tool4"):
+		switch_tool(TOOL.MOVE)
+	if Input.is_action_just_pressed("first_action"):
+		process_first_action()
+	first_action_holded = Input.is_action_pressed("first_action")
+	if Input.is_action_just_pressed("second_action"):
+		process_second_action()
+	second_action_holded = Input.is_action_pressed("second_action")
+
 
 # Collision masks
 # 0 - Collision
@@ -93,67 +109,49 @@ func _physics_process(delta):
 # 3 - Bad Planting
 # 4 - Moveable
 
-func switch_away_from_tool(old_tool: int):
-	match old_tool:
-		TOOL.GROW:
-			Game.player_raycast.set_collision_mask_bit(5, false)
-			$ModelMultitool.set_grow(true)
-			#$Model/Grow.visible = false
-		TOOL.PLANT:
-			Game.player_raycast.set_collision_mask_bit(0, false)
-			if is_instance_valid(fake_seed):
-				fake_seed.queue_free()
-		TOOL.MOVE:
-			Game.player_raycast.set_collision_mask_bit(4, false)
-			#$Model/Move.visible = false
-		TOOL.ANALYSIS:
-			Game.player_raycast.set_collision_mask_bit(2, false)
-			#$Model/Analysis.visible = false
-		TOOL.HOPPER:
-			show_hopable(false)
-			$ModelMultitool.set_hopper(false)
-			
-
 func activate_tool(activated_tool: int):
 	Game.UI.get_node("Toolbar").activate_tool(activated_tool)
 	tool_unlocked[activated_tool] = true
 
 signal switched_to(new_tool)
-func switch_to_tool(new_tool: int):
-	# return immediately if tool isnt activated
-	if not tool_unlocked[new_tool]:
-		return
-	
-	if new_tool == current_tool:
-		return
-	switch_away_from_tool(current_tool)
-	current_tool = new_tool
-	emit_signal("switched_to", new_tool)
+func switch_tool(new_tool: int, tool_active := true):
+	if tool_active:
+		# return immediately if tool isnt activated
+		if not tool_unlocked[new_tool]:
+			return
+		
+		if new_tool == current_tool:
+			return
+		
+		switch_tool(current_tool, false)
+		current_tool = new_tool
+		emit_signal("switched_to", new_tool)
 
-	match current_tool:
+	match new_tool:
 		TOOL.PLANT:
-			Game.player_raycast.set_collision_mask_bit(0, true)
-			selected_profile = PlantData.profiles[target_plant_name]
-			if not PlantData.seed_counts[target_plant_name] == 0:
-				seeds_empty = false
-				fake_seed = FAKE_SEED.instance()
-				$SeedPosition.add_child(fake_seed)
-				fake_seed.setup(target_plant_name)
+			Game.player_raycast.set_collision_mask_bit(0, tool_active)
+			if tool_active:
+				selected_profile = PlantData.profiles[target_plant_name]
+				if not PlantData.seed_counts[target_plant_name] == 0:
+					seeds_empty = false
+					fake_seed = FAKE_SEED.instance()
+					$SeedPosition.add_child(fake_seed)
+					fake_seed.setup(target_plant_name)
+				else:
+					seeds_empty = true
 			else:
-				seeds_empty = true
+				if is_instance_valid(fake_seed):
+					fake_seed.queue_free()
 		TOOL.MOVE:
-			Game.player_raycast.set_collision_mask_bit(4, true)
-			#$Model/Move.visible = true
+			Game.player_raycast.set_collision_mask_bit(4, tool_active)
 		TOOL.ANALYSIS:
-			Game.player_raycast.set_collision_mask_bit(2, true)
-			#$Model/Analysis.visible = true
+			Game.player_raycast.set_collision_mask_bit(2, tool_active)
 		TOOL.GROW:
-			Game.player_raycast.set_collision_mask_bit(5, true)
-			$ModelMultitool.set_grow(true)
-			#$Model/Grow.visible = true
+			Game.player_raycast.set_collision_mask_bit(5, tool_active)
+			$ModelMultitool.set_grow(tool_active)
 		TOOL.HOPPER:
-			show_hopable(true)
-			$ModelMultitool.set_hopper(true)
+			show_hopable(tool_active)
+			$ModelMultitool.set_hopper(tool_active)
 
 func idle_process(delta: float):
 	growth_juice = min(1.0, growth_juice + JUICE_GAIN * delta)
@@ -206,7 +204,7 @@ func process_first_action():
 		TOOL.HOPPER:
 			$Cooldown.start(2)
 			Game.execute_planet_hop(hopper_planet, hopper_pos)
-			switch_to_tool(pre_hopper_tool)
+			switch_tool(pre_hopper_tool)
 
 func process_second_action():
 	match current_tool:
@@ -219,7 +217,7 @@ func check_on_hover():
 	Game.player_raycast.do_cast()
 	if Game.player_raycast.collider is Planet and current_tool != TOOL.HOPPER:
 		pre_hopper_tool = current_tool
-		switch_to_tool(TOOL.HOPPER)
+		switch_tool(TOOL.HOPPER)
 	match current_tool:
 		TOOL.PLANT:
 			if Game.player_raycast.colliding:
@@ -234,8 +232,9 @@ func check_on_hover():
 			can_grow = false
 			if Game.player_raycast.colliding:
 				if Game.player_raycast.hit_point.distance_to(Game.player.global_translation) < GROW_TOOL_DISTANCE:
-					plant_to_grow = Game.player_raycast.collider as Plant
-					can_grow = plant_to_grow.growth_beam_possible()
+					if Game.player_raycast.collider is Plant:
+						plant_to_grow = Game.player_raycast.collider as Plant
+						can_grow = plant_to_grow.growth_beam_possible()
 			show_growable(can_grow)
 		TOOL.MOVE:
 			can_move = false
@@ -256,7 +255,7 @@ func check_on_hover():
 			show_analysable(can_analyse)
 		TOOL.HOPPER:
 			if not (Game.player_raycast.colliding and Game.player_raycast.collider is Planet):
-				switch_to_tool(pre_hopper_tool)
+				switch_tool(pre_hopper_tool)
 			else:
 				hopper_planet = Game.player_raycast.collider
 				hopper_pos = Game.player_raycast.hit_point
