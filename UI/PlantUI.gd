@@ -11,6 +11,8 @@ var hovered = false
 
 var discovered = false
 var scanned = false
+var stage2_scanned = false
+var stage3_scanned = false
 
 var plant_profile: PlantProfile
 
@@ -77,7 +79,12 @@ func _on_Panel_mouse_exited() -> void:
 	if hovered:
 		hovered = false
 		
-func got_scanned():
+func got_scanned(growth_stage: int):
+	print("GOT SCANNED " + str(growth_stage))
+	if growth_stage >= 2:
+		stage2_scanned = true
+	if growth_stage >= 3:
+		stage3_scanned = true
 	scanned = true
 	$Panel.hint_tooltip = plant_profile.name
 	$Panel/Stars.visible = true

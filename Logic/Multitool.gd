@@ -330,7 +330,7 @@ func spawn_plant(pos: Vector3):
 func show_analyse_information():
 	#Game.UI.set_diagnostics(["Analysing Object", current_analyse_object, "Analyse Progress", current_analyse_progress * 100.0])
 	var text := ""
-	if object_to_analyse != null:
+	if object_to_analyse != null and is_instance_valid(object_to_analyse):
 		if "analyse_name" in object_to_analyse:
 			text = object_to_analyse.get("analyse_name")
 	if currently_analysing:

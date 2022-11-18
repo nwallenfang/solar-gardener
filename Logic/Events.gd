@@ -91,7 +91,6 @@ func tutorial_seed_planted():
 	Game.UI.add_tutorial_message("Speed up growth", "Use the growth tool to speed up growing.", duration)
 	Game.multitool.activate_tool(Game.multitool.TOOL.GROW)
 
-
 	print("next from seed planted")
 	next()
 
@@ -103,7 +102,7 @@ func tutorial_plant_reached_stage1():
 
 func tutorial_plant_scanned():
 	Game.UI.add_tutorial_message("Open the journal", "You can look at the Plant Journal to see information on scanned plants.", duration)
-	# TODO unlock journal
+	Game.UI.get_node("JournalAndGuideUI").unlock_journal()
 
 	print("next plant scanned")
 	next()
