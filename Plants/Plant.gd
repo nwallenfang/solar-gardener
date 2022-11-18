@@ -73,6 +73,13 @@ func calculate_growth_points():
 		points += 0
 	elif profile.prefered_soil == planet.soil_type:
 		points += 1
+		match planet.soil_type:
+			PlantData.SOIL_TYPES.ROCK:
+				Game.journal.make_preference_known(profile.name, "Likes rocky planets")
+			PlantData.SOIL_TYPES.DIRT:
+				Game.journal.make_preference_known(profile.name, "Likes dirt planets")
+			PlantData.SOIL_TYPES.SAND:
+				Game.journal.make_preference_known(profile.name, "Likes sandy planets")
 	
 	# SUN
 	if profile.sun == PlantData.PREFERENCE.ALWAYS_FALSE:
@@ -85,14 +92,14 @@ func calculate_growth_points():
 		points += 1 if not planet.sun else 0
 	
 	# MOIST
-	if profile.moisture == PlantData.PREFERENCE.ALWAYS_FALSE:
-		points += 0
-	elif profile.moisture == PlantData.PREFERENCE.ALWAYS_TRUE:
-		points += 1
-	elif profile.moisture == PlantData.PREFERENCE.LIKES:
-		points += 1 if planet.moist else 0
-	elif profile.moisture == PlantData.PREFERENCE.HATES:
-		points += 1 if not planet.moist else 0
+#	if profile.moisture == PlantData.PREFERENCE.ALWAYS_FALSE:
+#		points += 0
+#	elif profile.moisture == PlantData.PREFERENCE.ALWAYS_TRUE:
+#		points += 1
+#	elif profile.moisture == PlantData.PREFERENCE.LIKES:
+#		points += 1 if planet.moist else 0
+#	elif profile.moisture == PlantData.PREFERENCE.HATES:
+#		points += 1 if not planet.moist else 0
 	
 	# NUTRI
 	if profile.nutrients == PlantData.PREFERENCE.ALWAYS_FALSE:

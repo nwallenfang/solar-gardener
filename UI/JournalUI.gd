@@ -79,11 +79,11 @@ func growth_staged_reached(plant_name, growth_stage):
 	if growth_stage - 1 > plant_ui.number_of_stars:
 		plant_ui.set_number_of_stars(growth_stage - 1)
 
-func make_preference_known(plant_name: String, plant_preference: PlantPreference):
+func make_preference_known(plant_name: String, plant_preference_name: String):
 	# find plant ui belonging to this plant
 	for plant_ui in get_tree().get_nodes_in_group("plant_ui"):
 		if plant_ui.plant_name == plant_name:
-			plant_ui.make_preference_known(plant_preference)
+			plant_ui.make_preference_known(plant_preference_name)
 
 func make_preference_list_known(plant_name: String, plant_references: Array):
 	# practical to save on for loops pls use this!
