@@ -6,7 +6,6 @@ var currently_hovering
 func _ready() -> void:
 	PlantData.connect("seeds_updated", self, "seed_count_updated")
 	PlantData.connect("growth_stage_reached", self, "growth_staged_reached")
-	get_viewport().connect("size_changed", self, "root_viewport_size_changed")
 	if not PlantData.plants_initiated_done:
 		yield(PlantData, "plants_initiated")
 	init()
@@ -42,7 +41,7 @@ func plant_clicked(plant_name):
 
 
 export(String, MULTILINE) var not_scanned_yet_fluff
-func plant_hovered(plant_ui):
+func plant_hovered(plant_ui: PlantUI):
 	if currently_hovering != plant_ui and plant_ui.discovered:
 		currently_hovering = plant_ui
 		$"%HoverMarker".visible = true
@@ -53,10 +52,23 @@ func plant_hovered(plant_ui):
 		if plant_ui.scanned:
 			# TODO different stages of fluff text depending on progress
 			$"%Title".text = plant_ui.plant_profile.name
-			$"%FluffText".text = plant_ui.plant_profile.fluff_base
+			$"%FluffText".bbcode_text = plant_ui.plant_profile.fluff_base
+			if plant_ui.number_of_stars >= 1:
+				if plant_ui.stage2_scanned:
+					$"%FluffText".bbcode_text += "\n" + plant_ui.plant_profile.fluff_stage2
+				else:
+					$"%FluffText".bbcode_text += "\n[Scan further grown plant to unlock more]"
+					
+			if plant_ui.number_of_stars >= 2:
+				if plant_ui.stage3_scanned:
+					$"%FluffText".bbcode_text += "\n" + plant_ui.plant_profile.fluff_stage3
+				else:
+					if plant_ui.stage2_scanned:
+						$"%FluffText".bbcode_text += "\n[Scan further grown plant to unlock more]"
+				
 		else:
 			$"%Title".text = "???"
-			$"%FluffText".text = not_scanned_yet_fluff
+			$"%FluffText".bbcode_text = not_scanned_yet_fluff
 
 func seed_count_updated(plant_name, total_seeds):
 	var plant_ui: PlantUI = get_node("GridContainer/PlantUI" + plant_name)
@@ -81,19 +93,20 @@ func make_preference_list_known(plant_name: String, plant_references: Array):
 
 
 func hide():
-	$"%HoverMarker".visible = false
-	if currently_hovering != null:
-		currently_hovering.hovered = false
-		currently_hovering = null
+#	$"%HoverMarker".visible = false
+#	if currently_hovering != null:
+#		currently_hovering.hovered = false
+#		currently_hovering = null
+	pass
 
-func plant_got_scanned(plant_name):
+func plant_got_scanned(plant_name: String, growth_stage: int):
 	# wait a little cuz lots of other stuff might be happening already
 	yield(get_tree(), "idle_frame")
 	yield(get_tree(), "idle_frame")
 	
 	for plant_ui in get_tree().get_nodes_in_group("plant_ui"):
 		if plant_ui.plant_name == plant_name:
-			plant_ui.got_scanned()
+			plant_ui.got_scanned(growth_stage)
 
 
 # delete?

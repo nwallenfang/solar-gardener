@@ -14,6 +14,10 @@
 - Dancing Script
   - https://www.1001freefonts.com/dancing-script.font
   - License: OFL (SIL Open Font License)
+- Alice 
+  - https://www.fontsquirrel.com/fonts/alice
+  - License: OFL (SIL Open Font License)
+
 ### Textures
 - Space Skybox 
   - by www.tiron.net

@@ -11,9 +11,9 @@ export var mesh_file_name: String
 
 export(PLANT_TYPES) var plant_type: int
 
-export var fluff_base: String
-export var fluff_stage2: String
-export var fluff_stage3: String
+export(String, MULTILINE) var fluff_base: String
+export(String, MULTILINE) var fluff_stage2: String
+export(String, MULTILINE) var fluff_stage3: String
 export var icon: Texture
 
 export(PREFERENCE) var sun: int

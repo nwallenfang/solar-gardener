@@ -38,7 +38,6 @@ func _on_GuideTabSelector_gui_input(event: InputEvent) -> void:
 
 func set_guide_tab_active(guide_active):
 	if not guide_active:
-		print("journal click")
 		$JournalUI.visible = true
 		$Guide.visible = false
 		$GuideTabSelector.modulate = modulate_disabled

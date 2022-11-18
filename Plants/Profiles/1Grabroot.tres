@@ -6,10 +6,12 @@
 [resource]
 script = ExtResource( 2 )
 name = "Grabroot"
+mesh_file_name = ""
 plant_type = 1
-fluff_base = "The Grabroot is a rare plant which in most cases does not carry any leaves. It grows best in groups and is best harvested 2-3 years prior to the suns supernova. Most races however dislike the taste."
-fluff_stage2 = "The plant may appear to be small, but the majority of biomass lies underground. The roots seem to be designed to pierce even the hardest soils."
-fluff_stage3 = "It is believed that the Grabroot might have a sense of smell. This would explaint their increased growth in pleasently smelling areas."
+fluff_base = "The Grabroot is a rare plant which in most cases does not carry any leaves. 
+It grows best [b]in groups[/b] and is harvested 2-3 years before the sun's supernova. "
+fluff_stage2 = "This plant may appear to be small, but the majority of its biomass lies underground. The roots seem designed to pierce even the hardest soils."
+fluff_stage3 = "It is believed that the Grabroot might have a sense of smell. This would explain their increased growth in pleasantly smelling areas."
 icon = ExtResource( 1 )
 sun = 3
 moisture = 1

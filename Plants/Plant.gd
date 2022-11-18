@@ -68,6 +68,7 @@ func _on_CheckConditionsTimer_timeout():
 	if growth_stage == growth_lock:
 		check_conditions()
 
+var cheat = true
 func calculate_growth_points():
 	var points := 0
 	# SOIL TYPE
@@ -117,6 +118,12 @@ func calculate_growth_points():
 		points += 1 if planet.get_count_of_plant_type(profile.name) >= 5 else 0
 	elif profile.group == PlantData.PREFERENCE.HATES:
 		points += 1 if planet.get_count_of_plant_type(profile.name) < 3 else 0
+		
+	# CHEAT
+	if cheat:
+		points += 10
+		
+	growth_points = points
 	
 func check_conditions():
 	calculate_growth_points()
@@ -208,7 +215,7 @@ func on_remove():
 	queue_free()
 
 func on_analyse():
-	Game.journal.plant_got_scanned(profile.name)
+	Game.journal.plant_got_scanned(profile.name, growth_stage)
 	Events.trigger("tutorial_plant_scanned")
 
 func growth_beam_possible() -> bool:
