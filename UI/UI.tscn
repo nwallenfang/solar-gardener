@@ -171,7 +171,6 @@ __meta__ = {
 }
 
 [node name="DialogUI" parent="." instance=ExtResource( 11 )]
-visible = false
 
 [node name="SkipCutsceneLabel" type="Control" parent="."]
 anchor_left = 0.05

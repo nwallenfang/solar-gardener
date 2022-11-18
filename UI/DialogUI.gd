@@ -19,6 +19,7 @@ var beginning_pos
 
 func _ready() -> void:
 	beginning_pos = $"%SubtitleText".rect_position
+	PlantData.connect("got_seeds", self, "got_seeds")
 
 var queue = []
 var showing := false
@@ -71,3 +72,9 @@ func show_dialogline(text: String, duration: float, another_one_coming:=false):
 	if not another_one_coming:
 		yield(get_tree().create_timer(duration), "timeout")
 		$"%SubtitleText".text = ""
+
+func got_seeds(plant_name: String, amount: int):
+	var seed_string: String = "+ %d %s seed" % [amount, plant_name]
+	if amount > 1:
+		seed_string += "s"
+	push_infoline("+ %d %s seeds" % [amount, plant_name], INFO.MORE_SEEDS)

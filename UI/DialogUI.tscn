@@ -17,7 +17,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
-seeds_unlocked_color = Color( 0.647059, 0.47451, 0.372549, 1 )
+seeds_unlocked_color = Color( 0.866667, 0.631373, 0.490196, 1 )
 plant_unlocked_color = Color( 0.305882, 0.411765, 0.168627, 1 )
 preference_unlocked_color = Color( 0.317647, 0.521569, 0.733333, 1 )
 linger_time = 1.5

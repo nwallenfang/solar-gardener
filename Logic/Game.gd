@@ -50,8 +50,6 @@ func _process(delta: float) -> void:
 			
 	if OS.is_debug_build() and Input.is_action_just_pressed("give_seeds"):
 		print("gib tzieds")
-		Game.UI.get_node("DialogUI").push_infoline("Hallo", 0)
-		Game.UI.get_node("DialogUI").push_infoline("Und wieder Hallo", 0)
 		PlantData.give_seeds("Grabroot", 10)
 	if OS.is_debug_build() and Input.is_action_just_pressed("make_pref_known"):
 		print("pref known")

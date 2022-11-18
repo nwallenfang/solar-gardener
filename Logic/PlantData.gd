@@ -119,9 +119,12 @@ func plant(plant_name):
 
 
 signal seeds_updated(plant_name, seed_total)  # -> JournalUI is listening
+signal got_seeds(plant_name, seed_amount)
 func give_seeds(plant_name: String, seed_amount:int) -> void:
 	seed_counts[plant_name] += seed_amount
 	emit_signal("seeds_updated", plant_name, seed_counts[plant_name])
+	emit_signal("got_seeds", plant_name, seed_amount)
+	
 
 signal growth_stage_reached(plant_name, growth_stage) # -> JurnalUI is listening
 func growth_stage_reached(plant_name, growth_stage):
