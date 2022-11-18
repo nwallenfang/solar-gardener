@@ -28,7 +28,7 @@ func _ready() -> void:
 
 var INTRO_LENGTH_FACTOR = 3.0
 var TEST_LENGTH_FACTOR = 0.05
-const TEST_INTRO = false
+const TEST_INTRO = true
 func start_loading():
 	if OS.is_debug_build() and (not TEST_INTRO):
 		INTRO_LENGTH_FACTOR = TEST_LENGTH_FACTOR
@@ -102,6 +102,10 @@ func start_intro_flight():
 	$IntroFlight/AnimationPlayer.playback_speed = 1.0 / INTRO_LENGTH_FACTOR
 	$IntroFlight/AnimationPlayer.play("fly")
 	yield($IntroFlight/AnimationPlayer, "animation_finished")
+	
+	end_intro_flight()
+	
+func end_intro_flight():
 	Game.UI.get_node("BlackScreen").visible = false
 	$"%FlyCamera".current = false
 	Game.camera.current = true
@@ -112,4 +116,26 @@ func start_intro_flight():
 	Game.multitool.visible = true
 
 	yield(get_tree().create_timer(2.0), "timeout")
+	set_process(false)
 	Events.tutorial_beginning()
+	
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("skip_cutscene"):
+		if $SkipCutscene.is_stopped():
+			$SkipCutscene.start(1.2)
+			Game.UI.skip_button_held()
+	elif Input.is_action_just_released("skip_cutscene"):
+			$SkipCutscene.stop()
+			Game.UI.skip_button_released()
+
+func _on_SkipCutscene_timeout() -> void:
+	Dialog.skip_intro()
+	$IntroFlight/Tween.reset_all()
+	$IntroFlight/Tween.interpolate_method(Game.UI, "set_blackscreen_alpha", .0, 1.0, 0.7, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+	$IntroFlight/Tween.start()
+	yield($IntroFlight/Tween, "tween_all_completed")
+	end_intro_flight()
+	$IntroFlight/Tween.reset_all()
+	$IntroFlight/Tween.interpolate_method(Game.UI, "set_blackscreen_alpha", 1.0, 0.0, 1.3, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+	$IntroFlight/Tween.start()
+	yield($IntroFlight/Tween, "tween_all_completed")
