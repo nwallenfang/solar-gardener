@@ -97,6 +97,7 @@ func tutorial_seed_planted():
 	next()
 
 func seed_planted():
+	check_for_tutorial_completed()
 	next()
 
 func tutorial_plant_reached_stage1():
@@ -106,6 +107,7 @@ func tutorial_plant_reached_stage1():
 
 var first_plant
 func tutorial_plant_reached_stage2():
+	check_for_tutorial_completed()
 	next()
 
 func tutorial_plant_scanned():
@@ -124,7 +126,8 @@ func tutorial_growth_reached():
 	
 
 func check_for_tutorial_completed():
-	if Game.planet.plant_list.size() > 8 and get_event_from_key("tutorial_plant_reached_stage2")
+	if Game.planet.plant_list.size() > 8 and get_event_from_key("tutorial_plant_reached_stage2"):
+		Events.trigger("tutorial_completed")
 
 func tutorial_completed():
 	Game.UI.add_tutorial_message("Tutorial completed", "That's it, have fun exploring other planets!")

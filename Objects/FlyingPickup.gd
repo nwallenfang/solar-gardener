@@ -14,8 +14,13 @@ const FAKE_SEED = preload("res://Plants/FakeSeed.tscn")
 func setup_as_seed(seed_name: String):
 	identity = seed_name
 	var fake_seed = FAKE_SEED.instance()
+	fake_seed.visible = false
 	$Object.add_child(fake_seed)
 	fake_seed.setup(seed_name)
+	$GrowTween.interpolate_property(fake_seed, "scale", Vector3.ONE * .01, Vector3.ONE, 2.5)
+	$GrowTween.start()
+	yield(get_tree().create_timer(.2), "timeout")
+	fake_seed.visible = true
 
 func on_pickup():
 	if identity in PlantData.seed_counts.keys():

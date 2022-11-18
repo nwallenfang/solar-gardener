@@ -254,8 +254,9 @@ func growth_beam_possible() -> bool:
 #	Events.trigger("tutorial_amber_collected")
 
 func flush_seeds():
-	if $SeedFlushCooldown.time_left == 0.0:
+	if $SeedFlushCooldown.time_left == 0.0 and $GrowthCooldown.time_left == 0.0:
 		$SeedFlushCooldown.start()
+		yield(get_tree().create_timer(.8),"timeout")
 		var empty_spaces := []
 		for c in current_model.get_children():
 			c = c as Node
@@ -269,9 +270,7 @@ func flush_seeds():
 			pickup.global_translation = empty.global_translation
 			pickup.setup_as_seed(profile.name)
 			pickups.append(pickup)
-			$SeedGrowTween.interpolate_property(self, "scale", Vector3.ONE, Vector3.ONE * .01, 2.5)
-		$SeedGrowTween.start()
-		yield(get_tree().create_timer(1.0), "timeout")
+		yield(get_tree().create_timer(3.0), "timeout")
 		for pickup in pickups:
 			pickup.start_flying()
 	

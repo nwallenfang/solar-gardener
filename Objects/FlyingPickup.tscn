@@ -98,3 +98,5 @@ anims/RESET = SubResource( 2 )
 anims/spin = SubResource( 3 )
 
 [node name="VelocityTween" type="Tween" parent="."]
+
+[node name="GrowTween" type="Tween" parent="."]
