@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Plants/Plant.gd" type="Script" id=1]
 
@@ -7,6 +7,9 @@ radius = 0.860162
 
 [sub_resource type="SphereShape" id=2]
 radius = 1.39294
+
+[sub_resource type="SphereShape" id=3]
+radius = 4.98745
 
 [node name="Plant" type="Spatial"]
 script = ExtResource( 1 )
@@ -45,5 +48,12 @@ one_shot = true
 process_mode = 0
 wait_time = 8.0
 one_shot = true
+
+[node name="SymbiosisArea" type="Area" parent="."]
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape" type="CollisionShape" parent="SymbiosisArea"]
+shape = SubResource( 3 )
 
 [connection signal="timeout" from="CheckConditionsTimer" to="." method="_on_CheckConditionsTimer_timeout"]

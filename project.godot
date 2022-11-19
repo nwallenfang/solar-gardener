@@ -271,6 +271,7 @@ skip_cutscene={
 3d_physics/layer_5="Moveable"
 3d_physics/layer_6="Grow"
 3d_physics/layer_7="Planet"
+3d_physics/layer_8="Symbiosis"
 
 [physics]
 

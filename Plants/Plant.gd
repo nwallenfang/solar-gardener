@@ -128,11 +128,13 @@ func calculate_growth_points():
 	elif profile.group == PlantData.PREFERENCE.ALWAYS_TRUE:
 		points += 1
 	elif profile.group == PlantData.PREFERENCE.LIKES:
-		if planet.get_count_of_plant_type(profile.name) >= 5:
+		#if planet.get_count_of_plant_type(profile.name) >= 5:
+		if get_near_plants_group_count() >= 4:
 			points += 1
 			Game.journal.make_preference_known(profile.name, "Likes Groups")
 	elif profile.group == PlantData.PREFERENCE.HATES:
-		if planet.get_count_of_plant_type(profile.name) < 3:
+		#if planet.get_count_of_plant_type(profile.name) < 3:
+		if get_near_plants_group_count() < 1:
 			points += 1
 			Game.journal.make_preference_known(profile.name, "Hates Groups")
 		
@@ -273,4 +275,25 @@ func flush_seeds():
 		yield(get_tree().create_timer(3.0), "timeout")
 		for pickup in pickups:
 			pickup.start_flying()
-	
+
+func get_near_plants_list() -> Array:
+	var plants := []
+	for collider in $SymbiosisArea.get_overlapping_areas():
+		plants.append(collider.get_parent())
+	return plants
+
+func get_near_plants_group_count() -> int:
+	var plants := get_near_plants_list()
+	var count := 0
+	for plant in plants:
+		plant = plant as Plant
+		if plant.profile.name == self.profile.name:
+			count += 1
+	return count
+
+func get_near_plants_types() -> Array:
+	var plants := get_near_plants_list()
+	var types := []
+	for plant in plants:
+		types.append(plant.profile.plant_type)
+	return types
