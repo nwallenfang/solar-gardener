@@ -123,6 +123,7 @@ func end_intro_flight():
 	Game.player.update_look_direction()
 	Game.set_game_state(Game.State.INGAME)
 	Game.multitool.visible = true
+	Game.multitool.switch_tool(Game.multitool.TOOL.ANALYSIS)
 
 	yield(get_tree().create_timer(2.0), "timeout")
 	set_process(false)
