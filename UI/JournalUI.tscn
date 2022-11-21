@@ -80,8 +80,9 @@ modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
 self_modulate = Color( 0.364706, 0.364706, 0.364706, 1 )
 show_behind_parent = true
 anchor_left = 0.0296875
+anchor_top = 0.0208333
 anchor_right = 0.261688
-anchor_bottom = 0.111
+anchor_bottom = 0.131833
 hint_tooltip = "Journal is locked"
 mouse_filter = 0
 texture = ExtResource( 6 )
@@ -92,14 +93,14 @@ __meta__ = {
 
 [node name="CenterContainer" type="CenterContainer" parent="JournalTabSelector"]
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.681
 mouse_filter = 1
 
 [node name="Label" type="Label" parent="JournalTabSelector/CenterContainer"]
-margin_left = 2.0
-margin_top = 14.0
-margin_right = 293.0
-margin_bottom = 64.0
+margin_left = 22.0
+margin_top = 5.0
+margin_right = 273.0
+margin_bottom = 48.0
 mouse_filter = 1
 custom_fonts/font = ExtResource( 7 )
 text = "Journal"
@@ -108,8 +109,9 @@ align = 1
 [node name="GuideTabSelector" type="TextureRect" parent="."]
 show_behind_parent = true
 anchor_left = 0.278906
+anchor_top = 0.0208333
 anchor_right = 0.510906
-anchor_bottom = 0.111
+anchor_bottom = 0.131833
 mouse_filter = 0
 texture = ExtResource( 6 )
 expand = true
@@ -119,14 +121,14 @@ __meta__ = {
 
 [node name="CenterContainer" type="CenterContainer" parent="GuideTabSelector"]
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.681
 mouse_filter = 1
 
 [node name="Label" type="Label" parent="GuideTabSelector/CenterContainer"]
-margin_left = 54.0
-margin_top = 14.0
-margin_right = 242.0
-margin_bottom = 64.0
+margin_left = 67.0
+margin_top = 5.0
+margin_right = 228.0
+margin_bottom = 48.0
 mouse_filter = 1
 custom_fonts/font = ExtResource( 7 )
 text = "Guide"

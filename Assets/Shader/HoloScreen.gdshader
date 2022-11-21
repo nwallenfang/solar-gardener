@@ -238,6 +238,6 @@ void fragment()
 	vec3 sobel = sqrt( sobel_src_x * sobel_src_x + sobel_src_y * sobel_src_y );
 	
 	//ALBEDO = sobel;
-	ALBEDO = albedo.rgb;
-	ALPHA = text.a * mix(.1,1.0,scanlines) * albedo.a * mix(0.4, 1.0, sobel.x);
+	ALBEDO = mix(albedo.rgb, text.rgb,0.7);
+	ALPHA = text.a * mix(.2,1.0,scanlines) * albedo.a * mix(0.7, 1.0, sobel.x);
 }

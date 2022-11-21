@@ -31,7 +31,7 @@ float inv(float x) {
 void fragment() {
 	float divider = .25;
 	float dist_to_line = abs(mod(UV.x+TIME * .2, divider) - divider * .5);
-	float line_mask = clamp_map_pow(dist_to_line, divider * .009, divider * .019, 1.0, 0.0, .5);
+	float line_mask = clamp_map_pow(dist_to_line, divider * .0039, divider * .10, 1.0, 0.0, .5);
 	ALPHA = albedo.a * line_mask * float(UV.y < .5) * clamp_map_pow(UV.y, .05, .2, 0.0, 1.0, 3.5);
 	ALBEDO = albedo.rgb;
 }
@@ -39,7 +39,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id=6]
 shader = SubResource( 5 )
-shader_param/albedo = Color( 1, 0, 0, 0.52549 )
+shader_param/albedo = Color( 0.317647, 0.694118, 0.607843, 0.670588 )
 
 [sub_resource type="CylinderMesh" id=4]
 top_radius = 0.5

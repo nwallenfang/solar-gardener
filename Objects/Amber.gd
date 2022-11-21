@@ -5,7 +5,7 @@ export var seed_count : int
 
 const FLYING_PICKUP = preload("res://Objects/FlyingPickup.tscn")
 
-var analyse_name = "Piece of Amber"
+var analyse_name = "Amber Relict"
 
 func on_analyse():
 	var pickup = FLYING_PICKUP.instance()
