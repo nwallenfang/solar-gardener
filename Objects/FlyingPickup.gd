@@ -28,7 +28,7 @@ func on_pickup():
 	queue_free()
 
 func start_flying():
-	$VelocityTween.interpolate_property(self, "current_velocity", 0.0, MAX_VELOCITY, 2.0)
+	$VelocityTween.interpolate_property(self, "current_velocity", 0.0, MAX_VELOCITY, 4.0)
 	$VelocityTween.start()
 	is_flying = true
 
