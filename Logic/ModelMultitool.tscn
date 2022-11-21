@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://Assets/Materials/Beam.tres" type="Material" id=1]
 [ext_resource path="res://Effects/Beam.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Assets/Shader/EnergyBall.gdshader" type="Shader" id=11]
 [ext_resource path="res://Effects/SlingBall.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Assets/Materials/SlingBand.tres" type="Material" id=13]
+[ext_resource path="res://Effects/HoloScreen.tscn" type="PackedScene" id=14]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Multitool_Cylinder002"
@@ -1312,5 +1313,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5969e-05, 0, -0.0439752 )
 
 [node name="IGVertex3" type="Spatial" parent="SeedOrigin"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0419387, 0, -0.0168711 )
+
+[node name="HoloScreen" parent="." instance=ExtResource( 14 )]
+transform = Transform( -0.315545, 0, -4.7646e-08, 0, 0.315545, 0, 4.7646e-08, 0, -0.315545, -0.00355417, 0.144615, 0.131511 )
 
 [editable path="GrowBeamOrigin/EnergyBallCombo"]

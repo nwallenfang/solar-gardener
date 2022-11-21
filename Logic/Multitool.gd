@@ -346,7 +346,8 @@ func show_plant_information():
 	set_display_label(str(seeds_left))
 
 func set_display_label(s: String):
-	$"%DisplayLabel".text = s
+	$ModelMultitool.set_holo_text(s)
+	#$"%DisplayLabel".text = s
 
 var scanner_grid_last_frame := false
 var scanned_meshes := []

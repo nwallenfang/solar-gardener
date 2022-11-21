@@ -154,3 +154,7 @@ func home_wheel():
 	yield($WheelTween,"tween_all_completed")
 	wheel_velocity = 0.0
 	emit_signal("wheel_homed")
+
+func set_holo_text(text: String):
+	$HoloScreen.visible = (text != "")
+	$HoloScreen.set_text(text)
