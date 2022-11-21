@@ -1,6 +1,9 @@
 ## CREDITS for 3rd Party Assets
 ### Sound Assets
 ### Code Assets
+### Shader Assets
+https://godotshaders.com/shader/sobel-with-gaussian-filter/
+https://godotshaders.com/shader/vhs-and-crt-monitor-effect/
 ### Fonts
 - VTF Grotesk
   - https://fontlibrary.org/en/font/vtf-grotesk
