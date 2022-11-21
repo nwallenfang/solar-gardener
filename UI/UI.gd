@@ -112,7 +112,7 @@ func show_next_message():
 	else:
 		show_next_message()
 		
-func add_tutorial_message(title: String, text: String, duration:=5.5):
+func add_tutorial_message(title: String, text: String, duration:=10.0):
 	var msg = {"title":title, "text":text, "duration":duration}
 	tutorial_queue.append(msg)
 	if not showing_right_now:

@@ -1,4 +1,4 @@
 extends Spatial
 
 func set_text(text: String):
-	$Screen/Label.text = text
+	$Screen/Screen2D/Label.text = text
