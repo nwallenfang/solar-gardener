@@ -1,0 +1,367 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v3.3.32",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0,
+                1,
+                2,
+                3,
+                4,
+                6,
+                7
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "name" : "TurnPoint",
+            "rotation" : [
+                0,
+                0.3031618893146515,
+                0,
+                0.9529391527175903
+            ],
+            "translation" : [
+                0,
+                -0.0849275290966034,
+                0
+            ]
+        },
+        {
+            "name" : "Empty",
+            "translation" : [
+                0.11870240420103073,
+                0.16275933384895325,
+                -0.17545738816261292
+            ]
+        },
+        {
+            "name" : "Empty.001",
+            "translation" : [
+                -0.2284533679485321,
+                0.16275933384895325,
+                -0.0915939062833786
+            ]
+        },
+        {
+            "name" : "Empty.002",
+            "translation" : [
+                -0.12703707814216614,
+                0.16275933384895325,
+                0.1814499944448471
+            ]
+        },
+        {
+            "name" : "Empty.003",
+            "translation" : [
+                0.1694105565547943,
+                0.16275933384895325,
+                0.1814499944448471
+            ]
+        },
+        {
+            "mesh" : 0,
+            "name" : "Flower.001",
+            "scale" : [
+                1.1041312217712402,
+                2.7004175186157227,
+                1.1041312217712402
+            ],
+            "translation" : [
+                0,
+                -0.0748131275177002,
+                0
+            ]
+        },
+        {
+            "children" : [
+                5
+            ],
+            "mesh" : 1,
+            "name" : "FlowerBase.001",
+            "scale" : [
+                0.9056894779205322,
+                0.3703131377696991,
+                0.9056894779205322
+            ],
+            "translation" : [
+                0,
+                0.9167925119400024,
+                0
+            ]
+        },
+        {
+            "mesh" : 2,
+            "name" : "Pino2",
+            "translation" : [
+                0,
+                -0.0849275290966034,
+                0
+            ]
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "name" : "PinoFlowerPink",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0.8000000715255737,
+                    0.016993418335914612,
+                    0.12267304211854935,
+                    1
+                ],
+                "metallicFactor" : 0,
+                "roughnessFactor" : 0.5
+            }
+        },
+        {
+            "doubleSided" : true,
+            "name" : "PinoPlantGreen",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0.015297474339604378,
+                    0.052217476069927216,
+                    0,
+                    1
+                ],
+                "metallicFactor" : 0
+            }
+        },
+        {
+            "doubleSided" : true,
+            "name" : "PinoBark",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0.09083760529756546,
+                    0.08889482915401459,
+                    0.02242630533874035,
+                    1
+                ],
+                "metallicFactor" : 0,
+                "roughnessFactor" : 0.8471502661705017
+            }
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Cube.003",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1
+                    },
+                    "indices" : 2,
+                    "material" : 0
+                }
+            ]
+        },
+        {
+            "name" : "Cylinder.004",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 3,
+                        "NORMAL" : 4,
+                        "TEXCOORD_0" : 5
+                    },
+                    "indices" : 6,
+                    "material" : 1
+                }
+            ]
+        },
+        {
+            "name" : "Cylinder",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 7,
+                        "NORMAL" : 8,
+                        "TEXCOORD_0" : 9
+                    },
+                    "indices" : 10,
+                    "material" : 2
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 2169,
+            "max" : [
+                0.1374223381280899,
+                0.16082867980003357,
+                0.13206492364406586
+            ],
+            "min" : [
+                -0.12926752865314484,
+                -0.0005235862918198109,
+                -0.1216917335987091
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 2169,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5123,
+            "count" : 10674,
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5126,
+            "count" : 124,
+            "max" : [
+                0.05460473895072937,
+                0.02992081642150879,
+                0.05741481855511665
+            ],
+            "min" : [
+                -0.05460473895072937,
+                -0.10780047625303268,
+                -0.057414811104536057
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 4,
+            "componentType" : 5126,
+            "count" : 124,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 5,
+            "componentType" : 5126,
+            "count" : 124,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 6,
+            "componentType" : 5123,
+            "count" : 348,
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 7,
+            "componentType" : 5126,
+            "count" : 2144,
+            "max" : [
+                1.0397093296051025,
+                1.301308035850525,
+                0.9597446918487549
+            ],
+            "min" : [
+                -0.9919646382331848,
+                -0.06887361407279968,
+                -1.0019570589065552
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 8,
+            "componentType" : 5126,
+            "count" : 2144,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 9,
+            "componentType" : 5126,
+            "count" : 2144,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 10,
+            "componentType" : 5123,
+            "count" : 11202,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 26028,
+            "byteOffset" : 0,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 26028,
+            "byteOffset" : 26028,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 21348,
+            "byteOffset" : 52056,
+            "target" : 34963
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 1488,
+            "byteOffset" : 73404,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 1488,
+            "byteOffset" : 74892,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 992,
+            "byteOffset" : 76380,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 696,
+            "byteOffset" : 77372,
+            "target" : 34963
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 25728,
+            "byteOffset" : 78068,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 25728,
+            "byteOffset" : 103796,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 17152,
+            "byteOffset" : 129524,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 22404,
+            "byteOffset" : 146676,
+            "target" : 34963
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 169080,
+            "uri" : "PlantPinoState01.bin"
+        }
+    ]
+}

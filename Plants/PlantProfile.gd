@@ -56,18 +56,19 @@ func setup():
 
 	while true:
 		var file = dir.get_next()
+		var lower_file: String = file.to_lower()
 		if file == "":
 			break
-		elif name in file:
-			if "Seed" in file:
+		elif mesh_file_name.to_lower() in lower_file:
+			if "seed" in lower_file:
 				model_seed = load(Game.MODELS_FOLDER + file)
-			elif "Stage1" in file:
+			elif "state00" in lower_file:
 				model_stage_1 = load(Game.MODELS_FOLDER + file)
-			elif "Stage2" in file:
+			elif "state01" in lower_file:
 				model_stage_2 = load(Game.MODELS_FOLDER + file)
-			elif "Stage3" in file:
+			elif "state02" in lower_file:
 				model_stage_3 = load(Game.MODELS_FOLDER + file)
-			elif "Stage4" in file:
+			elif "state03" in lower_file:
 				model_stage_4 = load(Game.MODELS_FOLDER + file)
 
 	dir.list_dir_end()

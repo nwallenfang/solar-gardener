@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource( 2 )
 name = "Grabroot"
-mesh_file_name = ""
+mesh_file_name = "PlantPino"
 plant_type = 1
 fluff_base = "The Grabroot is a rare plant which in most cases does not carry any leaves. 
 It grows best [b]in groups[/b] and is harvested 2-3 years before the sun's supernova. "
