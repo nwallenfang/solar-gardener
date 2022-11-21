@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource( 1 )
 name = "Giant-Cap"
+mesh_file_name = "PlantPino"
 plant_type = 2
 fluff_base = "The Giant-Cap is known the be the biggest mushroom in the galaxy."
 fluff_stage2 = "The Giant-Cap uses its large surface area to collect lots of sunlight."

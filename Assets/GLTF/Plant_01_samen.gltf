@@ -15,7 +15,7 @@
     "nodes" : [
         {
             "mesh" : 0,
-            "name" : "NurbsPath.003"
+            "name" : "Sphere.001"
         }
     ],
     "animations" : [
@@ -43,7 +43,7 @@
                     }
                 }
             ],
-            "name" : "NurbsPath.002Action.001",
+            "name" : "Sphere.001Action",
             "samplers" : [
                 {
                     "input" : 4,
@@ -67,11 +67,11 @@
         {
             "doubleSided" : true,
             "emissiveFactor" : [
-                0,
-                0.1310279816389084,
+                1,
+                1,
                 1
             ],
-            "name" : "Material.008",
+            "name" : "Material.001",
             "pbrMetallicRoughness" : {
                 "baseColorFactor" : [
                     0,
@@ -84,7 +84,7 @@
     ],
     "meshes" : [
         {
-            "name" : "NurbsPath.003",
+            "name" : "Sphere.001",
             "primitives" : [
                 {
                     "attributes" : {
@@ -102,35 +102,35 @@
         {
             "bufferView" : 0,
             "componentType" : 5126,
-            "count" : 559,
+            "count" : 33559,
             "max" : [
-                0.0517139732837677,
-                0.06813061237335205,
-                0.05080220103263855
+                0.06231260299682617,
+                0.06285136938095093,
+                0.06302528828382492
             ],
             "min" : [
-                -0.04869002103805542,
-                -0.057805418968200684,
-                -0.05320614576339722
+                -0.06302264332771301,
+                -0.06254344433546066,
+                -0.06251492351293564
             ],
             "type" : "VEC3"
         },
         {
             "bufferView" : 1,
             "componentType" : 5126,
-            "count" : 559,
+            "count" : 33559,
             "type" : "VEC3"
         },
         {
             "bufferView" : 2,
             "componentType" : 5126,
-            "count" : 559,
+            "count" : 33559,
             "type" : "VEC2"
         },
         {
             "bufferView" : 3,
             "componentType" : 5123,
-            "count" : 2880,
+            "count" : 190464,
             "type" : "SCALAR"
         },
         {
@@ -167,53 +167,53 @@
     "bufferViews" : [
         {
             "buffer" : 0,
-            "byteLength" : 6708,
+            "byteLength" : 402708,
             "byteOffset" : 0,
             "target" : 34962
         },
         {
             "buffer" : 0,
-            "byteLength" : 6708,
-            "byteOffset" : 6708,
+            "byteLength" : 402708,
+            "byteOffset" : 402708,
             "target" : 34962
         },
         {
             "buffer" : 0,
-            "byteLength" : 4472,
-            "byteOffset" : 13416,
+            "byteLength" : 268472,
+            "byteOffset" : 805416,
             "target" : 34962
         },
         {
             "buffer" : 0,
-            "byteLength" : 5760,
-            "byteOffset" : 17888,
+            "byteLength" : 380928,
+            "byteOffset" : 1073888,
             "target" : 34963
         },
         {
             "buffer" : 0,
             "byteLength" : 4,
-            "byteOffset" : 23648
+            "byteOffset" : 1454816
         },
         {
             "buffer" : 0,
             "byteLength" : 12,
-            "byteOffset" : 23652
+            "byteOffset" : 1454820
         },
         {
             "buffer" : 0,
             "byteLength" : 16,
-            "byteOffset" : 23664
+            "byteOffset" : 1454832
         },
         {
             "buffer" : 0,
             "byteLength" : 12,
-            "byteOffset" : 23680
+            "byteOffset" : 1454848
         }
     ],
     "buffers" : [
         {
-            "byteLength" : 23692,
-            "uri" : "samen_state00.bin"
+            "byteLength" : 1454860,
+            "uri" : "plant_01_samen.bin"
         }
     ]
 }

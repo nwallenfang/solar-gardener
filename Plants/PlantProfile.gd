@@ -60,7 +60,7 @@ func setup():
 		if file == "":
 			break
 		elif mesh_file_name.to_lower() in lower_file:
-			if "seed" in lower_file:
+			if "seed" in lower_file or "samen" in lower_file:
 				model_seed = load(Game.MODELS_FOLDER + file)
 			elif "state00" in lower_file:
 				model_stage_1 = load(Game.MODELS_FOLDER + file)

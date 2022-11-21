@@ -273,7 +273,7 @@ func flush_seeds():
 			pickup.global_translation = empty.global_translation
 			pickup.setup_as_seed(profile.name)
 			pickups.append(pickup)
-		yield(get_tree().create_timer(3.0), "timeout")
+		yield(get_tree().create_timer(2.0), "timeout")
 		for pickup in pickups:
 			pickup.start_flying()
 
