@@ -2,7 +2,7 @@ extends Spatial
 class_name Multitool
 
 enum TOOL {NONE, ANALYSIS, PLANT, GROW, MOVE, BUILD, HOPPER}
-var current_tool := 0
+var current_tool :int = TOOL.ANALYSIS
 var tool_unlocked = {
 	TOOL.NONE: true,
 	TOOL.PLANT: false,
