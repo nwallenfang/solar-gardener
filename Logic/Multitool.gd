@@ -2,7 +2,7 @@ extends Spatial
 class_name Multitool
 
 enum TOOL {NONE, ANALYSIS, PLANT, GROW, MOVE, BUILD, HOPPER}
-var current_tool :int = TOOL.ANALYSIS
+var current_tool :int = TOOL.NONE
 var tool_unlocked = {
 	TOOL.NONE: true,
 	TOOL.PLANT: false,
@@ -10,7 +10,7 @@ var tool_unlocked = {
 	TOOL.ANALYSIS: true,
 	TOOL.BUILD: false,
 	TOOL.MOVE: false,
-	TOOL.HOPPER: true,
+	TOOL.HOPPER: false,
 }
 const tooltips := {
 	TOOL.PLANT: ["Click", "Plant a seed"],
