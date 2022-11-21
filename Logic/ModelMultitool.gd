@@ -24,10 +24,12 @@ func set_grow(active: bool):
 	emit_signal("animation_finished")
 
 func set_plant(active: bool):
+	$SeedOrigin.visible = false
 	$PlantPlayer.play("on" if active else "off")
 	if not active:
 		$Slingshot.visible = false
 	yield($PlantPlayer,"animation_finished")
+	$SeedOrigin.visible = active
 	emit_signal("animation_finished")
 
 func set_analysis(active: bool):

@@ -83,8 +83,10 @@ func _physics_process(delta):
 			idle_process(delta)
 
 	show_scanner_grid(currently_analysing)
-	if should_update_fake_seed_position:
-		update_fake_seed_position()
+#	if should_update_fake_seed_position:
+#		update_fake_seed_position()
+	if seeds_empty and current_tool == TOOL.PLANT:
+		try_reload()
 
 
 func check_intput():
@@ -133,15 +135,14 @@ func switch_tool(new_tool: int, tool_active := true):
 
 	match new_tool:
 		TOOL.PLANT:
+			if is_instance_valid(fake_seed):
+				fake_seed.queue_free()
 			Game.player_raycast.set_collision_mask_bit(0, tool_active)
 			$ModelMultitool.set_plant(tool_active)
 			wait_for_animation_finished()
 			yield($ModelMultitool,"animation_finished")
 			if tool_active:
 				try_reload()
-			else:
-				if is_instance_valid(fake_seed):
-					fake_seed.queue_free()
 		TOOL.MOVE:
 			Game.player_raycast.set_collision_mask_bit(4, tool_active)
 		TOOL.ANALYSIS:

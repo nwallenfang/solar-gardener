@@ -1428,7 +1428,6 @@ visible = false
 
 [node name="MeshInstance" parent="GrowBeamOrigin/EnergyBallCombo" index="0"]
 material_override = SubResource( 20 )
-cast_shadow = 0
 mesh = SubResource( 21 )
 
 [node name="Particles" parent="GrowBeamOrigin/EnergyBallCombo" index="1"]
