@@ -66,14 +66,14 @@ var first_action_holded := false
 var second_action_holded := false
 
 # Cooldown
-var waiting_for_something := false
+var waiting_for_animation := false
 func has_cooldown() -> bool:
-	return $Cooldown.time_left == 0.0 and not waiting_for_something
+	return $Cooldown.time_left == 0.0 and not waiting_for_animation
 
 func wait_for_animation_finished():
-	waiting_for_something = true
+	waiting_for_animation = true
 	yield($ModelMultitool,"animation_finished")
-	waiting_for_something = false
+	waiting_for_animation = false
 
 func _physics_process(delta):
 	if Game.game_state == Game.State.INGAME:
@@ -83,6 +83,8 @@ func _physics_process(delta):
 			idle_process(delta)
 
 	show_scanner_grid(currently_analysing)
+	if should_update_fake_seed_position:
+		update_fake_seed_position()
 
 
 func check_intput():
@@ -124,21 +126,19 @@ func switch_tool(new_tool: int, tool_active := true):
 			return
 		
 		switch_tool(current_tool, false)
+		if waiting_for_animation:
+			yield($ModelMultitool,"animation_finished")
 		current_tool = new_tool
 		emit_signal("switched_to", new_tool)
 
 	match new_tool:
 		TOOL.PLANT:
 			Game.player_raycast.set_collision_mask_bit(0, tool_active)
+			$ModelMultitool.set_plant(tool_active)
+			wait_for_animation_finished()
+			yield($ModelMultitool,"animation_finished")
 			if tool_active:
-				selected_profile = PlantData.profiles[target_plant_name]
-				if not PlantData.seed_counts[target_plant_name] == 0:
-					seeds_empty = false
-					fake_seed = FAKE_SEED.instance()
-					$SeedPosition.add_child(fake_seed)
-					fake_seed.setup(target_plant_name)
-				else:
-					seeds_empty = true
+				try_reload()
 			else:
 				if is_instance_valid(fake_seed):
 					fake_seed.queue_free()
@@ -149,9 +149,11 @@ func switch_tool(new_tool: int, tool_active := true):
 		TOOL.GROW:
 			Game.player_raycast.set_collision_mask_bit(5, tool_active)
 			$ModelMultitool.set_grow(tool_active)
+			wait_for_animation_finished()
 		TOOL.HOPPER:
 			show_hopable(tool_active)
 			$ModelMultitool.set_hopper(tool_active)
+			wait_for_animation_finished()
 
 func idle_process(delta: float):
 	growth_juice = min(1.0, growth_juice + JUICE_GAIN * delta)
@@ -292,19 +294,16 @@ func show_hopable(b: bool):
 
 func start_planting_animation(pos: Vector3):
 	show_plantable(false)
+	$ModelMultitool.seed_shot()
 	$Cooldown.start(1)
 	$SeedFlyTween.interpolate_property(fake_seed, "global_translation", fake_seed.global_translation, pos, .2)
 	$SeedFlyTween.start()
 	yield($SeedFlyTween, "tween_all_completed")
 	fake_seed.visible = false
 	spawn_plant(pos)
-	yield(get_tree().create_timer(.6),"timeout")
+	yield(get_tree().create_timer(.4),"timeout")
 	fake_seed.global_translation = $SeedPosition.global_translation
-	if not PlantData.seed_counts[target_plant_name] == 0:
-		seeds_empty = false
-		fake_seed.visible = true
-	else:
-		seeds_empty = true
+	try_reload()
 
 const DIRT_EXPLOSION = preload("res://Effects/DirtExplosion.tscn")
 const DIRT_PILE = preload("res://Assets/Models/ModelDirtPile.tscn")
@@ -370,3 +369,20 @@ func show_scanner_grid(show: bool):
 				mi.material_overlay = null
 			scanned_meshes = []
 	scanner_grid_last_frame = show
+
+func try_reload():
+	selected_profile = PlantData.profiles[target_plant_name]
+	if not PlantData.seed_counts[target_plant_name] == 0:
+		seeds_empty = false
+		fake_seed = FAKE_SEED.instance()
+		$ModelMultitool/SeedOrigin.add_child(fake_seed)
+		fake_seed.setup(target_plant_name, 1.0)
+		$ModelMultitool.seed_reload()
+		wait_for_animation_finished()
+	else:
+		seeds_empty = true
+
+var should_update_fake_seed_position := false
+func update_fake_seed_position():
+	pass
+	#fake_seed.global_translation = $ModelMultitool.get_node("SeedOrigin").global_translation

@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Shader/SlingBall.gdshader" type="Shader" id=1]
+
+[sub_resource type="OpenSimplexNoise" id=4]
+persistence = 0.757
+lacunarity = 2.51
+
+[sub_resource type="NoiseTexture" id=5]
+width = 256
+height = 256
+seamless = true
+noise = SubResource( 4 )
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/albedo = Color( 0.00392157, 1, 1, 1 )
+shader_param/albedo2 = Color( 0.709804, 0.0862745, 0.658824, 1 )
+shader_param/alpha = 1.0
+shader_param/texture_albedo = SubResource( 5 )

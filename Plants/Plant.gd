@@ -175,6 +175,7 @@ func grow(delta, factor_sign):
 		play_growth_pop_animation(old_stage)
 		Events.trigger("tutorial_plant_reached_stage" + str(growth_stage))
 		PlantData.growth_stage_reached(profile.name, growth_stage)
+		$Area.set_collision_layer_bit(2, true)
 
 const GREEN_OVERLAY = preload("res://Assets/Materials/GreenAlphaOverlay.tres")
 const GROW_POP_PARTICLES = preload("res://Effects/GrowPopParticles.tscn")
