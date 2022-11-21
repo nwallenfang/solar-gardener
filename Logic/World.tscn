@@ -22,7 +22,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 10 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0, 7.0 ]
+"values": [ 0.0, 9.0 ]
 }
 
 [node name="World" type="Spatial"]
