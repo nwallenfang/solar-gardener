@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://Assets/Materials/Beam.tres" type="Material" id=1]
 [ext_resource path="res://Effects/Beam.tscn" type="PackedScene" id=2]
@@ -1088,6 +1088,124 @@ tracks/2/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
+[sub_resource type="Animation" id=34]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Wheel/ArmBase2/Arm2:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 3.4151e-06, -1.62844e-12, 4.07111e-13 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Wheel/ArmBase3/Arm3:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Wheel/ArmBase1/Arm1:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=36]
+resource_name = "off"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Wheel/ArmBase2/Arm2:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 5.12264e-06, -3.48081e-12, -90 ), Vector3( 3.4151e-06, -1.62844e-12, 4.07111e-13 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Wheel/ArmBase3/Arm3:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1.70755e-06, -8.02516e-14, 90 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Wheel/ArmBase1/Arm1:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 90, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=35]
+resource_name = "on"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Wheel/ArmBase2/Arm2:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 3.4151e-06, -1.62844e-12, 4.07111e-13 ), Vector3( 5.12264e-06, -3.48081e-12, -90 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Wheel/ArmBase3/Arm3:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 1.70755e-06, -8.02516e-14, 90 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Wheel/ArmBase1/Arm1:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 90, 0, 0 ) ]
+}
+
 [sub_resource type="OpenSimplexNoise" id=18]
 persistence = 0.757
 lacunarity = 2.51
@@ -1140,23 +1258,28 @@ script = ExtResource( 5 )
 
 [node name="Base" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0 )
+cast_shadow = 0
 mesh = SubResource( 1 )
 
 [node name="BaseLidLeft" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 4.37114e-08, 4.37114e-08, 1.91069e-15, -1, 0, 1, 1.91069e-15, 0.0990454, 0.101967, 0.222169 )
+cast_shadow = 0
 mesh = SubResource( 2 )
 
 [node name="Wheel" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, -4.37114e-08, -4.37114e-08, 1.91069e-15, -1, 0, 1, 1.91069e-15, 0, 0, 0.369929 )
+cast_shadow = 0
 mesh = SubResource( 3 )
 
 [node name="ArmBase1" type="MeshInstance" parent="Wheel"]
 transform = Transform( 0.553191, 0, 0, 0, -8.35295e-08, -0.553191, 0, 0.553191, -8.35295e-08, 0, 0.053084, 0.1847 )
+cast_shadow = 0
 mesh = SubResource( 8 )
 skeleton = NodePath("../..")
 
 [node name="Arm1" type="MeshInstance" parent="Wheel/ArmBase1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0991108, 0 )
+cast_shadow = 0
 mesh = SubResource( 9 )
 
 [node name="ArmPoint1" type="Spatial" parent="Wheel/ArmBase1/Arm1"]
@@ -1172,11 +1295,13 @@ visible = false
 
 [node name="ArmBase2" type="MeshInstance" parent="Wheel"]
 transform = Transform( -1.13233e-07, 0.479077, 0.276596, -0.553191, -2.41807e-08, -1.84583e-07, -1.47763e-07, -0.276596, 0.479077, 0.159955, 0.053084, -0.0923502 )
+cast_shadow = 0
 mesh = SubResource( 8 )
 skeleton = NodePath("../..")
 
 [node name="Arm2" type="MeshInstance" parent="Wheel/ArmBase2"]
-transform = Transform( 1, 1.42109e-14, 2.84216e-14, -1.42109e-14, 1, -5.96047e-08, -2.84216e-14, 5.96047e-08, 1, 0, 0.0991107, 0 )
+transform = Transform( 1, -7.10543e-15, -2.84217e-14, 7.10543e-15, 1, -5.96047e-08, 2.84217e-14, 5.96047e-08, 1, 0, 0.0991107, 0 )
+cast_shadow = 0
 mesh = SubResource( 9 )
 
 [node name="ArmPoint2" type="Spatial" parent="Wheel/ArmBase2/Arm2"]
@@ -1196,11 +1321,13 @@ visible = false
 
 [node name="ArmBase3" type="MeshInstance" parent="Wheel"]
 transform = Transform( -2.09411e-08, -0.479077, -0.276596, 0.553191, -2.41807e-08, 0, -1.20904e-08, -0.276596, 0.479077, -0.159955, 0.053084, -0.0923502 )
+cast_shadow = 0
 mesh = SubResource( 8 )
 skeleton = NodePath("../..")
 
 [node name="Arm3" type="MeshInstance" parent="Wheel/ArmBase3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0991108, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0991108, -1.49012e-08 )
+cast_shadow = 0
 mesh = SubResource( 9 )
 
 [node name="ArmPoint3" type="Spatial" parent="Wheel/ArmBase3/Arm3"]
@@ -1220,18 +1347,22 @@ visible = false
 
 [node name="Front" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0.471343 )
+cast_shadow = 0
 mesh = SubResource( 4 )
 
 [node name="HoloCrystal" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.152344, 0.128005 )
+cast_shadow = 0
 mesh = SubResource( 5 )
 
 [node name="Antenna" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.194 )
+cast_shadow = 0
 mesh = SubResource( 6 )
 
 [node name="BaseLidRight" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, -4.37114e-08, -4.37114e-08, 1.91069e-15, -1, 0, 1, 1.91069e-15, -0.0990454, 0.101967, 0.222169 )
+cast_shadow = 0
 mesh = SubResource( 7 )
 
 [node name="HopperRings" parent="." instance=ExtResource( 3 )]
@@ -1267,8 +1398,14 @@ anims/RESET = SubResource( 30 )
 anims/reload = SubResource( 29 )
 anims/shot = SubResource( 32 )
 
+[node name="AnalysePlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 34 )
+anims/off = SubResource( 36 )
+anims/on = SubResource( 35 )
+
 [node name="Slingshot" type="ImmediateGeometry" parent="."]
 material_override = ExtResource( 13 )
+cast_shadow = 0
 
 [node name="WheelTween" type="Tween" parent="."]
 
@@ -1278,6 +1415,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.997767 )
 [node name="GrowBeam" type="ImmediateGeometry" parent="GrowBeamOrigin"]
 unique_name_in_owner = true
 material_override = ExtResource( 1 )
+cast_shadow = 0
 
 [node name="GrowBeamDirectionOffset" type="Spatial" parent="GrowBeamOrigin"]
 unique_name_in_owner = true
@@ -1290,6 +1428,7 @@ visible = false
 
 [node name="MeshInstance" parent="GrowBeamOrigin/EnergyBallCombo" index="0"]
 material_override = SubResource( 20 )
+cast_shadow = 0
 mesh = SubResource( 21 )
 
 [node name="Particles" parent="GrowBeamOrigin/EnergyBallCombo" index="1"]
@@ -1315,6 +1454,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5969e-05, 0, -0.0439752 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0419387, 0, -0.0168711 )
 
 [node name="HoloScreen" parent="." instance=ExtResource( 14 )]
-transform = Transform( -0.315545, 0, -4.7646e-08, 0, 0.315545, 0, 4.7646e-08, 0, -0.315545, -0.00355417, 0.144615, 0.131511 )
+transform = Transform( -0.309156, -0.0631739, -4.64377e-08, -0.0615719, 0.301316, 0.0706119, -0.0141369, 0.0691823, -0.307543, -0.00355417, 0.144615, 0.131511 )
 
 [editable path="GrowBeamOrigin/EnergyBallCombo"]

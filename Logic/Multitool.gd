@@ -146,6 +146,8 @@ func switch_tool(new_tool: int, tool_active := true):
 			Game.player_raycast.set_collision_mask_bit(4, tool_active)
 		TOOL.ANALYSIS:
 			Game.player_raycast.set_collision_mask_bit(2, tool_active)
+			$ModelMultitool.set_analysis(tool_active)
+			wait_for_animation_finished()
 		TOOL.GROW:
 			Game.player_raycast.set_collision_mask_bit(5, tool_active)
 			$ModelMultitool.set_grow(tool_active)

@@ -12,7 +12,6 @@ func set_hopper(active: bool):
 	$HopperRings.set_active(active)
 	$HopperPlayer.play("on" if active else "off")
 	yield($HopperPlayer,"animation_finished")
-	yield(get_tree().create_timer(.1),"timeout")
 	emit_signal("animation_finished")
 
 func set_grow(active: bool):
@@ -29,6 +28,16 @@ func set_plant(active: bool):
 	if not active:
 		$Slingshot.visible = false
 	yield($PlantPlayer,"animation_finished")
+	emit_signal("animation_finished")
+
+func set_analysis(active: bool):
+	$AnalysePlayer.play("on" if active else "off")
+	$HopperPlayer.play("on" if active else "off")
+	if active:
+		wheel_accel_to(80, 1.0)
+	else:
+		home_wheel()
+	yield($AnalysePlayer,"animation_finished")
 	emit_signal("animation_finished")
 
 func seed_reload():
