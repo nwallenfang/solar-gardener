@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://UI/PlantUI.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Placeholder/plant_icon.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Assets/Sprites/covered2.png" type="Texture" id=7]
 [ext_resource path="res://theme.tres" type="Theme" id=8]
 [ext_resource path="res://Assets/Sprites/plant_bg.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sprites/plant_group.png" type="Texture" id=10]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -28,13 +29,15 @@ expand = true
 stretch_mode = 5
 
 [node name="Stars" type="HBoxContainer" parent="Panel"]
-visible = false
-anchor_left = 0.012
-anchor_top = 0.023
-anchor_right = 0.474
-anchor_bottom = 0.252
+anchor_left = 0.0732422
+anchor_top = -0.0138889
+anchor_right = 0.535242
+anchor_bottom = 0.215111
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.33
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="Star1" type="TextureRect" parent="Panel/Stars"]
 margin_right = 155.0
@@ -83,10 +86,10 @@ stretch_mode = 6
 [node name="Preferences" type="GridContainer" parent="Panel"]
 unique_name_in_owner = true
 visible = false
-anchor_left = 0.055
-anchor_top = 0.231
-anchor_right = 0.411
-anchor_bottom = 0.969
+anchor_left = 0.048
+anchor_top = 0.191
+anchor_right = 0.458
+anchor_bottom = 0.986
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 columns = 2
@@ -94,45 +97,51 @@ columns = 2
 [node name="PlantPreferenceUI1" parent="Panel/Preferences" instance=ExtResource( 6 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 180.0
-margin_bottom = 139.0
+margin_right = 208.0
+margin_bottom = 150.0
+texture = ExtResource( 10 )
 
 [node name="PlantPreferenceUI2" parent="Panel/Preferences" instance=ExtResource( 6 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 184.0
-margin_right = 364.0
-margin_bottom = 139.0
+margin_left = 212.0
+margin_right = 419.0
+margin_bottom = 150.0
+texture = ExtResource( 10 )
 
 [node name="PlantPreferenceUI3" parent="Panel/Preferences" instance=ExtResource( 6 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 143.0
-margin_right = 180.0
-margin_bottom = 282.0
+margin_top = 154.0
+margin_right = 208.0
+margin_bottom = 304.0
+texture = ExtResource( 10 )
 
 [node name="PlantPreferenceUI4" parent="Panel/Preferences" instance=ExtResource( 6 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 184.0
-margin_top = 143.0
-margin_right = 364.0
-margin_bottom = 282.0
+margin_left = 212.0
+margin_top = 154.0
+margin_right = 419.0
+margin_bottom = 304.0
+texture = ExtResource( 10 )
 
 [node name="PlantPreferenceUI5" parent="Panel/Preferences" instance=ExtResource( 6 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 286.0
-margin_right = 180.0
-margin_bottom = 425.0
+margin_top = 308.0
+margin_right = 208.0
+margin_bottom = 457.0
+texture = ExtResource( 10 )
 
 [node name="PlantPreferenceUI6" parent="Panel/Preferences" instance=ExtResource( 6 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 184.0
-margin_top = 286.0
-margin_right = 364.0
-margin_bottom = 425.0
+margin_left = 212.0
+margin_top = 308.0
+margin_right = 419.0
+margin_bottom = 457.0
+texture = ExtResource( 10 )
 
 [node name="UndiscoveredOverlay" type="TextureRect" parent="Panel"]
 visible = false
