@@ -1300,7 +1300,7 @@ mesh = SubResource( 8 )
 skeleton = NodePath("../..")
 
 [node name="Arm2" type="MeshInstance" parent="Wheel/ArmBase2"]
-transform = Transform( 1, -7.10543e-15, -2.84217e-14, 7.10543e-15, 1, -5.96047e-08, 2.84217e-14, 5.96047e-08, 1, 0, 0.0991107, 0 )
+transform = Transform( 1, -7.10543e-15, -2.84216e-14, 7.10543e-15, 1, -5.96047e-08, 2.84216e-14, 5.96047e-08, 1, 0, 0.0991107, 0 )
 cast_shadow = 0
 mesh = SubResource( 9 )
 

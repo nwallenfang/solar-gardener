@@ -23,6 +23,7 @@ func hide():
 func unlock_journal():
 	$JournalTabSelector.hint_tooltip = ""
 	journal_unlocked = true
+	guide_tab_active = false
 
 
 func _on_JournalTabSelector_gui_input(event: InputEvent) -> void:
