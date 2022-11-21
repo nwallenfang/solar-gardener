@@ -28,7 +28,7 @@ func _ready() -> void:
 
 var INTRO_LENGTH_FACTOR = 3.0
 var TEST_LENGTH_FACTOR = 0.05
-const TEST_INTRO = false
+const TEST_INTRO = true
 func start_loading():
 	if OS.is_debug_build() and (not TEST_INTRO):
 		INTRO_LENGTH_FACTOR = TEST_LENGTH_FACTOR
@@ -91,8 +91,10 @@ func start_intro_flight():
 	
 	Game.multitool.visible = false
 	
-	for i in range(7):
-		intro_cams.append(get_node("IntroFlight/Camera" + str(i)))
+	for i in range(20):
+		if has_node("IntroFlight/Camera" + str(i)):
+			intro_cams.append(get_node("IntroFlight/Camera" + str(i)))
+	intro_cams.append(Game.camera)
 	intro_cams.append(Game.camera)
 	intro_cams.append(Game.camera)
 	
