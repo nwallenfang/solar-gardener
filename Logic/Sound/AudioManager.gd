@@ -47,6 +47,21 @@ func _ready():
 func play(sound_name: String):
 	queue.append(sound_name)
 
+func fade_in(sound_name: String):
+	# plays instantly (skip the queue or assume it's empty)
+	if available.empty():
+		printerr("No available players to play " + sound_name)
+		return
+
+	var player = available.pop_front()
+	player.stream = $Sounds.get_node(sound_name).stream
+	player.sound = $Sounds.get_node(sound_name)
+	player.play()
+
+	
+func fade_out(sound_name: String):
+	pass
+
 func stop(sound_name: String):
 	for player_with_info in playing:
 		if player_with_info.sound.name == sound_name:
@@ -57,6 +72,8 @@ func set_volume(sound_name, volume):
 #		print(stream_tuple.sound.file_name)
 		if player_with_info.sound.name == sound_name:
 			player_with_info.set_volume_db(volume)
+			
+
 #
 func _process(delta):
 #	# Play a queued sound if any players are available.

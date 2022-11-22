@@ -3,10 +3,28 @@ class_name AudioPlayerWithInfo
 	
 var sound: ManagedSound
 
+func _ready() -> void:
+	pass
+
 func play(start:=0.0):
 	set_volume_db(sound.volume_db)
 	set_bus(sound.mixer_bus)
 	.play(start)
+
+
+# seems nonsensical but gets used for tweening :)
+func set_volume_linear(linear: float):
+	self.volume_db = linear2db(linear)
+
+
+func fade_in(start:=0.0):
+	set_volume_db(-80.0)
+	set_bus(sound.mixer_bus)
+	var tween := get_tree().create_tween()
+	tween.tween_method(self, "set_volume_linear", 0.0, )
+	
+
+	
 
 func _on_AudioPlayerWithInfo_finished() -> void:
 	Audio.available.append(self)
