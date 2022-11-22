@@ -91,8 +91,10 @@ func fade_in(sound_name: String, fade_duration:=1.0):
 
 	
 func fade_out(sound_name: String):
-	pass
+	if not playing[sound_name]:
+		pass
 	
 func fade_in_and_out(sound_name: String, play_duration: float, fade_duration:=1.0):
-	# play a sound for play duratio
+	# play a sound for play duration, then fade out
+	# TODO
 	pass
