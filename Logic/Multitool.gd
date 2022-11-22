@@ -363,11 +363,11 @@ func show_hopper_information():
 	set_display_label("Travel to " + hopper_planet.planet_name)
 
 func clear_holo_information():
-	set_display_label("")
+	set_display_label("", true)
 
-func set_display_label(s: String):
-	$ModelMultitool.set_holo_text(s)
-	#$"%DisplayLabel".text = s
+func set_display_label(s: String, force := false):
+	if has_no_cooldown() or force:
+		$ModelMultitool.set_holo_text(s)
 
 var scanner_grid_last_frame := false
 var scanned_meshes := []
@@ -393,19 +393,20 @@ func show_scanner_grid(show: bool):
 
 var force_reload := false
 func try_reload():
-	force_reload = false
-	selected_profile = PlantData.profiles[target_plant_name]
-	if not PlantData.seed_counts[target_plant_name] == 0:
-		seeds_empty = false
-		if is_instance_valid(fake_seed):
-			fake_seed.queue_free()
-		fake_seed = FAKE_SEED.instance()
-		$ModelMultitool/SeedOrigin.add_child(fake_seed)
-		fake_seed.setup(target_plant_name, 1.2)
-		$ModelMultitool.seed_reload()
-		wait_for_animation_finished()
-	else:
-		seeds_empty = true
+	if current_tool == TOOL.PLANT:
+		force_reload = false
+		selected_profile = PlantData.profiles[target_plant_name]
+		if not PlantData.seed_counts[target_plant_name] == 0:
+			seeds_empty = false
+			if is_instance_valid(fake_seed):
+				fake_seed.queue_free()
+			fake_seed = FAKE_SEED.instance()
+			$ModelMultitool/SeedOrigin.add_child(fake_seed)
+			fake_seed.setup(target_plant_name, 1.2)
+			$ModelMultitool.seed_reload()
+			wait_for_animation_finished()
+		else:
+			seeds_empty = true
 
 var should_update_fake_seed_position := false
 func update_fake_seed_position():
