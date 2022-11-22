@@ -24,6 +24,7 @@ const FAKE_SEED = preload("res://Plants/FakeSeed.tscn")
 const PLANT = preload("res://Plants/Plant.tscn")
 
 # Plant Tool Variables
+const PLANT_TOOL_DISTANCE = 20.0
 var target_plant_name := "Grabroot"
 var selected_profile : PlantProfile
 var seeds_empty := false
@@ -67,7 +68,7 @@ var second_action_holded := false
 
 # Cooldown
 var waiting_for_animation := false
-func has_cooldown() -> bool:
+func has_no_cooldown() -> bool:
 	return $Cooldown.time_left == 0.0 and not waiting_for_animation
 
 func wait_for_animation_finished():
@@ -77,16 +78,18 @@ func wait_for_animation_finished():
 
 func _physics_process(delta):
 	if Game.game_state == Game.State.INGAME:
-		if has_cooldown():
+		if has_no_cooldown():
 			check_on_hover()
 			check_intput()
 			idle_process(delta)
+			
+			if (seeds_empty and current_tool == TOOL.PLANT) or force_reload:
+				try_reload()
 
 	show_scanner_grid(currently_analysing)
 #	if should_update_fake_seed_position:
 #		update_fake_seed_position()
-	if seeds_empty and current_tool == TOOL.PLANT:
-		try_reload()
+	
 
 
 func check_intput():
@@ -127,6 +130,8 @@ func switch_tool(new_tool: int, tool_active := true):
 		if new_tool == current_tool:
 			return
 		
+		clear_holo_information()
+		Game.crosshair.set_style(Game.crosshair.Style.DEFAULT)
 		switch_tool(current_tool, false)
 		if waiting_for_animation:
 			yield($ModelMultitool,"animation_finished")
@@ -137,12 +142,11 @@ func switch_tool(new_tool: int, tool_active := true):
 		TOOL.PLANT:
 			if is_instance_valid(fake_seed):
 				fake_seed.queue_free()
-			Game.player_raycast.set_collision_mask_bit(0, tool_active)
+			#Game.player_raycast.set_collision_mask_bit(0, tool_active)
 			$ModelMultitool.set_plant(tool_active)
 			wait_for_animation_finished()
 			yield($ModelMultitool,"animation_finished")
-			if tool_active:
-				try_reload()
+			force_reload = true
 		TOOL.MOVE:
 			Game.player_raycast.set_collision_mask_bit(4, tool_active)
 		TOOL.ANALYSIS:
@@ -220,12 +224,13 @@ func process_second_action():
 
 func check_on_hover():
 	Game.player_raycast.do_cast()
-	if Game.player_raycast.collider is Planet and current_tool != TOOL.HOPPER:
+	if Game.player_raycast.collider is Planet and current_tool != TOOL.HOPPER and "PlanetHopArea" == Game.player_raycast.collider_tag:
 		pre_hopper_tool = current_tool
 		switch_tool(TOOL.HOPPER)
+		return
 	match current_tool:
 		TOOL.PLANT:
-			if Game.player_raycast.colliding:
+			if Game.player_raycast.colliding and Game.player_raycast.hit_point.distance_to(Game.player.global_translation) < PLANT_TOOL_DISTANCE:
 				can_plant = Utility.test_planting_position(Game.player_raycast.hit_point) # and PlantData.can_plant() TODO
 			else:
 				can_plant = false
@@ -255,8 +260,13 @@ func check_on_hover():
 				if Game.player_raycast.hit_point.distance_to(Game.player.global_translation) < ANALYSE_TOOL_DISTANCE:
 					can_analyse = true
 					object_to_analyse = Game.player_raycast.collider
+					if object_to_analyse is Plant:
+						can_analyse = object_to_analyse.can_be_analysed
 					if object_to_analyse is StaticBody:
-						object_to_analyse = Game.planet
+						if object_to_analyse.name == "PlanetBody":
+							object_to_analyse = Game.planet
+						else:
+							can_analyse = false
 			show_analysable(can_analyse)
 		TOOL.HOPPER:
 			if not (Game.player_raycast.colliding and Game.player_raycast.collider is Planet):
@@ -264,6 +274,7 @@ func check_on_hover():
 			else:
 				hopper_planet = Game.player_raycast.collider
 				hopper_pos = Game.player_raycast.hit_point
+				show_hopper_information()
 
 func show_moveable(b: bool):
 	if b:
@@ -304,8 +315,8 @@ func start_planting_animation(pos: Vector3):
 	yield($SeedFlyTween, "tween_all_completed")
 	fake_seed.visible = false
 	spawn_plant(pos)
-	yield(get_tree().create_timer(.4),"timeout")
-	fake_seed.global_translation = $SeedPosition.global_translation
+	yield(get_tree().create_timer(.3),"timeout")
+	#fake_seed.global_translation = $SeedPosition.global_translation
 	try_reload()
 
 const DIRT_EXPLOSION = preload("res://Effects/DirtExplosion.tscn")
@@ -346,7 +357,13 @@ func show_grow_information():
 
 func show_plant_information():
 	var seeds_left = PlantData.seed_counts[target_plant_name]
-	set_display_label(str(seeds_left))
+	set_display_label(target_plant_name + "\n" + str(seeds_left))
+
+func show_hopper_information():
+	set_display_label("Travel to " + hopper_planet.planet_name)
+
+func clear_holo_information():
+	set_display_label("")
 
 func set_display_label(s: String):
 	$ModelMultitool.set_holo_text(s)
@@ -374,13 +391,17 @@ func show_scanner_grid(show: bool):
 			scanned_meshes = []
 	scanner_grid_last_frame = show
 
+var force_reload := false
 func try_reload():
+	force_reload = false
 	selected_profile = PlantData.profiles[target_plant_name]
 	if not PlantData.seed_counts[target_plant_name] == 0:
 		seeds_empty = false
+		if is_instance_valid(fake_seed):
+			fake_seed.queue_free()
 		fake_seed = FAKE_SEED.instance()
 		$ModelMultitool/SeedOrigin.add_child(fake_seed)
-		fake_seed.setup(target_plant_name, 1.0)
+		fake_seed.setup(target_plant_name, 1.2)
 		$ModelMultitool.seed_reload()
 		wait_for_animation_finished()
 	else:

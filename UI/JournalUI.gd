@@ -102,10 +102,13 @@ func hide():
 #		currently_hovering = null
 	pass
 
+var scanned_plant_names := []
 func plant_got_scanned(plant_name: String, growth_stage: int):
 	# wait a little cuz lots of other stuff might be happening already
 	yield(get_tree(), "idle_frame")
 	yield(get_tree(), "idle_frame")
+	
+	scanned_plant_names.append(plant_name)
 	
 	for plant_ui in get_tree().get_nodes_in_group("plant_ui"):
 		if plant_ui.plant_name == plant_name:

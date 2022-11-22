@@ -92,7 +92,6 @@ anims/RESET = SubResource( 4 )
 anims/hover = SubResource( 1 )
 
 [node name="SpinPlayer" type="AnimationPlayer" parent="."]
-autoplay = "spin"
 playback_speed = 0.5
 anims/RESET = SubResource( 2 )
 anims/spin = SubResource( 3 )

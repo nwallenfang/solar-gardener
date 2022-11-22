@@ -46,15 +46,12 @@ gravity_vec = Vector3( 0, 0, 0 )
 shape = SubResource( 12 )
 
 [node name="Amber" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1.26925, -0.0350249, -0.00701452, 0.0353456, 1.2675, 0.0667723, 0.00516025, -0.0669412, 1.26798, -0.190395, 5.51769, 0 )
+transform = Transform( 1.26925, -0.0350249, -0.00701452, 0.0310681, 1.20549, -0.397606, 0.017627, 0.397274, 1.20588, -0.182106, 5.2324, 2.43815 )
 seed_name = "Grabroot"
 seed_count = 1
 
 [node name="Model" parent="." instance=ExtResource( 5 )]
 transform = Transform( 4.26153, 0, 0, 0, 4.26153, 0, 0, 0, 4.26153, 0, 0, 0 )
-
-[node name="StaticBody" parent="Model/Planet 01 brown" index="0"]
-collision_layer = 5
 
 [node name="Occluder" type="Occluder" parent="."]
 shape = SubResource( 13 )

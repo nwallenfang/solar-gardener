@@ -68,3 +68,6 @@ func get_count_of_plant_type(plant_name: String) -> int:
 func _physics_process(delta: float) -> void:
 	if Game.game_state != Game.State.LOADING:
 		self.global_rotate(rotation_axis, delta * y_rotation_speed)
+
+func get_analyse_info_text() -> String:
+	return ""

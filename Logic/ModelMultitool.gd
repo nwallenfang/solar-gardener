@@ -43,7 +43,10 @@ func set_analysis(active: bool):
 	emit_signal("animation_finished")
 
 func seed_reload():
+	$SeedOrigin.visible = false
 	$SlingshotPlayer.play("reload")
+	yield(get_tree(), "idle_frame")
+	$SeedOrigin.visible = true
 	yield($SlingshotPlayer,"animation_finished")
 	emit_signal("animation_finished")
 
@@ -169,3 +172,11 @@ func home_wheel():
 func set_holo_text(text: String):
 	$HoloScreen.visible = (text != "")
 	$HoloScreen.set_text(text)
+
+func _ready():
+	var speed_factor := 1.2
+	$HopperPlayer.playback_speed = speed_factor
+	$GrowBeamPlayer.playback_speed = speed_factor
+	$PlantPlayer.playback_speed = speed_factor
+	$SlingshotPlayer.playback_speed = speed_factor
+	$AnalysePlayer.playback_speed = speed_factor
