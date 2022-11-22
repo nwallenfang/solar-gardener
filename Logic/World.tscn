@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://game_environment.tres" type="Environment" id=1]
 [ext_resource path="res://Objects/Sun.tscn" type="PackedScene" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://Logic/World.gd" type="Script" id=6]
 [ext_resource path="res://Effects/Ubershader.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Objects/Planet2.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Objects/Planet3.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Objects/PlanetObsidian.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fly"
@@ -36,9 +38,6 @@ transform = Transform( 2.90385, 0, 0, 0, 1, 0, 0, 0, 2.90385, 0, 0, 80.3443 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 transform = Transform( -0.999769, 0, -0.0215008, 0, 1, 0, 0.0215008, 0, -0.999769, -48.7693, 10.5054, -98.0291 )
-
-[node name="Planet" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48.764, 0, -98.0153 )
 
 [node name="Sun" parent="." instance=ExtResource( 2 )]
 transform = Transform( 2.03594, 0, 0, 0, 2.03594, 0, 0, 0, 2.03594, 0, 0, 0 )
@@ -103,9 +102,18 @@ far = 1000.0
 
 [node name="Tween" type="Tween" parent="IntroFlight"]
 
+[node name="Planet" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48.764, 0, -98.0153 )
+
 [node name="Planet2" parent="." instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -59.582, 21.4094, 26.8254 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -93.9909, 21.4094, 26.8254 )
+
+[node name="Planet3" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.13, -30.1157, 58.9798 )
 
 [node name="SkipCutscene" type="Timer" parent="."]
+
+[node name="PlanetObsidian" parent="." instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 143.279, 0 )
 
 [connection signal="timeout" from="SkipCutscene" to="." method="_on_SkipCutscene_timeout"]

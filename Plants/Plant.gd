@@ -29,7 +29,7 @@ var current_model: Spatial
 
 var analyse_name : String setget, get_analyse_name
 
-var extra_grounding_distance := .04
+var extra_grounding_distance := 0.0
 
 var can_be_analysed := false
 
@@ -171,6 +171,7 @@ func grow(delta, factor_sign):
 		growth_stage_progress += DEFAULT_GROW_SPEED * delta * factor_sign
 	growth_boost = false
 	update_growth_visuals()
+	reset_small_seeds()
 	if abs(growth_stage_progress) >= 1.0:
 		$GrowthCooldown.start()
 		var old_stage := growth_stage
@@ -181,7 +182,6 @@ func grow(delta, factor_sign):
 		Events.trigger("tutorial_plant_reached_stage" + str(growth_stage))
 		PlantData.growth_stage_reached(profile.name, growth_stage)
 		can_be_analysed = true
-		reset_small_seeds()
 		if growth_stage == growth_lock:
 			$SeedGrowCooldown.start(profile.seed_grow_time)
 		#$Area.set_collision_layer_bit(2, true)
@@ -267,7 +267,7 @@ func grow_small_seeds():
 		Game.planet.add_child_with_light(pickup)
 		pickup.global_transform.basis = Utility.get_basis_y_aligned(Game.planet.global_translation.direction_to(self.global_translation))
 		pickup.global_translation = empty.global_translation
-		pickup.setup_as_seed(profile.name, .45, false, false)
+		pickup.setup_as_seed(profile.name, .4, false, false)
 		small_seeds.append(pickup)
 	yield(get_tree().create_timer(2),"timeout")
 	seeds_ready_to_harvest = true
@@ -275,7 +275,7 @@ func grow_small_seeds():
 
 func reset_small_seeds():
 	for pickup in small_seeds:
-		queue_free()
+		pickup.queue_free()
 	small_seeds = []
 	$SeedGrowCooldown.stop()
 	seeds_ready_to_harvest = false

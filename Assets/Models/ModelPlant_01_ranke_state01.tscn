@@ -92,13 +92,13 @@ transform = Transform( 5.02929, 0, 0, 0, 5.02929, 0, 0, 0, 5.02929, 0, 0.0045557
 mesh = SubResource( 1 )
 
 [node name="Empty" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.136722, 0.0875977, -0.00677758 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.683295, 0.447194, -0.0292784 )
 
 [node name="Empty001" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0166305, 0.0470739, -0.137278 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0838709, 0.250245, -0.681217 )
 
 [node name="Empty002" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.137913, 0.102533, 0.102279 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.684846, 0.521862, 0.510865 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/ConeAction002 = SubResource( 2 )

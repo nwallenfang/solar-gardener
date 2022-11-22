@@ -12,7 +12,7 @@ spheres = [ Plane( 0, 0, 0, 7.60543 ) ]
 
 [node name="Planet2" type="Spatial"]
 script = ExtResource( 5 )
-planet_name = "Dirt Planet"
+planet_name = "Stone Planet"
 soil_type = 2
 max_plants = 30
 

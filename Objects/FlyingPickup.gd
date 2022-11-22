@@ -33,9 +33,10 @@ func on_pickup():
 	queue_free()
 
 func start_flying():
-	$VelocityTween.interpolate_property(self, "current_velocity", 0.0, MAX_VELOCITY, 4.0,Tween.TRANS_CUBIC,Tween.EASE_IN)
+	$VelocityTween.interpolate_property(self, "current_velocity", 0.0, MAX_VELOCITY, 3.0,Tween.TRANS_QUAD,Tween.EASE_IN)
 	$VelocityTween.start()
 	is_flying = true
+	$SpinPlayer.play("spin")
 
 func _physics_process(delta):
 	if is_flying:
