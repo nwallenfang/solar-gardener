@@ -349,43 +349,45 @@ func spawn_plant(pos: Vector3):
 
 func show_analyse_information():
 	#Game.UI.set_diagnostics(["Analysing Object", current_analyse_object, "Analyse Progress", current_analyse_progress * 100.0])
-	var text := ""
 	if object_to_analyse != null and is_instance_valid(object_to_analyse):
 		if "analyse_name" in object_to_analyse:
-			text = object_to_analyse.get("analyse_name")
-			
-	if currently_analysing:
-		text = text + "\n%.0f%%" % (current_analyse_progress * 100.0)
-		Game.hologram.show_analyse_info(text)  # TODO change to scan progress smth
+			Game.hologram.show_scan_progress(object_to_analyse.get("analyse_name"), 0.0)
+			if currently_analysing:
+				Game.hologram.show_scan_progress(object_to_analyse.get("analyse_name"), current_analyse_progress * 100.0)
+			else:
+				if analyse_completed:
+					if object_to_analyse is Plant:
+						var plant_obj: Plant = object_to_analyse as Plant
+						var plant_type: String
+						match plant_obj.profile.plant_type:
+							PlantData.PLANT_TYPES.THORNY:  # THORNY, SHROOM, FLOWER
+								plant_type = "Thorny"
+							PlantData.PLANT_TYPES.SHROOM:
+								plant_type = "Shroom"
+							PlantData.PLANT_TYPES.FLOWER:
+								plant_type = "Flower"
+						var is_growing = (plant_obj.growth_stage != plant_obj.growth_lock)
+						Game.hologram.show_plant_info(plant_obj.profile.name, plant_type, plant_obj.growth_stage, is_growing)
+					elif object_to_analyse is Planet:
+						var planet_obj: Planet = object_to_analyse as Planet
+						# types: ROCK, DIRT, SAND (2, 3, 4)
+						var soil_type: String
+						match planet_obj.soil_type:
+							PlantData.SOIL_TYPES.ROCK:
+								soil_type = "Rock"
+							PlantData.SOIL_TYPES.DIRT:
+								soil_type = "Dirt"
+							PlantData.SOIL_TYPES.SAND:
+								soil_type = "Sand"
+						if soil_type == null:
+							printerr(planet_obj.planet_name + " has weird soil type.")
+						Game.hologram.show_soil_info(planet_obj.planet_name, soil_type, planet_obj.nutrients, planet_obj.sun) # type_name: String, has_nutrients:bool, is_close_to_sun: bool)  # TODO
+					else:
+						Game.hologram.show_scan_progress(object_to_analyse.get("analyse_name"), 100.0)
+		else:
+			Game.hologram.clear()
 	else:
-		text = text + ("\n100%" if analyse_completed else "")
-		if object_to_analyse is Plant:
-			var plant_obj: Plant = object_to_analyse as Plant
-			var plant_type: String
-			match plant_obj.profile.plant_type:
-				0:  # THORNY, SHROOM, FLOWER
-					plant_type = "Thorny"
-				1:
-					plant_type = "Shroom"
-				2:
-					plant_type = "Flower"
-			var is_growing = (plant_obj.growth_stage != plant_obj.growth_lock)
-			Game.hologram.show_plant_info(plant_obj.profile.name, plant_type, plant_obj.growth_stage, is_growing)
-		elif object_to_analyse is Planet:
-			var planet_obj: Planet = object_to_analyse as Planet
-			# types: ROCK, DIRT, SAND (2, 3, 4)
-			var soil_type: String
-			match planet_obj.soil_type:
-				2:
-					soil_type = "Rock"
-				3:
-					soil_type = "Dirt"
-				4:
-					soil_type = "Sand"
-			if soil_type == null:
-				printerr(planet_obj.planet_name + " has weird soil type.")
-			Game.hologram.show_soil_info(planet_obj.planet_name, soil_type, planet_obj.nutrients, planet_obj.sun) # type_name: String, has_nutrients:bool, is_close_to_sun: bool)  # TODO
-#	set_display_label(text)
+		Game.hologram.clear()
 
 
 func show_grow_information():

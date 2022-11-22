@@ -88,6 +88,9 @@ func show_scan_progress(object_name: String, progress: float):
 	$"%ScanProgress".visible = true
 	current_screen = $"%ScanProgress"
 	
+	$"%ScanObjectName".text = object_name
+	$"%ScanProgressLabel".text = "%d%%" % int(progress)
+	
 func show_analyse_info(text: String):
 	# allrounder method that gets used atm instead of show_scan_progress and stuff
 	# TODO split into different parts later

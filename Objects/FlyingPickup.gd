@@ -43,3 +43,6 @@ func _physics_process(delta):
 		global_translation += current_velocity * delta * global_translation.direction_to(Game.player.pickup_point.global_translation)
 		if global_translation.distance_to(Game.player.pickup_point.global_translation) < PICKUP_RANGE:
 			on_pickup()
+
+func on_lod(lod_triggered: bool):
+	self.visible = not lod_triggered
