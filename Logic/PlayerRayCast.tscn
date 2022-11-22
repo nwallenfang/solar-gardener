@@ -3,6 +3,6 @@
 [ext_resource path="res://Logic/PlayerRayCast.gd" type="Script" id=1]
 
 [node name="PlayerRayCast" type="RayCast"]
-collision_mask = 64
+collision_mask = 65
 collide_with_areas = true
 script = ExtResource( 1 )

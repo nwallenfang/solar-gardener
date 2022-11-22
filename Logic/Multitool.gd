@@ -24,6 +24,7 @@ const FAKE_SEED = preload("res://Plants/FakeSeed.tscn")
 const PLANT = preload("res://Plants/Plant.tscn")
 
 # Plant Tool Variables
+const PLANT_TOOL_DISTANCE = 20.0
 var target_plant_name := "Grabroot"
 var selected_profile : PlantProfile
 var seeds_empty := false
@@ -127,6 +128,7 @@ func switch_tool(new_tool: int, tool_active := true):
 		if new_tool == current_tool:
 			return
 		
+		Game.crosshair.set_style(Game.crosshair.Style.DEFAULT)
 		switch_tool(current_tool, false)
 		if waiting_for_animation:
 			yield($ModelMultitool,"animation_finished")
@@ -137,7 +139,7 @@ func switch_tool(new_tool: int, tool_active := true):
 		TOOL.PLANT:
 			if is_instance_valid(fake_seed):
 				fake_seed.queue_free()
-			Game.player_raycast.set_collision_mask_bit(0, tool_active)
+			#Game.player_raycast.set_collision_mask_bit(0, tool_active)
 			$ModelMultitool.set_plant(tool_active)
 			wait_for_animation_finished()
 			yield($ModelMultitool,"animation_finished")
@@ -220,12 +222,13 @@ func process_second_action():
 
 func check_on_hover():
 	Game.player_raycast.do_cast()
-	if Game.player_raycast.collider is Planet and current_tool != TOOL.HOPPER:
+	if Game.player_raycast.collider is Planet and current_tool != TOOL.HOPPER and "PlanetHopArea" == Game.player_raycast.collider_tag:
 		pre_hopper_tool = current_tool
 		switch_tool(TOOL.HOPPER)
+		return
 	match current_tool:
 		TOOL.PLANT:
-			if Game.player_raycast.colliding:
+			if Game.player_raycast.colliding and Game.player_raycast.hit_point.distance_to(Game.player.global_translation) < PLANT_TOOL_DISTANCE:
 				can_plant = Utility.test_planting_position(Game.player_raycast.hit_point) # and PlantData.can_plant() TODO
 			else:
 				can_plant = false
@@ -256,7 +259,8 @@ func check_on_hover():
 					can_analyse = true
 					object_to_analyse = Game.player_raycast.collider
 					if object_to_analyse is StaticBody:
-						object_to_analyse = Game.planet
+						if object_to_analyse.name == "PlanetBody":
+							object_to_analyse = Game.planet
 			show_analysable(can_analyse)
 		TOOL.HOPPER:
 			if not (Game.player_raycast.colliding and Game.player_raycast.collider is Planet):
@@ -264,6 +268,7 @@ func check_on_hover():
 			else:
 				hopper_planet = Game.player_raycast.collider
 				hopper_pos = Game.player_raycast.hit_point
+				show_hopper_information()
 
 func show_moveable(b: bool):
 	if b:
@@ -346,7 +351,13 @@ func show_grow_information():
 
 func show_plant_information():
 	var seeds_left = PlantData.seed_counts[target_plant_name]
-	set_display_label(str(seeds_left))
+	set_display_label(target_plant_name + "\n" + str(seeds_left))
+
+func show_hopper_information():
+	set_display_label("Travel to " + hopper_planet.planet_name)
+
+func clear_holo_information():
+	set_display_label("")
 
 func set_display_label(s: String):
 	$ModelMultitool.set_holo_text(s)

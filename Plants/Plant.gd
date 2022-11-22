@@ -29,6 +29,8 @@ var current_model: Spatial
 
 var analyse_name : String
 
+var extra_grounding_distance := .08
+
 var is_setup := false
 func setup():
 	model_seed = profile.model_seed.instance()
@@ -40,8 +42,9 @@ func setup():
 	for model in model_array:
 		model.visible = false
 		add_child(model)
+		model.translation.y -= extra_grounding_distance
 
-	model_seed.translation += Vector3.UP * SEED_START_POINT
+	model_seed.translation.y = SEED_START_POINT
 
 	current_model = model_seed
 	current_model.visible = true
@@ -241,20 +244,6 @@ func on_analyse():
 func growth_beam_possible() -> bool:
 	return true
 	#return $GrowthCooldown.time_left == 0.0
-
-#func on_analyse():
-#	var pickup = FLYING_PICKUP.instance()
-#	Game.planet.add_child_with_light(pickup)
-#	pickup.global_transform.basis = Utility.get_basis_y_aligned(Game.planet.global_translation.direction_to(self.global_translation))
-#	pickup.global_translation = self.global_translation
-#	pickup.setup_as_seed(seed_name)
-#	# TODO Seed count?
-#	$Tween.interpolate_property($Model, "scale", Vector3.ONE, Vector3.ONE * .01, 3.0)
-#	$Tween.start()
-#	yield(get_tree().create_timer(1.5), "timeout")
-#	pickup.start_flying()
-#	yield($Tween, "tween_all_completed")
-#	Events.trigger("tutorial_amber_collected")
 
 func flush_seeds():
 	if $SeedFlushCooldown.time_left == 0.0 and $GrowthCooldown.time_left == 0.0:

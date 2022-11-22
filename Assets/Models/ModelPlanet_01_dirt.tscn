@@ -36,9 +36,9 @@ tracks/0/keys = PoolRealArray( 0, 1, 51.9986, -2.47713, -1.29723, 0, 0, 0, 1, 1,
 [node name="Planet 01 brown" type="MeshInstance" parent="."]
 mesh = SubResource( 1 )
 
-[node name="StaticBody" type="StaticBody" parent="Planet 01 brown"]
+[node name="PlanetBody" type="StaticBody" parent="Planet 01 brown"]
 
-[node name="CollisionShape" type="CollisionShape" parent="Planet 01 brown/StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="Planet 01 brown/PlanetBody"]
 shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

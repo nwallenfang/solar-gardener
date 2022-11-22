@@ -169,3 +169,11 @@ func home_wheel():
 func set_holo_text(text: String):
 	$HoloScreen.visible = (text != "")
 	$HoloScreen.set_text(text)
+
+func _ready():
+	var speed_factor := 1.2
+	$HopperPlayer.playback_speed = speed_factor
+	$GrowBeamPlayer.playback_speed = speed_factor
+	$PlantPlayer.playback_speed = speed_factor
+	$SlingshotPlayer.playback_speed = speed_factor
+	$AnalysePlayer.playback_speed = speed_factor
