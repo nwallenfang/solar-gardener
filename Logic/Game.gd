@@ -66,8 +66,7 @@ func _process(delta: float) -> void:
 		Game.multitool.activate_tool(Game.multitool.TOOL.HOPPER)
 		
 	if Input.is_action_just_pressed("play_spatial_audio"):
-		player.get_node("AudioStreamPlayer3D").play()
-		UI.set_diagnostics(["playing", player.get_node("AudioStreamPlayer3D").playing])
+		Audio.fade_in("growbeam")
 		
 
 signal changed_state(state, prev_state)

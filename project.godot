@@ -9,15 +9,15 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "AudioStreamPlayer",
-"class": "AudioPlayerWithInfo",
-"language": "GDScript",
-"path": "res://Logic/Sound/AudioPlayerWithInfo.gd"
-}, {
 "base": "Control",
 "class": "Crosshair",
 "language": "GDScript",
 "path": "res://UI/Crosshair.gd"
+}, {
+"base": "AudioStreamPlayer",
+"class": "CustomAudioPlayer",
+"language": "GDScript",
+"path": "res://Logic/Sound/CustomAudioPlayer.gd"
 }, {
 "base": "Resource",
 "class": "DialogLine",
@@ -100,8 +100,8 @@ _global_script_classes=[ {
 "path": "res://UI/UI.gd"
 } ]
 _global_script_class_icons={
-"AudioPlayerWithInfo": "",
 "Crosshair": "",
+"CustomAudioPlayer": "",
 "DialogLine": "",
 "DialogUI": "",
 "Hologram": "",

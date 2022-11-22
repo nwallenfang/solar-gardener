@@ -1,7 +1,7 @@
 extends VBoxContainer
 
 func _ready() -> void:
-	if OS.is_debug_build():
+	if true or OS.is_debug_build() or Game.UI.DIAGNOSE_ON_WEB:
 		set_process(true)
 	
 		yield(get_tree().create_timer(2.5), "timeout")

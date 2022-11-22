@@ -25,6 +25,9 @@ mixer_bus = "SFX"
 [node name="hop_landing3" parent="Sounds" instance=ExtResource( 1 )]
 mixer_bus = "SFX"
 
+[node name="growbeam" parent="Sounds" instance=ExtResource( 1 )]
+mixer_bus = "SFX"
+
 [node name="Players" type="Node" parent="."]
 __meta__ = {
 "_editor_description_": "gets filled with AudioPlayers in _ready of AudioManager"

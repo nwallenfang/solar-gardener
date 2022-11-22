@@ -39,12 +39,12 @@ anchor_bottom = 1.0
 script = ExtResource( 1 )
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="SoilInfo" type="Control" parent="AspectRatioContainer"]
 unique_name_in_owner = true
-visible = false
 margin_left = 280.0
 margin_right = 1000.0
 margin_bottom = 720.0
