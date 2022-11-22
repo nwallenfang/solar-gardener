@@ -35,7 +35,6 @@ grow_horizontal = 0
 grow_vertical = 0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 2 )
-text = "Subtitles"
 align = 1
 autowrap = true
 

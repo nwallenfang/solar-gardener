@@ -60,6 +60,7 @@ func _process(delta: float) -> void:
 		UI.get_node("JournalAndGuideUI").unlock_journal()
 		Game.multitool.activate_tool(Game.multitool.TOOL.GROW)
 		Game.multitool.activate_tool(Game.multitool.TOOL.PLANT)
+		Game.multitool.activate_tool(Game.multitool.TOOL.HOPPER)
 		
 	if OS.is_debug_build() and Input.is_action_just_pressed("play_spatial_audio"):
 		player.get_node("AudioStreamPlayer3D").play()

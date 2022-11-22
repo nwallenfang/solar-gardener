@@ -4,6 +4,7 @@ const unknown_pref: PlantPreference = preload("res://Plants/Preferences/Unknown.
 #onready var unknown = preload("res://Plants/Preferences/Unknown.tres").instance()
 var is_unknown = true
 var preference: PlantPreference
+var plant_name: String
 
 export var disabled = true setget set_disabled
 
@@ -13,6 +14,8 @@ func _ready() -> void:
 		texture = unknown_pref.icon
 
 func make_known():
+	if is_unknown:
+		Game.UI.show_info_line("%s preference discovered!" % plant_name, 1)
 	is_unknown = false
 	hint_tooltip = preference.description
 	texture = preference.icon
@@ -27,6 +30,7 @@ func set_disabled(val):
 			hint_tooltip = unknown_pref.description
 			texture = unknown_pref.icon
 
-func set_preference_data(new_preference: PlantPreference):
+func set_preference_data(new_preference: PlantPreference, new_plant_name: String):
 	self.preference = new_preference
+	self.plant_name = new_plant_name
 

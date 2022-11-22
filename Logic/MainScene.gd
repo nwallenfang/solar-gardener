@@ -5,8 +5,9 @@ extends Control
 var resolution_scaling_factor = 1.0
 
 func _input(event: InputEvent) -> void:
-	if Game.game_state == Game.State.INGAME and event is InputEventMouseButton:
+	if Game.game_state == Game.State.INGAME or Game.game_state == Game.State.INTRO_FLIGHT and event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		Game.UI.get_node("ClickToFocus").visible = false
 
 #func game_did_something(a, b):
 #	set_process_input(false)
