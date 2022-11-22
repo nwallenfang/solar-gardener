@@ -43,7 +43,10 @@ func set_analysis(active: bool):
 	emit_signal("animation_finished")
 
 func seed_reload():
+	$SeedOrigin.visible = false
 	$SlingshotPlayer.play("reload")
+	yield(get_tree(), "idle_frame")
+	$SeedOrigin.visible = true
 	yield($SlingshotPlayer,"animation_finished")
 	emit_signal("animation_finished")
 

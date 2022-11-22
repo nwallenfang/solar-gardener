@@ -68,7 +68,7 @@ var second_action_holded := false
 
 # Cooldown
 var waiting_for_animation := false
-func has_cooldown() -> bool:
+func has_no_cooldown() -> bool:
 	return $Cooldown.time_left == 0.0 and not waiting_for_animation
 
 func wait_for_animation_finished():
@@ -78,16 +78,18 @@ func wait_for_animation_finished():
 
 func _physics_process(delta):
 	if Game.game_state == Game.State.INGAME:
-		if has_cooldown():
+		if has_no_cooldown():
 			check_on_hover()
 			check_intput()
 			idle_process(delta)
+			
+			if (seeds_empty and current_tool == TOOL.PLANT) or force_reload:
+				try_reload()
 
 	show_scanner_grid(currently_analysing)
 #	if should_update_fake_seed_position:
 #		update_fake_seed_position()
-	if seeds_empty and current_tool == TOOL.PLANT:
-		try_reload()
+	
 
 
 func check_intput():
@@ -144,8 +146,7 @@ func switch_tool(new_tool: int, tool_active := true):
 			$ModelMultitool.set_plant(tool_active)
 			wait_for_animation_finished()
 			yield($ModelMultitool,"animation_finished")
-			if tool_active:
-				try_reload()
+			force_reload = true
 		TOOL.MOVE:
 			Game.player_raycast.set_collision_mask_bit(4, tool_active)
 		TOOL.ANALYSIS:
@@ -264,6 +265,8 @@ func check_on_hover():
 					if object_to_analyse is StaticBody:
 						if object_to_analyse.name == "PlanetBody":
 							object_to_analyse = Game.planet
+						else:
+							can_analyse = false
 			show_analysable(can_analyse)
 		TOOL.HOPPER:
 			if not (Game.player_raycast.colliding and Game.player_raycast.collider is Planet):
@@ -312,8 +315,8 @@ func start_planting_animation(pos: Vector3):
 	yield($SeedFlyTween, "tween_all_completed")
 	fake_seed.visible = false
 	spawn_plant(pos)
-	yield(get_tree().create_timer(.4),"timeout")
-	fake_seed.global_translation = $SeedPosition.global_translation
+	yield(get_tree().create_timer(.3),"timeout")
+	#fake_seed.global_translation = $SeedPosition.global_translation
 	try_reload()
 
 const DIRT_EXPLOSION = preload("res://Effects/DirtExplosion.tscn")
@@ -388,13 +391,17 @@ func show_scanner_grid(show: bool):
 			scanned_meshes = []
 	scanner_grid_last_frame = show
 
+var force_reload := false
 func try_reload():
+	force_reload = false
 	selected_profile = PlantData.profiles[target_plant_name]
 	if not PlantData.seed_counts[target_plant_name] == 0:
 		seeds_empty = false
+		if is_instance_valid(fake_seed):
+			fake_seed.queue_free()
 		fake_seed = FAKE_SEED.instance()
 		$ModelMultitool/SeedOrigin.add_child(fake_seed)
-		fake_seed.setup(target_plant_name, 1.0)
+		fake_seed.setup(target_plant_name, 1.2)
 		$ModelMultitool.seed_reload()
 		wait_for_animation_finished()
 	else:

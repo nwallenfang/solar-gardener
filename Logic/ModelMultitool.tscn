@@ -1255,6 +1255,7 @@ size = Vector2( 0.05, 1 )
 
 [node name="ModelMultitool" type="Spatial"]
 script = ExtResource( 5 )
+update_slingshot = true
 
 [node name="Base" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0 )
