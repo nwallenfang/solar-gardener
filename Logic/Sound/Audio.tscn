@@ -25,7 +25,7 @@ mixer_bus = "SFX"
 [node name="hop_landing3" parent="Sounds" instance=ExtResource( 1 )]
 mixer_bus = "SFX"
 
-[node name="SUN" parent="Sounds" instance=ExtResource( 1 )]
+[node name="growbeam" parent="Sounds" instance=ExtResource( 1 )]
 mixer_bus = "SFX"
 
 [node name="Players" type="Node" parent="."]

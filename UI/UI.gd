@@ -35,7 +35,7 @@ func changed_state(state, prev_state):
 			$Toolbar.visible = true
 			$HotkeyGuide.visible = true
 			$TutorialPanel.visible = true
-			if OS.is_debug_build():
+			if OS.is_debug_build() or DIAGNOSE_ON_WEB:
 				$Diagnostics.visible = true
 			$"%Crosshair".visible = true
 			$GardenerNote.visible = false

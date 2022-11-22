@@ -7,6 +7,7 @@ export var default_color: Color = Color("51b19b")
 var current_screen: Control
 
 func _ready() -> void:
+	
 	Game.hologram = self
 
 func clear():

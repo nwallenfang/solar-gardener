@@ -8,17 +8,17 @@ var num_players = 32
 
 var available = []  # The available players, instances of type AudioPlayerWithInfo
 var queue = []  # The queue of sounds to play.
-var playing = [] # The players that are currently active, indexed by the sound name
+var playing = {} # The players that are currently active, indexed by the sound name
 
 var MANAGED_SOUND_SCENE = preload("res://Logic/Sound/ManagedSound.tscn")
-var AUDIO_PLAYER_WITH_INFO = preload("res://Logic/Sound/AudioPlayerWithInfo.tscn")
+var CUSTOM_AUDIO_PLAYER = preload("res://Logic/Sound/CustomAudioPlayer.tscn")
 
 func _ready():
 	# Generate as many audio players as said in the variable
 	for i in num_players:
-		var audio_player_with_info = AUDIO_PLAYER_WITH_INFO.instance()
-		$Players.add_child(audio_player_with_info, true)
-		available.append(audio_player_with_info)
+		var custom_player = CUSTOM_AUDIO_PLAYER.instance()
+		$Players.add_child(custom_player, true)
+		available.append(custom_player)
 	
 	print("Loading Sounds:")
 	var dir = Directory.new()
@@ -48,15 +48,19 @@ func play(sound_name: String):
 	queue.append(sound_name)
 
 func stop(sound_name: String):
-	for player_with_info in playing:
-		if player_with_info.sound.name == sound_name:
-			player_with_info.stop()
+	if not sound_name in playing:
+		printerr("stopping sound " + sound_name + " that isn't playing")
+		return
+		
+	playing[sound_name].stop()
 #
 func set_volume(sound_name, volume):
 	for player_with_info in playing:
 #		print(stream_tuple.sound.file_name)
 		if player_with_info.sound.name == sound_name:
 			player_with_info.set_volume_db(volume)
+			
+
 #
 func _process(delta):
 #	# Play a queued sound if any players are available.
@@ -68,7 +72,29 @@ func _process(delta):
 		player.stream = $Sounds.get_node(sound_name).stream
 		player.sound = $Sounds.get_node(sound_name)
 		player.play()
-		playing.append(player)
+		playing[sound_name] = player
 
 	
 	
+### UTILITY METHODS ###
+func fade_in(sound_name: String, fade_duration:=1.0):
+	# plays instantly (skip the queue or assume it's empty)
+	if available.empty():
+		printerr("No available players to play " + sound_name)
+		return
+
+	var player: CustomAudioPlayer = available.pop_front()
+	player.stream = $Sounds.get_node(sound_name).stream
+	player.sound = $Sounds.get_node(sound_name)
+	player.fade_in(0.0, fade_duration)
+	playing[sound_name] = player
+
+	
+func fade_out(sound_name: String):
+	if not playing[sound_name]:
+		pass
+	
+func fade_in_and_out(sound_name: String, play_duration: float, fade_duration:=1.0):
+	# play a sound for play duration, then fade out
+	# TODO
+	pass
