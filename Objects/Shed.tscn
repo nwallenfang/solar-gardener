@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Models/ModelShed.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Shed.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Fonts/ShedFont.tres" type="DynamicFont" id=3]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.106865, 0.238602, 2.44913 )
@@ -75,5 +76,37 @@ collision_mask = 0
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 transform = Transform( 0.913248, 0, 0, 0, 1.42274, 0, 0, 0, 1.31025, 0, 1.81689, 0 )
 shape = SubResource( 6 )
+
+[node name="ScreenTexts" type="Spatial" parent="."]
+
+[node name="Label1" type="Label3D" parent="ScreenTexts"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.147531, 2.19401, -2.1148 )
+pixel_size = 0.001
+text = "Dreck"
+font = ExtResource( 3 )
+
+[node name="Label2" type="Label3D" parent="ScreenTexts"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05733, 2.29177, -2.1148 )
+pixel_size = 0.001
+text = "Dreck"
+font = ExtResource( 3 )
+
+[node name="Label3" type="Label3D" parent="ScreenTexts"]
+transform = Transform( 0.648997, -0.153954, 0.745051, 0, 0.979311, 0.20236, -0.760791, -0.131331, 0.63557, -1.30335, 1.28971, -1.50525 )
+pixel_size = 0.001
+text = "Dreck"
+font = ExtResource( 3 )
+
+[node name="Label4" type="Label3D" parent="ScreenTexts"]
+transform = Transform( 1, 0, 0, 0, 0.978191, 0.207707, 0, -0.207707, 0.978191, -0.729948, 1.38109, -1.88058 )
+pixel_size = 0.001
+text = "Dreck"
+font = ExtResource( 3 )
+
+[node name="Label5" type="Label3D" parent="ScreenTexts"]
+transform = Transform( 0.840226, 0.132849, -0.52571, 0, 0.969522, 0.245003, 0.542236, -0.205858, 0.814618, -0.0557866, 1.29508, -1.75647 )
+pixel_size = 0.001
+text = "Dreck"
+font = ExtResource( 3 )
 
 [editable path="ModelShed"]
