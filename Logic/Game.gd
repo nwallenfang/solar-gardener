@@ -27,6 +27,7 @@ var camera: PlayerCamera
 var crosshair: Crosshair
 var world: Spatial
 var sun: Spatial
+var hologram: Hologram
 # current planet
 var planet: Planet = null
 var invert_y_axis = false
@@ -48,21 +49,21 @@ func _process(delta: float) -> void:
 			# this is only the correct if you can only enter settings from ingame!!
 			self.game_state = State.INGAME
 			
-	if OS.is_debug_build() and Input.is_action_just_pressed("give_seeds"):
+	if Input.is_action_just_pressed("give_seeds"):
 		print("gib tzieds")
 		PlantData.give_seeds("Grabroot", 10)
-	if OS.is_debug_build() and Input.is_action_just_pressed("make_pref_known"):
+	if Input.is_action_just_pressed("make_pref_known"):
 		print("pref known")
 		UI.get_node("JournalAndGuideUI/JournalUI").make_preference_known("Grabroot", PlantData.PREFERENCES["Hates Sun"])
 		
-	if OS.is_debug_build() and Input.is_action_just_pressed("unlock_all_tools"):
+	if Input.is_action_just_pressed("unlock_all_tools"):
 		print("unlock all tools")
 		UI.get_node("JournalAndGuideUI").unlock_journal()
 		Game.multitool.activate_tool(Game.multitool.TOOL.GROW)
 		Game.multitool.activate_tool(Game.multitool.TOOL.PLANT)
 		Game.multitool.activate_tool(Game.multitool.TOOL.HOPPER)
 		
-	if OS.is_debug_build() and Input.is_action_just_pressed("play_spatial_audio"):
+	if Input.is_action_just_pressed("play_spatial_audio"):
 		player.get_node("AudioStreamPlayer3D").play()
 		UI.set_diagnostics(["playing", player.get_node("AudioStreamPlayer3D").playing])
 		

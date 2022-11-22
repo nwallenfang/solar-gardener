@@ -1,7 +1,7 @@
 extends CanvasLayer
 class_name UI
 
-const DIAGNOSE_ON_WEB := false # set to true if diagnostics should show in web export
+const DIAGNOSE_ON_WEB := true # set to true if diagnostics should show in web export
 func _ready() -> void:
 	Game.connect("changed_state", self, "changed_state")
 	Game.multitool.connect("switched_to", self, "switched_to_tool")

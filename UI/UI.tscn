@@ -164,15 +164,16 @@ anchor_left = 0.691
 anchor_top = 0.025
 anchor_right = 0.967
 anchor_bottom = 0.296
-margin_left = 29.52
-margin_right = 29.52
+margin_left = -876.48
+margin_top = -10.0
+margin_right = -876.48
+margin_bottom = -10.0
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="DialogUI" parent="." instance=ExtResource( 11 )]
 plant_scanned_color = Color( 0.317647, 0.694118, 0.607843, 1 )
-preference_unlocked_color = Color( 0.317647, 0.521569, 0.733333, 1 )
 
 [node name="SkipCutsceneLabel" type="Control" parent="."]
 anchor_left = 0.05

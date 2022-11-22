@@ -60,7 +60,7 @@ func _physics_process(delta):
 	if growth_stage != growth_lock and $GrowthCooldown.time_left == 0.0:
 		grow(delta, sign(growth_lock - growth_stage))
 	
-	if growth_stage == growth_lock:
+	if growth_stage == growth_lock:  # not growing anymore
 		if growth_boost:
 			flush_seeds()
 			growth_boost = false
