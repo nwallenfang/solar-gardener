@@ -27,9 +27,11 @@ var model_stage_4: Spatial
 var model_array: Array
 var current_model: Spatial
 
-var analyse_name : String
+var analyse_name : String setget, get_analyse_name
 
 var extra_grounding_distance := .08
+
+var can_be_analysed := false
 
 var is_setup := false
 func setup():
@@ -178,7 +180,8 @@ func grow(delta, factor_sign):
 		play_growth_pop_animation(old_stage)
 		Events.trigger("tutorial_plant_reached_stage" + str(growth_stage))
 		PlantData.growth_stage_reached(profile.name, growth_stage)
-		$Area.set_collision_layer_bit(2, true)
+		can_be_analysed = true
+		#$Area.set_collision_layer_bit(2, true)
 
 const GREEN_OVERLAY = preload("res://Assets/Materials/GreenAlphaOverlay.tres")
 const GROW_POP_PARTICLES = preload("res://Effects/GrowPopParticles.tscn")
@@ -287,3 +290,7 @@ func get_near_plants_types() -> Array:
 	for plant in plants:
 		types.append(plant.profile.plant_type)
 	return types
+
+func get_analyse_name() -> String:
+	# TODO "Unknown Plant" if not analysed
+	return analyse_name

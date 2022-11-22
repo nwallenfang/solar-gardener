@@ -10,8 +10,8 @@ mesh_file_name = "plant_01_ranke"
 plant_type = 1
 fluff_base = "The Grabroot is a rare plant which in most cases does not carry any leaves. 
 It grows best [b]in groups[/b] and is harvested 2-3 years before the sun's supernova. "
-fluff_stage2 = "This plant may appear to be small, but the majority of its biomass lies underground. The roots seem designed to pierce even the hardest soils."
-fluff_stage3 = "It is believed that the Grabroot might have a sense of smell. This would explain their increased growth in pleasantly smelling areas."
+fluff_stage2 = "This plant may appear to be small, but the majority of its biomass lies underground. The roots seem designed to pierce even the [b]hardest soils[/b]."
+fluff_stage3 = "It is believed that the Grabroot might have a sense of smell. This would explain their increased growth in [b]pleasantly smelling[/b] areas."
 icon = ExtResource( 1 )
 sun = 3
 moisture = 1

@@ -128,6 +128,7 @@ func switch_tool(new_tool: int, tool_active := true):
 		if new_tool == current_tool:
 			return
 		
+		clear_holo_information()
 		Game.crosshair.set_style(Game.crosshair.Style.DEFAULT)
 		switch_tool(current_tool, false)
 		if waiting_for_animation:
@@ -258,6 +259,8 @@ func check_on_hover():
 				if Game.player_raycast.hit_point.distance_to(Game.player.global_translation) < ANALYSE_TOOL_DISTANCE:
 					can_analyse = true
 					object_to_analyse = Game.player_raycast.collider
+					if object_to_analyse is Plant:
+						can_analyse = object_to_analyse.can_be_analysed
 					if object_to_analyse is StaticBody:
 						if object_to_analyse.name == "PlanetBody":
 							object_to_analyse = Game.planet
