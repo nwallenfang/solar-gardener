@@ -11,5 +11,5 @@ dest_files=[ "res://.import/growbeam.ogg-ff08fa0742486c036831cf86ee083994.oggstr
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0

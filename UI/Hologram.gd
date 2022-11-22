@@ -7,8 +7,9 @@ export var default_color: Color = Color("51b19b")
 var current_screen: Control
 
 func _ready() -> void:
-	
 	Game.hologram = self
+	for control in $AspectRatioContainer.get_children():
+		control.visible = false
 
 func clear():
 	if current_screen != null:

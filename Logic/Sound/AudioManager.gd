@@ -77,24 +77,35 @@ func _process(delta):
 	
 	
 ### UTILITY METHODS ###
-func fade_in(sound_name: String, fade_duration:=1.0):
-	# plays instantly (skip the queue or assume it's empty)
+func fade_in(sound_name: String, fade_duration:=1.0, random_start:=false):
 	if available.empty():
 		printerr("No available players to play " + sound_name)
+		return
+	if sound_name in playing:
+#		print("sound " + sound_name + " tried fading in twice")
 		return
 
 	var player: CustomAudioPlayer = available.pop_front()
 	player.stream = $Sounds.get_node(sound_name).stream
 	player.sound = $Sounds.get_node(sound_name)
-	player.fade_in(0.0, fade_duration)
+	if random_start:
+		player.fade_in(randf() * player.sound.stream.get_length(), fade_duration)
+	else:
+		player.fade_in(0.0, fade_duration)
 	playing[sound_name] = player
 
-	
-func fade_out(sound_name: String):
-	if not playing[sound_name]:
-		pass
+func fade_out(sound_name: String, fade_duration:=1.0):
+	if not sound_name in playing:  # don't know if this should be an error
+#		printerr(sound_name + " not playing (trying fade_out)")
+		return
+	var player: CustomAudioPlayer = playing[sound_name]
+	player.fade_out(fade_duration)
 	
 func fade_in_and_out(sound_name: String, play_duration: float, fade_duration:=1.0):
 	# play a sound for play duration, then fade out
+	# TODO
+	pass
+
+func cross_fade(sound_name_out: String, sound_name_in: String, fade_duration:=1.0):
 	# TODO
 	pass

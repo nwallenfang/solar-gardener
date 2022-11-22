@@ -177,6 +177,8 @@ func idle_process(delta: float):
 			show_plant_information()
 		TOOL.GROW:
 			if first_action_holded and can_grow and has_no_cooldown():
+				if not grow_beam_active:
+					Audio.fade_in("growbeam", 0.25, true)
 				grow_beam_active = true
 				plant_to_grow.growth_boost = true
 				growth_juice -= JUICE_DRAIN * delta
@@ -184,25 +186,31 @@ func idle_process(delta: float):
 					growth_juice = 0.0
 					$GrowCooldown.start(2.0)
 			else:
+				if grow_beam_active:
+					Audio.fade_out("growbeam", 0.4)
 				grow_beam_active = false
+				
 			$ModelMultitool.set_grow_beam_on_target(plant_to_grow if grow_beam_active else null)
 			show_grow_information()
 		TOOL.ANALYSIS:
 			analyse_completed = false
 			if not currently_analysing:
 				if can_analyse and first_action_holded:
+					Audio.fade_in("scanner", 0.25, true)
 					currently_analysing = true
 					current_analyse_object = object_to_analyse
 					current_analyse_progress = 0.0
 			if currently_analysing:
 				if (not first_action_holded) or object_to_analyse != current_analyse_object or (not can_analyse):
 					currently_analysing = false
+					Audio.fade_out("scanner", 0.4)
 				else:
 					var speed_factor := 1.0
 					if "analyse_speed_factor" in current_analyse_object:
 						speed_factor = current_analyse_object.get("analyse_speed_factor")
 					current_analyse_progress += ANALYSE_SPEED * delta * speed_factor
 					if current_analyse_progress >= 1.0:
+						Audio.fade_out("scanner", 0.4)
 						currently_analysing = false
 						analyse_completed = true
 						$Cooldown.start(2)
