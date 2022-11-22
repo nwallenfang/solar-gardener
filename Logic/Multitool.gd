@@ -353,24 +353,56 @@ func show_analyse_information():
 	if object_to_analyse != null and is_instance_valid(object_to_analyse):
 		if "analyse_name" in object_to_analyse:
 			text = object_to_analyse.get("analyse_name")
+			
 	if currently_analysing:
 		text = text + "\n%.0f%%" % (current_analyse_progress * 100.0)
+		Game.hologram.show_analyse_info(text)  # TODO change to scan progress smth
 	else:
 		text = text + ("\n100%" if analyse_completed else "")
-	set_display_label(text)
+		if object_to_analyse is Plant:
+			var plant_obj: Plant = object_to_analyse as Plant
+			var plant_type: String
+			match plant_obj.profile.plant_type:
+				0:  # THORNY, SHROOM, FLOWER
+					plant_type = "Thorny"
+				1:
+					plant_type = "Shroom"
+				2:
+					plant_type = "Flower"
+			var is_growing = (plant_obj.growth_stage != plant_obj.growth_lock)
+			Game.hologram.show_plant_info(plant_obj.profile.name, plant_type, plant_obj.growth_stage, is_growing)
+		elif object_to_analyse is Planet:
+			var planet_obj: Planet = object_to_analyse as Planet
+			# types: ROCK, DIRT, SAND (2, 3, 4)
+			var soil_type: String
+			match planet_obj.soil_type:
+				2:
+					soil_type = "Rock"
+				3:
+					soil_type = "Dirt"
+				4:
+					soil_type = "Sand"
+			if soil_type == null:
+				printerr(planet_obj.planet_name + " has weird soil type.")
+			Game.hologram.show_soil_info(planet_obj.planet_name, soil_type, planet_obj.nutrients, planet_obj.sun) # type_name: String, has_nutrients:bool, is_close_to_sun: bool)  # TODO
+#	set_display_label(text)
+
 
 func show_grow_information():
-	set_display_label("%.0f%%" % (growth_juice * 100.0) + ("\n!" if grow_beam_active else ""))
+	Game.hologram.grow_beam_juice(grow_beam_active, growth_juice)
 
 func show_plant_information():
 	var seeds_left = PlantData.seed_counts[target_plant_name]
-	set_display_label(target_plant_name + "\n" + str(seeds_left))
+	Game.hologram.show_seed_info(target_plant_name, seeds_left)
+#	set_display_label(target_plant_name + "\n" + str(seeds_left))
 
 func show_hopper_information():
-	set_display_label("Travel to " + hopper_planet.planet_name)
+	Game.hologram.show_hop_info(hopper_planet.planet_name)
+#	set_display_label("Travel to " + hopper_planet.planet_name)
 
 func clear_holo_information():
-	set_display_label("", true)
+	Game.hologram.clear()
+#	set_display_label("")
 
 func set_display_label(s: String, force := false):
 	if has_no_cooldown() or force:

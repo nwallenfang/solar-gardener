@@ -6,5 +6,5 @@
 [resource]
 script = ExtResource( 2 )
 name = "Hates Sun"
-description = "Grows well far from the sun."
+description = "Grows well on planets that are far from the sun."
 icon = ExtResource( 1 )
