@@ -265,6 +265,7 @@ func grow_small_seeds():
 	for empty in empty_spaces:
 		var pickup = FLYING_PICKUP.instance()
 		Game.planet.add_child_with_light(pickup)
+		Game.planet.add_to_lod_list(pickup)
 		pickup.global_transform.basis = Utility.get_basis_y_aligned(Game.planet.global_translation.direction_to(self.global_translation))
 		pickup.global_translation = empty.global_translation
 		pickup.setup_as_seed(profile.name, .4, false, false)

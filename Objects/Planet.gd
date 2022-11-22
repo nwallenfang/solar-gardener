@@ -54,9 +54,10 @@ func set_player_is_on_planet(b: bool):
 	$PlanetHopArea/CollisionShape.disabled = player_on_planet
 	planet_light.set_player_is_on_planet(player_on_planet)
 	for lod_item in lod_items:
-		lod_item = lod_item as Node
-		if lod_item.has_method("on_lod"):
-			lod_item.call_deferred("on_lod", not player_on_planet)
+		if is_instance_valid(lod_item):
+			lod_item = lod_item as Node
+			if lod_item.has_method("on_lod"):
+				lod_item.call_deferred("on_lod", not player_on_planet)
 
 func get_count_of_plant_type(plant_name: String) -> int:
 	var count := 0
