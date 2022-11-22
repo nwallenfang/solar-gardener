@@ -275,6 +275,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=14]
 resource_name = "rotate"
 length = 2.0
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Antenna:rotation_degrees")
 tracks/0/interp = 1

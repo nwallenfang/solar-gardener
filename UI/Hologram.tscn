@@ -44,6 +44,7 @@ anchor_bottom = 1.0
 
 [node name="SoilInfo" type="Control" parent="AspectRatioContainer"]
 unique_name_in_owner = true
+visible = false
 margin_left = 280.0
 margin_right = 1000.0
 margin_bottom = 720.0
@@ -340,9 +341,9 @@ anchor_bottom = 1.0
 [node name="HopLabel" type="Label" parent="AspectRatioContainer/PlanetHop/CenterContainer"]
 unique_name_in_owner = true
 margin_left = 138.0
-margin_top = 303.0
+margin_top = 310.0
 margin_right = 581.0
-margin_bottom = 416.0
+margin_bottom = 410.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_colors/font_color = Color( 0.356863, 0.337255, 0.67451, 1 )
@@ -365,9 +366,9 @@ anchor_bottom = 1.0
 [node name="ScanHoverLabel" type="Label" parent="AspectRatioContainer/ScanHover/CenterContainer"]
 unique_name_in_owner = true
 margin_left = 138.0
-margin_top = 303.0
+margin_top = 310.0
 margin_right = 581.0
-margin_bottom = 416.0
+margin_bottom = 410.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_colors/font_color = Color( 0.356863, 0.337255, 0.67451, 1 )
