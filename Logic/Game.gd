@@ -51,6 +51,7 @@ func _process(delta: float) -> void:
 	if OS.is_debug_build() and Input.is_action_just_pressed("give_seeds"):
 		print("gib tzieds")
 		PlantData.give_seeds("Grabroot", 10)
+		PlantData.give_seeds("Giant-Cap", 10)
 	if OS.is_debug_build() and Input.is_action_just_pressed("make_pref_known"):
 		print("pref known")
 		UI.get_node("JournalAndGuideUI/JournalUI").make_preference_known("Grabroot", PlantData.PREFERENCES["Hates Sun"])
