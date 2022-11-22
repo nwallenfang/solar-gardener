@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://game_environment.tres" type="Environment" id=1]
 [ext_resource path="res://Objects/Sun.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Effects/Ubershader.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Objects/Planet2.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Objects/Planet3.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Objects/PlanetObsidian.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fly"
@@ -111,5 +112,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -93.9909, 21.4094, 26.8254 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.13, -30.1157, 58.9798 )
 
 [node name="SkipCutscene" type="Timer" parent="."]
+
+[node name="PlanetObsidian" parent="." instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 143.279, 0 )
 
 [connection signal="timeout" from="SkipCutscene" to="." method="_on_SkipCutscene_timeout"]
