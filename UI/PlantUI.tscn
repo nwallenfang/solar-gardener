@@ -4,14 +4,18 @@
 [ext_resource path="res://Assets/Placeholder/plant_icon.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Sprites/star-empty-bg.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Textures/aura_alpha.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Fonts/SeedCount.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Assets/Fonts/Calistoga-Regular.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://UI/PlantPreferenceUI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Sprites/covered2.png" type="Texture" id=7]
 [ext_resource path="res://theme.tres" type="Theme" id=8]
 [ext_resource path="res://Assets/Sprites/plant_bg.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Sprites/plant_group.png" type="Texture" id=10]
 
 [sub_resource type="StyleBoxFlat" id=1]
+
+[sub_resource type="DynamicFont" id=2]
+size = 46
+use_mipmaps = true
+font_data = ExtResource( 5 )
 
 [node name="PlantUIParent" type="Control"]
 anchor_right = 1.0
@@ -42,7 +46,7 @@ __meta__ = {
 [node name="Star1" type="TextureRect" parent="Panel/Stars"]
 margin_right = 155.0
 margin_bottom = 131.0
-hint_tooltip = "Not yet grown to Stage 2"
+hint_tooltip = "Not yet grown to Stage 1"
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 8 )
@@ -54,7 +58,7 @@ stretch_mode = 6
 margin_left = 159.0
 margin_right = 314.0
 margin_bottom = 131.0
-hint_tooltip = "Not yet grown to Stage 3"
+hint_tooltip = "Not yet grown to Stage 2"
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 8 )
@@ -66,7 +70,7 @@ stretch_mode = 6
 margin_left = 318.0
 margin_right = 473.0
 margin_bottom = 131.0
-hint_tooltip = "Not yet grown to Stage 4"
+hint_tooltip = "Not yet grown to Stage 3"
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 8 )
@@ -99,7 +103,6 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 208.0
 margin_bottom = 150.0
-texture = ExtResource( 10 )
 
 [node name="PlantPreferenceUI2" parent="Panel/Preferences" instance=ExtResource( 6 )]
 anchor_right = 0.0
@@ -107,7 +110,6 @@ anchor_bottom = 0.0
 margin_left = 212.0
 margin_right = 419.0
 margin_bottom = 150.0
-texture = ExtResource( 10 )
 
 [node name="PlantPreferenceUI3" parent="Panel/Preferences" instance=ExtResource( 6 )]
 anchor_right = 0.0
@@ -115,7 +117,6 @@ anchor_bottom = 0.0
 margin_top = 154.0
 margin_right = 208.0
 margin_bottom = 304.0
-texture = ExtResource( 10 )
 
 [node name="PlantPreferenceUI4" parent="Panel/Preferences" instance=ExtResource( 6 )]
 anchor_right = 0.0
@@ -124,7 +125,6 @@ margin_left = 212.0
 margin_top = 154.0
 margin_right = 419.0
 margin_bottom = 304.0
-texture = ExtResource( 10 )
 
 [node name="PlantPreferenceUI5" parent="Panel/Preferences" instance=ExtResource( 6 )]
 anchor_right = 0.0
@@ -132,7 +132,6 @@ anchor_bottom = 0.0
 margin_top = 308.0
 margin_right = 208.0
 margin_bottom = 457.0
-texture = ExtResource( 10 )
 
 [node name="PlantPreferenceUI6" parent="Panel/Preferences" instance=ExtResource( 6 )]
 anchor_right = 0.0
@@ -141,7 +140,6 @@ margin_left = 212.0
 margin_top = 308.0
 margin_right = 419.0
 margin_bottom = 457.0
-texture = ExtResource( 10 )
 
 [node name="UndiscoveredOverlay" type="TextureRect" parent="Panel"]
 visible = false
@@ -186,14 +184,17 @@ __meta__ = {
 [node name="CenterContainer" type="CenterContainer" parent="SeedCountBG"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
 
 [node name="SeedCount" type="Label" parent="SeedCountBG/CenterContainer"]
 unique_name_in_owner = true
-margin_left = 197.0
-margin_top = 120.0
-margin_right = 197.0
-margin_bottom = 166.0
-custom_fonts/font = ExtResource( 5 )
+margin_left = 184.0
+margin_top = 113.0
+margin_right = 211.0
+margin_bottom = 173.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 2 )
+text = "2"
 __meta__ = {
 "_edit_use_anchors_": true
 }

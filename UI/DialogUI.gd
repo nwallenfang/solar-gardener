@@ -3,6 +3,7 @@ class_name DialogUI
 
 export var seeds_unlocked_color: Color
 export var plant_unlocked_color: Color
+export var plant_scanned_color: Color
 export var preference_unlocked_color: Color
 
 export var linger_time: float
@@ -12,6 +13,7 @@ enum INFO {
 	MORE_SEEDS,
 	PLANT_PREFERENCE,
 	PLANT_UNLOCKED,
+	PLANT_SCANNED,
 }
 
 var screen_height
@@ -45,6 +47,8 @@ func show_infoline():
 			$Controls/SubtitleText.set("custom_colors/font_color", preference_unlocked_color)
 		INFO.PLANT_UNLOCKED:
 			$Controls/SubtitleText.set("custom_colors/font_color", plant_unlocked_color)
+		INFO.PLANT_SCANNED:
+			$Controls/SubtitleText.set("custom_colors/font_color", plant_scanned_color)
 		
 	var tween := get_tree().create_tween().set_parallel(true)
 	tween.tween_property($"%SubtitleText", "modulate:a", 1.0, 0.4)
@@ -77,4 +81,6 @@ func got_seeds(plant_name: String, amount: int):
 	var seed_string: String = "+ %d %s seed" % [amount, plant_name]
 	if amount > 1:
 		seed_string += "s"
-	push_infoline("+ %d %s seeds" % [amount, plant_name], INFO.MORE_SEEDS)
+
+	push_infoline(seed_string, INFO.MORE_SEEDS)
+	

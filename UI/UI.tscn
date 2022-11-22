@@ -171,6 +171,8 @@ __meta__ = {
 }
 
 [node name="DialogUI" parent="." instance=ExtResource( 11 )]
+plant_scanned_color = Color( 0.317647, 0.694118, 0.607843, 1 )
+preference_unlocked_color = Color( 0.317647, 0.521569, 0.733333, 1 )
 
 [node name="SkipCutsceneLabel" type="Control" parent="."]
 anchor_left = 0.05
@@ -225,5 +227,26 @@ custom_fonts/font = ExtResource( 5 )
 text = "Loading.."
 align = 1
 valign = 1
+
+[node name="ClickToFocus" type="Control" parent="."]
+visible = false
+anchor_top = 0.178
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CenterContainer" type="CenterContainer" parent="ClickToFocus"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="ClickToFocus/CenterContainer"]
+margin_left = 532.0
+margin_top = 264.0
+margin_right = 747.0
+margin_bottom = 327.0
+custom_fonts/font = SubResource( 2 )
+text = "Click to focus
+game window"
+align = 1
+valign = 2
 
 [connection signal="timeout" from="Diagnostics/FPSUpdateTimer" to="Diagnostics" method="_on_FPSUpdateTimer_timeout"]

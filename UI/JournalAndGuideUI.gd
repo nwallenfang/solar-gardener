@@ -1,13 +1,15 @@
 extends Control
 
 
-var journal_unlocked = false
-var guide_tab_active = true setget set_guide_tab_active
+var journal_unlocked = true
+var guide_tab_active = false setget set_guide_tab_active
 
 export var modulate_disabled: Color = Color("828282")
 export var self_modulate_disabled: Color = Color("5d5d5d")
 export var mod_enabled: Color = Color.white
 
+func _ready():
+	unlock_journal()
 
 func show():
 	self.visible = true
@@ -23,7 +25,7 @@ func hide():
 func unlock_journal():
 	$JournalTabSelector.hint_tooltip = ""
 	journal_unlocked = true
-	guide_tab_active = false
+	self.guide_tab_active = false
 
 
 func _on_JournalTabSelector_gui_input(event: InputEvent) -> void:

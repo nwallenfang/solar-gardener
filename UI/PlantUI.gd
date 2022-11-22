@@ -27,7 +27,7 @@ func _ready() -> void:
 const max_per_row = 3
 func add_preference(preference: PlantPreference):
 	var next_preference = get_node("Panel/Preferences/PlantPreferenceUI" + str(number_of_preferences+1))
-	next_preference.set_preference_data(preference)
+	next_preference.set_preference_data(preference, plant_profile.name)
 	next_preference.disabled = false
 	number_of_preferences += 1
 
@@ -52,7 +52,10 @@ func set_seed_count(seed_count: int):
 		$SeedCountBG.visible = true
 		discovered = true
 	$"%SeedCount".text = str(seed_count)
-	$SeedCountBG.hint_tooltip = str(seed_count) + " Seed(s) available"
+	if seed_count != 1:
+		$SeedCountBG.hint_tooltip = str(seed_count) + " Seeds available"
+	else:
+		$SeedCountBG.hint_tooltip = "1 Seed available"
 
 
 func set_number_of_stars(number):
@@ -61,7 +64,7 @@ func set_number_of_stars(number):
 	for i in range(number_of_stars):
 		var star_texture_rect: TextureRect = get_node("Panel/Stars/Star" + str(i+1))
 		star_texture_rect.texture = STAR_FULL
-		star_texture_rect.hint_tooltip = "Grown to Stage " + str(i+2)
+		star_texture_rect.hint_tooltip = "Grown to Stage " + str(i+1)
 
 func _on_Panel_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -78,13 +81,24 @@ func _on_Panel_mouse_entered() -> void:
 func _on_Panel_mouse_exited() -> void:
 	if hovered:
 		hovered = false
-		
+
+
 func got_scanned(growth_stage: int):
-	print("GOT SCANNED " + str(growth_stage))
+	var sent_info = false
 	if growth_stage >= 2:
+		if not stage2_scanned:
+			sent_info = true
+			Game.UI.show_info_line("%s second Journal entry added" % plant_name, 3)
 		stage2_scanned = true
 	if growth_stage >= 3:
+		if not stage3_scanned and not sent_info:
+			sent_info = true
+			Game.UI.show_info_line("%s third Journal entry added" % plant_name, 3)
 		stage3_scanned = true
+	if scanned == false and not sent_info:
+		sent_info = true
+		Game.UI.show_info_line("%s Journal entry added"  % plant_name, 3)
+		
 	scanned = true
 	$Panel.hint_tooltip = plant_profile.name
 	$Panel/Stars.visible = true

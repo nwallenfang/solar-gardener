@@ -119,7 +119,7 @@ func add_tutorial_message(title: String, text: String, duration:=10.0):
 		show_next_message()
 		
 func show_info_line(title, type):
-	$DialogUI.push_info_line()
+	$DialogUI.push_infoline(title, type)
 	
 func skip_button_held():
 	$"%SkipCutsceneText".rect_scale = Vector2(1.2, 1.2)

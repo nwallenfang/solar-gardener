@@ -124,7 +124,8 @@ func end_intro_flight():
 	Game.set_game_state(Game.State.INGAME)
 	Game.multitool.visible = true
 	Game.multitool.switch_tool(Game.multitool.TOOL.ANALYSIS)
-
+	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		Game.UI.get_node("ClickToFocus").visible = true
 	yield(get_tree().create_timer(2.0), "timeout")
 	set_process(false)
 	Events.tutorial_beginning()
