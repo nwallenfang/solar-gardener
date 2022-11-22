@@ -120,6 +120,7 @@ func activate_tool(activated_tool: int):
 	Game.UI.get_node("Toolbar").activate_tool(activated_tool)
 	tool_unlocked[activated_tool] = true
 
+var currently_switching := false
 signal switched_to(new_tool)
 func switch_tool(new_tool: int, tool_active := true):
 	if tool_active:
@@ -130,6 +131,7 @@ func switch_tool(new_tool: int, tool_active := true):
 		if new_tool == current_tool:
 			return
 		
+		currently_switching = true
 		clear_holo_information()
 		Game.crosshair.set_style(Game.crosshair.Style.DEFAULT)
 		switch_tool(current_tool, false)
@@ -154,6 +156,8 @@ func switch_tool(new_tool: int, tool_active := true):
 			$ModelMultitool.set_analysis(tool_active)
 			wait_for_animation_finished()
 		TOOL.GROW:
+			if not grow_beam_active:
+				grow_beam_active = false
 			Game.player_raycast.set_collision_mask_bit(5, tool_active)
 			$ModelMultitool.set_grow(tool_active)
 			wait_for_animation_finished()
@@ -161,6 +165,9 @@ func switch_tool(new_tool: int, tool_active := true):
 			show_hopable(tool_active)
 			$ModelMultitool.set_hopper(tool_active)
 			wait_for_animation_finished()
+	if waiting_for_animation:
+		yield($ModelMultitool,"animation_finished")
+	currently_switching = false
 
 func idle_process(delta: float):
 	growth_juice = min(1.0, growth_juice + JUICE_GAIN * delta)
@@ -169,7 +176,7 @@ func idle_process(delta: float):
 		TOOL.PLANT:
 			show_plant_information()
 		TOOL.GROW:
-			if first_action_holded and can_grow and $GrowCooldown.time_left == 0.0:
+			if first_action_holded and can_grow and has_no_cooldown():
 				grow_beam_active = true
 				plant_to_grow.growth_boost = true
 				growth_juice -= JUICE_DRAIN * delta

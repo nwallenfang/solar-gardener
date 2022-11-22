@@ -29,7 +29,7 @@ var current_model: Spatial
 
 var analyse_name : String setget, get_analyse_name
 
-var extra_grounding_distance := .04
+var extra_grounding_distance := 0.0
 
 var can_be_analysed := false
 
