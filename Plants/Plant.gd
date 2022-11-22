@@ -181,6 +181,9 @@ func grow(delta, factor_sign):
 		Events.trigger("tutorial_plant_reached_stage" + str(growth_stage))
 		PlantData.growth_stage_reached(profile.name, growth_stage)
 		can_be_analysed = true
+		reset_small_seeds()
+		if growth_stage == growth_lock:
+			$SeedGrowCooldown.start(profile.seed_grow_time)
 		#$Area.set_collision_layer_bit(2, true)
 
 const GREEN_OVERLAY = preload("res://Assets/Materials/GreenAlphaOverlay.tres")
@@ -248,26 +251,46 @@ func growth_beam_possible() -> bool:
 	return true
 	#return $GrowthCooldown.time_left == 0.0
 
+var small_seeds := []
+var seeds_ready_to_harvest := false
+func grow_small_seeds():
+	if not small_seeds.empty():
+		return
+
+	var empty_spaces := []
+	for c in current_model.get_children():
+		c = c as Node
+		if "empty" in c.name.to_lower() and c is Spatial:
+			empty_spaces.append(c)
+	for empty in empty_spaces:
+		var pickup = FLYING_PICKUP.instance()
+		Game.planet.add_child_with_light(pickup)
+		pickup.global_transform.basis = Utility.get_basis_y_aligned(Game.planet.global_translation.direction_to(self.global_translation))
+		pickup.global_translation = empty.global_translation
+		pickup.setup_as_seed(profile.name, .45, false, false)
+		small_seeds.append(pickup)
+	yield(get_tree().create_timer(2),"timeout")
+	seeds_ready_to_harvest = true
+
+
+func reset_small_seeds():
+	for pickup in small_seeds:
+		queue_free()
+	small_seeds = []
+	$SeedGrowCooldown.stop()
+	seeds_ready_to_harvest = false
+
 func flush_seeds():
-	if $SeedFlushCooldown.time_left == 0.0 and $GrowthCooldown.time_left == 0.0:
-		$SeedFlushCooldown.start()
-		yield(get_tree().create_timer(.8),"timeout")
-		var empty_spaces := []
-		for c in current_model.get_children():
-			c = c as Node
-			if "empty" in c.name.to_lower() and c is Spatial:
-				empty_spaces.append(c)
-		var pickups := []
-		for empty in empty_spaces:
-			var pickup = FLYING_PICKUP.instance()
-			Game.planet.add_child_with_light(pickup)
-			pickup.global_transform.basis = Utility.get_basis_y_aligned(Game.planet.global_translation.direction_to(self.global_translation))
-			pickup.global_translation = empty.global_translation
-			pickup.setup_as_seed(profile.name)
-			pickups.append(pickup)
-		yield(get_tree().create_timer(2.0), "timeout")
-		for pickup in pickups:
-			pickup.start_flying()
+	for pickup in small_seeds:
+		$SeedGrowTween.interpolate_property(pickup, "scale", pickup.scale, pickup.scale * 1.5, 1.5)
+	$SeedGrowTween.start()
+	yield($SeedGrowTween, "tween_all_completed")
+	yield(get_tree().create_timer(.5),"timeout")
+	for pickup in small_seeds:
+		pickup.start_flying()
+	small_seeds = []
+	seeds_ready_to_harvest = false
+	$SeedGrowCooldown.start(profile.seed_grow_time)
 
 func get_near_plants_list() -> Array:
 	var plants := []
@@ -293,4 +316,11 @@ func get_near_plants_types() -> Array:
 
 func get_analyse_name() -> String:
 	# TODO "Unknown Plant" if not analysed
-	return analyse_name
+	if analyse_name in Game.journal.scanned_plant_names:
+		return analyse_name
+	else:
+		return "Unknown Plant"
+
+
+func _on_SeedGrowCooldown_timeout():
+	grow_small_seeds()

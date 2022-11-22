@@ -18,6 +18,7 @@ nutrients = 3
 group = 3
 prefered_soil = 3
 seed_count = 3
+seed_grow_time = 7.0
 points_for_stage_1 = 0
 points_for_stage_2 = 1
 points_for_stage_3 = 3

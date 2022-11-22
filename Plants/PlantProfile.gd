@@ -25,6 +25,7 @@ export(PREFERENCE) var group: int
 export(SOIL_TYPES) var prefered_soil: int
 
 export var seed_count: int
+export var seed_grow_time: float = 7.0
 
 export var points_for_stage_1: int
 export var points_for_stage_2: int
