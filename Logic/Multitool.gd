@@ -311,6 +311,8 @@ func check_on_hover():
 							object_to_analyse = Game.planet
 						else:
 							can_analyse = false
+					if object_to_analyse.name == "Ice":
+						object_to_analyse = object_to_analyse.get_parent()
 			show_analysable(can_analyse)
 		TOOL.HOPPER:
 			if not (Game.player_raycast.colliding and Game.player_raycast.collider is Planet):
@@ -383,6 +385,7 @@ func spawn_plant(pos: Vector3):
 	Game.planet.add_to_lod_list(pile)
 	pile.global_translation = pos
 	pile.global_transform.basis = Utility.get_basis_y_aligned(Game.planet.global_translation.direction_to(pos))
+	pile.on_lod(false)
 	Events.trigger("tutorial_seed_planted")
 	Events.trigger("seed_planted")
 
@@ -421,6 +424,8 @@ func show_analyse_information():
 						if soil_type == null:
 							printerr(planet_obj.planet_name + " has weird soil type.")
 						Game.hologram.show_soil_info(planet_obj.planet_name, soil_type, planet_obj.nutrients, planet_obj.sun) # type_name: String, has_nutrients:bool, is_close_to_sun: bool)  # TODO
+					elif "ice" in object_to_analyse.name.to_lower():
+						Game.hologram.show_analyse_info("Can be melted\nwith great heat")
 					else:
 						Game.hologram.show_scan_progress(object_to_analyse.get("analyse_name"), 100.0)
 		else:

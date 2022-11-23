@@ -12,6 +12,7 @@ spheres = [ Plane( 0, 0, 0, 5.7328 ) ]
 [node name="Planet3" type="Spatial"]
 script = ExtResource( 3 )
 planet_name = "Sand Planet"
+dirt_pile_color = Color( 0.756863, 0.784314, 0.513726, 1 )
 soil_type = 4
 sun = true
 nutrients = true

@@ -5,6 +5,8 @@ export var planet_name : String
 onready var analyse_name : String = planet_name
 var analyse_speed_factor := .3
 
+export(Color) var dirt_pile_color : Color
+
 export var soil_type : int
 export var sun : bool
 export var moist : bool
