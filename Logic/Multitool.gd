@@ -324,13 +324,14 @@ func show_hopable(b: bool):
 func start_planting_animation(pos: Vector3):
 	show_plantable(false)
 	$ModelMultitool.seed_shot()
-#	$Cooldown.start(1)
+	$Cooldown.start(1)
 	$SeedFlyTween.interpolate_property(fake_seed, "global_translation", fake_seed.global_translation, pos, .2)
+	$SeedFlyTween.interpolate_property(fake_seed, "scale", fake_seed.scale, fake_seed.scale * 4.0, .2)
 	$SeedFlyTween.start()
-	yield($SeedFlyTween, "tween_all_completed")
+	yield(get_tree().create_timer(.2), "timeout")
 	fake_seed.visible = false
 	spawn_plant(pos)
-	yield(get_tree().create_timer(.3),"timeout")
+	yield(get_tree().create_timer(.35), "timeout")
 	#fake_seed.global_translation = $SeedPosition.global_translation
 	try_reload()
 
@@ -451,8 +452,11 @@ func try_reload():
 				fake_seed.queue_free()
 			fake_seed = FAKE_SEED.instance()
 			$ModelMultitool/SeedOrigin.add_child(fake_seed)
-			fake_seed.setup(target_plant_name, 1.2)
+			fake_seed.setup(target_plant_name, 1.4)
 			$ModelMultitool.seed_reload()
+			fake_seed.visible = false
+			yield(get_tree().create_timer(.1),"timeout")
+			fake_seed.visible = true
 			wait_for_animation_finished()
 		else:
 			seeds_empty = true

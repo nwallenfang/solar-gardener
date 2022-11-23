@@ -26,6 +26,7 @@ func set_grow(active: bool):
 
 func set_plant(active: bool):
 	$SeedOrigin.visible = false
+	$Antenna.visible = not active
 	$PlantPlayer.play("on" if active else "off")
 	if not active:
 		$Slingshot.visible = false
@@ -175,7 +176,7 @@ func set_holo_text(text: String):
 	$HoloScreen.set_text(text)
 
 func _ready():
-	var speed_factor := 1.2
+	var speed_factor := 1.3
 	$HopperPlayer.playback_speed = speed_factor
 	$GrowBeamPlayer.playback_speed = speed_factor
 	$PlantPlayer.playback_speed = speed_factor
