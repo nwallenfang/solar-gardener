@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/VO_T3_CBR128.ogg-176cacc3c3c0f100039e8b84b362b81f.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sound/VoiceOver/VO_T3_CBR128.ogg"
+dest_files=[ "res://.import/VO_T3_CBR128.ogg-176cacc3c3c0f100039e8b84b362b81f.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -16,7 +16,6 @@ func play(start:=0.0):
 func set_volume_linear(linear: float):
 	self.volume_db = linear2db(linear)
 
-
 func fade_in(start:=0.0, fade_duration:=1.0):
 #	print(name + " fade_in")
 	self.play(start)
@@ -27,8 +26,17 @@ func fade_in(start:=0.0, fade_duration:=1.0):
 	tween.tween_method(self, "set_volume_linear", 0.0, db2linear(sound.volume_db), fade_duration)
 	tween.play()
 
+func reduce(amount: float, fade_duration:=0.4):
+	# amount between 0.0 and 1.0
+	var tween := get_tree().create_tween()
+	tween.tween_method(self, "set_volume_linear", db2linear(volume_db), amount * db2linear(volume_db), fade_duration)
+	tween.play()
 
-	
+func to_normal_vol(fade_duration:=0.4):
+	var tween := get_tree().create_tween()
+	tween.tween_method(self, "set_volume_linear", db2linear(volume_db), db2linear(sound.volume_db), fade_duration)
+	tween.play()
+
 func fade_out(fade_duration:=1.0):
 #	print(name + " fade_out")
 	var tween := get_tree().create_tween()
@@ -37,9 +45,6 @@ func fade_out(fade_duration:=1.0):
 	
 	yield(tween, "finished")
 	stop()
-	
-func fade_in_and_out():
-	pass
 
 func _on_AudioPlayerWithInfo_finished() -> void:
 	Audio.available.append(self)

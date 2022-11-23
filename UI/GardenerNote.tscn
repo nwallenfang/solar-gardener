@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Assets/Sprites/journal.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/journal.webp" type="Texture" id=1]
 [ext_resource path="res://UI/GardenerNote.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Fonts/GardenerNoteFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Assets/Fonts/TitleFont.tres" type="DynamicFont" id=4]
@@ -30,8 +30,10 @@ script = ExtResource( 2 )
 
 [node name="Background" type="Panel" parent="."]
 show_behind_parent = true
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.173
+anchor_top = 0.019
+anchor_right = 0.827
+anchor_bottom = 0.978
 custom_styles/panel = SubResource( 6 )
 
 [node name="Note" type="Control" parent="."]
