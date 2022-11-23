@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/steps_sand_04.ogg-577f73e619b7e5c9db2a17ebfc832cdd.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sound/Footsteps/steps_sand_04.ogg"
+dest_files=[ "res://.import/steps_sand_04.ogg-577f73e619b7e5c9db2a17ebfc832cdd.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

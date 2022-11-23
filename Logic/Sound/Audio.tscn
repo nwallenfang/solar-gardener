@@ -69,4 +69,8 @@ __meta__ = {
 "_editor_description_": "gets filled with AudioPlayers in _ready of AudioManager"
 }
 
-[node name="Music" type="Node" parent="."]
+[node name="GameSpecific" type="Node" parent="."]
+
+[node name="FootstepTimer" type="Timer" parent="GameSpecific"]
+
+[connection signal="timeout" from="GameSpecific/FootstepTimer" to="." method="_on_FootstepTimer_timeout"]

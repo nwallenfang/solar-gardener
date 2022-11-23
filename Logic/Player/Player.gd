@@ -54,6 +54,7 @@ func calc_gravity_direction() -> Vector3:
 
 # Called every physics tick. 'delta' is constant
 var gravity_direction
+const footstep_thresh = 0.2
 func _physics_process(delta) -> void:
 	var trigger_jump: bool
 	if Game.game_state == Game.State.LOADING or Game.game_state == Game.State.INTRO_FLIGHT or Game.game_state == Game.State.WARPING:
@@ -76,10 +77,13 @@ func _physics_process(delta) -> void:
 		# player basis y is the player's up direction
 		velocity += jump_acceleration * delta * transform.basis.y
 		has_jumped = true
+		Audio.stop_footsteps()
 	elif is_on_floor():
 		if has_jumped:
 			# end jump
+			# TODO add contact sound effect
 			has_jumped = false
+			Audio.play_random_step(Game.planet.music_prefix)
 		snap = gravity_direction
 	
 	if direction.length() > 0.1 or not is_on_floor():
@@ -90,6 +94,11 @@ func _physics_process(delta) -> void:
 	up_direction = -gravity_direction
 	velocity = move_and_slide_with_snap(velocity, snap, up_direction, 
 			stop_on_slope, 4, floor_max_angle)
+			
+	if direction.length() > footstep_thresh and is_on_floor():
+		Audio.start_footsteps(Game.planet.music_prefix)
+	else:
+		Audio.stop_footsteps()
 
 
 func update_look_direction():
