@@ -1,6 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Shader/EnergyBall.gdshader" type="Shader" id=1]
+[ext_resource path="res://Effects/EnergyBall.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Materials/EnergyBallStripes.tres" type="Material" id=3]
 
 [sub_resource type="OpenSimplexNoise" id=4]
 persistence = 0.757
@@ -38,16 +40,15 @@ gravity = Vector3( 0, 0, 0 )
 radial_accel = -1.0
 scale_curve = SubResource( 7 )
 
-[sub_resource type="SpatialMaterial" id=9]
-flags_unshaded = true
-params_cull_mode = 2
-albedo_color = Color( 0.592157, 0.780392, 0, 1 )
-
 [sub_resource type="QuadMesh" id=10]
-material = SubResource( 9 )
+material = ExtResource( 3 )
 size = Vector2( 0.05, 1 )
 
 [node name="EnergyBall" type="Spatial"]
+script = ExtResource( 2 )
+grow_color = Color( 1, 0.984314, 0, 1 )
+grow_color2 = Color( 0, 0.678431, 0.0117647, 1 )
+death_color = Color( 1, 0, 0, 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 0.166357, 0, 0, 0, 0.166357, 0, 0, 0, 0.166357, 0, 0, 0 )

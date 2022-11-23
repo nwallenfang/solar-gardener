@@ -41,6 +41,11 @@ var growth_juice := 1.0
 const JUICE_DRAIN = .25
 const JUICE_GAIN = .05
 
+var death_beam_unlocked := true
+var death_beam_active := false
+var death_beam_progress := 0.0
+var death_beam_target: Plant
+
 # Analysis Variable
 const ANALYSE_TOOL_DISTANCE = 10.0
 const ANALYSE_SPEED = 1.0/2.0
@@ -190,7 +195,31 @@ func idle_process(delta: float):
 					Audio.fade_out("growbeam", 0.4)
 				grow_beam_active = false
 				
-			$ModelMultitool.set_grow_beam_on_target(plant_to_grow if grow_beam_active else null)
+			
+			
+			# Death Beam
+			if second_action_holded and (not grow_beam_active) and has_no_cooldown() and death_beam_unlocked and can_grow:
+				if not death_beam_active:
+					death_beam_target = plant_to_grow
+					death_beam_active = true
+					death_beam_progress = 0.0
+				death_beam_progress += delta
+				if death_beam_progress >= 1.0:
+					$Cooldown.start(1.0)
+					death_beam_target.call("on_remove")
+					death_beam_active = false
+			else:
+				if death_beam_active:
+					death_beam_active = false
+					death_beam_target = null
+			
+			if grow_beam_active:
+				$ModelMultitool.set_grow_beam_on_target(plant_to_grow)
+			elif death_beam_active:
+				$ModelMultitool.set_grow_beam_on_target(death_beam_target, true)
+			else:
+				$ModelMultitool.set_grow_beam_on_target(null)
+			
 			show_grow_information()
 		TOOL.ANALYSIS:
 			analyse_completed = false
@@ -324,14 +353,15 @@ func show_hopable(b: bool):
 func start_planting_animation(pos: Vector3):
 	show_plantable(false)
 	$ModelMultitool.seed_shot()
+	$Cooldown.start(1)
 	Audio.play("ui_activate1")
-#	$Cooldown.start(1)
 	$SeedFlyTween.interpolate_property(fake_seed, "global_translation", fake_seed.global_translation, pos, .2)
+	$SeedFlyTween.interpolate_property(fake_seed, "scale", fake_seed.scale, fake_seed.scale * 4.0, .2)
 	$SeedFlyTween.start()
-	yield($SeedFlyTween, "tween_all_completed")
+	yield(get_tree().create_timer(.2), "timeout")
 	fake_seed.visible = false
 	spawn_plant(pos)
-	yield(get_tree().create_timer(.3),"timeout")
+	yield(get_tree().create_timer(.35), "timeout")
 	#fake_seed.global_translation = $SeedPosition.global_translation
 	try_reload()
 
@@ -452,8 +482,11 @@ func try_reload():
 				fake_seed.queue_free()
 			fake_seed = FAKE_SEED.instance()
 			$ModelMultitool/SeedOrigin.add_child(fake_seed)
-			fake_seed.setup(target_plant_name, 1.2)
+			fake_seed.setup(target_plant_name, 1.4)
 			$ModelMultitool.seed_reload()
+			fake_seed.visible = false
+			yield(get_tree().create_timer(.1),"timeout")
+			fake_seed.visible = true
 			wait_for_animation_finished()
 		else:
 			seeds_empty = true
