@@ -99,3 +99,11 @@ func _physics_process(delta: float) -> void:
 
 func get_analyse_info_text() -> String:
 	return ""
+
+var has_been_grab_rooted := false
+func try_grabroot_effect(pos: Vector3):
+	if not has_been_grab_rooted:
+		if Utility.test_planting_position(pos):
+			has_been_grab_rooted = true
+			if has_node("GrabrootGrabber"):
+				get_node("GrabrootGrabber").emerge(pos)

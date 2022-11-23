@@ -1,6 +1,7 @@
 extends Node
 
 const MODELS_FOLDER = "res://Assets/Models/"
+const EFFECTS_FOLDER = "res://Plants/Effects/"
 
 enum State {
 	INGAME,

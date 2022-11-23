@@ -33,8 +33,14 @@ var extra_grounding_distance := 0.0
 
 var can_be_analysed := false
 
+var effect: Spatial
+
 var is_setup := false
 func setup():
+	if profile.special_effect != null:
+		effect = profile.special_effect.instance()
+		add_child(effect)
+		effect.setup()
 	model_seed = profile.model_seed.instance()
 	model_stage_1 = profile.model_stage_1.instance()
 	model_stage_2 = profile.model_stage_2.instance()

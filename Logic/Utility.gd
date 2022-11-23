@@ -33,3 +33,9 @@ func get_multi_lerp_weights(distribution: Array) -> Array:
 		current_sum += new_element
 		weights.append(new_element / current_sum)
 	return weights
+
+func get_planet_surface_point_from_pos(planet:Planet, pos:Vector3) -> Vector3:
+	$RayCast.global_translation = pos
+	$RayCast.cast_to = $RayCast.to_local(planet.global_translation)
+	$RayCast.force_raycast_update()
+	return $RayCast.get_collision_point()
