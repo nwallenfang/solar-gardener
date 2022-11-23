@@ -178,6 +178,7 @@ func grow(delta, factor_sign):
 		growth_stage = growth_stage + int(factor_sign * 1.1) # "* 1.1" to avoid float error nonsense
 		current_model = model_array[growth_stage]
 		growth_stage_progress = 0.0
+
 		play_growth_pop_animation(old_stage)
 		Events.trigger("tutorial_plant_reached_stage" + str(growth_stage))
 		PlantData.growth_stage_reached(profile.name, growth_stage)
@@ -211,6 +212,8 @@ func play_growth_pop_animation(old_stage):
 	$GrowthAnimationTween.start()
 	var grow_pop_part := GROW_POP_PARTICLES.instance()
 	add_child(grow_pop_part)
+	var dist:= self.global_translation.distance_to(Game.player.global_translation)
+	Audio.play_attenuated("plant_growth_stage" + str(growth_stage), dist)
 	yield($GrowthAnimationTween,"tween_all_completed")
 	for mi in new_meshes:
 		mi = mi as MeshInstance

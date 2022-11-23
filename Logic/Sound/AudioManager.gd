@@ -101,7 +101,7 @@ func fade_out(sound_name: String, fade_duration:=1.0):
 	var player: CustomAudioPlayer = playing[sound_name]
 	player.fade_out(fade_duration)
 	
-func fade_in_and_out(sound_name: String, play_duration: float, fade_duration:=1.0):
+func fade_in_and_out(sound_name: String, play_duration: float, fade_duration:=1.0, random_start:=false):
 	# play a sound for play duration, then fade out
 	# TODO
 	pass
@@ -109,3 +109,16 @@ func fade_in_and_out(sound_name: String, play_duration: float, fade_duration:=1.
 func cross_fade(sound_name_out: String, sound_name_in: String, fade_duration:=1.0):
 	# TODO
 	pass
+	
+func play_attenuated(sound_name:String, distance:float):
+	var sound: ManagedSound = $Sounds.get_node(sound_name)
+	var max_dist = sound.max_distance_when_attenuated
+	
+	var player: CustomAudioPlayer = available.pop_front()
+	player.sound = sound
+	player.stream = sound.stream
+	player.play()
+	player.volume_db = linear2db(1.0 - distance/max_dist)
+	print("playing at " + str(linear2db(1.0 - distance/max_dist)) + " db")
+	
+	
