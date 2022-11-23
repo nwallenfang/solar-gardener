@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/steps_obsidian_01.ogg-6183a72a9cdb0f6cf5eff89d57717ef2.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sound/Footsteps/steps_obsidian_01.ogg"
+dest_files=[ "res://.import/steps_obsidian_01.ogg-6183a72a9cdb0f6cf5eff89d57717ef2.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

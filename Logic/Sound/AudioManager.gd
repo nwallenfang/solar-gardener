@@ -43,6 +43,7 @@ func _ready():
 			file_name = dir.get_next()
 	else:
 		print("An error encountered loading the sounds")
+	setup_footsteps()
 	
 func play(sound_name: String):
 	queue.append(sound_name)
@@ -75,8 +76,9 @@ func _process(delta):
 		playing[sound_name] = player
 
 	
-	
+#######################
 ### UTILITY METHODS ###
+#######################
 func fade_in(sound_name: String, fade_duration:=1.0, random_start:=false):
 	if available.empty():
 		printerr("No available players to play " + sound_name)
@@ -122,4 +124,65 @@ func play_attenuated(sound_name:String, distance:float):
 	player.volume_db = linear2db(1.0 - distance/max_dist)
 	print("playing at " + str(linear2db(1.0 - distance/max_dist)) + " db")
 	
-	
+################################
+### GAME SPECIFIC EXTENSIONS ###
+################################
+export var footstep_directory = "res://Assets/Sound/Footsteps/"
+var number_per := {"dirt": 5, "obsidian": 7, "rock": 5, "sand": 5, "wood": 6}
+var steps_per_second := 2.0 
+var step_volume_db := -12.0
+var variation = 0.28
+# TODO add randomness to the steps per second timer !!!
+var current_planet_type: String
+onready var timer: Timer = $GameSpecific/FootstepTimer
+func start_footsteps(planet_type: String):
+	if planet_type == "placeholder":
+		current_planet_type = "sand"
+	if not timer.is_stopped():
+		return
+	current_planet_type = planet_type
+	play_random_step()
+	timer.start(1.0 / steps_per_second)
+
+func play_random_step(planet_type: String = ""):
+	if planet_type != "":
+		current_planet_type = planet_type
+	var step_no: int = (randi() % number_per[current_planet_type]) + 1
+	var step_name = "steps_%s_%02d" % [current_planet_type, step_no]
+	play(step_name)
+
+func stop_footsteps():
+	timer.stop()
+
+func _on_FootstepTimer_timeout() -> void:
+	timer.wait_time = 1.0/steps_per_second * (1.0 + (0.5 - randf()) * variation) 
+	play_random_step()
+
+func setup_footsteps():
+	# Generate as many audio players as said in the variable
+	print("Loading Footsteps..")
+	var dir = Directory.new()
+	if dir.open(footstep_directory) == OK:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+
+		while file_name != "":
+			if file_name.ends_with(".ogg") or (OS.has_feature("standalone") and file_name.ends_with(".import")):
+				if OS.has_feature("standalone"):  # hack -> see first comment of this file
+					file_name = file_name.split(".import")[0]
+				var node_name = file_name.split(".")[0]
+				if not $Sounds.has_node(node_name): # sound has no custom config in Sounds
+					var managed_sound = MANAGED_SOUND_SCENE.instance()
+					managed_sound.name = node_name
+					managed_sound.stream = load(footstep_directory + file_name)
+					managed_sound.volume_db = step_volume_db
+					$Sounds.add_child(managed_sound, true)
+				else: # sound exists in Sounds
+					var managed_sound = $Sounds.get_node(node_name)
+					managed_sound.stream = load(footstep_directory + file_name)
+			file_name = dir.get_next()
+	else:
+		print("An error encountered loading the sounds")
+	print("Done loading Footsteps!")
+
+

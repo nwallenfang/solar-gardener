@@ -10,5 +10,3 @@ export var mixer_bus := "Master"
 export var max_distance_when_attenuated := 10.0
 
 # volume, bus?, transition types/durations
-
-	

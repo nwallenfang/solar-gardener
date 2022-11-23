@@ -17,6 +17,7 @@ export var rotation_axis: Vector3 = Vector3.UP
 export var y_rotation_speed = deg2rad(3.5)
 export var max_plants : int
 
+# for music and footsteps
 export var music_prefix := "sand"
 
 
@@ -58,18 +59,35 @@ func growth_stage_reached(growth_stage: int):
 		
 		# trigger next music if on this planet
 		if Game.planet == self:
+			var used_prefix = music_prefix
+			if used_prefix == "dirt":
+				used_prefix = "sand"
+			if used_prefix != "sand":
+				used_prefix = "placeholder"
+			
 			var music_next = "music_%s_%d" % [music_prefix, growth_stage]
 			var music_prev = "music_%s_%d" % [music_prefix, growth_stage-1]
 			if growth_stage == 1:
-				Audio.fade_in(music_next)
+				fade_in()
 			else:  # 2 or 3
+				
 				Audio.cross_fade(music_prev, music_next)
 			
 func fade_out():
+	var used_prefix = music_prefix
+	if used_prefix == "dirt":
+		used_prefix = "sand"
+	if used_prefix != "sand":
+		used_prefix = "placeholder"
 	var music = "music_%s_%d" % [music_prefix, planet_growth_stage]
 	Audio.fade_out(music)
 	
 func fade_in():
+	var used_prefix = music_prefix
+	if used_prefix == "dirt":
+		used_prefix = "sand"
+	if used_prefix != "sand":
+		used_prefix = "placeholder"
 	if planet_growth_stage > 0:
 		var music = "music_%s_%d" % [music_prefix, planet_growth_stage]
 		Audio.fade_in(music)
