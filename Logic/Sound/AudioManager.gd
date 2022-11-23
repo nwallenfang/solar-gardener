@@ -95,6 +95,10 @@ func fade_in(sound_name: String, fade_duration:=1.0, random_start:=false):
 	else:
 		player.fade_in(0.0, fade_duration)
 	playing[sound_name] = player
+	
+func fade_in_at_position(sound_name: String, fade_duration:=1.0, start_pos:=0.0):
+	# TODO
+	pass
 
 func fade_out(sound_name: String, fade_duration:=1.0):
 	if not sound_name in playing:  # don't know if this should be an error
@@ -107,6 +111,9 @@ func fade_in_and_out(sound_name: String, play_duration: float, fade_duration:=1.
 	# play a sound for play duration, then fade out
 	# TODO
 	pass
+
+func get_stream_position(sound_name) -> float:
+	return playing[sound_name].get_playback_position()
 
 func cross_fade(sound_name_out: String, sound_name_in: String, fade_duration:=1.0):
 	fade_in(sound_name_in, fade_duration)

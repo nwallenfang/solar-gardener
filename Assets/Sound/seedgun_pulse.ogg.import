@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/seedgun_pulse.ogg-d4e3fe4f9cecab9a09667fb43fe443df.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sound/seedgun_pulse.ogg"
+dest_files=[ "res://.import/seedgun_pulse.ogg-d4e3fe4f9cecab9a09667fb43fe443df.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

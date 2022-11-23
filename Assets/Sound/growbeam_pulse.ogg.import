@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/growbeam_pulse.ogg-956488c16d7cb8a45fcdea5b45d86f1c.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sound/growbeam_pulse.ogg"
+dest_files=[ "res://.import/growbeam_pulse.ogg-956488c16d7cb8a45fcdea5b45d86f1c.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

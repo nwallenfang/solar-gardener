@@ -28,6 +28,8 @@ func set_plant(active: bool):
 	$SeedOrigin.visible = false
 	$Antenna.visible = not active
 	$PlantPlayer.play("on" if active else "off")
+	if active:
+		Audio.play("seedgun_load")
 	if not active:
 		$Slingshot.visible = false
 	yield($PlantPlayer,"animation_finished")

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/seedgun_rotate_slow.ogg-97d8b0c5ff2f7cf9cf3efaf376fe0c20.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sound/seedgun_rotate_slow.ogg"
+dest_files=[ "res://.import/seedgun_rotate_slow.ogg-97d8b0c5ff2f7cf9cf3efaf376fe0c20.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

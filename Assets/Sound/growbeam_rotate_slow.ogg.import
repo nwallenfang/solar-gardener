@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/growbeam_rotate_slow.ogg-5318b4efde5e2bb64dca863e2348a026.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sound/growbeam_rotate_slow.ogg"
+dest_files=[ "res://.import/growbeam_rotate_slow.ogg-5318b4efde5e2bb64dca863e2348a026.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -90,6 +90,7 @@ func set_flight_offset(x: float):
 			target_transform = target_transform.interpolate_with(cam_1.global_transform, lerp_weights[2])
 			$IntroFlight/FlyCamera.global_transform = target_transform
 
+var skipped = false
 func start_intro_flight():
 	Game.set_game_state(Game.State.INTRO_FLIGHT)
 	if (not OS.is_debug_build()) or TEST_INTRO:
@@ -113,7 +114,8 @@ func start_intro_flight():
 	$IntroFlight/AnimationPlayer.play("fly")
 	yield($IntroFlight/AnimationPlayer, "animation_finished")
 	Game.UI.get_node("BlackScreen").visible = false
-	end_intro_flight()
+	if not skipped:
+		end_intro_flight()
 	
 func end_intro_flight():
 	$"%FlyCamera".current = false
@@ -141,6 +143,7 @@ func _process(delta: float) -> void:
 
 func _on_SkipCutscene_timeout() -> void:
 	Dialog.skip_intro()
+	skipped = true
 	$IntroFlight/Tween.reset_all()
 	$IntroFlight/Tween.interpolate_method(Game.UI, "set_blackscreen_alpha", .0, 1.0, 0.7, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 	$IntroFlight/Tween.start()

@@ -133,6 +133,6 @@ func check_for_tutorial_completed():
 		Events.trigger("tutorial_completed")
 
 func tutorial_completed():
-	Game.UI.add_tutorial_message("Traveling", "Travel between planets by hovering on them and clicking.", duration)
+	Game.UI.add_tutorial_message("Traveling", "Point to a planet and click to travel.", duration)
 	Game.multitool.activate_tool(Game.multitool.TOOL.HOPPER)
 	next()
