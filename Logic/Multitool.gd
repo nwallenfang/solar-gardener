@@ -161,8 +161,13 @@ func switch_tool(new_tool: int, tool_active := true):
 			$ModelMultitool.set_analysis(tool_active)
 			wait_for_animation_finished()
 		TOOL.GROW:
-			if not grow_beam_active:
-				grow_beam_active = false
+			if tool_active:
+				Audio.play("growbeam_pulse")
+				Audio.fade_in("growbeam_rotate_slow")
+			else:
+				Audio.stop("growbeam_pulse")
+				Audio.fade_out("growbeam_rotate_slow", 0.6)
+				Audio.fade_out("growbeam_rotate_fast", 0.6)
 			Game.player_raycast.set_collision_mask_bit(5, tool_active)
 			$ModelMultitool.set_grow(tool_active)
 			wait_for_animation_finished()
@@ -184,6 +189,8 @@ func idle_process(delta: float):
 			if first_action_holded and can_grow and has_no_cooldown():
 				if not grow_beam_active:
 					Audio.fade_in("growbeam", 0.25, true)
+					Audio.fade_in("growbeam_rotate_fast", 0.2)
+					Audio.fade_out("growbeam_rotate_slow", 0.2)
 				grow_beam_active = true
 				plant_to_grow.growth_boost = true
 				growth_juice -= JUICE_DRAIN * delta
@@ -193,6 +200,8 @@ func idle_process(delta: float):
 			else:
 				if grow_beam_active:
 					Audio.fade_out("growbeam", 0.4)
+					Audio.fade_out("growbeam_rotate_fast", 0.2)
+					Audio.fade_in("growbeam_rotate_slow", 0.2)
 				grow_beam_active = false
 				
 			

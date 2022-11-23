@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Logic/Sound/ManagedSound.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Logic/Sound/AudioManager.gd" type="Script" id=2]
+[ext_resource path="res://Logic/Sound/ManagedSound.gd" type="Script" id=3]
 
 [node name="Audio" type="Node"]
 script = ExtResource( 2 )
@@ -78,6 +79,21 @@ mixer_bus = "Music"
 [node name="music_placeholder_3" parent="Sounds" instance=ExtResource( 1 )]
 volume_db = -8.0
 mixer_bus = "Music"
+
+[node name="growbeam_pulse" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = 13.0
+mixer_bus = "SFX"
+
+[node name="growbeam_rotate_fast" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = 3.0
+mixer_bus = "SFX"
+
+[node name="growbeam_rotate_slow" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = 3.0
+mixer_bus = "SFX"
 
 [node name="Players" type="Node" parent="."]
 __meta__ = {
