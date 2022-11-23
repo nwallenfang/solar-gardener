@@ -308,10 +308,20 @@ func flush_seeds():
 	seeds_ready_to_harvest = false
 	$SeedGrowCooldown.start(profile.seed_grow_time)
 
+func get_near_symbiosis_objects_list() -> Array:
+	var objects := []
+	for collider in $SymbiosisArea.get_overlapping_areas():
+		var collider_parent = collider.get_parent() as Node
+		if not collider_parent.is_class("Plant"):
+			objects.append(collider_parent)
+	return objects
+
 func get_near_plants_list() -> Array:
 	var plants := []
 	for collider in $SymbiosisArea.get_overlapping_areas():
-		plants.append(collider.get_parent())
+		var collider_parent = collider.get_parent() as Node
+		if collider_parent.is_class("Plant"):
+			plants.append(collider_parent)
 	return plants
 
 func get_near_plants_group_count() -> int:
