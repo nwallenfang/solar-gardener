@@ -9,7 +9,7 @@ radius = 0.860162
 radius = 1.39294
 
 [sub_resource type="SphereShape" id=3]
-radius = 4.98745
+radius = 3.19
 
 [node name="Plant" type="Spatial"]
 script = ExtResource( 1 )
