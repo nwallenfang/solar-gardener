@@ -40,7 +40,33 @@ mixer_bus = "SFX"
 [node name="plant_growth_stage3" parent="Sounds" instance=ExtResource( 1 )]
 mixer_bus = "SFX"
 
+[node name="ui1" parent="Sounds" instance=ExtResource( 1 )]
+mixer_bus = "SFX"
+
+[node name="ui2" parent="Sounds" instance=ExtResource( 1 )]
+mixer_bus = "SFX"
+
+[node name="ui3" parent="Sounds" instance=ExtResource( 1 )]
+mixer_bus = "SFX"
+
+[node name="ui_activate1" parent="Sounds" instance=ExtResource( 1 )]
+mixer_bus = "SFX"
+
+[node name="ui_activate2" parent="Sounds" instance=ExtResource( 1 )]
+mixer_bus = "SFX"
+
+[node name="music_sand_1" parent="Sounds" instance=ExtResource( 1 )]
+mixer_bus = "SFX"
+
+[node name="music_sand_2" parent="Sounds" instance=ExtResource( 1 )]
+mixer_bus = "SFX"
+
+[node name="music_sand_3" parent="Sounds" instance=ExtResource( 1 )]
+mixer_bus = "SFX"
+
 [node name="Players" type="Node" parent="."]
 __meta__ = {
 "_editor_description_": "gets filled with AudioPlayers in _ready of AudioManager"
 }
+
+[node name="Music" type="Node" parent="."]

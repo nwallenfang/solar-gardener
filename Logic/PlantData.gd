@@ -122,11 +122,12 @@ signal seeds_updated(plant_name, seed_total)  # -> JournalUI is listening
 signal got_seeds(plant_name, seed_amount)
 func give_seeds(plant_name: String, seed_amount:int) -> void:
 	seed_counts[plant_name] += seed_amount
+	Audio.play("ui2")
 	emit_signal("seeds_updated", plant_name, seed_counts[plant_name])
 	emit_signal("got_seeds", plant_name, seed_amount)
 	
 
-signal growth_stage_reached(plant_name, growth_stage) # -> JurnalUI is listening
+signal growth_stage_reached(plant_name, growth_stage) # -> JournalUI is listening
 func growth_stage_reached(plant_name, growth_stage):
 	# this is what peak godot code looks like :)
 	emit_signal("growth_stage_reached", plant_name, growth_stage)

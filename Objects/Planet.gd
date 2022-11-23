@@ -17,6 +17,10 @@ export var rotation_axis: Vector3 = Vector3.UP
 export var y_rotation_speed = deg2rad(3.5)
 export var max_plants : int
 
+export var music_prefix := "sand"
+
+
+var planet_growth_stage := 0  # for the music or general planet progression
 var planet_light : PlanetLight
 
 var plant_list := []
@@ -38,6 +42,7 @@ func add_child_with_light(n: Node):
 	add_child(n)
 	configure_light(n)
 
+
 const PLANET_LIGHT = preload("res://Effects/PlanetLight.tscn")
 func setup():
 	var planet_id = Game.planet_list.size()
@@ -46,6 +51,28 @@ func setup():
 	Game.world.add_child(planet_light)
 	planet_light.setup(planet_id, self)
 	configure_light(self)
+
+func growth_stage_reached(growth_stage: int):
+	if growth_stage > planet_growth_stage:
+		planet_growth_stage = growth_stage
+		
+		# trigger next music if on this planet
+		if Game.planet == self:
+			var music_next = "music_%s_%d" % [music_prefix, growth_stage]
+			var music_prev = "music_%s_%d" % [music_prefix, growth_stage-1]
+			if growth_stage == 1:
+				Audio.fade_in(music_next)
+			else:  # 2 or 3
+				Audio.cross_fade(music_prev, music_next)
+			
+func fade_out():
+	var music = "music_%s_%d" % [music_prefix, planet_growth_stage]
+	Audio.fade_out(music)
+	
+func fade_in():
+	if planet_growth_stage > 0:
+		var music = "music_%s_%d" % [music_prefix, planet_growth_stage]
+		Audio.fade_in(music)
 
 func set_player_is_on_planet(b: bool):
 	player_on_planet = b

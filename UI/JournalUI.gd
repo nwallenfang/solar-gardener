@@ -30,6 +30,7 @@ func init():
 		plant_ui.plant_name = plant_name
 	
 func plant_clicked(plant_name):
+	Audio.play("ui2")
 	#Game.multitool.get_node("Cooldown").start(0.6)
 	Game.multitool.target_plant_name = plant_name
 	Game.multitool.switch_tool(Game.multitool.TOOL.PLANT)

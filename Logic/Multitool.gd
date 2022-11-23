@@ -196,7 +196,7 @@ func idle_process(delta: float):
 			analyse_completed = false
 			if not currently_analysing:
 				if can_analyse and first_action_holded:
-					Audio.fade_in("scanner", 0.25, true)
+					Audio.play("scanner") # , 0.25, true)
 					currently_analysing = true
 					current_analyse_object = object_to_analyse
 					current_analyse_progress = 0.0
@@ -325,6 +325,7 @@ func start_planting_animation(pos: Vector3):
 	show_plantable(false)
 	$ModelMultitool.seed_shot()
 	$Cooldown.start(1)
+	Audio.play("ui_activate1")
 	$SeedFlyTween.interpolate_property(fake_seed, "global_translation", fake_seed.global_translation, pos, .2)
 	$SeedFlyTween.interpolate_property(fake_seed, "scale", fake_seed.scale, fake_seed.scale * 4.0, .2)
 	$SeedFlyTween.start()
