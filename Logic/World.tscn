@@ -69,30 +69,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0626678, 0, -0.981606 )
 [node name="IntroFlight" type="Spatial" parent="."]
 
 [node name="Camera0" type="Camera" parent="IntroFlight"]
-transform = Transform( 0.378729, 0, 0.925507, 0, 1, 0, -0.925507, 0, 0.378729, 247.177, 7.30024, 327.692 )
+transform = Transform( -0.759328, 0, 0.650708, 0, 1, 0, -0.650708, 0, -0.759328, 75.0829, 7.30023, -176.717 )
 far = 1000.0
-
-[node name="Camera1" type="Camera" parent="IntroFlight"]
-transform = Transform( 0.930117, 0, 0.367264, 0, 1, 0, -0.367264, 0, 0.930117, 175.982, 7.30024, 322.773 )
-far = 1000.0
-
-[node name="Camera2" type="Camera" parent="IntroFlight"]
-transform = Transform( 0.980802, 0, 0.195005, 0, 1, 0, -0.195005, 0, 0.980802, 41.3665, -9.4695, 188.491 )
-far = 1000.0
-
-[node name="Camera3" type="Camera" parent="IntroFlight"]
-transform = Transform( 0.916837, -0.117392, -0.381613, 0, 0.955798, -0.294024, 0.399261, 0.269572, 0.876311, -26.7323, -13.3136, 97.7882 )
-far = 1000.0
-
-[node name="Camera4" type="Camera" parent="IntroFlight"]
-transform = Transform( 0.753129, -0.165565, -0.636698, 0.0329293, 0.976088, -0.214868, 0.657048, 0.140857, 0.740572, 9.2304, 55.5193, 22.5081 )
-far = 1000.0
-
-[node name="Camera5" type="Camera" parent="IntroFlight"]
-transform = Transform( 0.959644, 0, 0.281219, 0, 1, 0, -0.281219, 0, 0.959644, 11.8402, 54.0863, -13.0044 )
-
-[node name="Camera6" type="Camera" parent="IntroFlight"]
-transform = Transform( 0.461764, 0, 0.887003, 0, 1, 0, -0.887003, 0, 0.461764, -45.7271, 10.6026, -95.7689 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="IntroFlight"]
 anims/fly = SubResource( 1 )
@@ -119,5 +97,34 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.13, -30.1157, 58.9798 )
 [node name="PlanetObsidian" parent="." instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 143.279, 0 )
 music_prefix = "obsidian"
+
+[node name="OldCutscene" type="Spatial" parent="."]
+visible = false
+
+[node name="Camera0" type="Camera" parent="OldCutscene"]
+transform = Transform( 0.378729, 0, 0.925507, 0, 1, 0, -0.925507, 0, 0.378729, 247.177, 7.30024, 327.692 )
+far = 1000.0
+
+[node name="Camera1" type="Camera" parent="OldCutscene"]
+transform = Transform( 0.930117, 0, 0.367264, 0, 1, 0, -0.367264, 0, 0.930117, 175.982, 7.30024, 322.773 )
+far = 1000.0
+
+[node name="Camera2" type="Camera" parent="OldCutscene"]
+transform = Transform( 0.980802, 0, 0.195005, 0, 1, 0, -0.195005, 0, 0.980802, 41.3665, -9.4695, 188.491 )
+far = 1000.0
+
+[node name="Camera3" type="Camera" parent="OldCutscene"]
+transform = Transform( 0.916837, -0.117392, -0.381613, 0, 0.955798, -0.294024, 0.399261, 0.269572, 0.876311, -26.7323, -13.3136, 97.7882 )
+far = 1000.0
+
+[node name="Camera4" type="Camera" parent="OldCutscene"]
+transform = Transform( 0.753129, -0.165565, -0.636698, 0.0329293, 0.976088, -0.214868, 0.657048, 0.140857, 0.740572, 9.2304, 55.5193, 22.5081 )
+far = 1000.0
+
+[node name="Camera5" type="Camera" parent="OldCutscene"]
+transform = Transform( 0.959644, 0, 0.281219, 0, 1, 0, -0.281219, 0, 0.959644, 11.8402, 54.0863, -13.0044 )
+
+[node name="Camera6" type="Camera" parent="OldCutscene"]
+transform = Transform( 0.461764, 0, 0.887003, 0, 1, 0, -0.887003, 0, 0.461764, -45.7271, 10.6026, -95.7689 )
 
 [connection signal="timeout" from="SkipCutscene" to="." method="_on_SkipCutscene_timeout"]
