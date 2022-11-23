@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/hop_ethereal.ogg-b11a7455ad651af0457ab9123e2dabf3.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sound/hop_ethereal.ogg"
+dest_files=[ "res://.import/hop_ethereal.ogg-b11a7455ad651af0457ab9123e2dabf3.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -213,7 +213,7 @@ func idle_process(delta: float):
 						Audio.fade_out("scanner", 0.4)
 						currently_analysing = false
 						analyse_completed = true
-						$Cooldown.start(2)
+						$Cooldown.start(7)
 						print("Analysis Done of " + str(current_analyse_object))
 						if current_analyse_object.has_method("on_analyse"):
 							current_analyse_object.call("on_analyse")
