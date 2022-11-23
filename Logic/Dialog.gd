@@ -1,13 +1,18 @@
 extends Node
 
+export(String, MULTILINE) var note_text1: String
+export(String, MULTILINE) var note_text2: String
+export(String, MULTILINE) var note_text3: String
+
+export var note_audio1: AudioStreamOGGVorbis
+export var note_audio2: AudioStreamOGGVorbis
+export var note_audio3: AudioStreamOGGVorbis
+
 export(Array, Resource) var lines: Array
 export var voice_lv_db: float
 var skipped = false
 
-# 2 Types
-# - Tutorialboxes (should be bound to Event-Singleton later probably)
-# - Intro Voiced Lines
-
+var _next_index = 1
 
 func play_line(line: DialogLine, not_last_one:=true):
 	$VoicedLinesPlayer.stream = line.audio
@@ -33,6 +38,24 @@ func play_intro():
 		if skipped:
 			return
 
+func get_next_index():
+	_next_index += 1
+	return _next_index-1
+
+func get_gardener_note(index: int) -> String:
+	return get("note_text" + str(index))
+	
+
+func play_gardener_voice_over(index: int):
+	var stream = get("note_audio" + str(index))
+	$VoiceOver.stream = stream
+	$VoiceOver.play()
+	if Game.planet.planet_growth_stage > 0:
+		Audio.reduce_volume(Game.planet.get_current_music_name(), 0.4)
+
+func _on_VoiceOver_finished() -> void:
+	if Game.planet.planet_growth_stage > 0:
+		Audio.to_normal_volume(Game.planet.get_current_music_name())
 
 func skip_intro():
 	$Timer.wait_time = 0.01
@@ -40,3 +63,6 @@ func skip_intro():
 	$VoicedLinesPlayer.stop()
 	Game.UI.get_node("DialogUI").hide_line()
 	skipped = true
+
+
+

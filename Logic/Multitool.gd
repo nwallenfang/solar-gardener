@@ -225,7 +225,7 @@ func idle_process(delta: float):
 			analyse_completed = false
 			if not currently_analysing:
 				if can_analyse and first_action_holded:
-					Audio.play("scanner") # , 0.25, true)
+					Audio.play_random_start("scanner") # , 0.25, true)
 					currently_analysing = true
 					current_analyse_object = object_to_analyse
 					current_analyse_progress = 0.0

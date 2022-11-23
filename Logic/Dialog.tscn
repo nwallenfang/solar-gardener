@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Logic/Dialog.gd" type="Script" id=1]
 [ext_resource path="res://UI/Dialog/IntroLine5.tres" type="Resource" id=2]
@@ -9,9 +9,22 @@
 [ext_resource path="res://UI/Dialog/IntroLine6.tres" type="Resource" id=7]
 [ext_resource path="res://UI/Dialog/IntroLine2_2.tres" type="Resource" id=8]
 [ext_resource path="res://UI/Dialog/IntroLine2_1.tres" type="Resource" id=9]
+[ext_resource path="res://Assets/Sound/VoiceOver/VO_G1_CBR128.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Assets/Sound/VoiceOver/VO_G3_CBR128.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Assets/Sound/VoiceOver/VO_G2_CBR128.ogg" type="AudioStream" id=12]
 
 [node name="Dialog" type="Node"]
 script = ExtResource( 1 )
+note_text1 = "Just arrived on this new planet. My boss wants to turn this system into a cliché art installation to attract tourists. I found many alien plants, but they won’t fit into this cliché Garden of Eden I’m supposed to build. 
+Evergreens it is then!"
+note_text2 = "They say limitation breeds creativity. But these clichés are too limiting, there’s barely any room for artistic expression! Just because they say grass is always greener they’re only letting me grow these shades of green!"
+note_text3 = "Do you ever just want to start over? That's how I feel with this system. These clichés just clash, they’re going to be the end for me! 
+This will be my last note.
+It's time for another gardener to have their turn!
+"
+note_audio1 = ExtResource( 10 )
+note_audio2 = ExtResource( 12 )
+note_audio3 = ExtResource( 11 )
 lines = [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 7 ) ]
 
 [node name="VoicedLinesPlayer" type="AudioStreamPlayer" parent="."]
@@ -19,3 +32,7 @@ bus = "SFX"
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="VoiceOver" type="AudioStreamPlayer" parent="."]
+
+[connection signal="finished" from="VoiceOver" to="." method="_on_VoiceOver_finished"]

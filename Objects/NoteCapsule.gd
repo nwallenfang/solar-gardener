@@ -1,7 +1,15 @@
 extends Spatial
 
-export(String, MULTILINE) var note_text: String
+var first_time_opening = false
+var index = -1
 
 func on_analyse():
-	Game.UI.set_note_text(note_text)
+	Audio.fade_out("scanner", 0.55)
+	if not first_time_opening:
+		first_time_opening = true
+		index = Dialog.get_next_index()
+	Game.UI.set_note_text(Dialog.get_gardener_note(index))
 	Game.game_state = Game.State.READING_NOTE
+	
+	yield(get_tree().create_timer(0.8), "timeout")
+	Dialog.play_gardener_voice_over(index)

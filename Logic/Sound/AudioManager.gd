@@ -111,7 +111,23 @@ func fade_in_and_out(sound_name: String, play_duration: float, fade_duration:=1.
 func cross_fade(sound_name_out: String, sound_name_in: String, fade_duration:=1.0):
 	fade_in(sound_name_in, fade_duration)
 	fade_out(sound_name_out, fade_duration)
-
+	
+func reduce_volume(sound_name: String, factor: float):
+	# factor between 0.0 and 1.0
+	var player: CustomAudioPlayer = playing[sound_name]
+	if player == null:
+		printerr("reduce_volume: sound not playing!")
+		return
+	
+	player.reduce(factor)
+	
+func to_normal_volume(sound_name:String):
+	var player: CustomAudioPlayer = playing[sound_name]
+	if player == null:
+		printerr("reduce_volume: sound not playing!")
+		return
+	
+	player.to_normal_vol()
 	
 func play_attenuated(sound_name:String, distance:float):
 	var sound: ManagedSound = $Sounds.get_node(sound_name)
@@ -123,16 +139,26 @@ func play_attenuated(sound_name:String, distance:float):
 	player.play()
 	player.volume_db = linear2db(1.0 - distance/max_dist)
 	print("playing at " + str(linear2db(1.0 - distance/max_dist)) + " db")
+	playing[sound_name] = player
+
+func play_random_start(sound_name):
+	var sound: ManagedSound = $Sounds.get_node(sound_name)
+	var max_dist = sound.max_distance_when_attenuated
 	
+	var player: CustomAudioPlayer = available.pop_front()
+	player.sound = sound
+	player.stream = sound.stream
+	player.play(randf() * sound.stream.get_length())
+	playing[sound_name] = player
+
 ################################
 ### GAME SPECIFIC EXTENSIONS ###
 ################################
 export var footstep_directory = "res://Assets/Sound/Footsteps/"
 var number_per := {"dirt": 5, "obsidian": 7, "rock": 5, "sand": 5, "wood": 6}
 var steps_per_second := 2.0 
-var step_volume_db := -12.0
+var step_volume_db := -15.0
 var variation = 0.28
-# TODO add randomness to the steps per second timer !!!
 var current_planet_type: String
 onready var timer: Timer = $GameSpecific/FootstepTimer
 func start_footsteps(planet_type: String):

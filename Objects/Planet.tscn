@@ -61,6 +61,12 @@ shape = SubResource( 13 )
 [node name="NoteCapsule" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0920763, -6.3347, 0 )
 
+[node name="NoteCapsule2" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.898891, -6.3347, 0 )
+
+[node name="NoteCapsule3" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.66985, -6.20837, 0 )
+
 [node name="Shed" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1.03296, 0, 0, 0, -4.51522e-08, 1.03296, 0, -1.03296, -4.51522e-08, 0, 0, -5.87052 )
 
