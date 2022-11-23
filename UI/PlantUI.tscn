@@ -33,9 +33,9 @@ expand = true
 stretch_mode = 5
 
 [node name="Stars" type="HBoxContainer" parent="Panel"]
-anchor_left = 0.0732422
+anchor_left = 0.0341797
 anchor_top = -0.0138889
-anchor_right = 0.535242
+anchor_right = 0.49618
 anchor_bottom = 0.215111
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.33
@@ -79,7 +79,7 @@ expand = true
 stretch_mode = 6
 
 [node name="PlantIcon" type="TextureRect" parent="Panel"]
-anchor_left = 0.415
+anchor_left = 0.449
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_vertical = 3

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://UI/Hologram.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/Anita semi square.ttf" type="DynamicFontData" id=2]
@@ -33,12 +33,28 @@ outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=6]
+size = 93
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+font_data = ExtResource( 2 )
+
 [sub_resource type="DynamicFont" id=5]
 size = 90
 outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.823529, 0.8, 0.8, 0.027451 )
+corner_radius_top_left = 125
+corner_radius_top_right = 125
+corner_radius_bottom_right = 125
+corner_radius_bottom_left = 125
+shadow_color = Color( 0.682353, 0.682353, 0.682353, 0.196078 )
+shadow_size = 20
 
 [node name="Hologram" type="Control"]
 anchor_right = 1.0
@@ -314,41 +330,42 @@ autowrap = true
 
 [node name="GrowBeam" type="Control" parent="AspectRatioContainer"]
 unique_name_in_owner = true
-visible = false
 margin_left = 280.0
 margin_right = 1000.0
 margin_bottom = 720.0
 
 [node name="HBoxContainer" type="VBoxContainer" parent="AspectRatioContainer/GrowBeam"]
-margin_right = 720.0
-margin_bottom = 720.0
+anchor_top = 0.14
+anchor_right = 1.0
+anchor_bottom = 0.663
 
 [node name="IsGrowingLabel" type="Label" parent="AspectRatioContainer/GrowBeam/HBoxContainer"]
 unique_name_in_owner = true
 margin_right = 720.0
-margin_bottom = 358.0
+margin_bottom = 186.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_colors/font_color = Color( 0.945098, 0.901961, 0.372549, 1 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 6 )
 text = "growing.."
 align = 1
 valign = 1
 
 [node name="JuiceLeft" type="Label" parent="AspectRatioContainer/GrowBeam/HBoxContainer"]
 unique_name_in_owner = true
-margin_top = 362.0
+margin_top = 190.0
 margin_right = 720.0
-margin_bottom = 720.0
+margin_bottom = 376.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_colors/font_color = Color( 0.945098, 0.901961, 0.372549, 1 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 6 )
 text = "80%"
 align = 1
 
 [node name="PlanetHop" type="Control" parent="AspectRatioContainer"]
 unique_name_in_owner = true
+visible = false
 margin_left = 280.0
 margin_right = 1000.0
 margin_bottom = 720.0
@@ -405,10 +422,10 @@ anchor_bottom = 1.0
 
 [node name="ScanHoverLabel" type="Label" parent="AspectRatioContainer/ScanHover/CenterContainer"]
 unique_name_in_owner = true
-margin_left = 138.0
-margin_top = 310.0
-margin_right = 581.0
-margin_bottom = 410.0
+margin_left = 215.0
+margin_top = 327.0
+margin_right = 505.0
+margin_bottom = 393.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_colors/font_color = Color( 0.356863, 0.337255, 0.67451, 1 )
@@ -416,3 +433,11 @@ custom_fonts/font = SubResource( 2 )
 text = "Sun: Far"
 align = 1
 valign = 1
+
+[node name="BackgroundPanel" type="Panel" parent="AspectRatioContainer"]
+visible = false
+show_behind_parent = true
+margin_left = 280.0
+margin_right = 1000.0
+margin_bottom = 720.0
+custom_styles/panel = SubResource( 7 )

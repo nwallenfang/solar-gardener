@@ -1,5 +1,7 @@
 extends Spatial
 
+export var last_note: bool = false
+
 var first_time_opening = false
 var index = -1
 
@@ -7,7 +9,10 @@ func on_analyse():
 	Audio.fade_out("scanner", 0.55)
 	if not first_time_opening:
 		first_time_opening = true
-		index = Dialog.get_next_index()
+		if last_note:
+			index = 3
+		else:
+			index = Dialog.get_next_index()
 	Game.UI.set_note_text(Dialog.get_gardener_note(index))
 	Game.game_state = Game.State.READING_NOTE
 	

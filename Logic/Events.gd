@@ -79,7 +79,7 @@ var duration := 10.0
 
 # doesn't get called from an event, but in the beginning from MainScene
 func tutorial_beginning():
-	# show amber tutorial box
+	# show amber tutorial box 
 	Game.UI.add_tutorial_message("Scan Amber", "Click to scan an Amber relict to find a new seed.", duration)
 
 # Tutorials:
@@ -113,6 +113,7 @@ func tutorial_plant_reached_stage2():
 	next()
 
 func tutorial_plant_scanned():
+	yield(get_tree().create_timer(2.5), "timeout")
 	Game.UI.add_tutorial_message("Open the journal", "Press [TAB] to look at the Plant Journal to see information on scanned plants.", duration)
 	Game.UI.get_node("JournalAndGuideUI").unlock_journal()
 
@@ -132,6 +133,6 @@ func check_for_tutorial_completed():
 		Events.trigger("tutorial_completed")
 
 func tutorial_completed():
-	Game.UI.add_tutorial_message("Tutorial completed", "That's it, have fun exploring other planets!", duration)
+	Game.UI.add_tutorial_message("Traveling", "Travel between planets by hovering on them and clicking.", duration)
 	Game.multitool.activate_tool(Game.multitool.TOOL.HOPPER)
 	next()

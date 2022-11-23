@@ -78,8 +78,8 @@ func seed_count_updated(plant_name, total_seeds):
 
 func growth_staged_reached(plant_name, growth_stage):
 	var plant_ui: PlantUI = get_node("GridContainer/PlantUI" + plant_name)
-	if growth_stage - 1 > plant_ui.number_of_stars:
-		plant_ui.set_number_of_stars(growth_stage - 1)
+	if growth_stage > plant_ui.number_of_stars:
+		plant_ui.set_number_of_stars(growth_stage)
 
 func make_preference_known(plant_name: String, plant_preference_name: String):
 	# find plant ui belonging to this plant

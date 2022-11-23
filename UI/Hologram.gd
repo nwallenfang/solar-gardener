@@ -10,6 +10,7 @@ func _ready() -> void:
 	Game.hologram = self
 	for control in $AspectRatioContainer.get_children():
 		control.visible = false
+#	$AspectRatioContainer/BackgroundPanel.visible = true
 
 func clear():
 	if current_screen != null:
@@ -43,7 +44,7 @@ func show_hop_info(planet_name):
 	if current_screen != null:
 		current_screen.visible = false
 	$"%PlanetHop".visible = true
-	$"%HopLabel".text = "Travel to\n%s" % planet_name
+	$"%HopLabel".text = planet_name
 	current_screen = $"%PlanetHop"
 
 
