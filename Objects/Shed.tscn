@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Models/ModelShed.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Shed.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Fonts/ShedFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/Fonts/ShedFontSmall.tres" type="DynamicFont" id=4]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.106865, 0.238602, 2.44913 )
@@ -21,6 +22,9 @@ extents = Vector3( 1.83335, 1, 2.51111 )
 
 [sub_resource type="SphereShape" id=6]
 radius = 3.87482
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 1.59012, 1.2219, 1.92038 )
 
 [node name="Shed" type="Spatial"]
 script = ExtResource( 2 )
@@ -69,11 +73,11 @@ shape = SubResource( 4 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0459132, 3.64088, 0 )
 shape = SubResource( 5 )
 
-[node name="Area" type="Area" parent="."]
+[node name="NoPlantArea" type="Area" parent="."]
 collision_layer = 8
 collision_mask = 0
 
-[node name="CollisionShape" type="CollisionShape" parent="Area"]
+[node name="CollisionShape" type="CollisionShape" parent="NoPlantArea"]
 transform = Transform( 0.913248, 0, 0, 0, 1.42274, 0, 0, 0, 1.31025, 0, 1.81689, 0 )
 shape = SubResource( 6 )
 
@@ -101,12 +105,25 @@ font = ExtResource( 3 )
 transform = Transform( 1, 0, 0, 0, 0.978191, 0.207707, 0, -0.207707, 0.978191, -0.729948, 1.38109, -1.88058 )
 pixel_size = 0.001
 text = "Dreck"
-font = ExtResource( 3 )
+font = ExtResource( 4 )
 
 [node name="Label5" type="Label3D" parent="ScreenTexts"]
-transform = Transform( 0.840226, 0.132849, -0.52571, 0, 0.969522, 0.245003, 0.542236, -0.205858, 0.814618, -0.0557866, 1.29508, -1.75647 )
+transform = Transform( 0.840226, 0.120833, -0.528601, 0, 0.974854, 0.222842, 0.542236, -0.187238, 0.819098, -0.0557866, 1.29508, -1.75647 )
 pixel_size = 0.001
-text = "Dreck"
-font = ExtResource( 3 )
+text = "Dreck
+Dreck
+Dreck
+Dreck"
+font = ExtResource( 4 )
+
+[node name="PlayerDetectArea" type="Area" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="PlayerDetectArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0128195, 1.23871, -0.0541698 )
+shape = SubResource( 7 )
+
+[connection signal="body_entered" from="PlayerDetectArea" to="." method="_on_PlayerDetectArea_body_entered"]
+[connection signal="body_exited" from="PlayerDetectArea" to="." method="_on_PlayerDetectArea_body_exited"]
 
 [editable path="ModelShed"]

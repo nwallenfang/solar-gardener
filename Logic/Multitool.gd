@@ -324,7 +324,7 @@ func show_hopable(b: bool):
 func start_planting_animation(pos: Vector3):
 	show_plantable(false)
 	$ModelMultitool.seed_shot()
-	$Cooldown.start(1)
+#	$Cooldown.start(1)
 	$SeedFlyTween.interpolate_property(fake_seed, "global_translation", fake_seed.global_translation, pos, .2)
 	$SeedFlyTween.start()
 	yield($SeedFlyTween, "tween_all_completed")
