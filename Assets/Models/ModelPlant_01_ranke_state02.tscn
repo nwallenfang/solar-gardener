@@ -716,3 +716,6 @@ anims/Empty = SubResource( 5 )
 anims/Empty001 = SubResource( 6 )
 anims/Empty002 = SubResource( 7 )
 anims/Sphere = SubResource( 8 )
+
+[node name="VisibilityEnabler" type="VisibilityEnabler" parent="."]
+max_distance = 8.0
