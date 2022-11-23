@@ -37,6 +37,7 @@ shape = SubResource( 2 )
 
 [node name="CheckConditionsTimer" type="Timer" parent="."]
 process_mode = 0
+wait_time = 3.0
 autostart = true
 
 [node name="GrowthCooldown" type="Timer" parent="."]
