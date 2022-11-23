@@ -57,27 +57,27 @@ mixer_bus = "SFX"
 
 [node name="music_sand_1" parent="Sounds" instance=ExtResource( 1 )]
 volume_db = -5.0
-mixer_bus = "SFX"
+mixer_bus = "Music"
 
 [node name="music_sand_2" parent="Sounds" instance=ExtResource( 1 )]
 volume_db = -5.0
-mixer_bus = "SFX"
+mixer_bus = "Music"
 
 [node name="music_sand_3" parent="Sounds" instance=ExtResource( 1 )]
 volume_db = -5.0
-mixer_bus = "SFX"
+mixer_bus = "Music"
 
 [node name="music_placeholder_1" parent="Sounds" instance=ExtResource( 1 )]
 volume_db = -8.0
-mixer_bus = "SFX"
+mixer_bus = "Music"
 
 [node name="music_placeholder_2" parent="Sounds" instance=ExtResource( 1 )]
 volume_db = -8.0
-mixer_bus = "SFX"
+mixer_bus = "Music"
 
 [node name="music_placeholder_3" parent="Sounds" instance=ExtResource( 1 )]
 volume_db = -8.0
-mixer_bus = "SFX"
+mixer_bus = "Music"
 
 [node name="Players" type="Node" parent="."]
 __meta__ = {

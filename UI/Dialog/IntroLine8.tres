@@ -1,11 +1,11 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://UI/Dialog/DialogLine.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Placeholder/VOX_Robot_DrillRobot_01.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Assets/Sound/VoiceOver/VO_T3_CBR128.ogg" type="AudioStream" id=2]
 
 [resource]
 script = ExtResource( 1 )
-text = "Watch out for the landing!"
+text = "And since you’ve got that YARDIN PLANT-O-MATIC in your pocket anyway, you’ve got all the help you’ll ever need."
 audio = ExtResource( 2 )
-level_db = 6.0
+level_db = 0.0
 extra_duration = 1.0

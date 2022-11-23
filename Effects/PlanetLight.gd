@@ -12,7 +12,7 @@ func setup(_number: int, _planet: Spatial):
 	planet = _planet
 	mask_value = int(pow(2, number))
 	
-#	$DirectionalLight.directional_shadow_depth_range
+	$DirectionalLight.directional_shadow_depth_range = DirectionalLight.SHADOW_DEPTH_RANGE_STABLE
 	$DirectionalLight.directional_shadow_max_distance = 40.0  # depends on planet size
 	$DirectionalLight.light_cull_mask = mask_value
 	$SpotLight.light_cull_mask = mask_value

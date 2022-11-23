@@ -7,8 +7,8 @@
 [ext_resource path="res://UI/Dialog/IntroLine2.tres" type="Resource" id=5]
 [ext_resource path="res://UI/Dialog/IntroLine1.tres" type="Resource" id=6]
 [ext_resource path="res://UI/Dialog/IntroLine6.tres" type="Resource" id=7]
-[ext_resource path="res://UI/Dialog/IntroLine2_2.tres" type="Resource" id=8]
-[ext_resource path="res://UI/Dialog/IntroLine2_1.tres" type="Resource" id=9]
+[ext_resource path="res://UI/Dialog/IntroLine7.tres" type="Resource" id=8]
+[ext_resource path="res://UI/Dialog/IntroLine8.tres" type="Resource" id=9]
 [ext_resource path="res://Assets/Sound/VoiceOver/VO_G1_CBR128.ogg" type="AudioStream" id=10]
 [ext_resource path="res://Assets/Sound/VoiceOver/VO_G3_CBR128.ogg" type="AudioStream" id=11]
 [ext_resource path="res://Assets/Sound/VoiceOver/VO_G2_CBR128.ogg" type="AudioStream" id=12]
@@ -25,7 +25,7 @@ It's time for another gardener to have their turn!
 note_audio1 = ExtResource( 10 )
 note_audio2 = ExtResource( 12 )
 note_audio3 = ExtResource( 11 )
-lines = [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 7 ) ]
+lines = [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ]
 
 [node name="VoicedLinesPlayer" type="AudioStreamPlayer" parent="."]
 bus = "SFX"
