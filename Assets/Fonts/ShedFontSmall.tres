@@ -3,7 +3,7 @@
 [ext_resource path="res://Assets/Fonts/Anita semi square.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 100
+size = 64
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 font_data = ExtResource( 1 )
