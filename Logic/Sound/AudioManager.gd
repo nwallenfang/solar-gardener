@@ -107,8 +107,9 @@ func fade_in_and_out(sound_name: String, play_duration: float, fade_duration:=1.
 	pass
 
 func cross_fade(sound_name_out: String, sound_name_in: String, fade_duration:=1.0):
-	# TODO
-	pass
+	fade_in(sound_name_in, fade_duration)
+	fade_out(sound_name_out, fade_duration)
+
 	
 func play_attenuated(sound_name:String, distance:float):
 	var sound: ManagedSound = $Sounds.get_node(sound_name)

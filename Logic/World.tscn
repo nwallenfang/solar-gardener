@@ -108,6 +108,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48.764, 0, -98.0153 )
 
 [node name="Planet2" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -93.9909, 21.4094, 26.8254 )
+music_prefix = "placeholder"
 
 [node name="Planet3" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.13, -30.1157, 58.9798 )

@@ -182,6 +182,7 @@ func grow(delta, factor_sign):
 		play_growth_pop_animation(old_stage)
 		Events.trigger("tutorial_plant_reached_stage" + str(growth_stage))
 		PlantData.growth_stage_reached(profile.name, growth_stage)
+		planet.growth_stage_reached(growth_stage)
 		can_be_analysed = true
 		if growth_stage == growth_lock:
 			$SeedGrowCooldown.start(profile.seed_grow_time)
