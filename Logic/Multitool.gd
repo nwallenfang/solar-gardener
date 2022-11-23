@@ -41,6 +41,11 @@ var growth_juice := 1.0
 const JUICE_DRAIN = .25
 const JUICE_GAIN = .05
 
+var death_beam_unlocked := true
+var death_beam_active := false
+var death_beam_progress := 0.0
+var death_beam_target: Plant
+
 # Analysis Variable
 const ANALYSE_TOOL_DISTANCE = 10.0
 const ANALYSE_SPEED = 1.0/2.0
@@ -190,7 +195,31 @@ func idle_process(delta: float):
 					Audio.fade_out("growbeam", 0.4)
 				grow_beam_active = false
 				
-			$ModelMultitool.set_grow_beam_on_target(plant_to_grow if grow_beam_active else null)
+			
+			
+			# Death Beam
+			if second_action_holded and (not grow_beam_active) and has_no_cooldown() and death_beam_unlocked and can_grow:
+				if not death_beam_active:
+					death_beam_target = plant_to_grow
+					death_beam_active = true
+					death_beam_progress = 0.0
+				death_beam_progress += delta
+				if death_beam_progress >= 1.0:
+					$Cooldown.start(1.0)
+					death_beam_target.call("on_remove")
+					death_beam_active = false
+			else:
+				if death_beam_active:
+					death_beam_active = false
+					death_beam_target = null
+			
+			if grow_beam_active:
+				$ModelMultitool.set_grow_beam_on_target(plant_to_grow)
+			elif death_beam_active:
+				$ModelMultitool.set_grow_beam_on_target(death_beam_target, true)
+			else:
+				$ModelMultitool.set_grow_beam_on_target(null)
+			
 			show_grow_information()
 		TOOL.ANALYSIS:
 			analyse_completed = false

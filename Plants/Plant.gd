@@ -233,7 +233,12 @@ func update_growth_visuals():
 
 const FLYING_PICKUP = preload("res://Objects/FlyingPickup.tscn")
 
+var removing := false
 func on_remove():
+	if removing:
+		return
+	removing = true
+	reset_small_seeds()
 	var pickup = FLYING_PICKUP.instance()
 	Game.planet.add_child_with_light(pickup)
 	pickup.global_transform.basis = Utility.get_basis_y_aligned(Game.planet.global_translation.direction_to(self.global_translation))

@@ -1333,7 +1333,7 @@ cast_shadow = 0
 mesh = SubResource( 1 )
 
 [node name="BaseLidLeft" type="MeshInstance" parent="."]
-transform = Transform( 1, -8.35187e-23, 3.65072e-30, 0, -4.37114e-08, -1, 8.35187e-23, 1, -4.37114e-08, 0.0990454, 0.101967, 0.222169 )
+transform = Transform( 1, 0, 4.37114e-08, 4.37114e-08, 1.91069e-15, -1, 0, 1, 1.91069e-15, 0.0990454, 0.101967, 0.222169 )
 cast_shadow = 0
 mesh = SubResource( 2 )
 
@@ -1391,7 +1391,7 @@ transform = Transform( 1, 9.31322e-08, -2.91038e-08, -9.31322e-08, 1, 2.21189e-0
 visible = false
 
 [node name="ArmBase3" type="MeshInstance" parent="Wheel"]
-transform = Transform( -2.09411e-08, -0.479077, -0.276596, 0.553191, -2.41807e-08, 8.88178e-16, -1.20904e-08, -0.276596, 0.479077, -0.159955, 0.053084, -0.0923502 )
+transform = Transform( -2.09411e-08, -0.479077, -0.276596, 0.553191, -2.41807e-08, 0, -1.20904e-08, -0.276596, 0.479077, -0.159955, 0.053084, -0.0923502 )
 cast_shadow = 0
 mesh = SubResource( 8 )
 skeleton = NodePath("../..")
@@ -1432,7 +1432,7 @@ cast_shadow = 0
 mesh = SubResource( 6 )
 
 [node name="BaseLidRight" type="MeshInstance" parent="."]
-transform = Transform( 1, 8.35187e-23, -3.65072e-30, 0, -4.37114e-08, -1, -8.35187e-23, 1, -4.37114e-08, -0.0990454, 0.101967, 0.222169 )
+transform = Transform( 1, 0, -4.37114e-08, -4.37114e-08, 1.91069e-15, -1, 0, 1, 1.91069e-15, -0.0990454, 0.101967, 0.222169 )
 cast_shadow = 0
 mesh = SubResource( 7 )
 

@@ -57,9 +57,10 @@ func seed_shot():
 	yield($SlingshotPlayer,"animation_finished")
 	emit_signal("animation_finished")
 
+var death_color_active := false
 var grow_beam_target: Spatial = null
 var grow_beam_active: bool = false
-func set_grow_beam_on_target(target: Spatial):
+func set_grow_beam_on_target(target: Spatial, death := false):
 	grow_beam_active = (target != null)
 	grow_beam_target = target
 	$"%Beam1".visible = grow_beam_active
@@ -68,6 +69,14 @@ func set_grow_beam_on_target(target: Spatial):
 	$"%GrowBeam".visible = grow_beam_active
 	$"%EnergyBallCombo".visible = grow_beam_active
 	wheel_accel_to(-300 if grow_beam_active else -100, .4)
+	if death != death_color_active:
+		death_color_active = death
+		var target_color: Color = $"%EnergyBallCombo".death_color if death else $"%EnergyBallCombo".grow_color
+		$"%GrowBeam".material_override.set("shader_param/albedo", target_color)
+		$"%EnergyBallCombo".set_death_color(death)
+		$Wheel/ArmBase1/Arm1/ArmPoint1/EnergyBall.set_death_color(death)
+		$Wheel/ArmBase2/Arm2/ArmPoint2/EnergyBall.set_death_color(death)
+		$Wheel/ArmBase3/Arm3/ArmPoint3/EnergyBall.set_death_color(death)
 
 var wheel_velocity := 0.0
 
