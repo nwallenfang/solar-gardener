@@ -44,7 +44,13 @@ const MODEL_STAGE_2_PLACEHOLDER = preload("res://Assets/Placeholder/ModelPlaceho
 const MODEL_STAGE_3_PLACEHOLDER = preload("res://Assets/Placeholder/ModelPlaceholderStage3.tscn")
 const MODEL_STAGE_4_PLACEHOLDER = preload("res://Assets/Placeholder/ModelPlaceholderStage4.tscn")
 
+export var special_effect_name: String
+var special_effect: PackedScene
+
 func setup():
+	if special_effect_name != "":
+		special_effect = load(Game.EFFECTS_FOLDER + special_effect_name + ".tscn")
+	
 	model_seed = MODEL_SEED_PLACEHOLDER
 	model_stage_1 = MODEL_STAGE_1_PLACEHOLDER
 	model_stage_2 = MODEL_STAGE_2_PLACEHOLDER
