@@ -33,6 +33,7 @@ var lod_items := []
 func add_plant(plant):
 	add_child_with_light(plant)
 	plant_list.append(plant)
+	add_to_lod_list(plant)
 
 func configure_light(n: Node):
 	for mi in Utility.get_all_mesh_instance_children(n):
