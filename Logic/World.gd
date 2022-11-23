@@ -28,7 +28,7 @@ func _ready() -> void:
 	
 #	$Planet/AudioStreamPlayer.play()
 
-var INTRO_LENGTH_FACTOR = 3.0
+var INTRO_LENGTH_FACTOR = 1.0
 var TEST_LENGTH_FACTOR = 0.05
 const TEST_INTRO = true
 func start_loading():
@@ -57,59 +57,59 @@ func start_loading():
 	yield(get_tree().create_timer(.3), "timeout")
 	start_intro_flight()
 
-func get_four_percent_values(offset: float) -> Array:
-	var values := [0.0, 0.25, 0.25, 0.0]
-	values[0] += lerp(.25, .0, offset)
-	values[1] += lerp(.25, .0, offset)
-	values[2] += lerp(.0, .25, offset)
-	values[3] += lerp(.0, .25, offset)
-	return values
+#func get_four_percent_values(offset: float) -> Array:
+#	var values := [0.0, 0.25, 0.25, 0.0]
+#	values[0] += lerp(.25, .0, offset)
+#	values[1] += lerp(.25, .0, offset)
+#	values[2] += lerp(.0, .25, offset)
+#	values[3] += lerp(.0, .25, offset)
+#	return values
 
-var intro_cams := []
-export var intro_flight_offset : float setget set_flight_offset
-func set_flight_offset(x: float):
-	if Game.game_state == Game.State.INTRO_FLIGHT:
-		x = clamp(x, 0.0, float(len(intro_cams)))
-		var progress : float = fmod(x, 1.0)
-		var index : int = int(round(x - progress))
-		var cam_a : Camera = intro_cams[index]
-		if index == len(intro_cams) - 1:
-			$IntroFlight/FlyCamera.global_transform = cam_a.global_transform
-		else:
-			var cam_b : Camera = intro_cams[index + 1]
-			var cam_0 : Camera = cam_a
-			if index - 1 >= 0:
-				cam_0 = intro_cams[index - 1]
-			var cam_1 : Camera = cam_b
-			if index + 2 < len(intro_cams):
-				cam_1 = intro_cams[index + 2]
-			#$IntroFlight/FlyCamera.global_transform = cam_a.global_transform.interpolate_with(cam_b.global_transform, progress)
-			var lerp_weights : Array = Utility.get_multi_lerp_weights(get_four_percent_values(progress))
-			var target_transform : Transform = cam_0.global_transform.interpolate_with(cam_a.global_transform, lerp_weights[0])
-			target_transform = target_transform.interpolate_with(cam_b.global_transform, lerp_weights[1])
-			target_transform = target_transform.interpolate_with(cam_1.global_transform, lerp_weights[2])
-			$IntroFlight/FlyCamera.global_transform = target_transform
+#var intro_cams := []
+#export var intro_flight_offset : float setget set_flight_offset
+#func set_flight_offset(x: float):
+#	if Game.game_state == Game.State.INTRO_FLIGHT:
+#		x = clamp(x, 0.0, float(len(intro_cams)))
+#		var progress : float = fmod(x, 1.0)
+#		var index : int = int(round(x - progress))
+#		var cam_a : Camera = intro_cams[index]
+#		if index == len(intro_cams) - 1:
+#			$IntroFlight/FlyCamera.global_transform = cam_a.global_transform
+#		else:
+#			var cam_b : Camera = intro_cams[index + 1]
+#			var cam_0 : Camera = cam_a
+#			if index - 1 >= 0:
+#				cam_0 = intro_cams[index - 1]
+#			var cam_1 : Camera = cam_b
+#			if index + 2 < len(intro_cams):
+#				cam_1 = intro_cams[index + 2]
+#			#$IntroFlight/FlyCamera.global_transform = cam_a.global_transform.interpolate_with(cam_b.global_transform, progress)
+#			var lerp_weights : Array = Utility.get_multi_lerp_weights(get_four_percent_values(progress))
+#			var target_transform : Transform = cam_0.global_transform.interpolate_with(cam_a.global_transform, lerp_weights[0])
+#			target_transform = target_transform.interpolate_with(cam_b.global_transform, lerp_weights[1])
+#			target_transform = target_transform.interpolate_with(cam_1.global_transform, lerp_weights[2])
+#			$IntroFlight/FlyCamera.global_transform = target_transform
 
 var skipped = false
 func start_intro_flight():
 	Game.set_game_state(Game.State.INTRO_FLIGHT)
 	if (not OS.is_debug_build()) or TEST_INTRO:
 		Dialog.play_intro()
+
 	else:
 		Game.UI.get_node("DialogUI/Controls/SubtitleText").text = ""
 	
 	Game.multitool.visible = false
-	
-	for i in range(20):
-		if has_node("IntroFlight/Camera" + str(i)):
-			intro_cams.append(get_node("IntroFlight/Camera" + str(i)))
-	intro_cams.append(Game.camera)
-	intro_cams.append(Game.camera)
-	intro_cams.append(Game.camera)
-	
 	$"%FlyCamera".current = true
+
+
+
 	$IntroFlight/Tween.interpolate_method(Game.UI, "set_blackscreen_alpha", 1.0, 0.0, 1.5, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 	$IntroFlight/Tween.start()
+#	if (not OS.is_debug_build()) or TEST_INTRO:
+#		yield(get_tree().create_timer(1.5), "timeout")
+	yield($IntroFlight/Tween, "tween_all_completed")
+
 	$IntroFlight/AnimationPlayer.playback_speed = 1.0 / INTRO_LENGTH_FACTOR
 	$IntroFlight/AnimationPlayer.play("fly")
 	yield($IntroFlight/AnimationPlayer, "animation_finished")
@@ -130,7 +130,6 @@ func end_intro_flight():
 		Game.UI.get_node("ClickToFocus").visible = true
 	yield(get_tree().create_timer(2.0), "timeout")
 	set_process(false)
-	Events.tutorial_beginning()
 	
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("skip_cutscene"):
@@ -154,3 +153,6 @@ func _on_SkipCutscene_timeout() -> void:
 	$IntroFlight/Tween.start()
 	yield($IntroFlight/Tween, "tween_all_completed")
 	Game.UI.get_node("BlackScreen").visible = false
+	
+	yield(get_tree().create_timer(2.5), "timeout")
+	Events.tutorial_beginning()

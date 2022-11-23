@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://game_environment.tres" type="Environment" id=1]
 [ext_resource path="res://Objects/Sun.tscn" type="PackedScene" id=2]
@@ -11,20 +11,59 @@
 [ext_resource path="res://Objects/Planet3.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Objects/PlanetObsidian.tscn" type="PackedScene" id=10]
 
-[sub_resource type="Animation" id=1]
-resource_name = "fly"
-length = 10.0
+[sub_resource type="Animation" id=2]
+length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("..:intro_flight_offset")
+tracks/0/path = NodePath("FlyCamera:translation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 10 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0.0, 9.0 ]
+"values": [ Vector3( -93.934, 13.19, 47.14 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FlyCamera:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "fly"
+length = 15.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("FlyCamera:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4.9, 9, 11.9, 15.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -93.934, 13.19, 47.14 ), Vector3( -125.054, 7.08, -76.469 ), Vector3( -91.989, 7.08, -148.923 ), Vector3( -61.542, 5.248, -120.483 ), Vector3( -48.796, 8.907, -97.7 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FlyCamera:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 4.9, 9, 11.9, 15.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 360, 0 ), Vector3( 0, 324.799, 0 ), Vector3( 0, 223.039, 0 ), Vector3( 0, 205.346, 0 ), Vector3( 0, 175.346, 0 ) ]
 }
 
 [node name="World" type="Spatial"]
@@ -37,7 +76,7 @@ environment = ExtResource( 1 )
 transform = Transform( 2.90385, 0, 0, 0, 1, 0, 0, 0, 2.90385, 0, 0, 80.3443 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-transform = Transform( -0.999769, 0, -0.0215008, 0, 1, 0, 0.0215008, 0, -0.999769, -48.7693, 10.5054, -98.0291 )
+transform = Transform( -0.996703, 0, 0.0811383, 0, 1, 0, -0.0811383, 0, -0.996703, -48.7693, 7.40088, -98.0291 )
 
 [node name="Sun" parent="." instance=ExtResource( 2 )]
 transform = Transform( 2.03594, 0, 0, 0, 2.03594, 0, 0, 0, 2.03594, 0, 0, 0 )
@@ -68,15 +107,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0626678, 0, -0.981606 )
 
 [node name="IntroFlight" type="Spatial" parent="."]
 
-[node name="Camera0" type="Camera" parent="IntroFlight"]
-transform = Transform( -0.759328, 0, 0.650708, 0, 1, 0, -0.650708, 0, -0.759328, 75.0829, 7.30023, -176.717 )
-far = 1000.0
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="IntroFlight"]
+anims/RESET = SubResource( 2 )
 anims/fly = SubResource( 1 )
 
 [node name="FlyCamera" type="Camera" parent="IntroFlight"]
 unique_name_in_owner = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -93.934, 13.19, 47.14 )
 far = 1000.0
 
 [node name="Tween" type="Tween" parent="IntroFlight"]
@@ -126,5 +163,27 @@ transform = Transform( 0.959644, 0, 0.281219, 0, 1, 0, -0.281219, 0, 0.959644, 1
 
 [node name="Camera6" type="Camera" parent="OldCutscene"]
 transform = Transform( 0.461764, 0, 0.887003, 0, 1, 0, -0.887003, 0, 0.461764, -45.7271, 10.6026, -95.7689 )
+
+[node name="NewCutscene" type="Spatial" parent="."]
+
+[node name="Position1" type="Camera" parent="NewCutscene"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -93.9341, 13.1896, 41.079 )
+far = 1000.0
+
+[node name="Position2" type="Camera" parent="NewCutscene"]
+transform = Transform( 0.817135, 0, -0.576447, 0, 1, 0, 0.576447, 0, 0.817135, -125.054, 7.07999, -76.4686 )
+far = 1000.0
+
+[node name="Position3" type="Camera" parent="NewCutscene"]
+transform = Transform( -0.730889, 0, -0.682496, 0, 1, 0, 0.682496, 0, -0.730889, -91.9886, 7.08001, -148.923 )
+far = 1000.0
+
+[node name="Position4" type="Camera" parent="NewCutscene"]
+transform = Transform( -0.903739, 0, -0.428084, 0, 1, 0, 0.428084, 0, -0.903739, -61.5421, 5.24779, -120.483 )
+far = 1000.0
+
+[node name="Position5" type="Camera" parent="NewCutscene"]
+transform = Transform( -0.996703, 0, 0.0811382, 0, 1, 0, -0.0811382, 0, -0.996703, -48.796, 8.907, -97.7 )
+far = 1000.0
 
 [connection signal="timeout" from="SkipCutscene" to="." method="_on_SkipCutscene_timeout"]

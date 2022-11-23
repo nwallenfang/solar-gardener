@@ -36,7 +36,11 @@ func play_intro():
 		play_line(line, i != number_of_lines)
 		yield($Timer, "timeout")
 		if skipped:
+#			yield(get_tree().create_timer())
 			return
+			
+	yield(get_tree().create_timer(3.5), "timeout")
+	Events.tutorial_beginning()
 
 func get_next_index():
 	_next_index += 1

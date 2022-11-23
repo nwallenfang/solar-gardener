@@ -87,13 +87,13 @@ func tutorial_amber_collected():
 	# unlock next tool 
 	# show next tutorial box
 	Game.multitool.activate_tool(Game.multitool.TOOL.PLANT)
-	Game.UI.add_tutorial_message("Plant Seed", "Press [2] and click to use the planting tool on the soil.", duration)
+	Game.UI.add_tutorial_message("Plant Seed", "Use the planting tool (2) to plant the seed.", duration)
 
 	next()
 
 func tutorial_seed_planted():
 	# unlock next tool 
-	Game.UI.add_tutorial_message("Speed up growth", "Press [3] to use the growth tool on a plant to speed up growing.", duration)
+	Game.UI.add_tutorial_message("Speed up growth", "Use the growth tool (3) to speed up growing.", duration)
 	Game.multitool.activate_tool(Game.multitool.TOOL.GROW)
 
 	next()
@@ -103,7 +103,7 @@ func seed_planted():
 	next()
 
 func tutorial_plant_reached_stage1():
-	Game.UI.add_tutorial_message("Scan plants", "Press [1] to scan a plant to unlock information on its type.", duration)
+	Game.UI.add_tutorial_message("Scan plants", "Use the scanner (1) to unlock plant information.", duration)
 
 	next()
 
