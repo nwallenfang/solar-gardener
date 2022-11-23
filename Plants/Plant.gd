@@ -63,6 +63,8 @@ func setup():
 
 var growth_locked_once := false
 func _physics_process(delta):
+	if lod_mode:
+		return
 	if growth_stage != growth_lock and $GrowthCooldown.time_left == 0.0:
 		grow(delta, sign(growth_lock - growth_stage))
 	
@@ -362,3 +364,11 @@ func _on_SeedGrowCooldown_timeout():
 
 func is_class(value):
 	return value == "Plant"
+
+var lod_mode := false
+func on_lod(lod_triggered: bool):
+	if lod_triggered:
+		$CheckConditionsTimer.stop()
+	else:
+		$CheckConditionsTimer.start()
+	lod_mode = lod_triggered
