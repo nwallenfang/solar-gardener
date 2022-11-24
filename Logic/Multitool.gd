@@ -85,27 +85,41 @@ func _physics_process(delta):
 	if Game.game_state == Game.State.INGAME:
 		if has_no_cooldown():
 			check_on_hover()
-			check_intput()
+			check_input()
 			idle_process(delta)
+		else:
+			check_input_on_cooldown()
 			
-			if (seeds_empty and current_tool == TOOL.PLANT) or force_reload:
-				try_reload()
+		if (seeds_empty and current_tool == TOOL.PLANT) or force_reload:
+			try_reload()
 
 	show_scanner_grid(currently_analysing)
 #	if should_update_fake_seed_position:
 #		update_fake_seed_position()
 	
-
-
-func check_intput():
+var switched_tool_on_cooldown :int= TOOL.NONE
+func check_input_on_cooldown():
 	if Input.is_action_just_pressed("tool1"):
-		switch_tool(TOOL.ANALYSIS)	
+		switched_tool_on_cooldown = TOOL.ANALYSIS
+		emit_signal("switched_to", TOOL.ANALYSIS)
 	if Input.is_action_just_pressed("tool2"):
-		switch_tool(TOOL.PLANT)
+		switched_tool_on_cooldown = TOOL.PLANT
+		emit_signal("switched_to", TOOL.PLANT)
 	if Input.is_action_just_pressed("tool3"):
+		switched_tool_on_cooldown = TOOL.GROW
+		emit_signal("switched_to", TOOL.GROW)
+
+func check_input():
+	if Input.is_action_just_pressed("tool1") or switched_tool_on_cooldown == TOOL.ANALYSIS:
+		emit_signal("switched_to", TOOL.ANALYSIS)
+		switch_tool(TOOL.ANALYSIS)
+	if Input.is_action_just_pressed("tool2") or switched_tool_on_cooldown == TOOL.PLANT:
+		emit_signal("switched_to", TOOL.PLANT)
+		switch_tool(TOOL.PLANT)
+	if Input.is_action_just_pressed("tool3") or switched_tool_on_cooldown == TOOL.GROW:
+		emit_signal("switched_to", TOOL.GROW)
 		switch_tool(TOOL.GROW)
-	if Input.is_action_just_pressed("tool4"):
-		switch_tool(TOOL.MOVE)
+	switched_tool_on_cooldown = TOOL.NONE
 	if Input.is_action_just_pressed("first_action"):
 		process_first_action()
 	first_action_holded = Input.is_action_pressed("first_action")
@@ -143,7 +157,6 @@ func switch_tool(new_tool: int, tool_active := true):
 		if waiting_for_animation:
 			yield($ModelMultitool,"animation_finished")
 		current_tool = new_tool
-		emit_signal("switched_to", new_tool)
 
 	match new_tool:
 		TOOL.PLANT:
