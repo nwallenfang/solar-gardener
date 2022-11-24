@@ -37,4 +37,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0342927, 0 )
 shape = SubResource( 3 )
 
 [node name="ModelAmber" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.613033, 0, 0, 0, 0.613033, 0, 0, 0, 0.613033, 0, -0.0962734, -0.219158 )
+transform = Transform( 0.472463, 0, 0, 0, 0.472463, 0, 0, 0, 0.472463, 0, -0.0962734, -0.219158 )
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
+max_distance = 10.0
+
+[node name="SeedPos" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.214969, -0.0404564 )
+
+[connection signal="camera_entered" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_camera_entered"]
