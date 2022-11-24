@@ -142,6 +142,10 @@ func activate_tool(activated_tool: int):
 var currently_switching := false
 signal switched_to(new_tool)
 func switch_tool(new_tool: int, tool_active := true):
+	# Always instant show hopper crosshair
+	if new_tool == TOOL.HOPPER:
+		show_hopable(tool_active)
+	
 	if tool_active:
 		# return immediately if tool isnt activated
 		if not tool_unlocked[new_tool]:
@@ -152,7 +156,8 @@ func switch_tool(new_tool: int, tool_active := true):
 		
 		currently_switching = true
 		clear_holo_information()
-		Game.crosshair.set_style(Game.crosshair.Style.DEFAULT)
+		if new_tool != TOOL.HOPPER:
+			Game.crosshair.set_style(Game.crosshair.Style.DEFAULT)
 		switch_tool(current_tool, false)
 		if waiting_for_animation:
 			yield($ModelMultitool,"animation_finished")
