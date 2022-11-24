@@ -42,6 +42,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50645, -0.330168 )
 [node name="PlayerCamera" parent="Head" instance=ExtResource( 2 )]
 far = 600.0
 
+[node name="SpotLight" type="SpotLight" parent="Head"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00718498, -0.138919 )
+light_color = Color( 0.996078, 1, 0.709804, 1 )
+light_energy = 1.2
+spot_range = 11.0478
+spot_angle = 37.9648
+spot_angle_attenuation = 0.297302
+
 [node name="PickupPoint" type="Spatial" parent="."]
 unique_name_in_owner = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04279, 0 )

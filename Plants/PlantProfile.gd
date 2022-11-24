@@ -24,6 +24,8 @@ export(PREFERENCE) var group: int
 
 export(SOIL_TYPES) var prefered_soil: int
 
+export(PLANT_TYPES) var symbiosis_plant_type: int
+
 export var seed_count: int
 export var seed_grow_time: float = 7.0
 
