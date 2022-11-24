@@ -2,11 +2,15 @@ extends AudioStreamPlayer
 class_name CustomAudioPlayer
 	
 var sound: ManagedSound
+#var is_on_its_way_out := false
 
 func _ready() -> void:
 	pass
 
 func play(start:=0.0):
+#	if is_on_its_way_out:
+#		print("playing but is on its way out")
+#		return
 	set_volume_db(sound.volume_db)
 	set_bus(sound.mixer_bus)
 	.play(start)
@@ -17,6 +21,9 @@ func set_volume_linear(linear: float):
 	self.volume_db = linear2db(linear)
 
 func fade_in(start:=0.0, fade_duration:=1.0):
+#	if is_on_its_way_out:
+#		print("fading but is on its way out")
+#		return
 #	print(name + " fade_in")
 	self.play(start)
 	
@@ -42,10 +49,12 @@ func fade_out(fade_duration:=1.0):
 	var tween := get_tree().create_tween()
 	tween.tween_method(self, "set_volume_linear", db2linear(volume_db), 0.0, fade_duration)
 	tween.play()
-	
 	yield(tween, "finished")
+#	is_on_its_way_out = true
 	stop()
+#	emit_signal("finished")
 
 func _on_AudioPlayerWithInfo_finished() -> void:
+#	print(sound.name, " finished")
 	Audio.available.append(self)
 	Audio.playing.erase(sound.name)

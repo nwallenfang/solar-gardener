@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/music_obsidian_0.ogg-347e93c12f065ff6d1a1e0e6093fd8f6.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sound/music_obsidian_0.ogg"
+dest_files=[ "res://.import/music_obsidian_0.ogg-347e93c12f065ff6d1a1e0e6093fd8f6.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
