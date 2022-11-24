@@ -69,6 +69,9 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("play_spatial_audio"):
 		Audio.fade_in("growbeam")
 		
+	if Input.is_action_just_pressed("flashlight"):
+		Game.player.get_node("Head/Flashlight").visible = not Game.player.get_node("Head/SpotLight").visible
+		
 
 signal changed_state(state, prev_state)
 func set_game_state(state):

@@ -89,6 +89,11 @@ script = ExtResource( 3 )
 volume_db = 8.0
 mixer_bus = "SFX"
 
+[node name="growbeam_close" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = 8.0
+mixer_bus = "SFX"
+
 [node name="growbeam_rotate_fast" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
 volume_db = 3.0

@@ -227,6 +227,7 @@ func setup_footsteps():
 					managed_sound.name = node_name
 					managed_sound.stream = load(footstep_directory + file_name)
 					managed_sound.volume_db = step_volume_db
+					managed_sound.mixer_bus = "SFX"
 					$Sounds.add_child(managed_sound, true)
 				else: # sound exists in Sounds
 					var managed_sound = $Sounds.get_node(node_name)

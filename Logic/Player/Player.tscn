@@ -42,7 +42,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50645, -0.330168 )
 [node name="PlayerCamera" parent="Head" instance=ExtResource( 2 )]
 far = 600.0
 
-[node name="SpotLight" type="SpotLight" parent="Head"]
+[node name="Flashlight" type="SpotLight" parent="Head"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00718498, -0.138919 )
 light_color = Color( 0.996078, 1, 0.709804, 1 )
 light_energy = 1.2

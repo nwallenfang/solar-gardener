@@ -70,7 +70,7 @@ func show_plant_info(plant_name: String, plant_type: String, growth_stage: int, 
 	
 	$"%PlantName".text = plant_name
 	$"%PlantType".text = plant_type
-	$"%GrowthStage".text = str(growth_stage)
+	$"%GrowthStage".text = str(growth_stage-1)
 	if is_growing:
 		$"%CurrentlyGrowing".text = "growing"
 	else:

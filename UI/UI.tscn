@@ -15,7 +15,7 @@
 [ext_resource path="res://UI/TutorialPanel.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Assets/Fonts/Anita semi square.ttf" type="DynamicFontData" id=14]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=5]
 size = 26
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
@@ -159,21 +159,10 @@ margin_bottom = 129.0
 custom_fonts/font = ExtResource( 9 )
 text = "F1 or P"
 
-[node name="TutorialPanel" parent="." instance=ExtResource( 13 )]
-anchor_left = 0.691
-anchor_top = 0.025
-anchor_right = 0.967
-anchor_bottom = 0.296
-margin_left = -876.48
-margin_top = -10.0
-margin_right = -876.48
-margin_bottom = -10.0
-__meta__ = {
-"_edit_use_anchors_": true
-}
-
 [node name="DialogUI" parent="." instance=ExtResource( 11 )]
 plant_scanned_color = Color( 0.317647, 0.694118, 0.607843, 1 )
+linger_time = 1.0
+float_time = 1.5
 
 [node name="SkipCutsceneLabel" type="Control" parent="."]
 anchor_left = 0.05
@@ -198,7 +187,7 @@ grow_horizontal = 0
 grow_vertical = 0
 rect_pivot_offset = Vector2( 576, 15 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 5 )
 text = "(Hold SPACE to skip)"
 align = 1
 autowrap = true
@@ -244,10 +233,16 @@ margin_left = 532.0
 margin_top = 264.0
 margin_right = 747.0
 margin_bottom = 327.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 5 )
 text = "Click to focus
 game window"
 align = 1
 valign = 2
+
+[node name="TutorialPanel" parent="." instance=ExtResource( 13 )]
+anchor_left = 0.015
+anchor_top = 0.019
+anchor_right = 0.29
+anchor_bottom = 0.278
 
 [connection signal="timeout" from="Diagnostics/FPSUpdateTimer" to="Diagnostics" method="_on_FPSUpdateTimer_timeout"]
