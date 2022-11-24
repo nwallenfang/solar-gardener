@@ -74,6 +74,14 @@ func _process(delta):
 		player.sound = $Sounds.get_node(sound_name)
 		player.play()
 		playing[sound_name] = player
+		
+	# clean ups (shouldn't be needed but the code is scuffed)
+#	for playing_name in playing:
+#		var player: CustomAudioPlayer = playing[playing_name]
+#		if player.volume_db < -70.0 and player.is_on_its_way_out:
+#			player.stop()
+#			playing.erase(playing_name)
+#			available.append(player)
 
 	
 #######################
@@ -88,6 +96,7 @@ func fade_in(sound_name: String, fade_duration:=1.0, random_start:=false):
 		return
 
 	var player: CustomAudioPlayer = available.pop_front()
+#	print(sound_name + " started")
 	player.stream = $Sounds.get_node(sound_name).stream
 	player.sound = $Sounds.get_node(sound_name)
 	if random_start:
@@ -102,7 +111,6 @@ func fade_in_at_position(sound_name: String, fade_duration:=1.0, start_pos:=0.0)
 
 func fade_out(sound_name: String, fade_duration:=1.0):
 	if not sound_name in playing:  # don't know if this should be an error
-#		printerr(sound_name + " not playing (trying fade_out)")
 		return
 	var player: CustomAudioPlayer = playing[sound_name]
 	player.fade_out(fade_duration)
@@ -145,18 +153,21 @@ func play_attenuated(sound_name:String, distance:float):
 	player.stream = sound.stream
 	player.play()
 	player.volume_db = linear2db(1.0 - distance/max_dist)
-	print("playing at " + str(linear2db(1.0 - distance/max_dist)) + " db")
+#	print("playing at " + str(linear2db(1.0 - distance/max_dist)) + " db")
 	playing[sound_name] = player
 
-func play_random_start(sound_name):
-	var sound: ManagedSound = $Sounds.get_node(sound_name)
-	var max_dist = sound.max_distance_when_attenuated
-	
-	var player: CustomAudioPlayer = available.pop_front()
-	player.sound = sound
-	player.stream = sound.stream
-	player.play(randf() * sound.stream.get_length())
-	playing[sound_name] = player
+#func play_random_start(sound_name):
+#	if sound_name in playing:
+#		return
+#	var sound: ManagedSound = $Sounds.get_node(sound_name)
+#	var max_dist = sound.max_distance_when_attenuated
+#
+#	var player: CustomAudioPlayer = available.pop_front()
+#	player.sound = sound
+#	player.stream = sound.stream
+#	player.play(randf() * sound.stream.get_length())
+#	assert(not sound_name in playing)
+#	playing[sound_name] = player
 
 ################################
 ### GAME SPECIFIC EXTENSIONS ###
@@ -183,6 +194,13 @@ func play_random_step(planet_type: String = ""):
 	var step_no: int = (randi() % number_per[current_planet_type]) + 1
 	var step_name = "steps_%s_%02d" % [current_planet_type, step_no]
 	play(step_name)
+	var player = available.pop_front()
+	# Reset all player variables
+
+	player.stream = $Sounds.get_node(step_name).stream
+	player.sound = $Sounds.get_node(step_name)
+	player.play()
+	playing[step_name] = player
 
 func stop_footsteps():
 	timer.stop()

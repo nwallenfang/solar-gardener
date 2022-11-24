@@ -7,5 +7,5 @@
 script = ExtResource( 1 )
 text = "But those days are over!"
 audio = ExtResource( 2 )
-level_db = 0.0
+level_db = 4.0
 extra_duration = 0.4

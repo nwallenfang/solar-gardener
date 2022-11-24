@@ -234,7 +234,7 @@ func idle_process(delta: float):
 			analyse_completed = false
 			if not currently_analysing:
 				if can_analyse and first_action_holded:
-					Audio.play_random_start("scanner") # , 0.25, true)
+					Audio.fade_in("scanner", 0.20, true)
 					currently_analysing = true
 					current_analyse_object = object_to_analyse
 					current_analyse_progress = 0.0
@@ -251,7 +251,7 @@ func idle_process(delta: float):
 						Audio.fade_out("scanner", 0.4)
 						currently_analysing = false
 						analyse_completed = true
-						$Cooldown.start(7)
+						$Cooldown.start(2)
 						print("Analysis Done of " + str(current_analyse_object))
 						if current_analyse_object.has_method("on_analyse"):
 							current_analyse_object.call("on_analyse")

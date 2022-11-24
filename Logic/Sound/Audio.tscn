@@ -80,6 +80,10 @@ mixer_bus = "Music"
 volume_db = -8.0
 mixer_bus = "Music"
 
+[node name="music_obsidian_0" parent="Sounds" instance=ExtResource( 1 )]
+volume_db = -4.0
+mixer_bus = "Music"
+
 [node name="growbeam_pulse" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
 volume_db = 8.0
