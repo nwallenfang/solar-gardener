@@ -249,6 +249,21 @@ func play_growth_pop_animation(old_stage):
 		mi = mi as MeshInstance
 		mi.material_overlay = null
 
+const FLASH_OVERLAY = preload("res://Assets/Materials/FlashAlphaOverlay.tres")
+func play_growth_flash():
+	if growth_stage != growth_lock:
+		var meshes : Array = Utility.get_all_mesh_instance_children(current_model)
+		for mi in meshes:
+			mi.material_overlay = FLASH_OVERLAY
+		$FlashTween.interpolate_property(FLASH_OVERLAY, "albedo_color:a", 0.0, 0.5, .1, Tween.TRANS_QUAD, Tween.EASE_IN)
+		$FlashTween.start()
+		yield($FlashTween,"tween_all_completed")
+		$FlashTween.interpolate_property(FLASH_OVERLAY, "albedo_color:a", 0.5, 0.0, .2, Tween.TRANS_QUAD, Tween.EASE_IN)
+		$FlashTween.start()
+		yield($FlashTween,"tween_all_completed")
+		for mi in meshes:
+			mi.material_overlay = null
+
 func update_growth_visuals():
 	if growth_stage == 0:
 		model_seed.translation.y = SEED_START_POINT - SEED_SINK_DISTANCE * growth_stage_progress

@@ -12,6 +12,10 @@ func _ready() -> void:
 		control.visible = false
 #	$AspectRatioContainer/BackgroundPanel.visible = true
 
+func _physics_process(delta):
+	if is_instance_valid(Game.multitool) and is_instance_valid(current_screen):
+		Game.multitool.set_holo_visible(current_screen.visible)
+
 func clear():
 	if current_screen != null:
 		current_screen.visible = false

@@ -59,5 +59,7 @@ shape = SubResource( 3 )
 
 [node name="SeedGrowTween" type="Tween" parent="."]
 
+[node name="FlashTween" type="Tween" parent="."]
+
 [connection signal="timeout" from="CheckConditionsTimer" to="." method="_on_CheckConditionsTimer_timeout"]
 [connection signal="timeout" from="SeedGrowCooldown" to="." method="_on_SeedGrowCooldown_timeout"]
