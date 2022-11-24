@@ -14,7 +14,7 @@ func on_analyse():
 	pickup.global_translation = self.global_translation
 	pickup.setup_as_seed(seed_name)
 	# TODO Seed count?
-	$Tween.interpolate_property($Model, "scale", self.scale, Vector3.ONE * .01, 3.0)
+	$Tween.interpolate_property(self, "scale", self.scale, Vector3.ONE * .01, 3.0)
 	$Tween.start()
 	yield(get_tree().create_timer(1.5), "timeout")
 	pickup.start_flying()

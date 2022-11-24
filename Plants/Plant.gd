@@ -308,15 +308,17 @@ func reset_small_seeds():
 	seeds_ready_to_harvest = false
 
 func flush_seeds():
+	if not seeds_ready_to_harvest:
+		return
+	seeds_ready_to_harvest = false
 	for pickup in small_seeds:
-		$SeedGrowTween.interpolate_property(pickup, "scale", pickup.scale, pickup.scale * 1.5, 1.5)
+		$SeedGrowTween.interpolate_property(pickup, "scale", pickup.scale, pickup.scale * 2.0, 1.5)
 	$SeedGrowTween.start()
 	yield($SeedGrowTween, "tween_all_completed")
 	yield(get_tree().create_timer(.5),"timeout")
 	for pickup in small_seeds:
 		pickup.start_flying()
 	small_seeds = []
-	seeds_ready_to_harvest = false
 	$SeedGrowCooldown.start(profile.seed_grow_time)
 
 func get_near_symbiosis_objects_list() -> Array:
