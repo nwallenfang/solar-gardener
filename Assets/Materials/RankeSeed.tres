@@ -1,5 +1,15 @@
-[gd_resource type="SpatialMaterial" format=2]
+[gd_resource type="SpatialMaterial" load_steps=3 format=2]
+
+[sub_resource type="OpenSimplexNoise" id=1]
+period = 15.3
+
+[sub_resource type="NoiseTexture" id=2]
+as_normalmap = true
+noise = SubResource( 1 )
 
 [resource]
 albedo_color = Color( 1, 0, 0, 1 )
 roughness = 0.0
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = SubResource( 2 )

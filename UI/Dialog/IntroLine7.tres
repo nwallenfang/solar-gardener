@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 1 )
-text = "Right, well I’ll be off and let you get cracking. 
+text = "Right, well I'll be off and let you get cracking. 
 Though you might still find some of my work spread across the system."
 audio = ExtResource( 2 )
 level_db = 4.0

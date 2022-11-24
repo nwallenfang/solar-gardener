@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://UI/JournalUI.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/TitleFont.tres" type="DynamicFont" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://Assets/Fonts/GuideFont.tres" type="DynamicFont" id=8]
 [ext_resource path="res://UI/JournalAndGuideUI.gd" type="Script" id=9]
 [ext_resource path="res://Assets/Fonts/NewFluffText.tres" type="DynamicFont" id=10]
+[ext_resource path="res://Assets/Fonts/Agane╠Ç 55 (roman) sign.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://Assets/Fonts/JournalTest.tres" type="DynamicFont" id=12]
+[ext_resource path="res://Assets/Fonts/Agane╠Ç 75 (Extra Bold).ttf" type="DynamicFontData" id=13]
 
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.188235, 0.223529, 0.160784, 1 )
@@ -18,6 +21,25 @@ border_width_top = 20
 border_width_right = 20
 border_width_bottom = 20
 border_color = Color( 0.184314, 0.109804, 0.113725, 1 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 26
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = 1
+extra_spacing_bottom = 12
+font_data = ExtResource( 13 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 26
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = 1
+extra_spacing_bottom = 12
+font_data = ExtResource( 11 )
 
 [sub_resource type="CanvasItemMaterial" id=2]
 render_priority = 1
@@ -166,15 +188,29 @@ unique_name_in_owner = true
 anchor_right = 1.0
 margin_top = 8.49064
 margin_bottom = 63.4906
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 12 )
 text = "JOURNAL"
 align = 1
 autowrap = true
 
+[node name="PlantType" type="Label" parent="JournalUI/JournalInfoText"]
+unique_name_in_owner = true
+anchor_top = 0.125683
+anchor_right = 1.0
+anchor_bottom = 0.195034
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_fonts/font = SubResource( 8 )
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
 [node name="FluffText" type="RichTextLabel" parent="JournalUI/JournalInfoText"]
 unique_name_in_owner = true
 anchor_left = 0.046
-anchor_top = 0.153393
+anchor_top = 0.18
 anchor_right = 0.947
 anchor_bottom = 0.974
 size_flags_horizontal = 3
@@ -184,6 +220,17 @@ custom_fonts/normal_font = ExtResource( 10 )
 bbcode_enabled = true
 bbcode_text = "Hover over a plant to show information."
 text = "Hover over a plant to show information."
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="JournalUI/JournalInfoText"]
+anchor_left = -0.656295
+anchor_top = 1.04285
+anchor_right = -0.179601
+anchor_bottom = 1.1122
+custom_fonts/font = SubResource( 7 )
+text = "(click Plant to select seed)"
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -214,7 +261,7 @@ __meta__ = {
 anchor_left = 0.035
 anchor_top = 0.042
 anchor_right = 0.421
-anchor_bottom = 0.936
+anchor_bottom = 0.905
 margin_right = 40.0
 margin_bottom = 40.0
 columns = 2
@@ -223,7 +270,7 @@ columns = 2
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 265.0
-margin_bottom = 208.0
+margin_bottom = 201.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -235,7 +282,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 269.0
 margin_right = 534.0
-margin_bottom = 208.0
+margin_bottom = 201.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -245,9 +292,9 @@ __meta__ = {
 [node name="PlantUI3" parent="JournalUI/GridContainer" groups=["plant_ui"] instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 212.0
+margin_top = 205.0
 margin_right = 265.0
-margin_bottom = 419.0
+margin_bottom = 405.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -258,9 +305,9 @@ __meta__ = {
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 269.0
-margin_top = 212.0
+margin_top = 205.0
 margin_right = 534.0
-margin_bottom = 419.0
+margin_bottom = 405.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -270,9 +317,9 @@ __meta__ = {
 [node name="PlantUI5" parent="JournalUI/GridContainer" groups=["plant_ui"] instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 423.0
+margin_top = 409.0
 margin_right = 265.0
-margin_bottom = 630.0
+margin_bottom = 609.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -283,9 +330,9 @@ __meta__ = {
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 269.0
-margin_top = 423.0
+margin_top = 409.0
 margin_right = 534.0
-margin_bottom = 630.0
+margin_bottom = 609.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {

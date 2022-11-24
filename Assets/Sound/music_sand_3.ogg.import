@@ -11,5 +11,5 @@ dest_files=[ "res://.import/music_sand_3.ogg-5c3a6db61ba2a2383f98cffc771fd78a.og
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0

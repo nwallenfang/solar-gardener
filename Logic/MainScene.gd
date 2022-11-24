@@ -55,6 +55,6 @@ func _notification(what):
 		if OS.has_feature("HTML5"):
 			if not Game.game_state == Game.State.INTRO_FLIGHT and not Game.game_state == Game.State.LOADING:
 				Game.game_state = Game.State.SETTINGS
-	if what == MainLoop.NOTIFICATION_WM_MOUSE_EXIT:
-		if not Game.game_state == Game.State.INTRO_FLIGHT and not Game.game_state == Game.State.LOADING:
-			Game.game_state = Game.State.SETTINGS
+#	if what == MainLoop.NOTIFICATION_WM_MOUSE_EXIT:
+#		if not Game.game_state == Game.State.INTRO_FLIGHT and not Game.game_state == Game.State.LOADING:
+#			Game.game_state = Game.State.SETTINGS

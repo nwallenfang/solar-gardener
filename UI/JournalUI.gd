@@ -55,6 +55,14 @@ func plant_hovered(plant_ui: PlantUI):
 			# TODO different stages of fluff text depending on progress
 			$"%Title".text = plant_ui.plant_profile.name
 			$"%FluffText".bbcode_text = plant_ui.plant_profile.fluff_base
+			match plant_ui.plant_profile.plant_type:
+				PlantData.PLANT_TYPES.THORNY:
+					$"%PlantType".text = "Thorny"
+				PlantData.PLANT_TYPES.FLOWER:
+					$"%PlantType".text = "Flower"
+				PlantData.PLANT_TYPES.SHROOM:
+					$"%PlantType".text = "Shroom"
+
 			if plant_ui.number_of_stars >= 1:
 				if plant_ui.stage2_scanned:
 					$"%FluffText".bbcode_text += "\n" + plant_ui.plant_profile.fluff_stage2
@@ -70,6 +78,7 @@ func plant_hovered(plant_ui: PlantUI):
 				
 		else:
 			$"%Title".text = "???"
+			$"%PlantType".text = ""
 			$"%FluffText".bbcode_text = not_scanned_yet_fluff
 
 func seed_count_updated(plant_name, total_seeds):

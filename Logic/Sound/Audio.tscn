@@ -45,6 +45,7 @@ mixer_bus = "SFX"
 mixer_bus = "SFX"
 
 [node name="ui2" parent="Sounds" instance=ExtResource( 1 )]
+volume_db = -5.0
 mixer_bus = "SFX"
 
 [node name="ui3" parent="Sounds" instance=ExtResource( 1 )]
@@ -86,7 +87,7 @@ mixer_bus = "Music"
 
 [node name="growbeam_pulse" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
-volume_db = 8.0
+volume_db = 6.0
 mixer_bus = "SFX"
 
 [node name="growbeam_close" type="Node" parent="Sounds"]
@@ -96,12 +97,11 @@ mixer_bus = "SFX"
 
 [node name="growbeam_rotate_fast" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
-volume_db = 3.0
+volume_db = 2.0
 mixer_bus = "SFX"
 
 [node name="growbeam_rotate_slow" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
-volume_db = 3.0
 mixer_bus = "SFX"
 
 [node name="seedgun_load" type="Node" parent="Sounds"]
