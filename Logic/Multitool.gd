@@ -142,10 +142,6 @@ func activate_tool(activated_tool: int):
 var currently_switching := false
 signal switched_to(new_tool)
 func switch_tool(new_tool: int, tool_active := true):
-	# Always instant show hopper crosshair
-	if new_tool == TOOL.HOPPER:
-		show_hopable(tool_active)
-	
 	if tool_active:
 		# return immediately if tool isnt activated
 		if not tool_unlocked[new_tool]:
@@ -158,6 +154,8 @@ func switch_tool(new_tool: int, tool_active := true):
 		clear_holo_information()
 		if new_tool != TOOL.HOPPER:
 			Game.crosshair.set_style(Game.crosshair.Style.DEFAULT)
+		else:
+			show_hopable(tool_active)
 		switch_tool(current_tool, false)
 		if waiting_for_animation:
 			yield($ModelMultitool,"animation_finished")
@@ -209,7 +207,8 @@ func idle_process(delta: float):
 					Audio.fade_in("growbeam", 0.25, true)
 					Audio.fade_in("growbeam_rotate_fast", 0.2)
 					Audio.fade_out("growbeam_rotate_slow", 0.2)
-				grow_beam_active = true
+					grow_beam_active = true
+					plant_to_grow.play_growth_flash()
 				plant_to_grow.growth_boost = true
 				growth_juice -= JUICE_DRAIN * delta
 				if growth_juice <= 0.0:
@@ -418,60 +417,64 @@ func spawn_plant(pos: Vector3):
 	Events.trigger("seed_planted")
 
 func show_analyse_information():
-	#Game.UI.set_diagnostics(["Analysing Object", current_analyse_object, "Analyse Progress", current_analyse_progress * 100.0])
-	if object_to_analyse != null and is_instance_valid(object_to_analyse):
-		if "analyse_name" in object_to_analyse:
-			Game.hologram.show_scan_progress(object_to_analyse.get("analyse_name"), 0.0)
-			if currently_analysing:
-				Game.hologram.show_scan_progress(object_to_analyse.get("analyse_name"), current_analyse_progress * 100.0)
+	if has_no_cooldown():
+		#Game.UI.set_diagnostics(["Analysing Object", current_analyse_object, "Analyse Progress", current_analyse_progress * 100.0])
+		if object_to_analyse != null and is_instance_valid(object_to_analyse):
+			if "analyse_name" in object_to_analyse:
+				Game.hologram.show_scan_progress(object_to_analyse.get("analyse_name"), 0.0)
+				if currently_analysing:
+					Game.hologram.show_scan_progress(object_to_analyse.get("analyse_name"), current_analyse_progress * 100.0)
+				else:
+					if analyse_completed:
+						if object_to_analyse is Plant:
+							var plant_obj: Plant = object_to_analyse as Plant
+							var plant_type: String
+							match plant_obj.profile.plant_type:
+								PlantData.PLANT_TYPES.THORNY:  # THORNY, SHROOM, FLOWER
+									plant_type = "Thorny"
+								PlantData.PLANT_TYPES.SHROOM:
+									plant_type = "Shroom"
+								PlantData.PLANT_TYPES.FLOWER:
+									plant_type = "Flower"
+							var is_growing = (plant_obj.growth_stage != plant_obj.growth_lock)
+							Game.hologram.show_plant_info(plant_obj.profile.name, plant_type, plant_obj.growth_stage, is_growing)
+						elif object_to_analyse is Planet:
+							var planet_obj: Planet = object_to_analyse as Planet
+							# types: ROCK, DIRT, SAND (2, 3, 4)
+							var soil_type: String
+							match planet_obj.soil_type:
+								PlantData.SOIL_TYPES.ROCK:
+									soil_type = "Rock"
+								PlantData.SOIL_TYPES.DIRT:
+									soil_type = "Dirt"
+								PlantData.SOIL_TYPES.SAND:
+									soil_type = "Sand"
+							if soil_type == null:
+								printerr(planet_obj.planet_name + " has weird soil type.")
+							Game.hologram.show_soil_info(planet_obj.planet_name, soil_type, planet_obj.nutrients, planet_obj.sun) # type_name: String, has_nutrients:bool, is_close_to_sun: bool)  # TODO
+						elif "ice" in object_to_analyse.name.to_lower():
+							Game.hologram.show_analyse_info("Should melt\nat great heat")
+						else:
+							Game.hologram.show_scan_progress(object_to_analyse.get("analyse_name"), 100.0)
 			else:
-				if analyse_completed:
-					if object_to_analyse is Plant:
-						var plant_obj: Plant = object_to_analyse as Plant
-						var plant_type: String
-						match plant_obj.profile.plant_type:
-							PlantData.PLANT_TYPES.THORNY:  # THORNY, SHROOM, FLOWER
-								plant_type = "Thorny"
-							PlantData.PLANT_TYPES.SHROOM:
-								plant_type = "Shroom"
-							PlantData.PLANT_TYPES.FLOWER:
-								plant_type = "Flower"
-						var is_growing = (plant_obj.growth_stage != plant_obj.growth_lock)
-						Game.hologram.show_plant_info(plant_obj.profile.name, plant_type, plant_obj.growth_stage, is_growing)
-					elif object_to_analyse is Planet:
-						var planet_obj: Planet = object_to_analyse as Planet
-						# types: ROCK, DIRT, SAND (2, 3, 4)
-						var soil_type: String
-						match planet_obj.soil_type:
-							PlantData.SOIL_TYPES.ROCK:
-								soil_type = "Rock"
-							PlantData.SOIL_TYPES.DIRT:
-								soil_type = "Dirt"
-							PlantData.SOIL_TYPES.SAND:
-								soil_type = "Sand"
-						if soil_type == null:
-							printerr(planet_obj.planet_name + " has weird soil type.")
-						Game.hologram.show_soil_info(planet_obj.planet_name, soil_type, planet_obj.nutrients, planet_obj.sun) # type_name: String, has_nutrients:bool, is_close_to_sun: bool)  # TODO
-					elif "ice" in object_to_analyse.name.to_lower():
-						Game.hologram.show_analyse_info("Should melt\nat great heat")
-					else:
-						Game.hologram.show_scan_progress(object_to_analyse.get("analyse_name"), 100.0)
+				Game.hologram.clear()
 		else:
 			Game.hologram.clear()
-	else:
-		Game.hologram.clear()
 
 
 func show_grow_information():
-	Game.hologram.grow_beam_juice(grow_beam_active, growth_juice)
+	if has_no_cooldown():
+		Game.hologram.grow_beam_juice(grow_beam_active, growth_juice)
 
 func show_plant_information():
-	var seeds_left = PlantData.seed_counts[target_plant_name]
-	Game.hologram.show_seed_info(target_plant_name, seeds_left)
+	if has_no_cooldown():
+		var seeds_left = PlantData.seed_counts[target_plant_name]
+		Game.hologram.show_seed_info(target_plant_name, seeds_left)
 #	set_display_label(target_plant_name + "\n" + str(seeds_left))
 
 func show_hopper_information():
-	Game.hologram.show_hop_info(hopper_planet.planet_name)
+	if has_no_cooldown():
+		Game.hologram.show_hop_info(hopper_planet.planet_name)
 #	set_display_label("Travel to " + hopper_planet.planet_name)
 
 func clear_holo_information():
@@ -528,3 +531,6 @@ var should_update_fake_seed_position := false
 func update_fake_seed_position():
 	pass
 	#fake_seed.global_translation = $ModelMultitool.get_node("SeedOrigin").global_translation
+
+func set_holo_visible(vis: bool):
+	$ModelMultitool.set_holo_visible(vis)

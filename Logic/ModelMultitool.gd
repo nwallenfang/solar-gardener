@@ -186,6 +186,9 @@ func set_holo_text(text: String):
 	$HoloScreen.visible = (text != "")
 	$HoloScreen.set_text(text)
 
+func set_holo_visible(vis: bool):
+	$HoloScreen.visible = vis
+
 func _ready():
 	var speed_factor := 1.3
 	$HopperPlayer.playback_speed = speed_factor
