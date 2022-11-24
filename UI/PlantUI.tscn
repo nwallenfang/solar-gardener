@@ -168,6 +168,7 @@ anchor_right = 0.992
 anchor_bottom = 0.996
 margin_right = 40.0
 margin_bottom = 40.0
+mouse_filter = 1
 custom_styles/panel = SubResource( 1 )
 
 [node name="SeedCountBG" type="TextureRect" parent="."]

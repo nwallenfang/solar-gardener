@@ -11,7 +11,6 @@ const PROFILE_FOLDER = "res://Plants/Profiles/"
 const PREFERENCE_FOLDER = "res://Plants/Preferences/"
 const PREFERENCES = {}
 
-
 var profiles := {}
 
 onready var progress := {
@@ -126,11 +125,13 @@ func plant(plant_name):
 
 signal seeds_updated(plant_name, seed_total)  # -> JournalUI is listening
 signal got_seeds(plant_name, seed_amount)
-func give_seeds(plant_name: String, seed_amount:int) -> void:
+func give_seeds(plant_name: String, seed_amount:int, is_amber: bool) -> void:
 	seed_counts[plant_name] += seed_amount
 	Audio.play("ui2")
+
+	emit_signal("got_seeds", plant_name, seed_amount, is_amber)
 	emit_signal("seeds_updated", plant_name, seed_counts[plant_name])
-	emit_signal("got_seeds", plant_name, seed_amount)
+
 	
 
 signal growth_stage_reached(plant_name, growth_stage) # -> JournalUI is listening

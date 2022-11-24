@@ -11,6 +11,12 @@ func _ready() -> void:
 	init()
 	Game.journal = self
 
+func get_got_scanned(plant_name: String):
+	for plant_ui in get_tree().get_nodes_in_group("plant_ui"):
+		if plant_ui.plant_name == plant_name:
+			return plant_ui.scanned
+	printerr("don't know this weird plant_name " + plant_name)
+	return false
 
 func init():
 	var i = 1
@@ -36,10 +42,13 @@ func plant_clicked(plant_name):
 	Game.multitool.switch_tool(Game.multitool.TOOL.PLANT)
 	Game.multitool.show_plant_information()
 	Game.multitool.force_reload = true
-	Game.game_state = Game.State.INGAME
-	$"%HoverMarker".visible = false
+#	$"%HoverMarker".visible = false
 #		currently_hovering.hovered = false
 #		currently_hovering = null
+	Game.coming_out_of_journal = true
+	yield(get_tree(), "idle_frame")
+	
+	Game.game_state = Game.State.INGAME
 
 
 export(String, MULTILINE) var not_scanned_yet_fluff

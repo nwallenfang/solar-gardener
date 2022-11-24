@@ -120,13 +120,14 @@ func check_input():
 		emit_signal("switched_to", TOOL.GROW)
 		switch_tool(TOOL.GROW)
 	switched_tool_on_cooldown = TOOL.NONE
-	if Input.is_action_just_pressed("first_action"):
+	if Input.is_action_just_pressed("first_action") and not Game.coming_out_of_journal:
 		process_first_action()
-	first_action_holded = Input.is_action_pressed("first_action")
+	first_action_holded = Input.is_action_pressed("first_action") and not Game.coming_out_of_journal
 	if Input.is_action_just_pressed("second_action"):
 		process_second_action()
 	second_action_holded = Input.is_action_pressed("second_action")
 
+	Game.coming_out_of_journal = false
 
 # Collision masks
 # 0 - Collision
@@ -469,7 +470,10 @@ func show_grow_information():
 func show_plant_information():
 	if has_no_cooldown():
 		var seeds_left = PlantData.seed_counts[target_plant_name]
-		Game.hologram.show_seed_info(target_plant_name, seeds_left)
+		if Game.journal.get_got_scanned(target_plant_name):
+			Game.hologram.show_seed_info(target_plant_name, seeds_left)
+		else:
+			Game.hologram.show_seed_info("Unknown", seeds_left)
 #	set_display_label(target_plant_name + "\n" + str(seeds_left))
 
 func show_hopper_information():

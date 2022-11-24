@@ -77,10 +77,13 @@ func show_dialogline(text: String, duration: float, another_one_coming:=false):
 		yield(get_tree().create_timer(duration), "timeout")
 		$"%SubtitleText".text = ""
 
-func got_seeds(plant_name: String, amount: int):
+func got_seeds(plant_name: String, amount: int, is_amber: bool):
 	var seed_string: String = "+ %d %s seed" % [amount, plant_name]
 	if amount > 1:
 		seed_string += "s"
-
-	push_infoline(seed_string, INFO.MORE_SEEDS)
 	
+	if is_amber or (not Game.journal.get_got_scanned(plant_name)):  # i know i know so complicated just for this small detail
+		push_infoline("+1 Unknown Seed", INFO.MORE_SEEDS)
+	else:
+		push_infoline(seed_string, INFO.MORE_SEEDS)
+

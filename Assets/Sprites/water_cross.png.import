@@ -14,7 +14,7 @@ dest_files=[ "res://.import/water_cross.png-c4061f2f2b95fac9647b15b3ba026c28.ste
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

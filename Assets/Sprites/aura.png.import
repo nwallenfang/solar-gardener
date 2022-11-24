@@ -2,21 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/aura.png-1e58d09e9a26985d15f5928d3fefaded.s3tc.stex"
-path.etc2="res://.import/aura.png-1e58d09e9a26985d15f5928d3fefaded.etc2.stex"
+path="res://.import/aura.png-1e58d09e9a26985d15f5928d3fefaded.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Assets/Sprites/aura.png"
-dest_files=[ "res://.import/aura.png-1e58d09e9a26985d15f5928d3fefaded.s3tc.stex", "res://.import/aura.png-1e58d09e9a26985d15f5928d3fefaded.etc2.stex" ]
+dest_files=[ "res://.import/aura.png-1e58d09e9a26985d15f5928d3fefaded.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=1
 compress/bptc_ldr=0

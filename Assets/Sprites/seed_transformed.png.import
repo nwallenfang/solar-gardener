@@ -14,7 +14,7 @@ dest_files=[ "res://.import/seed_transformed.png-8e7c23a786334bdbe13e9b05eb2f4da
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

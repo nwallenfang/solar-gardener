@@ -14,7 +14,7 @@ dest_files=[ "res://.import/scanner_icon.png-9ad185d9f5b59889532a110a72ffa3df.st
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
