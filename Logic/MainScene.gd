@@ -23,7 +23,10 @@ func _ready() -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 	Input.use_accumulated_input = true
-
+	
+	if not OS.is_debug_build():
+		Engine.target_fps = 144
+	
 	# custom cursors don't work properly in web builds atm :(( really sad
 	# https://github.com/godotengine/godot/issues/67925
 	Input.set_custom_mouse_cursor(preload("res://Assets/Sprites/cursor.png"))
