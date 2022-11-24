@@ -71,6 +71,12 @@ func plant_profile_to_preference_list(plant: PlantProfile) -> Array:
 		preference_list.append(PREFERENCES["Likes rocky planets"])
 	if plant.prefered_soil == SOIL_TYPES.SAND:
 		preference_list.append(PREFERENCES["Likes sandy planets"])
+	if plant.symbiosis_plant_type == PLANT_TYPES.FLOWER:
+		preference_list.append(PREFERENCES["Likes Flowers"])
+	if plant.symbiosis_plant_type == PLANT_TYPES.SHROOM:
+		preference_list.append(PREFERENCES["Likes Shrooms"])
+	if plant.symbiosis_plant_type == PLANT_TYPES.THORNY:
+		preference_list.append(PREFERENCES["Likes Thornys"])
 
 	return preference_list
 

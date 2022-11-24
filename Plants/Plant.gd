@@ -159,7 +159,19 @@ func calculate_growth_points():
 			points += 1
 			if growth_stage >= 1:
 				Game.journal.make_preference_known(profile.name, "Hates Groups")
-		
+	
+	
+	if profile.symbiosis_plant_type in get_near_plants_types():
+		points += 1
+		match(profile.symbiosis_plant_type):
+			PlantData.PLANT_TYPES.FLOWER:
+				Game.journal.make_preference_known(profile.name, "Likes Flowers")
+			PlantData.PLANT_TYPES.SHROOM:
+				Game.journal.make_preference_known(profile.name, "Likes Shrooms")
+			PlantData.PLANT_TYPES.THORNY:
+				Game.journal.make_preference_known(profile.name, "Likes Thornys")
+	
+	
 	# CHEAT
 	if cheat:
 		points += 10

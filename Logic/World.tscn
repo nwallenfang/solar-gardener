@@ -82,7 +82,6 @@ transform = Transform( -0.996703, 0, 0.0811383, 0, 1, 0, -0.0811383, 0, -0.99670
 transform = Transform( 2.03594, 0, 0, 0, 2.03594, 0, 0, 0, 2.03594, 0, 0, 0 )
 
 [node name="Stars" parent="." instance=ExtResource( 4 )]
-visible = false
 
 [node name="LoadingCams" type="Spatial" parent="."]
 
