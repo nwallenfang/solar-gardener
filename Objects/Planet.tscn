@@ -48,7 +48,7 @@ gravity_vec = Vector3( 0, 0, 0 )
 shape = SubResource( 12 )
 
 [node name="Amber" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1.26925, -0.0350249, -0.00701452, 0.0310681, 1.20549, -0.397606, 0.017627, 0.397274, 1.20588, -0.182106, 5.2324, 2.43815 )
+transform = Transform( 0.798316, -0.0220295, -0.0044119, 0.0195408, 0.758213, -0.250081, 0.0110868, 0.249872, 0.758458, -0.182106, 5.2324, 2.43815 )
 seed_name = "Grabroot"
 seed_count = 1
 

@@ -12,13 +12,13 @@ func _ready():
 	#$HoverPlayer.play("hover")
 
 const FAKE_SEED = preload("res://Plants/FakeSeed.tscn")
-func setup_as_seed(seed_name: String, target_size := 1.0, hover := true, spinning := true):
+func setup_as_seed(seed_name: String, target_size := 1.0, hover := true, spinning := true, grow_duration := 2.5):
 	identity = seed_name
 	var fake_seed = FAKE_SEED.instance()
 	fake_seed.visible = false
 	$Object.add_child(fake_seed)
 	fake_seed.setup(seed_name, target_size)
-	$GrowTween.interpolate_property(fake_seed, "scale", Vector3.ONE * .01, Vector3.ONE, 2.5)
+	$GrowTween.interpolate_property(fake_seed, "scale", Vector3.ONE * .01, Vector3.ONE, grow_duration)
 	$GrowTween.start()
 	yield(get_tree().create_timer(.1), "timeout")
 	fake_seed.visible = true

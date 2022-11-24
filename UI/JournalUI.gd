@@ -110,7 +110,8 @@ func plant_got_scanned(plant_name: String, growth_stage: int):
 	yield(get_tree(), "idle_frame")
 	yield(get_tree(), "idle_frame")
 	
-	scanned_plant_names.append(plant_name)
+	if not plant_name in scanned_plant_names:
+		scanned_plant_names.append(plant_name)
 	
 	for plant_ui in get_tree().get_nodes_in_group("plant_ui"):
 		if plant_ui.plant_name == plant_name:
