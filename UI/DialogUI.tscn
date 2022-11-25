@@ -13,6 +13,7 @@ anchor_right = 0.95
 anchor_bottom = 0.838
 margin_top = -14.28
 margin_bottom = -14.28
+mouse_filter = 2
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": true
@@ -26,6 +27,7 @@ float_time = 1.5
 [node name="Controls" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 
 [node name="SubtitleText" parent="Controls" instance=ExtResource( 2 )]
 

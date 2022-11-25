@@ -94,11 +94,24 @@ anchor_left = 0.009
 anchor_top = 0.8
 anchor_right = 0.235
 anchor_bottom = 0.98
+mouse_filter = 2
 
 [node name="Controls" type="VBoxContainer" parent="HotkeyGuide"]
 anchor_bottom = 1.0
 margin_right = 45.0
+mouse_filter = 2
 alignment = 2
+
+[node name="MultitoolC2" type="Label" parent="HotkeyGuide/Controls"]
+unique_name_in_owner = true
+visible = false
+margin_top = 46.0
+margin_right = 108.0
+margin_bottom = 71.0
+grow_horizontal = 0
+grow_vertical = 0
+custom_fonts/font = ExtResource( 9 )
+text = "Remove Plant"
 
 [node name="MultitoolC" type="Label" parent="HotkeyGuide/Controls"]
 unique_name_in_owner = true
@@ -135,6 +148,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -45.0
 alignment = 2
+
+[node name="MultitoolA2" type="Label" parent="HotkeyGuide/Actions"]
+unique_name_in_owner = true
+visible = false
+margin_top = 46.0
+margin_right = 49.0
+margin_bottom = 71.0
+custom_fonts/font = ExtResource( 9 )
+text = "Right Click"
 
 [node name="MultitoolA" type="Label" parent="HotkeyGuide/Actions"]
 unique_name_in_owner = true

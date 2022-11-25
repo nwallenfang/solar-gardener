@@ -22,9 +22,18 @@ func switched_to_tool(new_tool: int):
 		$"%MultitoolC".text = tooltip[1]
 		$"%MultitoolC".visible = true
 		$"%MultitoolA".visible = true
+		if new_tool == Game.multitool.TOOL.GROW:
+			$"%MultitoolC2".visible = true
+			$"%MultitoolA2".visible = true
+		else:
+			$"%MultitoolC2".visible = false
+			$"%MultitoolA2".visible = false
+
 	else:
 		$"%MultitoolC".visible = false
 		$"%MultitoolA".visible = false
+		$"%MultitoolC2".visible = false
+		$"%MultitoolA2".visible = false
 
 func changed_state(state, prev_state):
 	match state:
