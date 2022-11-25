@@ -34,15 +34,15 @@ func show_soil_info(planet_name: String, type_name: String, has_nutrients:bool, 
 	current_screen = $"%SoilInfo"
 	
 	$"%PlanetName".text = planet_name
-	$"%PlanetType".text = type_name
+	$"%PlanetType".text = "Soil: " + type_name
 	if has_nutrients:
-		$"%HasNutrients".text = "has Nutrients"
+		$"%HasNutrients".text = "Nutrients: High"
 	else:
-		$"%HasNutrients".text = "no Nutrients"
+		$"%HasNutrients".text = "Nutrients: Low"
 	if is_close_to_sun:
-		$"%HasNutrients".text = "Close to Sun"
+		$"%HasNutrients".text = "Sun: Close"
 	else:
-		$"%CloseToSun".text = "Far from Sun"
+		$"%CloseToSun".text = "Sun: Far"
 
 func show_hop_info(planet_name):
 	if current_screen != null:

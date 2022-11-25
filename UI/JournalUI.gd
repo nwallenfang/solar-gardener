@@ -21,7 +21,7 @@ func get_got_scanned(plant_name: String):
 func init():
 	var i = 1
 	var profile_names_abc = PlantData.profiles.keys().duplicate()
-	profile_names_abc.sort()
+#	profile_names_abc.sort()
 	for plant_name in profile_names_abc:
 		var plant_ui: PlantUI = get_node("GridContainer/PlantUI" + str(i))
 		plant_ui.connect("clicked", self, "plant_clicked")

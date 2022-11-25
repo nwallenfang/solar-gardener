@@ -13,10 +13,11 @@ func _input(event: InputEvent) -> void:
 				# this is only the correct if you can only enter settings from ingame!!
 				Game.game_state = Game.State.INGAME
 	if Game.game_state == Game.State.INGAME or Game.game_state == Game.State.INTRO_FLIGHT and event is InputEventMouseButton:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		Game.UI.get_node("ClickToFocus").visible = false
-		if Game.game_state == Game.State.INGAME:
-			set_process_input(false)
+		if event.is_pressed():
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			Game.UI.get_node("ClickToFocus").visible = false
+			if Game.game_state == Game.State.INGAME:
+				set_process_input(false)
 
 #func game_did_something(a, b):
 #	set_process_input(false)

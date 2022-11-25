@@ -40,7 +40,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=1]
 resource_name = "fly"
-length = 15.5
+length = 17.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("FlyCamera:translation")
 tracks/0/interp = 2
@@ -48,7 +48,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 4.9, 9, 11.9, 15.4 ),
+"times": PoolRealArray( 0, 6.5, 10.6, 13.5, 17 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector3( -93.934, 13.19, 47.14 ), Vector3( -125.054, 7.08, -76.469 ), Vector3( -91.989, 7.08, -148.923 ), Vector3( -61.542, 5.248, -120.483 ), Vector3( -48.796, 8.907, -97.7 ) ]
@@ -60,7 +60,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 4.9, 9, 11.9, 15.4 ),
+"times": PoolRealArray( 0, 6.5, 10.6, 13.5, 17 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 360, 0 ), Vector3( 0, 324.799, 0 ), Vector3( 0, 223.039, 0 ), Vector3( 0, 205.346, 0 ), Vector3( 0, 175.346, 0 ) ]
