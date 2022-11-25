@@ -12,6 +12,9 @@ func get_all_mesh_instance_children(mother_node: Spatial) -> Array:
 func test_planting_position(pos: Vector3) -> bool:
 	return $PlantingTester.move_and_test(pos)
 
+func get_last_planting_test_collider_areas() -> Array:
+	return $PlantingTester.get_last_colliders()
+
 func get_basis_y_aligned(target_up: Vector3) -> Basis:
 	var basis := Basis.IDENTITY
 	basis = basis.rotated(Vector3.UP.cross(target_up).normalized(), Vector3.UP.angle_to(target_up))
