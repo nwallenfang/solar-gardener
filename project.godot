@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area",
+"class": "BadPlanting",
+"language": "GDScript",
+"path": "res://Plants/BadPlanting.gd"
+}, {
 "base": "Control",
 "class": "Crosshair",
 "language": "GDScript",
@@ -100,6 +105,7 @@ _global_script_classes=[ {
 "path": "res://UI/UI.gd"
 } ]
 _global_script_class_icons={
+"BadPlanting": "",
 "Crosshair": "",
 "CustomAudioPlayer": "",
 "DialogLine": "",
