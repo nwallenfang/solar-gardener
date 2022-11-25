@@ -97,17 +97,19 @@ func _physics_process(delta):
 #	if should_update_fake_seed_position:
 #		update_fake_seed_position()
 	
-var switched_tool_on_cooldown :int= TOOL.NONE
+var switched_tool_on_cooldown :int= TOOL.ANALYSIS setget set_switched_on_cooldown
+func set_switched_on_cooldown(set_tool: int):
+	if tool_unlocked[set_tool]:
+		switched_tool_on_cooldown = set_tool
+		emit_signal("switched_to", set_tool)
+
 func check_input_on_cooldown():
 	if Input.is_action_just_pressed("tool1"):
-		switched_tool_on_cooldown = TOOL.ANALYSIS
-		emit_signal("switched_to", TOOL.ANALYSIS)
+		self.switched_tool_on_cooldown = TOOL.ANALYSIS
 	if Input.is_action_just_pressed("tool2"):
-		switched_tool_on_cooldown = TOOL.PLANT
-		emit_signal("switched_to", TOOL.PLANT)
+		self.switched_tool_on_cooldown = TOOL.PLANT
 	if Input.is_action_just_pressed("tool3"):
-		switched_tool_on_cooldown = TOOL.GROW
-		emit_signal("switched_to", TOOL.GROW)
+		self.switched_tool_on_cooldown = TOOL.GROW
 
 func check_input():
 	if Input.is_action_just_pressed("tool1") or switched_tool_on_cooldown == TOOL.ANALYSIS:
@@ -534,6 +536,7 @@ func try_reload():
 			seeds_empty = false
 			if is_instance_valid(fake_seed):
 				fake_seed.queue_free()
+				yield(get_tree(), "idle_frame")
 			fake_seed = FAKE_SEED.instance()
 			$ModelMultitool/SeedOrigin.add_child(fake_seed)
 			fake_seed.setup(target_plant_name, 1.4)
