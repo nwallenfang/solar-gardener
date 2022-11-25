@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Shroomtree"
-mesh_file_name = "ModelShroomPlant"
+name = "Hidden Lotus"
+mesh_file_name = "PlantPino"
 plant_type = 0
 fluff_base = "A"
 fluff_stage2 = "M"

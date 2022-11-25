@@ -384,7 +384,8 @@ func get_near_plants_types() -> Array:
 	var plants := get_near_plants_list()
 	var types := []
 	for plant in plants:
-		types.append(plant.profile.plant_type)
+		if self.profile.name != plant.profile.name:
+			types.append(plant.profile.plant_type)
 	return types
 
 func get_analyse_name() -> String:

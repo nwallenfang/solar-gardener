@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource( 1 )
 name = "Giant-Cap"
-mesh_file_name = "PlantPino"
+mesh_file_name = "ModelShroomPlant"
 plant_type = 2
 fluff_base = "The Giant-Cap is known to be the biggest mushroom in the galaxy."
 fluff_stage2 = "The Giant-Cap uses its large surface area to collect [b]lots of sunlight[/b]."
@@ -14,10 +14,11 @@ fluff_stage3 = "Because of their large size the Giant-Cap prefers to grow [b]wit
 icon = ExtResource( 2 )
 sun = 2
 moisture = 1
-nutrients = 3
+nutrients = 2
 group = 3
 prefered_soil = 3
-symbiosis_plant_type = 1
+symbiosis_plant_type = 0
+needs_dirt_pile = false
 seed_count = 3
 seed_grow_time = 7.0
 points_for_stage_1 = 0
