@@ -75,5 +75,6 @@ func _on_InvertYButton_pressed() -> void:
 
 
 func _on_GraphicsSlider_value_changed(value: float) -> void:
+	Game.world.get_node("Stars").visible = (value >= .5)
 	Game.main_scene.resolution_scaling_factor = value
 	Game.main_scene.root_viewport_size_changed()
