@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://UI/JournalUI.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/TitleFont.tres" type="DynamicFont" id=2]
@@ -20,14 +20,18 @@
 [ext_resource path="res://Assets/Fonts/GuideProgressFont.tres" type="DynamicFont" id=18]
 [ext_resource path="res://Assets/Sprites/star-full.png" type="Texture" id=19]
 [ext_resource path="res://Assets/Sprites/amber_icon.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Sprites/covered_seamless.png" type="Texture" id=21]
 
-[sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 0.188235, 0.223529, 0.160784, 1 )
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
-border_color = Color( 0.184314, 0.109804, 0.113725, 1 )
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.164706, 0.109804, 0.0862745, 1 )
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 15.0
+expand_margin_right = 15.0
+expand_margin_top = 15.0
+expand_margin_bottom = 15.0
 
 [sub_resource type="DynamicFont" id=8]
 size = 26
@@ -175,14 +179,23 @@ custom_fonts/font = ExtResource( 7 )
 text = "Guide"
 align = 1
 
-[node name="Background" type="Panel" parent="."]
+[node name="Background" type="TextureRect" parent="."]
+self_modulate = Color( 0.627451, 0.760784, 0.396078, 1 )
 show_behind_parent = true
-anchor_top = 0.083
-anchor_right = 1.0
+anchor_left = 0.02
+anchor_top = 0.1
+anchor_right = 0.98
 anchor_bottom = 1.0
 margin_right = -8.0
 margin_bottom = -36.0
-custom_styles/panel = SubResource( 6 )
+texture = ExtResource( 21 )
+stretch_mode = 2
+
+[node name="Panel" type="Panel" parent="Background"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 11 )
 
 [node name="JournalUI" type="Control" parent="."]
 anchor_top = 0.083
@@ -193,7 +206,7 @@ script = ExtResource( 1 )
 not_scanned_yet_fluff = "Unknown Plant. Scan a grown specimen to find out more."
 
 [node name="JournalInfoText" type="TextureRect" parent="JournalUI"]
-self_modulate = Color( 0.760784, 0.760784, 0.760784, 1 )
+self_modulate = Color( 0.52549, 0.52549, 0.52549, 1 )
 anchor_left = 0.456
 anchor_top = 0.039
 anchor_right = 0.941
@@ -246,9 +259,9 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="JournalUI/JournalInfoText"]
 anchor_left = -0.656295
-anchor_top = 1.04285
-anchor_right = -0.179601
-anchor_bottom = 1.1122
+anchor_top = 1.05152
+anchor_right = -0.1796
+anchor_bottom = 1.12087
 mouse_filter = 1
 custom_fonts/font = SubResource( 7 )
 text = "(click Plant to select seed)"

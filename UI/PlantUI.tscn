@@ -143,19 +143,19 @@ margin_right = 419.0
 margin_bottom = 457.0
 
 [node name="UndiscoveredOverlay" type="TextureRect" parent="Panel"]
-visible = false
-anchor_left = -0.00390625
+self_modulate = Color( 0.25098, 0.341176, 0.0901961, 1 )
+anchor_left = -0.0517578
 anchor_top = -0.0677083
-anchor_right = 0.976094
+anchor_right = 0.928242
 anchor_bottom = 0.955
 margin_top = 10.0
 margin_right = 6.10352e-05
-rect_scale = Vector2( 1.05, 1.05 )
+rect_scale = Vector2( 1.07, 1.07 )
 hint_tooltip = "Undiscovered Plant"
 theme = ExtResource( 8 )
 texture = ExtResource( 7 )
 expand = true
-stretch_mode = 7
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": true,
 "_editor_description_": "Undiscovered Plant"
