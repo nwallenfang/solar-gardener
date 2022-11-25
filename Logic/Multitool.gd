@@ -84,12 +84,11 @@ func wait_for_animation_finished():
 
 func _physics_process(delta):
 	if Game.game_state == Game.State.INGAME:
+		check_input_on_cooldown()
 		if has_no_cooldown():
 			check_on_hover()
 			check_input()
 			idle_process(delta)
-		else:
-			check_input_on_cooldown()
 			
 		if (seeds_empty and current_tool == TOOL.PLANT) or force_reload:
 			try_reload()
@@ -113,15 +112,15 @@ func check_input_on_cooldown():
 		self.switched_tool_on_cooldown = TOOL.GROW
 
 func check_input():
-	if Input.is_action_just_pressed("tool1") or switched_tool_on_cooldown == TOOL.ANALYSIS:
-		emit_signal("switched_to", TOOL.ANALYSIS)
+	if switched_tool_on_cooldown == TOOL.ANALYSIS:
 		switch_tool(TOOL.ANALYSIS)
-	if Input.is_action_just_pressed("tool2") or switched_tool_on_cooldown == TOOL.PLANT:
-		emit_signal("switched_to", TOOL.PLANT)
+		emit_signal("switched_to", TOOL.ANALYSIS)
+	if switched_tool_on_cooldown == TOOL.PLANT:
 		switch_tool(TOOL.PLANT)
-	if Input.is_action_just_pressed("tool3") or switched_tool_on_cooldown == TOOL.GROW:
-		emit_signal("switched_to", TOOL.GROW)
+		emit_signal("switched_to", TOOL.ANALYSIS)
+	if switched_tool_on_cooldown == TOOL.GROW:
 		switch_tool(TOOL.GROW)
+		emit_signal("switched_to", TOOL.ANALYSIS)
 	switched_tool_on_cooldown = TOOL.NONE
 	if Input.is_action_just_pressed("first_action") and not Game.coming_out_of_journal:
 		process_first_action()
@@ -286,6 +285,7 @@ func process_first_action():
 		TOOL.PLANT:
 			if can_plant and PlantData.can_plant(target_plant_name):
 				PlantData.plant(target_plant_name)
+				$Cooldown.start(.3)
 				start_planting_animation(plant_spawn_position)
 		TOOL.HOPPER:
 			$Cooldown.start(2)
@@ -307,6 +307,7 @@ func check_on_hover():
 		return
 	match current_tool:
 		TOOL.PLANT:
+			print(has_no_cooldown())
 			if Game.player_raycast.colliding and Game.player_raycast.hit_point.distance_to(Game.player.global_translation) < PLANT_TOOL_DISTANCE:
 				can_plant = Utility.test_planting_position(Game.player_raycast.hit_point) # and PlantData.can_plant() TODO
 				if not can_plant:
@@ -319,7 +320,7 @@ func check_on_hover():
 							area.get_node("BadPlantingVisuals").visible = false
 							idx += 1
 					for i in rm_indices:
-						last_problem_areas.erase(i)
+						last_problem_areas.remove(i)
 					
 					for area in problem_areas:
 						if area is BadPlanting:
