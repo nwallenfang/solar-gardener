@@ -32,6 +32,7 @@ var can_plant := false
 var plant_spawn_position := Vector3.ZERO
 var fake_seed : Spatial
 var last_problem_areas = []
+var ignore_first_check_visually := false # dirty code hack shit
 
 # Grow Tool Variables
 const GROW_TOOL_DISTANCE = 15.0
@@ -208,7 +209,7 @@ func idle_process(delta: float):
 		TOOL.PLANT:
 			show_plant_information()
 		TOOL.GROW:
-			if first_action_holded and can_grow and has_no_cooldown():
+			if first_action_holded and can_grow and $GrowCooldown.time_left == 0.0:
 				if not grow_beam_active:
 					Audio.fade_in("growbeam", 0.25, true)
 					Audio.fade_in("growbeam_rotate_fast", 0.2)
