@@ -173,7 +173,7 @@ func switch_tool(new_tool: int, tool_active := true):
 			$ModelMultitool.set_plant(tool_active)
 			wait_for_animation_finished()
 			yield($ModelMultitool,"animation_finished")
-			force_reload = true
+			force_reload = tool_active
 		TOOL.MOVE:
 			Game.player_raycast.set_collision_mask_bit(4, tool_active)
 		TOOL.ANALYSIS:
@@ -524,7 +524,9 @@ var re_count := 0
 var force_reload := false
 func try_reload():
 	if current_tool == TOOL.PLANT:
-		force_reload = false
+		if force_reload:
+			force_reload = false
+			print("force reee")
 		selected_profile = PlantData.profiles[target_plant_name]
 		if not PlantData.seed_counts[target_plant_name] == 0:
 			re_count += 1

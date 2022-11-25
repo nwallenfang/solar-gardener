@@ -514,7 +514,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id=16]
 resource_name = "on"
-length = 2.0
+length = 1.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Wheel/ArmBase2/Arm2:rotation_degrees")
 tracks/0/interp = 1
@@ -594,7 +594,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0.4, 2 ),
+"times": PoolRealArray( 0.4, 1.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0.01, 0.01, 0.01 ), Vector3( 1, 1, 1 ) ]
@@ -606,7 +606,7 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0.4, 2 ),
+"times": PoolRealArray( 0.4, 1.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0.01, 0.01, 0.01 ), Vector3( 1, 1, 1 ) ]
@@ -618,7 +618,7 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0.4, 2 ),
+"times": PoolRealArray( 0.4, 1.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0.01, 0.01, 0.01 ), Vector3( 1, 1, 1 ) ]
@@ -1019,7 +1019,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector3( 0.00585766, -0.0768776, 0.302454 ) ]
+"values": [ Vector3( 0.006, -0.129, 0.302 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("../SlingshotArms/Arm2:translation")
@@ -1530,13 +1530,15 @@ transform = Transform( -0.372672, -0.0761529, -5.59783e-08, -0.0742218, 0.363221
 [node name="SlingshotArms" type="Spatial" parent="."]
 
 [node name="Arm1" type="MeshInstance" parent="SlingshotArms"]
-transform = Transform( 0.00694735, 0, 0, 0, 0.12949, 0, 0, 0, 0.00694735, 0.00585766, -0.0768776, 0.302454 )
+transform = Transform( 0.00694735, 0, 0, 0, 0.12949, 0, 0, 0, 0.00694735, 0.006, -0.129, 0.302 )
 material_override = ExtResource( 6 )
+cast_shadow = 0
 mesh = SubResource( 37 )
 
 [node name="MeshInstance" type="MeshInstance" parent="SlingshotArms/Arm1"]
 transform = Transform( 3.92572, 0, 0, 0, 0.0410566, 0, 0, 0, 3.92572, 0, 1.0001, 0 )
 material_override = ExtResource( 6 )
+cast_shadow = 0
 mesh = SubResource( 38 )
 
 [node name="Arm2" type="Spatial" parent="SlingshotArms"]
@@ -1545,22 +1547,26 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.119097, 0.103912 )
 [node name="MeshInstance" type="MeshInstance" parent="SlingshotArms/Arm2"]
 transform = Transform( 0.00754892, 0, 0, 0, -2.70826e-09, -0.00754892, 0, 0.0619578, -3.29974e-10, 0, 0, 0 )
 material_override = ExtResource( 6 )
+cast_shadow = 0
 mesh = SubResource( 39 )
 skeleton = NodePath("../..")
 
 [node name="MeshInstance2" type="MeshInstance" parent="SlingshotArms/Arm2"]
 transform = Transform( 0.0193044, 0, 0, 0, 0.00555484, 0, 0, 0, 0.00555484, 0, 0, 0.0599805 )
 material_override = ExtResource( 6 )
+cast_shadow = 0
 mesh = SubResource( 40 )
 
 [node name="MeshInstance3" type="MeshInstance" parent="SlingshotArms/Arm2"]
 transform = Transform( -4.42209e-10, 0, 0.00555484, 0, 0.00555484, 0, -0.0101166, 0, -2.4281e-10, -0.0181047, 0, 0.0646239 )
 material_override = ExtResource( 6 )
+cast_shadow = 0
 mesh = SubResource( 40 )
 
 [node name="MeshInstance4" type="MeshInstance" parent="SlingshotArms/Arm2"]
 transform = Transform( -4.42209e-10, 0, 0.00555484, 0, 0.00555484, 0, -0.0101166, 0, -2.4281e-10, 0.0144668, 0, 0.0646239 )
 material_override = ExtResource( 6 )
+cast_shadow = 0
 mesh = SubResource( 40 )
 
 [editable path="GrowBeamOrigin/EnergyBallCombo"]
