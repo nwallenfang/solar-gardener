@@ -59,3 +59,12 @@ func set_guide_tab_active(guide_active):
 		$GuideTabSelector.self_modulate = mod_enabled
 
 	guide_tab_active = guide_active
+
+func set_progress_amber(number):
+	$"%AmberProgressLabel".text = "%d / 6" % number
+
+func set_progress_logs(number):
+	$"%LogProgressLabel".text = "%d / 3" % number
+
+func set_progress_max(number):
+	$"%MaxProgressLabel".text = "%d / 6" % number

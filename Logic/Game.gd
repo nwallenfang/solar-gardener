@@ -38,6 +38,24 @@ var coming_out_of_journal = false
 
 var cheat_lod := false
 
+# progresses
+var number_of_ambers := 0 setget set_number_of_ambers
+var number_of_logs := 0 setget set_number_of_logs
+var number_of_max_lv := 0 setget set_number_of_max_lv
+
+# move down
+func set_number_of_ambers(number):
+	number_of_ambers = number
+	UI.get_node("JournalAndGuideUI").set_progress_amber(number)
+	
+func set_number_of_logs(number):
+	number_of_logs = number
+	UI.get_node("JournalAndGuideUI").set_progress_logs(number)
+	
+func set_number_of_max_lv(number):
+	number_of_max_lv = number
+	UI.get_node("JournalAndGuideUI").set_progress_max(number)
+
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("open_settings"):  # show/hide settings UI
 		if main_scene_running:

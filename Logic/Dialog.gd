@@ -43,6 +43,7 @@ func play_intro():
 	Events.tutorial_beginning()
 
 func get_next_index():
+	Game.number_of_logs += 1
 	_next_index += 1
 	return _next_index-1
 
