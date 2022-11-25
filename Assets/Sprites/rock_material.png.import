@@ -14,7 +14,7 @@ dest_files=[ "res://.import/rock_material.png-b59ca5fea9aa695a9c145ee032b33f78.s
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

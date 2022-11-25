@@ -58,14 +58,8 @@ transform = Transform( 4.26153, 0, 0, 0, 4.26153, 0, 0, 0, 4.26153, 0, 0, 0 )
 [node name="Occluder" type="Occluder" parent="."]
 shape = SubResource( 13 )
 
-[node name="NoteCapsule" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -0.0920763, -6.3347, 0 )
-
-[node name="NoteCapsule2" parent="." instance=ExtResource( 6 )]
-transform = Transform( 0.258819, -1.13133e-08, -0.965926, 0.965926, -4.2222e-08, 0.258819, -4.37114e-08, -1, 1.91069e-15, -1.87301, -6.23811, -4.37114e-09 )
-
 [node name="NoteCapsule3" parent="." instance=ExtResource( 6 )]
-transform = Transform( 3.09086e-08, -0.707107, 0.707107, -1, -4.37114e-08, 0, 3.09086e-08, -0.707107, -0.707107, 1.36985, -6.00837, 0 )
+transform = Transform( 3.09086e-08, -0.707107, 0.707107, -1, -4.37114e-08, 0, 3.09086e-08, -0.707107, -0.707107, 0.662743, -6.00837, 0.707107 )
 
 [node name="Shed" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1.03296, 0, 0, 0, -4.51522e-08, 1.03296, 0, -1.03296, -4.51522e-08, 0, 0, -5.87052 )

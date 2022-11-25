@@ -1,14 +1,14 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://Plants/PlantProfile.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Placeholder/bonsai.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/seed_icons/pino.png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
 name = "Giant-Cap"
 mesh_file_name = "PlantPino"
 plant_type = 2
-fluff_base = "The Giant-Cap is known the be the biggest mushroom in the galaxy."
+fluff_base = "The Giant-Cap is known to be the biggest mushroom in the galaxy."
 fluff_stage2 = "The Giant-Cap uses its large surface area to collect [b]lots of sunlight[/b]."
 fluff_stage3 = "Because of their large size the Giant-Cap prefers to grow [b]without company[/b]. "
 icon = ExtResource( 2 )

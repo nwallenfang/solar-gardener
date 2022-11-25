@@ -11,6 +11,12 @@ func _ready() -> void:
 	init()
 	Game.journal = self
 
+func get_got_scanned(plant_name: String):
+	for plant_ui in get_tree().get_nodes_in_group("plant_ui"):
+		if plant_ui.plant_name == plant_name:
+			return plant_ui.scanned
+	printerr("don't know this weird plant_name " + plant_name)
+	return false
 
 func init():
 	var i = 1
@@ -36,10 +42,13 @@ func plant_clicked(plant_name):
 	Game.multitool.switch_tool(Game.multitool.TOOL.PLANT)
 	Game.multitool.show_plant_information()
 	Game.multitool.force_reload = true
-	Game.game_state = Game.State.INGAME
-	$"%HoverMarker".visible = false
+#	$"%HoverMarker".visible = false
 #		currently_hovering.hovered = false
 #		currently_hovering = null
+	Game.coming_out_of_journal = true
+	yield(get_tree(), "idle_frame")
+	
+	Game.game_state = Game.State.INGAME
 
 
 export(String, MULTILINE) var not_scanned_yet_fluff
@@ -55,6 +64,14 @@ func plant_hovered(plant_ui: PlantUI):
 			# TODO different stages of fluff text depending on progress
 			$"%Title".text = plant_ui.plant_profile.name
 			$"%FluffText".bbcode_text = plant_ui.plant_profile.fluff_base
+			match plant_ui.plant_profile.plant_type:
+				PlantData.PLANT_TYPES.THORNY:
+					$"%PlantType".text = "Thorny"
+				PlantData.PLANT_TYPES.FLOWER:
+					$"%PlantType".text = "Flower"
+				PlantData.PLANT_TYPES.SHROOM:
+					$"%PlantType".text = "Shroom"
+
 			if plant_ui.number_of_stars >= 1:
 				if plant_ui.stage2_scanned:
 					$"%FluffText".bbcode_text += "\n" + plant_ui.plant_profile.fluff_stage2
@@ -70,6 +87,7 @@ func plant_hovered(plant_ui: PlantUI):
 				
 		else:
 			$"%Title".text = "???"
+			$"%PlantType".text = ""
 			$"%FluffText".bbcode_text = not_scanned_yet_fluff
 
 func seed_count_updated(plant_name, total_seeds):

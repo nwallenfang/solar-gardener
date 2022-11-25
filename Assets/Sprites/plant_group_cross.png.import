@@ -14,7 +14,7 @@ dest_files=[ "res://.import/plant_group_cross.png-6039b4ef70adc4f1d294ad4270a0b0
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

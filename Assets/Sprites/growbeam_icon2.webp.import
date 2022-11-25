@@ -14,7 +14,7 @@ dest_files=[ "res://.import/growbeam_icon2.webp-ded594e85876f7e6be938961461d3442
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

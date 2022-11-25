@@ -14,7 +14,7 @@ dest_files=[ "res://.import/managed_sound.png-dd481aedb8a60fd88f06583c0a60a4d5.s
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

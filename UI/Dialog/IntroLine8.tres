@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 1 )
-text = "And since you’ve got that YARDIN PLANT-O-MATIC in your pocket anyway, you’ve got all the help you’ll ever need."
+text = "And since you've got that YARDIN PLANT-O-MATIC in your pocket anyway, you've got all the help you'll ever need."
 audio = ExtResource( 2 )
 level_db = 4.0
 extra_duration = 1.0

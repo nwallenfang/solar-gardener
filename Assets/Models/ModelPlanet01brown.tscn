@@ -1,9 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[sub_resource type="ArrayMesh" id=1]
-resource_name = "Planet01brown_mesh"
+[ext_resource path="res://Assets/Models/Meshes/MeshPlanet01brown1.res" type="ArrayMesh" id=1]
 
 [node name="ModelPlanet01brown" type="Spatial"]
 
 [node name="Planet 01 brown" type="MeshInstance" parent="."]
-mesh = SubResource( 1 )
+mesh = ExtResource( 1 )

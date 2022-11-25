@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://MeshSaver.gd" type="Script" id=1]
+
+[node name="MeshSaver" type="Node"]
+script = ExtResource( 1 )
+models_folder = "res://Assets/Models/"
+mesh_folder = "res://Assets/Models/Meshes/"
+collision_folder = "res://Assets/Models/CollisionShapes/"

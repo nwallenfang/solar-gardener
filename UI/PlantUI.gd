@@ -14,15 +14,22 @@ var scanned = false
 var stage2_scanned = false
 var stage3_scanned = false
 
-var plant_profile: PlantProfile
+var plant_profile: PlantProfile setget set_profile
 
-
+export var anchor_left_scanned := 0.449
 signal clicked(plant_name)
 
 
 func _ready() -> void:
 	$Panel/UndiscoveredOverlay.visible = true
 	$SeedCountBG.visible = false
+
+func set_profile(profile: PlantProfile):
+	plant_profile = profile
+	$Panel/PlantIcon.texture = profile.icon
+	$Panel/PlantIcon.anchor_left = 0.0
+	$Panel/PlantIcon.rect_pivot_offset = 0.5 * $Panel/PlantIcon.rect_size
+	$Panel/PlantIcon.rect_scale = Vector2(0.7, 0.7)
 
 const max_per_row = 3
 func add_preference(preference: PlantPreference):
@@ -103,3 +110,5 @@ func got_scanned(growth_stage: int):
 	$Panel.hint_tooltip = plant_profile.name
 	$Panel/Stars.visible = true
 	$Panel/Preferences.visible = true
+	$Panel/PlantIcon.anchor_left = anchor_left_scanned
+	$Panel/PlantIcon.rect_scale = Vector2(1.0, 1.0)

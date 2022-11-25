@@ -14,7 +14,7 @@ dest_files=[ "res://.import/white_circle.png-2c8688c37b093a64ddd4b0b6973e6743.st
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

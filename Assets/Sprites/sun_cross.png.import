@@ -14,7 +14,7 @@ dest_files=[ "res://.import/sun_cross.png-f20d630be0e156b3e986432034708198.stex"
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

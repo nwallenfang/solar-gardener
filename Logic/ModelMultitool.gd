@@ -19,7 +19,7 @@ func set_grow(active: bool):
 	if active:
 		wheel_accel_to(-100, 1.0)
 	else:
-		Audio.play("growbeam_close")
+#		Audio.play("growbeam_close")
 		set_grow_beam_on_target(null)
 		home_wheel()
 	yield($GrowBeamPlayer,"animation_finished")

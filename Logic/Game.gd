@@ -34,6 +34,7 @@ var planet: Planet = null
 var invert_y_axis = false
 
 var planet_list := []
+var coming_out_of_journal = false
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("open_settings"):  # show/hide settings UI
@@ -52,8 +53,8 @@ func _process(delta: float) -> void:
 			
 	if Input.is_action_just_pressed("give_seeds"):
 		print("gib tzieds")
-		PlantData.give_seeds("Grabroot", 10)
-		PlantData.give_seeds("Giant-Cap", 10)
+		PlantData.give_seeds("Grabroot", 10, false)
+		PlantData.give_seeds("Giant-Cap", 10, false)
 		
 	if Input.is_action_just_pressed("make_pref_known"):
 		print("pref known")
@@ -70,7 +71,7 @@ func _process(delta: float) -> void:
 		Audio.fade_in("growbeam")
 		
 	if Input.is_action_just_pressed("flashlight"):
-		Game.player.get_node("Head/Flashlight").visible = not Game.player.get_node("Head/SpotLight").visible
+		Game.player.get_node("Head/Flashlight").visible = not Game.player.get_node("Head/Flashlight").visible
 		
 
 signal changed_state(state, prev_state)

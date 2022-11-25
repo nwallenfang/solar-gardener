@@ -14,7 +14,7 @@ dest_files=[ "res://.import/scanner_icon_2.webp-fdfba4f6ad868ce974754fba96a2af31
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

@@ -14,7 +14,7 @@ dest_files=[ "res://.import/star-empty-bg.png-a8a7775a90d67e6ecdd26b592918c0e4.s
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

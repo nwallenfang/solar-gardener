@@ -120,13 +120,14 @@ func check_input():
 		emit_signal("switched_to", TOOL.GROW)
 		switch_tool(TOOL.GROW)
 	switched_tool_on_cooldown = TOOL.NONE
-	if Input.is_action_just_pressed("first_action"):
+	if Input.is_action_just_pressed("first_action") and not Game.coming_out_of_journal:
 		process_first_action()
-	first_action_holded = Input.is_action_pressed("first_action")
+	first_action_holded = Input.is_action_pressed("first_action") and not Game.coming_out_of_journal
 	if Input.is_action_just_pressed("second_action"):
 		process_second_action()
 	second_action_holded = Input.is_action_pressed("second_action")
 
+	Game.coming_out_of_journal = false
 
 # Collision masks
 # 0 - Collision
@@ -156,6 +157,9 @@ func switch_tool(new_tool: int, tool_active := true):
 			Game.crosshair.set_style(Game.crosshair.Style.DEFAULT)
 		else:
 			show_hopable(tool_active)
+		# dirty coded so that hovering hopper doesn't play stop sound
+		if current_tool == TOOL.GROW and new_tool != TOOL.HOPPER:
+			Audio.play("growbeam_close")
 		switch_tool(current_tool, false)
 		if waiting_for_animation:
 			yield($ModelMultitool,"animation_finished")
@@ -464,12 +468,18 @@ func show_analyse_information():
 
 func show_grow_information():
 	if has_no_cooldown():
-		Game.hologram.grow_beam_juice(grow_beam_active, growth_juice)
+		var is_growing
+		if plant_to_grow != null:
+			is_growing = (plant_to_grow.growth_stage != plant_to_grow.growth_lock)
+		Game.hologram.grow_beam_juice(grow_beam_active, growth_juice, is_growing)
 
 func show_plant_information():
 	if has_no_cooldown():
 		var seeds_left = PlantData.seed_counts[target_plant_name]
-		Game.hologram.show_seed_info(target_plant_name, seeds_left)
+		if Game.journal.get_got_scanned(target_plant_name):
+			Game.hologram.show_seed_info(target_plant_name, seeds_left)
+		else:
+			Game.hologram.show_seed_info("Unknown", seeds_left)
 #	set_display_label(target_plant_name + "\n" + str(seeds_left))
 
 func show_hopper_information():

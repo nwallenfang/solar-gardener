@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://UI/DialogUI.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Fonts/TutorialTitleFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://UI/SubtitleText.tscn" type="PackedScene" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "info_show"
@@ -20,23 +20,14 @@ __meta__ = {
 seeds_unlocked_color = Color( 0.866667, 0.631373, 0.490196, 1 )
 plant_unlocked_color = Color( 0.305882, 0.411765, 0.168627, 1 )
 preference_unlocked_color = Color( 0.317647, 0.521569, 0.733333, 1 )
-linger_time = 1.5
-float_time = 1.0
+linger_time = 4.0
+float_time = 1.5
 
 [node name="Controls" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="SubtitleText" type="Label" parent="Controls"]
-unique_name_in_owner = true
-margin_right = 1152.0
-margin_bottom = 35.0
-grow_horizontal = 0
-grow_vertical = 0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = ExtResource( 2 )
-align = 1
-autowrap = true
+[node name="SubtitleText" parent="Controls" instance=ExtResource( 2 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/info_show = SubResource( 1 )

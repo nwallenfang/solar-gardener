@@ -15,10 +15,10 @@
 
 [node name="Dialog" type="Node"]
 script = ExtResource( 1 )
-note_text1 = "Just arrived on this new planet. My boss wants to turn this system into a cliché art installation to attract tourists. I found many alien plants, but they won’t fit into this cliché Garden of Eden I’m supposed to build. 
+note_text1 = "Just arrived on this new planet. My boss wants to turn this system into a cliché art installation to attract tourists. I found many alien plants, but they won’t fit into this cliché Garden of Eden I'm supposed to build. 
 Evergreens it is then!"
-note_text2 = "They say limitation breeds creativity. But these clichés are too limiting, there’s barely any room for artistic expression! Just because they say grass is always greener they’re only letting me grow these shades of green!"
-note_text3 = "Do you ever just want to start over? That's how I feel with this system. These clichés just clash, they’re going to be the end for me! 
+note_text2 = "They say limitation breeds creativity. But these clichés are too limiting, there's barely any room for artistic expression! Just because they say grass is always greener they're only letting me grow these shades of green!"
+note_text3 = "Do you ever just want to start over? That's how I feel with this system. These clichés just clash, they're going to be the end for me! 
 This will be my last note.
 It's time for another gardener to have their turn!
 "

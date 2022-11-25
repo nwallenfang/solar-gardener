@@ -30,6 +30,7 @@ func on_analyse():
 func _on_VisibilityNotifier_camera_entered(camera):
 	if camera == Game.camera and pickup == null and seed_name in PlantData.profiles:
 		pickup = FLYING_PICKUP.instance()
+		pickup.is_amber = true
 		Game.planet.add_child_with_light(pickup)
 		pickup.global_transform.basis = Utility.get_basis_y_aligned(Game.planet.global_translation.direction_to(self.global_translation))
 		pickup.global_translation = $SeedPos.global_translation

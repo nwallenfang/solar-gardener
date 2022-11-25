@@ -2,6 +2,7 @@ extends Spatial
 
 var identity: String
 
+var is_amber := false
 var is_flying := false
 const MAX_VELOCITY = 20.0
 var current_velocity := 0.0
@@ -29,7 +30,7 @@ func setup_as_seed(seed_name: String, target_size := 1.0, hover := true, spinnin
 
 func on_pickup():
 	if identity in PlantData.seed_counts.keys():
-		PlantData.give_seeds(identity, 1)
+		PlantData.give_seeds(identity, 1, is_amber)
 	queue_free()
 
 func start_flying():
