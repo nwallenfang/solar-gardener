@@ -22,6 +22,7 @@ func on_analyse():
 	pickup.start_flying()
 	yield($Tween, "tween_all_completed")
 	Events.trigger("tutorial_amber_collected")
+	Game.number_of_ambers += 1
 	
 	queue_free()
 
