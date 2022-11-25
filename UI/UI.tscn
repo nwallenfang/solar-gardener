@@ -162,7 +162,6 @@ text = "P"
 [node name="DialogUI" parent="." instance=ExtResource( 11 )]
 plant_scanned_color = Color( 0.317647, 0.694118, 0.607843, 1 )
 linger_time = 1.0
-float_time = 1.5
 
 [node name="SkipCutsceneLabel" type="Control" parent="."]
 anchor_left = 0.05

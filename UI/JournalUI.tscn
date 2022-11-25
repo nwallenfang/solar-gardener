@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://UI/JournalUI.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/TitleFont.tres" type="DynamicFont" id=2]
@@ -13,6 +13,13 @@
 [ext_resource path="res://Assets/Fonts/Agane╠Ç 55 (roman) sign.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://Assets/Fonts/JournalTest.tres" type="DynamicFont" id=12]
 [ext_resource path="res://Assets/Fonts/Agane╠Ç 75 (Extra Bold).ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://Assets/Sprites/scanner_icon_2.webp" type="Texture" id=14]
+[ext_resource path="res://Assets/Sprites/seed_transformed.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Sprites/growbeam_icon2.webp" type="Texture" id=16]
+[ext_resource path="res://Assets/Sprites/log_icon.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Fonts/GuideProgressFont.tres" type="DynamicFont" id=18]
+[ext_resource path="res://Assets/Sprites/star-full.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Sprites/amber_icon.png" type="Texture" id=20]
 
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.188235, 0.223529, 0.160784, 1 )
@@ -92,6 +99,18 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.04, 1.04 ), Vector2( 1, 1 ) ]
 }
 
+[sub_resource type="DynamicFont" id=9]
+size = 28
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 13 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 33
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 13 )
+
 [node name="JournalAndGuideUI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -166,6 +185,7 @@ margin_bottom = -36.0
 custom_styles/panel = SubResource( 6 )
 
 [node name="JournalUI" type="Control" parent="."]
+visible = false
 anchor_top = 0.083
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -345,15 +365,15 @@ anims/RESET = SubResource( 4 )
 anims/hover = SubResource( 5 )
 
 [node name="Guide" type="Control" parent="."]
-visible = false
 anchor_top = 0.083
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Title" type="Label" parent="Guide"]
-anchor_top = 0.0564037
+visible = false
+anchor_top = 0.0397431
 anchor_right = 1.0
-anchor_bottom = 0.139707
+anchor_bottom = 0.123046
 custom_fonts/font = ExtResource( 2 )
 text = "GUIDE"
 align = 1
@@ -363,10 +383,11 @@ __meta__ = {
 }
 
 [node name="Guide" type="RichTextLabel" parent="Guide"]
+visible = false
 anchor_left = 0.025
-anchor_top = 0.173028
+anchor_top = -0.249546
 anchor_right = 0.979
-anchor_bottom = 0.5
+anchor_bottom = 0.0774263
 custom_fonts/normal_font = ExtResource( 8 )
 text = "- Plant Stuff with planting tool, you can make it faster with growing tool
 - Plants grow to different stages depending on how many of their needs are met
@@ -375,14 +396,15 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Objectives" type="Label" parent="Guide"]
-anchor_left = 0.199219
-anchor_top = 0.645583
-anchor_right = 1.19922
-anchor_bottom = 0.906095
-custom_fonts/font = ExtResource( 8 )
-text = "Looking for an objective?
-How about: Finding Gardener's Logs (0/4)
+[node name="ObjectivesLabel" type="Label" parent="Guide"]
+visible = false
+anchor_left = 0.564844
+anchor_top = 0.572883
+anchor_right = 0.970844
+anchor_bottom = 1.22556
+custom_fonts/font = SubResource( 9 )
+text = "Some objectives:
+Finding Gardener's Logs (0/4)
 Unlocking plants (1/6)
 Bringing plants to max lv (0/6)
 Creating beauty"
@@ -391,6 +413,260 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": true
 }
+
+[node name="Objectives" type="Control" parent="Guide"]
+anchor_left = 0.546875
+anchor_top = 0.171513
+anchor_right = 0.963031
+anchor_bottom = 0.777556
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="List" type="VBoxContainer" parent="Guide/Objectives"]
+anchor_top = 0.117
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="LogProgress" type="HBoxContainer" parent="Guide/Objectives/List"]
+margin_right = 532.0
+margin_bottom = 85.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="Guide/Objectives/List/LogProgress"]
+margin_right = 131.0
+margin_bottom = 85.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.43
+texture = ExtResource( 17 )
+expand = true
+stretch_mode = 6
+
+[node name="Description1" type="Label" parent="Guide/Objectives/List/LogProgress"]
+margin_left = 135.0
+margin_right = 457.0
+margin_bottom = 85.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.06
+custom_fonts/font = SubResource( 9 )
+text = "Find Logs"
+valign = 1
+
+[node name="LogProgressLabel" type="Label" parent="Guide/Objectives/List/LogProgress"]
+unique_name_in_owner = true
+margin_left = 461.0
+margin_right = 531.0
+margin_bottom = 85.0
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 18 )
+text = "0 / 3"
+valign = 1
+
+[node name="LogProgress2" type="HBoxContainer" parent="Guide/Objectives/List"]
+margin_top = 89.0
+margin_right = 532.0
+margin_bottom = 174.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="Guide/Objectives/List/LogProgress2"]
+margin_right = 131.0
+margin_bottom = 85.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.43
+texture = ExtResource( 20 )
+expand = true
+stretch_mode = 6
+
+[node name="Description2" type="Label" parent="Guide/Objectives/List/LogProgress2"]
+margin_left = 135.0
+margin_right = 457.0
+margin_bottom = 85.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.06
+custom_fonts/font = SubResource( 9 )
+text = "Find Amber"
+valign = 1
+
+[node name="LogProgressLabel" type="Label" parent="Guide/Objectives/List/LogProgress2"]
+margin_left = 461.0
+margin_right = 531.0
+margin_bottom = 85.0
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 18 )
+text = "1 / 6"
+valign = 1
+
+[node name="LogProgress3" type="HBoxContainer" parent="Guide/Objectives/List"]
+margin_top = 178.0
+margin_right = 532.0
+margin_bottom = 263.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="Guide/Objectives/List/LogProgress3"]
+margin_right = 131.0
+margin_bottom = 85.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.43
+texture = ExtResource( 19 )
+expand = true
+stretch_mode = 6
+
+[node name="Description3" type="Label" parent="Guide/Objectives/List/LogProgress3"]
+margin_left = 135.0
+margin_right = 457.0
+margin_bottom = 85.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.06
+custom_fonts/font = SubResource( 9 )
+text = "Max level Plants"
+valign = 1
+
+[node name="LogProgressLabel" type="Label" parent="Guide/Objectives/List/LogProgress3"]
+margin_left = 461.0
+margin_right = 531.0
+margin_bottom = 85.0
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 18 )
+text = "0 / 6"
+valign = 1
+
+[node name="LogProgress4" type="HBoxContainer" parent="Guide/Objectives/List"]
+margin_top = 267.0
+margin_right = 532.0
+margin_bottom = 353.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Description3" type="Label" parent="Guide/Objectives/List/LogProgress4"]
+margin_right = 532.0
+margin_bottom = 86.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.06
+custom_fonts/font = SubResource( 9 )
+text = "Creating beauty :)"
+align = 1
+valign = 1
+
+[node name="Title" type="Label" parent="Guide/Objectives"]
+anchor_right = 1.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 10 )
+text = "Some objectives"
+align = 1
+
+[node name="ToolGuide" type="VBoxContainer" parent="Guide"]
+anchor_left = 0.0382813
+anchor_top = 0.180556
+anchor_right = 0.492
+anchor_bottom = 0.698
+margin_top = -48.97
+margin_bottom = 135.392
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="ScannerGuide" type="HBoxContainer" parent="Guide/ToolGuide"]
+margin_right = 580.0
+margin_bottom = 183.0
+
+[node name="Scanner" type="TextureRect" parent="Guide/ToolGuide/ScannerGuide"]
+margin_right = 126.0
+margin_bottom = 183.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.81
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 5
+
+[node name="ScannerLabel" type="Label" parent="Guide/ToolGuide/ScannerGuide"]
+margin_left = 130.0
+margin_right = 580.0
+margin_bottom = 183.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+size_flags_stretch_ratio = 2.88
+custom_fonts/font = SubResource( 9 )
+text = "Scan plants, planets and other objects to discover new things.
+
+
+"
+autowrap = true
+
+[node name="PlantGuide" type="HBoxContainer" parent="Guide/ToolGuide"]
+margin_top = 187.0
+margin_right = 580.0
+margin_bottom = 370.0
+
+[node name="Plant" type="TextureRect" parent="Guide/ToolGuide/PlantGuide"]
+margin_right = 126.0
+margin_bottom = 183.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.81
+texture = ExtResource( 15 )
+expand = true
+stretch_mode = 5
+
+[node name="PlantLabel" type="Label" parent="Guide/ToolGuide/PlantGuide"]
+margin_left = 130.0
+margin_right = 580.0
+margin_bottom = 183.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+size_flags_stretch_ratio = 2.88
+custom_fonts/font = SubResource( 9 )
+text = "The more needs are met, the further the plant grows.
+Check out the Journal to learn needs.
+
+"
+autowrap = true
+
+[node name="GrowGuide" type="HBoxContainer" parent="Guide/ToolGuide"]
+margin_top = 374.0
+margin_right = 580.0
+margin_bottom = 588.0
+
+[node name="Grow" type="TextureRect" parent="Guide/ToolGuide/GrowGuide"]
+margin_right = 126.0
+margin_bottom = 214.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.81
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 5
+
+[node name="GrowLabel" type="Label" parent="Guide/ToolGuide/GrowGuide"]
+margin_left = 130.0
+margin_right = 580.0
+margin_bottom = 214.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+size_flags_stretch_ratio = 2.88
+custom_fonts/font = SubResource( 9 )
+text = "Use the beam to accelerate growth and harvest seeds from grown plants. 
+
+
+
+"
+autowrap = true
 
 [connection signal="gui_input" from="JournalTabSelector" to="." method="_on_JournalTabSelector_gui_input"]
 [connection signal="gui_input" from="GuideTabSelector" to="." method="_on_GuideTabSelector_gui_input"]
