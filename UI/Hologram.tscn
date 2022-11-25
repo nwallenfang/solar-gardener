@@ -330,6 +330,7 @@ autowrap = true
 
 [node name="GrowBeam" type="Control" parent="AspectRatioContainer"]
 unique_name_in_owner = true
+visible = false
 margin_left = 280.0
 margin_right = 1000.0
 margin_bottom = 720.0

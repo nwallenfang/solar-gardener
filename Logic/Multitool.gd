@@ -318,7 +318,7 @@ func check_on_hover():
 					var rm_indices = []
 					var idx = 0
 					for area in last_problem_areas:
-						if not area in problem_areas:
+						if is_instance_valid(area) and not area in problem_areas:
 							rm_indices.append(idx)
 							area.get_node("BadPlantingVisuals").visible = false
 							idx += 1
@@ -332,7 +332,8 @@ func check_on_hover():
 								last_problem_areas.append(area)
 				else:
 					for area in last_problem_areas:
-						area.get_node("BadPlantingVisuals").visible = false
+						if is_instance_valid(area):
+							area.get_node("BadPlantingVisuals").visible = false
 					last_problem_areas.clear()
 				Game.UI.set_diagnostics(last_problem_areas)
 			else:
@@ -511,7 +512,7 @@ func show_analyse_information():
 func show_grow_information():
 	if has_no_cooldown():
 		var is_growing := false
-		if plant_to_grow != null:
+		if plant_to_grow != null and is_instance_valid(plant_to_grow):
 			is_growing = (plant_to_grow.growth_stage != plant_to_grow.growth_lock)
 		Game.hologram.grow_beam_juice(grow_beam_active, growth_juice, is_growing)
 
