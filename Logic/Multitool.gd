@@ -412,6 +412,7 @@ func spawn_plant(pos: Vector3):
 	explosion.global_transform = new_plant.global_transform
 	var pile = DIRT_PILE.instance()
 	new_plant.add_child(pile)
+	new_plant.dirt_pile = pile
 	Game.planet.add_to_lod_list(pile)
 	Game.planet.configure_light(pile)
 	pile.global_translation = pos
@@ -517,12 +518,15 @@ func show_scanner_grid(show: bool):
 			scanned_meshes = []
 	scanner_grid_last_frame = show
 
+var re_count := 0
 var force_reload := false
 func try_reload():
 	if current_tool == TOOL.PLANT:
 		force_reload = false
 		selected_profile = PlantData.profiles[target_plant_name]
 		if not PlantData.seed_counts[target_plant_name] == 0:
+			re_count += 1
+			print("REEELOAD" + str(re_count))
 			seeds_empty = false
 			if is_instance_valid(fake_seed):
 				fake_seed.queue_free()

@@ -35,6 +35,8 @@ var can_be_analysed := false
 
 var effect: Spatial
 
+var dirt_pile: Spatial
+
 var is_setup := false
 func setup():
 	if profile.special_effect != null:
@@ -215,6 +217,10 @@ func grow(delta, factor_sign):
 		can_be_analysed = true
 		if growth_stage == growth_lock:
 			$SeedGrowCooldown.start(profile.seed_grow_time)
+		if profile.needs_dirt_pile == false:
+			yield(get_tree().create_timer(2), "timeout")
+			if is_instance_valid(dirt_pile):
+				dirt_pile.queue_free()
 		#$Area.set_collision_layer_bit(2, true)
 
 const GREEN_OVERLAY = preload("res://Assets/Materials/GreenAlphaOverlay.tres")
@@ -323,6 +329,7 @@ func grow_small_seeds():
 		pickup.global_translation = empty.global_translation
 		pickup.setup_as_seed(profile.name, .4, false, false)
 		small_seeds.append(pickup)
+		Game.planet.add_to_lod_list(pickup)
 	yield(get_tree().create_timer(2),"timeout")
 	seeds_ready_to_harvest = true
 
@@ -398,6 +405,8 @@ var lod_mode := false
 func on_lod(lod_triggered: bool):
 	if lod_triggered:
 		$CheckConditionsTimer.stop()
+		$SeedGrowCooldown.stop()
 	else:
 		$CheckConditionsTimer.start()
+		$SeedGrowCooldown.start()
 	lod_mode = lod_triggered

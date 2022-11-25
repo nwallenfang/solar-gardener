@@ -120,11 +120,14 @@ func set_player_is_on_planet(b: bool):
 	$PlanetHopArea.set_deferred("monitorable", not player_on_planet)
 	$PlanetHopArea/CollisionShape.disabled = player_on_planet
 	planet_light.set_player_is_on_planet(player_on_planet)
+	trigger_lod(not player_on_planet)
+
+func trigger_lod(lod: bool):
 	for lod_item in lod_items:
 		if is_instance_valid(lod_item):
 			lod_item = lod_item as Node
 			if lod_item.has_method("on_lod"):
-				lod_item.call_deferred("on_lod", not player_on_planet)
+				lod_item.call("on_lod", lod)
 
 func get_count_of_plant_type(plant_name: String) -> int:
 	var count := 0

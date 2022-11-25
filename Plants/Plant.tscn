@@ -9,7 +9,7 @@ radius = 0.860162
 radius = 1.39294
 
 [sub_resource type="SphereShape" id=3]
-radius = 3.19
+radius = 3.06425
 
 [node name="Plant" type="Spatial"]
 script = ExtResource( 1 )
@@ -37,7 +37,7 @@ shape = SubResource( 2 )
 
 [node name="CheckConditionsTimer" type="Timer" parent="."]
 process_mode = 0
-wait_time = 3.0
+wait_time = 5.0
 autostart = true
 
 [node name="GrowthCooldown" type="Timer" parent="."]
@@ -47,7 +47,7 @@ one_shot = true
 
 [node name="SeedGrowCooldown" type="Timer" parent="."]
 process_mode = 0
-wait_time = 14.0
+wait_time = 3.0
 one_shot = true
 
 [node name="SymbiosisArea" type="Area" parent="."]
