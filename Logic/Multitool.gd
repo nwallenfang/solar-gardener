@@ -306,6 +306,8 @@ func check_on_hover():
 		TOOL.PLANT:
 			if Game.player_raycast.colliding and Game.player_raycast.hit_point.distance_to(Game.player.global_translation) < PLANT_TOOL_DISTANCE:
 				can_plant = Utility.test_planting_position(Game.player_raycast.hit_point) # and PlantData.can_plant() TODO
+				if not can_plant:
+					var problem_areas : Array = Utility.get_last_planting_test_collider_areas()
 			else:
 				can_plant = false
 			plant_spawn_position = Game.player_raycast.hit_point
