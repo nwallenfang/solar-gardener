@@ -14,7 +14,7 @@ spheres = [ Plane( 0, 0, 0, 7.60543 ) ]
 
 [node name="Planet2" type="Spatial"]
 script = ExtResource( 5 )
-planet_name = "Stone Planet"
+planet_name = "Rock Solitude"
 dirt_pile_color = Color( 0.419608, 0.443137, 0.454902, 1 )
 soil_type = 2
 max_plants = 30

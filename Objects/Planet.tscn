@@ -23,7 +23,7 @@ spheres = [ Plane( 0, 0, 0, 5.39464 ) ]
 
 [node name="Planet" type="Spatial"]
 script = ExtResource( 1 )
-planet_name = "Dirt Planet"
+planet_name = "Yard Shed"
 dirt_pile_color = Color( 0.584314, 0.592157, 0.396078, 1 )
 soil_type = 3
 nutrients = true
