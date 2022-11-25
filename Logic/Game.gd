@@ -75,7 +75,7 @@ func _process(delta: float) -> void:
 		print("gib tzieds")
 		PlantData.give_seeds("Grabroot", 10, false)
 		PlantData.give_seeds("Giant-Cap", 10, false)
-		PlantData.give_seeds("Shroomtree", 10, false)
+		PlantData.give_seeds("Hidden Lotus", 10, false)
 		PlantData.give_seeds("Fractalrose", 10, false)
 		
 	if Input.is_action_just_pressed("make_pref_known"):

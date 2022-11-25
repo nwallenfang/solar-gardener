@@ -16,7 +16,6 @@ planet_name = "Düne"
 dirt_pile_color = Color( 0.756863, 0.784314, 0.513726, 1 )
 soil_type = 4
 sun = true
-nutrients = true
 max_plants = 30
 
 [node name="PlanetHopArea" type="Area" parent="."]
@@ -38,4 +37,4 @@ transform = Transform( 5.8573, 0, 0, 0, 5.8573, 0, 0, 0, 5.8573, 0, 0, 0 )
 
 [node name="Amber" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.91753, 0 )
-seed_name = "Shroomtree"
+seed_name = "Fractalrose"
