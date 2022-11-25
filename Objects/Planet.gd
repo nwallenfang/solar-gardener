@@ -147,7 +147,13 @@ func get_analyse_info_text() -> String:
 var has_been_grab_rooted := false
 func try_grabroot_effect(pos: Vector3):
 	if not has_been_grab_rooted:
-		if Utility.test_planting_position(pos):
+		while true:
+			if Utility.start_reliable_test(pos):
+				yield(get_tree().create_timer(.1), "timeout")
+				break
+			else:
+				yield(get_tree(),"idle_frame")
+		if Utility.get_reliable_result():
 			has_been_grab_rooted = true
 			if has_node("GrabrootGrabber"):
 				get_node("GrabrootGrabber").emerge(pos)

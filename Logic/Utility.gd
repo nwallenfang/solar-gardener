@@ -15,6 +15,14 @@ func test_planting_position(pos: Vector3) -> bool:
 func get_last_planting_test_collider_areas() -> Array:
 	return $PlantingTester.get_last_colliders()
 
+
+func start_reliable_test(position_world: Vector3) -> bool:
+	return $ReliablePlantingTester.start_reliable_test(position_world)
+
+func get_reliable_result() -> bool:
+	return $ReliablePlantingTester.get_reliable_result()
+
+
 func get_basis_y_aligned(target_up: Vector3) -> Basis:
 	var basis := Basis.IDENTITY
 	basis = basis.rotated(Vector3.UP.cross(target_up).normalized(), Vector3.UP.angle_to(target_up))

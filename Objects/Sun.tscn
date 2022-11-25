@@ -30,6 +30,7 @@ uniform float value;
 
 uniform vec4 color1: hint_color;
 uniform vec4 color2: hint_color;
+uniform vec4 asshole_color: hint_color;
 
 uniform float time_noise_speed = 0.01;
 
@@ -57,6 +58,10 @@ vec2 normal_to_radial(vec3 normal) {
 	return vec2(sphere_coords.x * 0.5 + 0.5, 1.0 - sphere_coords.y);
 }
 	
+float clamp_and_map(float _value, float istart, float istop, float ostart, float ostop) {
+    _value = clamp(_value, istart, istop);
+    return ostart + (ostop - ostart) * ((_value - istart) / (istop - istart));
+}
 
 void fragment() {
 	vec2 radial_coords = normal_to_radial(vert_normal);
@@ -64,6 +69,7 @@ void fragment() {
 //	vec4 noise_time = texture(noise, vec2(0.01 * TIME));
 	vec4 time_noise_sample = texture(noise, UV + (0.03 * TIME * vec2(0.5, 0.5)));
     ALBEDO = smoothstep(color1, color2, time_noise_sample).rgb;
+	ALBEDO = mix(ALBEDO, asshole_color.rgb, clamp_and_map(.5 - abs(UV.y-.5), 0.05, .18, 1.0, 0.0));
     EMISSION = emission_energy * ALBEDO; //normalize(smoothstep(color1, color2, texture(noise, UV + 0.2 * sin(0.2 * TIME)))).rgb; //emission_energy * mix(color1, color2, clamp((0.2sin(3.0 TIME + 1.0)) + texture(noise, UV + 0.2 * sin(0.2 * TIME)), 0.2, 0.8)).rgb;
 }"
 
@@ -87,6 +93,7 @@ shader_param/uv1_offset = null
 shader_param/value = 1.791
 shader_param/color1 = Color( 0.556863, 0.556863, 0.47451, 1 )
 shader_param/color2 = Color( 0.596078, 0.87451, 0.364706, 1 )
+shader_param/asshole_color = Color( 0.956863, 0.721569, 0.0901961, 1 )
 shader_param/time_noise_speed = 0.01
 shader_param/noise = SubResource( 6 )
 
