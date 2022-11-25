@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Models/Meshes/MeshShroomPlantState001.res" type="ArrayMesh" id=1]
+[ext_resource path="res://Assets/Models/Meshes/MeshShroomPlantState002.res" type="ArrayMesh" id=2]
+[ext_resource path="res://Assets/Models/Meshes/MeshShroomPlantState004.res" type="ArrayMesh" id=3]
+[ext_resource path="res://Assets/Models/Meshes/MeshShroomPlantState003.res" type="ArrayMesh" id=4]
+
+[node name="ModelShroomPlantState00" type="Spatial"]
+
+[node name="ShroomPlantV1BlossomMiddle" type="MeshInstance" parent="."]
+mesh = ExtResource( 1 )
+
+[node name="ShroomPlantV1BlossomLeft" type="MeshInstance" parent="."]
+mesh = ExtResource( 2 )
+
+[node name="ShroomPlantV1BlossomRight" type="MeshInstance" parent="."]
+mesh = ExtResource( 4 )
+
+[node name="SchroomPlantV1Stem" type="MeshInstance" parent="."]
+mesh = ExtResource( 3 )
+
+[node name="Empty" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.158192, 0.0603596, 0.0399693 )
+
+[node name="Empty001" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.270256, 0 )
+
+[node name="Empty002" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.210007, 0.132111, -0.00789072 )

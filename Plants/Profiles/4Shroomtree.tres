@@ -5,14 +5,24 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Placeholder9"
-fluff_base = "bedhtrhrthrt"
-fluff_stage2 = ""
-fluff_stage3 = ""
+name = "Shroomtree"
+mesh_file_name = "ModelShroomPlant"
+plant_type = 0
+fluff_base = "A"
+fluff_stage2 = "M"
+fluff_stage3 = "K"
 icon = ExtResource( 1 )
 sun = 3
 moisture = 3
 nutrients = 2
 group = 3
 prefered_soil = 4
+symbiosis_plant_type = 0
+needs_dirt_pile = false
 seed_count = 3
+seed_grow_time = 7.0
+points_for_stage_1 = 0
+points_for_stage_2 = 0
+points_for_stage_3 = 0
+points_for_stage_4 = 0
+special_effect_name = ""
