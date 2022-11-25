@@ -4,7 +4,7 @@ extends Node
 # guide: https://github.com/godotengine/godot/issues/25672#issuecomment-461541415
 export var sound_directoy = "res://Assets/Sound"
 
-var num_players = 32
+var num_players = 20
 
 var available = []  # The available players, instances of type AudioPlayerWithInfo
 var queue = []  # The queue of sounds to play.
@@ -64,6 +64,15 @@ func set_volume(sound_name, volume):
 
 #
 func _process(delta):
+#	var dia = []
+#	if "music_sand_1" in playing:
+#		dia.append(playing["music_sand_1"].volume_db)
+#	if "music_sand_2" in playing:
+#		dia.append(playing["music_sand_2"].volume_db)
+#	if "music_sand_3" in playing:
+#		dia.append(playing["music_sand_3"].volume_db)
+#
+#	Game.UI.set_diagnostics(dia)
 #	# Play a queued sound if any players are available.
 	if not queue.empty() and not available.empty():
 		var sound_name = queue.pop_front()

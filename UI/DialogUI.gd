@@ -49,7 +49,7 @@ func show_infoline():
 	subtitle_text.rect_position = beginning_pos
 	subtitle_text.rect_position.y -= (i % 3) * offset_pct * screen_height
 	var line = queue.pop_front()
-	print("start_pos: ", subtitle_text.rect_position)
+
 	subtitle_text.text = line[0]
 	match line[1]:  # (type of info, see enum)
 		INFO.MORE_SEEDS:
@@ -67,7 +67,7 @@ func show_infoline():
 	tween.chain().tween_property(subtitle_text, "rect_position", target_position, float_time).set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(subtitle_text, "modulate:a", 0.0, linger_time).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
 	tween.play()
-	print("target_pos: ", target_position)
+
 #	yield(get_tree().create_timer(delay), "timeout")
 	if not queue.empty():
 		show_infoline()

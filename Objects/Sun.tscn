@@ -184,6 +184,7 @@ shape = SubResource( 7 )
 stream = ExtResource( 3 )
 unit_db = -80.0
 unit_size = 20.0
+bus = "SFX"
 
 [node name="Tween" type="Tween" parent="."]
 
