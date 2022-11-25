@@ -254,7 +254,9 @@ func idle_process(delta: float):
 			
 			show_grow_information()
 		TOOL.ANALYSIS:
-			analyse_completed = false
+			if analyse_completed:
+				#print("Reset Analyse")
+				analyse_completed = false
 			if not currently_analysing:
 				if can_analyse and first_action_holded:
 					Audio.fade_in("scanner", 0.20, true)
@@ -274,6 +276,7 @@ func idle_process(delta: float):
 						Audio.fade_out("scanner", 0.4)
 						currently_analysing = false
 						analyse_completed = true
+						show_analyse_information()
 						$Cooldown.start(2)
 						print("Analysis Done of " + str(current_analyse_object))
 						if current_analyse_object.has_method("on_analyse"):
@@ -550,11 +553,11 @@ func try_reload():
 	if current_tool == TOOL.PLANT:
 		if force_reload:
 			force_reload = false
-			print("force reee")
+			#print("force reee")
 		selected_profile = PlantData.profiles[target_plant_name]
 		if not PlantData.seed_counts[target_plant_name] == 0:
 			re_count += 1
-			print("REEELOAD" + str(re_count))
+			#print("REEELOAD" + str(re_count))
 			seeds_empty = false
 			if is_instance_valid(fake_seed):
 				fake_seed.queue_free()
