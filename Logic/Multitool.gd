@@ -449,16 +449,23 @@ func spawn_plant(pos: Vector3):
 	Events.trigger("tutorial_seed_planted")
 	Events.trigger("seed_planted")
 
+var completely_analysed_object = null
 func show_analyse_information():
 	if has_no_cooldown():
 		#Game.UI.set_diagnostics(["Analysing Object", current_analyse_object, "Analyse Progress", current_analyse_progress * 100.0])
 		if object_to_analyse != null and is_instance_valid(object_to_analyse):
 			if "analyse_name" in object_to_analyse:
+				if completely_analysed_object != null:
+					if object_to_analyse == completely_analysed_object:
+						return
+					else:
+						completely_analysed_object = null
 				Game.hologram.show_scan_progress(object_to_analyse.get("analyse_name"), 0.0)
 				if currently_analysing:
 					Game.hologram.show_scan_progress(object_to_analyse.get("analyse_name"), current_analyse_progress * 100.0)
 				else:
 					if analyse_completed:
+						completely_analysed_object = object_to_analyse
 						if object_to_analyse is Plant:
 							var plant_obj: Plant = object_to_analyse as Plant
 							var plant_type: String
@@ -494,8 +501,10 @@ func show_analyse_information():
 							Game.hologram.show_scan_progress(object_to_analyse.get("analyse_name"), 100.0)
 			else:
 				Game.hologram.clear()
+				completely_analysed_object = null
 		else:
 			Game.hologram.clear()
+			completely_analysed_object = null
 
 
 func show_grow_information():

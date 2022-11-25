@@ -9,7 +9,7 @@ radius = 22.8154
 
 [node name="PlanetObsidian" type="Spatial"]
 script = ExtResource( 2 )
-planet_name = "Obsidian Planet"
+planet_name = "Stygea"
 soil_type = 1
 max_plants = 30
 is_obsidian = true
