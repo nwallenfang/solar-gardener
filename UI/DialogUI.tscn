@@ -35,3 +35,9 @@ mouse_filter = 2
 anims/info_show = SubResource( 1 )
 
 [node name="SubtitleTimer" type="Timer" parent="."]
+
+[node name="ResetValueiTimer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 5.0
+
+[connection signal="timeout" from="ResetValueiTimer" to="." method="_on_ResetValueiTimer_timeout"]

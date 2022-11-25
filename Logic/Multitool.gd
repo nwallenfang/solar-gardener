@@ -31,7 +31,7 @@ var seeds_empty := false
 var can_plant := false
 var plant_spawn_position := Vector3.ZERO
 var fake_seed : Spatial
-var last_problem_areas = []
+var last_problem_areas := []
 var ignore_first_check_visually := false # dirty code hack shit
 
 # Grow Tool Variables
@@ -170,6 +170,11 @@ func switch_tool(new_tool: int, tool_active := true):
 
 	match new_tool:
 		TOOL.PLANT:
+			if not tool_active:
+				for area in last_problem_areas:
+					if is_instance_valid(area):
+						area.get_node("BadPlantingVisuals").visible = false
+				last_problem_areas.clear()
 			if is_instance_valid(fake_seed):
 				fake_seed.queue_free()
 			#Game.player_raycast.set_collision_mask_bit(0, tool_active)
@@ -290,6 +295,7 @@ func process_first_action():
 			if can_plant and PlantData.can_plant(target_plant_name):
 				PlantData.plant(target_plant_name)
 				$Cooldown.start(.3)
+				ignore_first_check_visually = true
 				start_planting_animation(plant_spawn_position)
 		TOOL.HOPPER:
 			$Cooldown.start(2)
@@ -314,6 +320,11 @@ func check_on_hover():
 			if Game.player_raycast.colliding and Game.player_raycast.hit_point.distance_to(Game.player.global_translation) < PLANT_TOOL_DISTANCE and Game.planet.is_obsidian == false:
 				can_plant = Utility.test_planting_position(Game.player_raycast.hit_point) # and PlantData.can_plant() TODO
 				if not can_plant:
+					if ignore_first_check_visually:
+						yield(get_tree(),"physics_frame")
+						yield(get_tree(),"physics_frame")
+						ignore_first_check_visually = false
+						return
 					var problem_areas : Array = Utility.get_last_planting_test_collider_areas()
 					var rm_indices = []
 					var idx = 0

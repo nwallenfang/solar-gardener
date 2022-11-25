@@ -25,7 +25,11 @@ func get_reliable_result() -> bool:
 
 func get_basis_y_aligned(target_up: Vector3) -> Basis:
 	var basis := Basis.IDENTITY
-	basis = basis.rotated(Vector3.UP.cross(target_up).normalized(), Vector3.UP.angle_to(target_up))
+	if target_up == Vector3.ZERO:
+		target_up = Vector3.UP
+	var turn_angle := Vector3.UP.cross(target_up).normalized()
+	if turn_angle != Vector3.ZERO:
+		basis = basis.rotated(turn_angle, Vector3.UP.angle_to(target_up))
 	basis = basis.rotated(target_up.normalized(), randf() * PI * 2.0)
 	return basis
 

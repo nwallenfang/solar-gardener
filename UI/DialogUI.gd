@@ -34,9 +34,9 @@ func push_infoline(text: String, type: int):
 		print("start showing")
 		show_infoline()
 
-var delay = 0.3
-var i = 0
-var offset_pct = 0.02
+var delay := 0.3
+var i := 0
+var offset_pct := 0.04
 func show_infoline():
 	var subtitle_text = SUBTITLE_TEXT.instance()
 	add_child(subtitle_text)
@@ -47,7 +47,7 @@ func show_infoline():
 	subtitle_text.modulate.a = 0.0
 	screen_height = Game.main_scene.get_node("ViewportContainer/Viewport").size.y
 	subtitle_text.rect_position = beginning_pos
-	subtitle_text.rect_position.y -= (i % 3) * offset_pct * screen_height
+	subtitle_text.rect_position.y -= (i % 5) * offset_pct * screen_height
 	var line = queue.pop_front()
 
 	subtitle_text.text = line[0]
@@ -105,3 +105,7 @@ func got_seeds(plant_name: String, amount: int, is_amber: bool):
 	else:
 		push_infoline(seed_string, INFO.MORE_SEEDS)
 
+
+
+func _on_ResetValueiTimer_timeout():
+	i = 0
