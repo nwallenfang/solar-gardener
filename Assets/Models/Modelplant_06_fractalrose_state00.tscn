@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Models/Meshes/Meshplant_06_fractalrose_state001.res" type="ArrayMesh" id=1]
+[ext_resource path="res://Assets/Models/Meshes/Meshplant_06_fractalrose_state002.res" type="ArrayMesh" id=2]
+
+[node name="Modelplant_06_fractalrose_state00" type="Spatial"]
+
+[node name="Cube" type="MeshInstance" parent="."]
+mesh = ExtResource( 1 )
+
+[node name="Empty" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36729, 0.0866845, -0.556602 )
+
+[node name="Empty001" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.11448, 0.152483, -3.16241 )
+
+[node name="Empty002" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29843, 0.162778, 2.57964 )
+
+[node name="Cube003" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09059, 1.20468, -0.411902 )
+mesh = ExtResource( 2 )

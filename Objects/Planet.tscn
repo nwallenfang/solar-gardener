@@ -68,5 +68,6 @@ transform = Transform( 1.03296, 0, 0, 0, -4.51522e-08, 1.03296, 0, -1.03296, -4.
 
 [node name="Amber" parent="GrabrootGrabber" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28478, 0 )
+seed_name = "Fractalrose"
 
 [editable path="Model"]

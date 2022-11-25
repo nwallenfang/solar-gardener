@@ -1,0 +1,313 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v3.3.32",
+        "version" : "2.0"
+    },
+    "extensionsUsed" : [
+        "KHR_materials_unlit"
+    ],
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0,
+                1,
+                2,
+                3,
+                4
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Cube"
+        },
+        {
+            "name" : "Empty",
+            "translation" : [
+                -0.35173606872558594,
+                2.828677177429199,
+                -4.106173038482666
+            ]
+        },
+        {
+            "name" : "Empty.001",
+            "translation" : [
+                8.137930870056152,
+                3.6520493030548096,
+                -2.3041038513183594
+            ]
+        },
+        {
+            "name" : "Empty.002",
+            "translation" : [
+                -7.032626152038574,
+                6.515740394592285,
+                1.2210445404052734
+            ]
+        },
+        {
+            "mesh" : 1,
+            "name" : "Cube.003",
+            "translation" : [
+                1.090586543083191,
+                1.2046809196472168,
+                -0.41190195083618164
+            ]
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "extensions" : {
+                "KHR_materials_unlit" : {}
+            },
+            "name" : "pflante_06_Rosenmaterial",
+            "pbrMetallicRoughness" : {
+                "metallicFactor" : 0,
+                "roughnessFactor" : 0.9
+            }
+        },
+        {
+            "doubleSided" : true,
+            "extensions" : {
+                "KHR_materials_unlit" : {}
+            },
+            "name" : "downpart",
+            "pbrMetallicRoughness" : {
+                "metallicFactor" : 0,
+                "roughnessFactor" : 0.9
+            }
+        },
+        {
+            "doubleSided" : true,
+            "name" : "Material.001",
+            "pbrMetallicRoughness" : {}
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Cube_sm_5",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "indices" : 3,
+                    "material" : 0
+                },
+                {
+                    "attributes" : {
+                        "POSITION" : 4,
+                        "NORMAL" : 5,
+                        "TEXCOORD_0" : 6
+                    },
+                    "indices" : 7,
+                    "material" : 1
+                }
+            ]
+        },
+        {
+            "name" : "Cube.003_sm_7",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 8,
+                        "NORMAL" : 9,
+                        "TEXCOORD_0" : 10
+                    },
+                    "indices" : 11,
+                    "material" : 2
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 1728,
+            "max" : [
+                7.168331146240234,
+                13.54304027557373,
+                4.431857109069824
+            ],
+            "min" : [
+                -6.412013053894043,
+                6.596340656280518,
+                -7.845145225524902
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 1728,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 1728,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5123,
+            "count" : 2682,
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 4,
+            "componentType" : 5126,
+            "count" : 540,
+            "max" : [
+                3.6915433406829834,
+                8.485483169555664,
+                3.043426513671875
+            ],
+            "min" : [
+                -2.383815050125122,
+                -0.24467891454696655,
+                -3.692692518234253
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 5,
+            "componentType" : 5126,
+            "count" : 540,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 6,
+            "componentType" : 5126,
+            "count" : 540,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 7,
+            "componentType" : 5123,
+            "count" : 810,
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 8,
+            "componentType" : 5126,
+            "count" : 84,
+            "max" : [
+                7.098252773284912,
+                5.428143501281738,
+                1.7606791257858276
+            ],
+            "min" : [
+                -8.313502311706543,
+                -1.509926199913025,
+                -3.9119527339935303
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 9,
+            "componentType" : 5126,
+            "count" : 84,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 10,
+            "componentType" : 5126,
+            "count" : 84,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 11,
+            "componentType" : 5123,
+            "count" : 108,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 20736,
+            "byteOffset" : 0,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 20736,
+            "byteOffset" : 20736,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 13824,
+            "byteOffset" : 41472,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 5364,
+            "byteOffset" : 55296,
+            "target" : 34963
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 6480,
+            "byteOffset" : 60660,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 6480,
+            "byteOffset" : 67140,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 4320,
+            "byteOffset" : 73620,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 1620,
+            "byteOffset" : 77940,
+            "target" : 34963
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 1008,
+            "byteOffset" : 79560,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 1008,
+            "byteOffset" : 80568,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 672,
+            "byteOffset" : 81576,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 216,
+            "byteOffset" : 82248,
+            "target" : 34963
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 82464,
+            "uri" : "plant_06_fractalrose_state02.bin"
+        }
+    ]
+}

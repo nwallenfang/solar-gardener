@@ -29,7 +29,7 @@ func on_analyse():
 
 
 func _on_VisibilityNotifier_camera_entered(camera):
-	if camera == Game.camera and pickup == null and seed_name in PlantData.profiles:
+	if camera == Game.camera and pickup == null and seed_name in PlantData.profiles and Game.game_state == Game.State.INGAME:
 		pickup = FLYING_PICKUP.instance()
 		pickup.is_amber = true
 		Game.planet.add_child_with_light(pickup)
