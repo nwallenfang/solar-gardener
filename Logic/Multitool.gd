@@ -84,12 +84,11 @@ func wait_for_animation_finished():
 
 func _physics_process(delta):
 	if Game.game_state == Game.State.INGAME:
+		check_input_on_cooldown()
 		if has_no_cooldown():
 			check_on_hover()
 			check_input()
 			idle_process(delta)
-		else:
-			check_input_on_cooldown()
 			
 		if (seeds_empty and current_tool == TOOL.PLANT) or force_reload:
 			try_reload()
@@ -98,28 +97,30 @@ func _physics_process(delta):
 #	if should_update_fake_seed_position:
 #		update_fake_seed_position()
 	
-var switched_tool_on_cooldown :int= TOOL.NONE
+var switched_tool_on_cooldown :int= TOOL.ANALYSIS setget set_switched_on_cooldown
+func set_switched_on_cooldown(set_tool: int):
+	if tool_unlocked[set_tool]:
+		switched_tool_on_cooldown = set_tool
+		emit_signal("switched_to", set_tool)
+
 func check_input_on_cooldown():
 	if Input.is_action_just_pressed("tool1"):
-		switched_tool_on_cooldown = TOOL.ANALYSIS
-		emit_signal("switched_to", TOOL.ANALYSIS)
+		self.switched_tool_on_cooldown = TOOL.ANALYSIS
 	if Input.is_action_just_pressed("tool2"):
-		switched_tool_on_cooldown = TOOL.PLANT
-		emit_signal("switched_to", TOOL.PLANT)
+		self.switched_tool_on_cooldown = TOOL.PLANT
 	if Input.is_action_just_pressed("tool3"):
-		switched_tool_on_cooldown = TOOL.GROW
-		emit_signal("switched_to", TOOL.GROW)
+		self.switched_tool_on_cooldown = TOOL.GROW
 
 func check_input():
-	if Input.is_action_just_pressed("tool1") or switched_tool_on_cooldown == TOOL.ANALYSIS:
-		emit_signal("switched_to", TOOL.ANALYSIS)
+	if switched_tool_on_cooldown == TOOL.ANALYSIS:
 		switch_tool(TOOL.ANALYSIS)
-	if Input.is_action_just_pressed("tool2") or switched_tool_on_cooldown == TOOL.PLANT:
-		emit_signal("switched_to", TOOL.PLANT)
+		emit_signal("switched_to", TOOL.ANALYSIS)
+	if switched_tool_on_cooldown == TOOL.PLANT:
 		switch_tool(TOOL.PLANT)
-	if Input.is_action_just_pressed("tool3") or switched_tool_on_cooldown == TOOL.GROW:
-		emit_signal("switched_to", TOOL.GROW)
+		emit_signal("switched_to", TOOL.PLANT)
+	if switched_tool_on_cooldown == TOOL.GROW:
 		switch_tool(TOOL.GROW)
+		emit_signal("switched_to", TOOL.GROW)
 	switched_tool_on_cooldown = TOOL.NONE
 	if Input.is_action_just_pressed("first_action") and not Game.coming_out_of_journal:
 		process_first_action()
@@ -253,7 +254,9 @@ func idle_process(delta: float):
 			
 			show_grow_information()
 		TOOL.ANALYSIS:
-			analyse_completed = false
+			if analyse_completed:
+				#print("Reset Analyse")
+				analyse_completed = false
 			if not currently_analysing:
 				if can_analyse and first_action_holded:
 					Audio.fade_in("scanner", 0.20, true)
@@ -273,6 +276,7 @@ func idle_process(delta: float):
 						Audio.fade_out("scanner", 0.4)
 						currently_analysing = false
 						analyse_completed = true
+						show_analyse_information()
 						$Cooldown.start(2)
 						print("Analysis Done of " + str(current_analyse_object))
 						if current_analyse_object.has_method("on_analyse"):
@@ -284,6 +288,7 @@ func process_first_action():
 		TOOL.PLANT:
 			if can_plant and PlantData.can_plant(target_plant_name):
 				PlantData.plant(target_plant_name)
+				$Cooldown.start(.3)
 				start_planting_animation(plant_spawn_position)
 		TOOL.HOPPER:
 			$Cooldown.start(2)
@@ -305,7 +310,7 @@ func check_on_hover():
 		return
 	match current_tool:
 		TOOL.PLANT:
-			if Game.player_raycast.colliding and Game.player_raycast.hit_point.distance_to(Game.player.global_translation) < PLANT_TOOL_DISTANCE:
+			if Game.player_raycast.colliding and Game.player_raycast.hit_point.distance_to(Game.player.global_translation) < PLANT_TOOL_DISTANCE and Game.planet.is_obsidian == false:
 				can_plant = Utility.test_planting_position(Game.player_raycast.hit_point) # and PlantData.can_plant() TODO
 				if not can_plant:
 					var problem_areas : Array = Utility.get_last_planting_test_collider_areas()
@@ -317,7 +322,7 @@ func check_on_hover():
 							area.get_node("BadPlantingVisuals").visible = false
 							idx += 1
 					for i in rm_indices:
-						last_problem_areas.erase(i)
+						last_problem_areas.remove(i)
 					
 					for area in problem_areas:
 						if area is BadPlanting:
@@ -468,18 +473,21 @@ func show_analyse_information():
 							Game.hologram.show_plant_info(plant_obj.profile.name, plant_type, plant_obj.growth_stage, is_growing)
 						elif object_to_analyse is Planet:
 							var planet_obj: Planet = object_to_analyse as Planet
-							# types: ROCK, DIRT, SAND (2, 3, 4)
-							var soil_type: String
-							match planet_obj.soil_type:
-								PlantData.SOIL_TYPES.ROCK:
-									soil_type = "Rock"
-								PlantData.SOIL_TYPES.DIRT:
-									soil_type = "Dirt"
-								PlantData.SOIL_TYPES.SAND:
-									soil_type = "Sand"
-							if soil_type == null:
-								printerr(planet_obj.planet_name + " has weird soil type.")
-							Game.hologram.show_soil_info(planet_obj.planet_name, soil_type, planet_obj.nutrients, planet_obj.sun) # type_name: String, has_nutrients:bool, is_close_to_sun: bool)  # TODO
+							if planet_obj.is_obsidian:
+								Game.hologram.show_analyse_info("Soil too hard\nto plant\nanything")
+							else:
+								# types: ROCK, DIRT, SAND (2, 3, 4)
+								var soil_type: String
+								match planet_obj.soil_type:
+									PlantData.SOIL_TYPES.ROCK:
+										soil_type = "Rock"
+									PlantData.SOIL_TYPES.DIRT:
+										soil_type = "Dirt"
+									PlantData.SOIL_TYPES.SAND:
+										soil_type = "Sand"
+								if soil_type == null:
+									printerr(planet_obj.planet_name + " has weird soil type.")
+								Game.hologram.show_soil_info(planet_obj.planet_name, soil_type, planet_obj.nutrients, planet_obj.sun) # type_name: String, has_nutrients:bool, is_close_to_sun: bool)  # TODO
 						elif "ice" in object_to_analyse.name.to_lower():
 							Game.hologram.show_analyse_info("Should melt\nat great heat")
 						else:
@@ -547,14 +555,15 @@ func try_reload():
 	if current_tool == TOOL.PLANT:
 		if force_reload:
 			force_reload = false
-			print("force reee")
+			#print("force reee")
 		selected_profile = PlantData.profiles[target_plant_name]
 		if not PlantData.seed_counts[target_plant_name] == 0:
 			re_count += 1
-			print("REEELOAD" + str(re_count))
+			#print("REEELOAD" + str(re_count))
 			seeds_empty = false
 			if is_instance_valid(fake_seed):
 				fake_seed.queue_free()
+				yield(get_tree(), "idle_frame")
 			fake_seed = FAKE_SEED.instance()
 			$ModelMultitool/SeedOrigin.add_child(fake_seed)
 			fake_seed.setup(target_plant_name, 1.4)

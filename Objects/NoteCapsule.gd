@@ -5,6 +5,8 @@ export var last_note: bool = false
 var first_time_opening = false
 var index = -1
 
+var analyse_name := "Old Note"
+
 func on_analyse():
 	Audio.fade_out("scanner", 0.55)
 	if not first_time_opening:

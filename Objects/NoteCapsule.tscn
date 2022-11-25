@@ -43,4 +43,7 @@ shape = SubResource( 5 )
 [node name="ModelCapsule" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1.19819, 0, 0, 0, 1.19819, 0, 0, 0, 1.19819, 0, 0.174249, 0 )
 
+[node name="Scroll" parent="ModelCapsule/Pivot" index="0"]
+transform = Transform( 0.756754, -0.127449, -2.2284e-08, 0.0662606, 1.45558, -9.7371e-10, 1.15854e-08, -9.73726e-10, 1.46115, -0.0314721, -0.0015758, 0.00892695 )
+
 [editable path="ModelCapsule"]

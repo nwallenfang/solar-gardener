@@ -40,7 +40,7 @@ script = ExtResource( 2 )
 shape = SubResource( 2 )
 
 [node name="BadPlantingVisuals" parent="BadPlanting" instance=ExtResource( 3 )]
-transform = Transform( 1.3989, 0, 0, 0, 0.32219, 0, 0, 0, 1.40643, 0, -0.35946, 0 )
+transform = Transform( 1.3989, 0, 0, 0, 0.160546, 0, 0, 0, 1.40643, 0, -0.000725269, 0 )
 
 [node name="CheckConditionsTimer" type="Timer" parent="."]
 process_mode = 0

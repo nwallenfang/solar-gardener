@@ -22,6 +22,7 @@ export var max_plants : int
 # for music and footsteps
 export var music_prefix := "sand"
 
+export var is_obsidian := false
 
 var planet_growth_stage := 0  # for the music or general planet progression
 var planet_light : PlanetLight
