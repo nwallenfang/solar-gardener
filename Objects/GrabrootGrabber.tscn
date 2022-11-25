@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Objects/GrabrootGrabber.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Models/Modelplant_01_ziehende_ranken.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -12,17 +13,23 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.117, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Model"]
 transform = Transform( 0.0599319, 0, 0, 0, 2.02761, 0.0192536, 0, -0.687848, 0.0567551, -0.0784657, -1.53215, 0.170999 )
+visible = false
 mesh = SubResource( 1 )
 skeleton = NodePath("../..")
 
 [node name="MeshInstance2" type="MeshInstance" parent="Model"]
 transform = Transform( -0.0378515, -0.681924, 0.0278638, -0.0140097, 2.02761, 0.0075804, -0.028801, -0.0900798, -0.0403071, 0.156821, -1.53215, 0.0437361 )
+visible = false
 mesh = SubResource( 1 )
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3" type="MeshInstance" parent="Model"]
 transform = Transform( 0.0196289, 0.581012, -0.0381583, -0.0120501, 2.04241, 0.00712663, 0.0380519, 0.34707, 0.0219406, -0.176191, -1.53215, -0.063133 )
+visible = false
 mesh = SubResource( 1 )
 skeleton = NodePath("../..")
+
+[node name="Modelplant_01_ziehende_ranken" parent="Model" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.890839, 0.264962 )
 
 [node name="Tween" type="Tween" parent="."]
