@@ -30,7 +30,7 @@ func _ready() -> void:
 
 var INTRO_LENGTH_FACTOR = 1.0
 var TEST_LENGTH_FACTOR = 0.02
-const TEST_INTRO = false
+const TEST_INTRO = true
 func start_loading():
 	if OS.is_debug_build() and (not TEST_INTRO):
 		INTRO_LENGTH_FACTOR = TEST_LENGTH_FACTOR
@@ -54,7 +54,7 @@ func start_loading():
 		cam.queue_free()
 		Game.UI.set_loading_bar(float(i)/len(loading_cams))
 	Game.UI.set_loading_bar(1.0)
-	yield(get_tree().create_timer(.3), "timeout")
+#	yield(get_tree().create_timer(.3), "timeout")
 	start_intro_flight()
 
 
@@ -72,11 +72,12 @@ func start_intro_flight():
 	$IntroFlight/Tween.interpolate_method(Game.UI, "set_blackscreen_alpha", 1.0, 0.0, 1.5, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 	$IntroFlight/Tween.start()
 #	if (not OS.is_debug_build()) or TEST_INTRO:
-#		yield(get_tree().create_timer(1.5), "timeout")
-	yield($IntroFlight/Tween, "tween_all_completed")
-
+#	yield(get_tree().create_timer(0.4), "timeout")
 	$IntroFlight/AnimationPlayer.playback_speed = 1.0 / INTRO_LENGTH_FACTOR
 	$IntroFlight/AnimationPlayer.play("fly")
+#	yield($IntroFlight/Tween, "tween_all_completed")
+
+
 	yield($IntroFlight/AnimationPlayer, "animation_finished")
 	Game.UI.get_node("BlackScreen").visible = false
 	if not skipped:

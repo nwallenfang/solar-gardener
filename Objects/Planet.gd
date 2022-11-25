@@ -2,7 +2,7 @@ extends Spatial
 class_name Planet
 
 export var planet_name : String
-onready var analyse_name : String = planet_name
+onready var analyse_name : String = "Soil"
 var analyse_speed_factor := .3
 
 export(Color) var dirt_pile_color : Color
@@ -58,6 +58,8 @@ func setup():
 	configure_light(self)
 
 func growth_stage_reached(growth_stage: int):
+	if growth_stage == 4:
+		return
 	if music_prefix == "obsidian":
 		return
 	if growth_stage > planet_growth_stage:
