@@ -468,7 +468,7 @@ func show_analyse_information():
 
 func show_grow_information():
 	if has_no_cooldown():
-		var is_growing
+		var is_growing := false
 		if plant_to_grow != null:
 			is_growing = (plant_to_grow.growth_stage != plant_to_grow.growth_lock)
 		Game.hologram.grow_beam_juice(grow_beam_active, growth_juice, is_growing)
