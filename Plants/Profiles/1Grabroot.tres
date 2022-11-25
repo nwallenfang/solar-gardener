@@ -9,8 +9,8 @@ name = "Grabroot"
 mesh_file_name = "plant_01_ranke"
 plant_type = 1
 fluff_base = "The Grabroot is a rare plant which in most cases does not carry any leaves. 
-It grows best [b]in groups[/b] and is harvested 2-3 years before the sun's supernova. "
-fluff_stage2 = "This plant may appear to be small, but the majority of its biomass lies underground. The roots seem designed to pierce even the [b]hardest soils[/b]."
+It grows best [b]in groups[/b] and is best harvested 2-3 years before the sun's supernova. "
+fluff_stage2 = "The majority of its biomass lies underground. The roots seem designed to pierce even the [b]hardest soils[/b]. In rare occasions the Grabroot [i]digs up hidden treasures[/i]."
 fluff_stage3 = "It is believed that the Grabroot might have a sense of smell. This would explain their increased growth in [b]pleasantly smelling[/b] areas."
 icon = ExtResource( 1 )
 sun = 3
@@ -18,10 +18,11 @@ moisture = 1
 nutrients = 3
 group = 2
 prefered_soil = 2
-symbiosis_plant_type = 0
-seed_count = 4
+symbiosis_plant_type = 3
+needs_dirt_pile = false
+seed_count = 0
 seed_grow_time = 9.0
-points_for_stage_1 = 0
+points_for_stage_1 = 1
 points_for_stage_2 = 2
 points_for_stage_3 = 3
 points_for_stage_4 = 5
