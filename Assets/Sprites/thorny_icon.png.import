@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/shroom_icon.png-1916ff05cdf558f18cf9c2274f8f336f.stex"
+path="res://.import/thorny_icon.png-3aff4adbc86b4de61db753cbf33db9a6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/shroom_icon.png"
-dest_files=[ "res://.import/shroom_icon.png-1916ff05cdf558f18cf9c2274f8f336f.stex" ]
+source_file="res://Assets/Sprites/thorny_icon.png"
+dest_files=[ "res://.import/thorny_icon.png-3aff4adbc86b4de61db753cbf33db9a6.stex" ]
 
 [params]
 
