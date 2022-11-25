@@ -12,6 +12,7 @@ script = ExtResource( 2 )
 planet_name = "Obsidian Planet"
 soil_type = 1
 max_plants = 30
+is_obsidian = true
 
 [node name="PlanetHopArea" type="Area" parent="."]
 transform = Transform( 1.24458, 0, 0, 0, 1.24458, 0, 0, 0, 1.24458, 0, 0, 0 )
@@ -24,7 +25,7 @@ gravity_vec = Vector3( 0, 0, 0 )
 [node name="CollisionShape" type="CollisionShape" parent="PlanetHopArea"]
 shape = SubResource( 12 )
 
-[node name="Modelplanet_02_obsidian" parent="." instance=ExtResource( 1 )]
+[node name="Model" parent="." instance=ExtResource( 1 )]
 transform = Transform( 2.10392, 0, 0, 0, 2.10392, 0, 0, 0, 2.10392, 0, 0, 0 )
 
 [node name="NoteCapsule" parent="." instance=ExtResource( 3 )]
@@ -36,3 +37,5 @@ light_color = Color( 0.270588, 0.854902, 0.988235, 1 )
 light_energy = 3.0
 spot_range = 12.0
 spot_angle = 18.0378
+
+[editable path="Model"]

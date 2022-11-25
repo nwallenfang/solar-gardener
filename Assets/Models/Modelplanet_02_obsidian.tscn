@@ -8,7 +8,7 @@
 [node name="Retopo_Sphere" type="MeshInstance" parent="."]
 mesh = ExtResource( 1 )
 
-[node name="StaticBody" type="StaticBody" parent="Retopo_Sphere"]
+[node name="PlanetBody" type="StaticBody" parent="Retopo_Sphere"]
 
-[node name="CollisionShape" type="CollisionShape" parent="Retopo_Sphere/StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="Retopo_Sphere/PlanetBody"]
 shape = ExtResource( 2 )

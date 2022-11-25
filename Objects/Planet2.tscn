@@ -33,7 +33,7 @@ shape = SubResource( 12 )
 [node name="Occluder" type="Occluder" parent="."]
 shape = SubResource( 13 )
 
-[node name="ModelPlanet_03_rocks 0" parent="." instance=ExtResource( 1 )]
+[node name="Model" parent="." instance=ExtResource( 1 )]
 transform = Transform( 6.66107, 0, 0, 0, 6.66107, 0, 0, 0, 6.66107, 0, 0, 0 )
 
 [node name="Amber" parent="." instance=ExtResource( 2 )]

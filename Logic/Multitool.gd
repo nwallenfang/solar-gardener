@@ -117,10 +117,10 @@ func check_input():
 		emit_signal("switched_to", TOOL.ANALYSIS)
 	if switched_tool_on_cooldown == TOOL.PLANT:
 		switch_tool(TOOL.PLANT)
-		emit_signal("switched_to", TOOL.ANALYSIS)
+		emit_signal("switched_to", TOOL.PLANT)
 	if switched_tool_on_cooldown == TOOL.GROW:
 		switch_tool(TOOL.GROW)
-		emit_signal("switched_to", TOOL.ANALYSIS)
+		emit_signal("switched_to", TOOL.GROW)
 	switched_tool_on_cooldown = TOOL.NONE
 	if Input.is_action_just_pressed("first_action") and not Game.coming_out_of_journal:
 		process_first_action()
@@ -310,8 +310,7 @@ func check_on_hover():
 		return
 	match current_tool:
 		TOOL.PLANT:
-			print(has_no_cooldown())
-			if Game.player_raycast.colliding and Game.player_raycast.hit_point.distance_to(Game.player.global_translation) < PLANT_TOOL_DISTANCE:
+			if Game.player_raycast.colliding and Game.player_raycast.hit_point.distance_to(Game.player.global_translation) < PLANT_TOOL_DISTANCE and Game.planet.is_obsidian == false:
 				can_plant = Utility.test_planting_position(Game.player_raycast.hit_point) # and PlantData.can_plant() TODO
 				if not can_plant:
 					var problem_areas : Array = Utility.get_last_planting_test_collider_areas()
@@ -474,18 +473,21 @@ func show_analyse_information():
 							Game.hologram.show_plant_info(plant_obj.profile.name, plant_type, plant_obj.growth_stage, is_growing)
 						elif object_to_analyse is Planet:
 							var planet_obj: Planet = object_to_analyse as Planet
-							# types: ROCK, DIRT, SAND (2, 3, 4)
-							var soil_type: String
-							match planet_obj.soil_type:
-								PlantData.SOIL_TYPES.ROCK:
-									soil_type = "Rock"
-								PlantData.SOIL_TYPES.DIRT:
-									soil_type = "Dirt"
-								PlantData.SOIL_TYPES.SAND:
-									soil_type = "Sand"
-							if soil_type == null:
-								printerr(planet_obj.planet_name + " has weird soil type.")
-							Game.hologram.show_soil_info(planet_obj.planet_name, soil_type, planet_obj.nutrients, planet_obj.sun) # type_name: String, has_nutrients:bool, is_close_to_sun: bool)  # TODO
+							if planet_obj.is_obsidian:
+								Game.hologram.show_analyse_info("Soil too hard\nto plant\nanything")
+							else:
+								# types: ROCK, DIRT, SAND (2, 3, 4)
+								var soil_type: String
+								match planet_obj.soil_type:
+									PlantData.SOIL_TYPES.ROCK:
+										soil_type = "Rock"
+									PlantData.SOIL_TYPES.DIRT:
+										soil_type = "Dirt"
+									PlantData.SOIL_TYPES.SAND:
+										soil_type = "Sand"
+								if soil_type == null:
+									printerr(planet_obj.planet_name + " has weird soil type.")
+								Game.hologram.show_soil_info(planet_obj.planet_name, soil_type, planet_obj.nutrients, planet_obj.sun) # type_name: String, has_nutrients:bool, is_close_to_sun: bool)  # TODO
 						elif "ice" in object_to_analyse.name.to_lower():
 							Game.hologram.show_analyse_info("Should melt\nat great heat")
 						else:
