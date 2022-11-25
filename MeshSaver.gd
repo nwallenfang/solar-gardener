@@ -4,6 +4,7 @@ extends Node
 
 export var models_folder : String
 export var mesh_folder : String
+export var collision_folder: String
 
 #export var prefix : String
 #export var suffix : String
@@ -31,9 +32,9 @@ func _do_import(useless_parameter):
 			break
 		elif not file.begins_with(".") and file.ends_with(".tscn"):
 			files.append(file)
-	print(files)
+	
 	dir.list_dir_end()
-
+	print("DO MESH SAVER")
 	for f in files:
 		print("Importing " + f + " ...")
 		var scene_name = f.split(".")[0]	
@@ -45,22 +46,51 @@ func _do_import(useless_parameter):
 		for child in get_all_children(model_scene):
 			if child is MeshInstance:
 				child = child as MeshInstance
+				if child.mesh == null:
+					continue
 				var path: String = child.mesh.resource_path
 				var new_path 
 				if len(path.split(".tscn")) > 1:
-					var array_mesh = child.mesh
+					var array_mesh: Resource = child.mesh
 					var mesh_no = path.split("::")[1]
-					var filename: String = "Mesh" + scene_name.split("Model")[1] + mesh_no + ".scn"
-					new_path = models_folder + filename
-					ResourceSaver.save(new_path, array_mesh)
+					var filename: String = "Mesh" + scene_name.split("Model")[1] + mesh_no + ".res"
+					new_path = mesh_folder + filename
+					print("saving to " + new_path)
+
+					var err = ResourceSaver.save(new_path, array_mesh, ResourceSaver.FLAG_CHANGE_PATH & ResourceSaver.FLAG_COMPRESS)
+					if err != 0:
+						printerr("Error code " + err)
+					
+					array_mesh.take_over_path(new_path)
 				else:
 					print("mesh is saved externally already (good)")
+			if child is CollisionShape:  # these are worth saving as well
+				child = child as CollisionShape
+				if not child.shape is ConcavePolygonShape:
+					continue  # only worth saving these
+				var shape: ConcavePolygonShape = child.shape
+				var path: String = shape.resource_path
+				var new_path 
+				if len(path.split(".tscn")) > 1:
+					var res_no = path.split("::")[1]
+					var filename: String = "Shape" + scene_name.split("Model")[1] + res_no + ".res"
+					new_path = collision_folder + filename
+					print("saving to " + new_path)
+
+					var err = ResourceSaver.save(new_path, shape, ResourceSaver.FLAG_CHANGE_PATH & ResourceSaver.FLAG_COMPRESS)
+					if err != 0:
+						printerr("Error code " + err)
 					
-				child.mesh.path = new_path
-				var new_scene := PackedScene.new()
-				new_scene.pack(model_scene)
-				
-				ResourceSaver.save(models_folder + f, new_scene)
+					shape.take_over_path(new_path)
+				else:
+					print("done already")
+
+		var new_scene := PackedScene.new()
+		new_scene.pack(model_scene)
+
+		var err = ResourceSaver.save(models_folder + f, new_scene)
+		if err != 0:
+			printerr("Scene save Error code " + err)
 		print("------------------------")
 
 #		var file2Check = File.new()

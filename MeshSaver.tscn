@@ -6,3 +6,4 @@
 script = ExtResource( 1 )
 models_folder = "res://Assets/Models/"
 mesh_folder = "res://Assets/Models/Meshes/"
+collision_folder = "res://Assets/Models/CollisionShapes/"
