@@ -89,11 +89,9 @@ type = 3
 
 [node name="ModelIceDeco4" parent="IceDeco" instance=ExtResource( 4 )]
 transform = Transform( -0.592692, -0.0955952, -0.0518921, 0.0868542, -0.588997, 0.0930291, -0.0654797, 0.0840215, 0.5931, 0.291686, -7.79599, 0.578438 )
-type = 1
 
 [node name="ModelIceDeco6" parent="IceDeco" instance=ExtResource( 4 )]
 transform = Transform( -0.592692, -0.0955952, -0.0518921, 0.0868542, -0.588997, 0.0930291, -0.0654797, 0.0840215, 0.5931, 0.897197, -7.34009, 3.10392 )
-type = 1
 
 [node name="ModelIceDeco2" parent="IceDeco" instance=ExtResource( 4 )]
 transform = Transform( -0.454123, 0.568762, -0.0629097, -0.570069, -0.442693, 0.112781, 0.049684, 0.1192, 0.719026, 3.88735, -5.98625, 4.4189 )

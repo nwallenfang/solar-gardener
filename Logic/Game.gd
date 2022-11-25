@@ -36,6 +36,8 @@ var invert_y_axis = false
 var planet_list := []
 var coming_out_of_journal = false
 
+var cheat_lod := false
+
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("open_settings"):  # show/hide settings UI
 		if main_scene_running:
@@ -73,6 +75,9 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("flashlight"):
 		Game.player.get_node("Head/Flashlight").visible = not Game.player.get_node("Head/Flashlight").visible
 		
+	if Input.is_action_just_pressed("lod_trigger"):
+		cheat_lod = not cheat_lod
+		Game.planet.trigger_lod(cheat_lod)
 
 signal changed_state(state, prev_state)
 func set_game_state(state):

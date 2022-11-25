@@ -37,7 +37,7 @@ func _do_import(useless_parameter):
 	print("DO MESH SAVER")
 	for f in files:
 		print("Importing " + f + " ...")
-		var scene_name = f.split(".")[0]	
+		var scene_name = f.split(".")[0]
 		var model_scene = load(models_folder + f).instance()
 	
 		# go over every node in the model scene
