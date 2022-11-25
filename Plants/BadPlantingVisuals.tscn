@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_transparent = true
+flags_unshaded = true
+albedo_color = Color( 0.905882, 0.317647, 0.317647, 0.192157 )
+
+[sub_resource type="SphereMesh" id=5]
+material = SubResource( 4 )
+radial_segments = 12
+rings = 12
+is_hemisphere = true
+
+[node name="BadPlantingVisuals" type="MeshInstance"]
+transform = Transform( 1.3989, 0, 0, 0, 0.515721, 0, 0, 0, 1.40643, 0, 0, 0 )
+mesh = SubResource( 5 )

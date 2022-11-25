@@ -31,6 +31,7 @@ var seeds_empty := false
 var can_plant := false
 var plant_spawn_position := Vector3.ZERO
 var fake_seed : Spatial
+var last_problem_areas = []
 
 # Grow Tool Variables
 const GROW_TOOL_DISTANCE = 15.0
@@ -310,6 +311,26 @@ func check_on_hover():
 				can_plant = Utility.test_planting_position(Game.player_raycast.hit_point) # and PlantData.can_plant() TODO
 				if not can_plant:
 					var problem_areas : Array = Utility.get_last_planting_test_collider_areas()
+					var rm_indices = []
+					var idx = 0
+					for area in last_problem_areas:
+						if not area in problem_areas:
+							rm_indices.append(idx)
+							area.get_node("BadPlantingVisuals").visible = false
+							idx += 1
+					for i in rm_indices:
+						last_problem_areas.erase(i)
+					
+					for area in problem_areas:
+						if area is BadPlanting:
+							area.get_node("BadPlantingVisuals").visible = true
+							if not area in last_problem_areas:
+								last_problem_areas.append(area)
+				else:
+					for area in last_problem_areas:
+						area.get_node("BadPlantingVisuals").visible = false
+					last_problem_areas.clear()
+				Game.UI.set_diagnostics(last_problem_areas)
 			else:
 				can_plant = false
 			plant_spawn_position = Game.player_raycast.hit_point
