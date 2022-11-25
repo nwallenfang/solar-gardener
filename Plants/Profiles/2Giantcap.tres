@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://Plants/PlantProfile.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Sprites/seed_icons/pino.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/seed_icons/shroom_plant.png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
@@ -18,11 +18,11 @@ nutrients = 2
 group = 3
 prefered_soil = 3
 symbiosis_plant_type = 0
-needs_dirt_pile = false
+needs_dirt_pile = true
 seed_count = 3
 seed_grow_time = 7.0
-points_for_stage_1 = 0
-points_for_stage_2 = 1
+points_for_stage_1 = 1
+points_for_stage_2 = 2
 points_for_stage_3 = 3
 points_for_stage_4 = 4
 special_effect_name = ""

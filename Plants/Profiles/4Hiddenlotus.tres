@@ -1,0 +1,28 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Plants/PlantProfile.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sprites/seed_icons/pino.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "Hidden Lotus"
+mesh_file_name = "PlantPino"
+plant_type = 3
+fluff_base = "The Flower hidden inside is very healthy for the vascular system. Most people however dislike the taste."
+fluff_stage2 = "The Hidden Lotus is often found on giant [b]Flower Fields[/b]."
+fluff_stage3 = "When the flower blossoms, the roots below [i]dispense excess nutrients[/i] to the ground."
+icon = ExtResource( 2 )
+sun = 2
+moisture = 1
+nutrients = 1
+group = 2
+prefered_soil = 4
+symbiosis_plant_type = 3
+needs_dirt_pile = false
+seed_count = 0
+seed_grow_time = 7.0
+points_for_stage_1 = 1
+points_for_stage_2 = 2
+points_for_stage_3 = 3
+points_for_stage_4 = 4
+special_effect_name = ""
