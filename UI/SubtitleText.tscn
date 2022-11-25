@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Fonts/TutorialTitleFont.tres" type="DynamicFont" id=1]
+
+[node name="SubtitleText" type="Label"]
+unique_name_in_owner = true
+margin_right = 1152.0
+margin_bottom = 35.0
+grow_horizontal = 0
+grow_vertical = 0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 1 )
+align = 1
+autowrap = true

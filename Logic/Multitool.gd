@@ -157,6 +157,9 @@ func switch_tool(new_tool: int, tool_active := true):
 			Game.crosshair.set_style(Game.crosshair.Style.DEFAULT)
 		else:
 			show_hopable(tool_active)
+		# dirty coded so that hovering hopper doesn't play stop sound
+		if current_tool == TOOL.GROW and new_tool != TOOL.HOPPER:
+			Audio.play("growbeam_close")
 		switch_tool(current_tool, false)
 		if waiting_for_animation:
 			yield($ModelMultitool,"animation_finished")
@@ -465,7 +468,10 @@ func show_analyse_information():
 
 func show_grow_information():
 	if has_no_cooldown():
-		Game.hologram.grow_beam_juice(grow_beam_active, growth_juice)
+		var is_growing
+		if plant_to_grow != null:
+			is_growing = (plant_to_grow.growth_stage != plant_to_grow.growth_lock)
+		Game.hologram.grow_beam_juice(grow_beam_active, growth_juice, is_growing)
 
 func show_plant_information():
 	if has_no_cooldown():

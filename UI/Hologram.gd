@@ -52,14 +52,14 @@ func show_hop_info(planet_name):
 	current_screen = $"%PlanetHop"
 
 
-func grow_beam_juice(beam_active: bool, juice_left: float):
+func grow_beam_juice(beam_active: bool, juice_left: float, plant_growing:=true):
 	# grow beam hologram in other color?
 	if current_screen != null:
 		current_screen.visible = false
 	$"%GrowBeam".visible = true
 	current_screen = $"%GrowBeam"
 	
-	if beam_active:
+	if beam_active and plant_growing:
 		$"%IsGrowingLabel".text = "growing.."
 	else:
 		$"%IsGrowingLabel".text = ""

@@ -71,7 +71,7 @@ func _process(delta: float) -> void:
 		Audio.fade_in("growbeam")
 		
 	if Input.is_action_just_pressed("flashlight"):
-		Game.player.get_node("Head/Flashlight").visible = not Game.player.get_node("Head/SpotLight").visible
+		Game.player.get_node("Head/Flashlight").visible = not Game.player.get_node("Head/Flashlight").visible
 		
 
 signal changed_state(state, prev_state)
