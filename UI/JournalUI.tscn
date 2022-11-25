@@ -243,7 +243,7 @@ __meta__ = {
 [node name="FluffText" type="RichTextLabel" parent="JournalUI/JournalInfoText"]
 unique_name_in_owner = true
 anchor_left = 0.046
-anchor_top = 0.18
+anchor_top = 0.241
 anchor_right = 0.947
 anchor_bottom = 0.974
 size_flags_horizontal = 3
@@ -377,6 +377,10 @@ __meta__ = {
 root_node = NodePath("../..")
 anims/RESET = SubResource( 4 )
 anims/hover = SubResource( 5 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="JournalUI"]
+margin_right = 40.0
+margin_bottom = 40.0
 
 [node name="Guide" type="Control" parent="."]
 visible = false

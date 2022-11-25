@@ -40,7 +40,7 @@ func show_soil_info(planet_name: String, type_name: String, has_nutrients:bool, 
 	else:
 		$"%HasNutrients".text = "Nutrients: Low"
 	if is_close_to_sun:
-		$"%HasNutrients".text = "Sun: Close"
+		$"%CloseToSun".text = "Sun: Close"
 	else:
 		$"%CloseToSun".text = "Sun: Far"
 

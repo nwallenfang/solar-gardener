@@ -68,7 +68,6 @@ func _process(delta: float) -> void:
 		if game_state == State.INGAME:
 			self.game_state = State.JOURNAL
 		elif game_state == State.JOURNAL:
-			# this is only the correct if you can only enter settings from ingame!!
 			self.game_state = State.INGAME
 			
 	if Input.is_action_just_pressed("give_seeds"):
@@ -80,7 +79,13 @@ func _process(delta: float) -> void:
 		
 	if Input.is_action_just_pressed("make_pref_known"):
 		print("pref known")
-		UI.get_node("JournalAndGuideUI/JournalUI").make_preference_known("Grabroot", PlantData.PREFERENCES["Hates Sun"])
+		UI.get_node("JournalAndGuideUI").unlock_journal()
+		Game.multitool.activate_tool(Game.multitool.TOOL.GROW)
+		Game.multitool.activate_tool(Game.multitool.TOOL.PLANT)
+		Game.multitool.activate_tool(Game.multitool.TOOL.HOPPER)
+		journal.discover_and_scan_all()
+#		UI.get_node("JournalAndGuideUI/JournalUI").make_preference_known("Grabroot", PlantData.PREFERENCES["Hates Sun"])
+#		UI.get_node("JournalAndGuideUI/JournalUI").make_preference_known("Grabroot", PlantData.PREFERENCES["Hates Sun"])
 		
 	if Input.is_action_just_pressed("unlock_all_tools"):
 		print("unlock all tools")

@@ -16,7 +16,7 @@ var stage3_scanned = false
 
 var plant_profile: PlantProfile setget set_profile
 
-export var anchor_left_scanned := 0.449
+export var anchor_left_scanned := 0.41
 signal clicked(plant_name)
 
 
@@ -46,12 +46,19 @@ func make_preference_known(preference_name: String):
 			return
 	printerr("plant " + plant_name + " doesn't have the preference " + preference_name + " ERR")
 
+
+func make_all_preferences_known():
+	for pref_ui in $"%Preferences".get_children():
+		pref_ui.make_known()
 # delete?
 #func get_data_for_plant(new_plant_name):
 #	self.plant_name = new_plant_name
 #	# GET ALL THE DATA FROM PlantData singleton
 #	self.number_of_stars = 2
-	
+func set_to_discovered():
+		$Panel/UndiscoveredOverlay.visible = false
+		$SeedCountBG.visible = true
+		discovered = true	
 	
 func set_seed_count(seed_count: int):
 	if not discovered:
@@ -107,8 +114,9 @@ func got_scanned(growth_stage: int):
 		Game.UI.show_info_line("%s Journal entry added"  % plant_name, 3)
 		
 	scanned = true
-	$Panel.hint_tooltip = plant_profile.name
+#	$Panel.hint_tooltip = plant_profile.name
+	$Panel.hint_tooltip = ""
 	$Panel/Stars.visible = true
-	$Panel/Preferences.visible = true
+	$"%Preferences".visible = true
 	$Panel/PlantIcon.anchor_left = anchor_left_scanned
 	$Panel/PlantIcon.rect_scale = Vector2(1.0, 1.0)

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/music_placeholder_2.ogg-edf529188c48b874b74adb7b9bd1
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0

@@ -50,6 +50,13 @@ func plant_clicked(plant_name):
 	
 	Game.game_state = Game.State.INGAME
 
+func discover_and_scan_all():
+	for plant_ui in get_tree().get_nodes_in_group("plant_ui"):
+		plant_ui.discovered = true
+		plant_ui.got_scanned(1)
+		plant_ui.set_to_discovered()
+		plant_ui.make_all_preferences_known()
+		
 
 export(String, MULTILINE) var not_scanned_yet_fluff
 func plant_hovered(plant_ui: PlantUI):
@@ -106,6 +113,7 @@ func make_preference_known(plant_name: String, plant_preference_name: String):
 	for plant_ui in get_tree().get_nodes_in_group("plant_ui"):
 		if plant_ui.plant_name == plant_name:
 			plant_ui.make_preference_known(plant_preference_name)
+			
 
 func make_preference_list_known(plant_name: String, plant_references: Array):
 	# practical to save on for loops pls use this!
