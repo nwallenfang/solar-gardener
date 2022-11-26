@@ -11,7 +11,7 @@
 [ext_resource path="res://Objects/Planet3.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Objects/PlanetObsidian.tscn" type="PackedScene" id=10]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=11]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("FlyCamera:translation")
@@ -107,7 +107,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0626678, 0, -0.981606 )
 [node name="IntroFlight" type="Spatial" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="IntroFlight"]
-anims/RESET = SubResource( 2 )
+anims/RESET = SubResource( 11 )
 anims/fly = SubResource( 1 )
 
 [node name="FlyCamera" type="Camera" parent="IntroFlight"]

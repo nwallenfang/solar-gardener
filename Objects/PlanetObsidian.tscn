@@ -28,6 +28,9 @@ shape = SubResource( 12 )
 [node name="Model" parent="." instance=ExtResource( 1 )]
 transform = Transform( 2.10392, 0, 0, 0, 2.10392, 0, 0, 0, 2.10392, 0, 0, 0 )
 
+[node name="CollisionShape" parent="Model/Retopo_Sphere/PlanetBody" index="0"]
+visible = false
+
 [node name="NoteCapsule" parent="." instance=ExtResource( 3 )]
 transform = Transform( 0.24321, 0.907673, 0.34202, -0.965926, 0.258819, 0, -0.0885213, -0.330366, 0.939693, -1.95186, -0.282551, 3.92997 )
 

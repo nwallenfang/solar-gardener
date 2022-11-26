@@ -55,6 +55,9 @@ seed_count = 1
 [node name="Model" parent="." instance=ExtResource( 5 )]
 transform = Transform( 4.26153, 0, 0, 0, 4.26153, 0, 0, 0, 4.26153, 0, 0, 0 )
 
+[node name="CollisionShape" parent="Model/Planet 01 brown/PlanetBody" index="0"]
+visible = false
+
 [node name="Occluder" type="Occluder" parent="."]
 shape = SubResource( 13 )
 

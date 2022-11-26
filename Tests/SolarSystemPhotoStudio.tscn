@@ -1,0 +1,434 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://Effects/SunAura.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/Planet3.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Effects/Stars.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/IceBlock.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/Planet.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/PlanetObsidian.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Sound/sun.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Effects/Ubershader.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Tests/photo_env.tres" type="Environment" id=9]
+[ext_resource path="res://Tests/SolarSystemPhoto.gd" type="Script" id=10]
+[ext_resource path="res://Assets/Textures/sun.jpg" type="Texture" id=11]
+[ext_resource path="res://Objects/Sun.gd" type="Script" id=12]
+[ext_resource path="res://Assets/Models/ModelPlanet_03_rocks 0.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Objects/Amber.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Assets/Models/ModelIceDeco.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Objects/Planet.gd" type="Script" id=16]
+
+[sub_resource type="SphereMesh" id=2]
+radial_segments = 36
+rings = 24
+
+[sub_resource type="Shader" id=3]
+code = "// NOTE: Shader automatically converted from Godot Engine 3.5.1.stable's SpatialMaterial.
+
+shader_type spatial;
+render_mode unshaded, async_visible,blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+//uniform vec4 albedo : hint_color;
+//uniform float specular;
+//uniform float metallic;
+//uniform float roughness : hint_range(0,1);
+//uniform float point_size : hint_range(0,128);
+//uniform sampler2D texture_emission : hint_black_albedo;
+uniform float emission_energy;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+//uniform vec3 uv2_scale;
+//uniform vec3 uv2_offset;
+uniform sampler2D noise;
+uniform float value;
+
+uniform vec4 color1: hint_color;
+uniform vec4 color2: hint_color;
+uniform vec4 asshole_color: hint_color;
+
+uniform float time_noise_speed = 0.01;
+
+
+varying vec3 uv1_triplanar_pos;
+varying vec3 vert_normal;
+void vertex() {
+//	vec4 invcamx = INV_CAMERA_MATRIX.x;
+//	vec4 invcamy = INV_CAMERA_MATRIX.y;
+//	vec4 invcamz = INV_CAMERA_MATRIX.z;
+//	vec4 invcamw = INV_CAMERA_MATRIX.w;
+
+//	mat3 invcam = mat3(invcamx.xyz, invcamy.xyz, invcamz.xyz);
+	vert_normal = (INV_CAMERA_MATRIX * vec4(NORMAL, .01)).xyz;
+}
+
+
+// from https://answers.unity.com/questions/755222/how-do-i-fix-texture-seam-from-uv-spherical-mappin.html
+vec2 normal_to_radial(vec3 normal) {
+	vec3 normalized = normalize(normal);
+	float longitude = atan(normalized.z, normalized.x);
+	float latitude = acos(normalized.y);
+	vec2 sphere_coords = vec2(longitude, latitude) * (1.0/3.1415);
+	
+	return vec2(sphere_coords.x * 0.5 + 0.5, 1.0 - sphere_coords.y);
+}
+	
+float clamp_and_map(float _value, float istart, float istop, float ostart, float ostop) {
+    _value = clamp(_value, istart, istop);
+    return ostart + (ostop - ostart) * ((_value - istart) / (istop - istart));
+}
+
+void fragment() {
+	vec2 radial_coords = normal_to_radial(vert_normal);
+	radial_coords.x = 1.0 - radial_coords.x;
+//	vec4 noise_time = texture(noise, vec2(0.01 * TIME));
+	vec4 time_noise_sample = texture(noise, UV + (0.03 * TIME * vec2(0.5, 0.5)));
+    ALBEDO = smoothstep(color1, color2, time_noise_sample).rgb;
+	ALBEDO = mix(ALBEDO, asshole_color.rgb, clamp_and_map(.5 - abs(UV.y-.5), 0.05, .18, 1.0, 0.0));
+    EMISSION = emission_energy * ALBEDO; //normalize(smoothstep(color1, color2, texture(noise, UV + 0.2 * sin(0.2 * TIME)))).rgb; //emission_energy * mix(color1, color2, clamp((0.2sin(3.0 TIME + 1.0)) + texture(noise, UV + 0.2 * sin(0.2 * TIME)), 0.2, 0.8)).rgb;
+}"
+
+[sub_resource type="OpenSimplexNoise" id=5]
+seed = 3
+octaves = 4
+period = 20.0
+persistence = 0.432
+
+[sub_resource type="NoiseTexture" id=6]
+width = 1024
+height = 1024
+seamless = true
+noise = SubResource( 5 )
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+shader_param/emission_energy = 1.5
+shader_param/uv1_scale = null
+shader_param/uv1_offset = null
+shader_param/value = 1.791
+shader_param/color1 = Color( 0.556863, 0.556863, 0.47451, 1 )
+shader_param/color2 = Color( 0.596078, 0.87451, 0.364706, 1 )
+shader_param/asshole_color = Color( 0.956863, 0.721569, 0.0901961, 1 )
+shader_param/time_noise_speed = 0.01
+shader_param/noise = SubResource( 6 )
+
+[sub_resource type="OccluderShapeSphere" id=7]
+spheres = [ Plane( 0, 0, 0, 16.9765 ) ]
+
+[sub_resource type="Shader" id=8]
+code = "// NOTE: Shader automatically converted from Godot Engine 3.5.1.stable's SpatialMaterial.
+
+shader_type spatial;
+render_mode async_visible,blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : hint_color;
+uniform sampler2D texture_albedo : hint_albedo;
+uniform float specular;
+uniform float metallic;
+uniform float roughness : hint_range(0,1);
+uniform float point_size : hint_range(0,128);
+varying vec3 uv1_triplanar_pos;
+uniform float uv1_blend_sharpness;
+varying vec3 uv1_power_normal;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+
+void vertex() {
+	TANGENT = vec3(0.0,0.0,-1.0) * abs(NORMAL.x);
+	TANGENT+= vec3(1.0,0.0,0.0) * abs(NORMAL.y);
+	TANGENT+= vec3(1.0,0.0,0.0) * abs(NORMAL.z);
+	TANGENT = normalize(TANGENT);
+	BINORMAL = vec3(0.0,1.0,0.0) * abs(NORMAL.x);
+	BINORMAL+= vec3(0.0,0.0,-1.0) * abs(NORMAL.y);
+	BINORMAL+= vec3(0.0,1.0,0.0) * abs(NORMAL.z);
+	BINORMAL = normalize(BINORMAL);
+	uv1_power_normal=pow(abs(NORMAL),vec3(uv1_blend_sharpness));
+	uv1_power_normal/=dot(uv1_power_normal,vec3(1.0));
+	uv1_triplanar_pos = VERTEX * uv1_scale + uv1_offset;
+	uv1_triplanar_pos *= vec3(1.0,-1.0, 1.0);
+}
+
+
+vec4 triplanar_texture(sampler2D p_sampler,vec3 p_weights,vec3 p_triplanar_pos) {
+	vec4 samp=vec4(0.0);
+	samp+= texture(p_sampler,p_triplanar_pos.xy) * p_weights.z;
+	samp+= texture(p_sampler,p_triplanar_pos.xz) * p_weights.y;
+	samp+= texture(p_sampler,p_triplanar_pos.zy * vec2(-1.0,1.0)) * p_weights.x;
+	return samp;
+}
+
+
+void fragment() {
+	vec4 albedo_tex = triplanar_texture(texture_albedo,uv1_power_normal,uv1_triplanar_pos);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	METALLIC = metallic;
+	ROUGHNESS = roughness;
+	SPECULAR = specular;
+}
+"
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = SubResource( 8 )
+shader_param/albedo = Color( 1, 1, 1, 1 )
+shader_param/specular = 0.5
+shader_param/metallic = 0.0
+shader_param/roughness = 1.0
+shader_param/point_size = 1.0
+shader_param/uv1_blend_sharpness = 1.0
+shader_param/uv1_scale = Vector3( 1, 1, 1 )
+shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/uv2_scale = Vector3( 1, 1, 1 )
+shader_param/uv2_offset = Vector3( 0, 0, 0 )
+shader_param/texture_albedo = ExtResource( 11 )
+
+[sub_resource type="SphereMesh" id=10]
+material = SubResource( 9 )
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("FlyCamera:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -93.934, 13.19, 47.14 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FlyCamera:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "fly"
+length = 17.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("FlyCamera:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 6.5, 10.6, 13.5, 17 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -93.934, 13.19, 47.14 ), Vector3( -125.054, 7.08, -76.469 ), Vector3( -91.989, 7.08, -148.923 ), Vector3( -61.542, 5.248, -120.483 ), Vector3( -48.796, 8.907, -97.7 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FlyCamera:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 6.5, 10.6, 13.5, 17 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 360, 0 ), Vector3( 0, 324.799, 0 ), Vector3( 0, 223.039, 0 ), Vector3( 0, 205.346, 0 ), Vector3( 0, 175.346, 0 ) ]
+}
+
+[sub_resource type="SphereShape" id=12]
+radius = 22.8154
+
+[sub_resource type="OccluderShapeSphere" id=13]
+spheres = [ Plane( 0, 0, 0, 7.60543 ) ]
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 10 )
+
+[node name="World" type="Spatial" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
+environment = ExtResource( 9 )
+
+[node name="PlanetPlane" type="Spatial" parent="World"]
+transform = Transform( 2.90385, 0, 0, 0, 1, 0, 0, 0, 2.90385, 0, 0, 80.3443 )
+
+[node name="Sun" type="Spatial" parent="World"]
+transform = Transform( 2.03594, 0, 0, 0, 1.21419, -1.63426, 0, 1.63426, 1.21419, 0, 0, 0 )
+script = ExtResource( 12 )
+
+[node name="SunMesh" type="MeshInstance" parent="World/Sun"]
+transform = Transform( 17.2859, 0, 0, 0, 17.2859, 0, 0, 0, 17.2859, 0, 0, 0 )
+layers = 2
+cast_shadow = 0
+mesh = SubResource( 2 )
+material/0 = SubResource( 4 )
+
+[node name="SunAura" parent="World/Sun" instance=ExtResource( 1 )]
+transform = Transform( 0.786908, 9.1363e-08, 0.940464, 0.889913, -0.396617, -0.744611, 0.304182, 1.16034, -0.254516, 0, 0, 0 )
+
+[node name="Occluder" type="Occluder" parent="World/Sun"]
+shape = SubResource( 7 )
+
+[node name="Audio3D" type="AudioStreamPlayer3D" parent="World/Sun"]
+stream = ExtResource( 7 )
+unit_db = -80.0
+unit_size = 20.0
+max_db = 5.0
+bus = "SFX"
+
+[node name="Tween" type="Tween" parent="World/Sun"]
+
+[node name="MeshInstance" type="MeshInstance" parent="World/Sun"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.6, 0 )
+visible = false
+mesh = SubResource( 10 )
+
+[node name="Stars" parent="World" instance=ExtResource( 3 )]
+transform = Transform( 0.454618, 0, 0, 0, 0.454618, 0, 0, 0, 0.454618, 0, 0, 0 )
+
+[node name="LoadingCams" type="Spatial" parent="World"]
+
+[node name="Camera" type="Camera" parent="World/LoadingCams"]
+transform = Transform( -0.680056, 0, -0.73316, 0, 1, 0, 0.73316, 0, -0.680056, -263.641, 0, -192.133 )
+far = 1000.0
+
+[node name="Camera2" type="Camera" parent="World/LoadingCams"]
+transform = Transform( -0.789288, 0, -0.614024, 0, 1, 0, 0.614024, 0, -0.789288, -50.3926, 6.66329, -100.057 )
+far = 1000.0
+
+[node name="Camera3" type="Camera" parent="World/LoadingCams"]
+transform = Transform( -0.876256, 0, 0.481845, 0, 1, 0, -0.481845, 0, -0.876256, -42.6092, 0.227874, -99.1954 )
+far = 1000.0
+
+[node name="Camera4" type="Camera" parent="World/LoadingCams"]
+transform = Transform( 0.861399, 0, 0.507929, 0, 1, 0, -0.507929, 0, 0.861399, -42.1913, 0.227874, -58.7083 )
+far = 1000.0
+
+[node name="Ubershader" parent="World/LoadingCams/Camera4" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0626678, 0, -0.981606 )
+
+[node name="IntroFlight" type="Spatial" parent="World"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="World/IntroFlight"]
+anims/RESET = SubResource( 11 )
+anims/fly = SubResource( 1 )
+
+[node name="FlyCamera" type="Camera" parent="World/IntroFlight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -93.934, 13.19, 47.14 )
+far = 1000.0
+
+[node name="Tween" type="Tween" parent="World/IntroFlight"]
+
+[node name="PlanetYard" parent="World" instance=ExtResource( 5 )]
+transform = Transform( 2.08968, 1.43641, 0.538928, 0.824385, -0.283305, -2.44143, -1.29387, 2.13938, -0.685149, -59.0259, 45.4633, -74.4602 )
+music_prefix = "dirt"
+
+[node name="PlanetRock" type="Spatial" parent="World"]
+transform = Transform( -0.923718, -0.729029, 1.35051, 1.53472, -0.438789, 0.812847, -2.40227e-07, 1.57626, 0.850893, -76.5969, 58.3442, 30.0192 )
+script = ExtResource( 16 )
+planet_name = "Rock Solitude"
+dirt_pile_color = Color( 0.419608, 0.443137, 0.454902, 1 )
+soil_type = 2
+max_plants = 30
+music_prefix = "rock"
+
+[node name="PlanetHopArea" type="Area" parent="World/PlanetRock"]
+transform = Transform( 1.24458, 0, 0, 0, 1.24458, 0, 0, 0, 1.24458, 0, 0, 0 )
+collision_layer = 64
+collision_mask = 0
+space_override = 3
+gravity_point = true
+gravity_vec = Vector3( 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="World/PlanetRock/PlanetHopArea"]
+shape = SubResource( 12 )
+
+[node name="Occluder" type="Occluder" parent="World/PlanetRock"]
+shape = SubResource( 13 )
+
+[node name="Model" parent="World/PlanetRock" instance=ExtResource( 13 )]
+transform = Transform( 6.66107, 7.22557e-08, 6.53825e-08, -1.03755e-07, 6.66107, 7.15256e-07, 3.47202e-08, 4.76837e-07, 6.66107, 0, 0, 0 )
+
+[node name="Amber" parent="World/PlanetRock" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.37591, 1.03449, 8.98461 )
+seed_name = "Giant-Cap"
+
+[node name="OmniLight" type="OmniLight" parent="World/PlanetRock/Amber"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0627701, 0.795718, 0 )
+light_energy = 4.394
+omni_range = 2.79088
+
+[node name="ExtraLights" type="Spatial" parent="World/PlanetRock"]
+
+[node name="OmniLight" type="OmniLight" parent="World/PlanetRock/ExtraLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0704, 0, 1.06371 )
+light_color = Color( 0.513726, 0.556863, 0.992157, 1 )
+light_energy = 0.5
+omni_range = 10.572
+omni_attenuation = 0.517633
+
+[node name="OmniLight2" type="OmniLight" parent="World/PlanetRock/ExtraLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.46336, 0.791449, -7.0854 )
+light_color = Color( 0.513726, 0.556863, 0.992157, 1 )
+light_energy = 0.5
+omni_range = 10.572
+omni_attenuation = 0.517633
+
+[node name="OmniLight3" type="OmniLight" parent="World/PlanetRock/ExtraLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.53156, 7.19225, 3.40806 )
+light_color = Color( 0.513726, 0.556863, 0.992157, 1 )
+light_energy = 0.5
+omni_range = 10.572
+omni_attenuation = 0.517633
+
+[node name="OmniLight4" type="OmniLight" parent="World/PlanetRock/ExtraLights"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.84004, -10.4243, 3.40806 )
+light_color = Color( 0.47451, 0.666667, 1, 1 )
+omni_range = 16.112
+omni_attenuation = 1.10957
+
+[node name="IceBlock" parent="World/PlanetRock" instance=ExtResource( 4 )]
+transform = Transform( -1.83685, 8.51691e-08, -3.85062e-08, -4.9439e-07, -1.06687, 0.176118, 2.83056e-07, 0.102766, 1.82839, 2.49742, -7.31379, 2.64704 )
+
+[node name="IceDeco" type="Spatial" parent="World/PlanetRock"]
+transform = Transform( 1.12329, -3.90705e-09, -5.41579e-08, 1.11715e-07, 1.12329, 1.19209e-07, -6.16058e-08, 0, 1.12329, -0.572792, 0.669815, 1.90735e-06 )
+
+[node name="ModelIceDeco" parent="World/PlanetRock/IceDeco" instance=ExtResource( 15 )]
+transform = Transform( -0.487299, 0.267537, -0.0480507, -0.271818, -0.479624, 0.0861425, 0, 0.0986377, 0.549195, 5.06561, -5.90321, 1.95703 )
+type = 4
+
+[node name="ModelIceDeco3" parent="World/PlanetRock/IceDeco" instance=ExtResource( 15 )]
+transform = Transform( 0.339231, 0.209102, 0.317923, 0.168911, -0.464401, 0.12521, 0.340981, 0.0220207, -0.378317, 3.27422, -7.55976, -0.0442332 )
+type = 3
+
+[node name="ModelIceDeco4" parent="World/PlanetRock/IceDeco" instance=ExtResource( 15 )]
+transform = Transform( -0.592692, -0.0955952, -0.0518921, 0.0868542, -0.588997, 0.0930291, -0.0654797, 0.0840215, 0.5931, 0.291686, -7.79599, 0.578438 )
+
+[node name="ModelIceDeco6" parent="World/PlanetRock/IceDeco" instance=ExtResource( 15 )]
+transform = Transform( -0.592692, -0.0955952, -0.0518921, 0.0868542, -0.588997, 0.0930291, -0.0654797, 0.0840215, 0.5931, 0.897197, -7.34009, 3.10392 )
+
+[node name="ModelIceDeco2" parent="World/PlanetRock/IceDeco" instance=ExtResource( 15 )]
+transform = Transform( -0.454123, 0.568762, -0.0629097, -0.570069, -0.442693, 0.112781, 0.049684, 0.1192, 0.719026, 3.88735, -5.98625, 4.4189 )
+type = 2
+
+[node name="ModelIceDeco5" parent="World/PlanetRock/IceDeco" instance=ExtResource( 15 )]
+transform = Transform( -0.646909, 0.147159, -0.113422, -0.246898, -0.407481, 0.203335, -0.0354791, 0.152429, 0.653069, 1.69905, -6.48207, 4.82971 )
+type = 2
+
+[node name="PlanetSand" parent="World" instance=ExtResource( 2 )]
+transform = Transform( 2.15172, 0, 0, 0, 2.15172, 0, 0, 0, 2.15172, 71.2939, 50.3241, 69.0658 )
+
+[node name="PlanetObsidian" parent="World" instance=ExtResource( 6 )]
+transform = Transform( 1.57828, 0, 0, 0, 1.57828, 0, 0, 0, 1.57828, 104.779, 49.2929, -42.8442 )
+music_prefix = "obsidian"
+
+[node name="SolarSystemCamera" type="Camera" parent="."]
+transform = Transform( -0.98293, -0.178082, 0.0462065, 0, 0.251151, 0.967948, -0.183979, 0.951425, -0.246864, 7.59784, 159.163, -40.5927 )
+current = true
+far = 1400.0
+
+[node name="DirectionalLight" type="DirectionalLight" parent="SolarSystemCamera"]
+light_energy = 2.28
