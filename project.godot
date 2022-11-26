@@ -132,6 +132,11 @@ config/name="Solar Gardener"
 run/main_scene="res://Logic/MainScene.tscn"
 config/icon="res://Assets/Sprites/plant_group.png"
 
+[audio]
+
+output_latency=25
+output_latency.web=75
+
 [autoload]
 
 Game="*res://Logic/Game.tscn"

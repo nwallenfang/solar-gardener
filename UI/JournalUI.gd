@@ -63,9 +63,15 @@ func discover_and_scan_all():
 export(String, MULTILINE) var not_scanned_yet_fluff
 func plant_hovered(plant_ui: PlantUI):
 	if plant_ui.discovered:
+		if currently_hovering != null:
+			currently_hovering.get_node("HoverPanel").visible = false
 		currently_hovering = plant_ui
-		$"%HoverMarker".visible = true
-		$"%HoverMarker".rect_global_position = plant_ui.rect_global_position - Vector2(12, 1)
+		currently_hovering.get_node("HoverPanel").visible = true
+#		$"%HoverMarker".visible = true
+		var surround_this_panel: Control = plant_ui.get_node("Panel")
+		$"%HoverMarker".rect_size = 1.05 * surround_this_panel.rect_size
+		$"%HoverMarker".rect_global_position = surround_this_panel.rect_global_position
+		$"%HoverMarker".rect_pivot_offset = 0.5 * $"%HoverMarker".rect_size
 		if not $HoverAnimation.is_playing():
 			$HoverAnimation.play("hover")
 		

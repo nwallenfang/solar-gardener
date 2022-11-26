@@ -106,6 +106,9 @@ func fade_in(sound_name: String, fade_duration:=1.0, random_start:=false):
 		return
 
 	var player: CustomAudioPlayer = available.pop_front()
+	if player == null:
+		# if this is music it should get special treatment
+		pass
 #	print(sound_name + " started")
 	player.stream = $Sounds.get_node(sound_name).stream
 	player.sound = $Sounds.get_node(sound_name)
@@ -159,6 +162,8 @@ func play_attenuated(sound_name:String, distance:float):
 	var max_dist = sound.max_distance_when_attenuated
 	
 	var player: CustomAudioPlayer = available.pop_front()
+	if player == null:
+		return
 	player.sound = sound
 	player.stream = sound.stream
 	player.play()
@@ -206,6 +211,8 @@ func play_random_step(planet_type: String = ""):
 	play(step_name)
 	var player = available.pop_front()
 	# Reset all player variables
+	if player == null:
+		return
 
 	player.stream = $Sounds.get_node(step_name).stream
 	player.sound = $Sounds.get_node(step_name)
