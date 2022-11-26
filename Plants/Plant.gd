@@ -80,8 +80,8 @@ func _physics_process(delta):
 		growth_locked_once = true
 
 func _on_CheckConditionsTimer_timeout():
-	if growth_stage == growth_lock:
-		check_conditions()
+#	if growth_stage == growth_lock:
+	check_conditions()
 
 var cheat = false
 func calculate_growth_points():
@@ -389,7 +389,6 @@ func get_near_plants_types() -> Array:
 	return types
 
 func get_analyse_name() -> String:
-	# TODO "Unknown Plant" if not analysed
 	if analyse_name in Game.journal.scanned_plant_names:
 		return analyse_name
 	else:
