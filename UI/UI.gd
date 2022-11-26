@@ -57,7 +57,7 @@ func changed_state(state, prev_state):
 			$Toolbar.visible = false
 			$HotkeyGuide.visible = false
 			$TutorialPanel.visible = false
-			$Diagnostics.visible = false
+#			$Diagnostics.visible = false
 			$GardenerNote.visible = false
 		Game.State.JOURNAL:
 			$"%Crosshair".visible = false
@@ -67,7 +67,7 @@ func changed_state(state, prev_state):
 			$Toolbar.visible = false
 			$HotkeyGuide.visible = false
 			$TutorialPanel.visible = false
-			$Diagnostics.visible = false
+#			$Diagnostics.visible = false
 			$GardenerNote.visible = false
 		Game.State.READING_NOTE:
 			$"%Crosshair".visible = false
@@ -77,7 +77,7 @@ func changed_state(state, prev_state):
 			$Toolbar.visible = false
 			$HotkeyGuide.visible = false
 			$TutorialPanel.visible = false
-			$Diagnostics.visible = false
+#			$Diagnostics.visible = false
 			$GardenerNote.visible = true
 		Game.State.INTRO_FLIGHT:
 			$"%Crosshair".visible = false

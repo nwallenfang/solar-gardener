@@ -59,6 +59,7 @@ func show_settings():
 	self.visible = true
 
 func _on_DoneButton_pressed():
+	Game.get_node("SettingsOpenCooldown").start(0.4)
 	Game.game_state = Game.State.INGAME
 
 

@@ -31,7 +31,7 @@ func _ready() -> void:
 
 var INTRO_LENGTH_FACTOR = 1.0
 var TEST_LENGTH_FACTOR = 0.02
-const TEST_INTRO = true
+const TEST_INTRO = false
 func start_loading():
 	if OS.is_debug_build() and (not TEST_INTRO):
 		INTRO_LENGTH_FACTOR = TEST_LENGTH_FACTOR
@@ -94,8 +94,13 @@ func end_intro_flight():
 	Game.set_game_state(Game.State.INGAME)
 	Game.multitool.visible = true
 	Game.multitool.switch_tool(Game.multitool.TOOL.ANALYSIS)
+	Game.intro_done = true
 	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 		Game.UI.get_node("ClickToFocus").visible = true
+		# in this case the intro only counts as done once this has been hidden
+		Game.intro_done = false
+		
+	
 	yield(get_tree().create_timer(2.0), "timeout")
 	set_process(false)
 	

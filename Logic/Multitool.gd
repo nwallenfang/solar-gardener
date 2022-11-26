@@ -324,7 +324,7 @@ func process_second_action():
 				$Cooldown.start(2)
 
 func check_on_hover():
-	Game.UI.set_diagnostics(last_problem_areas)
+#	Game.UI.set_diagnostics(last_problem_areas)
 	Game.player_raycast.do_cast()
 	if Game.player_raycast.collider is Planet and current_tool != TOOL.HOPPER and "PlanetHopArea" == Game.player_raycast.collider_tag:
 		if tool_unlocked[TOOL.HOPPER]:

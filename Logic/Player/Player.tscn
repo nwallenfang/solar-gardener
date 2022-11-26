@@ -45,7 +45,7 @@ far = 600.0
 [node name="Flashlight" type="SpotLight" parent="Head"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00718498, -0.138919 )
 light_color = Color( 0.996078, 1, 0.709804, 1 )
-light_energy = 1.2
+light_energy = 1.5
 spot_range = 11.0478
 spot_angle = 37.9648
 spot_angle_attenuation = 0.297302

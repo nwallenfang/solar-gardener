@@ -14,6 +14,7 @@ enum State {
 }
 
 var game_state = State.LOADING setget set_game_state
+var intro_done := false
 # is set from MainScene, if this is false, a subscene is running individually for testing,
 # if this is true game is running normally
 var main_scene_running = false
@@ -57,6 +58,19 @@ func set_number_of_max_lv(number):
 	UI.get_node("JournalAndGuideUI").set_progress_max(number)
 
 func _process(delta: float) -> void:
+	var mode := ""
+	match Input.mouse_mode:
+		Input.MOUSE_MODE_CAPTURED:
+			mode = "captured"
+		Input.MOUSE_MODE_VISIBLE:
+			mode = "free"
+			# when running on HTML5 the Settings action (ESC) can't be triggered
+			# since that's the hotkey for leaving the mouse capture mode.
+			# So we open the settings as soon as the mouse mode changes for no reason
+			# (no journal/node mode)
+			if is_ingame() and OS.has_feature("HTML5") and intro_done and $SettingsOpenCooldown.is_stopped():
+				set_game_state(State.SETTINGS)
+#	UI.set_diagnostics(["mode: " + mode])
 	if Input.is_action_just_pressed("open_settings"):  # show/hide settings UI
 		if main_scene_running:
 			if game_state == State.INGAME:
@@ -157,3 +171,7 @@ func execute_planet_hop(new_planet: Planet, pos: Vector3):
 	player.update_look_direction()
 	Events.trigger("planet_hopped")
 	set_game_state(State.INGAME)
+
+
+func _on_SettingsOpenCooldown_timeout() -> void:
+	pass # Replace with function body.

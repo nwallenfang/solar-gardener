@@ -169,17 +169,17 @@ text = "TAB"
 
 [node name="JournalA" type="Label" parent="HotkeyGuide/Actions"]
 margin_top = 75.0
-margin_right = 49.0
+margin_right = 51.0
 margin_bottom = 100.0
 custom_fonts/font = ExtResource( 9 )
 text = "TAB"
 
 [node name="SettingsA" type="Label" parent="HotkeyGuide/Actions"]
 margin_top = 104.0
-margin_right = 49.0
+margin_right = 51.0
 margin_bottom = 129.0
 custom_fonts/font = ExtResource( 9 )
-text = "P"
+text = "ESC"
 
 [node name="DialogUI" parent="." instance=ExtResource( 11 )]
 plant_scanned_color = Color( 0.317647, 0.694118, 0.607843, 1 )
@@ -244,16 +244,19 @@ visible = false
 anchor_top = 0.178
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="ClickToFocus"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
 
 [node name="Label" type="Label" parent="ClickToFocus/CenterContainer"]
 margin_left = 532.0
 margin_top = 264.0
 margin_right = 747.0
 margin_bottom = 327.0
+mouse_filter = 1
 custom_fonts/font = SubResource( 5 )
 text = "Click to focus
 game window"
