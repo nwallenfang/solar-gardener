@@ -29,7 +29,7 @@ mesh = SubResource( 2 )
 
 [node name="Area" type="Area" parent="."]
 transform = Transform( 2.30629, 0, 0, 0, 2.30629, 0, 0, 0, 2.30629, 0, 0, 0 )
-collision_layer = 4
+collision_layer = 12
 collision_mask = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
