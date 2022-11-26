@@ -45,6 +45,7 @@ visible = false
 
 [node name="CheckConditionsTimer" type="Timer" parent="."]
 wait_time = 5.0
+process_mode = 0
 autostart = true
 
 [node name="GrowthCooldown" type="Timer" parent="."]
