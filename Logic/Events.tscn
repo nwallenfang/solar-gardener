@@ -4,3 +4,5 @@
 
 [node name="Events" type="Node"]
 script = ExtResource( 1 )
+
+[node name="RepeatTimer" type="Timer" parent="."]

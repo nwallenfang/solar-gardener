@@ -76,11 +76,12 @@ func setup():
 ###########
 
 var duration := 10.0
+var repeat_time := 5.0  # later smth like 45 seconds
 
 # doesn't get called from an event, but in the beginning from MainScene
 func tutorial_beginning():
 	# show amber tutorial box 
-	Game.UI.add_tutorial_message("Scan Amber", "Click to scan an Amber relict to find a new seed.", duration)
+	Game.UI.add_tutorial_message("Find Seed", "Use the scanner on an Amber relict to unlock a new seed.", duration)
 
 # Tutorials:
 func tutorial_amber_collected():
@@ -90,6 +91,11 @@ func tutorial_amber_collected():
 	Game.UI.add_tutorial_message("Plant Seed", "Use the planting tool (2) to plant the seed.", duration)
 
 	next()
+	
+	$RepeatTimer.start(repeat_time)
+	yield()
+	
+	
 
 func tutorial_seed_planted():
 	# unlock next tool 
