@@ -11,4 +11,5 @@ mesh = ExtResource( 1 )
 [node name="PlanetBody" type="StaticBody" parent="Planet_03_rocks"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Planet_03_rocks/PlanetBody"]
+visible = false
 shape = ExtResource( 2 )
