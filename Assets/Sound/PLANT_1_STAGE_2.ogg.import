@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/PLANT_1_STAGE_2.ogg-088bef830966c4d4ab13a6f238579f1d.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sound/PLANT_1_STAGE_2.ogg"
+dest_files=[ "res://.import/PLANT_1_STAGE_2.ogg-088bef830966c4d4ab13a6f238579f1d.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

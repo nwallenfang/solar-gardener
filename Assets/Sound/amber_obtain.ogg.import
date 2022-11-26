@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/amber_obtain.ogg-7663ddeec207b1d4057a4f14a703503a.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sound/amber_obtain.ogg"
+dest_files=[ "res://.import/amber_obtain.ogg-7663ddeec207b1d4057a4f14a703503a.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

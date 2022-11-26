@@ -3,6 +3,7 @@ extends Spatial
 var planet: Planet
 
 func emerge(pos: Vector3):
+	Audio.play("special_grabroot")
 	visible = true
 	global_transform.basis = Utility.get_basis_y_aligned(planet.global_translation.direction_to(pos))
 	global_translation = planet.global_translation

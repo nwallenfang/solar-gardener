@@ -108,6 +108,110 @@ mixer_bus = "SFX"
 script = ExtResource( 3 )
 mixer_bus = "SFX"
 
+[node name="seed_plant_1" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+mixer_bus = "SFX"
+
+[node name="seed_plant_2" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+mixer_bus = "SFX"
+
+[node name="seed_plant_3" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+mixer_bus = "SFX"
+
+[node name="amber_obtain" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+mixer_bus = "SFX"
+
+[node name="special_grabroot" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+mixer_bus = "SFX"
+
+[node name="PLANT_1_STAGE_1" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+mixer_bus = "SFX"
+
+[node name="PLANT_1_STAGE_2" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+mixer_bus = "SFX"
+
+[node name="PLANT_1_STAGE_3" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+mixer_bus = "SFX"
+
+[node name="PLANT_1_STAGE_4" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+mixer_bus = "SFX"
+
+[node name="PLANT_2_STAGE_1" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+mixer_bus = "SFX"
+
+[node name="PLANT_2_STAGE_2" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+mixer_bus = "SFX"
+
+[node name="PLANT_2_STAGE_3" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+mixer_bus = "SFX"
+
+[node name="PLANT_2_STAGE_4" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+mixer_bus = "SFX"
+
+[node name="PLANT_3_STAGE_1" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+mixer_bus = "SFX"
+
+[node name="PLANT_3_STAGE_2" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+mixer_bus = "SFX"
+
+[node name="PLANT_3_STAGE_3" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+mixer_bus = "SFX"
+
+[node name="PLANT_3_STAGE_4" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+mixer_bus = "SFX"
+
+[node name="PLANT_4_STAGE_1" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+mixer_bus = "SFX"
+
+[node name="PLANT_4_STAGE_2" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+mixer_bus = "SFX"
+
+[node name="PLANT_4_STAGE_3" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+mixer_bus = "SFX"
+
+[node name="PLANT_4_STAGE_4" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+mixer_bus = "SFX"
+
+[node name="PLANT_5_STAGE_1" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+mixer_bus = "SFX"
+
+[node name="PLANT_5_STAGE_2" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+mixer_bus = "SFX"
+
+[node name="PLANT_5_STAGE_3" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+mixer_bus = "SFX"
+
+[node name="PLANT_5_STAGE_4" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+mixer_bus = "SFX"
+
+[node name="plant_6_stage_1" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+mixer_bus = "SFX"
+
 [node name="Players" type="Node" parent="."]
 __meta__ = {
 "_editor_description_": "gets filled with AudioPlayers in _ready of AudioManager"

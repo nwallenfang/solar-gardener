@@ -255,7 +255,7 @@ func play_growth_pop_animation(old_stage):
 	var grow_pop_part := GROW_POP_PARTICLES.instance()
 	add_child(grow_pop_part)
 	var dist:= self.global_translation.distance_to(Game.player.global_translation)
-	Audio.play_attenuated("plant_growth_stage" + str(growth_stage), dist)
+	Audio.play_growth_stage(profile.name, growth_stage, dist)
 	yield($GrowthAnimationTween,"tween_all_completed")
 	for mi in new_meshes:
 		mi = mi as MeshInstance

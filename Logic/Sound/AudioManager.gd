@@ -254,4 +254,35 @@ func setup_footsteps():
 		print("An error encountered loading the sounds")
 	print("Done loading Footsteps!")
 
+var growth_stage_db := -4.0
+var name_to_index := {
+	"Grabroot": 1,
+	"Giant-Cap": 2,
+	"Fractalrose": 3,
+	"Hidden Lotus": 4,
+	"Fallback": 6,
+}
+# growth stage should go from 1 to 4 so exactly like the PlantData enum
+func play_growth_stage(plant_name: String, growth_stage: int, distance: float):
+	var index
+	if not plant_name in name_to_index:
+		index = name_to_index["Fallback"]
+		growth_stage = 1
+	else:
+		index = name_to_index[plant_name]
+	
+	var plant_sound_name: String = "PLANT_%d_STAGE_%d" % [index, growth_stage]
+	var sound: ManagedSound = $Sounds.get_node(plant_sound_name)
+	if sound == null:
+		printerr("weird growth sound " + plant_sound_name)
+		return
+	var max_dist = sound.max_distance_when_attenuated
+	var player = available.pop_front()
+	if player == null:
+		return
 
+	player.stream = sound.stream
+	player.sound = sound
+	player.volume_db = linear2db(1.0 - distance/max_dist)
+	player.play()
+	

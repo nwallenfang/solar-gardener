@@ -477,6 +477,7 @@ func spawn_plant(pos: Vector3):
 	pile.global_translation = pos
 	pile.global_transform.basis = Utility.get_basis_y_aligned(Game.planet.global_translation.direction_to(pos))
 	pile.on_lod(false)
+	Audio.play("seed_plant_"+str(randi()%3 + 1))
 	Events.trigger("tutorial_seed_planted")
 	Events.trigger("seed_planted")
 

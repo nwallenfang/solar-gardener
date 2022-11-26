@@ -2,7 +2,7 @@ extends Spatial
 class_name Planet
 
 export var planet_name : String
-onready var analyse_name : String = "Soil"
+onready var analyse_name : String = "Soil Type"
 var analyse_speed_factor := .3
 
 export(Color) var dirt_pile_color : Color

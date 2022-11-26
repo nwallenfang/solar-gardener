@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SCANNER_Planet_lp_5_CBR128.ogg-60c229a0c9af500c51ded3f9247679d8.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sound/SCANNER_Planet_lp_5_CBR128.ogg"
+dest_files=[ "res://.import/SCANNER_Planet_lp_5_CBR128.ogg-60c229a0c9af500c51ded3f9247679d8.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

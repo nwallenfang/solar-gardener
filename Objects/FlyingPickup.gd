@@ -29,6 +29,8 @@ func setup_as_seed(seed_name: String, target_size := 1.0, hover := true, spinnin
 		$SpinPlayer.play("spin")
 
 func on_pickup():
+	if is_amber:
+		pass
 	if identity in PlantData.seed_counts.keys():
 		PlantData.give_seeds(identity, 1, is_amber)
 	queue_free()

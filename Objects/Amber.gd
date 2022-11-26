@@ -13,6 +13,7 @@ func on_analyse():
 	$Tween.interpolate_property(self, "scale", self.scale, Vector3.ONE * .01, 3.0)
 	$Tween.start()
 	yield(get_tree().create_timer(1.1), "timeout")
+	Audio.play("amber_obtain")
 	for pickup in pickups:
 		pickup.start_flying()
 	yield($Tween, "tween_all_completed")
