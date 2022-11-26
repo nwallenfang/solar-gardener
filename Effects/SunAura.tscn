@@ -31,7 +31,7 @@ script = ExtResource( 2 )
 
 [node name="Aura1" type="MeshInstance" parent="Mesh"]
 unique_name_in_owner = true
-transform = Transform( 43.0605, 0, 0, 0, -1.92826e-06, 38.1258, 0, -44.1134, -1.66653e-06, 0, 0, 0 )
+transform = Transform( 41.7661, 10.7347, 4.05541e-07, 0, -1.92826e-06, 38.1258, 10.4785, -42.7873, -1.61644e-06, 0, 0, 0 )
 material_override = ExtResource( 1 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../..")

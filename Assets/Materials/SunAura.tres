@@ -18,6 +18,34 @@ float clamp_and_map(float value, float istart, float istop, float ostart, float 
     return ostart + (ostop - ostart) * ((value - istart) / (istop - istart));
 }
 
+float CalcMipLevel(vec2 uv)
+{
+  vec2 dx = dFdx(uv);
+  vec2 dy = dFdy(uv);  // get the max squared magnitude of the change along x and y
+  float delta_max_sqr = max(dot(dx, dx), dot(dy, dy));  // equivalent to log2(sqrt(delta_max_sqr))
+  return max(0.0, 0.5 * log2(delta_max_sqr));
+}
+
+vec2 polar_coordinates_and_mip(vec2 uv, vec2 center, float zoom, float repeat) {
+	// atan returns a value between -pi and pi
+	// so we divide by pi * 2 to get -0.5 to 0.5
+	vec2 dir = uv - center;
+	float theta = length(dir) * 2.0;
+	float phi = atan(dir.y, dir.x) / (3.141 * 2.0);// 0.0 to 1.0 range
+	float phi_frac = fract(phi);
+
+	// so we flip the y to align with Unity's OpenGL style
+	// texture UVs so 0.0 is at the bottom
+//	float theta = acos(-normal.y) / UNITY_PI;// construct the primary uv
+	vec2 uvA = vec2(phi, theta);// construct the secondary uv using phi_frac
+	vec2 uvB = vec2(phi_frac, theta);// get the min mip level of either uv sets
+	// _TextureName_TexelSize.zw is the texture resolution
+
+	
+	
+	return vec2(uvA);
+}
+
 vec2 polar_coordinates(vec2 uv, vec2 center, float zoom, float repeat)
 {
 	vec2 dir = uv - center;
@@ -27,17 +55,35 @@ vec2 polar_coordinates(vec2 uv, vec2 center, float zoom, float repeat)
 }
 
 void fragment() {
-	vec2 polar_uv = -polar_coordinates(UV.xy, vec2(0.5), 0.3, 1.0);
 	vec2 noise_dir = vec2(.5, (0.5 + 0.5 * sin(0.25 * TIME)) * .005);
-	float sample = texture(noise, 1.8 * polar_uv + 0.06 * TIME * noise_dir).r;
+	// FML this auto mip still doesn't work so back to the ugly seam
+	vec2 polar_uv = polar_coordinates(UV.xy, vec2(0.5), 0.3, 1.0);
+	vec2 polar_t = -1.8 * polar_uv.xy + 0.06 * TIME * noise_dir;
+//	vec2 polar_t_fract = polar_t;
+//	polar_t_fract.x = fract(polar_t_fract.x);
+	
+//	float mipLevel = min(
+//	  CalcMipLevel(polar_t * vec2(textureSize(noise, 1))),
+//	  CalcMipLevel(polar_t_fract * vec2(textureSize(noise, 1)))
+//	);
+	
+	
+//	float mip_level = polar_uv.z;
+//	vec2 polar_uv = polar_uv_and_mip.xy;
+//	float in_problem = 1.0 + (float(polar_uv.y > -0.01) + float(polar_uv.y < -0.99)) * 5.0;
+//	float dist_to_problem = float(polar_uv.y > 0.5) * (1.0 - polar_uv.y) + float(polar_uv.y <= 0.5) * polar_uv.y;
+//	polar_uv.y = in_problem * (-0.01) + (1.0-in_problem) * polar_uv.y;
+
+	float sample = texture(noise, polar_t).r;
 	float radius_noise = 0.17 * (0.5 + (sample - 1.0));
 	float in_circle = float((UV.x-0.5) * (UV.x-0.5) + (UV.y-0.5)*(UV.y-0.5) - .24 + radius_noise);
+
 
     ALBEDO = mix(albedo1, albedo2, texture(noise, UV)).rgb;
     EMISSION = emission_energy * ALBEDO.rgb;
 	
 	float circle_alpha = pow(clamp_and_map(in_circle, -0.25, .0, 1.0, 0.0), 2);
-	ALPHA = 2.0 * circle_alpha;
+	ALPHA = 2.0 * circle_alpha;// * in_problem;
 }
 "
 
