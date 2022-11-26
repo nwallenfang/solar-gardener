@@ -69,6 +69,8 @@ func setup():
 	events.append(Event.new("tutorial_plant_scanned", self, "tutorial_plant_scanned", true))
 	events.append(Event.new("tutorial_growth_reached", self, "tutorial_growth_reached", true))
 	events.append(Event.new("tutorial_completed", self, "tutorial_completed", true))
+	events.append(Event.new("no_seeds", self, "no_seeds", false))
+	events.append(Event.new("planet_hopped", self, "planet_hopped", false))
 
 
 ###########
@@ -76,12 +78,20 @@ func setup():
 ###########
 
 var duration := 10.0
-var repeat_time := 5.0  # later smth like 45 seconds
-
+var repeat_time := 45.0  # later smth like 45 seconds
+var repeat_this: String
 # doesn't get called from an event, but in the beginning from MainScene
 func tutorial_beginning():
 	# show amber tutorial box 
 	Game.UI.add_tutorial_message("Find Seed", "Use the scanner on an Amber relict to unlock a new seed.", duration)
+	$RepeatTimer.start(repeat_time)
+	repeat_this = "tutorial_beginning"
+
+
+func _on_RepeatTimer_timeout() -> void:
+	$RepeatTimer.stop()
+	if repeat_this != null or repeat_this == "":
+		call(repeat_this)
 
 # Tutorials:
 func tutorial_amber_collected():
@@ -89,15 +99,18 @@ func tutorial_amber_collected():
 	# show next tutorial box
 	Game.multitool.activate_tool(Game.multitool.TOOL.PLANT)
 	Game.UI.add_tutorial_message("Plant Seed", "Use the planting tool (2) to plant the seed.", duration)
-
+	
+	# when repeating, next will be called multiple times, but maybe it's no problem
+	# should just keep it in mind
 	next()
 	
 	$RepeatTimer.start(repeat_time)
-	yield()
-	
+	repeat_this = "tutorial_amber_collected"
 	
 
 func tutorial_seed_planted():
+	if not $RepeatTimer.is_stopped():
+		$RepeatTimer.stop()
 	# unlock next tool 
 	Game.UI.add_tutorial_message("Speed up growth", "Use the growth tool (3) to speed up growing.", duration)
 	Game.multitool.activate_tool(Game.multitool.TOOL.GROW)
@@ -109,9 +122,14 @@ func seed_planted():
 	next()
 
 func tutorial_plant_reached_stage1():
+	if not $RepeatTimer.is_stopped():
+		$RepeatTimer.stop()
 	Game.UI.add_tutorial_message("Scan plants", "Use the scanner (1) to unlock plant information.", duration)
 
 	next()
+	
+	$RepeatTimer.start(repeat_time)
+	repeat_this = "tutorial_plant_reached_stage1"
 
 var first_plant
 func tutorial_plant_reached_stage2():
@@ -119,19 +137,26 @@ func tutorial_plant_reached_stage2():
 	next()
 
 func tutorial_plant_scanned():
+
+	$RepeatTimer.stop()
+	repeat_this = ""
 	yield(get_tree().create_timer(2.5), "timeout")
-	Game.UI.add_tutorial_message("Open the journal", "Press [TAB] to look at the Plant Journal to see information on scanned plants.", duration)
+	Game.UI.add_tutorial_message("Open the journal", "Use the Journal (TAB) to see plant information.", duration)
 	Game.UI.get_node("JournalAndGuideUI").unlock_journal()
 
 	next()
 
 func tutorial_growth_reached():
 	Game.UI.add_tutorial_message("Plant needs", "Plants grow taller the more of their needs are met.", duration)
-#	yield(get_tree().create_timer(10.0), "timeout")
+	next()
+	yield(get_tree().create_timer(16.0), "timeout")
 	# TODO show this getting seeds message once more when player has no seeds
 	Game.UI.add_tutorial_message("Getting seeds", "Use the grow-tool on grown plants to harvest seeds.", duration)
 
-	next()
+
+	
+func no_seeds():  # TODO not connected yet
+	Game.UI.add_tutorial_message("Getting seeds", "Use the grow-tool on grown plants to harvest seeds.", duration)	
 	
 
 func check_for_tutorial_completed():
@@ -142,3 +167,13 @@ func tutorial_completed():
 	Game.UI.add_tutorial_message("Traveling", "Point to a planet and click to travel.", duration)
 	Game.multitool.activate_tool(Game.multitool.TOOL.HOPPER)
 	next()
+	
+	$RepeatTimer.start(repeat_time)
+	repeat_this = "tutorial_completed"
+
+var first_hop := true
+func planet_hopped():
+	if first_hop:
+		first_hop = false
+		$RepeatTimer.stop()
+

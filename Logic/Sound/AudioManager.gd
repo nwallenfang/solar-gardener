@@ -4,7 +4,7 @@ extends Node
 # guide: https://github.com/godotengine/godot/issues/25672#issuecomment-461541415
 export var sound_directoy = "res://Assets/Sound"
 
-var num_players = 20
+var num_players = 8
 
 var available = []  # The available players, instances of type AudioPlayerWithInfo
 var queue = []  # The queue of sounds to play.
@@ -12,6 +12,7 @@ var playing = {} # The players that are currently active, indexed by the sound n
 
 var MANAGED_SOUND_SCENE = preload("res://Logic/Sound/ManagedSound.tscn")
 var CUSTOM_AUDIO_PLAYER = preload("res://Logic/Sound/CustomAudioPlayer.tscn")
+#var TURNED OFF
 
 func _ready():
 	# Generate as many audio players as said in the variable

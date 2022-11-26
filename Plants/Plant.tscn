@@ -47,16 +47,14 @@ visible = false
 
 [node name="CheckConditionsTimer" type="Timer" parent="."]
 process_mode = 0
-wait_time = 7.0
+wait_time = 5.0
 autostart = true
 
 [node name="GrowthCooldown" type="Timer" parent="."]
-process_mode = 0
 wait_time = 2.5
 one_shot = true
 
 [node name="SeedGrowCooldown" type="Timer" parent="."]
-process_mode = 0
 wait_time = 3.0
 one_shot = true
 
