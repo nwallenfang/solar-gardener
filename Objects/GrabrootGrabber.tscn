@@ -1,9 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Objects/GrabrootGrabber.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Models/Modelplant_01_ziehende_ranken.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="CapsuleShape" id=2]
+radius = 0.682344
+height = 3.34664
+
+[sub_resource type="CapsuleShape" id=3]
+radius = 1.07677
+height = 3.34664
 
 [node name="GrabrootGrabber" type="Spatial"]
 script = ExtResource( 1 )
@@ -33,3 +41,17 @@ skeleton = NodePath("../..")
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.890839, 0.264962 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, -0.0895375, -0.995983, 0, 0.995983, -0.0895375, 0.420216, -0.542902, -0.0811776 )
+shape = SubResource( 2 )
+
+[node name="Area" type="Area" parent="."]
+collision_layer = 12
+collision_mask = 0
+
+[node name="CollisionShape2" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, -0.0895375, -0.995983, 0, 0.995983, -0.0895375, 0.420216, -0.542902, -0.0811776 )
+shape = SubResource( 3 )

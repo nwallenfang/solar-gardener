@@ -324,6 +324,7 @@ func on_remove():
 func on_analyse():
 	Game.journal.plant_got_scanned(profile.name, growth_stage)
 	Events.trigger("tutorial_plant_scanned")
+	show_symb_visuals()
 
 func growth_beam_possible() -> bool:
 	return true
@@ -429,3 +430,10 @@ func on_lod(lod_triggered: bool):
 		$CheckConditionsTimer.start()
 		$SeedGrowCooldown.start()
 	lod_mode = lod_triggered
+
+func show_symb_visuals():
+	$SymbiosisVisuals.visible = true
+	$FlashTween.interpolate_property($SymbiosisVisuals.material_override, "shader_param/alpha", 1.0, 0.0, 5.0)
+	$FlashTween.start()
+	yield(get_tree().create_timer(5),"timeout")
+	$SymbiosisVisuals.visible = false

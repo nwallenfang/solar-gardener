@@ -102,6 +102,7 @@ func _physics_process(delta):
 var switched_tool_on_cooldown :int= TOOL.ANALYSIS setget set_switched_on_cooldown
 func set_switched_on_cooldown(set_tool: int):
 	if hop_mode:
+		print("Hop")
 		return
 	if tool_unlocked[set_tool]:
 		switched_tool_on_cooldown = set_tool
@@ -318,13 +319,14 @@ func process_second_action():
 func check_on_hover():
 	Game.player_raycast.do_cast()
 	if Game.player_raycast.collider is Planet and current_tool != TOOL.HOPPER and "PlanetHopArea" == Game.player_raycast.collider_tag:
-		hop_mode = true
-		pre_hopper_tool = current_tool
-		hopper_planet = Game.player_raycast.collider
-		hopper_pos = Game.player_raycast.hit_point
-		show_hopper_information()
-		switch_tool(TOOL.HOPPER)
-		return
+		if tool_unlocked[TOOL.HOPPER]:
+			hop_mode = true
+			pre_hopper_tool = current_tool
+			hopper_planet = Game.player_raycast.collider
+			hopper_pos = Game.player_raycast.hit_point
+			show_hopper_information()
+			switch_tool(TOOL.HOPPER)
+			return
 	match current_tool:
 		TOOL.PLANT:
 			if Game.player_raycast.colliding and Game.player_raycast.hit_point.distance_to(Game.player.global_translation) < PLANT_TOOL_DISTANCE and Game.planet.is_obsidian == false:
@@ -525,7 +527,10 @@ func show_analyse_information():
 						elif "ice" in object_to_analyse.name.to_lower():
 							Game.hologram.show_analyse_info("Should melt\nat great heat")
 						else:
-							Game.hologram.show_scan_progress(object_to_analyse.get("analyse_name"), 100.0)
+							if object_to_analyse.has_method("get_analyse_text"):
+								Game.hologram.show_analyse_info(object_to_analyse.get_analyse_text())
+							else:
+								Game.hologram.show_scan_progress(object_to_analyse.get("analyse_name"), 100.0)
 			else:
 				Game.hologram.clear()
 				completely_analysed_object = null

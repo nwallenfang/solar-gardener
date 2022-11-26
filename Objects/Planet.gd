@@ -158,4 +158,5 @@ func try_grabroot_effect(pos: Vector3):
 		if Utility.get_reliable_result():
 			has_been_grab_rooted = true
 			if has_node("GrabrootGrabber"):
-				get_node("GrabrootGrabber").emerge(pos)
+				var grabber : Spatial = get_node("GrabrootGrabber")
+				grabber.emerge(pos)

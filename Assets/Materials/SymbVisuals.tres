@@ -1,0 +1,29 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "// NOTE: Shader automatically converted from Godot Engine 3.5.1.stable's SpatialMaterial.
+
+shader_type spatial;
+render_mode unshaded,async_visible,blend_mix,depth_draw_opaque,cull_disabled,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : hint_color;
+uniform float alpha = 1.0;
+uniform float position = .25;
+
+float clamp_and_map(float value, float istart, float istop, float ostart, float ostop) {
+    value = clamp(value, istart, istop);
+    return ostart + (ostop - ostart) * ((value - istart) / (istop - istart));
+}
+
+void fragment() {
+	ALBEDO = albedo.rgb;
+//	ALPHA = albedo.a * clamp_and_map(abs(UV.y - .25), 0.0, .15, 1.0, 0.0) * float((mod(TIME * .05+UV.x, .1) - .01) > 0.0);
+	ALPHA = albedo.a * float(abs(UV.y - position) < .15) * float((mod(TIME * .05+UV.x, .0666) - .01) > 0.0) * alpha;
+
+}
+"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/albedo = Color( 0.729412, 1, 0.333333, 0.498039 )
+shader_param/alpha = 1.0
+shader_param/position = 0.7

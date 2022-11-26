@@ -42,7 +42,15 @@ transform = Transform( 0.472463, 0, 0, 0, 0.472463, 0, 0, 0, 0.472463, 0, -0.096
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
 max_distance = 10.0
 
-[node name="SeedPos" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.214969, -0.0404564 )
+[node name="SeedPositions" type="Spatial" parent="."]
+
+[node name="SeedPos" type="Spatial" parent="SeedPositions"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.140783, 0.293777, -0.103108 )
+
+[node name="SeedPos2" type="Spatial" parent="SeedPositions"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.164954, 0.115874, -0.303185 )
+
+[node name="SeedPos3" type="Spatial" parent="SeedPositions"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.065127, 0.235191, 0.237593 )
 
 [connection signal="camera_entered" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_camera_entered"]
