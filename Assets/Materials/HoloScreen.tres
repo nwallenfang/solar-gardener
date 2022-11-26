@@ -8,10 +8,10 @@ viewport_path = NodePath("Screen")
 [resource]
 resource_local_to_scene = true
 shader = ExtResource( 1 )
-shader_param/albedo = Color( 0.301961, 0.713726, 0.619608, 1 )
-shader_param/overlay = false
+shader_param/albedo = Color( 0, 0, 0, 1 )
+shader_param/overlay = true
 shader_param/scanlines_opacity = 1.0
-shader_param/scanlines_width = 0.129
+shader_param/scanlines_width = 0.127
 shader_param/grille_opacity = 0.0
 shader_param/resolution = Vector2( 640, 600 )
 shader_param/pixelate = false

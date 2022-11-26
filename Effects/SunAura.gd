@@ -16,8 +16,10 @@ func _ready() -> void:
 
 func _physics_process(delta):
 	var target: Spatial = Game.player
+
 	if Game.game_state == Game.State.INTRO_FLIGHT:
 		target = Game.world.get_node("%FlyCamera")
+
 	if target != null:
 		var up_vector: Vector3 = target.global_translation.direction_to(self.global_translation)
 		$Mesh.global_transform.basis = Utility.get_basis_y_aligned_with_z(up_vector, Vector3.UP)
