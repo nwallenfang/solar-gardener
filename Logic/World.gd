@@ -4,6 +4,7 @@ export var SKY_ENERGY_HTML5 := 0.04
 export var SKY_ENERGY_NATIVE := 0.5
 
 var planet_list := []
+var skip_allowed := false
 
 func _ready() -> void:
 	if OS.has_feature("HTML5"):
@@ -30,7 +31,7 @@ func _ready() -> void:
 
 var INTRO_LENGTH_FACTOR = 1.0
 var TEST_LENGTH_FACTOR = 0.02
-const TEST_INTRO = false
+const TEST_INTRO = true
 func start_loading():
 	if OS.is_debug_build() and (not TEST_INTRO):
 		INTRO_LENGTH_FACTOR = TEST_LENGTH_FACTOR
@@ -75,6 +76,7 @@ func start_intro_flight():
 #	yield(get_tree().create_timer(0.4), "timeout")
 	$IntroFlight/AnimationPlayer.playback_speed = 1.0 / INTRO_LENGTH_FACTOR
 	$IntroFlight/AnimationPlayer.play("fly")
+	skip_allowed = true
 #	yield($IntroFlight/Tween, "tween_all_completed")
 
 
@@ -101,7 +103,7 @@ func end_intro_flight():
 		Events.tutorial_beginning()
 	
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("skip_cutscene"):
+	if skip_allowed and Input.is_action_just_pressed("skip_cutscene"):
 		if $SkipCutscene.is_stopped():
 			$SkipCutscene.start(1.2)
 			Game.UI.skip_button_held()

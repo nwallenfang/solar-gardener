@@ -5,13 +5,15 @@ extends Control
 var resolution_scaling_factor = 1.0
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("open_settings"):
-		if Game.main_scene_running:
-			if Game.game_state == Game.State.INGAME:
-				Game.game_state = Game.State.SETTINGS
-			elif Game.game_state == Game.State.SETTINGS:
-				# this is only the correct if you can only enter settings from ingame!!
-				Game.game_state = Game.State.INGAME
+	if event is InputEventAction:
+		event = event as InputEventAction
+		if event.action == "open_settings":
+			if Game.main_scene_running:
+				if Game.game_state == Game.State.INGAME:
+					Game.game_state = Game.State.SETTINGS
+				elif Game.game_state == Game.State.SETTINGS:
+					# this is only the correct if you can only enter settings from ingame!!
+					Game.game_state = Game.State.INGAME
 	if Game.game_state == Game.State.INGAME or Game.game_state == Game.State.INTRO_FLIGHT and event is InputEventMouseButton:
 		if event.is_pressed():
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
