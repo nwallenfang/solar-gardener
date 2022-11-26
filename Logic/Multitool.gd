@@ -236,8 +236,6 @@ func idle_process(delta: float):
 					Audio.fade_in("growbeam_rotate_slow", 0.2)
 				grow_beam_active = false
 				
-			
-			
 			# Death Beam
 			if second_action_holded and (not grow_beam_active) and has_no_cooldown() and death_beam_unlocked and can_grow:
 				if not death_beam_active:
@@ -289,7 +287,11 @@ func idle_process(delta: float):
 						$Cooldown.start(2)
 						print("Analysis Done of " + str(current_analyse_object))
 						if current_analyse_object.has_method("on_analyse"):
-							current_analyse_object.call("on_analyse")
+							if current_analyse_object is Plant:
+								if current_analyse_object.can_be_analysed:
+									current_analyse_object.call("on_analyse")
+							else:
+								current_analyse_object.call("on_analyse")
 			show_analyse_information()
 
 func process_first_action():
@@ -383,7 +385,7 @@ func check_on_hover():
 					can_analyse = true
 					object_to_analyse = Game.player_raycast.collider
 					if object_to_analyse is Plant:
-						can_analyse = object_to_analyse.can_be_analysed
+						can_analyse = true#object_to_analyse.can_be_analysed
 					if object_to_analyse is StaticBody:
 						if object_to_analyse.name == "PlanetBody":
 							object_to_analyse = Game.planet
@@ -488,17 +490,20 @@ func show_analyse_information():
 					if analyse_completed:
 						completely_analysed_object = object_to_analyse
 						if object_to_analyse is Plant:
-							var plant_obj: Plant = object_to_analyse as Plant
-							var plant_type: String
-							match plant_obj.profile.plant_type:
-								PlantData.PLANT_TYPES.THORNY:  # THORNY, SHROOM, FLOWER
-									plant_type = "Thorny"
-								PlantData.PLANT_TYPES.SHROOM:
-									plant_type = "Shroom"
-								PlantData.PLANT_TYPES.FLOWER:
-									plant_type = "Flower"
-							var is_growing = (plant_obj.growth_stage != plant_obj.growth_lock)
-							Game.hologram.show_plant_info(plant_obj.profile.name, plant_type, plant_obj.growth_stage, is_growing)
+							if object_to_analyse.can_be_analysed:
+								var plant_obj: Plant = object_to_analyse as Plant
+								var plant_type: String
+								match plant_obj.profile.plant_type:
+									PlantData.PLANT_TYPES.THORNY:  # THORNY, SHROOM, FLOWER
+										plant_type = "Thorny"
+									PlantData.PLANT_TYPES.SHROOM:
+										plant_type = "Shroom"
+									PlantData.PLANT_TYPES.FLOWER:
+										plant_type = "Flower"
+								var is_growing = (plant_obj.growth_stage != plant_obj.growth_lock)
+								Game.hologram.show_plant_info(plant_obj.profile.name, plant_type, plant_obj.growth_stage, is_growing)
+							else:
+								Game.hologram.show_analyse_info("Analyse further\ngrown plant\nto get more\ninformation")
 						elif object_to_analyse is Planet:
 							var planet_obj: Planet = object_to_analyse as Planet
 							if planet_obj.is_obsidian:
