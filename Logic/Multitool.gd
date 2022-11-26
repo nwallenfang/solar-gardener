@@ -64,6 +64,7 @@ var soil_analysing := false
 var pre_hopper_tool: int
 var hopper_planet: Planet
 var hopper_pos: Vector3
+var hop_mode := false
 
 # Move Variable
 var can_move := false
@@ -100,6 +101,8 @@ func _physics_process(delta):
 	
 var switched_tool_on_cooldown :int= TOOL.ANALYSIS setget set_switched_on_cooldown
 func set_switched_on_cooldown(set_tool: int):
+	if hop_mode:
+		return
 	if tool_unlocked[set_tool]:
 		switched_tool_on_cooldown = set_tool
 		emit_signal("switched_to", set_tool)
@@ -312,7 +315,11 @@ func process_second_action():
 func check_on_hover():
 	Game.player_raycast.do_cast()
 	if Game.player_raycast.collider is Planet and current_tool != TOOL.HOPPER and "PlanetHopArea" == Game.player_raycast.collider_tag:
+		hop_mode = true
 		pre_hopper_tool = current_tool
+		hopper_planet = Game.player_raycast.collider
+		hopper_pos = Game.player_raycast.hit_point
+		show_hopper_information()
 		switch_tool(TOOL.HOPPER)
 		return
 	match current_tool:
@@ -387,6 +394,7 @@ func check_on_hover():
 			show_analysable(can_analyse)
 		TOOL.HOPPER:
 			if not (Game.player_raycast.colliding and Game.player_raycast.collider is Planet):
+				hop_mode = false
 				switch_tool(pre_hopper_tool)
 			else:
 				hopper_planet = Game.player_raycast.collider
@@ -574,7 +582,7 @@ func show_scanner_grid(show: bool):
 var re_count := 0
 var force_reload := false
 func try_reload():
-	if current_tool == TOOL.PLANT:
+	if current_tool == TOOL.PLANT and (switched_tool_on_cooldown == TOOL.NONE or switched_tool_on_cooldown == TOOL.PLANT) and has_no_cooldown():
 		if force_reload:
 			force_reload = false
 			#print("force reee")

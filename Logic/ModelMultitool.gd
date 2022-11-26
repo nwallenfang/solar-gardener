@@ -26,7 +26,10 @@ func set_grow(active: bool):
 	emit_signal("animation_finished")
 
 func set_plant(active: bool):
+	$SlingshotPlayer.stop(true)
 	$SlingshotPlayer.play("RESET")
+	visibility_slingshot = 0.0
+	$Slingshot.visible = false
 	$SeedOrigin.visible = false
 	if active:
 		$Antenna.visible = false
@@ -38,6 +41,7 @@ func set_plant(active: bool):
 	yield($PlantPlayer,"animation_finished")
 	if not active:
 		$Antenna.visible = true
+		$Slingshot.visible = false
 	$SeedOrigin.visible = active
 	emit_signal("animation_finished")
 
