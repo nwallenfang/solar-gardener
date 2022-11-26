@@ -153,6 +153,7 @@ func execute_planet_hop(new_planet: Planet, pos: Vector3):
 	yield($WarpTween, "tween_all_completed")
 	Audio.play("hop_landing" + str(1 + randi() % 3))
 	sun.end_sound()
+	planet.configure_light(multitool)
 	player.update_look_direction()
 	Events.trigger("planet_hopped")
 	set_game_state(State.INGAME)
