@@ -91,6 +91,11 @@ func _physics_process(delta):
 			check_on_hover()
 			check_input()
 			idle_process(delta)
+		else:
+			if hop_mode:
+				if Input.is_action_just_pressed("first_action"):
+					Game.execute_planet_hop(hopper_planet, hopper_pos)
+					switch_tool(pre_hopper_tool)
 			
 		if (seeds_empty and current_tool == TOOL.PLANT) or force_reload:
 			try_reload()
