@@ -96,6 +96,7 @@ func _physics_process(delta):
 				if Input.is_action_just_pressed("first_action"):
 					Game.execute_planet_hop(hopper_planet, hopper_pos)
 					switch_tool(pre_hopper_tool)
+					hop_mode = false
 			
 		if (seeds_empty and current_tool == TOOL.PLANT) or force_reload:
 			try_reload()
@@ -313,6 +314,7 @@ func process_first_action():
 			$Cooldown.start(2)
 			Game.execute_planet_hop(hopper_planet, hopper_pos)
 			switch_tool(pre_hopper_tool)
+			hop_mode = false
 
 func process_second_action():
 	match current_tool:
@@ -332,6 +334,8 @@ func check_on_hover():
 			show_hopper_information()
 			switch_tool(TOOL.HOPPER)
 			return
+	else:
+		hop_mode = false
 	match current_tool:
 		TOOL.PLANT:
 			if Game.player_raycast.colliding and Game.player_raycast.hit_point.distance_to(Game.player.global_translation) < PLANT_TOOL_DISTANCE and Game.planet.is_obsidian == false:
@@ -597,6 +601,7 @@ func show_scanner_grid(show: bool):
 
 var re_count := 0
 var force_reload := false
+var currently_reloading := false
 func try_reload():
 	if current_tool == TOOL.PLANT and (switched_tool_on_cooldown == TOOL.NONE or switched_tool_on_cooldown == TOOL.PLANT) and has_no_cooldown():
 		if force_reload:
@@ -604,7 +609,10 @@ func try_reload():
 			#print("force reee")
 		selected_profile = PlantData.profiles[target_plant_name]
 		if not PlantData.seed_counts[target_plant_name] == 0:
-			re_count += 1
+			if currently_reloading:
+				return
+			currently_reloading = true
+			#re_count += 1
 			#print("REEELOAD" + str(re_count))
 			seeds_empty = false
 			if is_instance_valid(fake_seed):
@@ -616,8 +624,11 @@ func try_reload():
 			$ModelMultitool.seed_reload()
 			fake_seed.visible = false
 			yield(get_tree().create_timer(.1),"timeout")
-			fake_seed.visible = true
+			if is_instance_valid(fake_seed):
+				fake_seed.visible = true
 			wait_for_animation_finished()
+			yield(get_tree().create_timer(.1),"timeout")
+			currently_reloading = false
 		else:
 			seeds_empty = true
 
