@@ -34,7 +34,7 @@ expand_margin_top = 15.0
 expand_margin_bottom = 15.0
 
 [sub_resource type="DynamicFont" id=8]
-size = 26
+size = 28
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
@@ -206,11 +206,11 @@ script = ExtResource( 1 )
 not_scanned_yet_fluff = "Unknown Plant. Scan a grown specimen to find out more."
 
 [node name="JournalInfoText" type="TextureRect" parent="JournalUI"]
-self_modulate = Color( 0.52549, 0.52549, 0.52549, 1 )
-anchor_left = 0.456
-anchor_top = 0.039
+self_modulate = Color( 0.858824, 0.858824, 0.858824, 1 )
+anchor_left = 0.453
+anchor_top = 0.02
 anchor_right = 0.941
-anchor_bottom = 0.852
+anchor_bottom = 0.884
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 5 )
@@ -218,20 +218,23 @@ expand = true
 
 [node name="Title" type="Label" parent="JournalUI/JournalInfoText"]
 unique_name_in_owner = true
+anchor_top = 0.0563316
 anchor_right = 1.0
-margin_top = 8.49064
-margin_bottom = 63.4906
+anchor_bottom = 0.153423
 custom_fonts/font = ExtResource( 12 )
 text = "JOURNAL"
 align = 1
 autowrap = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="PlantType" type="Label" parent="JournalUI/JournalInfoText"]
 unique_name_in_owner = true
-anchor_top = 0.125683
+anchor_top = 0.1933
 anchor_right = 1.0
-anchor_bottom = 0.195034
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+anchor_bottom = 0.262651
+custom_colors/font_color = Color( 0.792157, 0.792157, 0.792157, 1 )
 custom_fonts/font = SubResource( 8 )
 align = 1
 valign = 1
@@ -242,8 +245,8 @@ __meta__ = {
 
 [node name="FluffText" type="RichTextLabel" parent="JournalUI/JournalInfoText"]
 unique_name_in_owner = true
-anchor_left = 0.046
-anchor_top = 0.241
+anchor_left = 0.049
+anchor_top = 0.303
 anchor_right = 0.947
 anchor_bottom = 0.974
 size_flags_horizontal = 3
@@ -253,15 +256,16 @@ custom_fonts/normal_font = ExtResource( 10 )
 bbcode_enabled = true
 bbcode_text = "Hover over a plant to show information."
 text = "Hover over a plant to show information."
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="Label" type="Label" parent="JournalUI/JournalInfoText"]
-anchor_left = -0.656295
-anchor_top = 1.05152
-anchor_right = -0.1796
-anchor_bottom = 1.12087
+anchor_left = -0.600303
+anchor_top = 1.01407
+anchor_right = -0.123608
+anchor_bottom = 1.08342
 mouse_filter = 1
 custom_fonts/font = SubResource( 7 )
 text = "(click Plant to select seed)"

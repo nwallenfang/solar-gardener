@@ -53,9 +53,11 @@ func plant_clicked(plant_name):
 func discover_and_scan_all():
 	for plant_ui in get_tree().get_nodes_in_group("plant_ui"):
 		plant_ui.discovered = true
-		plant_ui.got_scanned(1)
+		plant_ui.got_scanned(3)
 		plant_ui.set_to_discovered()
+		plant_ui.set_number_of_stars(3)
 		plant_ui.make_all_preferences_known()
+		
 		
 
 export(String, MULTILINE) var not_scanned_yet_fluff
@@ -73,11 +75,11 @@ func plant_hovered(plant_ui: PlantUI):
 			$"%FluffText".bbcode_text = plant_ui.plant_profile.fluff_base
 			match plant_ui.plant_profile.plant_type:
 				PlantData.PLANT_TYPES.THORNY:
-					$"%PlantType".text = "Thorny"
+					$"%PlantType".text = "Type: Thorny"
 				PlantData.PLANT_TYPES.FLOWER:
-					$"%PlantType".text = "Flower"
+					$"%PlantType".text = "Type: Flower"
 				PlantData.PLANT_TYPES.SHROOM:
-					$"%PlantType".text = "Shroom"
+					$"%PlantType".text = "Type: Shroom"
 
 			if plant_ui.number_of_stars >= 1:
 				if plant_ui.stage2_scanned:
