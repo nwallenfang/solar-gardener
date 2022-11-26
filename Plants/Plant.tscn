@@ -43,6 +43,7 @@ shape = SubResource( 2 )
 
 [node name="BadPlantingVisuals" parent="BadPlanting" instance=ExtResource( 3 )]
 transform = Transform( 1.77745, 0, 0, 0, 0.164741, 0, 0, 0, 1.78702, 0, -0.000725269, 0 )
+visible = false
 
 [node name="CheckConditionsTimer" type="Timer" parent="."]
 process_mode = 0
