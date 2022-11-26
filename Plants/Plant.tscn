@@ -44,17 +44,14 @@ transform = Transform( 1.3989, 0, 0, 0, 0.160546, 0, 0, 0, 1.40643, 0, -0.000725
 visible = false
 
 [node name="CheckConditionsTimer" type="Timer" parent="."]
-process_mode = 0
 wait_time = 5.0
 autostart = true
 
 [node name="GrowthCooldown" type="Timer" parent="."]
-process_mode = 0
 wait_time = 2.5
 one_shot = true
 
 [node name="SeedGrowCooldown" type="Timer" parent="."]
-process_mode = 0
 wait_time = 3.0
 one_shot = true
 

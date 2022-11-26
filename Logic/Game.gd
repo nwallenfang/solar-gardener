@@ -103,6 +103,10 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("lod_trigger"):
 		cheat_lod = not cheat_lod
 		Game.planet.trigger_lod(cheat_lod)
+		
+	if Input.is_action_just_pressed("sound_overload"):
+		for i in range(20):
+			Audio.play("plant_growth_stage" + str(i%3 + 1))
 
 signal changed_state(state, prev_state)
 func set_game_state(state):
@@ -150,4 +154,5 @@ func execute_planet_hop(new_planet: Planet, pos: Vector3):
 	Audio.play("hop_landing" + str(1 + randi() % 3))
 	sun.end_sound()
 	player.update_look_direction()
+	Events.trigger("planet_hopped")
 	set_game_state(State.INGAME)

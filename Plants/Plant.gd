@@ -75,9 +75,6 @@ func _physics_process(delta):
 			flush_seeds()
 			growth_boost = false
 		
-	if (not growth_locked_once) and growth_stage == growth_lock:
-		Events.trigger("tutorial_growth_reached")
-		growth_locked_once = true
 
 func _on_CheckConditionsTimer_timeout():
 #	if growth_stage == growth_lock:
@@ -192,6 +189,10 @@ func check_conditions():
 		growth_lock = PlantData.GROWTH_STAGES.STAGE_1
 	else:
 		growth_lock = PlantData.GROWTH_STAGES.SEED
+		
+	if (not growth_locked_once) and growth_stage == growth_lock:
+		Events.trigger("tutorial_growth_reached")
+		growth_locked_once = true
 
 signal growth_stage_reached()
 var growth_boost := false
