@@ -242,6 +242,7 @@ func idle_process(delta: float):
 					death_beam_target = plant_to_grow
 					death_beam_active = true
 					death_beam_progress = 0.0
+					death_beam_target.play_death_flash()
 				death_beam_progress += delta
 				if death_beam_progress >= 1.0:
 					$Cooldown.start(1.0)

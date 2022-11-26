@@ -1,8 +1,8 @@
 extends Spatial
 class_name Plant
 
-const DEFAULT_GROW_SPEED = 1.0/20.0
-const BOOSTED_GROW_SPEED = 1.0/2.0
+const DEFAULT_GROW_SPEED = 1.0/17.0
+const BOOSTED_GROW_SPEED = 1.0/2.5
 const DEFAULT_MODEL_SCALE = .9
 const GROWTH_UP_SCALE_FACTOR = 1.15
 const GROWTH_DOWN_SCALE_FACTOR = .9
@@ -62,6 +62,8 @@ func setup():
 	analyse_name = profile.name
 	
 	is_setup = true
+	yield(get_tree(),"idle_frame")
+	check_conditions()
 
 var growth_locked_once := false
 func _physics_process(delta):
@@ -144,23 +146,24 @@ func calculate_growth_points():
 			if growth_stage >= 1:
 				Game.journal.make_preference_known(profile.name, "Hates Nutrients")
 	
-	Game.UI.set_diagnostics([get_near_plants_group_count()])
-	# GROUP TODO
-	if profile.group == PlantData.PREFERENCE.ALWAYS_FALSE:
-		points += 0
-	elif profile.group == PlantData.PREFERENCE.ALWAYS_TRUE:
-		points += 1
-	elif profile.group == PlantData.PREFERENCE.LIKES:
-		
-		if get_near_plants_group_count() >= 4:
+	#Game.UI.set_diagnostics([get_near_plants_group_count()])
+	# GROUP
+	if growth_stage != PlantData.GROWTH_STAGES.SEED:
+		if profile.group == PlantData.PREFERENCE.ALWAYS_FALSE:
+			points += 0
+		elif profile.group == PlantData.PREFERENCE.ALWAYS_TRUE:
 			points += 1
-			if growth_stage >= 1:
-				Game.journal.make_preference_known(profile.name, "Likes Groups")
-	elif profile.group == PlantData.PREFERENCE.HATES:
-		if get_near_plants_group_count() < 1:
-			points += 1
-			if growth_stage >= 1:
-				Game.journal.make_preference_known(profile.name, "Hates Groups")
+		elif profile.group == PlantData.PREFERENCE.LIKES:
+			
+			if get_near_plants_group_count() >= 3:
+				points += 1
+				if growth_stage >= 1:
+					Game.journal.make_preference_known(profile.name, "Likes Groups")
+		elif profile.group == PlantData.PREFERENCE.HATES:
+			if get_near_plants_group_count() < 1:
+				points += 1
+				if growth_stage >= 1:
+					Game.journal.make_preference_known(profile.name, "Hates Groups")
 	
 	
 	if profile.symbiosis_plant_type in get_near_plants_types():
@@ -199,7 +202,7 @@ func grow(delta, factor_sign):
 	if growth_boost:
 		growth_stage_progress += BOOSTED_GROW_SPEED * delta * factor_sign
 	else:
-		growth_stage_progress += DEFAULT_GROW_SPEED * delta * factor_sign
+		growth_stage_progress += DEFAULT_GROW_SPEED * delta * factor_sign * (2.0 if growth_stage == PlantData.GROWTH_STAGES.SEED else 1.0)
 	growth_boost = false
 	update_growth_visuals()
 	reset_small_seeds()
@@ -217,6 +220,8 @@ func grow(delta, factor_sign):
 		can_be_analysed = true
 		if growth_stage == growth_lock:
 			$SeedGrowCooldown.start(profile.seed_grow_time)
+		yield(get_tree(), "idle_frame")
+		check_conditions()
 		if profile.needs_dirt_pile == false:
 			yield(get_tree().create_timer(2), "timeout")
 			if is_instance_valid(dirt_pile):
@@ -257,7 +262,7 @@ func play_growth_pop_animation(old_stage):
 
 const FLASH_OVERLAY = preload("res://Assets/Materials/FlashAlphaOverlay.tres")
 func play_growth_flash():
-	if growth_stage != growth_lock:
+	if growth_stage != growth_lock and growth_stage_progress < .75:
 		var meshes : Array = Utility.get_all_mesh_instance_children(current_model)
 		for mi in meshes:
 			mi.material_overlay = FLASH_OVERLAY
@@ -269,6 +274,20 @@ func play_growth_flash():
 		yield($FlashTween,"tween_all_completed")
 		for mi in meshes:
 			mi.material_overlay = null
+
+const DEATH_OVERLAY = preload("res://Assets/Materials/DeathAlphaOverlay.tres")
+func play_death_flash():
+	var meshes : Array = Utility.get_all_mesh_instance_children(current_model)
+	for mi in meshes:
+		mi.material_overlay = DEATH_OVERLAY
+	$FlashTween.interpolate_property(DEATH_OVERLAY, "albedo_color:a", 0.0, 0.5, .15, Tween.TRANS_QUAD, Tween.EASE_IN)
+	$FlashTween.start()
+	yield($FlashTween,"tween_all_completed")
+	$FlashTween.interpolate_property(DEATH_OVERLAY, "albedo_color:a", 0.5, 0.0, .3, Tween.TRANS_QUAD, Tween.EASE_IN)
+	$FlashTween.start()
+	yield($FlashTween,"tween_all_completed")
+	for mi in meshes:
+		mi.material_overlay = null
 
 func update_growth_visuals():
 	if growth_stage == 0:
@@ -346,10 +365,9 @@ func flush_seeds():
 		return
 	seeds_ready_to_harvest = false
 	for pickup in small_seeds:
-		$SeedGrowTween.interpolate_property(pickup, "scale", pickup.scale, pickup.scale * 2.0, 1.5)
+		$SeedGrowTween.interpolate_property(pickup, "scale", pickup.scale, pickup.scale * 1.8, 1.0)
 	$SeedGrowTween.start()
 	yield($SeedGrowTween, "tween_all_completed")
-	yield(get_tree().create_timer(.5),"timeout")
 	for pickup in small_seeds:
 		pickup.start_flying()
 	small_seeds = []
@@ -368,7 +386,8 @@ func get_near_plants_list() -> Array:
 	for collider in $SymbiosisArea.get_overlapping_areas():
 		var collider_parent = collider.get_parent() as Node
 		if collider_parent.is_class("Plant"):
-			plants.append(collider_parent)
+			if collider_parent.growth_stage != PlantData.GROWTH_STAGES.SEED:
+				plants.append(collider_parent)
 	return plants
 
 func get_near_plants_group_count() -> int:
