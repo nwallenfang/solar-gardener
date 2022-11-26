@@ -6,17 +6,18 @@
 [node name="Modelplant_06_fractalrose_state01" type="Spatial"]
 
 [node name="Cube" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0156589, 0.00863, -0.0252657 )
 mesh = ExtResource( 2 )
 
 [node name="Empty" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9083, 2.1412, -1.09568 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.906049, 0.610098, -0.308897 )
 
 [node name="Empty001" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1101, 4.78934, -4.70312 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.54473, 1.39458, -1.31999 )
 
 [node name="Empty002" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.18805, 2.73262, 5.1511 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00452, 0.751398, 1.51001 )
 
 [node name="Cube003" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09059, 1.20468, -0.411902 )
+transform = Transform( 0.797378, 0, 0, 0, 0.797378, 0, 0, 0, 0.797378, 0.0156589, 0.00863004, -0.0252657 )
 mesh = ExtResource( 1 )

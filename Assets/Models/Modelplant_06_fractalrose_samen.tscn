@@ -5,5 +5,5 @@
 [node name="Modelplant_06_fractalrose_samen" type="Spatial"]
 
 [node name="Icosphere" type="MeshInstance" parent="."]
-transform = Transform( 0.0216131, -0.0255087, -0.061848, 0.00304921, 0.0826135, -0.0269192, 0.0256394, 0.011678, 0.0553372, -0.0212492, -0.0219967, -0.0493711 )
+transform = Transform( 0.156442, -0.0986631, -0.239217, 0.022071, 0.319534, -0.104119, 0.185585, 0.0451685, 0.214034, 0, 0, 0 )
 mesh = ExtResource( 1 )

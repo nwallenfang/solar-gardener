@@ -17,15 +17,15 @@
             "mesh" : 0,
             "name" : "Icosphere",
             "rotation" : [
-                0.12320960313081741,
-                -0.4094993770122528,
-                0.10664904862642288,
-                0.8976389169692993
+                0.123209647834301,
+                -0.40949946641921997,
+                0.10664908587932587,
+                0.8976388573646545
             ],
             "scale" : [
-                0.2437276542186737,
+                0.2437276989221573,
                 0.3374558389186859,
-                0.3374558091163635
+                0.3374558389186859
             ]
         }
     ],
@@ -65,29 +65,29 @@
         {
             "bufferView" : 0,
             "componentType" : 5126,
-            "count" : 1632,
+            "count" : 1816,
             "max" : [
-                4.270508766174316,
-                0.9696950912475586,
-                0.9061852693557739
+                1.401991367340088,
+                0.9498873949050903,
+                0.9944036602973938
             ],
             "min" : [
-                -0.19203877449035645,
-                -0.8701161742210388,
-                -0.9008183479309082
+                -1.3102052211761475,
+                -0.9513131380081177,
+                -0.9599435329437256
             ],
             "type" : "VEC3"
         },
         {
             "bufferView" : 1,
             "componentType" : 5126,
-            "count" : 1632,
+            "count" : 1816,
             "type" : "VEC3"
         },
         {
             "bufferView" : 2,
             "componentType" : 5126,
-            "count" : 1632,
+            "count" : 1816,
             "type" : "VEC2"
         },
         {
@@ -100,32 +100,32 @@
     "bufferViews" : [
         {
             "buffer" : 0,
-            "byteLength" : 19584,
+            "byteLength" : 21792,
             "byteOffset" : 0,
             "target" : 34962
         },
         {
             "buffer" : 0,
-            "byteLength" : 19584,
-            "byteOffset" : 19584,
+            "byteLength" : 21792,
+            "byteOffset" : 21792,
             "target" : 34962
         },
         {
             "buffer" : 0,
-            "byteLength" : 13056,
-            "byteOffset" : 39168,
+            "byteLength" : 14528,
+            "byteOffset" : 43584,
             "target" : 34962
         },
         {
             "buffer" : 0,
             "byteLength" : 3648,
-            "byteOffset" : 52224,
+            "byteOffset" : 58112,
             "target" : 34963
         }
     ],
     "buffers" : [
         {
-            "byteLength" : 55872,
+            "byteLength" : 61760,
             "uri" : "plant_06_fractalrose_samen.bin"
         }
     ]
