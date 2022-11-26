@@ -1,33 +1,61 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Assets/Models/Meshes/MeshPlantPinoState013.res" type="ArrayMesh" id=1]
-[ext_resource path="res://Assets/Models/Meshes/MeshPlantPinoState012.res" type="ArrayMesh" id=2]
-[ext_resource path="res://Assets/Models/Meshes/MeshPlantPinoState011.res" type="ArrayMesh" id=3]
+[ext_resource path="res://Assets/Models/Meshes/MeshPlantPinoState011.res" type="ArrayMesh" id=1]
+[ext_resource path="res://Assets/Models/Meshes/MeshPlantPinoState013.res" type="ArrayMesh" id=2]
+[ext_resource path="res://Assets/Models/Meshes/MeshPlantPinoState014.res" type="ArrayMesh" id=4]
+
+[sub_resource type="Animation" id=5]
+resource_name = "spin"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("FlowerBase001:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ) ]
+}
 
 [node name="ModelPlantPinoState01" type="Spatial"]
 
+[node name="TurnPoint" type="Spatial" parent="."]
+transform = Transform( 0.816186, 0, 0.57779, 0, 1, 0, -0.57779, 0, 0.816186, 0, -0.0849275, 0 )
+
+[node name="Empty" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00342116, 0.308856, -0.572795 )
+
+[node name="Empty001" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.297266, 0.308856, 0.491333 )
+
+[node name="Empty002" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.550127, 0.308856, 0.153782 )
+
+[node name="Stem" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0849276, 0 )
+mesh = ExtResource( 1 )
+
+[node name="TurnPoint001" type="Spatial" parent="."]
+transform = Transform( -0.275196, 0, 0.961388, 0, 1, 0, -0.961388, 0, -0.275196, 0, -0.0849275, 0 )
+
 [node name="FlowerBase001" type="MeshInstance" parent="."]
-transform = Transform( 0.905689, 0, 0, 0, 0.370313, 0, 0, 0, 0.905689, 0, 1.00172, 0 )
-mesh = ExtResource( 3 )
+transform = Transform( 0.905689, 0, 0, 0, 0.370313, 0, 0, 0, 0.905689, 0, 0.916793, 0 )
 
 [node name="Flower001" type="MeshInstance" parent="FlowerBase001"]
 transform = Transform( 1.10413, 0, 0, 0, 2.70042, 0, 0, 0, 1.10413, 0, -0.0748131, 0 )
 mesh = ExtResource( 2 )
 
 [node name="Pino2" type="MeshInstance" parent="."]
-mesh = ExtResource( 1 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0849275, 0 )
+mesh = ExtResource( 4 )
 
-[node name="TurnPoint" type="Spatial" parent="."]
-transform = Transform( 0.816186, 0, 0.57779, 0, 1, 0, -0.57779, 0, 0.816186, 0, -0.0849275, 0 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "spin"
+anims/spin = SubResource( 5 )
 
-[node name="Empty" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.118702, 0.162759, -0.175457 )
-
-[node name="Empty001" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.228453, 0.162759, -0.0915939 )
-
-[node name="Empty002" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.127037, 0.162759, 0.18145 )
-
-[node name="Empty003" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.169411, 0.162759, 0.18145 )
+[node name="VisibilityEnabler" type="VisibilityEnabler" parent="."]
+max_distance = 6.0
