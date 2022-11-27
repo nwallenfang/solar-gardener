@@ -144,6 +144,7 @@ draw_pass_1 = SubResource( 5 )
 
 [node name="SrcMesh" type="MeshInstance" parent="."]
 transform = Transform( 0.524754, 0, 0, 0, 0.8, 0, 0, 0, 0.695396, 0, 0, 0 )
+visible = false
 mesh = SubResource( 13 )
 
 [node name="SporeShapeScatter" type="MeshInstance" parent="."]

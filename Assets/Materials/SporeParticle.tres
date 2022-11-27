@@ -44,9 +44,9 @@ void vertex() {
 	float rand1 = fract(random(vec2(0.5 * instance_id.x, instance_id.y)));
 	float rand2 = fract(random(-vec2(0.2 * instance_id.x, 0.01 * instance_id.y)));
 	MODELVIEW_MATRIX = INV_CAMERA_MATRIX * mat4(CAMERA_MATRIX[0],CAMERA_MATRIX[1],CAMERA_MATRIX[2],WORLD_MATRIX[3]);
-	VERTEX.x += 1.5 * (0.5 - texture(movement_noise, speed * (TIME+rand1)*vec2(rand1, rand2)).r);
-	VERTEX.y += 1.5 * (0.5 - texture(movement_noise, speed * (TIME+rand2)*vec2(rand2, rand1)).r);
-	VERTEX.z += 1.5 * (0.5 - texture(movement_noise, speed * (TIME+rand2)*vec2(rand1, rand2)).r);
+	VERTEX.x += 1.5 * (0.5 - texture(movement_noise, speed * (TIME+rand1)*normalize(vec2(rand1, rand2))).r);
+	VERTEX.y += 1.5 * (0.5 - texture(movement_noise, speed * (TIME+rand2)*normalize(vec2(rand2, rand1))).r);
+	VERTEX.z += 1.5 * (0.5 - texture(movement_noise, speed * (TIME+rand2)*normalize(vec2(rand1, rand2))).r);
 	COLOR = mix(albedo_1, albedo_2, rand1); //INSTANCE_ID
 	rand = rand1;
 }
