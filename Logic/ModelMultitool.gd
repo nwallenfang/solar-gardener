@@ -34,7 +34,7 @@ func set_plant(active: bool):
 	if active:
 		$Antenna.visible = false
 	$PlantPlayer.play("on" if active else "off")
-	if active:
+	if active and Game.game_state != Game.State.LOADING:
 		Audio.play("seedgun_load")
 	if not active:
 		$Slingshot.visible = false
