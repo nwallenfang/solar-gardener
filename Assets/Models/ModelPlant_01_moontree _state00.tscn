@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Models/Meshes/MeshPlant_01_moontree _state001.res" type="ArrayMesh" id=1]
+
+[node name="ModelPlant_01_moontree _state00" type="Spatial"]
+
+[node name="Empty" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.06147, 2.40472, 0.365097 )
+
+[node name="Empty001" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.109891, 1.49078, 1.71868 )
+
+[node name="Empty002" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16283, 2.7898, -0.398195 )
+
+[node name="Empty003" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24923, 1.51534, -1.22884 )
+
+[node name="Retopo_Cylinder001" type="MeshInstance" parent="."]
+transform = Transform( 0.285373, 0, 0, 0, 0.285373, 0, 0, 0, 0.285373, 0, -0.444913, 0 )
+mesh = ExtResource( 1 )

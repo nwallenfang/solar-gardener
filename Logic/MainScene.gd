@@ -1,6 +1,6 @@
 extends Control
 
-const DEBUG_PROFILE := true
+const DEBUG_PROFILE := false
 
 # could be set to something like 0.75 in the Web Export for better performance
 var resolution_scaling_factor = 1.0

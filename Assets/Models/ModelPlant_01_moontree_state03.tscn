@@ -1,0 +1,223 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Assets/Models/Meshes/MeshPlant_01_moontree_state031.res" type="ArrayMesh" id=1]
+[ext_resource path="res://Assets/Models/Meshes/MeshPlant_01_moontree_state032.res" type="ArrayMesh" id=2]
+[ext_resource path="res://Assets/Materials/Plants/MoontreeMoon.tres" type="Material" id=3]
+[ext_resource path="res://Assets/Materials/Plants/MoontreeWood.tres" type="Material" id=4]
+[ext_resource path="res://Plants/ModelPlant_01_moontree_state03.gd" type="Script" id=5]
+
+[sub_resource type="Animation" id=3]
+resource_name = "Empty001Action"
+length = 0.0333333
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Empty001")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0.0774112, 3.21975, 3.43527, 0, 0, 0, 1, 1, 1, 1, 0.0333333, 1, 0.0774112, 3.21975, 3.43527, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Empty002Action"
+length = 0.0333333
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Empty002")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 2.0693, 3.88095, -2.68107, 0, 0, 0, 1, 1, 1, 1, 0.0333333, 1, 2.0693, 3.88095, -2.68107, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "Empty003Action"
+length = 4.0
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Empty003")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, -3.32234, 4.30722, 2.64703, 0, 0, 0, 1, 1, 1, 1, 4, 1, -3.32234, 4.30722, 2.64703, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "EmptyAction"
+length = 0.0333333
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Empty")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 1.5239, 4.00108, 1.31105, 0, 0, 0, 1, 1, 1, 1, 0.0333333, 1, 1.5239, 4.00108, 1.31105, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "Key001Action"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Retopo_Cylinder:blend_shapes/Key 1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 0.966667, 1, 1.03333, 1.06667, 1.1, 1.13333, 1.16667, 1.2, 1.23333, 1.26667, 1.3, 1.33333, 1.36667, 1.4, 1.43333, 1.46667, 1.5, 1.53333, 1.56667, 1.6, 1.63333, 1.66667, 1.7, 1.73333, 1.76667, 1.8, 1.83333, 1.86667, 1.9, 1.93333, 1.96667, 2, 2.03333, 2.06667, 2.1, 2.13333, 2.16667, 2.2, 2.23333, 2.26667, 2.3, 2.33333, 2.36667, 2.4, 2.43333, 2.46667, 2.5, 2.53333, 2.56667, 2.6, 2.63333, 2.66667, 2.7, 2.73333, 2.76667, 2.8, 2.83333, 2.86667, 2.9, 2.93333, 2.96667, 3, 3.03333, 3.06667, 3.1, 3.13333, 3.16667, 3.2, 3.23333, 3.26667, 3.3, 3.33333, 3.36667, 3.4, 3.43333, 3.46667, 3.5, 3.53333, 3.56667, 3.6, 3.63333, 3.66667, 3.7, 3.73333, 3.76667, 3.8, 3.83333, 3.86667, 3.9, 3.93333, 3.96667, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.000624032, 0.00247177, 0.0055067, 0.00969228, 0.014992, 0.0213693, 0.0287876, 0.0372106, 0.0466015, 0.0569239, 0.0681412, 0.080217, 0.0931147, 0.106798, 0.12123, 0.136374, 0.152194, 0.168653, 0.185715, 0.203343, 0.221501, 0.240152, 0.259259, 0.278787, 0.298698, 0.318956, 0.339525, 0.360368, 0.381448, 0.402729, 0.424174, 0.445747, 0.467412, 0.489131, 0.510869, 0.532588, 0.554253, 0.575826, 0.597271, 0.618552, 0.639632, 0.660475, 0.681044, 0.701302, 0.721213, 0.740741, 0.759848, 0.778499, 0.796657, 0.814285, 0.831347, 0.847806, 0.863626, 0.87877, 0.893202, 0.906885, 0.919783, 0.931859, 0.943076, 0.953399, 0.96279, 0.971212, 0.978631, 0.985008, 0.990308, 0.994493, 0.997528, 0.999376, 1.0, 0.998816, 0.995328, 0.989632, 0.981824, 0.972, 0.960256, 0.946688, 0.931392, 0.914464, 0.896, 0.876096, 0.854848, 0.832352, 0.808704, 0.784, 0.758336, 0.731808, 0.704512, 0.676544, 0.648, 0.618976, 0.589568, 0.559872, 0.529984, 0.5, 0.470016, 0.440128, 0.410432, 0.381024, 0.352, 0.323456, 0.295488, 0.268192, 0.241664, 0.216, 0.191296, 0.167648, 0.145152, 0.123904, 0.104, 0.085536, 0.068608, 0.0533119, 0.039744, 0.028, 0.018176, 0.010368, 0.00467181, 0.00118411, 0.0 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Retopo_CylinderAction"
+length = 4.0
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Retopo_Cylinder")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0, 0, 0, -8.14603e-08, 0, 0, 1, 0.285373, 0.285373, 0.285373, 4, 1, 0, 0, 0, -8.14603e-08, 0, 0, 1, 0.285373, 0.285373, 0.285373 )
+
+[sub_resource type="Animation" id=10]
+resource_name = "Retopo_CylinderAction001"
+length = 4.0
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Retopo_Cylinder001")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0, 0, 0, -8.14603e-08, 0, 0, 1, 0.285373, 0.285373, 0.285373, 4, 1, 0, 0, 0, -8.14603e-08, 0, 0, 1, 0.285373, 0.285373, 0.285373 )
+
+[sub_resource type="Animation" id=11]
+resource_name = "Empty001Action"
+length = 0.0333333
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Empty001")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0.0774112, 3.21975, 3.43527, 0, 0, 0, 1, 1, 1, 1, 0.0333333, 1, 0.0774112, 3.21975, 3.43527, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=12]
+resource_name = "Empty002Action"
+length = 0.0333333
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Empty002")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 2.0693, 3.88095, -2.68107, 0, 0, 0, 1, 1, 1, 1, 0.0333333, 1, 2.0693, 3.88095, -2.68107, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=13]
+resource_name = "Empty003Action"
+length = 4.0
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Empty003")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, -3.32234, 4.30722, 2.64703, 0, 0, 0, 1, 1, 1, 1, 4, 1, -3.32234, 4.30722, 2.64703, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=14]
+resource_name = "EmptyAction"
+length = 0.0333333
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Empty")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 1.5239, 4.00108, 1.31105, 0, 0, 0, 1, 1, 1, 1, 0.0333333, 1, 1.5239, 4.00108, 1.31105, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=15]
+resource_name = "KeyAction"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Retopo_Cylinder001:blend_shapes/Key 1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 0.966667, 1, 1.03333, 1.06667, 1.1, 1.13333, 1.16667, 1.2, 1.23333, 1.26667, 1.3, 1.33333, 1.36667, 1.4, 1.43333, 1.46667, 1.5, 1.53333, 1.56667, 1.6, 1.63333, 1.66667, 1.7, 1.73333, 1.76667, 1.8, 1.83333, 1.86667, 1.9, 1.93333, 1.96667, 2, 2.03333, 2.06667, 2.1, 2.13333, 2.16667, 2.2, 2.23333, 2.26667, 2.3, 2.33333, 2.36667, 2.4, 2.43333, 2.46667, 2.5, 2.53333, 2.56667, 2.6, 2.63333, 2.66667, 2.7, 2.73333, 2.76667, 2.8, 2.83333, 2.86667, 2.9, 2.93333, 2.96667, 3, 3.03333, 3.06667, 3.1, 3.13333, 3.16667, 3.2, 3.23333, 3.26667, 3.3, 3.33333, 3.36667, 3.4, 3.43333, 3.46667, 3.5, 3.53333, 3.56667, 3.6, 3.63333, 3.66667, 3.7, 3.73333, 3.76667, 3.8, 3.83333, 3.86667, 3.9, 3.93333, 3.96667, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.000398414, 0.00157255, 0.00349074, 0.00612133, 0.00943265, 0.013393, 0.0179708, 0.0231344, 0.028852, 0.0350921, 0.0418229, 0.0490128, 0.0566302, 0.0646433, 0.0730206, 0.0817303, 0.0907407, 0.10002, 0.109537, 0.11926, 0.129157, 0.139197, 0.149347, 0.159577, 0.169854, 0.180146, 0.190423, 0.200653, 0.210803, 0.220843, 0.23074, 0.240463, 0.24998, 0.259259, 0.26827, 0.276979, 0.285357, 0.29337, 0.300987, 0.308177, 0.314908, 0.321148, 0.326866, 0.332029, 0.336607, 0.340567, 0.343879, 0.346509, 0.348427, 0.349602, 0.35, 0.349775, 0.34911, 0.348016, 0.346509, 0.344601, 0.342306, 0.339637, 0.336607, 0.33323, 0.329519, 0.325487, 0.321148, 0.316515, 0.311602, 0.306421, 0.300987, 0.295313, 0.289411, 0.283295, 0.276979, 0.270477, 0.2638, 0.256963, 0.24998, 0.242862, 0.235625, 0.228281, 0.220843, 0.213325, 0.20574, 0.198102, 0.190423, 0.182718, 0.175, 0.167282, 0.159577, 0.151898, 0.14426, 0.136675, 0.129157, 0.121719, 0.114375, 0.107138, 0.10002, 0.0930367, 0.0861999, 0.0795234, 0.0730205, 0.0667047, 0.0605893, 0.0546875, 0.0490128, 0.0435786, 0.0383981, 0.0334849, 0.028852, 0.0245131, 0.0204813, 0.0167702, 0.013393, 0.0103631, 0.00769389, 0.00539857, 0.00349075, 0.00198352, 0.000890493, 0.000224769, 0.0 ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "Retopo_CylinderAction"
+length = 4.0
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Retopo_Cylinder")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0, 0, 0, -8.14603e-08, 0, 0, 1, 0.285373, 0.285373, 0.285373, 4, 1, 0, 0, 0, -8.14603e-08, 0, 0, 1, 0.285373, 0.285373, 0.285373 )
+
+[sub_resource type="Animation" id=17]
+resource_name = "Retopo_CylinderAction001"
+length = 4.0
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Retopo_Cylinder001")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0, 0, 0, -8.14603e-08, 0, 0, 1, 0.285373, 0.285373, 0.285373, 4, 1, 0, 0, 0, -8.14603e-08, 0, 0, 1, 0.285373, 0.285373, 0.285373 )
+
+[node name="ModelPlant_01_moontree_state03" type="Spatial"]
+script = ExtResource( 5 )
+
+[node name="Retopo_Cylinder" type="MeshInstance" parent="."]
+transform = Transform( 0.282438, -0.0408208, 0, 0.0408208, 0.282438, 0, 0, 0, 0.285373, 0, -0.910523, 0 )
+mesh = ExtResource( 1 )
+"blend_shapes/Key 1" = 0.0
+material/0 = ExtResource( 3 )
+
+[node name="Empty" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5239, 3.09056, 1.31105 )
+
+[node name="Empty001" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0774112, 3.21975, 3.43527 )
+
+[node name="Empty002" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0693, 2.97043, -2.68107 )
+
+[node name="Empty003" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.32234, 3.3967, 2.64703 )
+
+[node name="Retopo_Cylinder001" type="MeshInstance" parent="."]
+transform = Transform( 0.285373, 0, 0, 0, 0.285373, 0, 0, 0, 0.285373, 0, -0.910523, 0 )
+mesh = ExtResource( 2 )
+"blend_shapes/Key 1" = 0.0
+material/0 = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Empty001Action = SubResource( 3 )
+anims/Empty002Action = SubResource( 4 )
+anims/Empty003Action = SubResource( 5 )
+anims/EmptyAction = SubResource( 6 )
+anims/Key001Action = SubResource( 7 )
+anims/Retopo_CylinderAction = SubResource( 9 )
+anims/Retopo_CylinderAction001 = SubResource( 10 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+anims/Empty001Action = SubResource( 11 )
+anims/Empty002Action = SubResource( 12 )
+anims/Empty003Action = SubResource( 13 )
+anims/EmptyAction = SubResource( 14 )
+anims/KeyAction = SubResource( 15 )
+anims/Retopo_CylinderAction = SubResource( 16 )
+anims/Retopo_CylinderAction001 = SubResource( 17 )
+
+[node name="VisibilityEnabler" type="VisibilityEnabler" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70271, 6.57067, 2.66906 )
+aabb = AABB( -3.36921, -6.9303, -4.71783, 6.73843, 13.8606, 9.43567 )
+max_distance = 10.0

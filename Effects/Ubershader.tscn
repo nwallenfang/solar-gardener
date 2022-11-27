@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://Effects/DirtExplosion.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Effects/Ubershader.gd" type="Script" id=2]
@@ -24,6 +24,8 @@
 [ext_resource path="res://Assets/Models/ModelPlant_01_ranke_state00.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Assets/Models/ModelPlant_01_ranke_state02.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Effects/SlingBand.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Assets/Models/Modelplant_06_fractalrose_state03.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Assets/Models/ModelDirtPile.tscn" type="PackedScene" id=26]
 
 [sub_resource type="QuadMesh" id=1]
 
@@ -1699,6 +1701,9 @@ transform = Transform( 0.735601, 0, -0.677415, 0, 1, 0, 0.677415, 0, 0.735601, 0
 [node name="ModelPlant_01_ranke_state00" parent="." instance=ExtResource( 22 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.480478, 0.159735, 0 )
 
+[node name="Modelplant_06_fractalrose_state03" parent="ModelPlant_01_ranke_state00" instance=ExtResource( 25 )]
+transform = Transform( 0.517029, 0, 0, 0, 0.517029, 0, 0, 0, 0.517029, 0, 0, 0 )
+
 [node name="ModelPlant_01_ranke_state02" parent="." instance=ExtResource( 23 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.4025 )
 
@@ -1707,6 +1712,9 @@ transform = Transform( 1.30811, 0, 0, 0, 1.30811, 0, 0, 0, 1.30811, 0, 1.38268, 
 
 [node name="SlingBand" parent="SlingBall" instance=ExtResource( 24 )]
 transform = Transform( 0.821876, 0, 0, 0, 0.821876, 0, 0, 0, 0.821876, 0, -0.6321, 0 )
+
+[node name="ModelDirtPile" parent="." instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.41543, 0 )
 
 [editable path="DirtExplosion"]
 [editable path="ModelMultitoolOld/GrowBeamOrigin/EnergyBallCombo"]

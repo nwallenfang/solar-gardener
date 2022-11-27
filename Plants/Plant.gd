@@ -186,7 +186,7 @@ func calculate_growth_points():
 	
 	
 	# CHEAT
-	if cheat or profile.name == "Giant-Cap":
+	if cheat or profile.name == "Giant-Cap" or profile.name == "Moontree":
 		points += 10
 		
 	growth_points = points
@@ -253,15 +253,18 @@ func grow(delta, factor_sign):
 
 
 func set_animation_active(model: Spatial, active: bool):
-	if model.has_node("AnimationPlayer"):
+	if model.has_method("animate"):
+		model.call("animate")
+	elif model.has_node("AnimationPlayer"):
 		var anim: AnimationPlayer = model.get_node("AnimationPlayer")
 		
-		if anim.has_animation("Key001Action"):
-			if active:
-				pass
+#		if anim.has_animation("Key001Action"):
+#			if active:
 #				anim.play("Key001Action")
 		if not active:
 			anim.stop()
+			
+		
 
 
 const GREEN_OVERLAY = preload("res://Assets/Materials/GreenAlphaOverlay.tres")
