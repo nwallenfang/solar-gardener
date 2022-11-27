@@ -7,10 +7,13 @@ export var default_color: Color = Color("51b19b")
 var current_screen: Control
 
 func _ready() -> void:
-	Game.hologram = self
+	# DIRTY dirty dirty
+	if owner.owner.owner.owner.name == "Multitool":
+		Game.hologram = self
+		
 	for control in $AspectRatioContainer.get_children():
 		control.visible = false
-#	$AspectRatioContainer/BackgroundPanel.visible = true
+
 
 func _physics_process(delta):
 	if is_instance_valid(Game.multitool) and is_instance_valid(current_screen):

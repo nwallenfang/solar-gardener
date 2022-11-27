@@ -36,5 +36,5 @@ shape = SubResource( 13 )
 transform = Transform( 5.8573, 0, 0, 0, 5.8573, 0, 0, 0, 5.8573, 0, 0, 0 )
 
 [node name="Amber" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.91753, 0 )
+transform = Transform( 0.999999, -0.000652114, 0.000838005, 0.000676505, 0.999566, -0.0294441, -0.000818441, 0.0294447, 0.999566, 0, 6.09713, 0.0119134 )
 seed_name = "Fractalrose"

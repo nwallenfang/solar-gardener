@@ -9,7 +9,8 @@ noise = SubResource( 1 )
 
 [resource]
 albedo_color = Color( 1, 0, 0, 1 )
-roughness = 0.0
+metallic_specular = 0.0
+roughness = 0.42
 normal_enabled = true
-normal_scale = 1.0
+normal_scale = 0.5
 normal_texture = SubResource( 2 )

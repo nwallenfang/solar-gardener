@@ -543,10 +543,10 @@ func show_analyse_information():
 							else:
 								Game.hologram.show_scan_progress(object_to_analyse.get("analyse_name"), 100.0)
 			else:
-				Game.hologram.clear()
+				clear_holo_information()
 				completely_analysed_object = null
 		else:
-			Game.hologram.clear()
+			clear_holo_information()
 			completely_analysed_object = null
 
 
@@ -572,7 +572,8 @@ func show_hopper_information():
 #	set_display_label("Travel to " + hopper_planet.planet_name)
 
 func clear_holo_information():
-	Game.hologram.clear()
+	if Game.hologram != null:
+		Game.hologram.clear()
 #	set_display_label("")
 
 func set_display_label(s: String, force := false):

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Models/Meshes/Meshplant_04_sporenpilz_samen1.res" type="ArrayMesh" id=1]
+
+[node name="Modelplant_04_sporenpilz_samen" type="Spatial"]
+
+[node name="Icosphere" type="MeshInstance" parent="."]
+transform = Transform( 5.80365, 0, 0, 0, 6.05014, 0, 0, 0, 6.10231, 0, 0, 0 )
+mesh = ExtResource( 1 )

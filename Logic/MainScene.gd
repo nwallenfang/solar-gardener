@@ -1,5 +1,6 @@
 extends Control
 
+const DEBUG_PROFILE := true
 
 # could be set to something like 0.75 in the Web Export for better performance
 var resolution_scaling_factor = 1.0
@@ -19,6 +20,7 @@ func _input(event: InputEvent) -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Game.intro_done = true
 			Game.UI.get_node("ClickToFocus").visible = false
+			Game.get_node("SettingsOpenCooldown").start(0.4)
 			if Game.game_state == Game.State.INGAME:
 				set_process_input(false)
 
@@ -37,8 +39,9 @@ func _ready() -> void:
 
 	Input.use_accumulated_input = true
 	
-	if not OS.is_debug_build():
+	if not OS.is_debug_build() or DEBUG_PROFILE:
 		Engine.target_fps = 144
+	
 	
 	# custom cursors don't work properly in web builds atm :(( really sad
 	# https://github.com/godotengine/godot/issues/67925
