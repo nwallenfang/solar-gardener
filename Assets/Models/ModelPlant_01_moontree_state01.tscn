@@ -21,3 +21,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27127, 5.73772, -2.02331 )
 
 [node name="Empty003" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.59089, 3.32666, 2.15052 )
+
+[node name="Retopo_Cylinder001" type="MeshInstance" parent="."]
+transform = Transform( 0.285373, 0, 0, 0, 0.285373, 0, 0, 0, 0.285373, 0, 0, 0 )
+mesh = ExtResource( 1 )

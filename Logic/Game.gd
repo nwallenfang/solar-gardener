@@ -89,7 +89,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("give_seeds"):
 		print("gib tzieds")
 		PlantData.give_seeds("Grabroot", 10, false)
-		PlantData.give_seeds("Giant-Cap", 10, false)
+		PlantData.give_seeds("Greatcap", 10, false)
 		PlantData.give_seeds("Hidden Lotus", 10, false)
 		PlantData.give_seeds("Fractalrose", 10, false)
 		

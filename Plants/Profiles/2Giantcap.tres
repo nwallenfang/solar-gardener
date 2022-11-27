@@ -5,12 +5,12 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Giant-Cap"
-mesh_file_name = "Modelplant_04_sporenpilz"
+name = "Greatcap"
+mesh_file_name = "Modelplant_04_Sporenpilz"
 plant_type = 2
-fluff_base = "The Giant-Cap is known to be the biggest mushroom in the galaxy."
-fluff_stage2 = "The Giant-Cap uses its large surface area to collect [b]lots of sunlight[/b]."
-fluff_stage3 = "Because of their large size the Giant-Cap prefers to grow [b]without company[/b]. "
+fluff_base = "The Greatcap  is known to be the biggest mushroom in the galaxy."
+fluff_stage2 = "It uses its large surface area to collect [b]lots of sunlight[/b]."
+fluff_stage3 = "Because of its large size the Giant-Cap prefers to grow [b]without company[/b]. "
 icon = ExtResource( 2 )
 sun = 2
 moisture = 1
