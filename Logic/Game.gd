@@ -74,6 +74,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("open_settings"):  # show/hide settings UI
 		if main_scene_running:
 			if game_state == State.INGAME:
+				$SettingsOpenCooldown.start(0.4)
 				self.game_state = State.SETTINGS
 			elif game_state == State.SETTINGS:
 				# this is only the correct if you can only enter settings from ingame!!
@@ -174,4 +175,4 @@ func execute_planet_hop(new_planet: Planet, pos: Vector3):
 
 
 func _on_SettingsOpenCooldown_timeout() -> void:
-	pass # Replace with function body.
+	pass # one shot

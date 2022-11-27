@@ -99,15 +99,20 @@ func _process(delta):
 #######################
 func fade_in(sound_name: String, fade_duration:=1.0, random_start:=false):
 	if available.empty():
-		printerr("No available players to play " + sound_name)
-		return
+		if sound_name.begins_with("music"):
+			# music is important, ok? it can kick another sound out
+			var vip_player: CustomAudioPlayer
+			vip_player.stop()
+		else:
+			printerr("No available players to play " + sound_name)
+			return
 	if sound_name in playing:
 #		print("sound " + sound_name + " tried fading in twice")
 		return
 
 	var player: CustomAudioPlayer = available.pop_front()
 	if player == null:
-		# if this is music it should get special treatment
+		# if this is music it should get special treatment <- see above
 		pass
 #	print(sound_name + " started")
 	player.stream = $Sounds.get_node(sound_name).stream

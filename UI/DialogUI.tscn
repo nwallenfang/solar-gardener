@@ -20,6 +20,7 @@ __meta__ = {
 }
 seeds_unlocked_color = Color( 0.866667, 0.631373, 0.490196, 1 )
 plant_unlocked_color = Color( 0.305882, 0.411765, 0.168627, 1 )
+plant_scanned_color = Color( 0.223529, 0.811765, 0.92549, 1 )
 preference_unlocked_color = Color( 0.317647, 0.521569, 0.733333, 1 )
 linger_time = 4.0
 float_time = 1.5

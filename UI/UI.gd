@@ -1,6 +1,13 @@
 extends CanvasLayer
 class_name UI
 
+enum INFO {
+	MORE_SEEDS,
+	PLANT_PREFERENCE,
+	PLANT_UNLOCKED,
+	PLANT_SCANNED,
+}
+
 const DIAGNOSE_ON_WEB := true # set to true if diagnostics should show in web export
 func _ready() -> void:
 	Game.connect("changed_state", self, "changed_state")

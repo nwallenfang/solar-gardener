@@ -31,23 +31,26 @@ func push_infoline(text: String, type: int):
 	queue.append([text, type])
 	
 	if not showing:
-		print("start showing")
+#		print("start showing")
 		show_infoline()
 
-var delay := 0.3
+var delay := 0.1
 var i := 0
-var offset_pct := 0.04
+var offset_pct := 0.05
+
 func show_infoline():
 	var subtitle_text = SUBTITLE_TEXT.instance()
+	var this_float_time = float_time
+	var this_linger_time = linger_time
 	add_child(subtitle_text)
 	showing = true
 	# dirty coding, sorry :(
 	i +=1
 
 	subtitle_text.modulate.a = 0.0
-	screen_height = Game.main_scene.get_node("ViewportContainer/Viewport").size.y
+#	screen_height = Game.main_scene.get_node("ViewportContainer/Viewport").size.y
 	subtitle_text.rect_position = beginning_pos
-	subtitle_text.rect_position.y -= (i % 5) * offset_pct * screen_height
+	subtitle_text.rect_position.y -= randf() * offset_pct * 720
 	var line = queue.pop_front()
 
 	subtitle_text.text = line[0]
@@ -55,20 +58,23 @@ func show_infoline():
 		INFO.MORE_SEEDS:
 			subtitle_text.set("custom_colors/font_color", seeds_unlocked_color)
 		INFO.PLANT_PREFERENCE:
+			this_linger_time *= 4.0
 			subtitle_text.set("custom_colors/font_color", preference_unlocked_color)
 		INFO.PLANT_UNLOCKED:
+			this_linger_time *= 4.0
 			subtitle_text.set("custom_colors/font_color", plant_unlocked_color)
 		INFO.PLANT_SCANNED:
 			subtitle_text.set("custom_colors/font_color", plant_scanned_color)
+			this_linger_time *= 4.0
 		
 	var tween := get_tree().create_tween().set_parallel(true)
 	tween.tween_property(subtitle_text, "modulate:a", 1.0, 0.3)
-	var target_position = subtitle_text.rect_position - 0.05 * Vector2(0.0, 1.0) * screen_height
-	tween.chain().tween_property(subtitle_text, "rect_position", target_position, float_time).set_trans(Tween.TRANS_CUBIC)
-	tween.tween_property(subtitle_text, "modulate:a", 0.0, linger_time).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+	var target_position = subtitle_text.rect_position - 0.05 * Vector2(0.0, 1.0) * 720
+	tween.chain().tween_property(subtitle_text, "rect_position", target_position, this_float_time).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(subtitle_text, "modulate:a", 0.0, this_linger_time).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT)
 	tween.play()
 
-#	yield(get_tree().create_timer(delay), "timeout")
+	yield(get_tree().create_timer(delay), "timeout")
 	if not queue.empty():
 		show_infoline()
 	else:

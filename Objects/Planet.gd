@@ -70,8 +70,6 @@ func growth_stage_reached(growth_stage: int):
 			var used_prefix = music_prefix
 			if used_prefix == "dirt":
 				used_prefix = "sand"
-			if used_prefix != "sand":
-				used_prefix = "placeholder"
 			
 			var music_next = "music_%s_%d" % [used_prefix, growth_stage]
 			var music_prev = "music_%s_%d" % [used_prefix, growth_stage-1]
@@ -88,8 +86,6 @@ func fade_out():
 	var used_prefix = music_prefix
 	if used_prefix == "dirt":
 		used_prefix = "sand"
-	if used_prefix != "sand":
-		used_prefix = "placeholder"
 	var music = "music_%s_%d" % [used_prefix, planet_growth_stage]
 	Audio.fade_out(music)
 	
@@ -100,8 +96,6 @@ func fade_in():
 	var used_prefix = music_prefix
 	if used_prefix == "dirt":
 		used_prefix = "sand"
-	if used_prefix != "sand":
-		used_prefix = "placeholder"
 	if planet_growth_stage > 0:
 		var music = "music_%s_%d" % [used_prefix, planet_growth_stage]
 		Audio.fade_in(music)
@@ -111,8 +105,6 @@ func get_current_music_name() -> String:
 	var used_prefix = music_prefix
 	if used_prefix == "dirt":
 		used_prefix = "sand"
-	if used_prefix != "sand":
-		used_prefix = "placeholder"
 	var music = "music_%s_%d" % [used_prefix, planet_growth_stage]
 	
 	return music

@@ -56,9 +56,10 @@ func make_all_preferences_known():
 #	# GET ALL THE DATA FROM PlantData singleton
 #	self.number_of_stars = 2
 func set_to_discovered():
+#		Game.UI.show_info_line(plant_name + " discovered!", Game.UI.INFO.PLANT_SCANNED)
 		$Panel/UndiscoveredOverlay.visible = false
 		$SeedCountBG.visible = true
-		discovered = true	
+		discovered = true
 	
 func set_seed_count(seed_count: int):
 	if not discovered:

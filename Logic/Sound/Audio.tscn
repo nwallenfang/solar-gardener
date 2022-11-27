@@ -69,6 +69,18 @@ mixer_bus = "Music"
 volume_db = -5.0
 mixer_bus = "Music"
 
+[node name="music_rock_1" parent="Sounds" instance=ExtResource( 1 )]
+volume_db = -6.0
+mixer_bus = "Music"
+
+[node name="music_rock_2" parent="Sounds" instance=ExtResource( 1 )]
+volume_db = -6.0
+mixer_bus = "Music"
+
+[node name="music_rock_3" parent="Sounds" instance=ExtResource( 1 )]
+volume_db = -6.0
+mixer_bus = "Music"
+
 [node name="music_placeholder_1" parent="Sounds" instance=ExtResource( 1 )]
 volume_db = -8.0
 mixer_bus = "Music"
