@@ -1,6 +1,12 @@
 extends Spatial
 
+const GREEN_OVERLAY = preload("res://Assets/Materials/GreenAlphaOverlay.tres")
 func activate():
+	var meshes : Array = Utility.get_all_mesh_instance_children($ModelPlant_01_ranke_state00)
+	for mi in meshes:
+		mi = mi as MeshInstance
+		mi.material_overlay = GREEN_OVERLAY.duplicate()
+	
 	$ModelMultitool.set_grow_beam_on_target(Game.sun)
 	$ModelMultitool.set_grow(true)
 	$ModelMultitool/AnalysePlayer.play("on")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://Effects/DirtExplosion.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Effects/Ubershader.gd" type="Script" id=2]
@@ -21,6 +21,8 @@
 [ext_resource path="res://Assets/Shader/HoloScreen.gdshader" type="Shader" id=19]
 [ext_resource path="res://Logic/ModelMultitool.gd" type="Script" id=20]
 [ext_resource path="res://Logic/ModelMultitool.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Assets/Models/ModelPlant_01_ranke_state00.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Assets/Models/ModelPlant_01_ranke_state02.tscn" type="PackedScene" id=23]
 
 [sub_resource type="QuadMesh" id=1]
 
@@ -1692,6 +1694,12 @@ mesh = SubResource( 40 )
 
 [node name="ModelMultitool" parent="." instance=ExtResource( 21 )]
 transform = Transform( 0.735601, 0, -0.677415, 0, 1, 0, 0.677415, 0, 0.735601, 0, 0, 0 )
+
+[node name="ModelPlant_01_ranke_state00" parent="." instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.480478, 0.159735, 0 )
+
+[node name="ModelPlant_01_ranke_state02" parent="." instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.4025 )
 
 [editable path="DirtExplosion"]
 [editable path="ModelMultitoolOld/GrowBeamOrigin/EnergyBallCombo"]

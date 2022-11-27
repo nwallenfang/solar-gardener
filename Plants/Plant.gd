@@ -280,7 +280,7 @@ func play_growth_pop_animation(old_stage):
 	model_array[old_stage].scale = Vector3.ONE * DEFAULT_MODEL_SCALE
 	current_model.scale = Vector3.ONE * DEFAULT_MODEL_SCALE
 	current_model.visible = true
-#	set_animation_active(current_model, true)
+
 	for mi in old_meshes:
 		mi = mi as MeshInstance
 		mi.material_overlay = null
@@ -289,8 +289,12 @@ func play_growth_pop_animation(old_stage):
 		mi.material_overlay = GREEN_OVERLAY.duplicate()
 		$GrowthAnimationTween.interpolate_property(mi.material_overlay, "albedo_color:a", 1.0, 0.0, 1.0,Tween.TRANS_QUAD,Tween.EASE_IN)
 	$GrowthAnimationTween.start()
-#	var grow_pop_part := GROW_POP_PARTICLES.instance()
-#	add_child(grow_pop_part)
+	var grow_pop_part := GROW_POP_PARTICLES.instance()
+	add_child(grow_pop_part)
+
+
+	yield(get_tree(), "idle_frame")
+	yield(get_tree(), "idle_frame")
 	var dist:= self.global_translation.distance_to(Game.player.global_translation)
 	Audio.play_growth_stage(profile.name, growth_stage, dist)
 	yield($GrowthAnimationTween,"tween_all_completed")
@@ -300,18 +304,19 @@ func play_growth_pop_animation(old_stage):
 
 const FLASH_OVERLAY = preload("res://Assets/Materials/FlashAlphaOverlay.tres")
 func play_growth_flash():
-	if growth_stage != growth_lock and growth_stage_progress < .75:
-		var meshes : Array = Utility.get_all_mesh_instance_children(current_model)
-		for mi in meshes:
-			mi.material_overlay = FLASH_OVERLAY
-		$FlashTween.interpolate_property(FLASH_OVERLAY, "albedo_color:a", 0.0, 0.5, .15, Tween.TRANS_QUAD, Tween.EASE_IN)
-		$FlashTween.start()
-		yield($FlashTween,"tween_all_completed")
-		$FlashTween.interpolate_property(FLASH_OVERLAY, "albedo_color:a", 0.5, 0.0, .3, Tween.TRANS_QUAD, Tween.EASE_IN)
-		$FlashTween.start()
-		yield($FlashTween,"tween_all_completed")
-		for mi in meshes:
-			mi.material_overlay = null
+#	if growth_stage != growth_lock and growth_stage_progress < .75:
+#		var meshes : Array = Utility.get_all_mesh_instance_children(current_model)
+#		for mi in meshes:
+#			mi.material_overlay = FLASH_OVERLAY
+#		$FlashTween.interpolate_property(FLASH_OVERLAY, "albedo_color:a", 0.0, 0.5, .15, Tween.TRANS_QUAD, Tween.EASE_IN)
+#		$FlashTween.start()
+#		yield($FlashTween,"tween_all_completed")
+#		$FlashTween.interpolate_property(FLASH_OVERLAY, "albedo_color:a", 0.5, 0.0, .3, Tween.TRANS_QUAD, Tween.EASE_IN)
+#		$FlashTween.start()
+#		yield($FlashTween,"tween_all_completed")
+#		for mi in meshes:
+#			mi.material_overlay = null
+	pass
 
 const DEATH_OVERLAY = preload("res://Assets/Materials/DeathAlphaOverlay.tres")
 func play_death_flash():
