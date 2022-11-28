@@ -49,19 +49,9 @@ gravity_vec = Vector3( 0, 0, 0 )
 [node name="CollisionShape" type="CollisionShape" parent="PlanetHopArea"]
 shape = SubResource( 12 )
 
-[node name="Amber" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.798316, -0.0220295, -0.0044119, 0.0195408, 0.758213, -0.250081, 0.0110868, 0.249872, 0.758458, -0.182106, 5.32236, 2.43815 )
-seed_name = "Moontree"
-seed_count = 1
-
 [node name="Amber2" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.798316, -0.0220295, -0.0044119, 0.0195408, 0.758213, -0.250081, 0.0110868, 0.249872, 0.758458, -1.43237, 5.18568, 2.41547 )
+transform = Transform( 0.798316, -0.0207316, -0.00865781, 0.0195408, 0.792586, -0.0960958, 0.0110868, 0.0958451, 0.792786, 0.0830537, 5.50192, 1.11366 )
 seed_name = "Grabroot"
-seed_count = 1
-
-[node name="Amber3" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.798316, -0.0220295, -0.0044119, 0.0195408, 0.758213, -0.250081, 0.0110868, 0.249872, 0.758458, -1.43237, 5.52396, 0.936233 )
-seed_name = "Greatcap"
 seed_count = 1
 
 [node name="Model" parent="." instance=ExtResource( 5 )]
@@ -81,12 +71,8 @@ transform = Transform( 1.03296, 0, 0, 0, -4.51522e-08, 1.03296, 0, -1.03296, -4.
 
 [node name="GrabrootGrabber" parent="." instance=ExtResource( 7 )]
 
-[node name="Amber" parent="GrabrootGrabber" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.78478, 0.2 )
-seed_name = "Hidden Lotus"
-
-[node name="Gear" parent="." instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5215, 0 )
+[node name="Gear" parent="GrabrootGrabber" instance=ExtResource( 8 )]
+transform = Transform( 2.01691, 0, 0, 0, 0.78301, 1.85871, 0, -1.85871, 0.78301, 0.206956, 1.91985, 0.183924 )
 
 [node name="DecoStones" type="Spatial" parent="."]
 

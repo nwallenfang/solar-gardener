@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Models/ModelSandPlanet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Amber.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Objects/Planet.gd" type="Script" id=3]
+[ext_resource path="res://Objects/GrabrootGrabber.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SphereShape" id=12]
 radius = 22.8154
@@ -37,4 +38,10 @@ transform = Transform( 5.8573, 0, 0, 0, 5.8573, 0, 0, 0, 5.8573, 0, 0, 0 )
 
 [node name="Amber" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.999999, -0.000652114, 0.000838005, 0.000676505, 0.999566, -0.0294441, -0.000818441, 0.0294447, 0.999566, 0, 6.09713, 0.0119134 )
+seed_name = "Hidden Lotus"
+
+[node name="GrabrootGrabber" parent="." instance=ExtResource( 4 )]
+
+[node name="Amber" parent="GrabrootGrabber" instance=ExtResource( 2 )]
+transform = Transform( 0.685153, 0, 0, 0, 0.685153, 0, 0, 0, 0.685153, 0, 1.84799, 0.366538 )
 seed_name = "Fractalrose"

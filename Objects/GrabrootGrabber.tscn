@@ -38,11 +38,12 @@ mesh = SubResource( 1 )
 skeleton = NodePath("../..")
 
 [node name="Modelplant_01_ziehende_ranken" parent="Model" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.890839, 0.264962 )
+transform = Transform( 0.612647, 0, 0, 0, 0.612647, 0, 0, 0, 0.612647, 0, 0.890839, 0.264962 )
 
 [node name="Tween" type="Tween" parent="."]
 
 [node name="StaticBody" type="StaticBody" parent="."]
+transform = Transform( 0.764299, 0, 0, 0, 0.764299, 0, 0, 0, 0.764299, 0, 0.253871, 0.0387657 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
 transform = Transform( 1, 0, 0, 0, -0.0895375, -0.995983, 0, 0.995983, -0.0895375, 0.420216, -0.542902, -0.0811776 )
@@ -53,5 +54,5 @@ collision_layer = 12
 collision_mask = 0
 
 [node name="CollisionShape2" type="CollisionShape" parent="Area"]
-transform = Transform( 1, 0, 0, 0, -0.0895375, -0.995983, 0, 0.995983, -0.0895375, 0.420216, -0.542902, -0.0811776 )
+transform = Transform( 0.641753, 0, 0, 0, -0.057461, -0.639176, 0, 0.639176, -0.057461, 0.333127, -0.013034, -0.00556708 )
 shape = SubResource( 3 )
