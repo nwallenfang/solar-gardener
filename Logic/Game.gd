@@ -11,6 +11,7 @@ enum State {
 	READING_NOTE,
 	LOADING,
 	INTRO_FLIGHT,
+	UPGRADING,
 }
 
 var game_state = State.LOADING setget set_game_state

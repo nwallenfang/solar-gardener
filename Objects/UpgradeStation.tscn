@@ -31,3 +31,4 @@ transform = Transform( -1.84098e-08, 0, -0.421167, 0, 0.421167, 0, 0.421167, 0, 
 
 [node name="ModelMultitool" parent="Slot" instance=ExtResource( 2 )]
 visible = false
+script = null

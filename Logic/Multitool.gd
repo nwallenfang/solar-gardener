@@ -107,7 +107,7 @@ func _physics_process(delta):
 		if upgrade_mode:
 			if Input.is_action_just_pressed("first_action"):
 				upgrade_station.upgrade()
-				upgrade_mode = false
+				self.upgrade_mode = false
 			
 		if (seeds_empty and current_tool == TOOL.PLANT) or force_reload:
 			try_reload()
@@ -349,9 +349,9 @@ func check_on_hover():
 	else:
 		hop_mode = false
 	if Game.player_raycast.collider is UpgradeStation and Upgrades.is_upgrade_available():
-		upgrade_mode = true
+		self.upgrade_mode = true
 	else:
-		upgrade_mode = false
+		self.upgrade_mode = false
 	match current_tool:
 		TOOL.PLANT:
 			if Game.player_raycast.colliding and Game.player_raycast.hit_point.distance_to(Game.player.global_translation) < PLANT_TOOL_DISTANCE and Game.planet.is_obsidian == false:
@@ -410,17 +410,18 @@ func check_on_hover():
 			object_to_analyse = null
 			if Game.player_raycast.colliding:
 				if Game.player_raycast.hit_point.distance_to(Game.player.global_translation) < ANALYSE_TOOL_DISTANCE:
-					can_analyse = true
-					object_to_analyse = Game.player_raycast.collider
-					if object_to_analyse is Plant:
-						can_analyse = true#object_to_analyse.can_be_analysed
-					if object_to_analyse is StaticBody:
-						if object_to_analyse.name == "PlanetBody":
-							object_to_analyse = Game.planet
-						else:
-							can_analyse = false
-					if object_to_analyse.name == "Ice":
-						object_to_analyse = object_to_analyse.get_parent()
+					if not Game.player_raycast.collider is UpgradeStation:
+						can_analyse = true
+						object_to_analyse = Game.player_raycast.collider
+						if object_to_analyse is Plant:
+							can_analyse = true#object_to_analyse.can_be_analysed
+						if object_to_analyse is StaticBody:
+							if object_to_analyse.name == "PlanetBody":
+								object_to_analyse = Game.planet
+							else:
+								can_analyse = false
+						if object_to_analyse.name == "Ice":
+							object_to_analyse = object_to_analyse.get_parent()
 			show_analysable(can_analyse)
 		TOOL.HOPPER:
 			if not (Game.player_raycast.colliding and Game.player_raycast.collider is Planet):
@@ -462,7 +463,7 @@ func show_hopable(b: bool):
 		Game.crosshair.set_style(Game.crosshair.Style.DEFAULT)
 
 func show_upgradable(b: bool):
-	pass
+	pass#print(b)
 
 func start_planting_animation(pos: Vector3):
 	show_plantable(false)
