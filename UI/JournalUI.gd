@@ -46,8 +46,8 @@ func plant_clicked(plant_name):
 #		currently_hovering.hovered = false
 #		currently_hovering = null
 	Game.coming_out_of_journal = true
-	yield(get_tree(), "idle_frame")
 	Game.get_node("SettingsOpenCooldown").start(0.4)
+	yield(get_tree(), "idle_frame")
 	Game.game_state = Game.State.INGAME
 
 func discover_and_scan_all():
