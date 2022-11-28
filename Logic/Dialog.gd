@@ -12,6 +12,7 @@ export var note_audio1: AudioStreamOGGVorbis
 export var note_audio2: AudioStreamOGGVorbis
 export var note_audio3: AudioStreamOGGVorbis
 export var note_audio4: AudioStreamOGGVorbis
+export var note_audio5: AudioStreamOGGVorbis
 
 export(Array, Resource) var lines: Array
 export var voice_lv_db: float
