@@ -136,7 +136,6 @@ _global_script_class_icons={
 
 config/name="Solar Gardener"
 run/main_scene="res://Logic/MainScene.tscn"
-config/icon="res://Assets/Sprites/plant_group.png"
 
 [audio]
 
