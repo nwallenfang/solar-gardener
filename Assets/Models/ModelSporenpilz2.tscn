@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Assets/Models/Meshes/MeshSporenpilz23.res" type="ArrayMesh" id=1]
 [ext_resource path="res://Assets/Models/Meshes/MeshSporenpilz21.res" type="ArrayMesh" id=2]
 [ext_resource path="res://Assets/Models/Meshes/MeshSporenpilz22.res" type="ArrayMesh" id=3]
+[ext_resource path="res://Assets/Materials/Plants/MoontreeMoonRightCulling.tres" type="Material" id=4]
 
 [sub_resource type="Animation" id=4]
 resource_name = "ConeAction"
@@ -132,12 +133,11 @@ tracks/0/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 8.3, 1, 0, 0,
 [node name="ModelSporenpilz2" type="Spatial"]
 
 [node name="Cone" type="MeshInstance" parent="."]
-transform = Transform( 0.202726, 0, 0, 0, 0.202726, 0, 0, 0, 0.202726, 0.0492322, 0.0255547, -0.00598202 )
 mesh = ExtResource( 2 )
 
 [node name="Cylinder" type="MeshInstance" parent="."]
-transform = Transform( 0.0258144, 0, 0, 0, 0.157656, 0, 0, 0, 0.0258144, 0.0468969, -0.00135437, -0.0080137 )
 mesh = ExtResource( 3 )
+material/0 = ExtResource( 4 )
 
 [node name="Empty" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0127116, 0.23976, -0.0680839 )

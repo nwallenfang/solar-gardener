@@ -57,6 +57,11 @@ transform = Transform( 0.798316, -0.0220295, -0.0044119, 0.0195408, 0.758213, -0
 seed_name = "Grabroot"
 seed_count = 1
 
+[node name="Amber3" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.798316, -0.0220295, -0.0044119, 0.0195408, 0.758213, -0.250081, 0.0110868, 0.249872, 0.758458, -1.43237, 5.52396, 0.936233 )
+seed_name = "Greatcap"
+seed_count = 1
+
 [node name="Model" parent="." instance=ExtResource( 5 )]
 transform = Transform( 4.26153, 0, 0, 0, 4.26153, 0, 0, 0, 4.26153, 0, 0, 0 )
 

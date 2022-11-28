@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Models/Meshes/MeshPlant_01_ranke_state022.res" type="ArrayMesh" id=1]
 [ext_resource path="res://Assets/Models/Meshes/MeshPlant_01_ranke_state021.res" type="ArrayMesh" id=2]
+[ext_resource path="res://Assets/Materials/Plants/RankeThorns.tres" type="Material" id=3]
+[ext_resource path="res://Assets/Materials/Plants/AntennaMaterial.tres" type="Material" id=4]
 
 [sub_resource type="Skin" id=3]
 resource_name = "Skin"
@@ -437,6 +439,8 @@ tracks/0/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 5, 1, 0, 0, 0
 
 [node name="Sphere" type="MeshInstance" parent="."]
 mesh = ExtResource( 2 )
+material/0 = ExtResource( 3 )
+material/1 = ExtResource( 4 )
 
 [node name="Empty" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.30032, 1.09418, -0.417562 )
