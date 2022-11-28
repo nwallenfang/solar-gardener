@@ -123,7 +123,7 @@ func tutorial_seed_planted():
 	next()
 
 func seed_planted():
-	check_for_tutorial_completed()
+#	check_for_tutorial_completed()
 	next()
 
 func tutorial_plant_reached_stage1():
@@ -138,7 +138,7 @@ func tutorial_plant_reached_stage1():
 
 var first_plant
 func tutorial_plant_reached_stage2():
-	check_for_tutorial_completed()
+#	check_for_tutorial_completed()
 	next()
 
 func tutorial_plant_scanned():
@@ -164,8 +164,8 @@ func no_seeds():  # TODO not connected yet
 	Game.UI.add_tutorial_message("Getting seeds", "Use the grow-tool on grown plants to harvest seeds.", duration)	
 	
 
-func check_for_tutorial_completed():
-	pass
+#func check_for_tutorial_completed():
+#	pass
 #	if Game.planet.plant_list.size() > 6 and get_event_from_key("tutorial_plant_reached_stage2").execute_count > 0 and \
 #			get_event_from_key("tutorial_plant_scanned").execute_count > 0:
 #		Events.trigger("tutorial_completed")
@@ -198,4 +198,5 @@ func planet_hopped():
 	if first_hop:
 		first_hop = false
 		$RepeatTimer.stop()
+	next()
 
