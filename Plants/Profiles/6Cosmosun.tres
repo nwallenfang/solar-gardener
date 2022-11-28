@@ -5,14 +5,24 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Placeholder3"
-fluff_base = "bedhtrhrthrt"
+name = "Cosmosun"
+mesh_file_name = ""
+plant_type = 2
+fluff_base = "Sonne"
 fluff_stage2 = ""
 fluff_stage3 = ""
 icon = ExtResource( 1 )
-sun = 3
-moisture = 3
+sun = 1
+moisture = 1
 nutrients = 2
-group = 3
-prefered_soil = 4
+group = 1
+prefered_soil = 2
+symbiosis_plant_type = 1
+needs_dirt_pile = false
 seed_count = 3
+seed_grow_time = 7.0
+points_for_stage_1 = 0
+points_for_stage_2 = 1
+points_for_stage_3 = 2
+points_for_stage_4 = 3
+special_effect_name = ""

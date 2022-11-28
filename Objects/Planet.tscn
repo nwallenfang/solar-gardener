@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Objects/Planet.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Objects/NoteCapsule.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Objects/GrabrootGrabber.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Objects/Gear.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Models/ModelStones.tscn" type="PackedScene" id=9]
 
 [sub_resource type="SphereMesh" id=9]
 resource_local_to_scene = true
@@ -86,5 +87,18 @@ seed_name = "Hidden Lotus"
 
 [node name="Gear" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5215, 0 )
+
+[node name="DecoStones" type="Spatial" parent="."]
+
+[node name="ModelStones" parent="DecoStones" instance=ExtResource( 9 )]
+transform = Transform( -1.79991e-08, -0.410735, 0.0206488, 0.411254, -1.79765e-08, 9.02589e-10, 1.13845e-12, 0.0206488, 0.410735, -5.13606, -0.212485, -0.126869 )
+
+[node name="ModelStones3" parent="DecoStones" instance=ExtResource( 9 )]
+transform = Transform( -1.79991e-08, -0.410735, 0.0206488, 0.411254, -1.79765e-08, 9.02589e-10, 1.13845e-12, 0.0206488, 0.410735, -5.10411, -0.363879, 0.508614 )
+type = 3
+
+[node name="ModelStones2" parent="DecoStones" instance=ExtResource( 9 )]
+transform = Transform( 0.0195053, -0.550841, 0.113593, 0.562417, 0.0199152, 4.96533e-09, -0.00401983, 0.113522, 0.551186, -5.07586, 0.584846, 0.869617 )
+type = 2
 
 [editable path="Model"]
