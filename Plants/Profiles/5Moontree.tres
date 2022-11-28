@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource( 1 )
 name = "Moontree"
-mesh_file_name = "Plant_01_moontree"
+mesh_file_name = "MoonTree"
 plant_type = 1
 fluff_base = "bedhtrhrthrt"
 fluff_stage2 = ""

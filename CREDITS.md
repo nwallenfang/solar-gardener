@@ -16,6 +16,12 @@
 - Rocky Moss Material Maker mat by Tarox
   - https://www.materialmaker.org/material?id=506
   - CC0
+- Wood Material
+  - https://www.materialmaker.org/material?id=296
+  - CC-BY
+- Moon Material
+  - https://www.materialmaker.org/material?id=278
+  - CC-BY
 
 ### Sprites and Icons
 - Cursor by a_person

@@ -1,0 +1,117 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Assets/Models/Meshes/MeshMoonTreeState031.res" type="ArrayMesh" id=1]
+[ext_resource path="res://Assets/Models/Meshes/MeshMoonTreeState032.res" type="ArrayMesh" id=2]
+[ext_resource path="res://Assets/Materials/Plants/MoontreeWood.tres" type="Material" id=3]
+[ext_resource path="res://Assets/Materials/Plants/MoontreeMoon.tres" type="Material" id=4]
+[ext_resource path="res://Objects/MoonTreeState03.gd" type="Script" id=5]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Pivot:rotation_degrees:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Pivot:rotation_degrees:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Pivot:rotation_degrees:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "animate"
+length = 4.0
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Pivot/Moon/OmniLight:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 3, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 4.94536, -0.2, 0.347504, 0.2, -2.78858, 3, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.8, 2.9, 4 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Pivot:rotation_degrees:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 10, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2, 4 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Pivot:translation:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 5.39, -0.25, 0, 0.25, 0, 4.6, -0.25, 0, 0.25, 0, 5.39, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2.1, 4 )
+}
+
+[node name="ModelMoonTreeState03" type="Spatial"]
+script = ExtResource( 5 )
+
+[node name="Pivot" type="Spatial" parent="."]
+transform = Transform( 0.67095, 0, 0, 0, 0.67095, 0, 0, 0, 0.67095, -1.15487, 4.9147, 2.85956 )
+
+[node name="Moon" type="MeshInstance" parent="Pivot"]
+transform = Transform( 0.285373, 0, 0, 0, 0.282193, 0.0424863, 0, -0.0424863, 0.282193, 0.211912, -0.0806073, 1.09456 )
+mesh = ExtResource( 1 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 4 )
+
+[node name="OmniLight" type="OmniLight" parent="Pivot/Moon"]
+transform = Transform( 5.22273, 0, 0, 0, 5.22272, 0, 0, 0, 5.22272, -1.03693, 3.75768, -3.14734 )
+light_color = Color( 0.439216, 0.831373, 0.85098, 1 )
+light_energy = 4.96391
+omni_range = 8.41328
+
+[node name="Empty" type="Spatial" parent="."]
+transform = Transform( 0.67095, 0, 0, 0, 0.67095, 0, 0, 0, 0.67095, 0.816303, 2.67889, 1.17824 )
+
+[node name="Empty001" type="Spatial" parent="."]
+transform = Transform( 0.67095, 0, 0, 0, 0.67095, 0, 0, 0, 0.67095, -0.154218, 2.15466, 2.60348 )
+
+[node name="Empty002" type="Spatial" parent="."]
+transform = Transform( 0.67095, 0, 0, 0, 0.67095, 0, 0, 0, 0.67095, 1.18224, 2.59829, -1.50027 )
+
+[node name="Empty003" type="Spatial" parent="."]
+transform = Transform( 0.67095, 0, 0, 0, 0.67095, 0, 0, 0, 0.67095, -2.43528, 2.88429, 2.07461 )
+
+[node name="Retopo_Cylinder001" type="MeshInstance" parent="."]
+transform = Transform( 0.191471, 0, 0, 0, 0.191471, 0, 0, 0, 0.191471, -0.492367, -0.00563383, 0.298589 )
+mesh = ExtResource( 2 )
+material/0 = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/animate = SubResource( 2 )
+
+[node name="VisibilityEnabler" type="VisibilityEnabler" parent="."]
+max_distance = 10.0

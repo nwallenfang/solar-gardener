@@ -1,10 +1,18 @@
-[gd_resource type="SpatialMaterial" format=2]
+[gd_resource type="SpatialMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Materials/Plants/moon_albedo.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Materials/Plants/moss_normal.png" type="Texture" id=2]
 
 [resource]
-params_cull_mode = 1
-albedo_color = Color( 0.541176, 0.745098, 0.737255, 1 )
+albedo_color = Color( 0.513726, 0.964706, 1, 1 )
+albedo_texture = ExtResource( 1 )
 emission_enabled = true
 emission = Color( 0.133333, 0.188235, 0.188235, 1 )
 emission_energy = 2.0
 emission_operator = 0
 emission_on_uv2 = false
+normal_enabled = true
+normal_scale = 1.4
+normal_texture = ExtResource( 2 )
+uv1_scale = Vector3( 0.2, 0.2, 0.2 )
+uv1_triplanar = true

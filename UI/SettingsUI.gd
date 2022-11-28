@@ -5,7 +5,7 @@ extends Control
 func _ready() -> void:
 	$Panel/VBoxContainer/BenchmarkContainer.visible = OS.is_debug_build() 
 	$Panel/VBoxContainer/MusicVolumeH/MusicSlider.value = db2linear(AudioServer.get_bus_volume_db(1))
-	$Panel/VBoxContainer/MusicVolumeH/MusicSlider.value = db2linear(AudioServer.get_bus_volume_db(2))
+	$Panel/VBoxContainer/SFXVolumeH/SFXSlider.value = db2linear(AudioServer.get_bus_volume_db(2))
 	
 	if OS.is_debug_build():
 		$Panel/VBoxContainer/BenchmarkContainer.visible = true

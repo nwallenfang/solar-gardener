@@ -1,0 +1,164 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v3.3.32",
+        "version" : "2.0"
+    },
+    "extensionsUsed" : [
+        "KHR_materials_specular",
+        "KHR_materials_ior"
+    ],
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0,
+                1,
+                2,
+                3,
+                4
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "name" : "Empty",
+            "translation" : [
+                1.409562110900879,
+                3.9721381664276123,
+                1.346261739730835
+            ]
+        },
+        {
+            "name" : "Empty.001",
+            "translation" : [
+                0.021121952682733536,
+                3.234527826309204,
+                3.2666208744049072
+            ]
+        },
+        {
+            "name" : "Empty.002",
+            "translation" : [
+                1.9001235961914062,
+                3.8484997749328613,
+                -2.575855016708374
+            ]
+        },
+        {
+            "name" : "Empty.003",
+            "translation" : [
+                -3.292959213256836,
+                4.309082508087158,
+                2.610672950744629
+            ]
+        },
+        {
+            "mesh" : 0,
+            "name" : "Retopo_Cylinder.001",
+            "scale" : [
+                0.2853734791278839,
+                0.2853734791278839,
+                0.2853734791278839
+            ]
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "extensions" : {
+                "KHR_materials_specular" : {
+                    "specularColorFactor" : [
+                        1.1670067089239275,
+                        1.1670067089239275,
+                        1.1670067089239275
+                    ]
+                },
+                "KHR_materials_ior" : {
+                    "ior" : 1.4500000476837158
+                }
+            },
+            "name" : "plant_02_moontree_stamm.003",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0.11493479460477829,
+                    0.01771591044962406,
+                    0.014747781679034233,
+                    1
+                ],
+                "metallicFactor" : 0
+            }
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Retopo_Cylinder_sm_2.002",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1
+                    },
+                    "indices" : 2,
+                    "material" : 0
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 1888,
+            "max" : [
+                13.4019136428833,
+                45.377079010009766,
+                31.02735710144043
+            ],
+            "min" : [
+                -19.050052642822266,
+                0.044890712946653366,
+                -9.503060340881348
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 1888,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5123,
+            "count" : 11304,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 22656,
+            "byteOffset" : 0,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 22656,
+            "byteOffset" : 22656,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 22608,
+            "byteOffset" : 45312,
+            "target" : 34963
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 67920,
+            "uri" : "MoonTreeState02.bin"
+        }
+    ]
+}

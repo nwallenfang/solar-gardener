@@ -10,11 +10,9 @@ script = ExtResource( 2 )
 [node name="Sounds" type="Node" parent="."]
 
 [node name="event_pickup" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = 9.0
 mixer_bus = "SFX"
 
 [node name="hop_launch" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = -5.0
 mixer_bus = "SFX"
 
 [node name="hop_landing1" parent="Sounds" instance=ExtResource( 1 )]
@@ -45,7 +43,6 @@ mixer_bus = "SFX"
 mixer_bus = "SFX"
 
 [node name="ui2" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = -5.0
 mixer_bus = "SFX"
 
 [node name="ui3" parent="Sounds" instance=ExtResource( 1 )]
@@ -57,59 +54,55 @@ mixer_bus = "SFX"
 [node name="ui_activate2" parent="Sounds" instance=ExtResource( 1 )]
 mixer_bus = "SFX"
 
+[node name="music_dirt_1" parent="Sounds" instance=ExtResource( 1 )]
+mixer_bus = "Music"
+
+[node name="music_dirt_2" parent="Sounds" instance=ExtResource( 1 )]
+mixer_bus = "Music"
+
+[node name="music_dirt_3" parent="Sounds" instance=ExtResource( 1 )]
+mixer_bus = "Music"
+
 [node name="music_sand_1" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = -5.0
 mixer_bus = "Music"
 
 [node name="music_sand_2" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = -5.0
 mixer_bus = "Music"
 
 [node name="music_sand_3" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = -5.0
 mixer_bus = "Music"
 
 [node name="music_rock_1" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = -6.0
 mixer_bus = "Music"
 
 [node name="music_rock_2" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = -6.0
 mixer_bus = "Music"
 
 [node name="music_rock_3" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = -6.0
 mixer_bus = "Music"
 
 [node name="music_placeholder_1" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = -8.0
 mixer_bus = "Music"
 
 [node name="music_placeholder_2" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = -8.0
 mixer_bus = "Music"
 
 [node name="music_placeholder_3" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = -8.0
 mixer_bus = "Music"
 
 [node name="music_obsidian_0" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = -4.0
 mixer_bus = "Music"
 
 [node name="growbeam_pulse" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
-volume_db = 6.0
 mixer_bus = "SFX"
 
 [node name="growbeam_close" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
-volume_db = 2.0
 mixer_bus = "SFX"
 
 [node name="growbeam_rotate_fast" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
-volume_db = 2.0
 mixer_bus = "SFX"
 
 [node name="growbeam_rotate_slow" type="Node" parent="Sounds"]
@@ -142,82 +135,102 @@ mixer_bus = "SFX"
 
 [node name="PLANT_1_STAGE_1" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
+volume_db = -5.0
 mixer_bus = "SFX"
 
 [node name="PLANT_1_STAGE_2" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
+volume_db = -5.0
 mixer_bus = "SFX"
 
 [node name="PLANT_1_STAGE_3" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
+volume_db = -5.0
 mixer_bus = "SFX"
 
 [node name="PLANT_1_STAGE_4" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
+volume_db = -5.0
 mixer_bus = "SFX"
 
 [node name="PLANT_2_STAGE_1" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
+volume_db = -5.0
 mixer_bus = "SFX"
 
 [node name="PLANT_2_STAGE_2" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
+volume_db = -5.0
 mixer_bus = "SFX"
 
 [node name="PLANT_2_STAGE_3" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
+volume_db = -5.0
 mixer_bus = "SFX"
 
 [node name="PLANT_2_STAGE_4" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
+volume_db = -5.0
 mixer_bus = "SFX"
 
 [node name="PLANT_3_STAGE_1" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
+volume_db = -5.0
 mixer_bus = "SFX"
 
 [node name="PLANT_3_STAGE_2" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
+volume_db = -5.0
 mixer_bus = "SFX"
 
 [node name="PLANT_3_STAGE_3" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
+volume_db = -5.0
 mixer_bus = "SFX"
 
 [node name="PLANT_3_STAGE_4" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
+volume_db = -5.0
 mixer_bus = "SFX"
 
 [node name="PLANT_4_STAGE_1" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
+volume_db = -5.0
 mixer_bus = "SFX"
 
 [node name="PLANT_4_STAGE_2" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
+volume_db = -5.0
 mixer_bus = "SFX"
 
 [node name="PLANT_4_STAGE_3" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
+volume_db = -5.0
 mixer_bus = "SFX"
 
 [node name="PLANT_4_STAGE_4" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
+volume_db = -5.0
 mixer_bus = "SFX"
 
 [node name="PLANT_5_STAGE_1" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
+volume_db = -5.0
 mixer_bus = "SFX"
 
 [node name="PLANT_5_STAGE_2" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
+volume_db = -5.0
 mixer_bus = "SFX"
 
 [node name="PLANT_5_STAGE_3" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
+volume_db = -5.0
 mixer_bus = "SFX"
 
 [node name="PLANT_5_STAGE_4" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
+volume_db = -5.0
 mixer_bus = "SFX"
 
 [node name="plant_6_stage_1" type="Node" parent="Sounds"]
