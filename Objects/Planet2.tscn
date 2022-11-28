@@ -42,7 +42,7 @@ transform = Transform( 6.66107, 0, 0, 0, 6.66107, 0, 0, 0, 6.66107, 0, 0, 0 )
 
 [node name="Amber" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.768529, 0.639815, -2.79672e-08, 0, -4.37114e-08, -1, -0.639815, 0.768529, -3.35935e-08, 2.37591, 1.03449, 8.9332 )
-seed_name = "Giant-Cap"
+seed_name = "Greatcap"
 
 [node name="OmniLight" type="OmniLight" parent="Amber"]
 transform = Transform( 1, 2.98023e-08, 1.59872e-14, -2.98023e-08, 1, -7.10543e-15, -1.24345e-14, 0, 1, -0.468705, 1.00859, 0 )

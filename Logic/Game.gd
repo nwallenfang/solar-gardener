@@ -72,7 +72,7 @@ func _process(delta: float) -> void:
 			# (no journal/node mode)
 			if is_ingame() and OS.has_feature("HTML5") and intro_done and $SettingsOpenCooldown.is_stopped():
 				set_game_state(State.SETTINGS)
-	UI.set_diagnostics(["settings blocked: " + str(not $SettingsOpenCooldown.is_stopped())])
+#	UI.set_diagnostics(["settings blocked: " + str(not $SettingsOpenCooldown.is_stopped())])
 	if Input.is_action_just_pressed("open_settings"):  # show/hide settings UI
 		if main_scene_running:
 			if game_state == State.INGAME:

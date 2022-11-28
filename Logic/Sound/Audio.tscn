@@ -44,6 +44,7 @@ mixer_bus = "SFX"
 mixer_bus = "SFX"
 
 [node name="ui2" parent="Sounds" instance=ExtResource( 1 )]
+volume_db = -5.0
 mixer_bus = "SFX"
 
 [node name="ui3" parent="Sounds" instance=ExtResource( 1 )]
