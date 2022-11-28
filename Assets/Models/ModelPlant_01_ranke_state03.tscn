@@ -1,6 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Models/Meshes/MeshPlant_01_ranke_state031.res" type="ArrayMesh" id=1]
+[ext_resource path="res://Assets/Materials/Plants/RankeThorns.tres" type="Material" id=2]
+[ext_resource path="res://Assets/Materials/Plants/BasicPlantGreen.tres" type="Material" id=3]
+[ext_resource path="res://Assets/Materials/Plants/AntennaMaterial.tres" type="Material" id=4]
+[ext_resource path="res://Assets/Materials/Plants/RankeNeck.tres" type="Material" id=5]
 
 [sub_resource type="Animation" id=2]
 resource_name = "Empty"
@@ -59,6 +63,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51291, 2.01962, -0.620092 )
 
 [node name="NurbsPath002" type="MeshInstance" parent="."]
 mesh = ExtResource( 1 )
+material/0 = ExtResource( 5 )
+material/1 = ExtResource( 3 )
+material/2 = ExtResource( 2 )
+material/3 = ExtResource( 2 )
+material/4 = ExtResource( 4 )
+material/5 = ExtResource( 2 )
+material/6 = ExtResource( 3 )
+material/7 = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Empty = SubResource( 2 )

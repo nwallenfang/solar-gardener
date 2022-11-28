@@ -1,9 +1,27 @@
 ## CREDITS for 3rd Party Assets
-### Sound Assets
-### Code Assets
+
 ### Shader Assets
-https://godotshaders.com/shader/sobel-with-gaussian-filter/
-https://godotshaders.com/shader/vhs-and-crt-monitor-effect/
+- https://godotshaders.com/shader/sobel-with-gaussian-filter/
+- https://godotshaders.com/shader/vhs-and-crt-monitor-effect/
+
+### Textures / Materials
+- Space Skybox 
+  - by www.tiron.net
+  - https://tools.wwwtyro.net/space-3d/index.html
+- thanks to cube2sphere!
+  - https://github.com/Xyene/cube2sphere
+- Stylized Moss Material Maker mat by Tarox
+  - https://www.materialmaker.org/material?id=575
+  - CC0
+- Rocky Moss Material Maker mat by Tarox
+  - https://www.materialmaker.org/material?id=506
+  - CC0
+
+### Sprites and Icons
+- Cursor by a_person
+  - http://www.rw-designer.com/cursor-set/remake-of-no-tail
+  - public domain
+
 ### Fonts
 - VTF Grotesk
   - https://fontlibrary.org/en/font/vtf-grotesk
@@ -20,15 +38,3 @@ https://godotshaders.com/shader/vhs-and-crt-monitor-effect/
 - Alice 
   - https://www.fontsquirrel.com/fonts/alice
   - License: OFL (SIL Open Font License)
-
-### Textures
-- Space Skybox 
-  - by www.tiron.net
-  - https://tools.wwwtyro.net/space-3d/index.html
-- thanks to cube2sphere!
-  - https://github.com/Xyene/cube2sphere
-### 3D Models
-### Sprites and Icons
-- Cursor by a_person
-  - http://www.rw-designer.com/cursor-set/remake-of-no-tail
-  - public domain

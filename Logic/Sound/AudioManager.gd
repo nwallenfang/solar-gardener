@@ -141,8 +141,8 @@ func fade_in_and_out(sound_name: String, play_duration: float, fade_duration:=1.
 func get_stream_position(sound_name) -> float:
 	return playing[sound_name].get_playback_position()
 
-func cross_fade(sound_name_out: String, sound_name_in: String, fade_duration:=1.0):
-	fade_in(sound_name_in, fade_duration)
+func cross_fade(sound_name_out: String, sound_name_in: String, fade_duration:=1.8):
+	fade_in(sound_name_in, fade_duration, true)
 	fade_out(sound_name_out, fade_duration)
 	
 func reduce_volume(sound_name: String, factor: float):
