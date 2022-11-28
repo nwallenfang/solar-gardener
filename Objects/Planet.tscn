@@ -87,10 +87,4 @@ type = 3
 transform = Transform( 0.0195053, -0.550841, 0.113593, 0.562417, 0.0199152, 4.96533e-09, -0.00401983, 0.113522, 0.551186, -5.07586, 0.584846, 0.869617 )
 type = 2
 
-[node name="Gear" parent="." instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02355, 5.89715, 0 )
-
-[node name="Gear2" parent="." instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.47266, 5.89715, 0 )
-
 [editable path="Model"]
