@@ -47,10 +47,9 @@ expand = true
 stretch_mode = 6
 
 [node name="Stars" type="HBoxContainer" parent="Panel"]
-visible = false
-anchor_left = 0.426
+anchor_left = 0.416667
 anchor_top = -0.0225694
-anchor_right = 0.906
+anchor_right = 0.896667
 anchor_bottom = 0.308431
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.33
@@ -149,6 +148,7 @@ margin_right = 427.0
 margin_bottom = 499.0
 
 [node name="UndiscoveredOverlay" type="TextureRect" parent="Panel"]
+visible = false
 self_modulate = Color( 0.25098, 0.341176, 0.0901961, 1 )
 anchor_left = -0.0329861
 anchor_top = -0.0200617

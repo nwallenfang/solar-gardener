@@ -6,5 +6,5 @@
 [resource]
 script = ExtResource( 2 )
 name = "Hates Groups"
-description = "This plant prefers to grow in isolation."
+description = "Grows well in isolation from its own kind"
 icon = ExtResource( 1 )

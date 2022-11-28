@@ -18,9 +18,11 @@ script = ExtResource( 1 )
 note_text1 = "Just arrived on this new planet. My boss wants to turn this system into a cliché art installation to attract tourists. I found many alien plants, but they won’t fit into this cliché Garden of Eden I'm supposed to build. 
 Evergreens it is then!"
 note_text2 = "They say limitation breeds creativity. But these clichés are too limiting, there's barely any room for artistic expression! Just because they say grass is always greener they're only letting me grow these shades of green!"
-note_text3 = "On the other hand, those clichés are not giving me enough to work with. My boss gave me a bunch more to work with. Some of them are funny, but is a small chuckle really everything I want to achieve with my art?
-"
-note_text5 = "Do you ever just want to start over? That's how I feel with this system. These clichés just clash, they're going to be the end for me! 
+note_text3 = "Those clichés are not giving me enough to work with. My boss gave me a bunch more and some are funny, sure, but is a small chuckle really everything I want to achieve with my art? 
+I'm tired.. maybe I'll create something truly new in my dreams."
+note_text4 = "Today the first tourists visiting this system arrived. It was a catastrophe! Picture those tourists from a far away galaxy strolling around the \"Snake in the grass\" garden when they've never even heard of a snake!
+Clichés don't work universally.."
+note_text5 = "Do you ever just want to start over? That's how I feel with this system. These clichés just clash, they're going to be the end of me! 
 This will be my last note.
 It's time for another gardener to have their turn!"
 note_audio1 = ExtResource( 10 )

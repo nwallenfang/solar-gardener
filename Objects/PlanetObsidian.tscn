@@ -48,6 +48,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.13302, -3.45108, 1.90091 )
 seed_name = "Cosmosun"
 
 [node name="Gear" parent="." instance=ExtResource( 5 )]
-transform = Transform( 0.733789, -0.679377, 0, 0.679377, 0.733789, 0, 0, 0, 1, 0.54502, 0.0309647, 6.44294 )
+transform = Transform( 1.47386, -1.02914, 0, 1.02914, 1.47386, 0, 0, 0, 1.79761, 0.54502, 0.0309647, 6.44294 )
+
+[node name="OmniLight" type="OmniLight" parent="Gear"]
+transform = Transform( 0.556294, 0, 0, 0, 0.556294, 0, 0, 0, 0.556294, 0, -0.33642, 0 )
+light_color = Color( 0.211765, 0.823529, 0.941176, 1 )
 
 [editable path="Model"]
