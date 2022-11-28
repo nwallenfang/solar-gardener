@@ -44,6 +44,8 @@ func update_shed_info():
 	$ScreenTexts/Label5.text = "Open the\nGuide tab\nin the\njournal!" 
 	yield(get_tree().create_timer(.2),"timeout")
 	$ScreenTexts/Label6.text = Upgrades.get_upgrades_screen_text()
+	if Upgrades.is_upgrade_available():
+		$UpgradeStation.set_open(true)
 
 func set_upgrade_screen(text: String):
 	$ScreenTexts/Label6.text = text#Upgrades.get_upgrades_screen_text()

@@ -42,3 +42,6 @@ func _ready():
 	yield(get_tree().create_timer(.5),"timeout")
 	Game.multitool.upgrade_station = self
 	shed = get_parent()
+
+func set_open(open: bool):
+	$ModelUstation.set_open(open)

@@ -1,11 +1,11 @@
 [gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Assets/Models/Meshes/Meshplant_04_Sporenpilz_state0217.res" type="SphereMesh" id=1]
-[ext_resource path="res://Assets/Models/Meshes/Meshplant_04_Sporenpilz_state022.res" type="ArrayMesh" id=2]
+[ext_resource path="res://Assets/Models/Meshes/Meshplant_04_sporenpilz_state022.res" type="ArrayMesh" id=2]
 [ext_resource path="res://Assets/Materials/Plants/ShroomStem.tres" type="Material" id=3]
 [ext_resource path="res://Assets/Models/Meshes/Meshplant_04_Sporenpilz_state0226.res" type="QuadMesh" id=4]
 [ext_resource path="res://Effects/SporeParticles.gd" type="Script" id=5]
-[ext_resource path="res://Assets/Models/Meshes/Meshplant_04_Sporenpilz_state021.res" type="ArrayMesh" id=6]
+[ext_resource path="res://Assets/Models/Meshes/Meshplant_04_sporenpilz_state021.res" type="ArrayMesh" id=6]
 [ext_resource path="res://Assets/Textures/spore_mask.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Materials/Plants/ShroomCone.tres" type="Material" id=8]
 

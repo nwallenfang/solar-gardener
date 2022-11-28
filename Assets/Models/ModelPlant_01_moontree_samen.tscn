@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Models/Meshes/MeshPlant_01_moontree_samen1.res" type="ArrayMesh" id=1]
+
+[node name="ModelPlant_01_moontree_samen" type="Spatial"]
+
+[node name="moontree_samen" type="MeshInstance" parent="."]
+mesh = ExtResource( 1 )
