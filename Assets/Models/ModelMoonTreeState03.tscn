@@ -78,10 +78,10 @@ tracks/2/keys = {
 script = ExtResource( 5 )
 
 [node name="Pivot" type="Spatial" parent="."]
-transform = Transform( 0.67095, 0, 0, 0, 0.67095, 0, 0, 0, 0.67095, -1.15487, 4.9147, 2.85956 )
+transform = Transform( 0.67095, 0, 0, 0, 0.67095, 0, 0, 0, 0.67095, -1.15487, 4.85676, 2.85956 )
 
 [node name="Moon" type="MeshInstance" parent="Pivot"]
-transform = Transform( 0.285373, 0, 0, 0, 0.282193, 0.0424863, 0, -0.0424863, 0.282193, 0.211912, -0.0806073, 1.09456 )
+transform = Transform( 0.210809, 0, 0, 0, 0.20846, 0.0313853, 0, -0.0313853, 0.20846, 0.211912, -0.0806069, 1.09456 )
 mesh = ExtResource( 1 )
 skeleton = NodePath("../..")
 material/0 = ExtResource( 4 )
@@ -89,7 +89,7 @@ material/0 = ExtResource( 4 )
 [node name="OmniLight" type="OmniLight" parent="Pivot/Moon"]
 transform = Transform( 5.22273, 0, 0, 0, 5.22272, 0, 0, 0, 5.22272, -1.03693, 3.75768, -3.14734 )
 light_color = Color( 0.439216, 0.831373, 0.85098, 1 )
-light_energy = 4.96391
+light_energy = 1.39909
 omni_range = 8.41328
 
 [node name="Empty" type="Spatial" parent="."]
