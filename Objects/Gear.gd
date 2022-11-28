@@ -11,6 +11,7 @@ func on_analyse():
 		return
 	death = true
 	Upgrades.gear_count += 1
+	Events.trigger("gear_scanned")
 	print("You now have " + str(Upgrades.gear_count) + " gears")
 	$DeathPlayer.play("death")
 	yield($DeathPlayer,"animation_finished")

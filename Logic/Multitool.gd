@@ -464,7 +464,7 @@ func show_hopable(b: bool):
 		Game.crosshair.set_style(Game.crosshair.Style.DEFAULT)
 
 func show_upgradable(b: bool):
-	pass#print(b)
+	Game.UI.get_node("ClickToUpgrade").visible = b
 
 func start_planting_animation(pos: Vector3):
 	show_plantable(false)
