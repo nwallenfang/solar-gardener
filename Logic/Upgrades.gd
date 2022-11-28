@@ -11,11 +11,11 @@ func ugrade_once():
 	print("Upgraded to level " + str(current_upgrade_level))
 	match current_upgrade_level:
 		1: # Hopper
-			pass
+			Events.trigger("tutorial_completed")
 		2: # Soil
-			pass
+			Events.trigger("soil_unlocked")
 		3: # Remove
-			pass
+			Events.trigger("remove_unlocked")
 		4: # Jetpack
 			pass
 		5: # Flashlight

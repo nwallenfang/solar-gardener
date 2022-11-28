@@ -43,7 +43,7 @@ var growth_juice := 1.0
 const JUICE_DRAIN = .25
 const JUICE_GAIN = .05
 
-var death_beam_unlocked := true
+var death_beam_unlocked := false
 var death_beam_active := false
 var death_beam_progress := 0.0
 var death_beam_target: Plant
@@ -59,6 +59,7 @@ var object_to_analyse: Spatial
 var current_analyse_object: Spatial
 var current_analyse_progress := 0.0
 var soil_analysing := false
+var soil_unlocked := false
 
 # Hopper Variable
 var pre_hopper_tool: int
@@ -416,7 +417,7 @@ func check_on_hover():
 						if object_to_analyse is Plant:
 							can_analyse = true#object_to_analyse.can_be_analysed
 						if object_to_analyse is StaticBody:
-							if object_to_analyse.name == "PlanetBody":
+							if object_to_analyse.name == "PlanetBody" and soil_unlocked:
 								object_to_analyse = Game.planet
 							else:
 								can_analyse = false

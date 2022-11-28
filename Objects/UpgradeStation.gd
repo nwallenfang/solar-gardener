@@ -23,7 +23,7 @@ func interpolate_to_slot(x: float):
 		target.scale = Vector3.ONE * lerp(old_scale_factor, new_scale_factor, x)
 
 func upgrade():
-	shed.set_upgrade_screen("Upgrading the\nYardintool...")
+	shed.set_upgrade_screen("Upgrading\nthe\nYardintool...")
 	Game.game_state = Game.State.UPGRADING
 	setup_slot_interpolation(Game.multitool.get_node("ModelMultitool"))
 	$Tween.interpolate_method(self, "interpolate_to_slot", 0.0, 1.0, 2.0)
