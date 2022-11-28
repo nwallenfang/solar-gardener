@@ -31,6 +31,7 @@ func update_shed_info():
 	$ScreenTexts/Label3.text = "Loading..."
 	$ScreenTexts/Label4.text = "Loading..."
 	$ScreenTexts/Label5.text = "Loading..."
+	$ScreenTexts/Label6.text = "Loading..."
 	yield(get_tree().create_timer(.8),"timeout")
 	$ScreenTexts/Label2.text = "Seeds\nplanted:\n" + str(Events.get_event_from_key("seed_planted").execute_count)
 	yield(get_tree().create_timer(.2),"timeout")
@@ -41,7 +42,11 @@ func update_shed_info():
 	$ScreenTexts/Label4.text = "Need help?" 
 	yield(get_tree().create_timer(.2),"timeout")
 	$ScreenTexts/Label5.text = "Open the\nGuide tab\nin the\njournal!" 
+	yield(get_tree().create_timer(.2),"timeout")
+	$ScreenTexts/Label6.text = Upgrades.get_upgrades_screen_text()
 
+func set_upgrade_screen(text: String):
+	$ScreenTexts/Label6.text = text#Upgrades.get_upgrades_screen_text()
 
 func _on_PlayerDetectArea_body_entered(body):
 	if body is Player:
