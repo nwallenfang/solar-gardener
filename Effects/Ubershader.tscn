@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://Effects/DirtExplosion.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Effects/Ubershader.gd" type="Script" id=2]
@@ -19,6 +19,13 @@
 [ext_resource path="res://Assets/GLTF/MultitoolMetal.material" type="Material" id=17]
 [ext_resource path="res://Assets/Shader/EnergyBall.gdshader" type="Shader" id=18]
 [ext_resource path="res://Assets/Shader/HoloScreen.gdshader" type="Shader" id=19]
+[ext_resource path="res://Logic/ModelMultitool.gd" type="Script" id=20]
+[ext_resource path="res://Logic/ModelMultitool.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Assets/Models/ModelPlant_01_ranke_state00.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Assets/Models/ModelPlant_01_ranke_state02.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Effects/SlingBand.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Assets/Models/Modelplant_06_fractalrose_state03.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Assets/Models/ModelDirtPile.tscn" type="PackedScene" id=26]
 
 [sub_resource type="QuadMesh" id=1]
 
@@ -1441,251 +1448,273 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.140098, 0, 0 )
 transform = Transform( 0.160824, 0, 0, 0, 0.160824, 0, 0, 0, 0.160824, 0, 0, 0 )
 
 [node name="BadPlantingVisuals" parent="." instance=ExtResource( 11 )]
-transform = Transform( 0.415968, 0, 0, 0, 0.153352, 0, 0, 0, 0.418207, 0, 0, 0 )
+transform = Transform( 0.415968, 0, 0, 0, 0.153352, 0, 0, 0, 0.418207, 0.192435, 0, 0 )
 
-[node name="ModelMultitool" type="Spatial" parent="."]
+[node name="ModelMultitoolOld" type="Spatial" parent="."]
 transform = Transform( 0.269606, 0, 0.335263, 0, 0.430219, 0, -0.335263, 0, 0.269606, -0.310833, 0, 0.101436 )
+script = ExtResource( 20 )
 
-[node name="Base" type="MeshInstance" parent="ModelMultitool"]
+[node name="Base" type="MeshInstance" parent="ModelMultitoolOld"]
 transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0 )
 cast_shadow = 0
 mesh = SubResource( 41 )
 
-[node name="BaseLidLeft" type="MeshInstance" parent="ModelMultitool"]
+[node name="BaseLidLeft" type="MeshInstance" parent="ModelMultitoolOld"]
 transform = Transform( 1, 0, 4.37114e-08, 4.37114e-08, 1.91069e-15, -1, 0, 1, 1.91069e-15, 0.0990454, 0.101967, 0.222169 )
 cast_shadow = 0
 mesh = SubResource( 2 )
 
-[node name="Wheel" type="MeshInstance" parent="ModelMultitool"]
+[node name="Wheel" type="MeshInstance" parent="ModelMultitoolOld"]
 transform = Transform( 1, 0, -4.37114e-08, -4.37114e-08, 1.91069e-15, -1, 0, 1, 1.91069e-15, 0, 0, 0.369929 )
 cast_shadow = 0
 mesh = SubResource( 3 )
 
-[node name="ArmBase1" type="MeshInstance" parent="ModelMultitool/Wheel"]
+[node name="ArmBase1" type="MeshInstance" parent="ModelMultitoolOld/Wheel"]
 transform = Transform( 0.553191, 0, 0, 0, -8.35295e-08, -0.553191, 0, 0.553191, -8.35295e-08, 0, 0.053084, 0.1847 )
 cast_shadow = 0
 mesh = SubResource( 8 )
 skeleton = NodePath("../..")
 
-[node name="Arm1" type="MeshInstance" parent="ModelMultitool/Wheel/ArmBase1"]
+[node name="Arm1" type="MeshInstance" parent="ModelMultitoolOld/Wheel/ArmBase1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0991108, 0 )
 cast_shadow = 0
 mesh = SubResource( 9 )
 
-[node name="ArmPoint1" type="Spatial" parent="ModelMultitool/Wheel/ArmBase1/Arm1"]
+[node name="ArmPoint1" type="Spatial" parent="ModelMultitoolOld/Wheel/ArmBase1/Arm1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.201171, -1.78814e-07 )
 
-[node name="EnergyBall" parent="ModelMultitool/Wheel/ArmBase1/Arm1/ArmPoint1" instance=ExtResource( 8 )]
+[node name="EnergyBall" parent="ModelMultitoolOld/Wheel/ArmBase1/Arm1/ArmPoint1" instance=ExtResource( 8 )]
 visible = false
 
-[node name="Beam1" parent="ModelMultitool/Wheel/ArmBase1/Arm1/ArmPoint1" instance=ExtResource( 10 )]
+[node name="Beam1" parent="ModelMultitoolOld/Wheel/ArmBase1/Arm1/ArmPoint1" instance=ExtResource( 10 )]
 transform = Transform( -9.72274e-09, 4.70762e-10, -0.222691, 0.0107697, 0.22243, 3.55271e-15, 0.22243, -0.0107697, -9.73413e-09, 0, 0, 0 )
 visible = false
 
-[node name="ArmBase2" type="MeshInstance" parent="ModelMultitool/Wheel"]
+[node name="ArmBase2" type="MeshInstance" parent="ModelMultitoolOld/Wheel"]
 transform = Transform( -1.13233e-07, 0.479077, 0.276596, -0.553191, -2.41807e-08, -1.84583e-07, -1.47763e-07, -0.276596, 0.479077, 0.159955, 0.053084, -0.0923502 )
 cast_shadow = 0
 mesh = SubResource( 8 )
 skeleton = NodePath("../..")
 
-[node name="Arm2" type="MeshInstance" parent="ModelMultitool/Wheel/ArmBase2"]
+[node name="Arm2" type="MeshInstance" parent="ModelMultitoolOld/Wheel/ArmBase2"]
 transform = Transform( 1, -7.10543e-15, -2.84216e-14, 7.10543e-15, 1, -5.96047e-08, 2.84216e-14, 5.96047e-08, 1, 0, 0.0991107, 0 )
 cast_shadow = 0
 mesh = SubResource( 9 )
 
-[node name="ArmPoint2" type="Spatial" parent="ModelMultitool/Wheel/ArmBase2/Arm2"]
+[node name="ArmPoint2" type="Spatial" parent="ModelMultitoolOld/Wheel/ArmBase2/Arm2"]
 transform = Transform( 1, 1.42109e-14, 0, -1.42109e-14, 1, -8.94069e-08, -5.68434e-14, 8.9407e-08, 1, 0, 0.201607, 7.45058e-08 )
 
-[node name="EnergyBall" parent="ModelMultitool/Wheel/ArmBase2/Arm2/ArmPoint2" instance=ExtResource( 8 )]
+[node name="EnergyBall" parent="ModelMultitoolOld/Wheel/ArmBase2/Arm2/ArmPoint2" instance=ExtResource( 8 )]
 visible = false
 
-[node name="Beam2" parent="ModelMultitool/Wheel/ArmBase2/Arm2/ArmPoint2" instance=ExtResource( 10 )]
+[node name="Beam2" parent="ModelMultitoolOld/Wheel/ArmBase2/Arm2/ArmPoint2" instance=ExtResource( 10 )]
 transform = Transform( 0.217869, 0.0130828, -4.15004e-08, 0.0120358, -0.236822, 1.26713e-08, -2.86475e-08, -3.61543e-08, -0.237183, 0, 0, 0 )
 visible = false
 
-[node name="SlingBall" parent="ModelMultitool/Wheel/ArmBase2/Arm2/ArmPoint2" instance=ExtResource( 12 )]
+[node name="SlingBall" parent="ModelMultitoolOld/Wheel/ArmBase2/Arm2/ArmPoint2" instance=ExtResource( 12 )]
 transform = Transform( 1, 9.31322e-08, -2.91038e-08, -9.31322e-08, 1, 2.21189e-07, 2.91038e-08, -2.21189e-07, 1, -2.98023e-08, 0.0393474, -4.47035e-08 )
 visible = false
 
-[node name="ArmBase3" type="MeshInstance" parent="ModelMultitool/Wheel"]
+[node name="ArmBase3" type="MeshInstance" parent="ModelMultitoolOld/Wheel"]
 transform = Transform( -2.09411e-08, -0.479077, -0.276596, 0.553191, -2.41807e-08, 0, -1.20904e-08, -0.276596, 0.479077, -0.159955, 0.053084, -0.0923502 )
 cast_shadow = 0
 mesh = SubResource( 8 )
 skeleton = NodePath("../..")
 
-[node name="Arm3" type="MeshInstance" parent="ModelMultitool/Wheel/ArmBase3"]
+[node name="Arm3" type="MeshInstance" parent="ModelMultitoolOld/Wheel/ArmBase3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0991108, -1.49012e-08 )
 cast_shadow = 0
 mesh = SubResource( 9 )
 
-[node name="ArmPoint3" type="Spatial" parent="ModelMultitool/Wheel/ArmBase3/Arm3"]
+[node name="ArmPoint3" type="Spatial" parent="ModelMultitoolOld/Wheel/ArmBase3/Arm3"]
 transform = Transform( 1, 0, 7.10546e-15, 0, 1, -8.9407e-08, 0, 8.9407e-08, 1, 1.78814e-07, 0.206564, 1.04308e-07 )
 
-[node name="EnergyBall" parent="ModelMultitool/Wheel/ArmBase3/Arm3/ArmPoint3" instance=ExtResource( 8 )]
+[node name="EnergyBall" parent="ModelMultitoolOld/Wheel/ArmBase3/Arm3/ArmPoint3" instance=ExtResource( 8 )]
 visible = false
 
-[node name="Beam3" parent="ModelMultitool/Wheel/ArmBase3/Arm3/ArmPoint3" instance=ExtResource( 10 )]
+[node name="Beam3" parent="ModelMultitoolOld/Wheel/ArmBase3/Arm3/ArmPoint3" instance=ExtResource( 10 )]
 transform = Transform( -0.214928, -0.00880407, -3.93536e-08, 0.00932381, -0.202949, -5.15249e-08, -3.656e-08, -1.96955e-08, 0.20314, 0, 0, 0 )
 visible = false
 
-[node name="SlingBall" parent="ModelMultitool/Wheel/ArmBase3/Arm3/ArmPoint3" instance=ExtResource( 12 )]
+[node name="SlingBall" parent="ModelMultitoolOld/Wheel/ArmBase3/Arm3/ArmPoint3" instance=ExtResource( 12 )]
 transform = Transform( 1, -2.98023e-08, -3.55271e-15, 2.98023e-08, 1, 1.05879e-22, 3.55271e-15, -2.11758e-22, 1, 5.96046e-08, 0.0311413, 0 )
 visible = false
 
-[node name="Front" type="MeshInstance" parent="ModelMultitool"]
+[node name="Front" type="MeshInstance" parent="ModelMultitoolOld"]
 transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0.471343 )
 cast_shadow = 0
 mesh = SubResource( 4 )
 
-[node name="HoloCrystal" type="MeshInstance" parent="ModelMultitool"]
+[node name="HoloCrystal" type="MeshInstance" parent="ModelMultitoolOld"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.152344, 0.128005 )
 cast_shadow = 0
 mesh = SubResource( 5 )
 
-[node name="Antenna" type="MeshInstance" parent="ModelMultitool"]
+[node name="Antenna" type="MeshInstance" parent="ModelMultitoolOld"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.194 )
 cast_shadow = 0
 mesh = SubResource( 6 )
 
-[node name="BaseLidRight" type="MeshInstance" parent="ModelMultitool"]
+[node name="BaseLidRight" type="MeshInstance" parent="ModelMultitoolOld"]
 transform = Transform( 1, 0, -4.37114e-08, -4.37114e-08, 1.91069e-15, -1, 0, 1, 1.91069e-15, -0.0990454, 0.101967, 0.222169 )
 cast_shadow = 0
 mesh = SubResource( 7 )
 
-[node name="HopperRings" parent="ModelMultitool" instance=ExtResource( 7 )]
+[node name="HopperRings" parent="ModelMultitoolOld" instance=ExtResource( 7 )]
 transform = Transform( 0.106309, 0, 0, 0, -9.40693e-09, -0.106309, 0, 0.557079, -1.20289e-08, 0, 0, 0.713598 )
 
-[node name="HopperPlayer" type="AnimationPlayer" parent="ModelMultitool"]
+[node name="HopperPlayer" type="AnimationPlayer" parent="ModelMultitoolOld"]
 playback_process_mode = 0
 anims/RESET = SubResource( 10 )
 anims/off = SubResource( 11 )
 anims/on = SubResource( 12 )
 
-[node name="AntennaRotatePlayer" type="AnimationPlayer" parent="ModelMultitool"]
+[node name="AntennaRotatePlayer" type="AnimationPlayer" parent="ModelMultitoolOld"]
 autoplay = "rotate"
 playback_process_mode = 0
 anims/RESET = SubResource( 13 )
 anims/rotate = SubResource( 14 )
 
-[node name="GrowBeamPlayer" type="AnimationPlayer" parent="ModelMultitool"]
+[node name="GrowBeamPlayer" type="AnimationPlayer" parent="ModelMultitoolOld"]
 anims/RESET = SubResource( 15 )
 anims/off = SubResource( 17 )
 anims/on = SubResource( 16 )
 
-[node name="PlantPlayer" type="AnimationPlayer" parent="ModelMultitool"]
+[node name="PlantPlayer" type="AnimationPlayer" parent="ModelMultitoolOld"]
 playback_process_mode = 0
 anims/RESET = SubResource( 28 )
 anims/off = SubResource( 33 )
 anims/on = SubResource( 27 )
 
-[node name="SlingshotPlayer" type="AnimationPlayer" parent="ModelMultitool"]
+[node name="SlingshotPlayer" type="AnimationPlayer" parent="ModelMultitoolOld"]
 root_node = NodePath("../Base")
 playback_process_mode = 0
 anims/RESET = SubResource( 30 )
 anims/reload = SubResource( 29 )
 anims/shot = SubResource( 32 )
 
-[node name="AnalysePlayer" type="AnimationPlayer" parent="ModelMultitool"]
+[node name="AnalysePlayer" type="AnimationPlayer" parent="ModelMultitoolOld"]
 anims/RESET = SubResource( 34 )
 anims/off = SubResource( 36 )
 anims/on = SubResource( 35 )
 
-[node name="Slingshot" type="ImmediateGeometry" parent="ModelMultitool"]
+[node name="Slingshot" type="ImmediateGeometry" parent="ModelMultitoolOld"]
 visible = false
 material_override = ExtResource( 4 )
 cast_shadow = 0
 
-[node name="WheelTween" type="Tween" parent="ModelMultitool"]
+[node name="WheelTween" type="Tween" parent="ModelMultitoolOld"]
 
-[node name="GrowBeamOrigin" type="Spatial" parent="ModelMultitool"]
+[node name="GrowBeamOrigin" type="Spatial" parent="ModelMultitoolOld"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.997767 )
 
-[node name="GrowBeam" type="ImmediateGeometry" parent="ModelMultitool/GrowBeamOrigin"]
+[node name="GrowBeam" type="ImmediateGeometry" parent="ModelMultitoolOld/GrowBeamOrigin"]
 material_override = ExtResource( 3 )
 cast_shadow = 0
 
-[node name="GrowBeamDirectionOffset" type="Spatial" parent="ModelMultitool/GrowBeamOrigin"]
+[node name="GrowBeamDirectionOffset" type="Spatial" parent="ModelMultitoolOld/GrowBeamOrigin"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.2, 0 )
 
-[node name="EnergyBallCombo" parent="ModelMultitool/GrowBeamOrigin" instance=ExtResource( 8 )]
+[node name="EnergyBallCombo" parent="ModelMultitoolOld/GrowBeamOrigin" instance=ExtResource( 8 )]
 transform = Transform( 1.99574, 0, 0, 0, 1.99574, 0, 0, 0, 1.99574, 0, 0, 0 )
 visible = false
 script = null
 
-[node name="MeshInstance" parent="ModelMultitool/GrowBeamOrigin/EnergyBallCombo" index="0"]
+[node name="MeshInstance" parent="ModelMultitoolOld/GrowBeamOrigin/EnergyBallCombo" index="0"]
 material_override = SubResource( 20 )
 mesh = SubResource( 21 )
 
-[node name="Particles" parent="ModelMultitool/GrowBeamOrigin/EnergyBallCombo" index="1"]
+[node name="Particles" parent="ModelMultitoolOld/GrowBeamOrigin/EnergyBallCombo" index="1"]
 visible = false
 process_material = SubResource( 24 )
 draw_pass_1 = SubResource( 26 )
 
-[node name="SeedOrigin" type="Spatial" parent="ModelMultitool"]
+[node name="SeedOrigin" type="Spatial" parent="ModelMultitoolOld"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0362341, 0.305677 )
 
-[node name="MeshInstance" type="MeshInstance" parent="ModelMultitool/SeedOrigin"]
+[node name="MeshInstance" type="MeshInstance" parent="ModelMultitoolOld/SeedOrigin"]
 transform = Transform( 0.0391247, 0, 0, 0, 0.0391247, 0, 0, 0, 0.0391247, 0, 0, 0 )
 visible = false
 mesh = SubResource( 31 )
 
-[node name="IGVertex1" type="Spatial" parent="ModelMultitool/SeedOrigin"]
+[node name="IGVertex1" type="Spatial" parent="ModelMultitoolOld/SeedOrigin"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0435252, 0, -0.0149426 )
 
-[node name="IGVertex2" type="Spatial" parent="ModelMultitool/SeedOrigin"]
+[node name="IGVertex2" type="Spatial" parent="ModelMultitoolOld/SeedOrigin"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5969e-05, 0, -0.0439752 )
 
-[node name="IGVertex3" type="Spatial" parent="ModelMultitool/SeedOrigin"]
+[node name="IGVertex3" type="Spatial" parent="ModelMultitoolOld/SeedOrigin"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0419387, 0, -0.0168711 )
 
-[node name="HoloScreen" type="Spatial" parent="ModelMultitool"]
+[node name="HoloScreen" type="Spatial" parent="ModelMultitoolOld"]
 transform = Transform( -0.372672, -0.0761529, -5.59783e-08, -0.0742218, 0.363221, 0.085119, -0.0170413, 0.0833957, -0.370727, -0.00355417, 0.144615, 0.131511 )
 
-[node name="HoloQuad" type="MeshInstance" parent="ModelMultitool/HoloScreen"]
+[node name="HoloQuad" type="MeshInstance" parent="ModelMultitoolOld/HoloScreen"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.649901, 0 )
 material_override = SubResource( 43 )
 mesh = SubResource( 44 )
 
-[node name="HoloLines" type="MeshInstance" parent="ModelMultitool/HoloScreen"]
+[node name="HoloLines" type="MeshInstance" parent="ModelMultitoolOld/HoloScreen"]
 transform = Transform( 1.0958, 0, 0, 0, 0.536109, 0, 0, 0, 0.372433, 0, 0.321826, 0 )
 material_override = SubResource( 46 )
 mesh = SubResource( 47 )
 
-[node name="SlingshotArms" type="Spatial" parent="ModelMultitool"]
+[node name="SlingshotArms" type="Spatial" parent="ModelMultitoolOld"]
 
-[node name="Arm1" type="MeshInstance" parent="ModelMultitool/SlingshotArms"]
+[node name="Arm1" type="MeshInstance" parent="ModelMultitoolOld/SlingshotArms"]
 transform = Transform( 0.00694735, 0, 0, 0, 0.12949, 0, 0, 0, 0.00694735, 0.00585766, -0.0768776, 0.302454 )
 material_override = ExtResource( 17 )
 mesh = SubResource( 37 )
 
-[node name="MeshInstance" type="MeshInstance" parent="ModelMultitool/SlingshotArms/Arm1"]
+[node name="MeshInstance" type="MeshInstance" parent="ModelMultitoolOld/SlingshotArms/Arm1"]
 transform = Transform( 3.92572, 0, 0, 0, 0.0410566, 0, 0, 0, 3.92572, 0, 1.0001, 0 )
 material_override = ExtResource( 17 )
 mesh = SubResource( 38 )
 
-[node name="Arm2" type="Spatial" parent="ModelMultitool/SlingshotArms"]
+[node name="Arm2" type="Spatial" parent="ModelMultitoolOld/SlingshotArms"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.119097, 0.103912 )
 
-[node name="MeshInstance" type="MeshInstance" parent="ModelMultitool/SlingshotArms/Arm2"]
+[node name="MeshInstance" type="MeshInstance" parent="ModelMultitoolOld/SlingshotArms/Arm2"]
 transform = Transform( 0.00754892, 0, 0, 0, -2.70826e-09, -0.00754892, 0, 0.0619578, -3.29974e-10, 0, 0, 0 )
 material_override = ExtResource( 17 )
 mesh = SubResource( 39 )
 skeleton = NodePath("../..")
 
-[node name="MeshInstance2" type="MeshInstance" parent="ModelMultitool/SlingshotArms/Arm2"]
+[node name="MeshInstance2" type="MeshInstance" parent="ModelMultitoolOld/SlingshotArms/Arm2"]
 transform = Transform( 0.0193044, 0, 0, 0, 0.00555484, 0, 0, 0, 0.00555484, 0, 0, 0.0599805 )
 material_override = ExtResource( 17 )
 mesh = SubResource( 40 )
 
-[node name="MeshInstance3" type="MeshInstance" parent="ModelMultitool/SlingshotArms/Arm2"]
+[node name="MeshInstance3" type="MeshInstance" parent="ModelMultitoolOld/SlingshotArms/Arm2"]
 transform = Transform( -4.42209e-10, 0, 0.00555484, 0, 0.00555484, 0, -0.0101166, 0, -2.4281e-10, -0.0181047, 0, 0.0646239 )
 material_override = ExtResource( 17 )
 mesh = SubResource( 40 )
 
-[node name="MeshInstance4" type="MeshInstance" parent="ModelMultitool/SlingshotArms/Arm2"]
+[node name="MeshInstance4" type="MeshInstance" parent="ModelMultitoolOld/SlingshotArms/Arm2"]
 transform = Transform( -4.42209e-10, 0, 0.00555484, 0, 0.00555484, 0, -0.0101166, 0, -2.4281e-10, 0.0144668, 0, 0.0646239 )
 material_override = ExtResource( 17 )
 mesh = SubResource( 40 )
 
+[node name="ModelMultitool" parent="." instance=ExtResource( 21 )]
+transform = Transform( 0.735601, 0, -0.677415, 0, 1, 0, 0.677415, 0, 0.735601, 0, 0, 0 )
+
+[node name="ModelPlant_01_ranke_state00" parent="." instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.480478, 0.159735, 0 )
+
+[node name="Modelplant_06_fractalrose_state03" parent="ModelPlant_01_ranke_state00" instance=ExtResource( 25 )]
+transform = Transform( 0.517029, 0, 0, 0, 0.517029, 0, 0, 0, 0.517029, 0, 0, 0 )
+
+[node name="ModelPlant_01_ranke_state02" parent="." instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.4025 )
+
+[node name="SlingBall" parent="." instance=ExtResource( 12 )]
+transform = Transform( 1.30811, 0, 0, 0, 1.30811, 0, 0, 0, 1.30811, 0, 1.38268, 0 )
+
+[node name="SlingBand" parent="SlingBall" instance=ExtResource( 24 )]
+transform = Transform( 0.821876, 0, 0, 0, 0.821876, 0, 0, 0, 0.821876, 0, -0.6321, 0 )
+
+[node name="ModelDirtPile" parent="." instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.41543, 0 )
+
 [editable path="DirtExplosion"]
-[editable path="ModelMultitool/GrowBeamOrigin/EnergyBallCombo"]
+[editable path="ModelMultitoolOld/GrowBeamOrigin/EnergyBallCombo"]

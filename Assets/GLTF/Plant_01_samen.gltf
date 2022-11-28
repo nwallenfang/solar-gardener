@@ -102,35 +102,35 @@
         {
             "bufferView" : 0,
             "componentType" : 5126,
-            "count" : 33559,
+            "count" : 559,
             "max" : [
-                0.06231260299682617,
-                0.06285136938095093,
-                0.06302528828382492
+                0.06285864114761353,
+                0.06326180696487427,
+                0.0635925829410553
             ],
             "min" : [
-                -0.06302264332771301,
-                -0.06254344433546066,
-                -0.06251492351293564
+                -0.0634579062461853,
+                -0.06296402215957642,
+                -0.06301930546760559
             ],
             "type" : "VEC3"
         },
         {
             "bufferView" : 1,
             "componentType" : 5126,
-            "count" : 33559,
+            "count" : 559,
             "type" : "VEC3"
         },
         {
             "bufferView" : 2,
             "componentType" : 5126,
-            "count" : 33559,
+            "count" : 559,
             "type" : "VEC2"
         },
         {
             "bufferView" : 3,
             "componentType" : 5123,
-            "count" : 190464,
+            "count" : 2880,
             "type" : "SCALAR"
         },
         {
@@ -167,52 +167,52 @@
     "bufferViews" : [
         {
             "buffer" : 0,
-            "byteLength" : 402708,
+            "byteLength" : 6708,
             "byteOffset" : 0,
             "target" : 34962
         },
         {
             "buffer" : 0,
-            "byteLength" : 402708,
-            "byteOffset" : 402708,
+            "byteLength" : 6708,
+            "byteOffset" : 6708,
             "target" : 34962
         },
         {
             "buffer" : 0,
-            "byteLength" : 268472,
-            "byteOffset" : 805416,
+            "byteLength" : 4472,
+            "byteOffset" : 13416,
             "target" : 34962
         },
         {
             "buffer" : 0,
-            "byteLength" : 380928,
-            "byteOffset" : 1073888,
+            "byteLength" : 5760,
+            "byteOffset" : 17888,
             "target" : 34963
         },
         {
             "buffer" : 0,
             "byteLength" : 4,
-            "byteOffset" : 1454816
+            "byteOffset" : 23648
         },
         {
             "buffer" : 0,
             "byteLength" : 12,
-            "byteOffset" : 1454820
+            "byteOffset" : 23652
         },
         {
             "buffer" : 0,
             "byteLength" : 16,
-            "byteOffset" : 1454832
+            "byteOffset" : 23664
         },
         {
             "buffer" : 0,
             "byteLength" : 12,
-            "byteOffset" : 1454848
+            "byteOffset" : 23680
         }
     ],
     "buffers" : [
         {
-            "byteLength" : 1454860,
+            "byteLength" : 23692,
             "uri" : "plant_01_samen.bin"
         }
     ]

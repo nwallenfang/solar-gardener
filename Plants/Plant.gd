@@ -39,15 +39,26 @@ var dirt_pile: Spatial
 
 var is_setup := false
 func setup():
+	print("plant setup")
 	if profile.special_effect != null:
 		effect = profile.special_effect.instance()
 		add_child(effect)
 		effect.setup()
 	model_seed = profile.model_seed.instance()
+	yield(get_tree(),"idle_frame")
+	yield(get_tree(),"idle_frame")
 	model_stage_1 = profile.model_stage_1.instance()
+	yield(get_tree(),"idle_frame")
+	yield(get_tree(),"idle_frame")
 	model_stage_2 = profile.model_stage_2.instance()
+	yield(get_tree(),"idle_frame")
+	yield(get_tree(),"idle_frame")
 	model_stage_3 = profile.model_stage_3.instance()
+	yield(get_tree(),"idle_frame")
+	yield(get_tree(),"idle_frame")
 	model_stage_4 = profile.model_stage_4.instance()
+	yield(get_tree(),"idle_frame")
+	yield(get_tree(),"idle_frame")
 	model_array = [model_seed, model_stage_1, model_stage_2, model_stage_3, model_stage_4]
 	for model in model_array:
 		model.visible = false
@@ -175,7 +186,7 @@ func calculate_growth_points():
 	
 	
 	# CHEAT
-	if cheat:
+	if cheat or profile.name == "Giant-Cap" or profile.name == "Moontree":
 		points += 10
 		
 	growth_points = points
@@ -211,17 +222,28 @@ func grow(delta, factor_sign):
 		$GrowthCooldown.start()
 		var old_stage := growth_stage
 		growth_stage = growth_stage + int(factor_sign * 1.1) # "* 1.1" to avoid float error nonsense
+		set_animation_active(current_model, false)
 		current_model = model_array[growth_stage]
+		set_animation_active(current_model, true)
 		growth_stage_progress = 0.0
 
 		play_growth_pop_animation(old_stage)
-		Events.trigger("tutorial_plant_reached_stage" + str(growth_stage))
-		PlantData.growth_stage_reached(profile.name, growth_stage)
-		planet.growth_stage_reached(growth_stage)
+
 		can_be_analysed = true
 		if growth_stage == growth_lock:
 			$SeedGrowCooldown.start(profile.seed_grow_time)
 		yield(get_tree(), "idle_frame")
+		yield(get_tree(), "idle_frame")
+		
+		Events.trigger("tutorial_plant_reached_stage" + str(growth_stage))
+		yield(get_tree(), "idle_frame")
+		yield(get_tree(), "idle_frame")
+		
+		PlantData.growth_stage_reached(profile.name, growth_stage)
+		yield(get_tree(), "idle_frame")
+		yield(get_tree(), "idle_frame")
+		
+		planet.growth_stage_reached(growth_stage)
 		check_conditions()
 		if profile.needs_dirt_pile == false:
 			yield(get_tree().create_timer(2), "timeout")
@@ -229,9 +251,26 @@ func grow(delta, factor_sign):
 				dirt_pile.queue_free()
 		#$Area.set_collision_layer_bit(2, true)
 
+
+func set_animation_active(model: Spatial, active: bool):
+	if model.has_method("animate"):
+		model.call("animate")
+	elif model.has_node("AnimationPlayer"):
+		var anim: AnimationPlayer = model.get_node("AnimationPlayer")
+		
+#		if anim.has_animation("Key001Action"):
+#			if active:
+#				anim.play("Key001Action")
+		if not active:
+			anim.stop()
+			
+		
+
+
 const GREEN_OVERLAY = preload("res://Assets/Materials/GreenAlphaOverlay.tres")
 const GROW_POP_PARTICLES = preload("res://Effects/GrowPopParticles.tscn")
 func play_growth_pop_animation(old_stage):
+	# TODO profile this function
 	var old_meshes : Array = Utility.get_all_mesh_instance_children(model_array[old_stage])
 	var new_meshes : Array = Utility.get_all_mesh_instance_children(current_model)
 	for mi in old_meshes:
@@ -244,6 +283,7 @@ func play_growth_pop_animation(old_stage):
 	model_array[old_stage].scale = Vector3.ONE * DEFAULT_MODEL_SCALE
 	current_model.scale = Vector3.ONE * DEFAULT_MODEL_SCALE
 	current_model.visible = true
+
 	for mi in old_meshes:
 		mi = mi as MeshInstance
 		mi.material_overlay = null
@@ -254,6 +294,10 @@ func play_growth_pop_animation(old_stage):
 	$GrowthAnimationTween.start()
 	var grow_pop_part := GROW_POP_PARTICLES.instance()
 	add_child(grow_pop_part)
+
+
+	yield(get_tree(), "idle_frame")
+	yield(get_tree(), "idle_frame")
 	var dist:= self.global_translation.distance_to(Game.player.global_translation)
 	Audio.play_growth_stage(profile.name, growth_stage, dist)
 	yield($GrowthAnimationTween,"tween_all_completed")
@@ -263,18 +307,19 @@ func play_growth_pop_animation(old_stage):
 
 const FLASH_OVERLAY = preload("res://Assets/Materials/FlashAlphaOverlay.tres")
 func play_growth_flash():
-	if growth_stage != growth_lock and growth_stage_progress < .75:
-		var meshes : Array = Utility.get_all_mesh_instance_children(current_model)
-		for mi in meshes:
-			mi.material_overlay = FLASH_OVERLAY
-		$FlashTween.interpolate_property(FLASH_OVERLAY, "albedo_color:a", 0.0, 0.5, .15, Tween.TRANS_QUAD, Tween.EASE_IN)
-		$FlashTween.start()
-		yield($FlashTween,"tween_all_completed")
-		$FlashTween.interpolate_property(FLASH_OVERLAY, "albedo_color:a", 0.5, 0.0, .3, Tween.TRANS_QUAD, Tween.EASE_IN)
-		$FlashTween.start()
-		yield($FlashTween,"tween_all_completed")
-		for mi in meshes:
-			mi.material_overlay = null
+#	if growth_stage != growth_lock and growth_stage_progress < .75:
+#		var meshes : Array = Utility.get_all_mesh_instance_children(current_model)
+#		for mi in meshes:
+#			mi.material_overlay = FLASH_OVERLAY
+#		$FlashTween.interpolate_property(FLASH_OVERLAY, "albedo_color:a", 0.0, 0.5, .15, Tween.TRANS_QUAD, Tween.EASE_IN)
+#		$FlashTween.start()
+#		yield($FlashTween,"tween_all_completed")
+#		$FlashTween.interpolate_property(FLASH_OVERLAY, "albedo_color:a", 0.5, 0.0, .3, Tween.TRANS_QUAD, Tween.EASE_IN)
+#		$FlashTween.start()
+#		yield($FlashTween,"tween_all_completed")
+#		for mi in meshes:
+#			mi.material_overlay = null
+	pass
 
 const DEATH_OVERLAY = preload("res://Assets/Materials/DeathAlphaOverlay.tres")
 func play_death_flash():

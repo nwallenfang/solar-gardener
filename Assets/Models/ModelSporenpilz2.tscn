@@ -1,0 +1,181 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Assets/Models/Meshes/MeshSporenpilz23.res" type="ArrayMesh" id=1]
+[ext_resource path="res://Assets/Models/Meshes/MeshSporenpilz21.res" type="ArrayMesh" id=2]
+[ext_resource path="res://Assets/Models/Meshes/MeshSporenpilz22.res" type="ArrayMesh" id=3]
+
+[sub_resource type="Animation" id=4]
+resource_name = "ConeAction"
+length = 0.0333333
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Cone")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.0333333, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "CylinderAction"
+length = 0.0333333
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Cylinder")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.0333333, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "Empty"
+length = 8.3
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Empty")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0.151843, 0.278009, 0.127198, 0, 0, 0, 1, 1, 1, 1, 8.3, 1, 0.151843, 0.278009, 0.127198, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "Empty001"
+length = 8.3
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Empty001")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0.0271357, 0.434458, 0.0928274, 0, 0, 0, 1, 1, 1, 1, 8.3, 1, 0.0271357, 0.434458, 0.0928274, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=8]
+resource_name = "Empty002"
+length = 8.3
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Empty002")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, -0.079393, 0.18549, 0.217987, 0, 0, 0, 1, 1, 1, 1, 8.3, 1, -0.079393, 0.18549, 0.217987, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=9]
+resource_name = "Empty003"
+length = 8.3
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Empty003")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, -0.113091, 0.387373, 0.0581644, 0, 0, 0, 1, 1, 1, 1, 8.3, 1, -0.113091, 0.387373, 0.0581644, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=10]
+resource_name = "Empty004"
+length = 8.3
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Empty004")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, -0.0682794, 0.418987, -0.0844284, 0, 0, 0, 1, 1, 1, 1, 8.3, 1, -0.0682794, 0.418987, -0.0844284, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=11]
+resource_name = "Empty005"
+length = 8.3
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Empty005")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, -0.0988382, 0.271148, -0.176953, 0, 0, 0, 1, 1, 1, 1, 8.3, 1, -0.0988382, 0.271148, -0.176953, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=12]
+resource_name = "Empty006"
+length = 8.3
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Empty006")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0.0853803, 0.284073, -0.190767, 0, 0, 0, 1, 1, 1, 1, 8.3, 1, 0.0853803, 0.284073, -0.190767, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=13]
+resource_name = "Empty007"
+length = 8.3
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Empty007")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0.070287, 0.437932, -0.0586073, 0, 0, 0, 1, 1, 1, 1, 8.3, 1, 0.070287, 0.437932, -0.0586073, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=14]
+resource_name = "KeyAction"
+length = 0.001
+
+[sub_resource type="Animation" id=15]
+resource_name = "NurbsPathAction"
+length = 8.3
+tracks/0/type = "transform"
+tracks/0/path = NodePath("NurbsPath")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 8.3, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
+
+[node name="ModelSporenpilz2" type="Spatial"]
+
+[node name="Cone" type="MeshInstance" parent="."]
+transform = Transform( 0.202726, 0, 0, 0, 0.202726, 0, 0, 0, 0.202726, 0.0492322, 0.0255547, -0.00598202 )
+mesh = ExtResource( 2 )
+
+[node name="Cylinder" type="MeshInstance" parent="."]
+transform = Transform( 0.0258144, 0, 0, 0, 0.157656, 0, 0, 0, 0.0258144, 0.0468969, -0.00135437, -0.0080137 )
+mesh = ExtResource( 3 )
+
+[node name="Empty" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0127116, 0.23976, -0.0680839 )
+
+[node name="Empty001" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0229595, 0.227292, 0.0155226 )
+
+[node name="Empty002" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0622843, 0.250139, 0.0441915 )
+
+[node name="Empty003" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0971364, 0.246572, -0.0448108 )
+
+[node name="Empty004" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.146744, 0.250307, 0.130228 )
+
+[node name="Empty005" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0924243, 0.182542, 0.200052 )
+
+[node name="Empty006" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.101555, 0.370345, 0.029678 )
+
+[node name="Empty007" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0392486, 0.41234, 0.0741057 )
+
+[node name="NurbsPath" type="MeshInstance" parent="."]
+mesh = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/ConeAction = SubResource( 4 )
+anims/CylinderAction = SubResource( 5 )
+anims/Empty = SubResource( 6 )
+anims/Empty001 = SubResource( 7 )
+anims/Empty002 = SubResource( 8 )
+anims/Empty003 = SubResource( 9 )
+anims/Empty004 = SubResource( 10 )
+anims/Empty005 = SubResource( 11 )
+anims/Empty006 = SubResource( 12 )
+anims/Empty007 = SubResource( 13 )
+anims/KeyAction = SubResource( 14 )
+anims/NurbsPathAction = SubResource( 15 )

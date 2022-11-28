@@ -50,7 +50,7 @@ func execute_event(key: String):
 func next():
 	if event_queue.size() > 0:
 		var popped_event = event_queue.pop_front()
-		print("popped ", popped_event)
+#		print("popped ", popped_event)
 	if not event_queue.empty():
 		execute_event(event_queue[0])
 
@@ -162,7 +162,8 @@ func no_seeds():  # TODO not connected yet
 	
 
 func check_for_tutorial_completed():
-	if Game.planet.plant_list.size() > 6 and get_event_from_key("tutorial_plant_reached_stage2").execute_count > 0:
+	if Game.planet.plant_list.size() > 6 and get_event_from_key("tutorial_plant_reached_stage2").execute_count > 0 and \
+			get_event_from_key("tutorial_plant_scanned").execute_count > 0:
 		Events.trigger("tutorial_completed")
 
 func tutorial_completed():

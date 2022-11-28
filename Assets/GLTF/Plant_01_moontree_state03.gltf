@@ -1,0 +1,319 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v3.3.32",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Retopo_Cylinder",
+            "scale" : [
+                0.2853734791278839,
+                0.2853734791278839,
+                0.2853734791278839
+            ],
+            "translation" : [
+                -1.7813072204589844,
+                6.432212829589844,
+                6.2318878173828125
+            ]
+        },
+        {
+            "name" : "Empty",
+            "translation" : [
+                1.5238995552062988,
+                4.001075267791748,
+                1.3110456466674805
+            ]
+        },
+        {
+            "name" : "Empty.001",
+            "translation" : [
+                0.07741117477416992,
+                3.219745397567749,
+                3.4352731704711914
+            ]
+        },
+        {
+            "name" : "Empty.002",
+            "translation" : [
+                2.069295644760132,
+                3.8809518814086914,
+                -2.6810741424560547
+            ]
+        },
+        {
+            "name" : "Empty.003",
+            "translation" : [
+                -3.322342872619629,
+                4.307215213775635,
+                2.647026538848877
+            ]
+        },
+        {
+            "mesh" : 1,
+            "name" : "moontree_samen"
+        },
+        {
+            "mesh" : 2,
+            "name" : "Retopo_Cylinder.001",
+            "scale" : [
+                0.2853734791278839,
+                0.2853734791278839,
+                0.2853734791278839
+            ]
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "emissiveFactor" : [
+                0.4292253851890564,
+                0.4292253851890564,
+                0.4292253851890564
+            ],
+            "name" : "plant_moontree_moonfruit_material",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0,
+                    0,
+                    0,
+                    1
+                ]
+            }
+        },
+        {
+            "doubleSided" : true,
+            "emissiveFactor" : [
+                1,
+                1,
+                1
+            ],
+            "name" : "moontree_samen_material",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0,
+                    0,
+                    0,
+                    1
+                ]
+            }
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Retopo_Cylinder_sm_6",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1
+                    },
+                    "indices" : 2,
+                    "material" : 0
+                }
+            ]
+        },
+        {
+            "name" : "Icosphere",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 3,
+                        "NORMAL" : 4,
+                        "TEXCOORD_0" : 5
+                    },
+                    "indices" : 6,
+                    "material" : 1
+                }
+            ]
+        },
+        {
+            "name" : "Retopo_Cylinder.001_sm_8",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 7,
+                        "NORMAL" : 8
+                    },
+                    "indices" : 9
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 13444,
+            "max" : [
+                6.834310531616211,
+                16.99565887451172,
+                7.722978591918945
+            ],
+            "min" : [
+                -7.47851037979126,
+                -12.062104225158691,
+                -12.500511169433594
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 13444,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5123,
+            "count" : 20166,
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5126,
+            "count" : 252,
+            "max" : [
+                0.20976686477661133,
+                0.1889028549194336,
+                0.21855878829956055
+            ],
+            "min" : [
+                -0.21108102798461914,
+                -0.1875162124633789,
+                -0.18169116973876953
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 4,
+            "componentType" : 5126,
+            "count" : 252,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 5,
+            "componentType" : 5126,
+            "count" : 252,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 6,
+            "componentType" : 5123,
+            "count" : 252,
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 7,
+            "componentType" : 5126,
+            "count" : 25154,
+            "max" : [
+                13.422730445861816,
+                45.377079010009766,
+                31.02326202392578
+            ],
+            "min" : [
+                -19.055694580078125,
+                0.0522041916847229,
+                -9.506654739379883
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 8,
+            "componentType" : 5126,
+            "count" : 25154,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 9,
+            "componentType" : 5123,
+            "count" : 37680,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 161328,
+            "byteOffset" : 0,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 161328,
+            "byteOffset" : 161328,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 40332,
+            "byteOffset" : 322656,
+            "target" : 34963
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 3024,
+            "byteOffset" : 362988,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 3024,
+            "byteOffset" : 366012,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 2016,
+            "byteOffset" : 369036,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 504,
+            "byteOffset" : 371052,
+            "target" : 34963
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 301848,
+            "byteOffset" : 371556,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 301848,
+            "byteOffset" : 673404,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 75360,
+            "byteOffset" : 975252,
+            "target" : 34963
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 1050612,
+            "uri" : "Plant_01_moontree_state03.bin"
+        }
+    ]
+}

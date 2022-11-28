@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Models/Meshes/MeshPlantPinoState024.res" type="ArrayMesh" id=1]
 [ext_resource path="res://Assets/Models/Meshes/MeshPlantPinoState023.res" type="ArrayMesh" id=2]
+[ext_resource path="res://Assets/Models/Meshes/MeshPlantPinoState022.res" type="ArrayMesh" id=3]
 [ext_resource path="res://Assets/Models/Meshes/MeshPlantPinoState021.res" type="ArrayMesh" id=4]
 
 [sub_resource type="Animation" id=5]
@@ -44,6 +45,7 @@ transform = Transform( -0.275196, 0, 0.961388, 0, 1, 0, -0.961388, 0, -0.275196,
 
 [node name="FlowerBase002" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23164, 0 )
+mesh = ExtResource( 3 )
 
 [node name="Flower002" type="MeshInstance" parent="FlowerBase002"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0263591, 0 )

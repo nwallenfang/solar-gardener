@@ -70,7 +70,7 @@ func _process(delta: float) -> void:
 			# (no journal/node mode)
 			if is_ingame() and OS.has_feature("HTML5") and intro_done and $SettingsOpenCooldown.is_stopped():
 				set_game_state(State.SETTINGS)
-#	UI.set_diagnostics(["mode: " + mode])
+	UI.set_diagnostics(["settings blocked: " + str(not $SettingsOpenCooldown.is_stopped())])
 	if Input.is_action_just_pressed("open_settings"):  # show/hide settings UI
 		if main_scene_running:
 			if game_state == State.INGAME:
@@ -80,6 +80,7 @@ func _process(delta: float) -> void:
 				# this is only the correct if you can only enter settings from ingame!!
 				self.game_state = State.INGAME
 	if Input.is_action_just_pressed("open_journal"):
+		$SettingsOpenCooldown.start(0.4)
 		if game_state == State.INGAME:
 			self.game_state = State.JOURNAL
 		elif game_state == State.JOURNAL:
@@ -88,7 +89,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("give_seeds"):
 		print("gib tzieds")
 		PlantData.give_seeds("Grabroot", 10, false)
-		PlantData.give_seeds("Giant-Cap", 10, false)
+		PlantData.give_seeds("Greatcap", 10, false)
 		PlantData.give_seeds("Hidden Lotus", 10, false)
 		PlantData.give_seeds("Fractalrose", 10, false)
 		

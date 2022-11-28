@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Models/Meshes/Meshplant_04_Sporenpilz_state002.res" type="ArrayMesh" id=1]
+[ext_resource path="res://Assets/Models/Meshes/Meshplant_04_Sporenpilz_state001.res" type="ArrayMesh" id=2]
+
+[node name="Modelplant_04_Sporenpilz_state00" type="Spatial"]
+
+[node name="Cone" type="MeshInstance" parent="."]
+transform = Transform( 0.202726, 0, 0, 0, 0.202726, 0, 0, 0, 0.202726, 0.0492322, 0.0255547, -0.00598202 )
+mesh = ExtResource( 2 )
+
+[node name="Cylinder" type="MeshInstance" parent="."]
+transform = Transform( 0.0258144, 0, 0, 0, 0.157656, 0, 0, 0, 0.0258144, 0.0468969, -0.00135437, -0.0080137 )
+mesh = ExtResource( 1 )
+
+[node name="Empty" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0127116, 0.23976, -0.0680839 )
+
+[node name="Empty001" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0229595, 0.227292, 0.0155226 )
+
+[node name="Empty002" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0622843, 0.250139, 0.0441915 )
+
+[node name="Empty003" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0971364, 0.246572, -0.0448108 )

@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Models/Meshes/MeshPlantPinoState032.res" type="ArrayMesh" id=1]
+[ext_resource path="res://Assets/Models/Meshes/MeshPlantPinoState031.res" type="ArrayMesh" id=2]
 [ext_resource path="res://Assets/Models/Meshes/MeshPlantPinoState033.res" type="ArrayMesh" id=3]
 [ext_resource path="res://Assets/Models/Meshes/MeshPlantPinoState034.res" type="ArrayMesh" id=4]
 
@@ -37,6 +38,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.550127, 0.308856, 0.153782 )
 
 [node name="Stem" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0849276, 0 )
+mesh = ExtResource( 2 )
 
 [node name="TurnPoint001" type="Spatial" parent="."]
 transform = Transform( -0.275196, 0, 0.961388, 0, 1, 0, -0.961388, 0, -0.275196, 0, -0.0849275, 0 )
