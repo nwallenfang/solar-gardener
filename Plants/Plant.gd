@@ -95,6 +95,8 @@ func _on_CheckConditionsTimer_timeout():
 
 var cheat = false
 func calculate_growth_points():
+	var ability_tags := get_near_plants_tags()
+	
 	var points := 0
 	# SOIL TYPE
 	if profile.prefered_soil == PlantData.SOIL_TYPES.ANY:
@@ -112,18 +114,25 @@ func calculate_growth_points():
 				PlantData.SOIL_TYPES.SAND:
 					Game.journal.make_preference_known(profile.name, "Likes sandy planets")
 	
+	
+	
 	# SUN
+	var sun_value := planet.sun
+	if ("sun_yes" in ability_tags and (not "sun_no" in ability_tags)):
+		sun_value = true
+	elif ("sun_yes" in ability_tags and (not "sun_no" in ability_tags)):
+		sun_value = false
 	if profile.sun == PlantData.PREFERENCE.ALWAYS_FALSE:
 		points += 0
 	elif profile.sun == PlantData.PREFERENCE.ALWAYS_TRUE:
 		points += 1
 	elif profile.sun == PlantData.PREFERENCE.LIKES:
-		if planet.sun:
+		if sun_value:
 			points += 1
 			if growth_stage >= 1:
 				Game.journal.make_preference_known(profile.name, "Likes Sun")
 	elif profile.sun == PlantData.PREFERENCE.HATES:
-		if not planet.sun:
+		if not sun_value:
 			points += 1 
 			if growth_stage >= 1:
 				Game.journal.make_preference_known(profile.name, "Hates Sun")
@@ -139,17 +148,22 @@ func calculate_growth_points():
 #		points += 1 if not planet.moist else 0
 	
 	# NUTRI
+	var nutri_value := planet.nutrients
+	if ("nutri_yes" in ability_tags and (not "nutri_no" in ability_tags)):
+		sun_value = true
+	elif ("nutri_yes" in ability_tags and (not "nutri_no" in ability_tags)):
+		sun_value = false
 	if profile.nutrients == PlantData.PREFERENCE.ALWAYS_FALSE:
 		points += 0
 	elif profile.nutrients == PlantData.PREFERENCE.ALWAYS_TRUE:
 		points += 1
 	elif profile.nutrients == PlantData.PREFERENCE.LIKES:
-		if planet.nutrients:
+		if nutri_value:
 			points += 1
 			if growth_stage >= 1:
 				Game.journal.make_preference_known(profile.name, "Likes Nutrients")
 	elif profile.nutrients == PlantData.PREFERENCE.HATES:
-		if not planet.nutrients:
+		if not nutri_value:
 			points += 1
 			if growth_stage >= 1:
 				Game.journal.make_preference_known(profile.name, "Hates Nutrients")
@@ -454,12 +468,28 @@ func get_near_plants_types() -> Array:
 			types.append(plant.profile.plant_type)
 	return types
 
+func get_near_plants_tags() -> Array:
+	var plants := get_near_plants_list()
+	var list := []
+	for plant in plants:
+		for tag in plant.get_ability_tags():
+			if not tag in list:
+				list.append(tag)
+	return list
+
+func get_ability_tags() -> Array:
+	if effect != null:
+		if effect.has_method("get_ability_tags"):
+			var effect_return = effect.call("get_ability_tags")
+			if effect_return != null:
+				return effect_return
+	return []
+
 func get_analyse_name() -> String:
 	if analyse_name in Game.journal.scanned_plant_names:
 		return analyse_name
 	else:
 		return "Unknown Plant"
-
 
 func _on_SeedGrowCooldown_timeout():
 	grow_small_seeds()

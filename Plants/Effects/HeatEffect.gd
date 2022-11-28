@@ -10,3 +10,6 @@ func _on_ProcessTimer_timeout():
 		for obj in plant.get_near_symbiosis_objects_list():
 			if obj.name == "Ice":
 				obj.get_parent().melt()
+
+func get_ability_tags():
+	return ["sun_yes"]

@@ -68,7 +68,10 @@ func setup():
 	events.append(Event.new("tutorial_plant_reached_stage2", self, "tutorial_plant_reached_stage2", true))
 	events.append(Event.new("tutorial_plant_scanned", self, "tutorial_plant_scanned", true))
 	events.append(Event.new("tutorial_growth_reached", self, "tutorial_growth_reached", true))
+	events.append(Event.new("gear_scanned", self, "gear_scanned", true))
 	events.append(Event.new("tutorial_completed", self, "tutorial_completed", true))
+	events.append(Event.new("soil_unlocked", self, "soil_unlocked", true))
+	events.append(Event.new("remove_unlocked", self, "remove_unlocked", true))
 	events.append(Event.new("no_seeds", self, "no_seeds", false))
 	events.append(Event.new("planet_hopped", self, "planet_hopped", false))
 
@@ -162,9 +165,10 @@ func no_seeds():  # TODO not connected yet
 	
 
 func check_for_tutorial_completed():
-	if Game.planet.plant_list.size() > 6 and get_event_from_key("tutorial_plant_reached_stage2").execute_count > 0 and \
-			get_event_from_key("tutorial_plant_scanned").execute_count > 0:
-		Events.trigger("tutorial_completed")
+	pass
+#	if Game.planet.plant_list.size() > 6 and get_event_from_key("tutorial_plant_reached_stage2").execute_count > 0 and \
+#			get_event_from_key("tutorial_plant_scanned").execute_count > 0:
+#		Events.trigger("tutorial_completed")
 
 func tutorial_completed():
 	Game.UI.add_tutorial_message("Traveling", "Point to a planet and click to travel.", duration)
@@ -173,6 +177,21 @@ func tutorial_completed():
 	
 	$RepeatTimer.start(repeat_time)
 	repeat_this = "tutorial_completed"
+
+func soil_unlocked():
+	Game.UI.add_tutorial_message("Soil Analysis", "Scan the soil to get more information on the planet.", duration)
+	Game.multitool.soil_unlocked = true
+	next()
+
+func remove_unlocked():
+	Game.UI.add_tutorial_message("Removing Plants", "Use right click with the grow tool to remove plants.", duration)
+	Game.multitool.death_beam_unlocked = true
+	# TODO Show Remove Tooltip now!
+	next()
+
+func gear_scanned():
+	Game.UI.add_tutorial_message("Upgrading the tool", "Go to the shed to upgrade the Yardintool.", duration)
+	next()
 
 var first_hop := true
 func planet_hopped():
