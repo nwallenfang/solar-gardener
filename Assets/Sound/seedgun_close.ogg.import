@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/seedgun_close.ogg-55c4da208b3b11861ec64aef3fbd73d9.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sound/seedgun_close.ogg"
+dest_files=[ "res://.import/seedgun_close.ogg-55c4da208b3b11861ec64aef3fbd73d9.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

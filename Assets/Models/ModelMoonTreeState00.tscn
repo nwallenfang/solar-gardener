@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Models/Meshes/MeshMoonTreeState001.res" type="ArrayMesh" id=1]
+[ext_resource path="res://Assets/Materials/Plants/MoontreeWood.tres" type="Material" id=2]
+
+[node name="ModelMoonTreeState00" type="Spatial"]
+
+[node name="Retopo_Cylinder" type="MeshInstance" parent="."]
+transform = Transform( 0.182694, 0, 0, 0, 0.182694, 0, 0, 0, 0.182694, 0.161668, 0.00716662, 0.0881238 )
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 2 )
+
+[node name="Empty" type="Spatial" parent="."]
+transform = Transform( 0.640193, 0, 0, 0, 0.640193, 0, 0, 0, 0.640193, 1.48141, 1.83148, 0.321856 )
+
+[node name="Empty001" type="Spatial" parent="."]
+transform = Transform( 0.640193, 0, 0, 0, 0.640193, 0, 0, 0, 0.640193, 0.23202, 1.24638, 1.18841 )
+
+[node name="Empty002" type="Spatial" parent="."]
+transform = Transform( 0.640193, 0, 0, 0, 0.640193, 0, 0, 0, 0.640193, -0.582768, 2.07801, -0.166798 )
+
+[node name="Empty003" type="Spatial" parent="."]
+transform = Transform( 0.640193, 0, 0, 0, 0.640193, 0, 0, 0, 0.640193, 0.961417, 1.26211, -0.698572 )

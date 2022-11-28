@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Models/Meshes/MeshPlant_01_moontree_samen1.res" type="ArrayMesh" id=1]
+[ext_resource path="res://Assets/Materials/Plants/MoontreeMoon.tres" type="Material" id=2]
+
+[node name="ModelMoontree_samen" type="Spatial"]
+
+[node name="Sphere001" type="MeshInstance" parent="."]
+transform = Transform( 0.383626, 0, 0, 0, 0.383626, 0, 0, 0, 0.383626, 0, 0, 0 )
+material_override = ExtResource( 2 )
+mesh = ExtResource( 1 )
