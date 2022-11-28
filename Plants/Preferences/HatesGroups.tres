@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://Assets/Sprites/plant_group_cross.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/no_plant_group.webp" type="Texture" id=1]
 [ext_resource path="res://Plants/PlantPreference.gd" type="Script" id=2]
 
 [resource]

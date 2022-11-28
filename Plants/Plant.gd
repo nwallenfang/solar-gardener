@@ -200,7 +200,7 @@ func calculate_growth_points():
 	
 	
 	# CHEAT
-	if cheat or profile.name == "Greatcap" or profile.name == "Moontree":
+	if cheat: # or profile.name == "Greatcap" or profile.name == "Moontree":
 		points += 20
 		
 	growth_points = points

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Models/ModelPlanet_03_rocks 0.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Amber.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Assets/Models/ModelStones.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Objects/GrabrootGrabber.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Objects/NoteCapsule.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Objects/Gear.tscn" type="PackedScene" id=9]
 
 [sub_resource type="SphereShape" id=12]
 radius = 22.8154
@@ -155,3 +156,6 @@ transform = Transform( 0.768529, 0.639815, -2.79672e-08, 1.72899e-14, -4.37114e-
 light_color = Color( 1, 0.976471, 0.823529, 1 )
 light_energy = 1.747
 omni_range = 3.02068
+
+[node name="Gear" parent="." instance=ExtResource( 9 )]
+transform = Transform( 0.829013, -0.558078, 0.0358707, 0.491629, 0.69673, -0.522367, 0.266529, 0.450684, 0.851966, 0.021517, 7.62488, 4.50343 )
