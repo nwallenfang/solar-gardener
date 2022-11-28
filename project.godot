@@ -103,6 +103,11 @@ _global_script_classes=[ {
 "class": "UI",
 "language": "GDScript",
 "path": "res://UI/UI.gd"
+}, {
+"base": "Spatial",
+"class": "UpgradeStation",
+"language": "GDScript",
+"path": "res://Objects/UpgradeStation.gd"
 } ]
 _global_script_class_icons={
 "BadPlanting": "",
@@ -123,7 +128,8 @@ _global_script_class_icons={
 "Player": "",
 "PlayerCamera": "",
 "PlayerRayCast": "",
-"UI": ""
+"UI": "",
+"UpgradeStation": ""
 }
 
 [application]
@@ -145,6 +151,7 @@ PlantData="*res://Logic/PlantData.tscn"
 Utility="*res://Logic/Utility.tscn"
 Events="*res://Logic/Events.tscn"
 Dialog="*res://Logic/Dialog.tscn"
+Upgrades="*res://Logic/Upgrades.tscn"
 
 [debug]
 
@@ -158,6 +165,7 @@ gdscript/warnings/return_value_discarded=false
 
 window/size/width=1280
 window/size/height=720
+window/size/fullscreen=true
 window/size/test_width=1280
 window/size/test_height=720
 window/vsync/use_vsync=false

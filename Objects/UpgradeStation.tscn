@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Objects/UpgradeStation.gd" type="Script" id=1]
+[ext_resource path="res://Logic/ModelMultitool.tscn" type="PackedScene" id=2]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 1, 0.266684, 1 )
+
+[node name="UpgradeStation" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 0.476822, 0, 0, 0, 0.476822, 0, 0, 0, 0.476822, 0, 0.605319, 0 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../Area")
+
+[node name="Area" type="Area" parent="."]
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 0.654704, 0, 0, 0, 0.654704, 0, 0, 0, 0.654704, 0, 1.11779, 0 )
+shape = SubResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Slot" type="Spatial" parent="."]
+transform = Transform( -1.84098e-08, 0, -0.421167, 0, 0.421167, 0, 0.421167, 0, -1.84098e-08, 0.0555821, 1.47093, 0.0414769 )
+
+[node name="ModelMultitool" parent="Slot" instance=ExtResource( 2 )]
+visible = false

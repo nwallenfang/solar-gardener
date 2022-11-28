@@ -66,6 +66,13 @@ var hopper_planet: Planet
 var hopper_pos: Vector3
 var hop_mode := false
 
+# Upgrade
+var upgrade_mode := false setget set_upgrade_mode
+func set_upgrade_mode(x: bool):
+	upgrade_mode = x
+	show_upgradable(x)
+var upgrade_station: UpgradeStation
+
 # Move Variable
 var can_move := false
 var object_to_move : Spatial
@@ -97,6 +104,10 @@ func _physics_process(delta):
 					Game.execute_planet_hop(hopper_planet, hopper_pos)
 					switch_tool(pre_hopper_tool)
 					hop_mode = false
+		if upgrade_mode:
+			if Input.is_action_just_pressed("first_action"):
+				upgrade_station.upgrade()
+				upgrade_mode = false
 			
 		if (seeds_empty and current_tool == TOOL.PLANT) or force_reload:
 			try_reload()
@@ -108,7 +119,7 @@ func _physics_process(delta):
 var switched_tool_on_cooldown :int= TOOL.ANALYSIS setget set_switched_on_cooldown
 func set_switched_on_cooldown(set_tool: int):
 	if hop_mode:
-		print("Hop")
+		print("Hop Blocked Tool Switch")
 		return
 	if tool_unlocked[set_tool]:
 		switched_tool_on_cooldown = set_tool
@@ -337,6 +348,10 @@ func check_on_hover():
 			return
 	else:
 		hop_mode = false
+	if Game.player_raycast.collider is UpgradeStation and Upgrades.is_upgrade_available():
+		upgrade_mode = true
+	else:
+		upgrade_mode = false
 	match current_tool:
 		TOOL.PLANT:
 			if Game.player_raycast.colliding and Game.player_raycast.hit_point.distance_to(Game.player.global_translation) < PLANT_TOOL_DISTANCE and Game.planet.is_obsidian == false:
@@ -445,6 +460,9 @@ func show_hopable(b: bool):
 		Game.crosshair.set_style(Game.crosshair.Style.HOP)
 	else:
 		Game.crosshair.set_style(Game.crosshair.Style.DEFAULT)
+
+func show_upgradable(b: bool):
+	pass
 
 func start_planting_animation(pos: Vector3):
 	show_plantable(false)

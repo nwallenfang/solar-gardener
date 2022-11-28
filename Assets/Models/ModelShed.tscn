@@ -82,7 +82,11 @@ transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, -0.714555, 0.926788, -1.80118
 mesh = ExtResource( 5 )
 
 [node name="MonitorWallRight" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.142905, 2.18071, -2.16148 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10066, 2.2054, -2.16148 )
+mesh = ExtResource( 20 )
+
+[node name="MonitorWallRight2" type="MeshInstance" parent="."]
+transform = Transform( 1.23407, 0, 0, 0, 1.23407, 0, 0, 0, 1.071, 0.871824, 2.06255, -2.16148 )
 mesh = ExtResource( 20 )
 
 [node name="MonitorWallLeft" type="MeshInstance" parent="."]

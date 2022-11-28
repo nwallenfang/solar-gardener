@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Objects/Planet.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/Models/ModelPlanet_01_dirt.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Objects/NoteCapsule.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Objects/GrabrootGrabber.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Objects/Gear.tscn" type="PackedScene" id=8]
 
 [sub_resource type="SphereMesh" id=9]
 resource_local_to_scene = true
@@ -72,5 +73,8 @@ transform = Transform( 1.03296, 0, 0, 0, -4.51522e-08, 1.03296, 0, -1.03296, -4.
 [node name="Amber" parent="GrabrootGrabber" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.78478, 0.2 )
 seed_name = "Hidden Lotus"
+
+[node name="Gear" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5215, 0 )
 
 [editable path="Model"]

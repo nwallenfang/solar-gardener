@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Models/Meshes/MeshMultitool3.res" type="ArrayMesh" id=1]
+[ext_resource path="res://Objects/Gear.gd" type="Script" id=2]
+
+[sub_resource type="SphereShape" id=1]
+radius = 0.263869
+
+[sub_resource type="Animation" id=2]
+resource_name = "death"
+
+[node name="Gear" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Wheel" type="MeshInstance" parent="."]
+transform = Transform( -1, 8.74228e-08, 0, -4.65928e-08, -0.53296, 0, 0, 0, 1, 0, 0, 0 )
+mesh = ExtResource( 1 )
+
+[node name="Area" type="Area" parent="."]
+collision_layer = 12
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 1 )
+
+[node name="DeathPlayer" type="AnimationPlayer" parent="."]
+anims/death = SubResource( 2 )
