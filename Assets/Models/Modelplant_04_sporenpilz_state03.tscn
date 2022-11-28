@@ -1,8 +1,8 @@
 [gd_scene load_steps=36 format=2]
 
-[ext_resource path="res://Assets/Models/Meshes/Meshplant_04_Sporenpilz_state031.res" type="ArrayMesh" id=1]
-[ext_resource path="res://Assets/Models/Meshes/Meshplant_04_Sporenpilz_state033.res" type="ArrayMesh" id=2]
-[ext_resource path="res://Assets/Models/Meshes/Meshplant_04_Sporenpilz_state032.res" type="ArrayMesh" id=3]
+[ext_resource path="res://Assets/Models/Meshes/Meshplant_04_sporenpilz_state031.res" type="ArrayMesh" id=1]
+[ext_resource path="res://Assets/Models/Meshes/Meshplant_04_sporenpilz_state033.res" type="ArrayMesh" id=2]
+[ext_resource path="res://Assets/Models/Meshes/Meshplant_04_sporenpilz_state032.res" type="ArrayMesh" id=3]
 [ext_resource path="res://Assets/Materials/Plants/AntennaMaterial.tres" type="Material" id=4]
 [ext_resource path="res://Assets/Materials/Plants/ShroomStem.tres" type="Material" id=5]
 [ext_resource path="res://Assets/Materials/Plants/moss_normal.png" type="Texture" id=6]

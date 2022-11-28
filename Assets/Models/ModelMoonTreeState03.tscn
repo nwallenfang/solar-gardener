@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Models/Meshes/MeshMoonTreeState031.res" type="ArrayMesh" id=1]
-[ext_resource path="res://Assets/Models/Meshes/MeshMoonTreeState032.res" type="ArrayMesh" id=2]
-[ext_resource path="res://Assets/Materials/Plants/MoontreeWood.tres" type="Material" id=3]
+[ext_resource path="res://Assets/Models/Meshes/MeshMoonTreeState034.res" type="ArrayMesh" id=2]
 [ext_resource path="res://Assets/Materials/Plants/MoontreeMoon.tres" type="Material" id=4]
 [ext_resource path="res://Objects/MoonTreeState03.gd" type="Script" id=5]
 
@@ -39,7 +38,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 resource_name = "animate"
 length = 4.0
 loop = true
@@ -106,12 +105,14 @@ transform = Transform( 0.67095, 0, 0, 0, 0.67095, 0, 0, 0, 0.67095, -2.72801, 2.
 
 [node name="Retopo_Cylinder001" type="MeshInstance" parent="."]
 transform = Transform( 0.191471, 0, 0, 0, 0.191471, 0, 0, 0, 0.191471, -0.492367, -0.00563383, 0.298589 )
-mesh = ExtResource( 2 )
-material/0 = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 1 )
-anims/animate = SubResource( 2 )
+anims/animate = SubResource( 3 )
 
 [node name="VisibilityEnabler" type="VisibilityEnabler" parent="."]
 max_distance = 10.0
+
+[node name="Moon" type="MeshInstance" parent="."]
+transform = Transform( 0.285373, 0, 0, 0, 0.285373, 0, 0, 0, 0.285373, -1.78131, 6.43221, 6.23189 )
+mesh = ExtResource( 2 )
