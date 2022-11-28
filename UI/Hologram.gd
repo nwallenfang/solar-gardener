@@ -29,7 +29,7 @@ func set_text(text: String):
 
 
 # seed name + seedcount, scan name + scan progress, soil analysis (planet)
-func show_soil_info(planet_name: String, type_name: String, has_nutrients:bool, is_close_to_sun: bool):
+func show_soil_info(planet_name: String, type_name: String, has_nutrients:bool, is_hot: bool):
 	if current_screen != null:
 		current_screen.visible = false
 	$"%SoilInfo".visible = true
@@ -42,10 +42,10 @@ func show_soil_info(planet_name: String, type_name: String, has_nutrients:bool, 
 		$"%HasNutrients".text = "Nutrients: High"
 	else:
 		$"%HasNutrients".text = "Nutrients: Low"
-	if is_close_to_sun:
-		$"%CloseToSun".text = "Sun: Close"
+	if is_hot:
+		$"%CloseToSun".text = "Temp: High"
 	else:
-		$"%CloseToSun".text = "Sun: Far"
+		$"%CloseToSun".text = "Temp: Low"
 
 func show_hop_info(planet_name):
 	if current_screen != null:

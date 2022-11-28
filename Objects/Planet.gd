@@ -72,7 +72,7 @@ func growth_stage_reached(growth_stage: int):
 			var music_next = "music_%s_%d" % [used_prefix, growth_stage]
 			var music_prev = "music_%s_%d" % [used_prefix, growth_stage-1]
 			if growth_stage == 1:
-				fade_in()
+				Audio.cross_fade("music_ambience", music_next)
 			else:  # 2 or 3
 				Audio.cross_fade(music_prev, music_next)
 			
@@ -83,7 +83,10 @@ func fade_out():
 	var used_prefix = music_prefix
 
 	var music = "music_%s_%d" % [used_prefix, planet_growth_stage]
-	Audio.fade_out(music)
+	if planet_growth_stage > 0:
+		Audio.fade_out(music)
+	else:
+		Audio.fade_out("music_ambience")
 	
 func fade_in():
 	if music_prefix == "obsidian":
@@ -94,6 +97,8 @@ func fade_in():
 	if planet_growth_stage > 0:
 		var music = "music_%s_%d" % [used_prefix, planet_growth_stage]
 		Audio.fade_in(music, 1.0, true)
+	else:
+		Audio.fade_in("music_ambience", 1.0, true)
 
 
 func get_current_music_name() -> String:

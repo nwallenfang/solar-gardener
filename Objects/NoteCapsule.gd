@@ -12,7 +12,7 @@ func on_analyse():
 	if not first_time_opening:
 		first_time_opening = true
 		if last_note:
-			index = 3
+			index = Dialog.get_last_index()
 		else:
 			index = Dialog.get_next_index()
 	Game.UI.set_note_text(Dialog.get_gardener_note(index))

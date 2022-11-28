@@ -1,11 +1,13 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Assets/Models/Meshes/Meshplant_04_Sporenpilz_state012.res" type="ArrayMesh" id=1]
 [ext_resource path="res://Assets/Models/Meshes/Meshplant_04_Sporenpilz_state0117.res" type="SphereMesh" id=2]
 [ext_resource path="res://Assets/Materials/Plants/ShroomStem.tres" type="Material" id=3]
 [ext_resource path="res://Assets/Models/Meshes/Meshplant_04_Sporenpilz_state0113.res" type="QuadMesh" id=4]
 [ext_resource path="res://Effects/SporeParticles.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Models/Meshes/Meshplant_04_Sporenpilz_state011.res" type="ArrayMesh" id=6]
 [ext_resource path="res://Assets/Textures/spore_mask.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Materials/Plants/ShroomCone.tres" type="Material" id=8]
 
 [sub_resource type="MultiMesh" id=25]
 transform_format = 1
@@ -126,6 +128,8 @@ material = SubResource( 24 )
 
 [node name="Cone" type="MeshInstance" parent="."]
 transform = Transform( 3.36276, 0, 0, 0, 3.36276, 0, 0, 0, 3.36276, 0.0160879, 1.09068, -0.0354233 )
+mesh = ExtResource( 6 )
+material/0 = ExtResource( 8 )
 
 [node name="Cylinder" type="MeshInstance" parent="."]
 transform = Transform( 3.36276, 0, 0, 0, 3.36276, 0, 0, 0, 3.36276, -2.92901e-06, 0.0993618, 0.00952917 )

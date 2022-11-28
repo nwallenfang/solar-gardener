@@ -30,6 +30,12 @@ func set_profile(profile: PlantProfile):
 	$Panel/PlantIcon.anchor_left = 0.0
 	$Panel/PlantIcon.rect_pivot_offset = 0.5 * $Panel/PlantIcon.rect_size
 	$Panel/PlantIcon.rect_scale = Vector2(0.7, 0.7)
+	var hint: String
+	if profile.amber_location.to_lower().begins_with("deep inside"):
+		hint = "Found " + profile.amber_location
+	else:
+		hint = "Found on " + profile.amber_location
+	$Panel/UndiscoveredOverlay.hint_tooltip = hint
 
 const max_per_row = 3
 func add_preference(preference: PlantPreference):

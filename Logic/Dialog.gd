@@ -1,12 +1,17 @@
 extends Node
 
+export var number_of_nodes: int = 5
+
 export(String, MULTILINE) var note_text1: String
 export(String, MULTILINE) var note_text2: String
 export(String, MULTILINE) var note_text3: String
+export(String, MULTILINE) var note_text4: String
+export(String, MULTILINE) var note_text5: String
 
 export var note_audio1: AudioStreamOGGVorbis
 export var note_audio2: AudioStreamOGGVorbis
 export var note_audio3: AudioStreamOGGVorbis
+export var note_audio4: AudioStreamOGGVorbis
 
 export(Array, Resource) var lines: Array
 export var voice_lv_db: float
@@ -46,6 +51,9 @@ func get_next_index():
 	Game.number_of_logs += 1
 	_next_index += 1
 	return _next_index-1
+
+func get_last_index():
+	return number_of_nodes
 
 func get_gardener_note(index: int) -> String:
 	return get("note_text" + str(index))

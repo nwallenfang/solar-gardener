@@ -36,6 +36,8 @@ export var points_for_stage_2: int
 export var points_for_stage_3: int
 export var points_for_stage_4: int
 
+export var amber_location: String
+
 var model_seed: PackedScene
 var model_stage_1: PackedScene
 var model_stage_2: PackedScene

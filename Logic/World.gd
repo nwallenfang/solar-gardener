@@ -101,7 +101,7 @@ func end_intro_flight():
 		# in this case the intro only counts as done once this has been hidden
 		Game.intro_done = false
 		
-	
+	Game.planet.fade_in()
 	yield(get_tree().create_timer(2.0), "timeout")
 	set_process(false)
 	

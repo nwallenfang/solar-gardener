@@ -12,6 +12,7 @@ enum State {
 	LOADING,
 	INTRO_FLIGHT,
 	UPGRADING,
+	CREDITS,
 }
 
 var game_state = State.LOADING setget set_game_state
@@ -93,6 +94,7 @@ func _process(delta: float) -> void:
 		PlantData.give_seeds("Greatcap", 10, false)
 		PlantData.give_seeds("Hidden Lotus", 10, false)
 		PlantData.give_seeds("Fractalrose", 10, false)
+		PlantData.give_seeds("Moontree", 10, false)
 		
 	if Input.is_action_just_pressed("make_pref_known"):
 		print("pref known")
@@ -150,10 +152,15 @@ func execute_planet_hop(new_planet: Planet, pos: Vector3):
 	var dir_to_planet = player.global_translation.direction_to(new_planet.global_translation)
 	pos = new_planet.global_translation + player.global_translation.direction_to(pos).cross(-dir_to_planet).cross(dir_to_planet).normalized() * 15.0
 	set_game_state(State.WARPING)
-	planet.fade_out()
+	if not planet.planet_growth_stage == new_planet.planet_growth_stage \
+		or new_planet.music_prefix == "obsidian":
+		planet.fade_out()
 	planet.set_player_is_on_planet(false)
 	new_planet.set_player_is_on_planet(true)
-	new_planet.fade_in()
+	if not planet.planet_growth_stage == new_planet.planet_growth_stage \
+		or new_planet.music_prefix == "obsidian":
+		new_planet.fade_in()
+		
 	planet = new_planet
 	#player.global_transform = Transform(new_basis, pos)
 	var current_y_looking_angle : float = player.get_node("Head").rotation.x

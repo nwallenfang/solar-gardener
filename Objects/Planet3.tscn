@@ -44,4 +44,4 @@ seed_name = "Hidden Lotus"
 
 [node name="Amber" parent="GrabrootGrabber" instance=ExtResource( 2 )]
 transform = Transform( 0.685153, 0, 0, 0, 0.685153, 0, 0, 0, 0.685153, 0, 1.84799, 0.366538 )
-seed_name = "Fractalrose"
+seed_name = "Moontree"

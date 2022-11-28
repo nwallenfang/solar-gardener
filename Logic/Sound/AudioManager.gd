@@ -259,12 +259,14 @@ func setup_footsteps():
 		print("An error encountered loading the sounds")
 	print("Done loading Footsteps!")
 
-var growth_stage_db := -4.0
+var growth_stage_db := -6.0
 var name_to_index := {
 	"Grabroot": 1,
-	"Giant-Cap": 2,
+	"Greatcap": 2,
 	"Fractalrose": 3,
 	"Hidden Lotus": 4,
+	"Moontree": 5,
+	"Cosmosun": 6,
 	"Fallback": 6,
 }
 # growth stage should go from 1 to 4 so exactly like the PlantData enum

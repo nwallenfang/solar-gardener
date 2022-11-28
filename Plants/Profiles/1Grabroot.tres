@@ -26,4 +26,5 @@ points_for_stage_1 = 1
 points_for_stage_2 = 2
 points_for_stage_3 = 3
 points_for_stage_4 = 5
+amber_location = "Yardshed"
 special_effect_name = "GrabrootEffect"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://UI/PlantUI.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Placeholder/plant_icon.png" type="Texture" id=2]
@@ -9,8 +9,6 @@
 [ext_resource path="res://Assets/Sprites/covered2.png" type="Texture" id=7]
 [ext_resource path="res://theme.tres" type="Theme" id=8]
 [ext_resource path="res://Assets/Sprites/plant_bg.png" type="Texture" id=9]
-
-[sub_resource type="StyleBoxFlat" id=1]
 
 [sub_resource type="DynamicFont" id=2]
 size = 46
@@ -165,16 +163,6 @@ __meta__ = {
 "_edit_use_anchors_": true,
 "_editor_description_": "Undiscovered Plant"
 }
-
-[node name="UndiscoveredPanel" type="Panel" parent="Panel"]
-visible = false
-anchor_left = 0.012
-anchor_right = 0.992
-anchor_bottom = 0.996
-margin_right = 39.9999
-margin_bottom = 40.0
-mouse_filter = 1
-custom_styles/panel = SubResource( 1 )
 
 [node name="SeedCountBG" type="TextureRect" parent="."]
 anchor_left = 0.625
