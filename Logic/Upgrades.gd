@@ -20,7 +20,8 @@ func ugrade_once():
 			Game.UI.show_info_line("Plant removal unlocked", 2)
 			Events.trigger("remove_unlocked")
 		4: # Jetpack
-			pass
+			Game.UI.show_info_line("Jetpack unlocked", 2)
+			Events.trigger("remove_unlocked")
 		5: # Flashlight
 			pass
 

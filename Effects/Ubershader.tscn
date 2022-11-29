@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=2]
+[gd_scene load_steps=77 format=2]
 
 [ext_resource path="res://Effects/DirtExplosion.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Effects/Ubershader.gd" type="Script" id=2]
@@ -28,6 +28,7 @@
 [ext_resource path="res://Assets/Models/ModelDirtPile.tscn" type="PackedScene" id=26]
 [ext_resource path="res://Effects/AlienLights.tscn" type="PackedScene" id=27]
 [ext_resource path="res://Effects/Twinkle.tscn" type="PackedScene" id=28]
+[ext_resource path="res://Effects/JetpackFlames.tscn" type="PackedScene" id=29]
 
 [sub_resource type="QuadMesh" id=1]
 
@@ -1724,6 +1725,9 @@ both = true
 
 [node name="AlienLights" parent="." instance=ExtResource( 27 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22658, 0, 0 )
+
+[node name="JetpackFlames" parent="." instance=ExtResource( 29 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66281, -0.394278 )
 
 [editable path="DirtExplosion"]
 [editable path="ModelMultitoolOld/GrowBeamOrigin/EnergyBallCombo"]

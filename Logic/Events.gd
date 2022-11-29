@@ -72,6 +72,7 @@ func setup():
 	events.append(Event.new("tutorial_completed", self, "tutorial_completed", true))
 	events.append(Event.new("soil_unlocked", self, "soil_unlocked", true))
 	events.append(Event.new("remove_unlocked", self, "remove_unlocked", true))
+	events.append(Event.new("jetpack_unlocked", self, "jetpack_unlocked", true))
 	events.append(Event.new("too_many_seeds", self, "too_many_seeds", true))
 	events.append(Event.new("no_seeds", self, "no_seeds", false))
 	events.append(Event.new("planet_hopped", self, "planet_hopped", false))
@@ -193,6 +194,13 @@ func remove_unlocked():
 	Game.UI.add_tutorial_message("Removing Plants", "Use right click with the grow tool to remove plants.", duration)
 
 	# TODO Show Remove Tooltip now!
+	next()
+
+func jetpack_unlocked():
+	Game.player.unlocked_jetpack = true
+	yield(get_tree().create_timer(4.0), "timeout")
+	Game.UI.add_tutorial_message("Jetpack", "Press space after jumping to use your jetpack.", duration)
+
 	next()
 
 func gear_scanned():

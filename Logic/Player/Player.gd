@@ -13,7 +13,9 @@ export var y_limit := deg2rad(90.0)
 export var speed := 30
 
 export(float, 0.0, 1.0, 0.05) var air_control := 0.3
-export var jump_acceleration := 1000
+export var jump_acceleration := 950
+export var jetpack_fuel := 1.0
+export var unlocked_jetpack := false
 export var ground_friction := 0.1
 export var air_friction := 0.05
 var direction := Vector3()
@@ -33,6 +35,7 @@ onready var gravity_strength : float = (ProjectSettings.get_setting("physics/3d/
 
 var movement_disabled = false
 var has_jumped = false
+var jump_action_released_after_jump := false
 
 onready var pickup_point : Spatial = $"%PickupPoint"
 
@@ -56,13 +59,15 @@ func calc_gravity_direction() -> Vector3:
 var gravity_direction
 const footstep_thresh = 0.2
 func _physics_process(delta) -> void:
-	var trigger_jump: bool
 	if Game.game_state == Game.State.LOADING or Game.game_state == Game.State.INTRO_FLIGHT or Game.game_state == Game.State.WARPING:
 		return 
 		
 	input_axis = Input.get_vector("move_backwards", "move_forward",
 			"move_left", "move_right")
-	trigger_jump = is_on_floor() and Input.is_action_just_pressed("jump") and !has_jumped
+	var trigger_jump : bool = is_on_floor() and Input.is_action_just_pressed("jump") and !has_jumped
+	if not jump_action_released_after_jump:
+		jump_action_released_after_jump = Input.is_action_just_released("jump")
+	var trigger_jetpack = unlocked_jetpack and (not is_on_floor()) and Input.is_action_pressed("jump") and jump_action_released_after_jump and has_jumped and (jetpack_fuel>0.0)
 	if movement_disabled or Game.game_state != Game.State.INGAME:
 		input_axis = Vector2.ZERO
 		mouse_axis = Vector2.ZERO
@@ -71,18 +76,26 @@ func _physics_process(delta) -> void:
 	direction = get_input_direction()
 	gravity_direction = calc_gravity_direction()
 	
+	if trigger_jetpack:
+#		print(jetpack_fuel)
+		velocity += jump_acceleration * delta * transform.basis.y * 0.04
+		jetpack_fuel -= delta * .7
+	$JetpackLight.visible = trigger_jetpack
+	$JetpackFlames/Particles.emitting = trigger_jetpack
 	if trigger_jump:
 		# init jump
 		snap = Vector3.ZERO
 		# player basis y is the player's up direction
 		velocity += jump_acceleration * delta * transform.basis.y
 		has_jumped = true
+		jump_action_released_after_jump = false
 		Audio.stop_footsteps()
 	elif is_on_floor():
 		if has_jumped:
 			# end jump
 			# TODO add contact sound effect
 			has_jumped = false
+			jetpack_fuel = 1.0
 			Audio.play_random_step(Game.planet.music_prefix)
 		snap = gravity_direction
 	
