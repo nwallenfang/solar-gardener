@@ -555,8 +555,6 @@ func show_analyse_information():
 								if soil_type == null:
 									printerr(planet_obj.planet_name + " has weird soil type.")
 								Game.hologram.show_soil_info(planet_obj.planet_name, soil_type, planet_obj.nutrients, planet_obj.sun) # type_name: String, has_nutrients:bool, is_close_to_sun: bool)  # TODO
-						elif "ice" in object_to_analyse.name.to_lower():
-							Game.hologram.show_analyse_info("Should melt\nat great heat")
 						else:
 							if object_to_analyse.has_method("get_analyse_text"):
 								Game.hologram.show_analyse_info(object_to_analyse.get_analyse_text())

@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=76 format=2]
 
 [ext_resource path="res://Effects/DirtExplosion.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Effects/Ubershader.gd" type="Script" id=2]
@@ -26,6 +26,8 @@
 [ext_resource path="res://Effects/SlingBand.tscn" type="PackedScene" id=24]
 [ext_resource path="res://Assets/Models/Modelplant_06_fractalrose_state03.tscn" type="PackedScene" id=25]
 [ext_resource path="res://Assets/Models/ModelDirtPile.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Effects/AlienLights.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Effects/Twinkle.tscn" type="PackedScene" id=28]
 
 [sub_resource type="QuadMesh" id=1]
 
@@ -1715,6 +1717,13 @@ transform = Transform( 0.821876, 0, 0, 0, 0.821876, 0, 0, 0, 0.821876, 0, -0.632
 
 [node name="ModelDirtPile" parent="." instance=ExtResource( 26 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.41543, 0 )
+
+[node name="Twinkle" parent="." instance=ExtResource( 28 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.665822, 0, -0.126743 )
+both = true
+
+[node name="AlienLights" parent="." instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22658, 0, 0 )
 
 [editable path="DirtExplosion"]
 [editable path="ModelMultitoolOld/GrowBeamOrigin/EnergyBallCombo"]

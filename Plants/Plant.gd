@@ -118,10 +118,12 @@ func calculate_growth_points():
 	
 	# SUN
 	var sun_value := planet.sun
-	if ("sun_yes" in ability_tags and (not "sun_no" in ability_tags)):
+	if ("sun_yes" in ability_tags):
 		sun_value = true
-	elif ("sun_yes" in ability_tags and (not "sun_no" in ability_tags)):
+	elif ("sun_no" in ability_tags):
 		sun_value = false
+	if ("sun_yes" in ability_tags) and ("sun_no" in ability_tags):
+		sun_value = profile.sun == PlantData.PREFERENCE.LIKES
 	if profile.sun == PlantData.PREFERENCE.ALWAYS_FALSE:
 		points += 0
 	elif profile.sun == PlantData.PREFERENCE.ALWAYS_TRUE:
@@ -149,10 +151,12 @@ func calculate_growth_points():
 	
 	# NUTRI
 	var nutri_value := planet.nutrients
-	if ("nutri_yes" in ability_tags and (not "nutri_no" in ability_tags)):
-		sun_value = true
-	elif ("nutri_yes" in ability_tags and (not "nutri_no" in ability_tags)):
-		sun_value = false
+	if ("nutri_yes" in ability_tags):
+		nutri_value = true
+	elif ("nutri_no" in ability_tags):
+		nutri_value = false
+	if ("nutri_yes" in ability_tags) and ("nutri_no" in ability_tags):
+		nutri_value = profile.nutrients == PlantData.PREFERENCE.LIKES
 	if profile.nutrients == PlantData.PREFERENCE.ALWAYS_FALSE:
 		points += 0
 	elif profile.nutrients == PlantData.PREFERENCE.ALWAYS_TRUE:
@@ -177,7 +181,7 @@ func calculate_growth_points():
 			points += 1
 		elif profile.group == PlantData.PREFERENCE.LIKES:
 			
-			if get_near_plants_group_count() >= 3:
+			if get_near_plants_group_count() >= 2:
 				points += 1
 				if growth_stage >= 1:
 					Game.journal.make_preference_known(profile.name, "Likes Groups")
@@ -257,7 +261,8 @@ func grow(delta, factor_sign):
 		yield(get_tree(), "idle_frame")
 		yield(get_tree(), "idle_frame")
 		
-		planet.growth_stage_reached(growth_stage)
+		if Game.planet == planet:
+			planet.growth_stage_reached(growth_stage)
 		check_conditions()
 		if profile.needs_dirt_pile == false:
 			yield(get_tree().create_timer(2), "timeout")

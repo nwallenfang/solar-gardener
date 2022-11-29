@@ -33,16 +33,15 @@ func update_shed_info():
 #	$ScreenTexts/Label5.text = "Loading..."
 #	$ScreenTexts/Label6.text = "Loading..."
 #	yield(get_tree().create_timer(.8),"timeout")
-	$ScreenTexts/Label2.text = "Seeds\nplanted:\n" + str(Events.get_event_from_key("seed_planted").execute_count)
-	yield(get_tree().create_timer(.2),"timeout")
-	$ScreenTexts/Label1.text = "Plants\ndiscovered:\n" + str(len(Game.journal.scanned_plant_names))
-	yield(get_tree().create_timer(.2),"timeout")
-	$ScreenTexts/Label3.text = "KEK"
-	yield(get_tree().create_timer(.2),"timeout")
-	$ScreenTexts/Label4.text = "Need help?" 
-	yield(get_tree().create_timer(.2),"timeout")
+
+	var stats_string : String = "Seeds planted:\n" + str(Events.get_event_from_key("seed_planted").execute_count)
+	stats_string = stats_string + "\n\n" + "Plants discovered:\n" + str(len(Game.journal.scanned_plant_names))
+	$ScreenTexts/Label1.text = stats_string
+	yield(get_tree().create_timer(.1),"timeout")
+	$ScreenTexts/Label3.text = "Need\nhelp?" 
+	yield(get_tree().create_timer(.1),"timeout")
 	$ScreenTexts/Label5.text = "Open the\nGuide tab\nin the\njournal!" 
-	yield(get_tree().create_timer(.2),"timeout")
+	yield(get_tree().create_timer(.1),"timeout")
 	$ScreenTexts/Label6.text = Upgrades.get_upgrades_screen_text()
 	if Upgrades.is_upgrade_available():
 		$UpgradeStation.set_open(true)

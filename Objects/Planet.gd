@@ -66,7 +66,7 @@ func growth_stage_reached(growth_stage: int):
 		planet_growth_stage = growth_stage
 		
 		# trigger next music if on this planet
-		if Game.planet == self:
+		if Game.planet == self and Game.game_state == Game.State.INGAME:
 			var used_prefix = music_prefix
 
 			var music_next = "music_%s_%d" % [used_prefix, growth_stage]
@@ -102,10 +102,13 @@ func fade_in():
 
 
 func get_current_music_name() -> String:
-	var used_prefix = music_prefix
-	var music = "music_%s_%d" % [used_prefix, planet_growth_stage]
-	
-	return music
+	if planet_growth_stage > 0:
+		var used_prefix = music_prefix
+		var music = "music_%s_%d" % [used_prefix, planet_growth_stage]
+		
+		return music
+	else:
+		return "music_ambience"
 
 func set_player_is_on_planet(b: bool):
 	player_on_planet = b

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/circle_mask.png-dcadf629ca6ea64ce2d15522025902bf.s3tc.stex"
-path.etc2="res://.import/circle_mask.png-dcadf629ca6ea64ce2d15522025902bf.etc2.stex"
+path.s3tc="res://.import/star_09.png-3f5281dcb6790966012517e3055229c1.s3tc.stex"
+path.etc2="res://.import/star_09.png-3f5281dcb6790966012517e3055229c1.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Textures/circle_mask.png"
-dest_files=[ "res://.import/circle_mask.png-dcadf629ca6ea64ce2d15522025902bf.s3tc.stex", "res://.import/circle_mask.png-dcadf629ca6ea64ce2d15522025902bf.etc2.stex" ]
+source_file="res://Assets/Textures/star_09.png"
+dest_files=[ "res://.import/star_09.png-3f5281dcb6790966012517e3055229c1.s3tc.stex", "res://.import/star_09.png-3f5281dcb6790966012517e3055229c1.etc2.stex" ]
 
 [params]
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Models/Meshes/MeshMultitool3.res" type="ArrayMesh" id=1]
 [ext_resource path="res://Objects/Gear.gd" type="Script" id=2]
+[ext_resource path="res://Effects/Twinkle.tscn" type="PackedScene" id=3]
 
 [sub_resource type="SphereShape" id=1]
 radius = 0.263869
@@ -25,3 +26,9 @@ shape = SubResource( 1 )
 
 [node name="DeathPlayer" type="AnimationPlayer" parent="."]
 anims/death = SubResource( 2 )
+
+[node name="Twinkle" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.174133, 0, 0, 0, 0.0156324, 0, 0, 0, 0.174133, 0, 0.0505963, 0 )
+
+[node name="Twinkle2" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.174133, 0, 0, 0, 0.0156324, 0, 0, 0, 0.174133, 0, -0.0993571, 0 )
