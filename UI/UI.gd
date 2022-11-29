@@ -42,10 +42,22 @@ func switched_to_tool(new_tool: int):
 		$"%MultitoolC2".visible = false
 		$"%MultitoolA2".visible = false
 
+
+
+var mode = null
+func _input(event):
+	if mode != null:
+		Input.set_mouse_mode(mode)
+		yield(get_tree(),"idle_frame")
+		Input.set_mouse_mode(mode)
+		yield(get_tree(),"idle_frame")
+		Input.set_mouse_mode(mode)
+		#mode = null
+
 func changed_state(state, prev_state):
 	match state:
 		Game.State.INGAME:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			mode=Input.MOUSE_MODE_CAPTURED#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			$SettingsUI.hide_settings()
 			$JournalAndGuideUI.hide()
 			$Toolbar.visible = true
@@ -57,7 +69,7 @@ func changed_state(state, prev_state):
 			$GardenerNote.visible = false
 			$SkipCutsceneLabel.visible = false
 		Game.State.SETTINGS:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			mode = Input.MOUSE_MODE_VISIBLE#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			$SettingsUI.show_settings()
 			$JournalAndGuideUI.hide()
 			$"%Crosshair".visible = false
@@ -68,7 +80,7 @@ func changed_state(state, prev_state):
 			$GardenerNote.visible = false
 		Game.State.JOURNAL:
 			$"%Crosshair".visible = false
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			mode = Input.MOUSE_MODE_VISIBLE#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			$SettingsUI.hide_settings()
 			$JournalAndGuideUI.show()
 			$Toolbar.visible = false
@@ -78,7 +90,7 @@ func changed_state(state, prev_state):
 			$GardenerNote.visible = false
 		Game.State.READING_NOTE:
 			$"%Crosshair".visible = false
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			mode = Input.MOUSE_MODE_VISIBLE#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			$SettingsUI.hide_settings()
 			$JournalAndGuideUI.hide()
 			$Toolbar.visible = false
