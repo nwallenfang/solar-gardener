@@ -101,6 +101,7 @@ func _process(delta: float) -> void:
 		PlantData.give_seeds("Hidden Lotus", 10, false)
 		PlantData.give_seeds("Fractalrose", 10, false)
 		PlantData.give_seeds("Moontree", 10, false)
+		PlantData.give_seeds("Cosmosun", 10, false)
 		
 	if Input.is_action_just_pressed("make_pref_known"):
 		print("pref known")
