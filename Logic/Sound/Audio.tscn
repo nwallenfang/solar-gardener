@@ -85,15 +85,15 @@ volume_db = 10.0
 mixer_bus = "Music"
 
 [node name="music_rock_1" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = 10.0
+volume_db = 4.0
 mixer_bus = "Music"
 
 [node name="music_rock_2" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = 10.0
+volume_db = 4.0
 mixer_bus = "Music"
 
 [node name="music_rock_3" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = 10.0
+volume_db = 4.0
 mixer_bus = "Music"
 
 [node name="music_placeholder_1" parent="Sounds" instance=ExtResource( 1 )]
@@ -249,6 +249,26 @@ volume_db = -5.0
 mixer_bus = "SFX"
 
 [node name="PLANT_5_STAGE_4" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -5.0
+mixer_bus = "SFX"
+
+[node name="PLANT_6_STAGE_1" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -5.0
+mixer_bus = "SFX"
+
+[node name="PLANT_6_STAGE_2" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -5.0
+mixer_bus = "SFX"
+
+[node name="PLANT_6_STAGE_3" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -5.0
+mixer_bus = "SFX"
+
+[node name="PLANT_6_STAGE_4" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
 volume_db = -5.0
 mixer_bus = "SFX"

@@ -115,6 +115,9 @@ func fade_in(sound_name: String, fade_duration:=1.0, random_start:=false):
 		# if this is music it should get special treatment <- see above
 		pass
 #	print(sound_name + " started")
+	if not $Sounds.has_node(sound_name):
+		printerr("unknown sound " + sound_name)
+		return
 	player.stream = $Sounds.get_node(sound_name).stream
 	player.sound = $Sounds.get_node(sound_name)
 	if random_start:

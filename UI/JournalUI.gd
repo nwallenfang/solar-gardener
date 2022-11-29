@@ -75,17 +75,22 @@ func plant_hovered(plant_ui: PlantUI):
 		if not $HoverAnimation.is_playing():
 			$HoverAnimation.play("hover")
 		
+		$"%PlantSeedIcon".texture = plant_ui.plant_profile.icon
+		
 		if plant_ui.scanned:
 			# TODO different stages of fluff text depending on progress
 			$"%Title".text = plant_ui.plant_profile.name
 			$"%FluffText".bbcode_text = plant_ui.plant_profile.fluff_base
 			match plant_ui.plant_profile.plant_type:
 				PlantData.PLANT_TYPES.THORNY:
-					$"%PlantType".text = "Type: Thorny"
+					$"%PlantType".text = "Thorny"
+					$"%PlantTypeIcon".texture = preload("res://Assets/Sprites/thorny_icon.png")
 				PlantData.PLANT_TYPES.FLOWER:
-					$"%PlantType".text = "Type: Flower"
+					$"%PlantType".text = "Flower"
+					$"%PlantTypeIcon".texture = preload("res://Assets/Sprites/flower_icon.png")
 				PlantData.PLANT_TYPES.SHROOM:
-					$"%PlantType".text = "Type: Shroom"
+					$"%PlantType".text = "Shroom"
+					$"%PlantTypeIcon".texture = preload("res://Assets/Sprites/shroom_icon.png")
 
 			if plant_ui.number_of_stars >= 1:
 				if plant_ui.stage2_scanned:
@@ -103,6 +108,8 @@ func plant_hovered(plant_ui: PlantUI):
 		else:
 			$"%Title".text = "???"
 			$"%PlantType".text = ""
+			$"%PlantSeedIcon".texture = null
+			$"%PlantTypeIcon".texture = null
 			$"%FluffText".bbcode_text = not_scanned_yet_fluff
 
 func seed_count_updated(plant_name, total_seeds):
