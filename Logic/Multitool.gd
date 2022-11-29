@@ -51,7 +51,7 @@ var death_beam_target: Plant
 # Analysis Variable
 const ANALYSE_TOOL_DISTANCE = 10.0
 const ANALYSE_SPEED = 1.0/2.0
-const SOIL_ANALYSE_SPEED = 1.0/5.0
+#const SOIL_ANALYSE_SPEED = 1.0/5.0
 var can_analyse := false
 var currently_analysing := false
 var analyse_completed := false
@@ -207,6 +207,8 @@ func switch_tool(new_tool: int, tool_active := true):
 		TOOL.MOVE:
 			Game.player_raycast.set_collision_mask_bit(4, tool_active)
 		TOOL.ANALYSIS:
+			if not tool_active:
+				currently_analysing = false
 			Game.player_raycast.set_collision_mask_bit(2, tool_active)
 			$ModelMultitool.set_analysis(tool_active)
 			wait_for_animation_finished()
@@ -227,7 +229,8 @@ func switch_tool(new_tool: int, tool_active := true):
 			wait_for_animation_finished()
 	if waiting_for_animation:
 		yield($ModelMultitool,"animation_finished")
-	currently_switching = false
+	if tool_active:
+		currently_switching = false
 
 func idle_process(delta: float):
 	growth_juice = min(1.0, growth_juice + JUICE_GAIN * delta)
@@ -291,7 +294,7 @@ func idle_process(delta: float):
 					current_analyse_object = object_to_analyse
 					current_analyse_progress = 0.0
 			if currently_analysing:
-				if (not first_action_holded) or object_to_analyse != current_analyse_object or (not can_analyse):
+				if (not first_action_holded) or object_to_analyse != current_analyse_object or (not can_analyse) or currently_switching:
 					currently_analysing = false
 					Audio.fade_out("scanner", 0.4)
 				else:
@@ -322,6 +325,7 @@ func process_first_action():
 				$Cooldown.start(.3)
 				ignore_first_check_visually = true
 				start_planting_animation(plant_spawn_position)
+				show_plant_information(true)
 		TOOL.HOPPER:
 			$Cooldown.start(2)
 			Game.execute_planet_hop(hopper_planet, hopper_pos)
@@ -357,7 +361,7 @@ func check_on_hover():
 		TOOL.PLANT:
 			if Game.player_raycast.colliding and Game.player_raycast.hit_point.distance_to(Game.player.global_translation) < PLANT_TOOL_DISTANCE and Game.planet.is_obsidian == false:
 				can_plant = Utility.test_planting_position(Game.player_raycast.hit_point) # and PlantData.can_plant() TODO
-				if not can_plant:
+				if not can_plant and (not seeds_empty):
 					if ignore_first_check_visually:
 						yield(get_tree(),"physics_frame")
 						yield(get_tree(),"physics_frame")
@@ -408,6 +412,8 @@ func check_on_hover():
 			show_moveable(can_move)
 		TOOL.ANALYSIS:
 			can_analyse = false
+			if currently_switching:
+				return
 			object_to_analyse = null
 			if Game.player_raycast.colliding:
 				if Game.player_raycast.hit_point.distance_to(Game.player.global_translation) < ANALYSE_TOOL_DISTANCE:
@@ -479,6 +485,7 @@ func start_planting_animation(pos: Vector3):
 	spawn_plant(pos)
 	yield(get_tree().create_timer(.35), "timeout")
 	#fake_seed.global_translation = $SeedPosition.global_translation
+	force_reload = true
 	try_reload()
 
 const DIRT_EXPLOSION = preload("res://Effects/DirtExplosion.tscn")
@@ -513,7 +520,7 @@ func show_analyse_information():
 		if object_to_analyse != null and is_instance_valid(object_to_analyse):
 			if "analyse_name" in object_to_analyse:
 				if completely_analysed_object != null:
-					if object_to_analyse == completely_analysed_object:
+					if object_to_analyse == completely_analysed_object and (not first_action_holded):
 						return
 					else:
 						completely_analysed_object = null
@@ -575,8 +582,8 @@ func show_grow_information():
 			is_growing = (plant_to_grow.growth_stage != plant_to_grow.growth_lock)
 		Game.hologram.grow_beam_juice(grow_beam_active, growth_juice, is_growing)
 
-func show_plant_information():
-	if has_no_cooldown():
+func show_plant_information(force := false):
+	if has_no_cooldown() or force:
 		var seeds_left = PlantData.seed_counts[target_plant_name]
 		if Game.journal.get_got_scanned(target_plant_name):
 			Game.hologram.show_seed_info(target_plant_name, seeds_left)
