@@ -64,7 +64,7 @@ func set_progress_amber(number):
 	$"%AmberProgressLabel".text = "%d / 6" % number
 
 func set_progress_logs(number):
-	$"%LogProgressLabel".text = "%d / 3" % number
+	$"%LogProgressLabel".text = "%d / 5" % number
 
 func set_progress_max(number):
 	$"%MaxProgressLabel".text = "%d / 6" % number

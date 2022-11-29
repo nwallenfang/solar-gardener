@@ -1,0 +1,58 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/Textures/circle_05.png" type="Texture" id=1]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.318182 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.235955, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.764045, 0.986364 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="Curve" id=5]
+max_value = 2.0
+_data = [ Vector2( 0, 2 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+emission_shape = 1
+emission_sphere_radius = 0.3
+direction = Vector3( 0, -0.5, 0 )
+spread = 16.49
+gravity = Vector3( 0, 1, 0 )
+initial_velocity = 1.5
+initial_velocity_random = 1.0
+tangential_accel_curve = SubResource( 6 )
+damping_curve = SubResource( 2 )
+scale_curve = SubResource( 4 )
+
+[sub_resource type="SpatialMaterial" id=8]
+flags_transparent = true
+flags_unshaded = true
+params_billboard_mode = 3
+params_billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_color = Color( 0.0588235, 0.890196, 1, 1 )
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="QuadMesh" id=9]
+material = SubResource( 8 )
+
+[node name="AlienLights" type="Spatial"]
+
+[node name="Particles" type="Particles" parent="."]
+cast_shadow = 0
+amount = 16
+lifetime = 4.0
+visibility_aabb = AABB( -4.19788, -1.77057, -4.43559, 8.42652, 7.38466, 8.76871 )
+process_material = SubResource( 7 )
+draw_pass_1 = SubResource( 9 )
