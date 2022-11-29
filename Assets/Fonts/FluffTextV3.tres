@@ -3,7 +3,7 @@
 [ext_resource path="res://Assets/Fonts/Agane╠Ç 55 (roman) sign.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 24
+size = 23
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true

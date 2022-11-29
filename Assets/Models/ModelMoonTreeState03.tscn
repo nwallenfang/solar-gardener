@@ -93,16 +93,16 @@ light_energy = 3.0
 omni_range = 8.41328
 
 [node name="Empty" type="Spatial" parent="."]
-transform = Transform( 0.67095, 0, 0, 0, 0.67095, 0, 0, 0, 0.67095, 0.816303, 2.67889, 1.17824 )
+transform = Transform( 0.67095, 0, 0, 0, 0.67095, 0, 0, 0, 0.67095, 0.55685, 2.67889, 1.18451 )
 
 [node name="Empty001" type="Spatial" parent="."]
-transform = Transform( 0.67095, 0, 0, 0, 0.67095, 0, 0, 0, 0.67095, -0.154218, 2.15466, 2.60348 )
+transform = Transform( 0.67095, 0, 0, 0, 0.67095, 0, 0, 0, 0.67095, -0.432325, 2.15466, 2.60348 )
 
 [node name="Empty002" type="Spatial" parent="."]
-transform = Transform( 0.67095, 0, 0, 0, 0.67095, 0, 0, 0, 0.67095, 1.18224, 2.59829, -1.50027 )
+transform = Transform( 0.67095, 0, 0, 0, 0.67095, 0, 0, 0, 0.67095, 0.890034, 2.59829, -1.50027 )
 
 [node name="Empty003" type="Spatial" parent="."]
-transform = Transform( 0.67095, 0, 0, 0, 0.67095, 0, 0, 0, 0.67095, -2.43528, 2.88429, 2.07461 )
+transform = Transform( 0.67095, 0, 0, 0, 0.67095, 0, 0, 0, 0.67095, -2.72801, 2.88429, 2.11457 )
 
 [node name="Retopo_Cylinder001" type="MeshInstance" parent="."]
 transform = Transform( 0.191471, 0, 0, 0, 0.191471, 0, 0, 0, 0.191471, -0.492367, -0.00563383, 0.298589 )

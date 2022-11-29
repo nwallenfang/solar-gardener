@@ -81,7 +81,7 @@ func setup():
 ###########
 
 var duration := 10.0
-var repeat_time := 45.0  # later smth like 45 seconds
+var repeat_time := 30.0  # later smth like 45 seconds
 var repeat_this: String
 # doesn't get called from an event, but in the beginning from MainScene
 func tutorial_beginning():

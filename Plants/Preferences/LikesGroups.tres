@@ -6,5 +6,5 @@
 [resource]
 script = ExtResource( 2 )
 name = "Likes Groups"
-description = "This plant Grows well in groups of its own kind."
+description = "Grows well in groups of its own kind."
 icon = ExtResource( 1 )

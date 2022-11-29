@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Models/Meshes/MeshPlant_01_ranke_state022.res" type="ArrayMesh" id=1]
 [ext_resource path="res://Assets/Models/Meshes/MeshPlant_01_ranke_state021.res" type="ArrayMesh" id=2]
 [ext_resource path="res://Assets/Materials/Plants/RankeThorns.tres" type="Material" id=3]
 [ext_resource path="res://Assets/Materials/Plants/AntennaMaterial.tres" type="Material" id=4]
+[ext_resource path="res://Assets/Materials/Plants/BasicPlantGreen.tres" type="Material" id=5]
+[ext_resource path="res://Assets/Materials/Plants/RankeNeck.tres" type="Material" id=6]
 
 [sub_resource type="Skin" id=3]
 resource_name = "Skin"
@@ -643,6 +645,9 @@ bones/36/bound_children = [  ]
 [node name="NurbsPath" type="MeshInstance" parent="Armature/Skeleton"]
 mesh = ExtResource( 1 )
 skin = SubResource( 3 )
+material/0 = ExtResource( 6 )
+material/1 = ExtResource( 5 )
+material/2 = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "ArmatureAction"

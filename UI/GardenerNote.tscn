@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Assets/Sprites/journal.webp" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/gardener_log_bg.webp" type="Texture" id=1]
 [ext_resource path="res://UI/GardenerNote.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Fonts/GardenerNoteFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/Fonts/Agane╠Ç 75 (Extra Bold) sign.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Assets/Fonts/EngineerHand.ttf" type="DynamicFontData" id=5]
 
 [sub_resource type="StyleBoxFlat" id=6]
@@ -14,12 +15,12 @@ border_width_bottom = 20
 border_color = Color( 0.184314, 0.109804, 0.113725, 1 )
 
 [sub_resource type="DynamicFont" id=9]
-size = 73
+size = 66
 use_mipmaps = true
-font_data = ExtResource( 5 )
+font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=8]
-size = 48
+size = 56
 use_mipmaps = true
 extra_spacing_bottom = 30
 font_data = ExtResource( 5 )
@@ -58,13 +59,14 @@ expand = true
 
 [node name="Title" type="Label" parent="Note/JournalInfoText"]
 unique_name_in_owner = true
-anchor_top = -0.00462963
-anchor_right = 1.0
-anchor_bottom = -0.00462963
+anchor_left = -0.0078125
+anchor_top = 0.037037
+anchor_right = 0.992188
+anchor_bottom = 0.0555556
 margin_top = 16.0
 margin_bottom = 71.0
 custom_fonts/font = SubResource( 9 )
-text = "NOTE"
+text = "Gardener Note"
 align = 1
 autowrap = true
 __meta__ = {
@@ -73,18 +75,16 @@ __meta__ = {
 
 [node name="Text" type="RichTextLabel" parent="Note/JournalInfoText"]
 unique_name_in_owner = true
-anchor_left = 0.096242
-anchor_top = 0.151235
-anchor_right = 0.914242
-anchor_bottom = 0.838234
+anchor_left = 0.067
+anchor_top = 0.219136
+anchor_right = 0.947
+anchor_bottom = 0.906135
 size_flags_horizontal = 3
 size_flags_vertical = 6
 custom_fonts/normal_font = ExtResource( 3 )
-bbcode_enabled = true
-bbcode_text = "They say limitation breeds creativity. But these cliches are too limiting, constricting me to just their literal interpretations with barely any room for artistic expression.
-On that note: I'll be off, cultivating different shades of grass for the grass is always greener installation."
-text = "They say limitation breeds creativity. But these cliches are too limiting, constricting me to just their literal interpretations with barely any room for artistic expression.
-On that note: I'll be off, cultivating different shades of grass for the grass is always greener installation."
+text = "Today the first tourists visiting this system arrived. It was a catastrophe!
+Picture those tourists from a far away galaxy strolling around the \"Snake in the grass\" garden when they've never even heard of a snake!
+Clichés don't work universally.."
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": true
@@ -95,9 +95,10 @@ anchor_left = 0.425781
 anchor_top = 0.875
 anchor_right = 0.553385
 anchor_bottom = 0.945988
-margin_top = 11.0
-margin_right = 12.0
-margin_bottom = 31.0
+margin_left = -20.9998
+margin_top = 16.0
+margin_right = 8.00031
+margin_bottom = 40.9998
 custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
 custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )

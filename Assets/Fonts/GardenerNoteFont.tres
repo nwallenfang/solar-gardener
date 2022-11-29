@@ -3,7 +3,8 @@
 [ext_resource path="res://Assets/Fonts/Alice-Regular.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 37
+size = 34
 use_mipmaps = true
+use_filter = true
 extra_spacing_bottom = 12
 font_data = ExtResource( 1 )
