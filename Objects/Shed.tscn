@@ -32,7 +32,10 @@ extents = Vector3( 1.81355, 1.60682, 0.0387428 )
 extents = Vector3( 1.1386, 1.60682, 0.0387428 )
 
 [sub_resource type="BoxShape" id=5]
-extents = Vector3( 1.83335, 1, 2.51111 )
+extents = Vector3( 1.29361, 0.0877311, 2.51111 )
+
+[sub_resource type="BoxShape" id=13]
+extents = Vector3( 1.48679, 0.561815, 0.467805 )
 
 [sub_resource type="BoxShape" id=8]
 extents = Vector3( 1, 0.561815, 0.132816 )
@@ -52,9 +55,6 @@ size = Vector3( 2, 1.5, 2 )
 [sub_resource type="CylinderMesh" id=12]
 radial_segments = 8
 rings = 0
-
-[sub_resource type="BoxShape" id=10]
-extents = Vector3( 1.49257, 2.01377, 0.475981 )
 
 [node name="Shed" type="Spatial"]
 script = ExtResource( 2 )
@@ -100,12 +100,16 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.6822
 shape = SubResource( 4 )
 
 [node name="CollisionShape8" type="CollisionShape" parent="StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0459132, 3.64088, 0 )
+transform = Transform( 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -0.957332, 3.6054, 0 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape11" type="CollisionShape" parent="StaticBody"]
+transform = Transform( -0.707107, 0.707107, -8.74228e-08, 0.707107, 0.707107, 0, 6.18172e-08, -6.18172e-08, -1, 0.929821, 3.6054, 0 )
 shape = SubResource( 5 )
 
 [node name="CollisionShape9" type="CollisionShape" parent="StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.701575, 0.488024, -1.51285 )
-shape = SubResource( 8 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0266298, 0.332342, -1.45799 )
+shape = SubResource( 13 )
 
 [node name="CollisionShape10" type="CollisionShape" parent="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0558119, 1.12116, 2.01518 )
@@ -245,12 +249,6 @@ material_override = ExtResource( 9 )
 mesh = SubResource( 12 )
 skeleton = NodePath("../..")
 
-[node name="StaticBody2" type="StaticBody" parent="."]
-
-[node name="CollisionShape" type="CollisionShape" parent="StaticBody2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.687255, -1.42853 )
-shape = SubResource( 10 )
-
 [node name="ModelShovel" parent="." instance=ExtResource( 6 )]
 transform = Transform( 0.866025, -0.0564976, -0.496798, -0.016595, 0.9898, -0.141492, 0.499725, 0.13078, 0.856255, -1.31062, 0.0738549, 1.88714 )
 
@@ -303,9 +301,6 @@ transform = Transform( 0.90029, -0.215144, 0.378406, 0.232427, 0.972614, 0, -0.3
 
 [node name="ModelAlienRuinsBP" parent="Trophys" instance=ExtResource( 17 )]
 transform = Transform( 0.100916, 0, 0.143052, 0, 0.175065, 0, -0.143052, 0, 0.100916, -0.758791, 0.134874, 0.231526 )
-
-[node name="AlienRuinBP" parent="Trophys/ModelAlienRuinsBP" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="CollisionShape" parent="Trophys/ModelAlienRuinsBP/AlienRuinBP/StaticBody" index="0"]
 disabled = true

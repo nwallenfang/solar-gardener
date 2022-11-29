@@ -203,7 +203,7 @@ mesh = ExtResource( 10 )
 skeleton = NodePath("../..")
 
 [node name="Arm" type="MeshInstance" parent="."]
-transform = Transform( 1.78814e-07, 1, 0, -1, 1.78814e-07, 0, 0, 0, 1, -0.00443959, 0.764977, 0.5883 )
+transform = Transform( 1.78814e-07, 1, 0, -1, 1.78814e-07, 0, 0, 0, 1, -0.00443974, 1.62053, 0.5883 )
 visible = false
 mesh = ExtResource( 18 )
 

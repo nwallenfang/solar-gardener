@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Models/Meshes/MeshMultitool3.res" type="ArrayMesh" id=1]
 [ext_resource path="res://Objects/Gear.gd" type="Script" id=2]
@@ -7,15 +7,128 @@
 [sub_resource type="SphereShape" id=1]
 radius = 0.263869
 
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Pivot/Wheel:rotation_degrees:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Pivot/Wheel:rotation_degrees:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Pivot/Wheel:rotation_degrees:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( -180, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Pivot:scale:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Pivot:scale:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Pivot:scale:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
 [sub_resource type="Animation" id=2]
 resource_name = "death"
+length = 2.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Pivot/Wheel:rotation_degrees:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 1.5, 11.2884, 360, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Pivot:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1.61952, -0.25, 0, 0.25, 0, 0.0727386, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.9, 2.5 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Pivot:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1.61952, -0.25, 0, 0.25, 0, 0.0727386, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.9, 2.5 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Pivot:scale:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1.61952, -0.25, 0, 0.25, 0, 0.0727386, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.9, 2.5 )
+}
 
 [node name="Gear" type="Spatial"]
 script = ExtResource( 2 )
 
-[node name="Wheel" type="MeshInstance" parent="."]
-transform = Transform( -1, 8.74228e-08, 0, -4.65928e-08, -0.53296, 0, 0, 0, 1, 0, 0, 0 )
+[node name="Pivot" type="Spatial" parent="."]
+
+[node name="Wheel" type="MeshInstance" parent="Pivot"]
+transform = Transform( -1, 8.04747e-08, 0, -1.50996e-07, -0.53296, 0, 0, 0, 1, 0, 0, 0 )
 mesh = ExtResource( 1 )
+skeleton = NodePath("../..")
+
+[node name="Twinkle" parent="Pivot/Wheel" instance=ExtResource( 3 )]
+transform = Transform( -0.174133, -2.56422e-09, 0, 1.52232e-08, -0.0293313, 0, 0, 0, 0.174133, -8.29944e-09, -0.0949345, 0 )
+
+[node name="Twinkle2" parent="Pivot/Wheel" instance=ExtResource( 3 )]
+transform = Transform( -0.174133, -2.56422e-09, 0, 1.52232e-08, -0.0293313, 0, 0, 0, 0.174133, 1.62978e-08, 0.186425, 0 )
 
 [node name="Area" type="Area" parent="."]
 collision_layer = 12
@@ -25,10 +138,5 @@ collision_mask = 0
 shape = SubResource( 1 )
 
 [node name="DeathPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 3 )
 anims/death = SubResource( 2 )
-
-[node name="Twinkle" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.174133, 0, 0, 0, 0.0156324, 0, 0, 0, 0.174133, 0, 0.0505963, 0 )
-
-[node name="Twinkle2" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.174133, 0, 0, 0, 0.0156324, 0, 0, 0, 0.174133, 0, -0.0993571, 0 )

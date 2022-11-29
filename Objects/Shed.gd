@@ -79,6 +79,8 @@ func _on_PlayerDetectArea_body_entered(body):
 func _on_PlayerDetectArea_body_exited(body):
 	if body is Player:
 		Game.player_is_in_shed = false
+		if Upgrades.is_upgrade_available():
+			$UpgradeStation.set_open(false)
 		$PlayerOrientationTween.remove_all()
 		$PlayerOrientationTween.interpolate_property(body, "shed_factor", body.shed_factor, 0.0, 1.0, Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
 		$PlayerOrientationTween.start()

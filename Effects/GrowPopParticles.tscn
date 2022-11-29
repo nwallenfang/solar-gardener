@@ -42,5 +42,6 @@ amount = 40
 lifetime = 3.0
 one_shot = true
 explosiveness = 0.91
+visibility_aabb = AABB( -3.43017, -0.504421, -3.07251, 6.73834, 17.0729, 5.82265 )
 process_material = SubResource( 1 )
 draw_pass_1 = SubResource( 3 )
