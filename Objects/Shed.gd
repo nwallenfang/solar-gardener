@@ -54,9 +54,15 @@ func _on_PlayerDetectArea_body_entered(body):
 	if body is Player:
 		Game.player_is_in_shed = true
 		update_shed_info()
+		body.shed = self
+		$PlayerOrientationTween.remove_all()
+		$PlayerOrientationTween.interpolate_property(body, "shed_factor", body.shed_factor, 1.0, 1.0, Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
+		$PlayerOrientationTween.start()
 
 
 func _on_PlayerDetectArea_body_exited(body):
 	if body is Player:
 		Game.player_is_in_shed = false
-		pass
+		$PlayerOrientationTween.remove_all()
+		$PlayerOrientationTween.interpolate_property(body, "shed_factor", body.shed_factor, 0.0, 1.0, Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
+		$PlayerOrientationTween.start()

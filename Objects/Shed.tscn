@@ -254,5 +254,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.20431, 0, -1.18878 )
 [node name="ModelBucket2" parent="." instance=ExtResource( 7 )]
 transform = Transform( 0.232732, 0, 0.972541, 0, 1, 0, -0.972541, 0, 0.232732, -0.406479, 0, -1.18878 )
 
+[node name="PlayerOrientationTween" type="Tween" parent="."]
+
 [connection signal="body_entered" from="PlayerDetectArea" to="." method="_on_PlayerDetectArea_body_entered"]
 [connection signal="body_exited" from="PlayerDetectArea" to="." method="_on_PlayerDetectArea_body_exited"]

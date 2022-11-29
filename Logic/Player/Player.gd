@@ -110,6 +110,11 @@ func update_look_direction():
 	mouse_axis = Vector2()
 	last_target_up = Vector3.ZERO
 
+# SHED HARD CODE DIRTY
+var shed:Spatial
+var shed_factor := 0.0
+
+
 var forward_dir: Vector3
 var last_strong_direction: Vector3
 var look_direction := -transform.basis.z
@@ -117,6 +122,8 @@ var last_target_up := Vector3.ZERO
 var target_look := -transform.basis.z
 func orient_player_sphere(delta: float):
 	var target_up = Game.planet.global_translation.direction_to(global_translation)
+	if shed_factor != 0.0: # SHED DIRTY
+		target_up = lerp(target_up, Game.planet.global_translation.direction_to(shed.global_translation), shed_factor).normalized()
 	if last_target_up == Vector3.ZERO:
 		last_target_up = target_up
 	var v = target_up.cross(Vector3.UP).normalized()
