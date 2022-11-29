@@ -96,6 +96,9 @@ func _physics_process(delta) -> void:
 			stop_on_slope, 4, floor_max_angle)
 			
 	if direction.length() > footstep_thresh and is_on_floor():
+#		if Game.player_is_in_shed:
+#			Audio.start_footsteps("wood")
+#		else:
 		Audio.start_footsteps(Game.planet.music_prefix)
 	else:
 		Audio.stop_footsteps()

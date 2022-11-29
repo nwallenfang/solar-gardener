@@ -50,11 +50,14 @@ func update_shed_info():
 func set_upgrade_screen(text: String):
 	$ScreenTexts/Label6.text = text#Upgrades.get_upgrades_screen_text()
 
+
 func _on_PlayerDetectArea_body_entered(body):
 	if body is Player:
+		Game.player_is_in_shed = true
 		update_shed_info()
 
 
 func _on_PlayerDetectArea_body_exited(body):
 	if body is Player:
+		Game.player_is_in_shed = false
 		pass

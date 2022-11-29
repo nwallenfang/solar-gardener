@@ -54,31 +54,31 @@ mixer_bus = "SFX"
 mixer_bus = "SFX"
 
 [node name="music_ambience" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = 4.0
+volume_db = 2.0
 mixer_bus = "Music"
 
 [node name="music_dirt_1" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = 10.0
+volume_db = 8.0
 mixer_bus = "Music"
 
 [node name="music_dirt_2" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = 10.0
+volume_db = 8.0
 mixer_bus = "Music"
 
 [node name="music_dirt_3" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = 10.0
+volume_db = 8.0
 mixer_bus = "Music"
 
 [node name="music_sand_1" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = 10.0
+volume_db = 6.0
 mixer_bus = "Music"
 
 [node name="music_sand_2" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = 10.0
+volume_db = 6.0
 mixer_bus = "Music"
 
 [node name="music_sand_3" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = 10.0
+volume_db = 6.0
 mixer_bus = "Music"
 
 [node name="music_rock_1" parent="Sounds" instance=ExtResource( 1 )]
@@ -94,19 +94,19 @@ volume_db = 4.0
 mixer_bus = "Music"
 
 [node name="music_placeholder_1" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = 10.0
+volume_db = 8.0
 mixer_bus = "Music"
 
 [node name="music_placeholder_2" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = 10.0
+volume_db = 8.0
 mixer_bus = "Music"
 
 [node name="music_placeholder_3" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = 10.0
+volume_db = 8.0
 mixer_bus = "Music"
 
 [node name="music_obsidian_0" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = 10.0
+volume_db = 8.0
 mixer_bus = "Music"
 
 [node name="growbeam_pulse" type="Node" parent="Sounds"]

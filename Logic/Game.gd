@@ -35,6 +35,7 @@ var hologram: Hologram
 # current planet
 var planet: Planet = null
 var invert_y_axis = false
+var player_is_in_shed := false
 
 var planet_list := []
 var coming_out_of_journal = false
@@ -190,7 +191,7 @@ func execute_planet_hop(new_planet: Planet, pos: Vector3):
 	sun.start_sound()
 	Audio.play("hop_launch")
 	yield($WarpTween, "tween_all_completed")
-	Audio.play("hop_landing" + str(1 + randi() % 3))
+	Audio.play("hop_landing" + str(1 + randi() % 2))
 	sun.end_sound()
 	planet.configure_light(multitool)
 	player.update_look_direction()
