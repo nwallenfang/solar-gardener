@@ -137,28 +137,28 @@ mesh = ExtResource( 2 )
 material/0 = ExtResource( 3 )
 
 [node name="Empty" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.107533, 0.285801, -0.182914 )
+transform = Transform( 6.23543, 0, 0, 0, 6.23543, 0, 0, 0, 6.23543, 0.468158, 1.47711, -0.849426 )
 
 [node name="Empty001" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.061305, 0.439522, -0.0612547 )
+transform = Transform( 6.23543, 0, 0, 0, 6.23543, 0, 0, 0, 6.23543, 0.302113, 2.13324, -0.285741 )
 
 [node name="Empty002" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.160372, 0.303374, 0.137723 )
+transform = Transform( 6.23543, 0, 0, 0, 6.23543, 0, 0, 0, 6.23543, 0.722081, 1.54748, 0.647711 )
 
 [node name="Empty003" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0523607, 0.181824, 0.223206 )
+transform = Transform( 6.23543, 0, 0, 0, 6.23543, 0, 0, 0, 6.23543, -0.249592, 0.994769, 1.00947 )
 
 [node name="Empty004" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11453, 0.36254, 0.0551668 )
+transform = Transform( 6.23543, 0, 0, 0, 6.23543, 0, 0, 0, 6.23543, -0.544572, 1.77347, 0.27059 )
 
 [node name="Empty005" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0696689, 0.396124, -0.0899372 )
+transform = Transform( 6.23543, 0, 0, 0, 6.23543, 0, 0, 0, 6.23543, -0.35097, 1.93523, -0.419909 )
 
 [node name="Empty006" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0747276, 0.196526, -0.193764 )
+transform = Transform( 6.23543, 0, 0, 0, 6.23543, 0, 0, 0, 6.23543, -0.360547, 1.04533, -0.869103 )
 
 [node name="Empty007" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0133492, 0.435051, 0.0899425 )
+transform = Transform( 6.23543, 0, 0, 0, 6.23543, 0, 0, 0, 6.23543, 0.0534112, 2.08748, 0.418819 )
 
 [node name="SporeParticles" type="Spatial" parent="."]
 transform = Transform( 0.379984, 0, 0, 0, 0.379984, 0, 0, 0, 0.379984, 0, 0, 0 )

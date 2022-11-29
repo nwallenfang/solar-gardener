@@ -72,6 +72,7 @@ func setup():
 	events.append(Event.new("tutorial_completed", self, "tutorial_completed", true))
 	events.append(Event.new("soil_unlocked", self, "soil_unlocked", true))
 	events.append(Event.new("remove_unlocked", self, "remove_unlocked", true))
+	events.append(Event.new("too_many_seeds", self, "too_many_seeds", true))
 	events.append(Event.new("no_seeds", self, "no_seeds", false))
 	events.append(Event.new("planet_hopped", self, "planet_hopped", false))
 
@@ -200,3 +201,6 @@ func planet_hopped():
 		$RepeatTimer.stop()
 	next()
 
+func too_many_seeds():
+	Game.UI.add_tutorial_message("???", "There is not really a use for having more than 20 seeds of the same kind.", duration)
+	next()

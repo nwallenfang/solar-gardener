@@ -19,13 +19,13 @@ mesh = ExtResource( 2 )
 material/0 = ExtResource( 3 )
 
 [node name="Empty" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0127116, 0.23976, -0.0680839 )
+transform = Transform( 3.08134, 0, 0, 0, 3.08134, 0, 0, 0, 3.08134, -0.0841417, 0.654208, -0.142581 )
 
 [node name="Empty001" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0229595, 0.227292, 0.0155226 )
+transform = Transform( 3.08134, 0, 0, 0, 3.08134, 0, 0, 0, 3.08134, -0.163746, 0.61579, 0.0594204 )
 
 [node name="Empty002" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0622843, 0.250139, 0.0441915 )
+transform = Transform( 3.08134, 0, 0, 0, 3.08134, 0, 0, 0, 3.08134, 0.0439816, 0.680282, 0.122519 )
 
 [node name="Empty003" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0971364, 0.246572, -0.0448108 )
+transform = Transform( 3.08134, 0, 0, 0, 3.08134, 0, 0, 0, 3.08134, 0.121551, 0.675198, -0.0904922 )
