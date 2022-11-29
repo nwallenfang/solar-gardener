@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Models/Meshes/Meshplant_03_universsun_state001.res" type="ArrayMesh" id=1]
+[ext_resource path="res://Assets/Models/Meshes/Meshplant_03_universsun_state002.res" type="ArrayMesh" id=2]
+
+[node name="Modelplant_03_universsun_state00" type="Spatial"]
+
+[node name="NurbsPath001" type="MeshInstance" parent="."]
+transform = Transform( -0.119388, 0.0469372, 0.209949, 0.0900226, 0.228978, -1.09988e-08, -0.195391, 0.0768177, -0.128283, 0.165125, -0.0290206, -0.0469955 )
+mesh = ExtResource( 1 )
+
+[node name="Cylinder" type="MeshInstance" parent="."]
+transform = Transform( 0.0540433, 0, 0, 0, 0.0540433, 0, 0, 0, 0.0540433, 0.148193, -0.0260446, -0.0421764 )
+mesh = ExtResource( 2 )

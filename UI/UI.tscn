@@ -303,5 +303,6 @@ align = 1
 valign = 2
 
 [node name="Credits" parent="." instance=ExtResource( 15 )]
+visible = false
 
 [connection signal="timeout" from="Diagnostics/FPSUpdateTimer" to="Diagnostics" method="_on_FPSUpdateTimer_timeout"]

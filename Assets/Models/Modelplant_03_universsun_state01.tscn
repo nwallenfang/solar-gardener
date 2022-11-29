@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Assets/Models/Meshes/Meshplant_03_universsun_state013.res" type="ArrayMesh" id=1]
+[ext_resource path="res://Assets/Models/Meshes/Meshplant_03_universsun_state011.res" type="ArrayMesh" id=2]
+[ext_resource path="res://Assets/Models/Meshes/Meshplant_03_universsun_state012.res" type="ArrayMesh" id=3]
+[ext_resource path="res://Assets/Models/Meshes/Meshplant_03_universsun_state014.res" type="ArrayMesh" id=4]
+[ext_resource path="res://Assets/Models/Meshes/Meshplant_03_universsun_state015.res" type="ArrayMesh" id=5]
+[ext_resource path="res://Assets/Materials/Plants/wood_albedo.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Materials/Plants/wood_normal.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Materials/Plants/MoontreeMoon.tres" type="Material" id=8]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.431373, 0.552941, 0.670588, 1 )
+albedo_texture = ExtResource( 6 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 7 )
+uv1_scale = Vector3( 0.25, 1, 1 )
+uv1_triplanar = true
+
+[node name="Modelplant_03_universsun_state01" type="Spatial"]
+
+[node name="Cylinder003" type="MeshInstance" parent="."]
+transform = Transform( 0.0684771, 0, 0, 0, 0.809563, 0, 0, 0, 0.0684771, -5.04662e-05, 0.824351, -0.478166 )
+mesh = ExtResource( 2 )
+
+[node name="Empty001" type="Spatial" parent="."]
+transform = Transform( 1.35922, 0, 0, 0, 1.35922, 0, 0, 0, 1.35922, 0.804516, 0.723403, -0.611046 )
+
+[node name="Empty002" type="Spatial" parent="."]
+transform = Transform( 1.35922, 0, 0, 0, 1.35922, 0, 0, 0, 1.35922, -0.804235, 0.723581, -0.609392 )
+
+[node name="Empty003" type="Spatial" parent="."]
+transform = Transform( 1.35922, 0, 0, 0, 1.35922, 0, 0, 0, 1.35922, -0.476121, 0.774949, -0.990204 )
+
+[node name="Cylinder005" type="MeshInstance" parent="."]
+transform = Transform( 0.0684771, 0, 0, 0, 0.809563, 0, 0, 0, 0.0684771, 0.00565384, 0.0135722, 0.00822686 )
+mesh = ExtResource( 3 )
+
+[node name="Cylinder006" type="MeshInstance" parent="."]
+transform = Transform( 0.0684771, 0, 0, 0, 0.809563, 0, 0, 0, 0.0684771, 0.0186432, 1.03762, 0.928725 )
+mesh = ExtResource( 1 )
+
+[node name="Cylinder009" type="MeshInstance" parent="."]
+transform = Transform( 0.0684771, 0, 0, 0, 0.809563, 0, 0, 0, 0.0684771, -5.04662e-05, 0.82773, -0.464461 )
+mesh = ExtResource( 4 )
+
+[node name="Cylinder012" type="MeshInstance" parent="."]
+transform = Transform( 0.0684771, 0, 0, 0, 0.809563, 0, 0, 0, 0.0684771, -0.00696159, 0.989171, 0.462331 )
+mesh = ExtResource( 5 )
+material/0 = ExtResource( 8 )
+material/1 = SubResource( 1 )

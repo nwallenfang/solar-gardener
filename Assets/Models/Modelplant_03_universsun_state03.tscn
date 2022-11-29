@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Models/Meshes/Meshplant_03_universsun_state032.res" type="ArrayMesh" id=1]
+[ext_resource path="res://Assets/Models/Meshes/Meshplant_03_universsun_state033.res" type="ArrayMesh" id=2]
+[ext_resource path="res://Assets/Models/Meshes/Meshplant_03_universsun_state034.res" type="ArrayMesh" id=3]
+[ext_resource path="res://Assets/Models/Meshes/Meshplant_03_universsun_state031.res" type="ArrayMesh" id=4]
+[ext_resource path="res://Assets/Models/Meshes/Meshplant_03_universsun_state035.res" type="ArrayMesh" id=5]
+
+[node name="Modelplant_03_universsun_state03" type="Spatial"]
+
+[node name="Empty" type="Spatial" parent="."]
+transform = Transform( 1.93615, 0, 0, 0, 1.93615, 0, 0, 0, 1.93615, 0.254624, 0.716352, -1.00412 )
+
+[node name="Empty001" type="Spatial" parent="."]
+transform = Transform( 1.93615, 0, 0, 0, 1.93615, 0, 0, 0, 1.93615, -0.147355, 0.460203, -1.07887 )
+
+[node name="Cylinder003" type="MeshInstance" parent="."]
+transform = Transform( 0.063202, 0, 0, 0, 0.063202, 0, 0, 0, 0.063202, -0.0719628, 0.0330414, 0.0581581 )
+mesh = ExtResource( 4 )
+
+[node name="Cylinder001" type="MeshInstance" parent="."]
+transform = Transform( 0.063202, 0, 0, 0, 0.063202, 0, 0, 0, 0.063202, -0.0813816, 0.0466759, -0.000288218 )
+mesh = ExtResource( 1 )
+
+[node name="Cylinder002" type="MeshInstance" parent="."]
+transform = Transform( 0.063202, 0, 0, 0, 0.063202, 0, 0, 0, 0.063202, -0.0436228, 1.1079, 0.450487 )
+mesh = ExtResource( 2 )
+
+[node name="Cylinder004" type="MeshInstance" parent="."]
+transform = Transform( 0.063202, 0, 0, 0, 0.063202, 0, 0, 0, 0.063202, -0.05021, 1.97276, 0.085148 )
+mesh = ExtResource( 3 )
+
+[node name="Cylinder005" type="MeshInstance" parent="."]
+transform = Transform( 0.063202, 0, 0, 0, 0.063202, 0, 0, 0, 0.063202, -0.05021, 1.97278, 0.085148 )
+mesh = ExtResource( 5 )
