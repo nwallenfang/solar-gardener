@@ -1,8 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Logic/Player/ObjectUI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Logic/PlayerRayCast.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Logic/Player/PlayerCamera.gd" type="Script" id=3]
+
+[sub_resource type="OpenSimplexNoise" id=4]
+octaves = 4
+period = 20.0
+persistence = 0.8
 
 [sub_resource type="QuadMesh" id=1]
 
@@ -14,6 +19,7 @@ flags_unshaded = true
 physics_interpolation_mode = 2
 far = 500.0
 script = ExtResource( 3 )
+noise = SubResource( 4 )
 
 [node name="ObjectUI" parent="." instance=ExtResource( 1 )]
 
