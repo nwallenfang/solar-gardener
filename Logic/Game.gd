@@ -150,20 +150,32 @@ var slerp_player_basis_b : Basis
 func slerp_player_basis(f: float):
 	player.global_transform.basis = slerp_player_basis_a.slerp(slerp_player_basis_b, f)
 
+
+func hop_music_fade(old_planet: Planet, new_planet: Planet):
+	if old_planet.music_prefix == "obsidian" or new_planet.music_prefix == "obsidian":
+		old_planet.fade_out()
+		new_planet.fade_in()
+	elif old_planet.planet_growth_stage == 0 and new_planet.planet_growth_stage == 0:
+		# both on ambient / same track, no fading necessary
+		return
+	else:
+		old_planet.fade_out()
+		new_planet.fade_in()
+
 func execute_planet_hop(new_planet: Planet, pos: Vector3):
 	#pos = new_planet.global_translation + new_planet.global_translation.direction_to(player.global_translation) * 10.0 - player.global_transform.basis.y * 2.0
 	var dir_to_planet = player.global_translation.direction_to(new_planet.global_translation)
 	pos = new_planet.global_translation + player.global_translation.direction_to(pos).cross(-dir_to_planet).cross(dir_to_planet).normalized() * 15.0
 	set_game_state(State.WARPING)
-	if not planet.planet_growth_stage == new_planet.planet_growth_stage \
-		or new_planet.music_prefix == "obsidian":
-		planet.fade_out()
+#	if not planet.planet_growth_stage == new_planet.planet_growth_stage \
+#		or new_planet.music_prefix == "obsidian":
+
 	planet.set_player_is_on_planet(false)
 	new_planet.set_player_is_on_planet(true)
-	if not planet.planet_growth_stage == new_planet.planet_growth_stage \
-		or new_planet.music_prefix == "obsidian":
-		new_planet.fade_in()
-		
+#	if not planet.planet_growth_stage == new_planet.planet_growth_stage \
+#		or new_planet.music_prefix == "obsidian":
+	
+	hop_music_fade(planet, new_planet)
 	planet = new_planet
 	#player.global_transform = Transform(new_basis, pos)
 	var current_y_looking_angle : float = player.get_node("Head").rotation.x
