@@ -131,8 +131,9 @@ func give_seeds(plant_name: String, seed_amount:int, is_amber: bool) -> void:
 
 	emit_signal("got_seeds", plant_name, seed_amount, is_amber)
 	emit_signal("seeds_updated", plant_name, seed_counts[plant_name])
-
 	
+	if seed_counts[plant_name] > 20:
+		Events.trigger("too_many_seeds")
 
 signal growth_stage_reached(plant_name, growth_stage) # -> JournalUI is listening
 func growth_stage_reached(plant_name, growth_stage):

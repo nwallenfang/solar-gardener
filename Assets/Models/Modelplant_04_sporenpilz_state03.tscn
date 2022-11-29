@@ -280,28 +280,28 @@ mesh = ExtResource( 2 )
 material/0 = ExtResource( 4 )
 
 [node name="Empty" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.151843, 0.278009, 0.127198 )
+transform = Transform( 8.17464, 0, 0, 0, 8.17464, 0, 0, 0, 8.17464, 1.19018, 2.2231, 0.942151 )
 
 [node name="Empty001" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0271357, 0.434458, 0.0928274 )
+transform = Transform( 8.17464, 0, 0, 0, 8.17464, 0, 0, 0, 8.17464, 0.215549, 3.36191, 0.722463 )
 
 [node name="Empty002" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.079393, 0.18549, 0.217987 )
+transform = Transform( 8.17464, 0, 0, 0, 8.17464, 0, 0, 0, 8.17464, -0.601003, 1.58223, 1.67652 )
 
 [node name="Empty003" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.113091, 0.387373, 0.0581644 )
+transform = Transform( 8.17464, 0, 0, 0, 8.17464, 0, 0, 0, 8.17464, -0.874224, 3.02367, 0.481135 )
 
 [node name="Empty004" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0682794, 0.418987, -0.0844284 )
+transform = Transform( 8.17464, 0, 0, 0, 8.17464, 0, 0, 0, 8.17464, -0.569274, 3.29481, -0.6454 )
 
 [node name="Empty005" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0988382, 0.271148, -0.176953 )
+transform = Transform( 8.17464, 0, 0, 0, 8.17464, 0, 0, 0, 8.17464, -0.758431, 2.18726, -1.32612 )
 
 [node name="Empty006" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0853803, 0.284073, -0.190767 )
+transform = Transform( 8.17464, 0, 0, 0, 8.17464, 0, 0, 0, 8.17464, 0.613283, 2.29939, -1.45225 )
 
 [node name="Empty007" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.070287, 0.437932, -0.0586073 )
+transform = Transform( 8.17464, 0, 0, 0, 8.17464, 0, 0, 0, 8.17464, 0.524074, 3.39147, -0.447148 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/ConeAction = SubResource( 4 )
