@@ -105,20 +105,24 @@ type = 2
 [node name="MultiMesh" type="Spatial" parent="."]
 
 [node name="MultiMeshInstance" type="MultiMeshInstance" parent="MultiMesh"]
+cast_shadow = 0
 multimesh = SubResource( 16 )
 
 [node name="MultiMeshInstance2" type="MultiMeshInstance" parent="MultiMesh"]
 material_override = ExtResource( 12 )
+cast_shadow = 0
 multimesh = SubResource( 15 )
 
 [node name="Stone1" type="MeshInstance" parent="MultiMesh"]
 transform = Transform( 0.356993, 0, -0.934107, 0, 1, 0, 0.934107, 0, 0.356993, 0, 0, 0 )
+cast_shadow = 0
 mesh = ExtResource( 10 )
 skeleton = NodePath("../..")
 
 [node name="Stone2" type="MeshInstance" parent="MultiMesh"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.179703 )
 material_override = ExtResource( 12 )
+cast_shadow = 0
 mesh = ExtResource( 11 )
 
 [editable path="Model"]
