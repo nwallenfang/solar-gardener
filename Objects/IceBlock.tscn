@@ -11,20 +11,18 @@
 
 [sub_resource type="Animation" id=4]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("Ice:scale")
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Ice:scale:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 1, 1, 1 ) ]
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
 }
 tracks/1/type = "bezier"
-tracks/1/path = NodePath("Ice:scale:x")
+tracks/1/path = NodePath("Ice:scale:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -34,22 +32,12 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/2/type = "bezier"
-tracks/2/path = NodePath("Ice:scale:y")
+tracks/2/path = NodePath("Ice:scale:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/3/type = "bezier"
-tracks/3/path = NodePath("Ice:scale:z")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
 "points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
@@ -94,20 +82,23 @@ script = ExtResource( 3 )
 
 [node name="Ice" type="Spatial" parent="."]
 
-[node name="Twinkle" parent="Ice" instance=ExtResource( 2 )]
+[node name="Twinkles" type="Spatial" parent="Ice"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.98023e-08, -1.19209e-07 )
+
+[node name="Twinkle" parent="Ice/Twinkles" instance=ExtResource( 2 )]
 transform = Transform( 0.398431, 0, 0, 0, 0.663808, 0, 0, 0, 0.118325, 0, 0.340649, 1.08374 )
 cold = true
 
-[node name="Twinkle2" parent="Ice" instance=ExtResource( 2 )]
+[node name="Twinkle2" parent="Ice/Twinkles" instance=ExtResource( 2 )]
 transform = Transform( 0.398431, 0, 0, 0, 0.663808, 0, 0, 0, 0.118325, 0, 0.47515, -1.14854 )
 cold = true
 
-[node name="Twinkle3" parent="Ice" instance=ExtResource( 2 )]
-transform = Transform( -1.7416e-08, 0, -0.118325, 0, 0.663808, 0, 0.398431, 0, -5.17216e-09, 1.13469, 0.47515, -0.031583 )
+[node name="Twinkle3" parent="Ice/Twinkles" instance=ExtResource( 2 )]
+transform = Transform( -1.7416e-08, 0, -0.118325, 0, 0.663808, 0, 0.398431, 0, -5.17216e-09, 1.13469, 0.47515, -0.0315829 )
 cold = true
 
-[node name="Twinkle4" parent="Ice" instance=ExtResource( 2 )]
-transform = Transform( -1.65841e-08, 0.202703, -0.112674, 5.3182e-09, 0.632102, 0.0361322, 0.398431, 0, -5.17216e-09, -1.09571, 0.947, -0.031583 )
+[node name="Twinkle4" parent="Ice/Twinkles" instance=ExtResource( 2 )]
+transform = Transform( -1.65841e-08, 0.202703, -0.112674, 5.3182e-09, 0.632102, 0.0361322, 0.398431, 0, -5.17216e-09, -1.09571, 0.947, -0.0315829 )
 cold = true
 
 [node name="ModelIce" parent="Ice" instance=ExtResource( 4 )]
@@ -156,6 +147,7 @@ shape = SubResource( 3 )
 
 [node name="NoteCapsule" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.276918, 0 )
+last_note = true
 
 [node name="MeltingTween" type="Tween" parent="."]
 

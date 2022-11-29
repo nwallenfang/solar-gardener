@@ -7,7 +7,8 @@ func melt():
 	if melting:
 		return
 	melting = true
-	$MeltingTween.interpolate_property($Ice, "scale", $Ice.scale, $Ice.scale * .01, 3.0, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+	$AnimationPlayer.stop()
+	$MeltingTween.interpolate_property($Ice, "scale", $Ice.scale, .001, 3.0, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 	$MeltingTween.start()
 	yield($MeltingTween,"tween_all_completed")
 	$Ice.queue_free()
@@ -18,9 +19,10 @@ func almost_melt():
 		return
 	almost_melting = true
 	$AnimationPlayer.play("almost_melt")
+	$Ice/Twinkles.visible = false
 
 func get_analyse_text():
 	if almost_melting:
-		return "It started melting\nbut it needs a\nstronger heat source."
+		return "It started\nmelting but\nit needs a\nstronger\nheat source."
 	else:
 		return "Should melt\nat great heat"
