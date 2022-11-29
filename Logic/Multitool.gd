@@ -358,7 +358,7 @@ func check_on_hover():
 		TOOL.PLANT:
 			if Game.player_raycast.colliding and Game.player_raycast.hit_point.distance_to(Game.player.global_translation) < PLANT_TOOL_DISTANCE and Game.planet.is_obsidian == false:
 				can_plant = Utility.test_planting_position(Game.player_raycast.hit_point) # and PlantData.can_plant() TODO
-				if not can_plant:
+				if not can_plant and (not seeds_empty):
 					if ignore_first_check_visually:
 						yield(get_tree(),"physics_frame")
 						yield(get_tree(),"physics_frame")
@@ -480,6 +480,7 @@ func start_planting_animation(pos: Vector3):
 	spawn_plant(pos)
 	yield(get_tree().create_timer(.35), "timeout")
 	#fake_seed.global_translation = $SeedPosition.global_translation
+	force_reload = true
 	try_reload()
 
 const DIRT_EXPLOSION = preload("res://Effects/DirtExplosion.tscn")
