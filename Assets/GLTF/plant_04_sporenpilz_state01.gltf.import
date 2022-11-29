@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/plant_04_sporenpilz_state01.gltf-7aee4b80a64ec9fa59f0d46bcb0ffeef.scn"
+path="res://.import/plant_04_Sporenpilz_state01.gltf-0fc470c4e0387270064c13813f6e53e4.scn"
 
 [deps]
 
-source_file="res://Assets/GLTF/plant_04_sporenpilz_state01.gltf"
-dest_files=[ "res://.import/plant_04_sporenpilz_state01.gltf-7aee4b80a64ec9fa59f0d46bcb0ffeef.scn" ]
+source_file="res://Assets/GLTF/plant_04_Sporenpilz_state01.gltf"
+dest_files=[ "res://.import/plant_04_Sporenpilz_state01.gltf-0fc470c4e0387270064c13813f6e53e4.scn" ]
 
 [params]
 

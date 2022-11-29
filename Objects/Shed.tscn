@@ -32,10 +32,10 @@ extents = Vector3( 1, 0.561815, 0.132816 )
 radius = 3.87482
 
 [sub_resource type="BoxShape" id=7]
-extents = Vector3( 1.59012, 1.2219, 1.92038 )
+extents = Vector3( 1.59012, 1.2219, 2.53614 )
 
 [sub_resource type="BoxShape" id=9]
-extents = Vector3( 0.0159289, 1.42683, 0.914402 )
+extents = Vector3( 0.0159289, 1.42683, 0.778813 )
 
 [sub_resource type="CubeMesh" id=11]
 size = Vector3( 2, 1.5, 2 )
@@ -140,6 +140,7 @@ Dreck"
 font = ExtResource( 4 )
 
 [node name="PlayerDetectArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.849967, 0, 0, 0 )
 collision_layer = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="PlayerDetectArea"]

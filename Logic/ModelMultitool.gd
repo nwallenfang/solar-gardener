@@ -49,8 +49,10 @@ func set_analysis(active: bool):
 	$AnalysePlayer.play("on" if active else "off")
 	$HopperPlayer.play("on" if active else "off")
 	if active:
+		Audio.play("scanner_open")
 		wheel_accel_to(80, 1.0)
 	else:
+		Audio.play("scanner_close")
 		home_wheel()
 	yield($AnalysePlayer,"animation_finished")
 	emit_signal("animation_finished")

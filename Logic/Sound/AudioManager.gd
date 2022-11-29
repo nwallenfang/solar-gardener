@@ -198,7 +198,7 @@ func play_attenuated(sound_name:String, distance:float):
 export var footstep_directory = "res://Assets/Sound/Footsteps/"
 var number_per := {"dirt": 7, "obsidian": 6, "rock": 7, "sand": 6, "wood": 5}
 var steps_per_second := 2.0 
-var step_volume_db := -3.0
+var step_volume_db := -5.0
 var variation = 0.28
 var current_planet_type: String
 onready var timer: Timer = $GameSpecific/FootstepTimer
@@ -212,9 +212,10 @@ func start_footsteps(planet_type: String):
 	timer.start(1.0 / steps_per_second)
 
 func play_random_step(planet_type: String = ""):
-	if Game.player_is_in_shed:
-		current_planet_type = "wood"
-	elif planet_type != "":
+#	Game.UI.set_diagnostics(["in shed: " + str(Game.player_is_in_shed)])
+#	if Game.player_is_in_shed:
+#		current_planet_type = "wood"
+	if planet_type != "":
 		current_planet_type = planet_type
 	var step_no: int = (randi() % number_per[current_planet_type]) + 1
 	var step_name = "steps_%s_%02d" % [current_planet_type, step_no]

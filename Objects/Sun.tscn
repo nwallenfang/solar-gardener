@@ -190,8 +190,8 @@ shape = SubResource( 7 )
 [node name="Audio3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 3 )
 unit_db = -80.0
-unit_size = 26.0
-max_db = 5.0
+unit_size = 40.0
+max_db = 2.0
 bus = "SFX"
 
 [node name="Tween" type="Tween" parent="."]
