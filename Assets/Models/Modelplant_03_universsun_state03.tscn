@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Models/Meshes/Meshplant_03_universsun_state032.res" type="ArrayMesh" id=1]
+[ext_resource path="res://Assets/Models/Meshes/Meshplant_03_universsun_state033.res" type="ArrayMesh" id=2]
+[ext_resource path="res://Assets/Models/Meshes/Meshplant_03_universsun_state034.res" type="ArrayMesh" id=3]
+[ext_resource path="res://Assets/Models/Meshes/Meshplant_03_universsun_state031.res" type="ArrayMesh" id=4]
+[ext_resource path="res://Assets/Models/Meshes/Meshplant_03_universsun_state035.res" type="ArrayMesh" id=5]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.52549, 0.815686, 0.137255, 1 )
+roughness = 0.0
+
+[node name="Modelplant_03_universsun_state03" type="Spatial"]
+
+[node name="Empty" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.157443, 0.362082, -0.535803 )
+
+[node name="Empty001" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0501742, 0.229784, -0.574411 )
+
+[node name="Cylinder003" type="MeshInstance" parent="."]
+transform = Transform( 0.0326431, 0, 0, 0, 0.0326431, 0, 0, 0, 0.0326431, -0.0112351, 0.00915986, 0.0128489 )
+mesh = ExtResource( 4 )
+material/0 = SubResource( 1 )
+
+[node name="OmniLight" type="OmniLight" parent="Cylinder003"]
+transform = Transform( 30.6343, 0, 0, 0, 30.6343, 0, 0, 0, 30.6343, 0, 30.9604, 18.2442 )
+
+[node name="Cylinder001" type="MeshInstance" parent="."]
+transform = Transform( 0.0326431, 0, 0, 0, 0.0326431, 0, 0, 0, 0.0326431, -0.0160998, 0.0162019, -0.0173379 )
+mesh = ExtResource( 1 )
+
+[node name="Cylinder002" type="MeshInstance" parent="."]
+transform = Transform( 0.0326431, 0, 0, 0, 0.0326431, 0, 0, 0, 0.0326431, 0.0034022, 0.564314, 0.215482 )
+mesh = ExtResource( 2 )
+
+[node name="Cylinder004" type="MeshInstance" parent="."]
+transform = Transform( 0.0323582, 0, 0.00430314, 0, 0.0326431, 0, -0.00430314, 0, 0.0323582, 0, 1.011, 0.0267889 )
+mesh = ExtResource( 3 )
+
+[node name="Cylinder005" type="MeshInstance" parent="."]
+transform = Transform( 0.0326431, 0, 0, 0, 0.0326431, 0, 0, 0, 0.0326431, 0, 1.01101, 0.0267889 )
+mesh = ExtResource( 5 )

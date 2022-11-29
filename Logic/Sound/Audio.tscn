@@ -205,12 +205,12 @@ mixer_bus = "SFX"
 
 [node name="PLANT_3_STAGE_3" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
-volume_db = -5.0
+volume_db = -2.0
 mixer_bus = "SFX"
 
 [node name="PLANT_3_STAGE_4" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
-volume_db = -5.0
+volume_db = -2.0
 mixer_bus = "SFX"
 
 [node name="PLANT_4_STAGE_1" type="Node" parent="Sounds"]

@@ -1,0 +1,14 @@
+[gd_resource type="SpatialMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Materials/Plants/moss_albedo_gray.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Materials/Plants/moss_normal.png" type="Texture" id=2]
+
+[resource]
+params_cull_mode = 2
+albedo_color = Color( 0.917647, 0.337255, 0.623529, 1 )
+albedo_texture = ExtResource( 1 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 2 )
+uv1_scale = Vector3( 5, 5, 5 )
+uv1_triplanar = true
