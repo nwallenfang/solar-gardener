@@ -172,6 +172,7 @@ transform = Transform( 1.23121, 1.04831, -0.945184, -1.29378, 1.33961, -0.19952,
 
 [node name="MultiMeshInstance" type="MultiMeshInstance" parent="MultiMesh"]
 material_override = ExtResource( 11 )
+cast_shadow = 0
 multimesh = SubResource( 14 )
 
 [node name="Stone1" type="MeshInstance" parent="MultiMesh"]
