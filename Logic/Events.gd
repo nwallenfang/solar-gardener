@@ -81,7 +81,7 @@ func setup():
 # TRIGGER FUNCTIONS
 ###########
 
-var duration := 10.0
+var duration := 13.0
 var repeat_time := 30.0  # later smth like 45 seconds
 var repeat_this: String
 # doesn't get called from an event, but in the beginning from MainScene
@@ -172,26 +172,31 @@ func no_seeds():  # TODO not connected yet
 #		Events.trigger("tutorial_completed")
 
 func tutorial_completed():
-	Game.UI.add_tutorial_message("Traveling", "Point to a planet and click to travel.", duration)
 	Game.multitool.activate_tool(Game.multitool.TOOL.HOPPER)
+	yield(get_tree().create_timer(4.0), "timeout")
+	Game.UI.add_tutorial_message("Traveling", "Point to a planet and click to travel.", duration)
+
 	next()
 	
 	$RepeatTimer.start(repeat_time)
 	repeat_this = "tutorial_completed"
 
 func soil_unlocked():
-	Game.UI.add_tutorial_message("Soil Analysis", "Scan the soil to get more information on the planet.", duration)
 	Game.multitool.soil_unlocked = true
+	yield(get_tree().create_timer(4.0), "timeout")
+	Game.UI.add_tutorial_message("Soil Analysis", "Scan the soil to get more information on the planet.", duration)
 	next()
 
 func remove_unlocked():
-	Game.UI.add_tutorial_message("Removing Plants", "Use right click with the grow tool to remove plants.", duration)
 	Game.multitool.death_beam_unlocked = true
+	yield(get_tree().create_timer(4.0), "timeout")
+	Game.UI.add_tutorial_message("Removing Plants", "Use right click with the grow tool to remove plants.", duration)
+
 	# TODO Show Remove Tooltip now!
 	next()
 
 func gear_scanned():
-	Game.UI.add_tutorial_message("Upgrading the tool", "Go to the shed to upgrade the Yardintool.", duration)
+	Game.UI.add_tutorial_message("Tool Upgrades", "Go to the shed to upgrade the Yardintool.", duration)
 	next()
 
 var first_hop := true
@@ -202,5 +207,5 @@ func planet_hopped():
 	next()
 
 func too_many_seeds():
-	Game.UI.add_tutorial_message("???", "There is not really a use for having more than 20 seeds of the same kind.", duration)
+	Game.UI.add_tutorial_message("Seed hoarding detected", "The Yardin-AI is wondering what to do with so many seeds.", duration)
 	next()

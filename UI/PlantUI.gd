@@ -21,8 +21,9 @@ signal clicked(plant_name)
 
 
 func _ready() -> void:
-	$Panel/UndiscoveredOverlay.visible = true
+	$"%UndiscoveredOverlay".visible = true
 	$SeedCountBG.visible = false
+	$Panel.visible = false
 
 func set_profile(profile: PlantProfile):
 	plant_profile = profile
@@ -35,7 +36,7 @@ func set_profile(profile: PlantProfile):
 		hint = "Found " + profile.amber_location
 	else:
 		hint = "Found on " + profile.amber_location
-	$Panel/UndiscoveredOverlay.hint_tooltip = hint
+	$"%UndiscoveredOverlay".hint_tooltip = hint
 
 const max_per_row = 3
 func add_preference(preference: PlantPreference):
@@ -63,13 +64,15 @@ func make_all_preferences_known():
 #	self.number_of_stars = 2
 func set_to_discovered():
 #		Game.UI.show_info_line(plant_name + " discovered!", Game.UI.INFO.PLANT_SCANNED)
-		$Panel/UndiscoveredOverlay.visible = false
+		$"%UndiscoveredOverlay".visible = false
 		$SeedCountBG.visible = true
+		$Panel.visible = true
 		discovered = true
 	
 func set_seed_count(seed_count: int):
 	if not discovered:
-		$Panel/UndiscoveredOverlay.visible = false
+		$"%UndiscoveredOverlay".visible = false
+		$Panel.visible = true
 		$SeedCountBG.visible = true
 		discovered = true
 	$"%SeedCount".text = str(seed_count)
@@ -109,16 +112,17 @@ func got_scanned(growth_stage: int):
 	if growth_stage >= 2:
 		if not stage2_scanned:
 			sent_info = true
-			Game.UI.show_info_line("%s second Journal entry added" % plant_name, 3)
+			Game.UI.show_info_line_in_x_seconds("%s second Journal entry added" % plant_name, 3, 1.8)
+#			Game.UI.show_info_line("%s second Journal entry added" % plant_name, 3)
 		stage2_scanned = true
 	if growth_stage >= 3:
 		if not stage3_scanned and not sent_info:
 			sent_info = true
-			Game.UI.show_info_line("%s third Journal entry added" % plant_name, 3)
+			Game.UI.show_info_line_in_x_seconds("%s third Journal entry added" % plant_name, 3, 1.8)
 		stage3_scanned = true
 	if scanned == false and not sent_info:
 		sent_info = true
-		Game.UI.show_info_line("%s Journal entry added"  % plant_name, 3)
+		Game.UI.show_info_line_in_x_seconds("%s Journal entry added"  % plant_name, 3, 1.8)
 		
 	scanned = true
 #	$Panel.hint_tooltip = plant_profile.name

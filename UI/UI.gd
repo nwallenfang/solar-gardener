@@ -29,7 +29,7 @@ func switched_to_tool(new_tool: int):
 		$"%MultitoolC".text = tooltip[1]
 		$"%MultitoolC".visible = true
 		$"%MultitoolA".visible = true
-		if new_tool == Game.multitool.TOOL.GROW:
+		if new_tool == Game.multitool.TOOL.GROW and Events.get_event_from_key("remove_unlocked").execute_count > 0:
 			$"%MultitoolC2".visible = true
 			$"%MultitoolA2".visible = true
 		else:
@@ -148,7 +148,12 @@ func add_tutorial_message(title: String, text: String, duration:=10.0):
 		
 func show_info_line(title, type):
 	$DialogUI.push_infoline(title, type)
-	
+
+func show_info_line_in_x_seconds(title, type, delay:float):
+	yield(get_tree().create_timer(delay), "timeout")
+	$DialogUI.push_infoline(title, type)
+
+
 func skip_button_held():
 	$"%SkipCutsceneText".rect_scale = Vector2(1.2, 1.2)
 	

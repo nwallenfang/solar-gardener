@@ -61,7 +61,7 @@ func show_infoline():
 			this_linger_time *= 4.0
 			subtitle_text.set("custom_colors/font_color", preference_unlocked_color)
 		INFO.PLANT_UNLOCKED:
-			this_linger_time *= 4.0
+			this_linger_time *= 5.5
 			subtitle_text.set("custom_colors/font_color", plant_unlocked_color)
 		INFO.PLANT_SCANNED:
 			subtitle_text.set("custom_colors/font_color", plant_scanned_color)

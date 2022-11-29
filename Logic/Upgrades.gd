@@ -11,10 +11,13 @@ func ugrade_once():
 	print("Upgraded to level " + str(current_upgrade_level))
 	match current_upgrade_level:
 		1: # Hopper
+			Game.UI.show_info_line("Planet travelling unlocked", 2)
 			Events.trigger("tutorial_completed")
 		2: # Soil
+			Game.UI.show_info_line("Planet scanning unlocked", 2)
 			Events.trigger("soil_unlocked")
 		3: # Remove
+			Game.UI.show_info_line("Plant removal unlocked", 2)
 			Events.trigger("remove_unlocked")
 		4: # Jetpack
 			pass
@@ -26,6 +29,6 @@ func get_upgrades_screen_text() -> String:
 	if new_upgrades_count == 0:
 		return "Find more\ngears to\nunlock new\nupgrades"
 	elif new_upgrades_count == 1:
-		return "1 new\nupgrade\navailable"
+		return "New\nUpgrade\navailable"
 	else:
-		return str(new_upgrades_count) + " new\nupgrades\navailable"
+		return str(new_upgrades_count) + " New\nUpgrades\navailable"
