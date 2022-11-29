@@ -322,6 +322,7 @@ func process_first_action():
 				$Cooldown.start(.3)
 				ignore_first_check_visually = true
 				start_planting_animation(plant_spawn_position)
+				show_plant_information(true)
 		TOOL.HOPPER:
 			$Cooldown.start(2)
 			Game.execute_planet_hop(hopper_planet, hopper_pos)
@@ -575,8 +576,8 @@ func show_grow_information():
 			is_growing = (plant_to_grow.growth_stage != plant_to_grow.growth_lock)
 		Game.hologram.grow_beam_juice(grow_beam_active, growth_juice, is_growing)
 
-func show_plant_information():
-	if has_no_cooldown():
+func show_plant_information(force := false):
+	if has_no_cooldown() or force:
 		var seeds_left = PlantData.seed_counts[target_plant_name]
 		if Game.journal.get_got_scanned(target_plant_name):
 			Game.hologram.show_seed_info(target_plant_name, seeds_left)
