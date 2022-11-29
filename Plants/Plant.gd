@@ -389,6 +389,7 @@ func on_remove():
 func on_analyse():
 	Game.journal.plant_got_scanned(profile.name, growth_stage)
 	Events.trigger("tutorial_plant_scanned")
+	Game.shed.trigger_trophy(profile.name)
 	show_symb_visuals()
 
 func growth_beam_possible() -> bool:

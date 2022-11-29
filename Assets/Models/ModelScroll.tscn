@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Models/Meshes/MeshCapsule1.res" type="ArrayMesh" id=1]
+
+[node name="ModelScroll" type="Spatial"]
+
+[node name="Scroll" type="MeshInstance" parent="."]
+transform = Transform( 0.75965, 0, 0, 0, 1.46115, 0, 0, 0, 1.46115, -0.0314721, -0.000559403, -0.00223769 )
+mesh = ExtResource( 1 )

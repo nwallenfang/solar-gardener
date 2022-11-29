@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Assets/Models/ModelShed.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Shed.gd" type="Script" id=2]
@@ -9,6 +9,15 @@
 [ext_resource path="res://Assets/Models/ModelBucket.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/Models/ModelPickaxe.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/GLTF/Shed_Brown.material" type="Material" id=9]
+[ext_resource path="res://Assets/Placeholder/ModelPlaceholderSeed.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/Models/ModelMoontree_samen.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Assets/Models/Modelplant_06_fractalrose_samen.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Assets/Models/ModelPlant_01_ranke_samen.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Assets/Models/Modelplant_04_sporenpilz_samen.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Assets/Models/ModelPlantPinoSeed.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Assets/Models/ModelScroll.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Assets/Models/ModelAlienRuinsBP.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Assets/Models/ModelMarshmelloStick.tscn" type="PackedScene" id=18]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.106865, 0.238602, 2.44913 )
@@ -256,5 +265,67 @@ transform = Transform( 0.232732, 0, 0.972541, 0, 1, 0, -0.972541, 0, 0.232732, -
 
 [node name="PlayerOrientationTween" type="Tween" parent="."]
 
+[node name="Trophys" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16957, 1.76957 )
+
+[node name="moontree" parent="Trophys" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.722433, -0.160165, 0.252796 )
+
+[node name="grabroot" parent="Trophys" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.71151, 0.576863, 0.239828 )
+
+[node name="fractalrose" parent="Trophys" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.708687, 0.196315, 0.246843 )
+
+[node name="hidden lotus" parent="Trophys" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244853, 0.202576, 0.252951 )
+
+[node name="greatcap" parent="Trophys" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.248535, 0.582331, 0.260664 )
+
+[node name="cosmosun" parent="Trophys" instance=ExtResource( 10 )]
+transform = Transform( 0.583399, 0, -0.812185, 0, 1, 0, 0.812185, 0, 0.583399, 0.260045, -0.15623, 0.263625 )
+
+[node name="ModelScroll1" parent="Trophys" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.496884, 0.540101, 0.239973 )
+
+[node name="ModelScroll5" parent="Trophys" instance=ExtResource( 16 )]
+transform = Transform( 0.915927, 0.132914, -0.378697, -0.122829, 0.991128, 0.0507846, 0.382087, 0, 0.924126, -0.798187, 0.587307, 0.239973 )
+
+[node name="ModelScroll4" parent="Trophys" instance=ExtResource( 16 )]
+transform = Transform( -0.653923, -0.549326, 0.520217, -1.03826e-07, -0.687607, -0.726083, 0.756561, -0.474802, 0.449642, -0.826876, 0.540101, 0.19371 )
+
+[node name="ModelScroll3" parent="Trophys" instance=ExtResource( 16 )]
+transform = Transform( 0.972158, -0.218302, 0.0851695, -0.234328, -0.905671, 0.353343, 1.19209e-07, -0.363463, -0.931609, -0.33693, 0.57115, 0.326373 )
+
+[node name="ModelScroll2" parent="Trophys" instance=ExtResource( 16 )]
+transform = Transform( 0.90029, -0.215144, 0.378406, 0.232427, 0.972614, 0, -0.368043, 0.0879518, 0.92564, -0.496884, 0.567421, 0.301558 )
+
+[node name="ModelAlienRuinsBP" parent="Trophys" instance=ExtResource( 17 )]
+transform = Transform( 0.100916, 0, 0.143052, 0, 0.175065, 0, -0.143052, 0, 0.100916, -0.758791, 0.134874, 0.231526 )
+
+[node name="AlienRuinBP" parent="Trophys/ModelAlienRuinsBP" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="CollisionShape" parent="Trophys/ModelAlienRuinsBP/AlienRuinBP/StaticBody" index="0"]
+disabled = true
+
+[node name="OmniLight" parent="Trophys/ModelAlienRuinsBP" index="2"]
+transform = Transform( 5.13989, 0, 0, 0, 5.13989, 0, 0, 0, 5.13989, -0.150882, 1.16125, 0.106442 )
+light_energy = 5.0
+omni_range = 0.365
+omni_attenuation = 2.82844
+
+[node name="AlienLights" parent="Trophys/ModelAlienRuinsBP" index="3"]
+transform = Transform( 0.210421, 0, -7.45058e-09, 0, 0.210421, 0, 7.45058e-09, 0, 0.210421, 0, 1.13958, 0 )
+
+[node name="CollisionShape" parent="Trophys/ModelAlienRuinsBP/Area" index="0"]
+transform = Transform( 0.959791, 0, 0, 0, 0.959791, 0, 0, 0, 0.959791, 0, 0.425644, 0 )
+
+[node name="ModelMarshmelloStick" parent="Trophys" instance=ExtResource( 18 )]
+transform = Transform( 0.0474777, -0.877157, 0.261369, 0.91492, 0.0527094, 0.0106976, -0.0252701, 0.260364, 0.878376, -0.186293, -0.221012, 0.154843 )
+
 [connection signal="body_entered" from="PlayerDetectArea" to="." method="_on_PlayerDetectArea_body_entered"]
 [connection signal="body_exited" from="PlayerDetectArea" to="." method="_on_PlayerDetectArea_body_exited"]
+
+[editable path="Trophys/ModelAlienRuinsBP"]

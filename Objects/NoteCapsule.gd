@@ -21,3 +21,5 @@ func on_analyse():
 	
 	yield(get_tree().create_timer(0.8), "timeout")
 	Dialog.play_gardener_voice_over(index)
+	
+	Game.shed.trigger_trophy("Scroll" + str(Game.number_of_logs))

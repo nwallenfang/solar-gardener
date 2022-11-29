@@ -1,4 +1,5 @@
 extends Spatial
+class_name Shed
 
 var home_planet : Planet
 
@@ -7,6 +8,18 @@ func _ready():
 	if get_parent() is Planet:
 		home_planet = get_parent() as Planet
 		home_planet.add_to_lod_list(self)
+	
+	# RESET Trophys
+	for trophy in $Trophys.get_children():
+		trophy.visible = false
+	
+	Game.shed = self
+
+func trigger_trophy(trophy_name: String):
+	trophy_name = trophy_name.to_lower()
+	for trophy in $Trophys.get_children():
+		if trophy_name in trophy.name.to_lower():
+			trophy.visible = true
 
 func on_lod(lod_triggered: bool):
 	var no_lod_meshes := [	$ModelShed/ShedSolarPanels,
@@ -24,6 +37,9 @@ func on_lod(lod_triggered: bool):
 			c.visible = not lod_triggered
 	$OmniLight.visible = not lod_triggered
 	$ScreenTexts.visible = not lod_triggered
+	$Trophys.visible = not lod_triggered
+	for object in [$ModelBucket, $ModelBucket2, $ModelPickaxe, $ModelShovel, $UpgradeStation]:
+		object.visible = not lod_triggered
 
 func update_shed_info():
 #	$ScreenTexts/Label1.text = "Loading..."

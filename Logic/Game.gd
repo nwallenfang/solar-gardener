@@ -42,6 +42,8 @@ var coming_out_of_journal = false
 
 var cheat_lod := false
 
+var shed: Shed
+
 # progresses
 var number_of_ambers := 0 setget set_number_of_ambers
 var number_of_logs := 0 setget set_number_of_logs
