@@ -6,5 +6,5 @@
 [resource]
 script = ExtResource( 2 )
 name = "Likes Flowers"
-description = "Grows well near flower type plants"
+description = "Grows well near different flower plants"
 icon = ExtResource( 1 )

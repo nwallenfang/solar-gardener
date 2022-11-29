@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Models/Modelplant_06_fractalrose_state03.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Models/Modelplant_06_fractalrose_state02.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Models/Modelplant_06_fractalrose_state00.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Models/Modelplant_06_fractalrose_state01.tscn" type="PackedScene" id=4]
+
+[node name="FractalRoseTest" type="Spatial"]
+
+[node name="Modelplant_06_fractalrose_state00" parent="." instance=ExtResource( 3 )]
+
+[node name="Modelplant_06_fractalrose_state01" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20769, 0, -0.167279 )
+
+[node name="Modelplant_06_fractalrose_state02" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.56118, 0, 0 )
+
+[node name="Modelplant_06_fractalrose_state03" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.41195, 0, 0 )
