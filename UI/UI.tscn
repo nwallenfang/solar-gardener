@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://UI/UI.gd" type="Script" id=1]
 [ext_resource path="res://UI/SettingsUI.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://theme.tres" type="Theme" id=12]
 [ext_resource path="res://UI/TutorialPanel.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Assets/Fonts/Anita semi square.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://UI/Credits.tscn" type="PackedScene" id=15]
 
 [sub_resource type="DynamicFont" id=5]
 size = 26
@@ -300,5 +301,7 @@ custom_fonts/font = SubResource( 5 )
 text = "Click to upgrade"
 align = 1
 valign = 2
+
+[node name="Credits" parent="." instance=ExtResource( 15 )]
 
 [connection signal="timeout" from="Diagnostics/FPSUpdateTimer" to="Diagnostics" method="_on_FPSUpdateTimer_timeout"]
