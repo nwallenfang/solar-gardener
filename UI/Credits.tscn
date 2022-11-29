@@ -1,0 +1,491 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Assets/Fonts/Agane╠Ç 75 (Extra Bold).ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/Fonts/GuideFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/Fonts/EngineerHand.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Assets/Sprites/godot_icon.png" type="Texture" id=4]
+[ext_resource path="res://UI/Credits.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 38
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 56
+use_mipmaps = true
+extra_spacing_bottom = 30
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Screen1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Screen1:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Screen2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Screen2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Screen3:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Screen3:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "credits"
+length = 30.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Screen1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 11.1, 12.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Screen1:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.6, 12.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Screen2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 12.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Screen2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 13.2, 14.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Screen3:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Screen3:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[node name="Credits" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -1049, -484 )
+script = ExtResource( 5 )
+
+[node name="Screen1" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Screen1"]
+anchor_top = 0.109
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Title" type="Label" parent="Screen1/VBoxContainer"]
+margin_right = 1280.0
+margin_bottom = 56.0
+custom_fonts/font = ExtResource( 2 )
+text = "SOLAR GARDENER"
+align = 1
+
+[node name="Title2" type="Label" parent="Screen1/VBoxContainer"]
+margin_top = 60.0
+margin_right = 1280.0
+margin_bottom = 92.0
+custom_fonts/font = SubResource( 1 )
+text = "by"
+align = 1
+
+[node name="Gap" type="Control" parent="Screen1/VBoxContainer"]
+margin_top = 96.0
+margin_right = 1280.0
+margin_bottom = 96.0
+
+[node name="Nils" type="HBoxContainer" parent="Screen1/VBoxContainer"]
+margin_top = 100.0
+margin_right = 1280.0
+margin_bottom = 100.0
+
+[node name="Nitai" type="HBoxContainer" parent="Screen1/VBoxContainer"]
+margin_top = 104.0
+margin_right = 1280.0
+margin_bottom = 104.0
+
+[node name="Stefan" type="HBoxContainer" parent="Screen1/VBoxContainer"]
+margin_top = 108.0
+margin_right = 1280.0
+margin_bottom = 108.0
+
+[node name="Paul" type="HBoxContainer" parent="Screen1/VBoxContainer"]
+margin_top = 112.0
+margin_right = 1280.0
+margin_bottom = 112.0
+
+[node name="Eike" type="HBoxContainer" parent="Screen1/VBoxContainer"]
+margin_top = 116.0
+margin_right = 1280.0
+margin_bottom = 116.0
+
+[node name="Niels" type="HBoxContainer" parent="Screen1/VBoxContainer"]
+margin_top = 120.0
+margin_right = 1280.0
+margin_bottom = 120.0
+
+[node name="Control" type="Control" parent="Screen1/VBoxContainer"]
+margin_top = 124.0
+margin_right = 1280.0
+margin_bottom = 124.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Screen1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Screen1/CenterContainer"]
+margin_left = 295.0
+margin_top = 254.0
+margin_right = 984.0
+margin_bottom = 466.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Screen1/CenterContainer/HBoxContainer"]
+margin_right = 269.0
+margin_bottom = 212.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Name" type="Label" parent="Screen1/CenterContainer/HBoxContainer/VBoxContainer2"]
+margin_right = 269.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Nils Wallenfang"
+
+[node name="Name2" type="Label" parent="Screen1/CenterContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 36.0
+margin_right = 269.0
+margin_bottom = 68.0
+custom_fonts/font = SubResource( 1 )
+text = "Nitai Heeb"
+
+[node name="Name3" type="Label" parent="Screen1/CenterContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 72.0
+margin_right = 269.0
+margin_bottom = 104.0
+custom_fonts/font = SubResource( 1 )
+text = "Stefan Hormann"
+
+[node name="Name6" type="Label" parent="Screen1/CenterContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 108.0
+margin_right = 269.0
+margin_bottom = 140.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Niels Asselborn"
+
+[node name="Name4" type="Label" parent="Screen1/CenterContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 144.0
+margin_right = 269.0
+margin_bottom = 176.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Paul Shelley"
+
+[node name="Name5" type="Label" parent="Screen1/CenterContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 180.0
+margin_right = 269.0
+margin_bottom = 212.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Thimras"
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="Screen1/CenterContainer/HBoxContainer"]
+margin_left = 273.0
+margin_right = 689.0
+margin_bottom = 212.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Job" type="Label" parent="Screen1/CenterContainer/HBoxContainer/HBoxContainer2"]
+margin_right = 416.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Design, Programming"
+align = 2
+
+[node name="Job2" type="Label" parent="Screen1/CenterContainer/HBoxContainer/HBoxContainer2"]
+margin_top = 36.0
+margin_right = 416.0
+margin_bottom = 68.0
+custom_fonts/font = SubResource( 1 )
+text = "Design, Programming"
+align = 2
+
+[node name="Job3" type="Label" parent="Screen1/CenterContainer/HBoxContainer/HBoxContainer2"]
+margin_top = 72.0
+margin_right = 416.0
+margin_bottom = 104.0
+custom_fonts/font = SubResource( 1 )
+text = "3D Modeling"
+align = 2
+
+[node name="Job6" type="Label" parent="Screen1/CenterContainer/HBoxContainer/HBoxContainer2"]
+margin_top = 108.0
+margin_right = 416.0
+margin_bottom = 140.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "3D Modeling"
+align = 2
+
+[node name="Job4" type="Label" parent="Screen1/CenterContainer/HBoxContainer/HBoxContainer2"]
+margin_top = 144.0
+margin_right = 416.0
+margin_bottom = 176.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Sound Design"
+align = 2
+
+[node name="Job5" type="Label" parent="Screen1/CenterContainer/HBoxContainer/HBoxContainer2"]
+margin_top = 180.0
+margin_right = 416.0
+margin_bottom = 212.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Soundtrack, Voice Acting"
+align = 2
+
+[node name="Screen2" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Screen2"]
+anchor_top = 0.07
+anchor_right = 1.0
+anchor_bottom = 0.79
+
+[node name="Title2" type="Label" parent="Screen2/VBoxContainer"]
+margin_right = 1280.0
+margin_bottom = 39.0
+custom_fonts/font = SubResource( 4 )
+text = "with 3rd Party Assets"
+align = 1
+
+[node name="Title3" type="Label" parent="Screen2/VBoxContainer"]
+margin_top = 43.0
+margin_right = 1280.0
+margin_bottom = 75.0
+custom_fonts/font = SubResource( 1 )
+text = "by"
+align = 1
+
+[node name="Gap" type="Control" parent="Screen2/VBoxContainer"]
+margin_top = 79.0
+margin_right = 1280.0
+margin_bottom = 109.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="Title4" type="Label" parent="Screen2/VBoxContainer"]
+margin_top = 113.0
+margin_right = 1280.0
+margin_bottom = 180.0
+custom_fonts/font = SubResource( 1 )
+text = "Xyene, arlez80, Rye Terrell, 
+Tarox, Thfpjct, a_person, dash"
+align = 1
+
+[node name="Gap2" type="Control" parent="Screen2/VBoxContainer"]
+margin_top = 184.0
+margin_right = 1280.0
+margin_bottom = 222.0
+rect_min_size = Vector2( 0, 38 )
+
+[node name="Title5" type="Label" parent="Screen2/VBoxContainer"]
+margin_top = 226.0
+margin_right = 1280.0
+margin_bottom = 265.0
+custom_fonts/font = SubResource( 4 )
+text = "Thank you!"
+align = 1
+
+[node name="Gap3" type="Control" parent="Screen2/VBoxContainer"]
+margin_top = 269.0
+margin_right = 1280.0
+margin_bottom = 329.0
+rect_min_size = Vector2( 0, 60 )
+
+[node name="Title6" type="Label" parent="Screen2/VBoxContainer"]
+margin_top = 333.0
+margin_right = 1280.0
+margin_bottom = 365.0
+custom_fonts/font = SubResource( 1 )
+text = "Made with Godot Engine"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Screen2/VBoxContainer"]
+margin_top = 369.0
+margin_right = 1280.0
+margin_bottom = 518.0
+size_flags_vertical = 3
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="Screen3" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Screen3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Title" type="Label" parent="Screen3/CenterContainer"]
+margin_left = 307.0
+margin_top = 332.0
+margin_right = 972.0
+margin_bottom = 388.0
+custom_fonts/font = ExtResource( 2 )
+text = "Thank you for playing!"
+align = 1
+
+[node name="SkipCreditsButton" type="Button" parent="."]
+anchor_left = 0.308
+anchor_top = 1.0
+anchor_right = 0.692
+anchor_bottom = 1.0
+margin_top = -71.0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 3 )
+custom_styles/normal = SubResource( 3 )
+text = "Skip (continue playing)"
+
+[node name="Credits2D" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 6 )
+anims/credits = SubResource( 5 )
+
+[connection signal="pressed" from="SkipCreditsButton" to="." method="_on_SkipCreditsButton_pressed"]
