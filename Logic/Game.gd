@@ -59,6 +59,9 @@ func set_number_of_max_lv(number):
 	number_of_max_lv = number
 	UI.get_node("JournalAndGuideUI").set_progress_max(number)
 
+func _input(event: InputEvent) -> void:
+	pass
+
 func _process(delta: float) -> void:
 	var mode := ""
 	match Input.mouse_mode:
@@ -73,7 +76,7 @@ func _process(delta: float) -> void:
 			if is_ingame() and OS.has_feature("HTML5") and intro_done and $SettingsOpenCooldown.is_stopped():
 				set_game_state(State.SETTINGS)
 #	UI.set_diagnostics(["settings blocked: " + str(not $SettingsOpenCooldown.is_stopped())])
-	if Input.is_action_just_pressed("open_settings"):  # show/hide settings UI
+	if Input.is_action_just_pressed("open_settings") and not OS.has_feature("HTML5"):  # show/hide settings UI
 		if main_scene_running:
 			if game_state == State.INGAME:
 				$SettingsOpenCooldown.start(0.4)
@@ -82,7 +85,7 @@ func _process(delta: float) -> void:
 				# this is only the correct if you can only enter settings from ingame!!
 				self.game_state = State.INGAME
 	if Input.is_action_just_pressed("open_journal"):
-		$SettingsOpenCooldown.start(0.4)
+		$SettingsOpenCooldown.start(5.4)
 		if game_state == State.INGAME:
 			self.game_state = State.JOURNAL
 		elif game_state == State.JOURNAL:
