@@ -26,13 +26,13 @@ func on_lod(lod_triggered: bool):
 	$ScreenTexts.visible = not lod_triggered
 
 func update_shed_info():
-	$ScreenTexts/Label1.text = "Loading..."
-	$ScreenTexts/Label2.text = "Loading..."
-	$ScreenTexts/Label3.text = "Loading..."
-	$ScreenTexts/Label4.text = "Loading..."
-	$ScreenTexts/Label5.text = "Loading..."
-	$ScreenTexts/Label6.text = "Loading..."
-	yield(get_tree().create_timer(.8),"timeout")
+#	$ScreenTexts/Label1.text = "Loading..."
+#	$ScreenTexts/Label2.text = "Loading..."
+#	$ScreenTexts/Label3.text = "Loading..."
+#	$ScreenTexts/Label4.text = "Loading..."
+#	$ScreenTexts/Label5.text = "Loading..."
+#	$ScreenTexts/Label6.text = "Loading..."
+#	yield(get_tree().create_timer(.8),"timeout")
 	$ScreenTexts/Label2.text = "Seeds\nplanted:\n" + str(Events.get_event_from_key("seed_planted").execute_count)
 	yield(get_tree().create_timer(.2),"timeout")
 	$ScreenTexts/Label1.text = "Plants\ndiscovered:\n" + str(len(Game.journal.scanned_plant_names))

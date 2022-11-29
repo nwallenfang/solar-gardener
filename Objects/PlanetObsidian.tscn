@@ -1,10 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Models/Modelplanet_02_obsidian.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Planet.gd" type="Script" id=2]
 [ext_resource path="res://Objects/NoteCapsule.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/Amber.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Gear.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Models/ModelAlienRuinsPodest.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Models/ModelAlienRuinsBP.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/GLTF/AlienRuinsV.gltf" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Models/ModelAlienRuinsCircle.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Models/ModelAlienRuinsV.tscn" type="PackedScene" id=10]
 
 [sub_resource type="SphereShape" id=12]
 radius = 22.8154
@@ -44,10 +49,102 @@ spot_range = 12.0
 spot_angle = 18.0378
 
 [node name="Amber" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.13302, -3.45108, 1.90091 )
+transform = Transform( 1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, -0.145395, 3.3196, -3.74607 )
 seed_name = "Cosmosun"
 
 [node name="Gear" parent="." instance=ExtResource( 5 )]
-transform = Transform( 0.733789, -0.679377, 0, 0.679377, 0.733789, 0, 0, 0, 1, 0.54502, 0.0309647, 6.44294 )
+transform = Transform( 0.733789, -0.679377, 0, 0.679377, 0.733789, 0, 0, 0, 1, 3.33156, -5.91886, -4.52835 )
+
+[node name="Alien" type="Spatial" parent="."]
+
+[node name="ModelAlienRuinsPodest" parent="Alien" instance=ExtResource( 6 )]
+transform = Transform( 0.42641, 0.190659, 0.0309012, 0.133443, -0.344952, 0.286937, 0.139638, -0.252565, -0.36857, 2.86973, -5.3765, -4.09071 )
+
+[node name="ModelAlienRuinsBP" parent="Alien" instance=ExtResource( 7 )]
+transform = Transform( 0.424911, 0.123536, -0.111457, 0.161374, -0.380432, 0.193552, -0.0405226, -0.219643, -0.397929, 1.44555, -6.19512, -4.08903 )
+
+[node name="ModelAlienRuinsBP2" parent="Alien" instance=ExtResource( 7 )]
+transform = Transform( -0.386929, 0.212705, -0.115219, -0.0865645, -0.324698, -0.308724, -0.225888, -0.239917, 0.315669, 4.18506, -5.2326, -3.45959 )
+
+[node name="ModelAlienRuinsBP3" parent="Alien" instance=ExtResource( 7 )]
+transform = Transform( 0.134818, 0.218021, 0.377523, -0.180403, -0.331841, 0.256064, 0.396877, -0.224902, -0.0118477, 2.45283, -4.68158, -5.45974 )
+
+[node name="AlienRuinsV" parent="Alien" instance=ExtResource( 8 )]
+transform = Transform( -0.275322, -0.17666, -0.221436, -0.259621, 0.28089, 0.0987069, 0.113313, 0.214329, -0.311878, 4.08826, -4.62556, -4.77776 )
+
+[node name="AlienRuinsV4" parent="Alien" instance=ExtResource( 8 )]
+transform = Transform( -0.314243, -0.232029, 0.0588095, -0.0489463, 0.157291, 0.359039, -0.234308, 0.278329, -0.153875, 4.36417, -2.67566, -6.07091 )
+
+[node name="AlienRuinsV6" parent="Alien" instance=ExtResource( 8 )]
+transform = Transform( -0.35085, -0.150698, -0.101189, -0.124539, 0.0396376, 0.372778, -0.132057, 0.362993, -0.0827154, 4.70795, -0.277893, -6.60329 )
+
+[node name="AlienRuinsV8" parent="Alien" instance=ExtResource( 8 )]
+transform = Transform( -0.266798, -0.266219, -0.118284, -0.0123773, -0.149891, 0.365273, -0.29105, 0.25041, 0.0928945, 4.25181, 1.66099, -6.2269 )
+
+[node name="AlienRuinsV7" parent="Alien" instance=ExtResource( 8 )]
+transform = Transform( -0.36132, -0.151011, 0.0518523, 0.0303491, 0.0609913, 0.389107, -0.156754, 0.35989, -0.0441853, 2.10293, -0.7397, -7.36346 )
+
+[node name="AlienRuinsV9" parent="Alien" instance=ExtResource( 8 )]
+transform = Transform( -0.357484, -0.155972, -0.0626307, -0.029711, -0.0862392, 0.38435, -0.16543, 0.352534, 0.0663125, 2.11515, 1.17165, -7.47757 )
+
+[node name="AlienRuinsV5" parent="Alien" instance=ExtResource( 8 )]
+transform = Transform( -0.387417, -0.0759398, -0.0136354, -0.0395222, 0.135373, 0.368995, -0.066263, 0.363252, -0.140363, 2.07079, -2.7766, -6.8464 )
+
+[node name="AlienRuinsV2" parent="Alien" instance=ExtResource( 8 )]
+transform = Transform( 0.295687, -0.17666, -0.193404, -0.0136341, 0.28089, -0.277417, 0.261588, 0.214329, 0.204156, 1.74783, -5.6295, -5.27962 )
+
+[node name="AlienRuinsV3" parent="Alien" instance=ExtResource( 8 )]
+transform = Transform( 0.0303639, -0.17666, 0.352014, 0.25081, 0.28089, 0.119332, -0.303672, 0.214329, 0.133757, 2.98396, -6.6243, -3.19955 )
+
+[node name="ModelAlienRuinsCircle" parent="Alien" instance=ExtResource( 9 )]
+transform = Transform( -0.960462, 0.277643, 0.0206731, 0.275662, 0.93794, 0.210426, 0.0390331, 0.207804, -0.977391, 6.89438, -1.15751, 1.40863 )
+
+[node name="ModelAlienRuinsCircle2" parent="Alien" instance=ExtResource( 9 )]
+transform = Transform( -0.357976, 0.134255, -0.924028, -0.658028, 0.66583, 0.351666, 0.662459, 0.733925, -0.150008, 4.90248, 4.8088, -2.76914 )
+
+[node name="ModelAlienRuinsCircle3" parent="Alien" instance=ExtResource( 9 )]
+transform = Transform( 0.135448, -0.368817, -0.91958, -0.989574, -0.0962239, -0.107165, -0.0489613, 0.924508, -0.378005, 0.398018, 6.69788, 3.05268 )
+
+[node name="ModelAlienRuinsBP4" parent="Alien" instance=ExtResource( 7 )]
+transform = Transform( -0.176158, -0.122658, -0.65134, 0.246036, 0.613695, -0.182111, 0.61543, -0.280452, -0.113632, -1.47739, 3.92052, 5.55413 )
+
+[node name="ModelAlienRuinsBP5" parent="Alien" instance=ExtResource( 7 )]
+transform = Transform( 0.513668, -0.429899, -0.171871, 0.407683, 0.541659, -0.136409, 0.219424, 2.06091e-08, 0.65579, 1.49804, 4.81507, 4.52067 )
+
+[node name="ModelAlienRuinsV" parent="Alien" instance=ExtResource( 10 )]
+transform = Transform( 0.202026, 0.242543, 0.580899, -9.21197e-08, -0.610081, 0.254727, 0.629501, -0.0778394, -0.186428, 0.0330963, 4.83794, 5.81317 )
+
+[node name="ModelAlienRuinsCircle4" parent="Alien" instance=ExtResource( 9 )]
+transform = Transform( 0.363426, 0.897588, 0.0408904, -0.896502, 0.35928, 0.08135, 0.0601791, -0.0683251, 0.964948, -2.10124, 6.07283, -3.20571 )
+
+[node name="ModelAlienRuinsBP6" parent="Alien" instance=ExtResource( 7 )]
+transform = Transform( 0.482385, 0.419854, 0.202646, -0.443909, 0.324569, 0.384237, 0.142433, -0.410385, 0.511209, 3.48106, 2.60272, -5.97034 )
+
+[node name="ModelAlienRuinsBP7" parent="Alien" instance=ExtResource( 7 )]
+transform = Transform( 0.00532177, 0.0878847, 0.665046, -0.598769, 0.30049, -0.0349179, -0.302465, -0.593313, 0.0808256, 1.93694, 1.94348, -6.95703 )
+
+[node name="ModelAlienRuinsCircle5" parent="Alien" instance=ExtResource( 9 )]
+transform = Transform( 0.668852, -0.506606, 0.544047, 0.688401, 0.698333, -0.196047, -0.280607, 0.50565, 0.815829, 3.05892, 5.41621, -4.1487 )
+
+[node name="ModelAlienRuinsCircle6" parent="Alien" instance=ExtResource( 9 )]
+transform = Transform( 0.451251, -0.442511, -0.774956, 0, 0.868398, -0.495868, 0.892397, 0.223761, 0.391866, -1.97048, 2.85219, -6.15116 )
+
+[node name="ModelAlienRuinsBP8" parent="Alien" instance=ExtResource( 7 )]
+transform = Transform( -0.137067, 0.151053, -0.565907, -0.416597, -0.433683, -0.014857, -0.411721, 0.388532, 0.20343, 3.71055, 1.86048, 5.72435 )
+
+[node name="ModelAlienRuinsBP9" parent="Alien" instance=ExtResource( 7 )]
+transform = Transform( -0.322676, 0.34918, -0.368521, 0.0255298, -0.424947, -0.424998, -0.507034, -0.243615, 0.213128, 1.22444, 0.452199, 6.98941 )
+
+[node name="ModelAlienRuinsBP10" parent="Alien" instance=ExtResource( 7 )]
+transform = Transform( 0.0573979, 0.252529, -0.542945, 0.390411, -0.429345, -0.15842, -0.454026, -0.337263, -0.204862, -0.888234, -2.64424, 6.51045 )
+
+[node name="ModelAlienRuinsCircle7" parent="Alien" instance=ExtResource( 9 )]
+transform = Transform( -0.0807552, -0.957317, 0.277528, 0.413169, 0.221238, 0.883371, -0.907067, 0.186003, 0.377668, -5.50306, -0.571693, -5.35675 )
+
+[node name="ModelAlienRuinsPodest2" parent="Alien" instance=ExtResource( 6 )]
+transform = Transform( 0.431297, -0.10581, -0.00757158, -0.0520091, -0.183287, -0.401212, 0.0924559, 0.390488, -0.190373, -2.11871, -4.55692, 2.33726 )
+
+[node name="Gear2" parent="." instance=ExtResource( 5 )]
+transform = Transform( 2.11373, -0.519857, 0.165048, 0.499333, 2.11015, 0.251569, -0.219452, -0.205837, 2.16214, -2.34261, -3.19042, 3.63691 )
 
 [editable path="Model"]

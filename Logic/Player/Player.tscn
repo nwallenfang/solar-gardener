@@ -15,6 +15,7 @@ albedo_color = Color( 0.313726, 0.313726, 0.313726, 1 )
 
 [node name="Player" type="KinematicBody"]
 physics_interpolation_mode = 2
+collision_layer = 9
 script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": "2m tall :)"

@@ -15,7 +15,7 @@ func activate():
 	$ModelMultitool/AnalysePlayer.play("on")
 	$ModelMultitool/HopperPlayer.play("on")
 	$ModelMultitool/PlantPlayer.play("on")
-	$ModelMultitool/SlingshotPlayer.play("on")
+	#$ModelMultitool/SlingshotPlayer.play("on")
 	$ModelMultitool/GrowBeamPlayer.play("on")
 	yield($ModelMultitool/PlantPlayer,"animation_finished")
 	for c in get_children():
@@ -30,7 +30,7 @@ func activate():
 	$ModelMultitool/AnalysePlayer.play("off")
 	$ModelMultitool/HopperPlayer.play("off")
 	$ModelMultitool/PlantPlayer.play("off")
-	$ModelMultitool/SlingshotPlayer.play("off")
+	#$ModelMultitool/SlingshotPlayer.play("off")
 	$ModelMultitool/GrowBeamPlayer.play("off")
 	
 	

@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Models/ModelSandPlanet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Amber.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Objects/Planet.gd" type="Script" id=3]
 [ext_resource path="res://Objects/GrabrootGrabber.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Models/ModelPillarSmall.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Models/ModelPillarMiddle.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Models/ModelPillarBig.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Objects/Gear.tscn" type="PackedScene" id=8]
 
 [sub_resource type="SphereShape" id=12]
 radius = 22.8154
@@ -37,7 +41,7 @@ shape = SubResource( 13 )
 transform = Transform( 5.8573, 0, 0, 0, 5.8573, 0, 0, 0, 5.8573, 0, 0, 0 )
 
 [node name="Amber" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.999999, -0.000652114, 0.000838005, 0.000676505, 0.999566, -0.0294441, -0.000818441, 0.0294447, 0.999566, 0, 6.09713, 0.0119134 )
+transform = Transform( 0.999999, -0.000652114, 0.000838005, 0.000676505, 0.999566, -0.0294441, -0.000818441, 0.0294447, 0.999566, -0.1108, 6.77487, 0.0319705 )
 seed_name = "Hidden Lotus"
 
 [node name="GrabrootGrabber" parent="." instance=ExtResource( 4 )]
@@ -45,3 +49,44 @@ seed_name = "Hidden Lotus"
 [node name="Amber" parent="GrabrootGrabber" instance=ExtResource( 2 )]
 transform = Transform( 0.685153, 0, 0, 0, 0.685153, 0, 0, 0, 0.685153, 0, 1.84799, 0.366538 )
 seed_name = "Moontree"
+
+[node name="Ruins" type="Spatial" parent="."]
+
+[node name="ModelPillarSmall" parent="Ruins" instance=ExtResource( 5 )]
+transform = Transform( 0.976956, -0.21344, -1.12952e-08, -0.0159662, -0.0730806, -0.997198, 0.212842, 0.974219, -0.0748044, 0.0261452, 0.0331568, 5.72306 )
+
+[node name="ModelPillarSmall6" parent="Ruins" instance=ExtResource( 5 )]
+transform = Transform( 0.991983, -0.00658456, 0.12605, -0.00945326, -0.73032, 0.00287479, 0.126018, -0.00295307, -0.99202, -0.131361, 6.55082, -0.0674637 )
+
+[node name="ModelPillarSmall7" parent="Ruins" instance=ExtResource( 5 )]
+transform = Transform( 0.991982, 0.00658455, -0.12605, -0.00945326, 0.73032, -0.00287487, 0.126018, 0.00295313, 0.99202, -0.25109, -6.7289, -0.12116 )
+
+[node name="ModelPillarSmall5" parent="Ruins" instance=ExtResource( 5 )]
+transform = Transform( 0.55451, -0.832177, -1.12952e-08, -0.0622505, -0.0414798, -0.997198, 0.829845, 0.552957, -0.0748044, -4.84911, 0.252865, 2.79419 )
+
+[node name="ModelPillarSmall2" parent="Ruins" instance=ExtResource( 5 )]
+transform = Transform( 0.790924, 0.611914, -1.12952e-08, 0.0457738, -0.0591646, -0.997198, -0.610199, 0.788708, -0.0748044, 2.70673, 0.106506, 4.74526 )
+
+[node name="ModelPillarSmall3" parent="Ruins" instance=ExtResource( 5 )]
+transform = Transform( 0.531576, 0.911534, 1.12952e-08, 0.0633601, -0.0427934, -0.997198, -0.844637, 0.570468, -0.0748044, 5.06804, 0.0424569, 2.59395 )
+
+[node name="ModelPillarSmall4" parent="Ruins" instance=ExtResource( 5 )]
+transform = Transform( -0.869305, 0.507763, 0.14729, 0.036974, 0.386595, -0.932516, -0.492891, -0.866534, -0.329725, 3.08173, 0.102253, -4.46412 )
+
+[node name="ModelPillarMiddle" parent="Ruins" instance=ExtResource( 6 )]
+transform = Transform( 0.22228, 0.830909, 0.100492, -9.01068e-09, -0.0883098, 0.994674, 0.974983, -0.189434, -0.0229105, 5.87934, -0.0146082, 0.0122031 )
+
+[node name="ModelPillarMiddle3" parent="Ruins" instance=ExtResource( 6 )]
+transform = Transform( -0.95337, -0.258584, -1.31923e-08, 0, -3.74516e-08, 1, -0.301804, 0.81684, 4.16731e-08, -2.72877, 6.17578e-07, 5.02195 )
+
+[node name="ModelPillarMiddle2" parent="Ruins" instance=ExtResource( 6 )]
+transform = Transform( 0.36853, 0.893431, 4.06348e-08, 0, -4.201e-08, 1, 0.929616, -0.354185, -1.6109e-08, 5.31185, 1.03642e-07, -2.5832 )
+
+[node name="ModelPillarBig" parent="Ruins" instance=ExtResource( 7 )]
+transform = Transform( 0.999943, -0.00923818, -4.67653e-10, 0, -3.77443e-08, 1, -0.0106987, -0.86344, -4.37089e-08, -0.00384753, 1.16696e-07, -5.55858 )
+
+[node name="ModelPillarBig2" parent="Ruins" instance=ExtResource( 7 )]
+transform = Transform( 0.855753, -0.446757, -2.26156e-08, 0, -3.77443e-08, 1, -0.517385, -0.738934, -3.74061e-08, -3.35326, 1.96428e-07, -4.10435 )
+
+[node name="Gear" parent="." instance=ExtResource( 8 )]
+transform = Transform( -0.0816247, -2.24471, 0.0421892, 1.99409, -0.0918832, -1.03068, 1.03155, 4.1846e-09, 1.99576, -0.320482, -7.0978, 0 )

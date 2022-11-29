@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Models/Meshes/MeshSmallStones4.res" type="ArrayMesh" id=1]
+[ext_resource path="res://Assets/Models/Meshes/MeshSmallStones5.res" type="ArrayMesh" id=2]
+[ext_resource path="res://Assets/Models/Meshes/MeshSmallStones3.res" type="ArrayMesh" id=3]
+[ext_resource path="res://Assets/Models/Meshes/MeshSmallStones1.res" type="ArrayMesh" id=4]
+[ext_resource path="res://Assets/Models/Meshes/MeshSmallStones2.res" type="ArrayMesh" id=5]
+
+[node name="ModelSmallStones" type="Spatial"]
+
+[node name="Stone1" type="MeshInstance" parent="."]
+transform = Transform( 0.356993, 0, -0.934107, 0, 1, 0, 0.934107, 0, 0.356993, 0, 0, 0 )
+mesh = ExtResource( 4 )
+
+[node name="Stone2" type="MeshInstance" parent="."]
+visible = false
+mesh = ExtResource( 5 )
+
+[node name="Stone3" type="MeshInstance" parent="."]
+visible = false
+mesh = ExtResource( 3 )
+
+[node name="Stone4" type="MeshInstance" parent="."]
+visible = false
+mesh = ExtResource( 1 )
+
+[node name="Stone5" type="MeshInstance" parent="."]
+visible = false
+mesh = ExtResource( 2 )

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Models/Meshes/MeshShovel1.res" type="ArrayMesh" id=1]
+
+[node name="ModelShovel" type="Spatial"]
+
+[node name="Shovel" type="MeshInstance" parent="."]
+mesh = ExtResource( 1 )

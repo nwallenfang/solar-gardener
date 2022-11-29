@@ -121,6 +121,8 @@ func trigger_lod(lod: bool):
 			lod_item = lod_item as Node
 			if lod_item.has_method("on_lod"):
 				lod_item.call("on_lod", lod)
+	if has_node("MultiMesh"):
+		$MultiMesh.visible = not lod
 
 func get_count_of_plant_type(plant_name: String) -> int:
 	var count := 0
@@ -138,6 +140,8 @@ func get_analyse_info_text() -> String:
 
 var has_been_grab_rooted := false
 func try_grabroot_effect(pos: Vector3):
+	if Game.planet != self:
+		return
 	if not has_been_grab_rooted:
 		while true:
 			if Utility.start_reliable_test(pos):

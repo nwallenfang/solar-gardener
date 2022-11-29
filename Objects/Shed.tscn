@@ -1,10 +1,13 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Assets/Models/ModelShed.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Shed.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Fonts/ShedFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Assets/Fonts/ShedFontSmall.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Objects/UpgradeStation.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Models/ModelShovel.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Models/ModelBucket.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Models/ModelPickaxe.tscn" type="PackedScene" id=8]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.106865, 0.238602, 2.44913 )
@@ -31,7 +34,7 @@ radius = 3.87482
 extents = Vector3( 1.59012, 1.2219, 1.92038 )
 
 [sub_resource type="BoxShape" id=9]
-extents = Vector3( 0.0159289, 0.774381, 0.778813 )
+extents = Vector3( 0.0159289, 1.42683, 0.778813 )
 
 [sub_resource type="BoxShape" id=10]
 extents = Vector3( 1.49257, 2.01377, 0.475981 )
@@ -40,6 +43,9 @@ extents = Vector3( 1.49257, 2.01377, 0.475981 )
 script = ExtResource( 2 )
 
 [node name="ModelShed" parent="." instance=ExtResource( 1 )]
+
+[node name="MonitorWallRight2" parent="ModelShed" index="13"]
+transform = Transform( 1.23407, 0, 0, 0, 1.23407, 0, 0, 0, 1.071, 0.979583, 2.01587, -2.16148 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.59867, 0 )
@@ -108,13 +114,13 @@ text = "Dreck"
 font = ExtResource( 3 )
 
 [node name="Label6" type="Label3D" parent="ScreenTexts"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.860808, 2.12124, -2.1148 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.968567, 2.07456, -2.1148 )
 pixel_size = 0.001
 text = "Dreck"
 font = ExtResource( 3 )
 
 [node name="Label2" type="Label3D" parent="ScreenTexts"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05733, 2.29177, -2.1148 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.865448, 2.29177, -2.1148 )
 pixel_size = 0.001
 text = "Dreck"
 font = ExtResource( 3 )
@@ -126,13 +132,13 @@ text = "Dreck"
 font = ExtResource( 3 )
 
 [node name="Label4" type="Label3D" parent="ScreenTexts"]
-transform = Transform( 1, 0, 0, 0, 0.978191, 0.207707, 0, -0.207707, 0.978191, -0.729948, 1.38109, -1.88058 )
+transform = Transform( 1, 0, 0, 0, 0.978191, 0.207707, 0, -0.207707, 0.978191, -0.729948, 1.38109, -1.52629 )
 pixel_size = 0.001
 text = "Dreck"
 font = ExtResource( 4 )
 
 [node name="Label5" type="Label3D" parent="ScreenTexts"]
-transform = Transform( 0.840226, 0.120833, -0.528601, 0, 0.974854, 0.222842, 0.542236, -0.187238, 0.819098, -0.0557866, 1.29508, -1.75647 )
+transform = Transform( 0.89762, 0.098222, -0.429686, 0, 0.974854, 0.222842, 0.440769, -0.200028, 0.875049, -0.18636, 1.41093, -1.45419 )
 pixel_size = 0.001
 text = "Dreck
 Dreck
@@ -153,11 +159,11 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.93747
 [node name="Stairs" type="StaticBody" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="Stairs"]
-transform = Transform( 0.68644, 0.727186, 0, -0.727186, 0.68644, 0, 0, 0, 1, -2.41469, -0.543966, 1.17395 )
+transform = Transform( 0.747206, 0.664592, 0, -0.664592, 0.747206, 0, 0, 0, 1, -2.79968, -1.08423, 1.17395 )
 shape = SubResource( 9 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="Stairs"]
-transform = Transform( -0.68644, -0.727186, -8.74228e-08, -0.727186, 0.68644, 0, 6.00105e-08, 6.35726e-08, -1, 2.49819, -0.543966, 1.17395 )
+transform = Transform( -0.747206, -0.664592, -1.50996e-07, -0.664592, 0.747206, -3.38317e-14, 1.12825e-07, 1.00351e-07, -1, 2.90835, -1.06964, 1.17395 )
 shape = SubResource( 9 )
 
 [node name="StaticBody2" type="StaticBody" parent="."]
@@ -165,6 +171,18 @@ shape = SubResource( 9 )
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.687255, -1.42853 )
 shape = SubResource( 10 )
+
+[node name="ModelShovel" parent="." instance=ExtResource( 6 )]
+transform = Transform( 0.866025, -0.0564976, -0.496798, -0.016595, 0.9898, -0.141492, 0.499725, 0.13078, 0.856255, -1.31062, 0.0738549, 1.88714 )
+
+[node name="ModelPickaxe" parent="." instance=ExtResource( 8 )]
+transform = Transform( -0.938476, 0.258819, -0.228637, -0.251464, -0.965926, -0.0612631, -0.236702, -2.23517e-08, 0.971582, 0.962994, 1.5564, 1.98383 )
+
+[node name="ModelBucket" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.20431, 0, -1.18878 )
+
+[node name="ModelBucket2" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.232732, 0, 0.972541, 0, 1, 0, -0.972541, 0, 0.232732, -0.406479, 0, -1.18878 )
 
 [connection signal="body_entered" from="PlayerDetectArea" to="." method="_on_PlayerDetectArea_body_entered"]
 [connection signal="body_exited" from="PlayerDetectArea" to="." method="_on_PlayerDetectArea_body_exited"]

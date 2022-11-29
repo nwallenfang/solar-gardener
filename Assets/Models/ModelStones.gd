@@ -12,9 +12,9 @@ func _ready():
 	change_model()
 
 func change_model():
-	$"stein 1".visible = false
-	$"stein 2".visible = false
-	$"stein 3".visible = false
-	if has_node("stein " + str(type)):
-		get_node("stein " + str(type)).visible = true
+	$"stein1".visible = false
+	$"stein2".visible = false
+	$"stein3".visible = false
+	if has_node("stein" + str(type)):
+		get_node("stein" + str(type)).visible = true
 	$StaticBody/CollisionShapeHigh.disabled = (type != 2)

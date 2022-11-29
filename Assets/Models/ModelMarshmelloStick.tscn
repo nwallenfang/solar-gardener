@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Models/Meshes/MeshMarshmelloStick2.res" type="ArrayMesh" id=1]
+[ext_resource path="res://Assets/Models/Meshes/MeshMarshmelloStick1.res" type="ArrayMesh" id=2]
+
+[node name="ModelMarshmelloStick" type="Spatial"]
+
+[node name="Stick" type="MeshInstance" parent="."]
+mesh = ExtResource( 2 )
+
+[node name="Marshmallow" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.012125 )
+mesh = ExtResource( 1 )
