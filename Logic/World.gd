@@ -44,12 +44,13 @@ func start_loading():
 		cam.current = true
 		if cam.has_node("Ubershader"):
 			cam.get_node("Ubershader").activate()
-		yield(get_tree().create_timer(.20),"timeout")
+			yield(get_tree().create_timer(.2),"timeout")
+		yield(get_tree().create_timer(.25),"timeout")
 		if i == 0:
 			for planet in planet_list:
 				planet = planet as Planet
 				planet.set_player_is_on_planet(not planet.player_on_planet)
-				yield(get_tree().create_timer(.15),"timeout")
+				yield(get_tree().create_timer(.05),"timeout")
 				planet.set_player_is_on_planet(not planet.player_on_planet)
 		cam.current = false
 		cam.queue_free()

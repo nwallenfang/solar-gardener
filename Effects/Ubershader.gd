@@ -15,7 +15,7 @@ func activate():
 	$ModelMultitool/AnalysePlayer.play("on")
 	$ModelMultitool/HopperPlayer.play("on")
 	$ModelMultitool/PlantPlayer.play("on")
-	#$ModelMultitool/SlingshotPlayer.play("on")
+	$ModelMultitool/SlingshotPlayer.play("reload")
 	$ModelMultitool/GrowBeamPlayer.play("on")
 	yield($ModelMultitool/PlantPlayer,"animation_finished")
 	for c in get_children():
@@ -26,7 +26,7 @@ func activate():
 			if cc is Particles:
 				cc.one_shot = true
 				cc.emitting = true
-
+	yield(get_tree().create_timer(.15),"timeout")
 	$ModelMultitool/AnalysePlayer.play("off")
 	$ModelMultitool/HopperPlayer.play("off")
 	$ModelMultitool/PlantPlayer.play("off")
