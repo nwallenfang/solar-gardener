@@ -4,6 +4,8 @@ class_name Planet
 export var planet_name : String
 onready var analyse_name : String = "Soil Type"
 var analyse_speed_factor := .3
+func on_analyse():
+	analyse_speed_factor = 1.5
 
 export(Color) var dirt_pile_color : Color
 

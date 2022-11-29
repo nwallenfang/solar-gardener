@@ -51,7 +51,7 @@ var death_beam_target: Plant
 # Analysis Variable
 const ANALYSE_TOOL_DISTANCE = 10.0
 const ANALYSE_SPEED = 1.0/2.0
-const SOIL_ANALYSE_SPEED = 1.0/5.0
+#const SOIL_ANALYSE_SPEED = 1.0/5.0
 var can_analyse := false
 var currently_analysing := false
 var analyse_completed := false
@@ -207,6 +207,8 @@ func switch_tool(new_tool: int, tool_active := true):
 		TOOL.MOVE:
 			Game.player_raycast.set_collision_mask_bit(4, tool_active)
 		TOOL.ANALYSIS:
+			if not tool_active:
+				currently_analysing = false
 			Game.player_raycast.set_collision_mask_bit(2, tool_active)
 			$ModelMultitool.set_analysis(tool_active)
 			wait_for_animation_finished()
@@ -227,7 +229,8 @@ func switch_tool(new_tool: int, tool_active := true):
 			wait_for_animation_finished()
 	if waiting_for_animation:
 		yield($ModelMultitool,"animation_finished")
-	currently_switching = false
+	if tool_active:
+		currently_switching = false
 
 func idle_process(delta: float):
 	growth_juice = min(1.0, growth_juice + JUICE_GAIN * delta)
@@ -291,7 +294,7 @@ func idle_process(delta: float):
 					current_analyse_object = object_to_analyse
 					current_analyse_progress = 0.0
 			if currently_analysing:
-				if (not first_action_holded) or object_to_analyse != current_analyse_object or (not can_analyse):
+				if (not first_action_holded) or object_to_analyse != current_analyse_object or (not can_analyse) or currently_switching:
 					currently_analysing = false
 					Audio.fade_out("scanner", 0.4)
 				else:
@@ -409,6 +412,8 @@ func check_on_hover():
 			show_moveable(can_move)
 		TOOL.ANALYSIS:
 			can_analyse = false
+			if currently_switching:
+				return
 			object_to_analyse = null
 			if Game.player_raycast.colliding:
 				if Game.player_raycast.hit_point.distance_to(Game.player.global_translation) < ANALYSE_TOOL_DISTANCE:
@@ -515,7 +520,7 @@ func show_analyse_information():
 		if object_to_analyse != null and is_instance_valid(object_to_analyse):
 			if "analyse_name" in object_to_analyse:
 				if completely_analysed_object != null:
-					if object_to_analyse == completely_analysed_object:
+					if object_to_analyse == completely_analysed_object and (not first_action_holded):
 						return
 					else:
 						completely_analysed_object = null
