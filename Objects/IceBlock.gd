@@ -11,3 +11,16 @@ func melt():
 	$MeltingTween.start()
 	yield($MeltingTween,"tween_all_completed")
 	$Ice.queue_free()
+
+var almost_melting := false
+func almost_melt():
+	if almost_melting:
+		return
+	almost_melting = true
+	$AnimationPlayer.play("almost_melt")
+
+func get_analyse_text():
+	if almost_melting:
+		return "It started melting\nbut it needs a\nstronger heat source."
+	else:
+		return "Should melt\nat great heat"

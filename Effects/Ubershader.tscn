@@ -1720,6 +1720,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.41543, 0 )
 
 [node name="Twinkle" parent="." instance=ExtResource( 28 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.665822, 0, -0.126743 )
+both = true
 
 [node name="AlienLights" parent="." instance=ExtResource( 27 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22658, 0, 0 )
