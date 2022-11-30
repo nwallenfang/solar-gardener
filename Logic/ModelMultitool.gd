@@ -38,6 +38,9 @@ func set_plant(active: bool):
 		Audio.play("seedgun_load")
 	if not active:
 		$Slingshot.visible = false
+	yield(get_tree().create_timer(.1),"timeout")
+	if active:
+		home_wheel()
 	yield($PlantPlayer,"animation_finished")
 	if not active:
 		$Antenna.visible = true

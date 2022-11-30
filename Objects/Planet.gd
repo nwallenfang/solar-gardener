@@ -122,6 +122,7 @@ func set_player_is_on_planet(b: bool):
 	planet_light.set_player_is_on_planet(player_on_planet)
 	trigger_lod(not player_on_planet)
 
+var render_multi_mesh := true
 func trigger_lod(lod: bool):
 	for lod_item in lod_items:
 		if is_instance_valid(lod_item):
@@ -129,7 +130,7 @@ func trigger_lod(lod: bool):
 			if lod_item.has_method("on_lod"):
 				lod_item.call("on_lod", lod)
 	if has_node("MultiMesh"):
-		$MultiMesh.visible = not lod
+		$MultiMesh.visible = (not lod) and render_multi_mesh
 
 func get_count_of_plant_type(plant_name: String) -> int:
 	var count := 0

@@ -76,6 +76,10 @@ func _on_InvertYButton_pressed() -> void:
 
 
 func _on_GraphicsSlider_value_changed(value: float) -> void:
-	Game.world.get_node("Stars").visible = (value >= .5)
+	Game.world.get_node("Stars").visible = (value >= .7)
+	for planet in Game.planet_list:
+		planet = planet as Planet
+		planet.render_multi_mesh = (value >= .7)
+	Game.planet.trigger_lod(false)
 	Game.main_scene.resolution_scaling_factor = value
 	Game.main_scene.root_viewport_size_changed()
