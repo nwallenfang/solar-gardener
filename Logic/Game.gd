@@ -44,6 +44,8 @@ var cheat_lod := false
 
 var shed: Shed
 
+var growth_cheat = false
+
 # progresses
 var number_of_ambers := 0 setget set_number_of_ambers
 var number_of_logs := 0 setget set_number_of_logs
@@ -134,6 +136,15 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("sound_overload"):
 		for i in range(20):
 			Audio.play("plant_growth_stage" + str(i%3 + 1))
+	
+	if Input.is_action_just_pressed("growth_cheat"):
+		print("growth cheat")
+		growth_cheat = true
+		
+	if Input.is_action_just_pressed("trigger_credits"):
+		print("trigger credits")
+		# TODO
+		pass
 
 signal changed_state(state, prev_state)
 func set_game_state(state):
