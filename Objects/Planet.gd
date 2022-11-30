@@ -26,6 +26,8 @@ export var music_prefix := "sand"
 
 export var is_obsidian := false
 
+export var gravity_modifier := 1.0
+
 var planet_growth_stage := 0  # for the music or general planet progression
 var planet_light : PlanetLight
 
@@ -146,6 +148,8 @@ func get_analyse_info_text() -> String:
 var has_been_grab_rooted := false
 func try_grabroot_effect(pos: Vector3):
 	if Game.planet != self:
+		return
+	if Events.get_event_from_key("journal_opened").execute_count == 0 or Events.get_event_from_key("seeds_harvested").execute_count == 0:
 		return
 	if not has_been_grab_rooted:
 		while true:

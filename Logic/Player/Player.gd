@@ -9,7 +9,6 @@ export var y_axis_factor := 1.0
 export var mouse_sensitivity := 0.005
 export var y_limit := deg2rad(90.0)
 
-
 export var speed := 30
 
 export(float, 0.0, 1.0, 0.05) var air_control := 0.3
@@ -32,7 +31,6 @@ export var gravity_multiplier := 3.0
 onready var gravity_strength : float = (ProjectSettings.get_setting("physics/3d/default_gravity") 
 		* gravity_multiplier)
 
-
 var movement_disabled = false
 var has_jumped = false
 var jump_action_released_after_jump := false
@@ -42,7 +40,6 @@ onready var pickup_point : Spatial = $"%PickupPoint"
 func _ready():
 	Game.player = self
 	$Mesh.visible = false
-
 
 var gravity_effect_max_dist = 40  # TODO this should be changed since it depends on planet size
 func calc_gravity_direction() -> Vector3:
@@ -99,8 +96,9 @@ func _physics_process(delta) -> void:
 			Audio.play_random_step(Game.planet.music_prefix)
 		snap = gravity_direction
 	
+	var planet_gravity_modifier : float = Game.planet.gravity_modifier
 	if direction.length() > 0.1 or not is_on_floor():
-		velocity += gravity_strength * gravity_direction * delta
+		velocity += gravity_strength * gravity_direction * delta * planet_gravity_modifier
 	orient_player_sphere(delta)
 	velocity = accelerate(velocity, direction, delta)
 #	

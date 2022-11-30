@@ -233,6 +233,8 @@ func grow(delta, factor_sign):
 		growth_stage_progress = 0.0
 
 		play_growth_pop_animation(old_stage)
+		if growth_stage >= profile.use_big_hitbox_at_stage:
+			$Area/CollisionShapeBig.disabled = false
 
 		can_be_analysed = true
 		if growth_stage == growth_lock:
@@ -416,6 +418,7 @@ func flush_seeds():
 	if not seeds_ready_to_harvest:
 		return
 	seeds_ready_to_harvest = false
+	Events.trigger("seeds_harvested")
 	for pickup in small_seeds:
 		$SeedGrowTween.interpolate_property(pickup, "scale", pickup.scale, pickup.scale * 1.8, 1.0)
 	$SeedGrowTween.start()

@@ -27,6 +27,7 @@ export(SOIL_TYPES) var prefered_soil: int
 export(PLANT_TYPES) var symbiosis_plant_type: int
 
 export var needs_dirt_pile := false
+export var use_big_hitbox_at_stage := 10
 
 export var seed_count: int
 export var seed_grow_time: float = 7.0

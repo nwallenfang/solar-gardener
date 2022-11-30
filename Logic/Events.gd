@@ -76,7 +76,8 @@ func setup():
 	events.append(Event.new("too_many_seeds", self, "too_many_seeds", true))
 	events.append(Event.new("no_seeds", self, "no_seeds", false))
 	events.append(Event.new("planet_hopped", self, "planet_hopped", false))
-
+	events.append(Event.new("journal_opened", self, "nothing", false))
+	events.append(Event.new("seeds_harvested", self, "nothing", false))
 
 ###########
 # TRIGGER FUNCTIONS
@@ -221,4 +222,7 @@ func too_many_seeds():
 
 func way_too_many_seeds():
 	Game.UI.add_tutorial_message("Seed overload", "Internal Yardin systems are scrambling to store this endless seed flood.", duration * 0.7)
+	next()
+
+func nothing():
 	next()
