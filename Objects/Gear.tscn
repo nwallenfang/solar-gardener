@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Assets/Models/Meshes/MeshMultitool3.res" type="ArrayMesh" id=1]
+[ext_resource path="res://Assets/Models/Meshes/Gear.tres" type="ArrayMesh" id=1]
 [ext_resource path="res://Objects/Gear.gd" type="Script" id=2]
 [ext_resource path="res://Effects/Twinkle.tscn" type="PackedScene" id=3]
 
@@ -10,13 +10,13 @@ radius = 0.263869
 [sub_resource type="Animation" id=3]
 length = 0.001
 tracks/0/type = "bezier"
-tracks/0/path = NodePath("Pivot/Wheel:rotation_degrees:x")
+tracks/0/path = NodePath("Pivot/Wheel:rotation_degrees:z")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( -180, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/1/type = "bezier"
@@ -30,13 +30,13 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/2/type = "bezier"
-tracks/2/path = NodePath("Pivot/Wheel:rotation_degrees:z")
+tracks/2/path = NodePath("Pivot/Wheel:rotation_degrees:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"points": PoolRealArray( -180, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/3/type = "bezier"
@@ -120,15 +120,15 @@ script = ExtResource( 2 )
 [node name="Pivot" type="Spatial" parent="."]
 
 [node name="Wheel" type="MeshInstance" parent="Pivot"]
-transform = Transform( -1, 8.04747e-08, 0, -1.50996e-07, -0.53296, 0, 0, 0, 1, 0, 0, 0 )
+transform = Transform( -1, -6.63539e-08, 0, 8.74228e-08, -0.759, 0, 0, 0, 1, 0, 0, 0 )
 mesh = ExtResource( 1 )
 skeleton = NodePath("../..")
 
 [node name="Twinkle" parent="Pivot/Wheel" instance=ExtResource( 3 )]
-transform = Transform( -0.174133, -2.56422e-09, 0, 1.52232e-08, -0.0293313, 0, 0, 0, 0.174133, -8.29944e-09, -0.0949345, 0 )
+transform = Transform( -0.174133, 1.16283e-09, 6.98823e-22, -6.26749e-08, -0.0293313, -1.49985e-14, 7.41154e-22, -5.55112e-17, 0.174133, 3.76365e-09, -0.0949345, -3.88578e-15 )
 
 [node name="Twinkle2" parent="Pivot/Wheel" instance=ExtResource( 3 )]
-transform = Transform( -0.174133, -2.56422e-09, 0, 1.52232e-08, -0.0293313, 0, 0, 0, 0.174133, 1.62978e-08, 0.186425, 0 )
+transform = Transform( -0.174133, 1.16283e-09, 6.98823e-22, -6.26749e-08, -0.0293313, -1.49985e-14, 7.41154e-22, -5.55112e-17, 0.174133, -7.39075e-09, 0.186425, -5.21805e-15 )
 
 [node name="Area" type="Area" parent="."]
 collision_layer = 12
