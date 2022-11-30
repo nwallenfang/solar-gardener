@@ -203,8 +203,12 @@ var variation = 0.28
 var current_planet_type: String
 onready var timer: Timer = $GameSpecific/FootstepTimer
 func start_footsteps(planet_type: String):
-	if planet_type == "placeholder":
-		current_planet_type = "sand"
+	# dirty last minute flip because of the music change
+#	if planet_type == "dirt":
+#		current_planet_type = "sand"
+#	elif planet_type == "sand":
+#		current_planet_type = "dirt"
+		
 	if not timer.is_stopped():
 		return
 	current_planet_type = planet_type

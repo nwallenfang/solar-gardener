@@ -93,7 +93,13 @@ func _physics_process(delta) -> void:
 			# TODO add contact sound effect
 			has_jumped = false
 			jetpack_fuel = 1.0
-			Audio.play_random_step(Game.planet.music_prefix)
+			var prefix: String = Game.planet.music_prefix		
+			# dirty (heh) last minute hack
+			if prefix == "dirt":
+				prefix = "sand"
+			elif prefix == "sand":
+				prefix = "dirt"
+			Audio.play_random_step(prefix)
 		snap = gravity_direction
 	
 	var planet_gravity_modifier : float = Game.planet.gravity_modifier
@@ -110,7 +116,14 @@ func _physics_process(delta) -> void:
 #		if Game.player_is_in_shed:
 #			Audio.start_footsteps("wood")
 #		else:
-		Audio.start_footsteps(Game.planet.music_prefix)
+		var prefix: String = Game.planet.music_prefix
+		
+		# dirty (heh) last minute hack
+		if prefix == "dirt":
+			prefix = "sand"
+		elif prefix == "sand":
+			prefix = "dirt"
+		Audio.start_footsteps(prefix)
 	else:
 		Audio.stop_footsteps()
 
