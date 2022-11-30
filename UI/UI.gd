@@ -57,6 +57,14 @@ func _input(event):
 func changed_state(state, prev_state):
 	match state:
 		Game.State.INGAME:
+			if prev_state == Game.State.READING_NOTE and note_index == 5:
+				Game.number_of_logs += 1
+				$GardenerNote.visible = false
+				
+				yield(get_tree().create_timer(0.5), "timeout")
+				Game.trigger_credits()
+				return
+			
 			mode=Input.MOUSE_MODE_CAPTURED#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			if prev_state == Game.State.JOURNAL:
 				if Events.get_event_from_key("tutorial_plant_scanned").execute_count > 0:
@@ -71,6 +79,7 @@ func changed_state(state, prev_state):
 			$"%Crosshair".visible = true
 			$GardenerNote.visible = false
 			$SkipCutsceneLabel.visible = false
+			$Credits.visible = false
 		Game.State.SETTINGS:
 			mode = Input.MOUSE_MODE_VISIBLE#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			$SettingsUI.show_settings()
@@ -81,6 +90,8 @@ func changed_state(state, prev_state):
 			$TutorialPanel.visible = false
 #			$Diagnostics.visible = false
 			$GardenerNote.visible = false
+			if has_node("ClickToFocus"):
+				$ClickToFocus.visible = false
 		Game.State.JOURNAL:
 			Events.trigger("journal_opened")
 			$"%Crosshair".visible = false
@@ -108,10 +119,23 @@ func changed_state(state, prev_state):
 			$TutorialPanel.visible = false
 			$Toolbar.visible = false
 			$SkipCutsceneLabel.visible = true
+		Game.State.CREDITS:
+			mode = Input.MOUSE_MODE_VISIBLE#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			$"%Crosshair".visible = false
+			$HotkeyGuide.visible = false
+			$TutorialPanel.visible = false
+			$JournalAndGuideUI.hide()
+			$"%Crosshair".visible = false
+			$Toolbar.visible = false
+			$Credits.visible = true
+			$Credits.start()
 
 func set_note_text(text: String):
 	$GardenerNote.set_text(text)
 
+var note_index: int = -1
+func set_note_index(index):
+	note_index = index
 
 func set_blackscreen_alpha(alpha_in_percent: float): #should start with .99 alpha
 	$BlackScreen.modulate.a = alpha_in_percent

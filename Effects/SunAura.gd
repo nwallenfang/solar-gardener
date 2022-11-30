@@ -19,6 +19,10 @@ func _physics_process(delta):
 
 	if Game.game_state == Game.State.INTRO_FLIGHT:
 		target = Game.world.get_node("%FlyCamera")
+		
+	if Game.game_state == Game.State.CREDITS:
+		# should work always but just taking it for credits not to break anything
+		target = get_viewport().get_camera()
 
 	if target != null:
 		var up_vector: Vector3 = target.global_translation.direction_to(self.global_translation)

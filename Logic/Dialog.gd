@@ -64,12 +64,13 @@ func play_gardener_voice_over(index: int):
 	var stream = get("note_audio" + str(index))
 	$VoiceOver.stream = stream
 	$VoiceOver.play()
-	if Game.planet.planet_growth_stage > 0:
-		Audio.reduce_volume(Game.planet.get_current_music_name(), 0.4)
+#	if Game.planet.planet_growth_stage > 0:
+#		Audio.reduce_volume(Game.planet.get_current_music_name(), 0.4)
 
 func _on_VoiceOver_finished() -> void:
-	if Game.planet.planet_growth_stage > 0:
-		Audio.to_normal_volume(Game.planet.get_current_music_name())
+#	if Game.planet.planet_growth_stage > 0:
+#		Audio.to_normal_volume(Game.planet.get_current_music_name())
+	pass
 
 func skip_intro():
 	$Timer.wait_time = 0.01

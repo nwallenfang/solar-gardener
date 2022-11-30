@@ -120,13 +120,43 @@ far = 1000.0
 [node name="Planet" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48.764, 0, -98.0153 )
 
+[node name="CreditsPivot1" type="Spatial" parent="Planet"]
+unique_name_in_owner = true
+transform = Transform( -0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, -0.939693, 0, 0, 0 )
+
+[node name="CreditsCamera1" type="Camera" parent="Planet/CreditsPivot1"]
+unique_name_in_owner = true
+transform = Transform( -3.76351e-08, 0.422618, -0.906308, -1, -4.37114e-08, 2.11427e-08, -3.06807e-08, 0.906308, 0.422618, 0, 0, 8.2 )
+fov = 90.0
+far = 250.0
+
 [node name="Planet2" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -93.9909, 21.4094, 26.8254 )
 music_prefix = "rock"
 
+[node name="CreditsPivot2" type="Spatial" parent="Planet2"]
+unique_name_in_owner = true
+transform = Transform( 0.997819, 0, 0.0660127, 0, 1, 0, -0.0660127, 0, 0.997819, 0, 0, 1.90735e-06 )
+
+[node name="CreditsCamera2" type="Camera" parent="Planet2/CreditsPivot2"]
+unique_name_in_owner = true
+transform = Transform( -3.76351e-08, 0.422618, -0.906308, -1, -4.37114e-08, 2.11427e-08, -3.06807e-08, 0.906308, 0.422618, 0, 0, 12 )
+fov = 90.0
+far = 250.0
+
 [node name="Planet3" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.13, -30.1157, 58.9798 )
 music_prefix = "dirt"
+
+[node name="CreditsPivot3" type="Spatial" parent="Planet3"]
+unique_name_in_owner = true
+transform = Transform( 0.997819, 0, 0.0660127, 0, 1, 0, -0.0660127, 0, 0.997819, 0, 0, 1.90735e-06 )
+
+[node name="CreditsCamera3" type="Camera" parent="Planet3/CreditsPivot3"]
+unique_name_in_owner = true
+transform = Transform( -4.23909e-08, 0.573577, -0.819152, -1, -4.37114e-08, 2.11427e-08, -2.36793e-08, 0.819152, 0.573577, 0, 0, 9 )
+fov = 90.0
+far = 250.0
 
 [node name="SkipCutscene" type="Timer" parent="."]
 
@@ -175,6 +205,7 @@ far = 1000.0
 
 [node name="Position3" type="Camera" parent="NewCutscene"]
 transform = Transform( -0.730889, 0, -0.682496, 0, 1, 0, 0.682496, 0, -0.730889, -91.9886, 7.08001, -148.923 )
+current = true
 far = 1000.0
 
 [node name="Position4" type="Camera" parent="NewCutscene"]

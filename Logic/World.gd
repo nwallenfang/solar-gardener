@@ -13,7 +13,6 @@ func _ready() -> void:
 		$WorldEnvironment.environment.background_energy = SKY_ENERGY_NATIVE
 	
 	Game.world = self
-	
 	PlantData.setup()
 	PlantData.add_test_progress()
 	Game.sun = $Sun
@@ -138,3 +137,9 @@ func _on_SkipCutscene_timeout() -> void:
 	
 	yield(get_tree().create_timer(2.5), "timeout")
 	Events.tutorial_beginning()
+	
+	
+func credits_animation(pivot: Spatial, duration: float):
+	var tween = get_tree().create_tween()
+	tween.tween_property(pivot, "rotation_degrees:y", pivot.rotation_degrees.y + 140, duration)
+	tween.play()

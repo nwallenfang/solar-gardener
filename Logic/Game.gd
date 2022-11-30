@@ -43,7 +43,7 @@ var coming_out_of_journal = false
 var cheat_lod := false
 
 var shed: Shed
-
+var credits: Credits
 var growth_cheat = false
 
 # progresses
@@ -143,8 +143,12 @@ func _process(delta: float) -> void:
 		
 	if Input.is_action_just_pressed("trigger_credits"):
 		print("trigger credits")
-		# TODO
-		pass
+		trigger_credits()
+		
+	if Input.is_action_just_pressed("melt_ice"):
+		print("melt")
+		if planet.has_node("IceBlock"):
+			planet.get_node("IceBlock").melt()
 
 signal changed_state(state, prev_state)
 func set_game_state(state):
@@ -216,5 +220,45 @@ func execute_planet_hop(new_planet: Planet, pos: Vector3):
 	set_game_state(State.INGAME)
 
 
+
+var skipped = false
+func trigger_credits():
+	Audio.fade_out(planet.get_current_music_name(), 1.5)
+	Audio.fade_in("music_title_end_screen", 2.5)
+	set_game_state(State.CREDITS)
+	camera.current = false
+	world.get_node("%CreditsCamera1").current = true
+	world.credits_animation(world.get_node("%CreditsPivot1"), 13.0)
+#	UI.get_node("Credits").visi
+	yield(credits, "change_to_camera_2")
+	if skipped: 
+		return
+	world.get_node("%CreditsCamera2").current = true
+	world.credits_animation(world.get_node("%CreditsPivot2"), 13.0)
+	print("changed 2")
+	yield(credits, "change_to_camera_3")
+	if skipped: 
+		return
+	world.get_node("%CreditsCamera3").current = true
+	world.credits_animation(world.get_node("%CreditsPivot3"), 13.0)
+	yield(credits, "credits_done")
+	if skipped: 
+		return
+	print("changed 3")
+	world.get_node("%CreditsCamera3").current = false
+	self.game_state = State.INGAME
+	camera.current = true
+	Audio.fade_out("music_title_end_screen", 0.8)
+	Audio.fade_in(planet.get_current_music_name(), 1.0)
+	
+	
+func credits_skipped():
+	skipped = true
+	world.get_node("%CreditsCamera3").current = false
+	self.game_state = State.INGAME
+	camera.current = true
+	Audio.fade_out("music_title_end_screen", 0.8)
+	Audio.fade_in(planet.get_current_music_name(), 1.0)
+	
 func _on_SettingsOpenCooldown_timeout() -> void:
 	pass # one shot

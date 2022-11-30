@@ -113,6 +113,10 @@ mixer_bus = "Music"
 volume_db = 8.0
 mixer_bus = "Music"
 
+[node name="music_title_end_screen" parent="Sounds" instance=ExtResource( 1 )]
+volume_db = 2.0
+mixer_bus = "Music"
+
 [node name="music_obsidian_0" parent="Sounds" instance=ExtResource( 1 )]
 volume_db = 8.0
 mixer_bus = "Music"
