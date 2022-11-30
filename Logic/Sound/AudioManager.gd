@@ -197,8 +197,9 @@ func play_attenuated(sound_name:String, distance:float):
 ################################
 export var footstep_directory = "res://Assets/Sound/Footsteps/"
 var number_per := {"dirt": 6, "obsidian": 6, "rock": 7, "sand": 6, "wood": 5}
+var db_per := {"dirt": -2, "sand": -2, "obsidian" : -2, "rock": -2}
 var steps_per_second := 1.8 
-var step_volume_db := -5.0
+#var step_volume_db := -5.0
 var variation = 0.28
 var current_planet_type: String
 onready var timer: Timer = $GameSpecific/FootstepTimer
@@ -258,7 +259,7 @@ func setup_footsteps():
 					var managed_sound = MANAGED_SOUND_SCENE.instance()
 					managed_sound.name = node_name
 					managed_sound.stream = load(footstep_directory + file_name)
-					managed_sound.volume_db = step_volume_db
+#					managed_sound.volume_db = step_volume_db
 					managed_sound.mixer_bus = "SFX"
 					$Sounds.add_child(managed_sound, true)
 				else: # sound exists in Sounds
@@ -277,7 +278,7 @@ var name_to_index := {
 	"Hidden Lotus": 4,
 	"Moontree": 5,
 	"Cosmosun": 6,
-	"Fallback": 6,
+	"Fallback": 2,
 }
 # growth stage should go from 1 to 4 so exactly like the PlantData enum
 func play_growth_stage(plant_name: String, growth_stage: int, distance: float):

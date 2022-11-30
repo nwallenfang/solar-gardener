@@ -119,6 +119,7 @@ far = 1000.0
 
 [node name="Planet" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48.764, 0, -98.0153 )
+music_prefix = "dirt"
 
 [node name="CreditsPivot1" type="Spatial" parent="Planet"]
 unique_name_in_owner = true
@@ -146,7 +147,6 @@ far = 250.0
 
 [node name="Planet3" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.13, -30.1157, 58.9798 )
-music_prefix = "dirt"
 
 [node name="CreditsPivot3" type="Spatial" parent="Planet3"]
 unique_name_in_owner = true

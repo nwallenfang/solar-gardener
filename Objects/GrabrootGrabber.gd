@@ -21,4 +21,4 @@ func _ready():
 var analyse_name := "Grabroot Branch"
 
 func get_analyse_text():
-	return "Grabroots rarely\npull hidden\nobjects to\nthe surface"
+	return "Grabroots can\npull hidden\nobjects to\nthe surface"

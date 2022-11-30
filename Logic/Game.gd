@@ -184,7 +184,10 @@ func hop_music_fade(old_planet: Planet, new_planet: Planet):
 		old_planet.fade_out()
 		new_planet.fade_in()
 
+
+
 func execute_planet_hop(new_planet: Planet, pos: Vector3):
+	var sun_hot := false
 	#pos = new_planet.global_translation + new_planet.global_translation.direction_to(player.global_translation) * 10.0 - player.global_transform.basis.y * 2.0
 	var dir_to_planet = player.global_translation.direction_to(new_planet.global_translation)
 	pos = new_planet.global_translation + player.global_translation.direction_to(pos).cross(-dir_to_planet).cross(dir_to_planet).normalized() * 15.0
@@ -196,9 +199,15 @@ func execute_planet_hop(new_planet: Planet, pos: Vector3):
 	new_planet.set_player_is_on_planet(true)
 #	if not planet.planet_growth_stage == new_planet.planet_growth_stage \
 #		or new_planet.music_prefix == "obsidian":
+
+	# try to fix the nasty music issue so if we're moving from a to b just stop 
+	# music from planet c and d
 	
 	hop_music_fade(planet, new_planet)
 	main_scene.set_wush(true)
+	if planet.planet_name == "Yard Shed" and new_planet.planet_name == "Düne" or \
+		planet.planet_name == "Düne" and new_planet.planet_name == "Yard Shed":
+		sun_hot = true
 	planet = new_planet
 	#player.global_transform = Transform(new_basis, pos)
 	var current_y_looking_angle : float = player.get_node("Head").rotation.x
@@ -220,6 +229,9 @@ func execute_planet_hop(new_planet: Planet, pos: Vector3):
 	player.update_look_direction()
 	Events.trigger("planet_hopped")
 	set_game_state(State.INGAME)
+	yield(get_tree(), "idle_frame")
+	if sun_hot:
+		Events.trigger("sun_hot")
 
 
 

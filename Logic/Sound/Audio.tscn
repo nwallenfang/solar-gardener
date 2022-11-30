@@ -12,6 +12,14 @@ script = ExtResource( 2 )
 [node name="event_pickup" parent="Sounds" instance=ExtResource( 1 )]
 mixer_bus = "SFX"
 
+[node name="scanner_rotate_slow" parent="Sounds" instance=ExtResource( 1 )]
+volume_db = -1.5
+mixer_bus = "SFX"
+
+[node name="seedgun_close" parent="Sounds" instance=ExtResource( 1 )]
+volume_db = -5.0
+mixer_bus = "SFX"
+
 [node name="hop_launch" parent="Sounds" instance=ExtResource( 1 )]
 volume_db = -8.0
 mixer_bus = "SFX"
@@ -26,14 +34,15 @@ mixer_bus = "SFX"
 mixer_bus = "SFX"
 
 [node name="scanner" parent="Sounds" instance=ExtResource( 1 )]
+volume_db = -1.0
 mixer_bus = "SFX"
 
 [node name="scanner_open" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = -6.0
+volume_db = -8.0
 mixer_bus = "SFX"
 
 [node name="scanner_close" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = -8.5
+volume_db = -11.5
 mixer_bus = "SFX"
 
 [node name="plant_growth_stage1" parent="Sounds" instance=ExtResource( 1 )]
@@ -139,6 +148,7 @@ mixer_bus = "SFX"
 
 [node name="remover" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
+volume_db = 1.0
 mixer_bus = "SFX"
 
 [node name="upgrade" type="Node" parent="Sounds"]
@@ -168,6 +178,7 @@ mixer_bus = "SFX"
 
 [node name="special_grabroot" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
+volume_db = 2.0
 mixer_bus = "SFX"
 
 [node name="PLANT_1_STAGE_1" type="Node" parent="Sounds"]
@@ -212,22 +223,22 @@ mixer_bus = "SFX"
 
 [node name="PLANT_3_STAGE_1" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
-volume_db = -7.0
+volume_db = -6.0
 mixer_bus = "SFX"
 
 [node name="PLANT_3_STAGE_2" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
-volume_db = -7.0
+volume_db = -6.0
 mixer_bus = "SFX"
 
 [node name="PLANT_3_STAGE_3" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
-volume_db = -5.0
+volume_db = -4.0
 mixer_bus = "SFX"
 
 [node name="PLANT_3_STAGE_4" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
-volume_db = -5.0
+volume_db = -4.0
 mixer_bus = "SFX"
 
 [node name="PLANT_4_STAGE_1" type="Node" parent="Sounds"]
@@ -252,42 +263,172 @@ mixer_bus = "SFX"
 
 [node name="PLANT_5_STAGE_1" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
-volume_db = -5.0
+volume_db = -3.0
 mixer_bus = "SFX"
 
 [node name="PLANT_5_STAGE_2" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
-volume_db = -5.0
+volume_db = -3.0
 mixer_bus = "SFX"
 
 [node name="PLANT_5_STAGE_3" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
-volume_db = -5.0
+volume_db = -3.0
 mixer_bus = "SFX"
 
 [node name="PLANT_5_STAGE_4" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
-volume_db = -5.0
+volume_db = -3.0
 mixer_bus = "SFX"
 
 [node name="PLANT_6_STAGE_1" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
-volume_db = -8.0
+volume_db = -7.0
 mixer_bus = "SFX"
 
 [node name="PLANT_6_STAGE_2" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
-volume_db = -8.0
+volume_db = -7.0
 mixer_bus = "SFX"
 
 [node name="PLANT_6_STAGE_3" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
-volume_db = -8.0
+volume_db = -7.0
 mixer_bus = "SFX"
 
 [node name="PLANT_6_STAGE_4" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
-volume_db = -8.0
+volume_db = -7.0
+mixer_bus = "SFX"
+
+[node name="steps_dirt_01" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -7.0
+mixer_bus = "SFX"
+
+[node name="steps_dirt_02" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -7.0
+mixer_bus = "SFX"
+
+[node name="steps_dirt_03" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -7.0
+mixer_bus = "SFX"
+
+[node name="steps_dirt_04" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -7.0
+mixer_bus = "SFX"
+
+[node name="steps_dirt_05" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -7.0
+mixer_bus = "SFX"
+
+[node name="steps_dirt_06" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -7.0
+mixer_bus = "SFX"
+
+[node name="steps_sand_01" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -7.0
+mixer_bus = "SFX"
+
+[node name="steps_sand_02" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -7.0
+mixer_bus = "SFX"
+
+[node name="steps_sand_03" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -7.0
+mixer_bus = "SFX"
+
+[node name="steps_sand_04" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -7.0
+mixer_bus = "SFX"
+
+[node name="steps_sand_05" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -7.0
+mixer_bus = "SFX"
+
+[node name="steps_sand_06" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -7.0
+mixer_bus = "SFX"
+
+[node name="steps_obsidian_01" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -7.0
+mixer_bus = "SFX"
+
+[node name="steps_obsidian_02" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -7.0
+mixer_bus = "SFX"
+
+[node name="steps_obsidian_03" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -7.0
+mixer_bus = "SFX"
+
+[node name="steps_obsidian_04" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -7.0
+mixer_bus = "SFX"
+
+[node name="steps_obsidian_05" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -7.0
+mixer_bus = "SFX"
+
+[node name="steps_obsidian_06" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -7.0
+mixer_bus = "SFX"
+
+[node name="steps_rock_01" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -7.0
+mixer_bus = "SFX"
+
+[node name="steps_rock_02" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -7.0
+mixer_bus = "SFX"
+
+[node name="steps_rock_03" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -7.0
+mixer_bus = "SFX"
+
+[node name="steps_rock_04" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -7.0
+mixer_bus = "SFX"
+
+[node name="steps_rock_05" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -7.0
+mixer_bus = "SFX"
+
+[node name="steps_rock_06" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -7.0
+mixer_bus = "SFX"
+
+[node name="steps_rock_07" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -7.0
+mixer_bus = "SFX"
+
+[node name="jetpack" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -4.0
 mixer_bus = "SFX"
 
 [node name="Players" type="Node" parent="."]

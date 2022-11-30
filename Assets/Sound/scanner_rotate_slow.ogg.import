@@ -11,5 +11,5 @@ dest_files=[ "res://.import/scanner_rotate_slow.ogg-b0307b188e9a28777c875fe6d6a1
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0

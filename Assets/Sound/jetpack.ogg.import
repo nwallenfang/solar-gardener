@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/jetpack.ogg-8e5b8583613b93932daeca6e1a5c8c72.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sound/jetpack.ogg"
+dest_files=[ "res://.import/jetpack.ogg-8e5b8583613b93932daeca6e1a5c8c72.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

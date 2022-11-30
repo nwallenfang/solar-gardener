@@ -65,6 +65,12 @@ func _physics_process(delta) -> void:
 	if not jump_action_released_after_jump:
 		jump_action_released_after_jump = Input.is_action_just_released("jump")
 	var trigger_jetpack = unlocked_jetpack and (not is_on_floor()) and Input.is_action_pressed("jump") and jump_action_released_after_jump and has_jumped and (jetpack_fuel>0.0)
+	
+	if trigger_jetpack and not "jetpack" in Audio.playing:
+		Audio.fade_in("jetpack", 0.1, true)
+	if not trigger_jetpack and "jetpack" in Audio.playing:
+		Audio.fade_out("jetpack", 0.1)
+	
 	if movement_disabled or Game.game_state != Game.State.INGAME:
 		input_axis = Vector2.ZERO
 		mouse_axis = Vector2.ZERO
@@ -95,10 +101,10 @@ func _physics_process(delta) -> void:
 			jetpack_fuel = 1.0
 			var prefix: String = Game.planet.music_prefix		
 			# dirty (heh) last minute hack
-			if prefix == "dirt":
-				prefix = "sand"
-			elif prefix == "sand":
-				prefix = "dirt"
+#			if prefix == "dirt":
+#				prefix = "sand"
+#			elif prefix == "sand":
+#				prefix = "dirt"
 			Audio.play_random_step(prefix)
 		snap = gravity_direction
 	
@@ -119,10 +125,10 @@ func _physics_process(delta) -> void:
 		var prefix: String = Game.planet.music_prefix
 		
 		# dirty (heh) last minute hack
-		if prefix == "dirt":
-			prefix = "sand"
-		elif prefix == "sand":
-			prefix = "dirt"
+#		if prefix == "dirt":
+#			prefix = "sand"
+#		elif prefix == "sand":
+#			prefix = "dirt"
 		Audio.start_footsteps(prefix)
 	else:
 		Audio.stop_footsteps()

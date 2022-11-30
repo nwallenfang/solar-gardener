@@ -45,6 +45,7 @@ func set_plant(active: bool):
 	if not active:
 		$Antenna.visible = true
 		$Slingshot.visible = false
+		Audio.play("seedgun_close")
 	$SeedOrigin.visible = active
 	emit_signal("animation_finished")
 
@@ -53,9 +54,11 @@ func set_analysis(active: bool):
 	$HopperPlayer.play("on" if active else "off")
 	if active:
 		Audio.play("scanner_open")
+		Audio.play("scanner_rotate_slow")
 		wheel_accel_to(80, 1.0)
 	else:
 		Audio.play("scanner_close")
+		Audio.stop("scanner_rotate_slow")
 		home_wheel()
 	yield($AnalysePlayer,"animation_finished")
 	emit_signal("animation_finished")

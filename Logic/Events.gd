@@ -78,6 +78,7 @@ func setup():
 	events.append(Event.new("planet_hopped", self, "planet_hopped", false))
 	events.append(Event.new("journal_opened", self, "nothing", false))
 	events.append(Event.new("seeds_harvested", self, "nothing", false))
+	events.append(Event.new("sun_hot", self, "sun_hot", true))
 
 ###########
 # TRIGGER FUNCTIONS
@@ -224,6 +225,10 @@ func too_many_seeds():
 func way_too_many_seeds():
 	Game.UI.add_tutorial_message("Seed overload", "Internal Yardin systems are scrambling to store this endless seed flood.", duration * 0.7)
 	next()
+	
+func sun_hot():
+	Game.UI.add_tutorial_message("Sun's hot", "Please don't do that.\nThe AI prefers moderate temperatures.", duration * 0.7)
+	
 
 func nothing():
 	next()

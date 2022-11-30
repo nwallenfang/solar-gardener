@@ -81,38 +81,35 @@ func growth_stage_reached(growth_stage: int):
 				Audio.cross_fade(music_prev, music_next)
 			
 func fade_out():
-	if music_prefix == "obsidian":
-		Audio.fade_out("music_obsidian_0")
-		return
-	var used_prefix = music_prefix
-
-	var music = "music_%s_%d" % [used_prefix, planet_growth_stage]
-	if planet_growth_stage > 0:
-		Audio.fade_out(music)
-	else:
-		Audio.fade_out("music_ambience")
+#	if music_prefix == "obsidian":
+#		Audio.fade_out("music_obsidian_0")
+#		return
+#	var used_prefix = music_prefix
+#
+#	var music = "music_%s_%d" % [used_prefix, planet_growth_stage]
+#	if planet_growth_stage > 0:
+#		Audio.fade_out(music)
+#	else:
+	Audio.fade_out(get_current_music_name())
 	
 func fade_in():
-	if music_prefix == "obsidian":
-		Audio.fade_in("music_obsidian_0", 1.0, true)
-		return
-	var used_prefix = music_prefix
-
-	if planet_growth_stage > 0:
-		var music = "music_%s_%d" % [used_prefix, planet_growth_stage]
-		Audio.fade_in(music, 1.0, true)
-	else:
-		Audio.fade_in("music_ambience", 1.0, true)
+#	if music_prefix == "obsidian":
+#		Audio.fade_in("music_obsidian_0", 1.0, true)
+#		return
+#	var used_prefix = music_prefix
+	Audio.fade_in(get_current_music_name())
 
 
 func get_current_music_name() -> String:
-	if planet_growth_stage > 0:
-		var used_prefix = music_prefix
-		var music = "music_%s_%d" % [used_prefix, planet_growth_stage]
-		
-		return music
-	else:
+	if music_prefix == "obsidian":
+		return "music_obsidian_0"
+	if planet_growth_stage == 0:
 		return "music_ambience"
+
+	# else
+	var music = "music_%s_%d" % [music_prefix, planet_growth_stage]
+	return music
+
 
 func set_player_is_on_planet(b: bool):
 	player_on_planet = b
