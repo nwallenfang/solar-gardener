@@ -180,6 +180,7 @@ func execute_planet_hop(new_planet: Planet, pos: Vector3):
 #		or new_planet.music_prefix == "obsidian":
 	
 	hop_music_fade(planet, new_planet)
+	main_scene.set_wush(true)
 	planet = new_planet
 	#player.global_transform = Transform(new_basis, pos)
 	var current_y_looking_angle : float = player.get_node("Head").rotation.x
@@ -194,6 +195,7 @@ func execute_planet_hop(new_planet: Planet, pos: Vector3):
 	sun.start_sound()
 	Audio.play("hop_launch")
 	yield($WarpTween, "tween_all_completed")
+	main_scene.set_wush(false)
 	Audio.play("hop_landing" + str(1 + randi() % 2))
 	sun.end_sound()
 	planet.configure_light(multitool)
