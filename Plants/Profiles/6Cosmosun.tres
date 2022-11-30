@@ -9,7 +9,7 @@ name = "Cosmosun"
 mesh_file_name = "plant_03_universsun"
 plant_type = 2
 fluff_base = "It is said that the Cosmosun mushroom contains a microscopic solar system inside. That might be the reason behind its [b]constant heat radiation[/b]."
-fluff_stage2 = "It might be the only plant that likes growing around those pesky [b]Thorn type[/b] plants."
+fluff_stage2 = "It is one of the few plants that like growing around those pesky [b]Thorn type[/b] plants."
 fluff_stage3 = "Although the Cosmosun likes [b]Rock type soil[/b] it is also [b]fond of nutrients[/b] which is an unfortunate combination.
 If only there were a way to enrich the ground with nutrients..."
 icon = ExtResource( 1 )

@@ -196,8 +196,8 @@ func play_attenuated(sound_name:String, distance:float):
 ### GAME SPECIFIC EXTENSIONS ###
 ################################
 export var footstep_directory = "res://Assets/Sound/Footsteps/"
-var number_per := {"dirt": 7, "obsidian": 6, "rock": 7, "sand": 6, "wood": 5}
-var steps_per_second := 2.0 
+var number_per := {"dirt": 6, "obsidian": 6, "rock": 7, "sand": 6, "wood": 5}
+var steps_per_second := 1.8 
 var step_volume_db := -5.0
 var variation = 0.28
 var current_planet_type: String

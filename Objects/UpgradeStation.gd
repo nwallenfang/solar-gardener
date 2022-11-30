@@ -28,6 +28,7 @@ func upgrade():
 	setup_slot_interpolation(Game.multitool.get_node("ModelMultitool"))
 	$Tween.interpolate_method(self, "interpolate_to_slot", 0.0, 1.0, 1.7)
 	$Tween.start()
+	Audio.play("upgrade")
 	yield($Tween,"tween_all_completed")
 	$ModelUstation.ring_whirl()
 	yield(get_tree().create_timer(.6),"timeout")

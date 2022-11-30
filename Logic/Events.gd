@@ -145,7 +145,6 @@ func tutorial_plant_reached_stage2():
 	next()
 
 func tutorial_plant_scanned():
-
 	$RepeatTimer.stop()
 	repeat_this = ""
 	yield(get_tree().create_timer(2.5), "timeout")
@@ -159,8 +158,10 @@ func tutorial_growth_reached():
 	next()
 	yield(get_tree().create_timer(16.0), "timeout")
 	# TODO show this getting seeds message once more when player has no seeds
-	Game.UI.add_tutorial_message("Getting seeds", "Use the grow-tool on grown plants to harvest seeds.", duration)
-
+	Game.UI.add_tutorial_message("Getting seeds", "Use the grow-tool (3) on grown plants to harvest seeds.", duration)
+	yield(get_tree().create_timer(30.0), "timeout")
+	if get_event_from_key("seeds_harvested").execute_count == 0:
+		Game.UI.add_tutorial_message("Getting seeds", "Use the grow-tool (3) on grown plants to harvest seeds.", duration)
 
 	
 func no_seeds():  # TODO not connected yet

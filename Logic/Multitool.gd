@@ -261,6 +261,7 @@ func idle_process(delta: float):
 			# Death Beam
 			if second_action_holded and (not grow_beam_active) and has_no_cooldown() and death_beam_unlocked and can_grow:
 				if not death_beam_active:
+					Audio.play("remover")
 					death_beam_target = plant_to_grow
 					death_beam_active = true
 					death_beam_progress = 0.0
@@ -272,6 +273,7 @@ func idle_process(delta: float):
 					death_beam_active = false
 			else:
 				if death_beam_active:
+					Audio.stop("remover")
 					death_beam_active = false
 					death_beam_target = null
 			

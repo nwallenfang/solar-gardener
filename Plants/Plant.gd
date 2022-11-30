@@ -226,7 +226,7 @@ func check_conditions():
 		growth_lock = PlantData.GROWTH_STAGES.SEED
 		
 	if (not growth_locked_once) and growth_stage == growth_lock:
-		Events.trigger("tutorial_growth_reached")
+#		Events.trigger("tutorial_growth_reached")
 		growth_locked_once = true
 
 signal growth_stage_reached()
