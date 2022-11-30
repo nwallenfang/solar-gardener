@@ -1,0 +1,14 @@
+[gd_resource type="SpatialMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Textures/sandstone_albedo.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Textures/sandstone_normal.png" type="Texture" id=2]
+
+[resource]
+albedo_color = Color( 0.623529, 0.623529, 0.623529, 1 )
+albedo_texture = ExtResource( 1 )
+normal_enabled = true
+normal_scale = 0.69
+normal_texture = ExtResource( 2 )
+uv1_scale = Vector3( 3, 3, 3 )
+uv1_offset = Vector3( 2, 0, 0 )
+uv1_triplanar = true

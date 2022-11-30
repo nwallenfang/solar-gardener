@@ -1,25 +1,23 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Assets/Models/Meshes/MeshPlant_01_moontree _state001.res" type="ArrayMesh" id=1]
+[ext_resource path="res://Assets/Materials/Plants/MoontreeWood.tres" type="Material" id=1]
+[ext_resource path="res://Assets/Models/Meshes/MeshMoonTreeState001.res" type="ArrayMesh" id=2]
 
 [node name="ModelPlant_01_moontree _state00" type="Spatial"]
 
 [node name="Retopo_Cylinder" type="MeshInstance" parent="."]
-transform = Transform( 0.285373, 0, 0, 0, 0.285373, 0, 0, 0, 0.285373, 0, 0, 0 )
-mesh = ExtResource( 1 )
+transform = Transform( 0.0865456, 0, 0, 0, 0.0865456, 0, 0, 0, 0.0865456, -0.0123575, -0.00533867, 0.170642 )
+mesh = ExtResource( 2 )
+material/0 = ExtResource( 1 )
 
 [node name="Empty" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.06147, 2.84963, 0.365097 )
+transform = Transform( 0.303272, 0, 0, 0, 0.303272, 0, 0, 0, 0.303272, 0.61283, 0.858874, 0.281366 )
 
 [node name="Empty001" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.109891, 1.93569, 1.71868 )
+transform = Transform( 0.303272, 0, 0, 0, 0.303272, 0, 0, 0, 0.303272, 0.0209696, 0.5817, 0.691869 )
 
 [node name="Empty002" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16283, 3.23471, -0.398195 )
+transform = Transform( 0.303272, 0, 0, 0, 0.303272, 0, 0, 0, 0.303272, -0.365011, 0.97566, 0.0498808 )
 
 [node name="Empty003" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24923, 1.96025, -1.22884 )
-
-[node name="Retopo_Cylinder001" type="MeshInstance" parent="."]
-transform = Transform( 0.285373, 0, 0, 0, 0.285373, 0, 0, 0, 0.285373, 0, 0, 0 )
-mesh = ExtResource( 1 )
+transform = Transform( 0.303272, 0, 0, 0, 0.303272, 0, 0, 0, 0.303272, 0.366499, 0.589152, -0.202031 )
