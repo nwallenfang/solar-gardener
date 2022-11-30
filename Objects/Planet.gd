@@ -76,9 +76,9 @@ func growth_stage_reached(growth_stage: int):
 			var music_next = "music_%s_%d" % [used_prefix, growth_stage]
 			var music_prev = "music_%s_%d" % [used_prefix, growth_stage-1]
 			if growth_stage == 1:
-				Audio.cross_fade("music_ambience", music_next)
+				Audio.cross_fade("music_ambience", music_next, 1.5, false)
 			else:  # 2 or 3
-				Audio.cross_fade(music_prev, music_next)
+				Audio.cross_fade(music_prev, music_next, 1.5, true)
 			
 func fade_out():
 #	if music_prefix == "obsidian":

@@ -30,7 +30,7 @@ func _ready() -> void:
 
 var INTRO_LENGTH_FACTOR = 1.0
 var TEST_LENGTH_FACTOR = 0.02
-const TEST_INTRO = false
+const TEST_INTRO = true
 func start_loading():
 	if OS.is_debug_build() and (not TEST_INTRO):
 		INTRO_LENGTH_FACTOR = TEST_LENGTH_FACTOR

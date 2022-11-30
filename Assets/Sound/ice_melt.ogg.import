@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ice_melt.ogg-59811a61f94692b511e659e81be2fad6.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sound/ice_melt.ogg"
+dest_files=[ "res://.import/ice_melt.ogg-59811a61f94692b511e659e81be2fad6.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

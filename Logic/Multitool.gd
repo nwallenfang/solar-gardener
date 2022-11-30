@@ -185,6 +185,10 @@ func switch_tool(new_tool: int, tool_active := true):
 		# dirty coded so that hovering hopper doesn't play stop sound
 		if current_tool == TOOL.GROW and new_tool != TOOL.HOPPER:
 			Audio.play("growbeam_close")
+#		if current_tool == TOOL.PLANT and new_tool != TOOL.HOPPER:
+#			Audio.play("seedgun_close")
+#		if current_tool == TOOL.ANALYSIS and new_tool != TOOL.HOPPER:
+#			Audio.play("scanner_close")
 		switch_tool(current_tool, false)
 		if waiting_for_animation:
 			yield($ModelMultitool,"animation_finished")

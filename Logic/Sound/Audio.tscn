@@ -13,7 +13,7 @@ script = ExtResource( 2 )
 mixer_bus = "SFX"
 
 [node name="scanner_rotate_slow" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = -1.5
+volume_db = -3.0
 mixer_bus = "SFX"
 
 [node name="seedgun_close" parent="Sounds" instance=ExtResource( 1 )]
@@ -174,6 +174,7 @@ mixer_bus = "SFX"
 
 [node name="amber_obtain" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
+volume_db = 2.0
 mixer_bus = "SFX"
 
 [node name="special_grabroot" type="Node" parent="Sounds"]
@@ -427,6 +428,11 @@ volume_db = -7.0
 mixer_bus = "SFX"
 
 [node name="jetpack" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+volume_db = -4.0
+mixer_bus = "SFX"
+
+[node name="ice_melt" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
 volume_db = -4.0
 mixer_bus = "SFX"

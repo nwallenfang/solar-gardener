@@ -1,0 +1,17 @@
+[gd_resource type="SpatialMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Materials/Plants/moss_albedo_gray.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Materials/Plants/moss_normal.png" type="Texture" id=2]
+
+[resource]
+resource_name = "MultitoolBrown"
+vertex_color_use_as_albedo = true
+albedo_color = Color( 0.105882, 0.0823529, 0.145098, 1 )
+albedo_texture = ExtResource( 1 )
+roughness = 0.53
+normal_enabled = true
+normal_scale = 0.4
+normal_texture = ExtResource( 2 )
+uv1_scale = Vector3( 1.54, 1.5, 1.5 )
+uv1_offset = Vector3( 2, 0, 0 )
+uv1_triplanar = true

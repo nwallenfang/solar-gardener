@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://Assets/Materials/Beam.tres" type="Material" id=1]
 [ext_resource path="res://Effects/Beam.tscn" type="PackedScene" id=2]
@@ -15,6 +15,9 @@
 [ext_resource path="res://Assets/Materials/SlingBand.tres" type="Material" id=13]
 [ext_resource path="res://Effects/HoloScreen.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Assets/Models/Meshes/ToolIdeaBase.tres" type="ArrayMesh" id=15]
+[ext_resource path="res://Assets/Materials/Multitool/MultitoolMetal2.tres" type="Material" id=16]
+[ext_resource path="res://Assets/Materials/Multitool/MultitoolMetal.tres" type="Material" id=17]
+[ext_resource path="res://Assets/GLTF/UpgradeStationMetal.material" type="Material" id=18]
 
 [sub_resource type="ArrayMesh" id=2]
 resource_name = "Multitool_Cylinder004"
@@ -55,7 +58,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 1500,
-"material": ExtResource( 6 ),
+"material": ExtResource( 17 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 528
@@ -1308,11 +1311,13 @@ mesh = ExtResource( 15 )
 transform = Transform( 1, 0, 4.37114e-08, 4.37114e-08, 1.91069e-15, -1, 0, 1, 1.91069e-15, 0.0990454, 0.101967, 0.222169 )
 cast_shadow = 0
 mesh = SubResource( 2 )
+material/0 = ExtResource( 16 )
 
 [node name="BaseLidRight" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, -4.37114e-08, -4.37114e-08, 1.91069e-15, -1, 0, 1, 1.91069e-15, -0.0990454, 0.101967, 0.222169 )
 cast_shadow = 0
 mesh = SubResource( 7 )
+material/0 = ExtResource( 16 )
 
 [node name="Wheel" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, -4.37114e-08, -4.37114e-08, 1.91069e-15, -1, 0, 1, 1.91069e-15, 0, 0, 0.369929 )
@@ -1329,6 +1334,8 @@ skeleton = NodePath("../..")
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0991108, 0 )
 cast_shadow = 0
 mesh = SubResource( 9 )
+material/0 = ExtResource( 16 )
+material/1 = ExtResource( 17 )
 
 [node name="ArmPoint1" type="Spatial" parent="Wheel/ArmBase1/Arm1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.201171, -1.78814e-07 )
@@ -1351,6 +1358,8 @@ skeleton = NodePath("../..")
 transform = Transform( 1, -7.10543e-15, -2.84216e-14, 7.10543e-15, 1, -5.96047e-08, 2.84216e-14, 5.96047e-08, 1, 0, 0.0991107, 0 )
 cast_shadow = 0
 mesh = SubResource( 9 )
+material/0 = ExtResource( 16 )
+material/1 = ExtResource( 17 )
 
 [node name="ArmPoint2" type="Spatial" parent="Wheel/ArmBase2/Arm2"]
 transform = Transform( 1, 1.42109e-14, 0, -1.42109e-14, 1, -8.94069e-08, -5.68434e-14, 8.9407e-08, 1, 0, 0.201607, 7.45058e-08 )
@@ -1374,7 +1383,8 @@ mesh = SubResource( 8 )
 skeleton = NodePath("../..")
 
 [node name="Arm3" type="MeshInstance" parent="Wheel/ArmBase3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0991108, -1.49012e-08 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0991108, -2.98023e-08 )
+material_overlay = ExtResource( 17 )
 cast_shadow = 0
 mesh = SubResource( 9 )
 
@@ -1397,6 +1407,7 @@ visible = false
 transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0.471343 )
 cast_shadow = 0
 mesh = ExtResource( 8 )
+material/0 = ExtResource( 16 )
 
 [node name="HoloCrystal" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.152344, 0.128005 )
@@ -1407,6 +1418,7 @@ mesh = SubResource( 5 )
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.194 )
 cast_shadow = 0
 mesh = SubResource( 6 )
+material/0 = ExtResource( 18 )
 
 [node name="HopperRings" parent="." instance=ExtResource( 3 )]
 transform = Transform( 0.106309, 0, 0, 0, -9.40693e-09, -0.106309, 0, 0.557079, -1.20289e-08, 0, 0, 0.713598 )

@@ -147,6 +147,7 @@ far = 250.0
 
 [node name="Planet3" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.13, -30.1157, 58.9798 )
+y_rotation_speed = 0.092
 
 [node name="CreditsPivot3" type="Spatial" parent="Planet3"]
 unique_name_in_owner = true
@@ -161,7 +162,7 @@ far = 250.0
 [node name="SkipCutscene" type="Timer" parent="."]
 
 [node name="PlanetObsidian" parent="." instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 143.279, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 111.679, 0 )
 music_prefix = "obsidian"
 
 [node name="OldCutscene" type="Spatial" parent="."]

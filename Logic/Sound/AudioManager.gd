@@ -126,9 +126,31 @@ func fade_in(sound_name: String, fade_duration:=1.0, random_start:=false):
 		player.fade_in(0.0, fade_duration)
 	playing[sound_name] = player
 	
-func fade_in_at_position(sound_name: String, fade_duration:=1.0, start_pos:=0.0):
-	# TODO
-	pass
+func fade_in_at_position(sound_name: String, start_pos:=0.0, fade_duration:=1.0):
+	if available.empty():
+		if sound_name.begins_with("music"):
+			# music is important, ok? it can kick another sound out
+			var vip_player: CustomAudioPlayer = playing[playing.keys()[0]]
+			vip_player.stop()
+		else:
+			printerr("No available players to play " + sound_name)
+			return
+	if sound_name in playing:
+#		print("sound " + sound_name + " tried fading in twice")
+		return
+
+	var player: CustomAudioPlayer = available.pop_front()
+	if player == null:
+		# if this is music it should get special treatment <- see above
+		pass
+#	print(sound_name + " started")
+	if not $Sounds.has_node(sound_name):
+		printerr("unknown sound " + sound_name)
+		return
+	player.stream = $Sounds.get_node(sound_name).stream
+	player.sound = $Sounds.get_node(sound_name)
+	player.fade_in(start_pos, fade_duration)
+	playing[sound_name] = player
 
 func fade_out(sound_name: String, fade_duration:=1.0):
 	if not sound_name in playing:  # don't know if this should be an error
@@ -144,9 +166,20 @@ func fade_in_and_out(sound_name: String, play_duration: float, fade_duration:=1.
 func get_stream_position(sound_name) -> float:
 	return playing[sound_name].get_playback_position()
 
-func cross_fade(sound_name_out: String, sound_name_in: String, fade_duration:=1.0):
-	fade_in(sound_name_in, fade_duration, true)
-	fade_out(sound_name_out, fade_duration)
+func cross_fade(sound_name_out: String, sound_name_in: String, fade_duration:=1.0, sync_start:=false):
+	if sync_start:
+		fade_in(sound_name_in, fade_duration, true)
+		fade_out(sound_name_out, fade_duration)
+	else:
+		if not sound_name_in in playing:
+			printerr("CROSS FADE IN NOT EVEN PLAYING")
+			fade_in(sound_name_in, fade_duration, true)
+			fade_out(sound_name_out, fade_duration)
+		else:
+			var position = playing[sound_name_in].get_playback_position()
+			fade_in_at_position(sound_name_in, position, fade_duration)
+			fade_out(sound_name_out, fade_duration)
+		
 	
 func reduce_volume(sound_name: String, factor: float):
 	# factor between 0.0 and 1.0

@@ -1,8 +1,7 @@
-[gd_resource type="ArrayMesh" load_steps=4 format=2]
+[gd_resource type="ArrayMesh" load_steps=3 format=2]
 
-[ext_resource path="res://Assets/GLTF/MultitoolMetal.material" type="Material" id=1]
-[ext_resource path="res://Assets/GLTF/MultitoolBrown.material" type="Material" id=2]
-[ext_resource path="res://Assets/GLTF/MultitoolDarkShiny.material" type="Material" id=3]
+[ext_resource path="res://Assets/Materials/Multitool/TrueMultitoolBody.tres" type="Material" id=2]
+[ext_resource path="res://Assets/Materials/Multitool/MultitoolMetal.tres" type="Material" id=3]
 
 [resource]
 resource_name = "ToolIdea_Cylinder002"
@@ -25,7 +24,7 @@ surfaces/1 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 1494,
-"material": ExtResource( 1 ),
+"material": ExtResource( 3 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 584
