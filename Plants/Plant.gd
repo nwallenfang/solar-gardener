@@ -189,7 +189,7 @@ func calculate_growth_points():
 				Game.journal.make_preference_known(profile.name, "Likes Thornys")
 	
 	# CHEAT
-	if cheat: # or profile.name == "Greatcap" or profile.name == "Moontree":
+	if Game.growth_cheat: # or profile.name == "Greatcap" or profile.name == "Moontree":
 		points += 20
 		
 	growth_points = points

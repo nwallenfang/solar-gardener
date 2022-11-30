@@ -215,5 +215,10 @@ func planet_hopped():
 	next()
 
 func too_many_seeds():
-	Game.UI.add_tutorial_message("Seed hoarding detected", "The Yardin-AI is wondering what to do with so many seeds.", duration)
+	Game.UI.add_tutorial_message("Seed hoarding", "The Yardin-AI is wondering about the use of that many seeds.", duration * 0.7)
+	next()
+
+
+func way_too_many_seeds():
+	Game.UI.add_tutorial_message("Seed overload", "Internal Yardin systems are scrambling to store this endless seed flood.", duration * 0.7)
 	next()

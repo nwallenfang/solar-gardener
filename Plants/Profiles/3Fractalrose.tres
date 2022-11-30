@@ -8,7 +8,8 @@ script = ExtResource( 2 )
 name = "Fractalrose"
 mesh_file_name = "plant_06_fractal"
 plant_type = 3
-fluff_base = "An unusual flower, said to hold infinite beauty if watched closely. It is often found in very [b]dry areas[/b]."
+fluff_base = "An unusual flower, said to hold infinite beauty when viewed up close.
+It is often found in very [b]dry areas[/b]."
 fluff_stage2 = "The colorful petals, which attract animals of any kind, need a lot of [b]minerals[/b] to grow."
 fluff_stage3 = "It is a puzzling contradiction of nature that while the Fractalrose thrives best in [b]desert areas[/b], it also depends on a [b]cool environment[/b]."
 icon = ExtResource( 1 )
