@@ -416,7 +416,7 @@ anchor_bottom = 1.0
 [node name="VBoxContainer" type="VBoxContainer" parent="Screen2"]
 anchor_top = 0.07
 anchor_right = 1.0
-anchor_bottom = 0.79
+anchor_bottom = 0.735
 
 [node name="Title2" type="Label" parent="Screen2/VBoxContainer"]
 margin_right = 1280.0
@@ -442,45 +442,33 @@ rect_min_size = Vector2( 0, 30 )
 [node name="Title4" type="Label" parent="Screen2/VBoxContainer"]
 margin_top = 113.0
 margin_right = 1280.0
-margin_bottom = 180.0
+margin_bottom = 215.0
 custom_fonts/font = SubResource( 1 )
 text = "Xyene, arlez80, Rye Terrell, 
-Tarox, Thfpjct, a_person, dash"
-align = 1
-
-[node name="Gap2" type="Control" parent="Screen2/VBoxContainer"]
-margin_top = 184.0
-margin_right = 1280.0
-margin_bottom = 222.0
-rect_min_size = Vector2( 0, 38 )
-
-[node name="Title5" type="Label" parent="Screen2/VBoxContainer"]
-margin_top = 226.0
-margin_right = 1280.0
-margin_bottom = 265.0
-custom_fonts/font = SubResource( 4 )
-text = "Thank you!"
+Tarox, Thfpjct, a_person, 
+dash, leonard7e"
 align = 1
 
 [node name="Gap3" type="Control" parent="Screen2/VBoxContainer"]
-margin_top = 269.0
+margin_top = 219.0
 margin_right = 1280.0
-margin_bottom = 329.0
+margin_bottom = 279.0
 rect_min_size = Vector2( 0, 60 )
 
 [node name="Title6" type="Label" parent="Screen2/VBoxContainer"]
-margin_top = 333.0
+margin_top = 283.0
 margin_right = 1280.0
-margin_bottom = 365.0
+margin_bottom = 315.0
 custom_fonts/font = SubResource( 1 )
 text = "Made with Godot Engine"
 align = 1
 
 [node name="TextureRect" type="TextureRect" parent="Screen2/VBoxContainer"]
-margin_top = 369.0
+margin_top = 319.0
 margin_right = 1280.0
-margin_bottom = 518.0
+margin_bottom = 478.0
 size_flags_vertical = 3
+size_flags_stretch_ratio = 0.63
 texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6

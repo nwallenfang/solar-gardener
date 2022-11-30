@@ -10,7 +10,7 @@ mesh_file_name = "Modelplant_04_Sporenpilz"
 plant_type = 2
 fluff_base = "The Greatcap is the the largest mushroom in the galaxy. Its spores are known to infect small ant-workers in a process called Cordyception."
 fluff_stage2 = "The large surface area of its cap is used to collect [b]lots of sunlight[/b].
-The dazzling spores that are found flying around large specimen are so dazzling that the cultivation of Greatcaps has been banned in many societies. "
+The spores that are found flying around large specimen are so dazzling that the cultivation of Greatcaps has been banned in many societies. "
 fluff_stage3 = "Because of its large size the Giant-Cap prefers to grow [b]without company[/b]."
 icon = ExtResource( 1 )
 sun = 2
@@ -20,6 +20,7 @@ group = 3
 prefered_soil = 3
 symbiosis_plant_type = 0
 needs_dirt_pile = true
+use_big_hitbox_at_stage = 10
 seed_count = 3
 seed_grow_time = 20.0
 points_for_stage_1 = 0

@@ -22,6 +22,9 @@
 - Moon Material
   - https://www.materialmaker.org/material?id=278
   - CC-BY
+- Sandstone Material leonard7e
+  - https://www.materialmaker.org/material?id=58
+  - CC-BY
 
 ### Sprites and Icons
 - Cursor by a_person
