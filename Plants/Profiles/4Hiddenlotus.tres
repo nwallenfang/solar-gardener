@@ -9,7 +9,7 @@ name = "Hidden Lotus"
 mesh_file_name = "PlantPino"
 plant_type = 3
 fluff_base = "When allowed to flourish, its bud opens up and begins a wondrous dance. 
-This makes it a popular centerpiece in the annual \"Dancing Petals\" competition that takes place in the desert."
+This makes it a popular centerpiece in the annual \"Dancing Petals\" competition that takes place in the [b]desert[/b]."
 fluff_stage2 = "The Hidden Lotus is often found in expansive [b]Flower Fields[/b]. The bud hidden inside has a peculiar taste but is known to be very healthy."
 fluff_stage3 = "When the flower blossoms, the roots below [b]dispense excess nutrients[/b] into the ground."
 icon = ExtResource( 2 )
@@ -20,6 +20,7 @@ group = 2
 prefered_soil = 4
 symbiosis_plant_type = 3
 needs_dirt_pile = false
+use_big_hitbox_at_stage = 10
 seed_count = 0
 seed_grow_time = 8.0
 points_for_stage_1 = 0

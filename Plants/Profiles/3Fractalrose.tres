@@ -11,7 +11,7 @@ plant_type = 3
 fluff_base = "An unusual flower, said to hold infinite beauty when viewed up close.
 It is often found in very [b]dry areas[/b]."
 fluff_stage2 = "The colorful petals, which attract animals of any kind, need a lot of [b]minerals[/b] to grow."
-fluff_stage3 = "It is a puzzling contradiction of nature that while the Fractalrose thrives best in [b]desert areas[/b], it also depends on a [b]cool environment[/b]."
+fluff_stage3 = "It is a puzzling contradiction of nature that while the Fractalrose thrives best in desert areas, it is also damaged by [b]hot temperatures[/b]."
 icon = ExtResource( 1 )
 sun = 3
 moisture = 1
@@ -20,6 +20,7 @@ group = 3
 prefered_soil = 4
 symbiosis_plant_type = 2
 needs_dirt_pile = false
+use_big_hitbox_at_stage = 10
 seed_count = 0
 seed_grow_time = 5.0
 points_for_stage_1 = 0

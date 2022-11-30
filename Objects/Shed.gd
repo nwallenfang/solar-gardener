@@ -42,14 +42,8 @@ func on_lod(lod_triggered: bool):
 		object.visible = not lod_triggered
 
 func update_shed_info():
-#	$ScreenTexts/Label1.text = "Loading..."
-#	$ScreenTexts/Label2.text = "Loading..."
-#	$ScreenTexts/Label3.text = "Loading..."
-#	$ScreenTexts/Label4.text = "Loading..."
-#	$ScreenTexts/Label5.text = "Loading..."
-#	$ScreenTexts/Label6.text = "Loading..."
-#	yield(get_tree().create_timer(.8),"timeout")
-
+	if Events.get_event_from_key("gear_scanned").execute_count == 0:
+		return
 	var stats_string : String = "Seeds planted:\n" + str(Events.get_event_from_key("seed_planted").execute_count)
 	stats_string = stats_string + "\n\n" + "Plants discovered:\n" + str(len(Game.journal.scanned_plant_names))
 	$ScreenTexts/Label1.text = stats_string
