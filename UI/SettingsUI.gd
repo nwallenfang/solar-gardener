@@ -76,6 +76,7 @@ func _on_InvertYButton_pressed() -> void:
 
 
 func _on_GraphicsSlider_value_changed(value: float) -> void:
+	value = lerp(.3, 1.0, value)
 	Game.world.get_node("Stars").visible = (value >= .7)
 	for planet in Game.planet_list:
 		planet = planet as Planet

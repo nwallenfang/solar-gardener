@@ -39,6 +39,7 @@ func plant_clicked(plant_name):
 	Audio.play("ui2")
 	#Game.multitool.get_node("Cooldown").start(0.6)
 	Game.multitool.target_plant_name = plant_name
+	Game.multitool.emit_signal("switched_to", Game.multitool.TOOL.PLANT)
 	Game.multitool.switch_tool(Game.multitool.TOOL.PLANT)
 	Game.multitool.show_plant_information()
 	Game.multitool.force_reload = true
