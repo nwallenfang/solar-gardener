@@ -87,7 +87,7 @@ transform = Transform( 1.03296, 0, 0, 0, -4.51522e-08, 1.03296, 0, -1.03296, -4.
 [node name="GrabrootGrabber" parent="." instance=ExtResource( 7 )]
 
 [node name="Gear" parent="GrabrootGrabber" instance=ExtResource( 8 )]
-transform = Transform( 2.01691, 0, 0, 0, 0.78301, 1.85871, 0, -1.85871, 0.78301, 0.206956, 1.91985, 0.183924 )
+transform = Transform( 2.01691, 0, 0, 0, 1.18417, 1.63268, 0, -1.63268, 1.18417, 0.206956, 1.77682, 0.0181129 )
 
 [node name="DecoStones" type="Spatial" parent="."]
 
