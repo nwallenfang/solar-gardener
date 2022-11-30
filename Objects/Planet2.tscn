@@ -30,6 +30,7 @@ planet_name = "Rock Solitude"
 dirt_pile_color = Color( 0.419608, 0.443137, 0.454902, 1 )
 soil_type = 2
 max_plants = 30
+gravity_modifier = 1.15
 
 [node name="PlanetHopArea" type="Area" parent="."]
 transform = Transform( 1.24458, 0, 0, 0, 1.24458, 0, 0, 0, 1.24458, 0, 0, 0 )

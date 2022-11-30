@@ -20,6 +20,7 @@ planet_name = "Stygea"
 soil_type = 1
 max_plants = 30
 is_obsidian = true
+gravity_modifier = 0.65
 
 [node name="PlanetHopArea" type="Area" parent="."]
 transform = Transform( 1.24458, 0, 0, 0, 1.24458, 0, 0, 0, 1.24458, 0, 0, 0 )

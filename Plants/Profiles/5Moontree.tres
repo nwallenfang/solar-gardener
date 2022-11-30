@@ -19,6 +19,7 @@ group = 1
 prefered_soil = 0
 symbiosis_plant_type = 2
 needs_dirt_pile = false
+use_big_hitbox_at_stage = 1
 seed_count = 3
 seed_grow_time = 14.0
 points_for_stage_1 = 0

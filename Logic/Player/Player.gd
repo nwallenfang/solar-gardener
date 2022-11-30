@@ -96,8 +96,9 @@ func _physics_process(delta) -> void:
 			Audio.play_random_step(Game.planet.music_prefix)
 		snap = gravity_direction
 	
+	var planet_gravity_modifier : float = Game.planet.gravity_modifier
 	if direction.length() > 0.1 or not is_on_floor():
-		velocity += gravity_strength * gravity_direction * delta
+		velocity += gravity_strength * gravity_direction * delta * planet_gravity_modifier
 	orient_player_sphere(delta)
 	velocity = accelerate(velocity, direction, delta)
 #	

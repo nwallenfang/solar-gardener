@@ -26,6 +26,8 @@ export var music_prefix := "sand"
 
 export var is_obsidian := false
 
+export var gravity_modifier := 1.0
+
 var planet_growth_stage := 0  # for the music or general planet progression
 var planet_light : PlanetLight
 

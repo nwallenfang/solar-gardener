@@ -233,6 +233,8 @@ func grow(delta, factor_sign):
 		growth_stage_progress = 0.0
 
 		play_growth_pop_animation(old_stage)
+		if growth_stage >= profile.use_big_hitbox_at_stage:
+			$Area/CollisionShapeBig.disabled = false
 
 		can_be_analysed = true
 		if growth_stage == growth_lock:
