@@ -1,21 +1,135 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/Models/Meshes/Meshplant_03_universsun_state024.res" type="ArrayMesh" id=1]
 [ext_resource path="res://Assets/Models/Meshes/Meshplant_03_universsun_state022.res" type="ArrayMesh" id=2]
 [ext_resource path="res://Assets/Models/Meshes/Meshplant_03_universsun_state021.res" type="ArrayMesh" id=3]
 [ext_resource path="res://Assets/Models/Meshes/Meshplant_03_universsun_state023.res" type="ArrayMesh" id=4]
-[ext_resource path="res://Assets/GLTF/jet.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Materials/Plants/CosmosunStem.tres" type="Material" id=5]
+[ext_resource path="res://Assets/Materials/Plants/CosmosunHull.tres" type="Material" id=6]
+[ext_resource path="res://Assets/Materials/Plants/CosmosunSun.tres" type="Material" id=7]
+[ext_resource path="res://Assets/Materials/Plants/AntennaMaterial.tres" type="Material" id=8]
+[ext_resource path="res://Assets/Materials/Plants/FractalRoseFlower.tres" type="Material" id=9]
+[ext_resource path="res://Assets/GLTF/jet_smaller.png" type="Texture" id=10]
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_transparent = true
 flags_unshaded = true
-albedo_texture = ExtResource( 5 )
+params_cull_mode = 2
+albedo_texture = ExtResource( 10 )
+uv1_offset = Vector3( -0.235, 0.144, 0 )
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Cylinder001:material/0:uv1_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Cylinder001:material/0:uv1_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Cylinder001:material/0:uv1_offset:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( -0.235, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Cylinder001:material/0:uv1_offset:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0.144, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Cylinder001:material/0:uv1_offset:z")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "jet"
+length = 14.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Cylinder001:material/0:uv1_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ) ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Cylinder001:material/0:uv1_offset:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 2.1, -0.00263519, -0.553794, -2.1, 0.150949, 2.5, -0.166044, -1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 7.1, 14 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Cylinder001:material/0:uv1_offset:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0.144, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 3 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Cylinder001:material/0:uv1_offset:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 3 )
+}
 
 [node name="Modelplant_03_universsun_state02" type="Spatial"]
 
 [node name="Cylinder002" type="MeshInstance" parent="."]
 transform = Transform( 0.0847745, 0, 0, 0, 0.0847745, 0, 0, 0, 0.0847745, 0.0436695, 2.29143, 0.330533 )
 mesh = ExtResource( 3 )
+material/0 = ExtResource( 7 )
+material/1 = ExtResource( 6 )
+material/2 = ExtResource( 9 )
 
 [node name="Cylinder001" type="MeshInstance" parent="."]
 transform = Transform( 0.0847745, 0, 0, 0, 0.0847745, 0, 0, 0, 0.0847745, 0.0812669, 2.25296, 0.220032 )
@@ -25,13 +139,23 @@ material/0 = SubResource( 1 )
 [node name="Cylinder003" type="MeshInstance" parent="."]
 transform = Transform( 0.0847745, 0, 0, 0, 0.0847745, 0, 0, 0, 0.0847745, 0.0263916, -0.00803328, 0.0633547 )
 mesh = ExtResource( 4 )
+material/0 = ExtResource( 5 )
 
 [node name="NurbsPath001" type="MeshInstance" parent="."]
 transform = Transform( 0.155052, 0.244204, -0.190349, 0.292333, -0.18561, -7.22395e-08, -0.102029, -0.160695, -0.289269, 0.0020173, -0.0333904, -0.0570436 )
 mesh = ExtResource( 1 )
+material/0 = ExtResource( 8 )
 
 [node name="Empty" type="Spatial" parent="."]
 transform = Transform( 0.0847745, 0, 0, 0, 0.0847745, 0, 0, 0, 0.0847745, 0.721084, 0.566459, -0.474354 )
 
 [node name="Empty001" type="Spatial" parent="."]
 transform = Transform( 0.0847745, 0, 0, 0, 0.0847745, 0, 0, 0, 0.0847745, -0.803002, 0.575395, -0.0456685 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "jet"
+anims/RESET = SubResource( 3 )
+anims/jet = SubResource( 2 )
+
+[node name="VisibilityEnabler" type="VisibilityEnabler" parent="."]
+max_distance = 8.0

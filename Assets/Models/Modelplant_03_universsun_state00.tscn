@@ -1,17 +1,27 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Models/Meshes/Meshplant_03_universsun_state001.res" type="ArrayMesh" id=1]
 [ext_resource path="res://Assets/Models/Meshes/Meshplant_03_universsun_state002.res" type="ArrayMesh" id=2]
+[ext_resource path="res://Assets/Materials/Plants/CosmosunSun.tres" type="Material" id=3]
+[ext_resource path="res://Assets/Materials/Plants/FractalRoseFlower.tres" type="Material" id=4]
+[ext_resource path="res://Assets/Materials/Plants/CosmosunHull.tres" type="Material" id=5]
+[ext_resource path="res://Assets/Materials/Plants/CosmosunStem.tres" type="Material" id=6]
+[ext_resource path="res://Assets/Materials/Plants/AntennaMaterial.tres" type="Material" id=7]
 
 [node name="Modelplant_03_universsun_state00" type="Spatial"]
 
 [node name="NurbsPath001" type="MeshInstance" parent="."]
 transform = Transform( -0.119388, 0.0469372, 0.209949, 0.0900226, 0.228978, -1.09988e-08, -0.195391, 0.0768177, -0.128283, 0.043393, -0.0290206, 0.0447661 )
 mesh = ExtResource( 1 )
+material/0 = ExtResource( 7 )
 
 [node name="Cylinder" type="MeshInstance" parent="."]
 transform = Transform( 0.0540433, 0, 0, 0, 0.0540433, 0, 0, 0, 0.0540433, 0.026461, -0.0260446, 0.0495852 )
 mesh = ExtResource( 2 )
+material/0 = ExtResource( 3 )
+material/1 = ExtResource( 5 )
+material/2 = ExtResource( 6 )
+material/3 = ExtResource( 4 )
 
 [node name="Empty" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.192759, 0.874344, -0.431435 )

@@ -1,10 +1,125 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Models/Meshes/Meshplant_03_universsun_state032.res" type="ArrayMesh" id=1]
 [ext_resource path="res://Assets/Models/Meshes/Meshplant_03_universsun_state033.res" type="ArrayMesh" id=2]
 [ext_resource path="res://Assets/Models/Meshes/Meshplant_03_universsun_state034.res" type="ArrayMesh" id=3]
 [ext_resource path="res://Assets/Models/Meshes/Meshplant_03_universsun_state031.res" type="ArrayMesh" id=4]
 [ext_resource path="res://Assets/Models/Meshes/Meshplant_03_universsun_state035.res" type="ArrayMesh" id=5]
+[ext_resource path="res://Assets/Materials/Plants/CosmosunStem.tres" type="Material" id=6]
+[ext_resource path="res://Assets/Materials/Plants/CosmosunSun.tres" type="Material" id=7]
+[ext_resource path="res://Assets/Materials/Plants/AntennaFrontCulling.tres" type="Material" id=8]
+[ext_resource path="res://Assets/Materials/Plants/FractalRoseFlower.tres" type="Material" id=9]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.803922, 0.768627, 0.470588, 1 )
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Cylinder005:rotation_degrees:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Cylinder005:rotation_degrees:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Cylinder005:rotation_degrees:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Cylinder004:rotation_degrees:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Cylinder004:rotation_degrees:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Cylinder004:rotation_degrees:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "rotate"
+length = 10.0
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Cylinder004:rotation_degrees:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 5.32036 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Cylinder004:rotation_degrees:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 180, -0.25, 0, 0.25, 0, 189.215, -0.25, 0, 0.25, 0, 360, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 5, 5.32036, 10 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Cylinder004:rotation_degrees:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 5.32036 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Cylinder005:rotation_degrees:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, -180, -0.25, 0, 0.25, 0, -360, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 5, 10.1 )
+}
 
 [node name="Modelplant_03_universsun_state03" type="Spatial"]
 
@@ -17,19 +132,37 @@ transform = Transform( 1.93615, 0, 0, 0, 1.93615, 0, 0, 0, 1.93615, -0.147355, 0
 [node name="Cylinder003" type="MeshInstance" parent="."]
 transform = Transform( 0.063202, 0, 0, 0, 0.063202, 0, 0, 0, 0.063202, -0.0719628, 0.0330414, 0.0581581 )
 mesh = ExtResource( 4 )
+material/0 = ExtResource( 6 )
+material/1 = ExtResource( 6 )
 
 [node name="Cylinder001" type="MeshInstance" parent="."]
 transform = Transform( 0.063202, 0, 0, 0, 0.063202, 0, 0, 0, 0.063202, -0.0813816, 0.0466759, -0.000288218 )
 mesh = ExtResource( 1 )
+material/0 = ExtResource( 8 )
 
 [node name="Cylinder002" type="MeshInstance" parent="."]
 transform = Transform( 0.063202, 0, 0, 0, 0.063202, 0, 0, 0, 0.063202, -0.0436228, 1.1079, 0.450487 )
 mesh = ExtResource( 2 )
+material/0 = ExtResource( 9 )
 
 [node name="Cylinder004" type="MeshInstance" parent="."]
 transform = Transform( 0.063202, 0, 0, 0, 0.063202, 0, 0, 0, 0.063202, -0.05021, 1.97276, 0.085148 )
 mesh = ExtResource( 3 )
+material/0 = SubResource( 1 )
 
 [node name="Cylinder005" type="MeshInstance" parent="."]
 transform = Transform( 0.063202, 0, 0, 0, 0.063202, 0, 0, 0, 0.063202, -0.05021, 1.97278, 0.085148 )
 mesh = ExtResource( 5 )
+material/0 = ExtResource( 7 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "rotate"
+anims/RESET = SubResource( 2 )
+anims/rotate = SubResource( 3 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.99545, 0.06418 )
+light_color = Color( 0.968627, 0.933333, 0.0745098, 1 )
+
+[node name="VisibilityEnabler" type="VisibilityEnabler" parent="."]
+max_distance = 8.0

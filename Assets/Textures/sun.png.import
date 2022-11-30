@@ -18,7 +18,7 @@ dest_files=[ "res://.import/sun.png-35f2c38a6897a49957fec34b10f076d6.s3tc.stex",
 
 compress/mode=2
 compress/lossy_quality=0.7
-compress/hdr_mode=0
+compress/hdr_mode=1
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
