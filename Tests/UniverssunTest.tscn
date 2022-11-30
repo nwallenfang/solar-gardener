@@ -6,7 +6,7 @@
 [ext_resource path="res://Assets/Models/Modelplant_03_universsun_state03.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Models/Modelplant_04_sporenpilz_state02.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Models/Modelplant_03_universsun_samen.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Assets/Models/ModelMoonTree_samen.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Models/ModelMoontree_samen.tscn" type="PackedScene" id=7]
 
 [node name="UniverssunTest" type="Spatial"]
 

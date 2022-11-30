@@ -96,7 +96,6 @@ func _on_CheckConditionsTimer_timeout():
 var cheat = false
 func calculate_growth_points():
 	var ability_tags := get_near_plants_tags()
-	
 	var points := 0
 	# SOIL TYPE
 	if profile.prefered_soil == PlantData.SOIL_TYPES.ANY:
@@ -208,6 +207,8 @@ func calculate_growth_points():
 		points += 20
 		
 	growth_points = points
+	
+
 	
 func check_conditions():
 	calculate_growth_points()

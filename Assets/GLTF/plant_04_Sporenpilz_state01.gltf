@@ -1,0 +1,262 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v3.3.32",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Cone",
+            "translation" : [
+                0.010434966534376144,
+                0.3004698157310486,
+                -0.019630925729870796
+            ]
+        },
+        {
+            "mesh" : 1,
+            "name" : "Cylinder",
+            "translation" : [
+                0.005649987608194351,
+                0.0056749191135168076,
+                -0.0062631601467728615
+            ]
+        },
+        {
+            "name" : "Empty",
+            "translation" : [
+                -0.08281964063644409,
+                0.20039471983909607,
+                -0.21941551566123962
+            ]
+        },
+        {
+            "name" : "Empty.001",
+            "translation" : [
+                -0.03683168441057205,
+                0.3938220143318176,
+                -0.11213099956512451
+            ]
+        },
+        {
+            "name" : "Empty.002",
+            "translation" : [
+                0.11392244696617126,
+                0.24340207874774933,
+                -0.19331061840057373
+            ]
+        },
+        {
+            "name" : "Empty.003",
+            "translation" : [
+                0.09633848071098328,
+                0.40276476740837097,
+                -0.07572942972183228
+            ]
+        },
+        {
+            "name" : "Empty.004",
+            "translation" : [
+                0.14674383401870728,
+                0.2503068447113037,
+                0.1302279233932495
+            ]
+        },
+        {
+            "name" : "Empty.005",
+            "translation" : [
+                -0.09242425113916397,
+                0.18254193663597107,
+                0.20005226135253906
+            ]
+        },
+        {
+            "name" : "Empty.006",
+            "translation" : [
+                -0.10155534744262695,
+                0.37034526467323303,
+                0.029678046703338623
+            ]
+        },
+        {
+            "name" : "Empty.007",
+            "translation" : [
+                0.03924855589866638,
+                0.4123404622077942,
+                0.07410573959350586
+            ]
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Cone_sm_5",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "indices" : 3
+                }
+            ]
+        },
+        {
+            "name" : "Cylinder_sm_4",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 4,
+                        "NORMAL" : 5,
+                        "TEXCOORD_0" : 6
+                    },
+                    "indices" : 7
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 2600,
+            "max" : [
+                0.2695816457271576,
+                0.17287558317184448,
+                0.2913846969604492
+            ],
+            "min" : [
+                -0.27295565605163574,
+                -0.210721954703331,
+                -0.2780649662017822
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 2600,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 2600,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5123,
+            "count" : 13872,
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 4,
+            "componentType" : 5126,
+            "count" : 136,
+            "max" : [
+                0.05902724340558052,
+                0.41722118854522705,
+                0.053324855864048004
+            ],
+            "min" : [
+                -0.04942357912659645,
+                -0.038080181926488876,
+                -0.05512596666812897
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 5,
+            "componentType" : 5126,
+            "count" : 136,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 6,
+            "componentType" : 5126,
+            "count" : 136,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 7,
+            "componentType" : 5123,
+            "count" : 480,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 31200,
+            "byteOffset" : 0,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 31200,
+            "byteOffset" : 31200,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 20800,
+            "byteOffset" : 62400,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 27744,
+            "byteOffset" : 83200,
+            "target" : 34963
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 1632,
+            "byteOffset" : 110944,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 1632,
+            "byteOffset" : 112576,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 1088,
+            "byteOffset" : 114208,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 960,
+            "byteOffset" : 115296,
+            "target" : 34963
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 116256,
+            "uri" : "Sporenpilz2.0_state01.bin"
+        }
+    ]
+}
