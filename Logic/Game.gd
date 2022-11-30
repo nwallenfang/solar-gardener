@@ -122,6 +122,8 @@ func _process(delta: float) -> void:
 		Game.multitool.activate_tool(Game.multitool.TOOL.PLANT)
 		Game.multitool.activate_tool(Game.multitool.TOOL.HOPPER)
 		Game.multitool.soil_unlocked = true
+		Game.multitool.death_beam_unlocked = true
+		Game.player.unlocked_jetpack = true
 		
 	if Input.is_action_just_pressed("play_spatial_audio"):
 		Audio.fade_in("growbeam")
