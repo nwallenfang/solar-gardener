@@ -304,7 +304,10 @@ func play_growth_pop_animation(old_stage):
 	model_array[old_stage].scale = Vector3.ONE * DEFAULT_MODEL_SCALE
 	current_model.scale = Vector3.ONE * DEFAULT_MODEL_SCALE
 	current_model.visible = true
-
+	
+	if current_model == model_array[old_stage]:
+		Game.UI.set_diagnostics("ERROR with plant models???")
+	
 	for mi in old_meshes:
 		mi = mi as MeshInstance
 		mi.material_overlay = null
