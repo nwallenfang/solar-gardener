@@ -40,8 +40,8 @@ var can_grow := false
 var plant_to_grow: Plant
 var grow_beam_active := false
 var growth_juice := 1.0
-const JUICE_DRAIN = .25
-const JUICE_GAIN = .05
+const JUICE_DRAIN = .18
+const JUICE_GAIN = .07
 
 var death_beam_unlocked := false
 var death_beam_active := false

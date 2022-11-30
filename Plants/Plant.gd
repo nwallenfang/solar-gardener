@@ -1,7 +1,7 @@
 extends Spatial
 class_name Plant
 
-const DEFAULT_GROW_SPEED = 1.0/17.0
+const DEFAULT_GROW_SPEED = 1.0/18.5
 const BOOSTED_GROW_SPEED = 1.0/2.5
 const DEFAULT_MODEL_SCALE = .9
 const GROWTH_UP_SCALE_FACTOR = 1.15
