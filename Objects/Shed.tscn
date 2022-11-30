@@ -122,28 +122,21 @@ shape = SubResource( 6 )
 [node name="Label1" type="Label3D" parent="ScreenTexts"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.473129, 2.35646, -2.1148 )
 pixel_size = 0.001
-text = "Dreck"
 font = ExtResource( 3 )
 
 [node name="Label6" type="Label3D" parent="ScreenTexts"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.878603, 2.1046, -2.1148 )
 pixel_size = 0.001
-text = "Dreck"
 font = ExtResource( 3 )
 
 [node name="Label3" type="Label3D" parent="ScreenTexts"]
 transform = Transform( 0.924431, -0.0676082, 0.375309, -0.00152057, 0.983498, 0.180913, -0.381347, -0.167812, 0.909073, -1.12014, 1.41756, -1.45239 )
 pixel_size = 0.001
-text = "Dreck"
 font = ExtResource( 3 )
 
 [node name="Label5" type="Label3D" parent="ScreenTexts"]
 transform = Transform( 0.89762, 0.098222, -0.429686, 0, 0.974854, 0.222842, 0.440769, -0.200028, 0.875049, -0.23364, 1.41093, -1.47741 )
 pixel_size = 0.001
-text = "Dreck
-Dreck
-Dreck
-Dreck"
 font = ExtResource( 4 )
 
 [node name="PlayerDetectArea" type="Area" parent="."]
