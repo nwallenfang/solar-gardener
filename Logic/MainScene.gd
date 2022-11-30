@@ -1,4 +1,5 @@
 extends Control
+class_name MainScene
 
 const DEBUG_PROFILE := false
 
@@ -68,3 +69,7 @@ func _notification(what):
 #	if what == MainLoop.NOTIFICATION_WM_MOUSE_EXIT:
 #		if not Game.game_state == Game.State.INTRO_FLIGHT and not Game.game_state == Game.State.LOADING:
 #			Game.game_state = Game.State.SETTINGS
+
+func set_wush(wush: bool):
+	get_tree().create_tween().tween_property($ViewportContainer.material, "shader_param/alpha", .8 if wush else 0.0, .7 if wush else .3)
+

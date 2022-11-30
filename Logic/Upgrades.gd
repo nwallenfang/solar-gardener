@@ -21,7 +21,7 @@ func ugrade_once():
 			Events.trigger("remove_unlocked")
 		4: # Jetpack
 			Game.UI.show_info_line("Jetpack unlocked", 2)
-			Events.trigger("remove_unlocked")
+			Events.trigger("jetpack_unlocked")
 		5: # Flashlight
 			pass
 

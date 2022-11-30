@@ -81,13 +81,13 @@ func _physics_process(delta):
 	if lod_mode:
 		return
 	if growth_stage != growth_lock and $GrowthCooldown.time_left == 0.0:
-		grow(delta, sign(growth_lock - growth_stage))
+		if growth_stage != PlantData.GROWTH_STAGES.STAGE_4:
+			grow(delta, sign(growth_lock - growth_stage))
 	
 	if growth_stage == growth_lock:  # not growing anymore
 		if growth_boost:
 			flush_seeds()
 			growth_boost = false
-		
 
 func _on_CheckConditionsTimer_timeout():
 #	if growth_stage == growth_lock:
@@ -113,8 +113,6 @@ func calculate_growth_points():
 				PlantData.SOIL_TYPES.SAND:
 					Game.journal.make_preference_known(profile.name, "Likes sandy planets")
 	
-	
-	
 	# SUN
 	var sun_value := planet.sun
 	if ("sun_yes" in ability_tags):
@@ -137,16 +135,6 @@ func calculate_growth_points():
 			points += 1 
 			if growth_stage >= 1:
 				Game.journal.make_preference_known(profile.name, "Hates Sun")
-	
-	# MOIST
-#	if profile.moisture == PlantData.PREFERENCE.ALWAYS_FALSE:
-#		points += 0
-#	elif profile.moisture == PlantData.PREFERENCE.ALWAYS_TRUE:
-#		points += 1
-#	elif profile.moisture == PlantData.PREFERENCE.LIKES:
-#		points += 1 if planet.moist else 0
-#	elif profile.moisture == PlantData.PREFERENCE.HATES:
-#		points += 1 if not planet.moist else 0
 	
 	# NUTRI
 	var nutri_value := planet.nutrients
@@ -190,7 +178,6 @@ func calculate_growth_points():
 				if growth_stage >= 1:
 					Game.journal.make_preference_known(profile.name, "Hates Groups")
 	
-	
 	if profile.symbiosis_plant_type in get_near_plants_types():
 		points += 1
 		match(profile.symbiosis_plant_type):
@@ -200,7 +187,6 @@ func calculate_growth_points():
 				Game.journal.make_preference_known(profile.name, "Likes Shrooms")
 			PlantData.PLANT_TYPES.THORNY:
 				Game.journal.make_preference_known(profile.name, "Likes Thornys")
-	
 	
 	# CHEAT
 	if cheat: # or profile.name == "Greatcap" or profile.name == "Moontree":
@@ -271,7 +257,6 @@ func grow(delta, factor_sign):
 				dirt_pile.queue_free()
 		#$Area.set_collision_layer_bit(2, true)
 
-
 func set_animation_active(model: Spatial, active: bool):
 	if model.has_method("animate"):
 		model.call("animate")
@@ -283,8 +268,6 @@ func set_animation_active(model: Spatial, active: bool):
 #				anim.play("Key001Action")
 		if not active:
 			anim.stop()
-			
-		
 
 
 const GREEN_OVERLAY = preload("res://Assets/Materials/GreenAlphaOverlay.tres")
@@ -315,7 +298,6 @@ func play_growth_pop_animation(old_stage):
 	var grow_pop_part := GROW_POP_PARTICLES.instance()
 	add_child(grow_pop_part)
 
-
 	yield(get_tree(), "idle_frame")
 	yield(get_tree(), "idle_frame")
 	var dist:= self.global_translation.distance_to(Game.player.global_translation)
@@ -327,19 +309,18 @@ func play_growth_pop_animation(old_stage):
 
 const FLASH_OVERLAY = preload("res://Assets/Materials/FlashAlphaOverlay.tres")
 func play_growth_flash():
-#	if growth_stage != growth_lock and growth_stage_progress < .75:
-#		var meshes : Array = Utility.get_all_mesh_instance_children(current_model)
-#		for mi in meshes:
-#			mi.material_overlay = FLASH_OVERLAY
-#		$FlashTween.interpolate_property(FLASH_OVERLAY, "albedo_color:a", 0.0, 0.5, .15, Tween.TRANS_QUAD, Tween.EASE_IN)
-#		$FlashTween.start()
-#		yield($FlashTween,"tween_all_completed")
-#		$FlashTween.interpolate_property(FLASH_OVERLAY, "albedo_color:a", 0.5, 0.0, .3, Tween.TRANS_QUAD, Tween.EASE_IN)
-#		$FlashTween.start()
-#		yield($FlashTween,"tween_all_completed")
-#		for mi in meshes:
-#			mi.material_overlay = null
-	pass
+	if growth_stage != growth_lock and growth_stage_progress < .75:
+		var meshes : Array = Utility.get_all_mesh_instance_children(current_model)
+		for mi in meshes:
+			mi.material_overlay = FLASH_OVERLAY
+		$FlashTween.interpolate_property(FLASH_OVERLAY, "albedo_color:a", 0.0, 0.5, .15, Tween.TRANS_QUAD, Tween.EASE_IN)
+		$FlashTween.start()
+		yield($FlashTween,"tween_all_completed")
+		$FlashTween.interpolate_property(FLASH_OVERLAY, "albedo_color:a", 0.5, 0.0, .3, Tween.TRANS_QUAD, Tween.EASE_IN)
+		$FlashTween.start()
+		yield($FlashTween,"tween_all_completed")
+		for mi in meshes:
+			mi.material_overlay = null
 
 const DEATH_OVERLAY = preload("res://Assets/Materials/DeathAlphaOverlay.tres")
 func play_death_flash():
@@ -373,7 +354,10 @@ func on_remove():
 	if removing:
 		return
 	removing = true
-	reset_small_seeds()
+	if seeds_ready_to_harvest:
+		flush_seeds()
+	else:
+		reset_small_seeds()
 	var pickup = FLYING_PICKUP.instance()
 	Game.planet.add_child_with_light(pickup)
 	pickup.global_transform.basis = Utility.get_basis_y_aligned(Game.planet.global_translation.direction_to(self.global_translation))
