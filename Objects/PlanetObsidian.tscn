@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Assets/Models/Modelplanet_02_obsidian.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Planet.gd" type="Script" id=2]
@@ -10,9 +10,27 @@
 [ext_resource path="res://Assets/GLTF/AlienRuinsV.gltf" type="PackedScene" id=8]
 [ext_resource path="res://Assets/Models/ModelAlienRuinsCircle.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Assets/Models/ModelAlienRuinsV.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/Models/Meshes/StygeaShroom1.tres" type="ArrayMesh" id=11]
+[ext_resource path="res://Assets/Models/ModelShroomPlantState00.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Assets/Models/Meshes/StygeaShroom2.tres" type="ArrayMesh" id=13]
+[ext_resource path="res://Assets/Models/ModelShroomPlantState01.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Assets/Models/ModelShroomPlantState02.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Assets/Models/ModelShroomPlantState03.tscn" type="PackedScene" id=16]
 
 [sub_resource type="SphereShape" id=12]
 radius = 22.8154
+
+[sub_resource type="MultiMesh" id=13]
+transform_format = 1
+instance_count = 12
+mesh = ExtResource( 11 )
+transform_array = PoolVector3Array( 0.315232, 0.0172199, 0.450369, -0.0385494, -0.546554, 0.0478798, 0.449047, -0.0590086, -0.31205, -1.04152, -7.92291, 0.342901, -0.115194, -0.056535, 0.534822, 0.476231, 0.243398, 0.128303, -0.249869, 0.48996, -0.00202583, 5.42876, 1.05823, -1.03139, -0.0333852, -0.221737, 0.502213, -0.270692, -0.431077, -0.208324, 0.47761, -0.259818, -0.0829652, -5.1481, -5.15531, -0.548276, -0.22468, -0.462479, 0.195275, 0.091731, -0.24816, -0.482185, 0.493563, -0.164408, 0.178509, -7.21953, 0.486178, 1.82086, 0.297591, -0.436902, -0.151842, -0.207395, -0.287428, 0.420563, -0.413433, -0.170299, -0.320267, -4.70071, -0.985991, -5.33667, 0.313534, -0.0169467, -0.451563, 0.178084, 0.509767, 0.104518, 0.41531, -0.205793, 0.296086, 1.25299, 4.9936, -0.799221, -0.319091, 0.257861, -0.366318, -0.286227, 0.228615, 0.410255, 0.344608, 0.428652, 0.00155966, 4.14089, 2.663, 5.89686, -0.012819, -0.0674927, -0.545693, -0.357154, -0.413992, 0.0595937, -0.418063, 0.355746, -0.0341788, 3.67135, -3.36783, 0.73128, -0.493894, 0.131549, -0.203135, 0.168538, -0.144339, -0.50325, -0.173677, -0.514161, 0.0893041, 3.49751, -2.71371, -6.30618, 0.0903815, -0.104619, 0.53234, -0.528572, 0.104618, 0.110302, -0.12224, -0.529726, -0.0833516, -1.85245, 1.7027, -6.95945, -0.0996897, -0.495324, -0.217292, -0.191357, 0.23896, -0.456925, 0.50591, -0.00721883, -0.215647, -3.12445, 2.03086, 5.96207, -0.236817, -0.396925, 0.298108, 0.141272, 0.262746, 0.462068, -0.475878, 0.275527, -0.0111791, 3.05881, 5.41684, -2.24321 )
+
+[sub_resource type="MultiMesh" id=14]
+transform_format = 1
+instance_count = 8
+mesh = ExtResource( 13 )
+transform_array = PoolVector3Array( -0.646981, 0.26468, 0.0368708, -0.228805, -0.498742, -0.434632, -0.138071, -0.413764, 0.547481, 2.95356, -4.20052, -5.80394, -0.33964, -0.529052, -0.307812, -0.510095, 0.0500862, 0.476754, -0.338301, 0.455626, -0.409826, -5.7499, -0.305712, 5.39113, -0.053933, -0.298297, 0.63096, -0.056983, 0.63261, 0.294206, -0.695589, -0.0286951, -0.0730235, -3.05968, 6.74687, 0.828151, 0.356555, -0.160856, -0.580512, 0.5551, -0.174251, 0.389231, -0.23395, -0.658606, 0.0388013, -1.03314, -1.81566, -6.00969, -0.439527, -0.544313, -0.0232222, -0.132681, 0.135883, -0.673744, 0.528405, -0.41864, -0.188492, -5.73379, -1.81511, -0.134904, 0.5381, -0.0298821, 0.446717, 0.3359, 0.488718, -0.371922, -0.296007, 0.500262, 0.390023, -0.668315, 3.86278, 6.31022, -0.115503, 0.518474, 0.455899, -0.361291, -0.439283, 0.408043, 0.588326, -0.167974, 0.340084, 4.20225, -6.10379, -2.07017, 0.658112, -0.0199296, -0.237679, 0.202652, -0.321131, 0.588053, -0.12578, -0.621673, -0.296145, -0.38382, 0.418459, -7.0083 )
 
 [node name="PlanetObsidian" type="Spatial"]
 script = ExtResource( 2 )
@@ -148,4 +166,38 @@ transform = Transform( 0.431297, -0.10581, -0.00757158, -0.0520091, -0.183287, -
 [node name="Gear2" parent="." instance=ExtResource( 5 )]
 transform = Transform( 2.11373, -0.519857, 0.165048, 0.499333, 2.11015, 0.251569, -0.219452, -0.205837, 2.16214, -2.34261, -3.19042, 3.63691 )
 
+[node name="MultiMesh" type="Spatial" parent="."]
+
+[node name="MultiMeshInstance" type="MultiMeshInstance" parent="MultiMesh"]
+multimesh = SubResource( 13 )
+
+[node name="ModelShroomPlantState00" parent="MultiMesh" instance=ExtResource( 12 )]
+
+[node name="ModelShroomPlantState01" parent="MultiMesh" instance=ExtResource( 14 )]
+
+[node name="MultiMeshInstance2" type="MultiMeshInstance" parent="MultiMesh"]
+multimesh = SubResource( 14 )
+
+[node name="Plants" type="Spatial" parent="."]
+
+[node name="ModelShroomPlantState02" parent="Plants" instance=ExtResource( 15 )]
+transform = Transform( 0.0996589, 0.38253, 0.601117, -0.644373, 0.307412, -0.0887957, -0.304064, -0.526091, 0.385196, 4.14604, 4.53704, -4.42431 )
+
+[node name="ModelShroomPlantState03" parent="Plants" instance=ExtResource( 15 )]
+transform = Transform( -0.332884, 0.218271, -0.59929, -0.345599, 0.506432, 0.376418, 0.536053, 0.462047, -0.129473, 3.58019, 3.2665, 5.78467 )
+
+[node name="ModelShroomPlantState04" parent="Plants" instance=ExtResource( 15 )]
+transform = Transform( -0.332884, -0.631793, -0.0873475, -0.345599, 0.261487, -0.574273, 0.536053, -0.223754, -0.424481, -6.60496, 3.32608, -0.501787 )
+
+[node name="ModelShroomPlantState06" parent="Plants" instance=ExtResource( 15 )]
+transform = Transform( -0.599831, -0.335066, -0.213394, 0.389441, -0.41975, -0.435602, 0.0783703, -0.47869, 0.531335, -0.364237, -3.71327, -6.48628 )
+
+[node name="ModelShroomPlantState05" parent="Plants" instance=ExtResource( 16 )]
+transform = Transform( 0.768384, 0, -0.639989, 0, 1, 0, 0.639989, 0, 0.768384, -0.613591, 7.34571, 0 )
+
+[node name="ModelShroomPlantState07" parent="Plants" instance=ExtResource( 16 )]
+transform = Transform( 0.768384, 0.028697, 0.639345, -1.50844e-07, -0.998994, 0.04484, 0.639989, -0.0344544, -0.767611, -0.613591, -7.78147, 1.18944e-07 )
+
 [editable path="Model"]
+[editable path="MultiMesh/ModelShroomPlantState00"]
+[editable path="MultiMesh/ModelShroomPlantState01"]
