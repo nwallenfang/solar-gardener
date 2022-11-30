@@ -48,6 +48,12 @@ func add_stage_progress(plant_name, growth_stage):
 	
 func plant_profile_to_preference_list(plant: PlantProfile) -> Array:
 	var preference_list = []
+	if plant.prefered_soil == SOIL_TYPES.DIRT:
+		preference_list.append(PREFERENCES["Likes dirt planets"])
+	if plant.prefered_soil == SOIL_TYPES.ROCK:
+		preference_list.append(PREFERENCES["Likes rocky planets"])
+	if plant.prefered_soil == SOIL_TYPES.SAND:
+		preference_list.append(PREFERENCES["Likes sandy planets"])
 	if plant.sun == PREFERENCE.LIKES:
 		preference_list.append(PREFERENCES["Likes Sun"])
 	if plant.sun == PREFERENCE.HATES:
@@ -64,12 +70,6 @@ func plant_profile_to_preference_list(plant: PlantProfile) -> Array:
 		preference_list.append(PREFERENCES["Likes Groups"])
 	if plant.group == PREFERENCE.HATES:
 		preference_list.append(PREFERENCES["Hates Groups"])
-	if plant.prefered_soil == SOIL_TYPES.DIRT:
-		preference_list.append(PREFERENCES["Likes dirt planets"])
-	if plant.prefered_soil == SOIL_TYPES.ROCK:
-		preference_list.append(PREFERENCES["Likes rocky planets"])
-	if plant.prefered_soil == SOIL_TYPES.SAND:
-		preference_list.append(PREFERENCES["Likes sandy planets"])
 	if plant.symbiosis_plant_type == PLANT_TYPES.FLOWER:
 		preference_list.append(PREFERENCES["Likes Flowers"])
 	if plant.symbiosis_plant_type == PLANT_TYPES.SHROOM:

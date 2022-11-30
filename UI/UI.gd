@@ -58,6 +58,9 @@ func changed_state(state, prev_state):
 	match state:
 		Game.State.INGAME:
 			mode=Input.MOUSE_MODE_CAPTURED#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			if prev_state == Game.State.JOURNAL:
+				if Events.get_event_from_key("tutorial_plant_scanned").execute_count > 0:
+					Events.trigger("tutorial_growth_reached")
 			$SettingsUI.hide_settings()
 			$JournalAndGuideUI.hide()
 			$Toolbar.visible = true

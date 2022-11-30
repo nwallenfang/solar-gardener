@@ -133,6 +133,14 @@ mixer_bus = "SFX"
 script = ExtResource( 3 )
 mixer_bus = "SFX"
 
+[node name="remover" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+mixer_bus = "SFX"
+
+[node name="upgrade" type="Node" parent="Sounds"]
+script = ExtResource( 3 )
+mixer_bus = "SFX"
+
 [node name="seedgun_load" type="Node" parent="Sounds"]
 script = ExtResource( 3 )
 volume_db = -6.0

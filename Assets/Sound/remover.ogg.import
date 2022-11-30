@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/remover.ogg-172667f3b9cb9101d42684b7f12161a4.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sound/remover.ogg"
+dest_files=[ "res://.import/remover.ogg-172667f3b9cb9101d42684b7f12161a4.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
