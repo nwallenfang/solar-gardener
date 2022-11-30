@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource( 1 )
 name = "Moontree"
-mesh_file_name = "MoonTree"
+mesh_file_name = "01_moontree"
 plant_type = 1
 fluff_base = "The Moontree like to grow on any soil as long as the soils [b]nutrients are low[/b]."
 fluff_stage2 = "Its fragile root benefit strongly from a [b]layer of mycelium[/b] on the ground."
@@ -18,7 +18,7 @@ nutrients = 3
 group = 1
 prefered_soil = 0
 symbiosis_plant_type = 2
-needs_dirt_pile = false
+needs_dirt_pile = true
 use_big_hitbox_at_stage = 1
 seed_count = 3
 seed_grow_time = 14.0
@@ -27,4 +27,4 @@ points_for_stage_2 = 2
 points_for_stage_3 = 3
 points_for_stage_4 = 4
 amber_location = "deep inside Düne"
-special_effect_name = ""
+special_effect_name = "MoontreeEffect"

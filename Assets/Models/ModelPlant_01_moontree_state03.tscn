@@ -91,19 +91,19 @@ light_energy = 4.27109
 omni_range = 4.709
 
 [node name="Empty" type="Spatial" parent="."]
-transform = Transform( 0.67095, 0, 0, 0, 0.67095, 0, 0, 0, 0.67095, 0.55685, 2.67889, 1.18451 )
+transform = Transform( 0.67095, 0, 0, 0, 0.67095, 0, 0, 0, 0.67095, 0.989683, 2.67889, 0.918468 )
 
 [node name="Empty001" type="Spatial" parent="."]
-transform = Transform( 0.67095, 0, 0, 0, 0.67095, 0, 0, 0, 0.67095, -0.432325, 2.15466, 2.60348 )
+transform = Transform( 0.67095, 0, 0, 0, 0.67095, 0, 0, 0, 0.67095, 0.000507593, 2.15466, 2.33744 )
 
 [node name="Empty002" type="Spatial" parent="."]
-transform = Transform( 0.67095, 0, 0, 0, 0.67095, 0, 0, 0, 0.67095, 0.890034, 2.59829, -1.50027 )
+transform = Transform( 0.67095, 0, 0, 0, 0.67095, 0, 0, 0, 0.67095, 1.32287, 2.59829, -1.76631 )
 
 [node name="Empty003" type="Spatial" parent="."]
-transform = Transform( 0.67095, 0, 0, 0, 0.67095, 0, 0, 0, 0.67095, -2.72801, 2.88429, 2.11457 )
+transform = Transform( 0.67095, 0, 0, 0, 0.67095, 0, 0, 0, 0.67095, -2.29518, 2.88429, 1.84853 )
 
 [node name="Retopo_Cylinder001" type="MeshInstance" parent="."]
-transform = Transform( 0.191471, 0, 0, 0, 0.191471, 0, 0, 0, 0.191471, -0.492367, -0.00563383, 0.298589 )
+transform = Transform( 0.191471, 0, 0, 0, 0.191471, 0, 0, 0, 0.191471, -0.0595344, -0.00563383, 0.0325468 )
 mesh = ExtResource( 4 )
 material/0 = ExtResource( 1 )
 

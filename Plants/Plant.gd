@@ -90,11 +90,15 @@ func _physics_process(delta):
 			growth_boost = false
 
 func _on_CheckConditionsTimer_timeout():
-#	if growth_stage == growth_lock:
-	check_conditions()
+	if growth_stage < PlantData.GROWTH_STAGES.STAGE_4:
+		check_conditions()
+
+var needs_met := []
 
 var cheat = false
 func calculate_growth_points():
+	needs_met.clear()
+	
 	var ability_tags := get_near_plants_tags()
 	var points := 0
 	# SOIL TYPE
@@ -108,10 +112,13 @@ func calculate_growth_points():
 			match planet.soil_type:
 				PlantData.SOIL_TYPES.ROCK:
 					Game.journal.make_preference_known(profile.name, "Likes rocky planets")
+					needs_met.append("Likes rocky planets")
 				PlantData.SOIL_TYPES.DIRT:
 					Game.journal.make_preference_known(profile.name, "Likes dirt planets")
+					needs_met.append("Likes dirt planets")
 				PlantData.SOIL_TYPES.SAND:
 					Game.journal.make_preference_known(profile.name, "Likes sandy planets")
+					needs_met.append("Likes sandy planets")
 	
 	# SUN
 	var sun_value := planet.sun
@@ -130,11 +137,13 @@ func calculate_growth_points():
 			points += 1
 			if growth_stage >= 1:
 				Game.journal.make_preference_known(profile.name, "Likes Sun")
+				needs_met.append("Likes Sun")
 	elif profile.sun == PlantData.PREFERENCE.HATES:
 		if not sun_value:
 			points += 1 
 			if growth_stage >= 1:
 				Game.journal.make_preference_known(profile.name, "Hates Sun")
+				needs_met.append("Hates Sun")
 	
 	# NUTRI
 	var nutri_value := planet.nutrients
@@ -153,11 +162,13 @@ func calculate_growth_points():
 			points += 1
 			if growth_stage >= 1:
 				Game.journal.make_preference_known(profile.name, "Likes Nutrients")
+				needs_met.append("Likes Nutrients")
 	elif profile.nutrients == PlantData.PREFERENCE.HATES:
 		if not nutri_value:
 			points += 1
 			if growth_stage >= 1:
 				Game.journal.make_preference_known(profile.name, "Hates Nutrients")
+				needs_met.append("Hates Nutrients")
 	
 	#Game.UI.set_diagnostics([get_near_plants_group_count()])
 	# GROUP
@@ -172,21 +183,26 @@ func calculate_growth_points():
 				points += 1
 				if growth_stage >= 1:
 					Game.journal.make_preference_known(profile.name, "Likes Groups")
+					needs_met.append("Likes Groups")
 		elif profile.group == PlantData.PREFERENCE.HATES:
 			if get_near_plants_group_count() < 1:
 				points += 1
 				if growth_stage >= 1:
 					Game.journal.make_preference_known(profile.name, "Hates Groups")
+					needs_met.append("Hates Groups")
 	
 	if profile.symbiosis_plant_type in get_near_plants_types():
 		points += 1
 		match(profile.symbiosis_plant_type):
 			PlantData.PLANT_TYPES.FLOWER:
 				Game.journal.make_preference_known(profile.name, "Likes Flowers")
+				needs_met.append("Likes Flowers")
 			PlantData.PLANT_TYPES.SHROOM:
 				Game.journal.make_preference_known(profile.name, "Likes Shrooms")
+				needs_met.append("Likes Shrooms")
 			PlantData.PLANT_TYPES.THORNY:
 				Game.journal.make_preference_known(profile.name, "Likes Thornys")
+				needs_met.append("Likes Thornys")
 	
 	# CHEAT
 	if Game.growth_cheat: # or profile.name == "Greatcap" or profile.name == "Moontree":
@@ -194,8 +210,8 @@ func calculate_growth_points():
 		
 	growth_points = points
 	
+	print(needs_met)
 
-	
 func check_conditions():
 	calculate_growth_points()
 	if growth_points >= profile.points_for_stage_4:

@@ -6,18 +6,18 @@
 [node name="ModelPlant_01_moontree_state01" type="Spatial"]
 
 [node name="Retopo_Cylinder" type="MeshInstance" parent="."]
-transform = Transform( 0.148035, 0, 0, 0, 0.148035, 0, 0, 0, 0.148035, -0.0464024, -0.119201, -0.0324048 )
+transform = Transform( 0.148035, 0, 0, 0, 0.148035, 0, 0, 0, 0.148035, -0.0317943, -0.119201, -0.0104069 )
 mesh = ExtResource( 1 )
 material/0 = ExtResource( 2 )
 
 [node name="Empty" type="Spatial" parent="."]
-transform = Transform( 0.518742, 0, 0, 0, 0.518742, 0, 0, 0, 0.518742, 0.792894, 2.75681, -0.184639 )
+transform = Transform( 0.518742, 0, 0, 0, 0.518742, 0, 0, 0, 0.518742, 0.807502, 2.75681, -0.162641 )
 
 [node name="Empty001" type="Spatial" parent="."]
-transform = Transform( 0.518742, 0, 0, 0, 0.518742, 0, 0, 0, 0.518742, -0.0191157, 1.17505, 1.36299 )
+transform = Transform( 0.518742, 0, 0, 0, 0.518742, 0, 0, 0, 0.518742, -0.00450755, 1.17505, 1.38499 )
 
 [node name="Empty002" type="Spatial" parent="."]
-transform = Transform( 0.518742, 0, 0, 0, 0.518742, 0, 0, 0, 0.518742, -1.22461, 2.8572, -1.08198 )
+transform = Transform( 0.518742, 0, 0, 0, 0.518742, 0, 0, 0, 0.518742, -1.21, 2.8572, -1.05998 )
 
 [node name="Empty003" type="Spatial" parent="."]
-transform = Transform( 0.518742, 0, 0, 0, 0.518742, 0, 0, 0, 0.518742, -1.39041, 1.60648, 1.08316 )
+transform = Transform( 0.518742, 0, 0, 0, 0.518742, 0, 0, 0, 0.518742, -1.3758, 1.60648, 1.10516 )
