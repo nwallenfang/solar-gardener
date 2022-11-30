@@ -117,13 +117,14 @@ text = "Remove Plant"
 [node name="MultitoolC" type="Label" parent="HotkeyGuide/Controls"]
 unique_name_in_owner = true
 visible = false
-margin_top = 46.0
-margin_right = 108.0
+margin_top = 18.0
+margin_right = 229.0
 margin_bottom = 71.0
 grow_horizontal = 0
 grow_vertical = 0
 custom_fonts/font = ExtResource( 9 )
-text = "Journal"
+text = "Speed up growth
+Harvest Seeds"
 
 [node name="JournalC" type="Label" parent="HotkeyGuide/Controls"]
 margin_top = 75.0
@@ -163,7 +164,7 @@ text = "Right Click"
 unique_name_in_owner = true
 visible = false
 margin_top = 46.0
-margin_right = 49.0
+margin_right = 51.0
 margin_bottom = 71.0
 custom_fonts/font = ExtResource( 9 )
 text = "TAB"

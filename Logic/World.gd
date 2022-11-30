@@ -97,10 +97,14 @@ func end_intro_flight():
 	yield(get_tree().create_timer(.4),"timeout")
 	Game.multitool.switch_tool(Game.multitool.TOOL.ANALYSIS)
 	Game.intro_done = true
-	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED and OS.has_feature("HTML5"):
+		Game.main_scene.set_process_input(true)
 		Game.UI.get_node("ClickToFocus").visible = true
 		# in this case the intro only counts as done once this has been hidden
 		Game.intro_done = false
+	else:
+		if Game.UI.has_node("ClickToFocus"):
+			Game.UI.get_node("ClickToFocus").queue_free()
 		
 	Game.planet.fade_in()
 	yield(get_tree().create_timer(2.0), "timeout")
