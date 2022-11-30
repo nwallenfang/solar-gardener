@@ -204,7 +204,7 @@ func execute_planet_hop(new_planet: Planet, pos: Vector3):
 	# music from planet c and d
 	
 	hop_music_fade(planet, new_planet)
-	main_scene.set_wush(true)
+
 	if planet.planet_name == "Yard Shed" and new_planet.planet_name == "Düne" or \
 		planet.planet_name == "Düne" and new_planet.planet_name == "Yard Shed":
 		sun_hot = true
@@ -221,6 +221,8 @@ func execute_planet_hop(new_planet: Planet, pos: Vector3):
 	yield(get_tree(), "idle_frame")
 	sun.start_sound()
 	Audio.play("hop_launch")
+	main_scene.set_wush(true)
+
 	yield($WarpTween, "tween_all_completed")
 	main_scene.set_wush(false)
 	Audio.play("hop_landing" + str(1 + randi() % 2))

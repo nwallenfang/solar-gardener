@@ -71,5 +71,9 @@ func _notification(what):
 #			Game.game_state = Game.State.SETTINGS
 
 func set_wush(wush: bool):
-	get_tree().create_tween().tween_property($ViewportContainer.material, "shader_param/alpha", .8 if wush else 0.0, .7 if wush else .3)
+	var alpha = .6 if wush else 0.0
+	var duration = .5 if wush else .3
+	if wush:
+		yield(get_tree().create_timer(0.2), "timeout")
+	get_tree().create_tween().tween_property($ViewportContainer.material, "shader_param/alpha", alpha, duration)
 
