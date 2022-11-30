@@ -147,6 +147,8 @@ var has_been_grab_rooted := false
 func try_grabroot_effect(pos: Vector3):
 	if Game.planet != self:
 		return
+	if Events.get_event_from_key("journal_opened").execute_count == 0 or Events.get_event_from_key("seeds_harvested").execute_count == 0:
+		return
 	if not has_been_grab_rooted:
 		while true:
 			if Utility.start_reliable_test(pos):

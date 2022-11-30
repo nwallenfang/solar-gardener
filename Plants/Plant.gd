@@ -415,6 +415,7 @@ func flush_seeds():
 	if not seeds_ready_to_harvest:
 		return
 	seeds_ready_to_harvest = false
+	Events.trigger("seeds_harvested")
 	for pickup in small_seeds:
 		$SeedGrowTween.interpolate_property(pickup, "scale", pickup.scale, pickup.scale * 1.8, 1.0)
 	$SeedGrowTween.start()

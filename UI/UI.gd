@@ -79,6 +79,7 @@ func changed_state(state, prev_state):
 #			$Diagnostics.visible = false
 			$GardenerNote.visible = false
 		Game.State.JOURNAL:
+			Events.trigger("journal_opened")
 			$"%Crosshair".visible = false
 			mode = Input.MOUSE_MODE_VISIBLE#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			$SettingsUI.hide_settings()

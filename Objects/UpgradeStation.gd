@@ -42,6 +42,10 @@ func upgrade():
 	if not Upgrades.is_upgrade_available():
 		yield(get_tree().create_timer(1),"timeout")
 		set_open(false)
+	else:
+		$Area/CollisionShape.disabled = true
+		yield(get_tree().create_timer(1.2),"timeout")
+		$Area/CollisionShape.disabled = false
 
 const GROW_POP_PARTICLES = preload("res://Effects/GrowPopParticles.tscn")
 const FLASH_OVERLAY = preload("res://Assets/Materials/FlashAlphaOverlay.tres")
