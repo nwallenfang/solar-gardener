@@ -1,30 +1,116 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Assets/Models/Meshes/MeshPlant_01_moontree_state031.res" type="ArrayMesh" id=1]
-[ext_resource path="res://Assets/Models/Meshes/MeshPlant_01_moontree_state033.res" type="ArrayMesh" id=2]
-[ext_resource path="res://Assets/Models/Meshes/MeshPlant_01_moontree_state032.res" type="ArrayMesh" id=3]
+[ext_resource path="res://Assets/Materials/Plants/MoontreeWood.tres" type="Material" id=1]
+[ext_resource path="res://Assets/Materials/Plants/MoontreeMoon.tres" type="Material" id=2]
+[ext_resource path="res://Assets/Models/Meshes/MeshMoonTreeState031.res" type="ArrayMesh" id=3]
+[ext_resource path="res://Assets/Models/Meshes/MeshMoonTreeState032.res" type="ArrayMesh" id=4]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Pivot:rotation_degrees:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Pivot:rotation_degrees:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Pivot:rotation_degrees:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "animate"
+length = 7.0
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Pivot/Moon/OmniLight:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 3, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 4.94536, -0.2, 0.347504, 0.6, -2.52172, 3, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.8, 4, 7 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Pivot:rotation_degrees:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 18, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 3.5, 7 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Pivot:translation:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 7.252, -0.25, 0, 0.4, -0.0332069, 6.67376, -0.2, 0.0682616, 0.1, -0.0536342, 6.6, -0.3, -0.0127587, 0.5, -0.00665665, 7.252, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2.5, 3.6, 7 )
+}
 
 [node name="ModelPlant_01_moontree_state03" type="Spatial"]
 
-[node name="Retopo_Cylinder" type="MeshInstance" parent="."]
-transform = Transform( 0.285373, 0, 0, 0, 0.285373, 0, 0, 0, 0.285373, -1.78131, 6.43221, 6.23189 )
-mesh = ExtResource( 1 )
+[node name="Pivot" type="Spatial" parent="."]
+transform = Transform( 0.67095, 0, 0, 0, 0.67095, 0, 0, 0, 0.67095, -1.15487, 6.59749, 3.22036 )
+
+[node name="Moon" type="MeshInstance" parent="Pivot"]
+transform = Transform( 0.245363, 0, 0, 0, 0.242629, 0.0365297, 0, -0.0365297, 0.242629, 0.211912, -3.9185, 1.20568 )
+mesh = ExtResource( 3 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 2 )
+
+[node name="OmniLight" type="OmniLight" parent="Pivot/Moon"]
+transform = Transform( 7.07002, 0, 0, 0, 7.07001, -5.96046e-07, 0, 4.76837e-07, 7.07001, -1.03693, 2.87078, -10.71 )
+light_color = Color( 0.439216, 0.831373, 0.85098, 1 )
+light_energy = 4.27109
+omni_range = 4.709
 
 [node name="Empty" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5239, 4.00108, 1.31105 )
+transform = Transform( 0.67095, 0, 0, 0, 0.67095, 0, 0, 0, 0.67095, 0.55685, 2.67889, 1.18451 )
 
 [node name="Empty001" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0774112, 3.21975, 3.43527 )
+transform = Transform( 0.67095, 0, 0, 0, 0.67095, 0, 0, 0, 0.67095, -0.432325, 2.15466, 2.60348 )
 
 [node name="Empty002" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0693, 3.88095, -2.68107 )
+transform = Transform( 0.67095, 0, 0, 0, 0.67095, 0, 0, 0, 0.67095, 0.890034, 2.59829, -1.50027 )
 
 [node name="Empty003" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.32234, 4.30722, 2.64703 )
-
-[node name="moontree_samen" type="MeshInstance" parent="."]
-mesh = ExtResource( 3 )
+transform = Transform( 0.67095, 0, 0, 0, 0.67095, 0, 0, 0, 0.67095, -2.72801, 2.88429, 2.11457 )
 
 [node name="Retopo_Cylinder001" type="MeshInstance" parent="."]
-transform = Transform( 0.285373, 0, 0, 0, 0.285373, 0, 0, 0, 0.285373, 0, 0, 0 )
-mesh = ExtResource( 2 )
+transform = Transform( 0.191471, 0, 0, 0, 0.191471, 0, 0, 0, 0.191471, -0.492367, -0.00563383, 0.298589 )
+mesh = ExtResource( 4 )
+material/0 = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "animate"
+anims/RESET = SubResource( 1 )
+anims/animate = SubResource( 2 )
+
+[node name="VisibilityEnabler" type="VisibilityEnabler" parent="."]
+max_distance = 10.0

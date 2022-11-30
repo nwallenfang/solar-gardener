@@ -33,7 +33,7 @@ volume_db = -6.0
 mixer_bus = "SFX"
 
 [node name="scanner_close" parent="Sounds" instance=ExtResource( 1 )]
-volume_db = -6.0
+volume_db = -8.5
 mixer_bus = "SFX"
 
 [node name="plant_growth_stage1" parent="Sounds" instance=ExtResource( 1 )]
