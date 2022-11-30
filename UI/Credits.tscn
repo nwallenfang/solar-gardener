@@ -494,11 +494,15 @@ anchor_bottom = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Title" type="Label" parent="Screen3/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Screen3/CenterContainer"]
 margin_left = 307.0
 margin_top = 332.0
 margin_right = 972.0
 margin_bottom = 388.0
+
+[node name="Title" type="Label" parent="Screen3/CenterContainer/VBoxContainer"]
+margin_right = 665.0
+margin_bottom = 56.0
 custom_fonts/font = ExtResource( 2 )
 text = "Thank you for playing!"
 align = 1

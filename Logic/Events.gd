@@ -91,7 +91,7 @@ func tutorial_beginning():
 	# show amber tutorial box 
 	if Game.number_of_ambers > 0:
 		return  # player has already done this before tutorial even began
-	Game.UI.add_tutorial_message("Find Seed", "Use the scanner on an Amber relict to unlock a new seed.", duration)
+	Game.UI.add_tutorial_message("Find Seed", "Use the scanner on an Amber relic to unlock a new seed.", duration)
 	$RepeatTimer.start(repeat_time)
 	repeat_this = "tutorial_beginning"
 

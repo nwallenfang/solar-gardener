@@ -6,6 +6,6 @@
 [node name="ModelMoontree_samen" type="Spatial"]
 
 [node name="Sphere001" type="MeshInstance" parent="."]
-transform = Transform( 0.383626, 0, 0, 0, 0.383626, 0, 0, 0, 0.383626, 0, 0, 0 )
-material_override = ExtResource( 2 )
+transform = Transform( 0.347634, 0, 0, 0, 0.347634, 0, 0, 0, 0.347634, 0, 0, 0 )
 mesh = ExtResource( 1 )
+material/0 = ExtResource( 2 )

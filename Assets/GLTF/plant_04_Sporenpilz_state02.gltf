@@ -1,0 +1,272 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v3.3.32",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Cone",
+            "scale" : [
+                0.20272600650787354,
+                0.20272600650787354,
+                0.20272602140903473
+            ],
+            "translation" : [
+                0.007323022931814194,
+                0.31439682841300964,
+                -0.0022071031853556633
+            ]
+        },
+        {
+            "mesh" : 1,
+            "name" : "Cylinder",
+            "scale" : [
+                0.025814417749643326,
+                0.15765568614006042,
+                0.025814419612288475
+            ],
+            "translation" : [
+                -2.1532177925109863e-06,
+                -0.0013543739914894104,
+                -0.00040845712646842003
+            ]
+        },
+        {
+            "name" : "Empty",
+            "translation" : [
+                0.10753287374973297,
+                0.28580090403556824,
+                -0.18291428685188293
+            ]
+        },
+        {
+            "name" : "Empty.001",
+            "translation" : [
+                0.06130501627922058,
+                0.43952199816703796,
+                -0.06125473976135254
+            ]
+        },
+        {
+            "name" : "Empty.002",
+            "translation" : [
+                0.16037166118621826,
+                0.3033737540245056,
+                0.13772264122962952
+            ]
+        },
+        {
+            "name" : "Empty.003",
+            "translation" : [
+                -0.052360691130161285,
+                0.18182361125946045,
+                0.22320610284805298
+            ]
+        },
+        {
+            "name" : "Empty.004",
+            "translation" : [
+                -0.11452984809875488,
+                0.36253952980041504,
+                0.05516680330038071
+            ]
+        },
+        {
+            "name" : "Empty.005",
+            "translation" : [
+                -0.06966891884803772,
+                0.3961241841316223,
+                -0.08993721753358841
+            ]
+        },
+        {
+            "name" : "Empty.006",
+            "translation" : [
+                -0.07472763955593109,
+                0.19652636349201202,
+                -0.19376403093338013
+            ]
+        },
+        {
+            "name" : "Empty.007",
+            "translation" : [
+                0.013349160552024841,
+                0.4350506365299225,
+                0.08994249254465103
+            ]
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Cone_sm_7",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "indices" : 3
+                }
+            ]
+        },
+        {
+            "name" : "Cylinder_sm_0",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 4,
+                        "NORMAL" : 5,
+                        "TEXCOORD_0" : 6
+                    },
+                    "indices" : 7
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 2692,
+            "max" : [
+                1.9137111902236938,
+                0.8625293970108032,
+                1.9080536365509033
+            ],
+            "min" : [
+                -1.552298665046692,
+                -1.3760795593261719,
+                -1.843436598777771
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 2692,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 2692,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5123,
+            "count" : 14232,
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 4,
+            "componentType" : 5126,
+            "count" : 136,
+            "max" : [
+                3.765044689178467,
+                2.502725601196289,
+                3.7401375770568848
+            ],
+            "min" : [
+                -3.4067721366882324,
+                -0.38522136211395264,
+                -3.0741214752197266
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 5,
+            "componentType" : 5126,
+            "count" : 136,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 6,
+            "componentType" : 5126,
+            "count" : 136,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 7,
+            "componentType" : 5123,
+            "count" : 480,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 32304,
+            "byteOffset" : 0,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 32304,
+            "byteOffset" : 32304,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 21536,
+            "byteOffset" : 64608,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 28464,
+            "byteOffset" : 86144,
+            "target" : 34963
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 1632,
+            "byteOffset" : 114608,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 1632,
+            "byteOffset" : 116240,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 1088,
+            "byteOffset" : 117872,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 960,
+            "byteOffset" : 118960,
+            "target" : 34963
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 119920,
+            "uri" : "Sporenpilz2.0_state02.bin"
+        }
+    ]
+}

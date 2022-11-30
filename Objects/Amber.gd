@@ -5,7 +5,7 @@ export var seed_count : int
 
 const FLYING_PICKUP = preload("res://Objects/FlyingPickup.tscn")
 
-var analyse_name = "Amber Relict"
+var analyse_name = "Amber Relic"
 
 var pickups: Array
 

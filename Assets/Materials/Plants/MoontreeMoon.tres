@@ -14,3 +14,5 @@ emission_on_uv2 = false
 normal_enabled = true
 normal_scale = 1.4
 normal_texture = ExtResource( 2 )
+uv1_scale = Vector3( 0.2, 0.1, 0.5 )
+uv1_triplanar = true

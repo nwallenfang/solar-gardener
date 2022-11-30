@@ -21,6 +21,7 @@ func _input(event: InputEvent) -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Game.intro_done = true
 			Game.UI.get_node("ClickToFocus").visible = false
+			Game.UI.get_node("ClickToFocus").queue_free()
 			Game.get_node("SettingsOpenCooldown").start(0.4)
 			if Game.game_state == Game.State.INGAME:
 				set_process_input(false)
@@ -29,6 +30,7 @@ func _input(event: InputEvent) -> void:
 #	set_process_input(false)
 
 func _ready() -> void:
+	set_process_input(false)
 	Game.main_scene_running = true
 	Game.main_scene = self
 	Game.UI = $UI
@@ -61,7 +63,8 @@ func root_viewport_size_changed():
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_FOCUS_OUT:
 		if OS.has_feature("HTML5"):
-			if not Game.game_state == Game.State.INTRO_FLIGHT and not Game.game_state == Game.State.LOADING:
+			if not Game.game_state == Game.State.INTRO_FLIGHT and not Game.game_state == Game.State.LOADING \
+			 and not is_processing_input():
 				Game.game_state = Game.State.SETTINGS
 #	if what == MainLoop.NOTIFICATION_WM_MOUSE_EXIT:
 #		if not Game.game_state == Game.State.INTRO_FLIGHT and not Game.game_state == Game.State.LOADING:
