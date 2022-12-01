@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Assets/Models/Meshes/MeshPlant_01_ranke_state001.res" type="ArrayMesh" id=1]
+[ext_resource path="res://Assets/GLTF/GLTFLastMinute/Plant_01_ranke_state00.res" type="ArrayMesh" id=1]
 [ext_resource path="res://Assets/Materials/Plants/AntennaMaterial.tres" type="Material" id=2]
 [ext_resource path="res://Assets/Materials/Plants/BasicPlantGreen.tres" type="Material" id=3]
 [ext_resource path="res://Assets/Materials/Plants/RankeThorns.tres" type="Material" id=4]
