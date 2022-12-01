@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hinterrund.png-7bb51a7002480e1367145c8923e83ada.stex"
+path="res://.import/solar_system.png-8adb346c22efb0c25a499f6d761c2440.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://hinterrund.png"
-dest_files=[ "res://.import/hinterrund.png-7bb51a7002480e1367145c8923e83ada.stex" ]
+source_file="res://Tests/solar_system.png"
+dest_files=[ "res://.import/solar_system.png-8adb346c22efb0c25a499f6d761c2440.stex" ]
 
 [params]
 

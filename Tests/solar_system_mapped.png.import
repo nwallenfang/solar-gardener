@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/solar_system_mapped.webp-7051f5459fc44c3a45e27f49f4ccb853.stex"
+path="res://.import/solar_system_mapped.png-fb7459c8ceed6cbd72e206ef266a85fb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://solar_system_mapped.webp"
-dest_files=[ "res://.import/solar_system_mapped.webp-7051f5459fc44c3a45e27f49f4ccb853.stex" ]
+source_file="res://Tests/solar_system_mapped.png"
+dest_files=[ "res://.import/solar_system_mapped.png-fb7459c8ceed6cbd72e206ef266a85fb.stex" ]
 
 [params]
 
