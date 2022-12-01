@@ -14,7 +14,7 @@ func ugrade_once():
 			Game.UI.show_info_line("Planet travelling unlocked", 2)
 			Events.trigger("tutorial_completed")
 		2: # Soil
-			Game.UI.show_info_line("Planet scanning unlocked", 2)
+			Game.UI.show_info_line("Advanced scanning unlocked", 2)
 			Events.trigger("soil_unlocked")
 		3: # Remove
 			Game.UI.show_info_line("Plant removal unlocked", 2)
