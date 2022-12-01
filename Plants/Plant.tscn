@@ -84,7 +84,7 @@ material_override = ExtResource( 4 )
 mesh = SubResource( 4 )
 
 [node name="DummerBugTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 7.0
 autostart = true
 
 [connection signal="timeout" from="CheckConditionsTimer" to="." method="_on_CheckConditionsTimer_timeout"]
