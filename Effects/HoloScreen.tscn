@@ -299,6 +299,7 @@ mesh = SubResource( 3 )
 
 [node name="HoloQuad2" type="MeshInstance" parent="."]
 transform = Transform( 0.992127, -0.00637693, -0.0226792, 0.0157412, 0.39731, -0.00142885, 0.0704582, 0.00095318, 0.410727, -1.19379, 0.608452, -0.0403196 )
+visible = false
 material_override = SubResource( 6 )
 mesh = SubResource( 3 )
 

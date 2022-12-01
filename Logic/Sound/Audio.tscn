@@ -12,6 +12,9 @@ script = ExtResource( 2 )
 [node name="event_pickup" parent="Sounds" instance=ExtResource( 1 )]
 mixer_bus = "SFX"
 
+[node name="ow_whistle" parent="Sounds" instance=ExtResource( 1 )]
+mixer_bus = "SFX"
+
 [node name="scanner_rotate_slow" parent="Sounds" instance=ExtResource( 1 )]
 volume_db = -3.0
 mixer_bus = "SFX"

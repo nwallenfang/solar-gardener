@@ -23,7 +23,7 @@ func ugrade_once():
 			Game.UI.show_info_line("Jetpack unlocked", 2)
 			Events.trigger("jetpack_unlocked")
 		5: # Flashlight
-			pass
+			Game.UI.show_info_line("nothing (thanks for your donation)", 2)
 
 func get_upgrades_screen_text() -> String:
 	var new_upgrades_count = gear_count - current_upgrade_level
