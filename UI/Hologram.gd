@@ -63,7 +63,7 @@ func grow_beam_juice(beam_active: bool, juice_left: float, plant_growing:=true):
 	current_screen = $"%GrowBeam"
 	
 	if beam_active and plant_growing:
-		$"%IsGrowingLabel".text = "growing.."
+		$"%IsGrowingLabel".text = "growing..."
 	else:
 		$"%IsGrowingLabel".text = ""
 	$"%JuiceLeft".text = str(int(juice_left*100.0)) + "%"

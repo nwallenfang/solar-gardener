@@ -83,5 +83,10 @@ visible = false
 material_override = ExtResource( 4 )
 mesh = SubResource( 4 )
 
+[node name="DummerBugTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
 [connection signal="timeout" from="CheckConditionsTimer" to="." method="_on_CheckConditionsTimer_timeout"]
 [connection signal="timeout" from="SeedGrowCooldown" to="." method="_on_SeedGrowCooldown_timeout"]
+[connection signal="timeout" from="DummerBugTimer" to="." method="_on_DummerBugTimer_timeout"]

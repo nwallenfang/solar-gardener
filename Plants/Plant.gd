@@ -217,7 +217,7 @@ func calculate_growth_points():
 		
 	growth_points = points
 	
-	print(needs_met)
+	#print(needs_met)
 
 func check_conditions():
 	calculate_growth_points()
@@ -537,3 +537,10 @@ func show_symb_visuals():
 	$FlashTween.start()
 	yield(get_tree().create_timer(5),"timeout")
 	$SymbiosisVisuals.visible = false
+
+func _on_DummerBugTimer_timeout():
+	if model_array[growth_stage].visible == false:
+		printerr("Komischer Kack Model Error")
+		for model in model_array:
+			model.visible = false
+		model_array[growth_stage].visible = true

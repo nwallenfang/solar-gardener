@@ -4,7 +4,7 @@ extends Node
 # guide: https://github.com/godotengine/godot/issues/25672#issuecomment-461541415
 export var sound_directoy = "res://Assets/Sound"
 
-var num_players = 8
+var num_players = 12
 
 var available = []  # The available players, instances of type AudioPlayerWithInfo
 var queue = []  # The queue of sounds to play.
@@ -75,11 +75,16 @@ func _process(delta):
 #
 #	Game.UI.set_diagnostics(dia)
 #	# Play a queued sound if any players are available.
+	#Game.UI.set_diagnostics(["available", str(len(available)),"playing", str(len(playing))])
 	if not queue.empty() and not available.empty():
 		var sound_name = queue.pop_front()
 		var player = available.pop_front()
 		# Reset all player variables
-
+		if player == null:
+	# if this is music it should get special treatment <- see above
+			return
+		if not $Sounds.has_node(sound_name):
+			return
 		player.stream = $Sounds.get_node(sound_name).stream
 		player.sound = $Sounds.get_node(sound_name)
 		player.play()
@@ -113,7 +118,7 @@ func fade_in(sound_name: String, fade_duration:=1.0, random_start:=false):
 	var player: CustomAudioPlayer = available.pop_front()
 	if player == null:
 		# if this is music it should get special treatment <- see above
-		pass
+		return
 #	print(sound_name + " started")
 	if not $Sounds.has_node(sound_name):
 		printerr("unknown sound " + sound_name)
@@ -142,7 +147,7 @@ func fade_in_at_position(sound_name: String, start_pos:=0.0, fade_duration:=1.0)
 	var player: CustomAudioPlayer = available.pop_front()
 	if player == null:
 		# if this is music it should get special treatment <- see above
-		pass
+		return
 #	print(sound_name + " started")
 	if not $Sounds.has_node(sound_name):
 		printerr("unknown sound " + sound_name)
