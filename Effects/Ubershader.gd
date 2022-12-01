@@ -36,4 +36,5 @@ func activate():
 	#$ModelMultitool/SlingshotPlayer.play("off")
 	$ModelMultitool/GrowBeamPlayer.play("off")
 	
-	
+	yield(get_tree().create_timer(.2),"timeout")
+	queue_free()

@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Objects/UpgradeStation.gd" type="Script" id=1]
-[ext_resource path="res://Logic/ModelMultitool.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Models/ModelUstation.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CubeMesh" id=1]
@@ -30,10 +29,6 @@ shape = SubResource( 2 )
 
 [node name="Slot" type="Spatial" parent="."]
 transform = Transform( -1.1365e-08, 0, 0.26, 0, 0.26, 0, -0.26, 0, -1.1365e-08, -0.195214, 1.20756, 0.00692713 )
-
-[node name="ModelMultitool" parent="Slot" instance=ExtResource( 2 )]
-visible = false
-script = null
 
 [node name="ModelUstation" parent="." instance=ExtResource( 3 )]
 transform = Transform( -3.32141e-08, 0, 0.626318, 0, 0.744598, 0, -0.759851, 0, -2.73772e-08, 0, 0, 0 )

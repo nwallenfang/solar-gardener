@@ -15,7 +15,7 @@ var tool_unlocked = {
 const tooltips := {
 	TOOL.PLANT: ["Click", "Plant a seed"],
 	TOOL.ANALYSIS: ["Click", "Scan object"],
-	TOOL.GROW: ["Click", "Growth boost and\nHarvest seeds"],
+	TOOL.GROW: ["\nClick", "Growth boost &\nHarvest seeds"],
 	TOOL.HOPPER: ["Click", "Hop to planet"],
 }
 

@@ -63,7 +63,7 @@ func grow_beam_juice(beam_active: bool, juice_left: float, plant_growing:=true):
 	current_screen = $"%GrowBeam"
 	
 	if beam_active and plant_growing:
-		$"%IsGrowingLabel".text = "growing.."
+		$"%IsGrowingLabel".text = "growing..."
 	else:
 		$"%IsGrowingLabel".text = ""
 	$"%JuiceLeft".text = str(int(juice_left*100.0)) + "%"
@@ -86,7 +86,7 @@ func show_plant_info(plant_name: String, plant_type: String, growth_stage: int, 
 		else:
 			$"%CurrentlyGrowing".text = "not growing"
 			
-	if true: # later: if unlocked
+	if Game.multitool.soil_unlocked:
 		Game.scanner_holo.show_preferences(needs_met)
 	
 func show_seed_info(seed_name: String, seed_count: int):
