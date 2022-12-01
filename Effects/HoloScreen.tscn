@@ -1,45 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Tests/Screen.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Materials/HoloScreen.tres" type="Material" id=2]
 [ext_resource path="res://Effects/HoloScreen.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Materials/HoloLines.tres" type="Material" id=4]
 
 [sub_resource type="QuadMesh" id=3]
-
-[sub_resource type="Shader" id=5]
-code = "// NOTE: Shader automatically converted from Godot Engine 3.5.1.stable's SpatialMaterial.
-
-shader_type spatial;
-render_mode unshaded,async_visible,blend_mix,depth_draw_opaque,cull_disabled,diffuse_burley,specular_schlick_ggx;
-uniform vec4 albedo : hint_color;
-
-float clamp_and_map(float value, float istart, float istop, float ostart, float ostop) {
-    value = clamp(value, istart, istop);
-    return ostart + (ostop - ostart) * ((value - istart) / (istop - istart));
-}
-
-float clamp_map_pow(float value, float istart, float istop, float ostart, float ostop, float power) {
-	float c1 = clamp_and_map(value, istart, istop, 0.0, 1.0);
-	c1 = pow(c1, power);
-	return clamp_and_map(c1, 0.0 , 1.0, ostart, ostop);
-}
-
-float inv(float x) {
-	return 1.0 - x;
-}
-
-void fragment() {
-	float divider = .25;
-	float dist_to_line = abs(mod(UV.x+TIME * .2, divider) - divider * .5);
-	float line_mask = clamp_map_pow(dist_to_line, divider * .0039, divider * .10, 1.0, 0.0, .5);
-	ALPHA = albedo.a * line_mask * float(UV.y < .5) * clamp_map_pow(UV.y, .05, .2, 0.0, 1.0, 3.5);
-	ALBEDO = albedo.rgb;
-}
-"
-
-[sub_resource type="ShaderMaterial" id=6]
-shader = SubResource( 5 )
-shader_param/albedo = Color( 0.317647, 0.694118, 0.607843, 0.670588 )
 
 [sub_resource type="CylinderMesh" id=4]
 top_radius = 0.5
@@ -61,7 +27,7 @@ render_target_v_flip = true
 
 [node name="HoloLines" type="MeshInstance" parent="."]
 transform = Transform( 0.746177, 0, 0, 0, 0.36506, 0, 0, 0, 0.253606, 0, 0.529056, 0 )
-material_override = SubResource( 6 )
+material_override = ExtResource( 4 )
 mesh = SubResource( 4 )
 
 [editable path="Screen"]

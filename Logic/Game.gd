@@ -44,7 +44,9 @@ var cheat_lod := false
 
 var shed: Shed
 var credits: Credits
-var growth_cheat = false
+var growth_cheat := false
+
+var first_grow_boost_of_the_game := false
 
 # progresses
 var number_of_ambers := 0 setget set_number_of_ambers

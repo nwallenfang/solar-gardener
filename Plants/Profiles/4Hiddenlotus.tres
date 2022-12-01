@@ -11,7 +11,7 @@ plant_type = 3
 fluff_base = "When allowed to flourish, its bud opens up and begins a wondrous dance. 
 This makes it a popular centerpiece in the annual \"Dancing Petals\" competition that takes place in the [b]desert[/b]."
 fluff_stage2 = "The Hidden Lotus is often found in expansive [b]Flower Fields[/b]. The bud hidden inside has a peculiar taste but is known to be very healthy."
-fluff_stage3 = "When the flower blossoms, the roots below [b]dispense excess nutrients[/b] into the ground."
+fluff_stage3 = "Only when the flower blossoms, the roots below [b]dispense excess nutrients[/b] into the ground."
 icon = ExtResource( 2 )
 sun = 2
 moisture = 1

@@ -7,6 +7,15 @@ func activate():
 		mi = mi as MeshInstance
 		mi.material_overlay = GREEN_OVERLAY.duplicate()
 	
+	for c in get_children():
+		if c is Particles:
+			c.one_shot = true
+			c.emitting = true
+		for cc in c.get_children():
+			if cc is Particles:
+				cc.one_shot = true
+				cc.emitting = true
+	
 	$ModelMultitool.set_grow_beam_on_target(Game.sun)
 	$ModelMultitool.set_grow(true)
 	$ModelMultitool/AnalysePlayer.playback_speed = 20.0
@@ -17,16 +26,10 @@ func activate():
 	$ModelMultitool/PlantPlayer.play("on")
 	$ModelMultitool/SlingshotPlayer.play("reload")
 	$ModelMultitool/GrowBeamPlayer.play("on")
-	yield($ModelMultitool/PlantPlayer,"animation_finished")
-	for c in get_children():
-		if c is Particles:
-			c.one_shot = true
-			c.emitting = true
-		for cc in c.get_children():
-			if cc is Particles:
-				cc.one_shot = true
-				cc.emitting = true
-	yield(get_tree().create_timer(.15),"timeout")
+	#yield($ModelMultitool/PlantPlayer,"animation_finished")
+	yield(get_tree().create_timer(.05),"timeout")
+	
+	yield(get_tree().create_timer(.1),"timeout")
 	$ModelMultitool/AnalysePlayer.play("off")
 	$ModelMultitool/HopperPlayer.play("off")
 	$ModelMultitool/PlantPlayer.play("off")

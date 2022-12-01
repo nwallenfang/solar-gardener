@@ -97,14 +97,14 @@ func plant_hovered(plant_ui: PlantUI):
 				if plant_ui.stage2_scanned:
 					$"%FluffText".bbcode_text += "\n" + plant_ui.plant_profile.fluff_stage2
 				else:
-					$"%FluffText".bbcode_text += "\n[Scan further grown plant to unlock more]"
+					$"%FluffText".bbcode_text += "\n[ Scan further grown plant to unlock more ]"
 					
 			if plant_ui.number_of_stars >= 2:
 				if plant_ui.stage3_scanned:
 					$"%FluffText".bbcode_text += "\n" + plant_ui.plant_profile.fluff_stage3
 				else:
 					if plant_ui.stage2_scanned:
-						$"%FluffText".bbcode_text += "\n[Scan further grown plant to unlock more]"
+						$"%FluffText".bbcode_text += "\n[ Scan further grown plant to unlock more ]"
 				
 		else:
 			$"%Title".text = "???"
@@ -122,6 +122,7 @@ func growth_staged_reached(plant_name, growth_stage):
 	if growth_stage-1 > plant_ui.number_of_stars:
 		if growth_stage-1 == 3.0:
 			Game.number_of_max_lv += 1
+			Events.trigger("plant_perfected")
 		plant_ui.set_number_of_stars(growth_stage-1)
 
 func make_preference_known(plant_name: String, plant_preference_name: String):

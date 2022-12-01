@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Logic/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Logic/Player/PlayerCamera.tscn" type="PackedScene" id=2]
@@ -14,9 +14,11 @@ radius = 0.5
 [sub_resource type="SpatialMaterial" id=4]
 albedo_color = Color( 0.313726, 0.313726, 0.313726, 1 )
 
+[sub_resource type="SphereShape" id=6]
+radius = 0.585416
+
 [node name="Player" type="KinematicBody"]
 physics_interpolation_mode = 2
-collision_layer = 9
 script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": "2m tall :)"
@@ -72,5 +74,13 @@ spot_angle_attenuation = 2.46229
 [node name="JetpackFlames" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.506062, 0.493811 )
 visible = false
+
+[node name="BadPlanting" type="Area" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="BadPlanting"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54036, 0 )
+shape = SubResource( 6 )
 
 [editable path="JetpackFlames"]

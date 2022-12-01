@@ -43,17 +43,18 @@ func start_loading():
 		cam.current = true
 		if cam.has_node("Ubershader"):
 			cam.get_node("Ubershader").activate()
-			yield(get_tree().create_timer(.2),"timeout")
-		yield(get_tree().create_timer(.25),"timeout")
+			yield(get_tree().create_timer(.4),"timeout")
+		yield(get_tree().create_timer(.3),"timeout")
 		if i == 0:
 			for planet in planet_list:
 				planet = planet as Planet
 				planet.set_player_is_on_planet(not planet.player_on_planet)
-				yield(get_tree().create_timer(.05),"timeout")
+				yield(get_tree().create_timer(.08),"timeout")
 				planet.set_player_is_on_planet(not planet.player_on_planet)
+				yield(get_tree().create_timer(.08),"timeout")
 		cam.current = false
 		cam.queue_free()
-		Game.UI.set_loading_bar(float(i)/len(loading_cams))
+		Game.UI.set_loading_bar(float(i+1)/len(loading_cams))
 	Game.UI.set_loading_bar(1.0)
 #	yield(get_tree().create_timer(.3), "timeout")
 	start_intro_flight()

@@ -8,7 +8,7 @@ func melt():
 		return
 	melting = true
 	$AnimationPlayer.stop()
-	$MeltingTween.interpolate_property($Ice, "scale", $Ice.scale, .001, 3.0, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+	$MeltingTween.interpolate_property($Ice, "scale", $Ice.scale, Vector3.ONE * .001, 5.0, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 	$MeltingTween.start()
 	yield($MeltingTween,"tween_all_completed")
 	Audio.play("ice_melt")

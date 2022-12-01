@@ -78,6 +78,7 @@ func setup():
 	events.append(Event.new("planet_hopped", self, "planet_hopped", false))
 	events.append(Event.new("journal_opened", self, "nothing", false))
 	events.append(Event.new("seeds_harvested", self, "nothing", false))
+	events.append(Event.new("plant_perfected", self, "plant_perfected", false))
 	events.append(Event.new("sun_hot", self, "sun_hot", true))
 
 ###########
@@ -228,7 +229,14 @@ func way_too_many_seeds():
 	
 func sun_hot():
 	Game.UI.add_tutorial_message("Sun's hot", "Please don't do that.\nThe AI prefers moderate temperatures.", duration * 0.7)
+	next()
 	
+func plant_perfected():
+	if Game.number_of_max_lv == 1:
+		Game.UI.add_tutorial_message("Congratulations!", "You managed to grow a plant to its best stage.", duration * 0.7)
+	elif Game.number_of_max_lv == 6:
+		Game.UI.add_tutorial_message("Congratulations!", "You perfected every single plant in this solar system.", duration * 0.7)
+	next()
 
 func nothing():
 	next()

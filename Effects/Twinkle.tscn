@@ -57,7 +57,7 @@ albedo_texture = ExtResource( 2 )
 
 [sub_resource type="QuadMesh" id=10]
 material = SubResource( 9 )
-size = Vector2( 0.5, 0.5 )
+size = Vector2( 0.8, 0.8 )
 
 [node name="Twinkle" type="Spatial"]
 script = ExtResource( 3 )

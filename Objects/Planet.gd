@@ -3,7 +3,7 @@ class_name Planet
 
 export var planet_name : String
 onready var analyse_name : String = "Soil Type"
-var analyse_speed_factor := .3
+var analyse_speed_factor := .42
 func on_analyse():
 	analyse_speed_factor = 1.5
 
@@ -148,6 +148,8 @@ func try_grabroot_effect(pos: Vector3):
 	if Game.planet != self:
 		return
 	if Events.get_event_from_key("journal_opened").execute_count == 0 or Events.get_event_from_key("seeds_harvested").execute_count == 0:
+		return
+	if Game.game_state != Game.State.INGAME:
 		return
 	if not has_been_grab_rooted:
 		while true:

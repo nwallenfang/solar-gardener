@@ -17,7 +17,7 @@ func make_known():
 	if preference == null:
 		return
 	if is_unknown and Game.journal.get_got_scanned(plant_name):
-		Game.UI.show_info_line("%s preference discovered!" % plant_name, 1)
+		Game.UI.show_info_line("%s need discovered!" % plant_name, 1)
 	is_unknown = false
 	hint_tooltip = preference.description
 	texture = preference.icon

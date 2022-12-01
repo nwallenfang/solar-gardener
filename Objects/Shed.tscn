@@ -9,7 +9,7 @@
 [ext_resource path="res://Assets/Models/ModelBucket.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/Models/ModelPickaxe.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/GLTF/Shed_Brown.material" type="Material" id=9]
-[ext_resource path="res://Assets/Placeholder/ModelPlaceholderSeed.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/Models/Modelplant_03_universsun_samen.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Assets/Models/ModelMoontree_samen.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Assets/Models/Modelplant_06_fractalrose_samen.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Assets/Models/ModelPlant_01_ranke_samen.tscn" type="PackedScene" id=13]
@@ -269,7 +269,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244853, 0.202576, 0.252951 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.248535, 0.582331, 0.260664 )
 
 [node name="cosmosun" parent="Trophys" instance=ExtResource( 10 )]
-transform = Transform( 0.583399, 0, -0.812185, 0, 1, 0, 0.812185, 0, 0.583399, 0.260045, -0.15623, 0.263625 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.266194, -0.158737, 0.257258 )
 
 [node name="ModelScroll1" parent="Trophys" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.496884, 0.540101, 0.239973 )

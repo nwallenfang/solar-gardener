@@ -80,6 +80,13 @@ var growth_locked_once := false
 func _physics_process(delta):
 	if lod_mode:
 		return
+	
+	if not Game.first_grow_boost_of_the_game:
+		if not growth_boost:
+			return
+		else:
+			Game.first_grow_boost_of_the_game = true
+	
 	if growth_stage != growth_lock and $GrowthCooldown.time_left == 0.0:
 		if growth_stage != PlantData.GROWTH_STAGES.STAGE_4:
 			grow(delta, sign(growth_lock - growth_stage))
@@ -290,23 +297,26 @@ func set_animation_active(model: Spatial, active: bool):
 
 const GREEN_OVERLAY = preload("res://Assets/Materials/GreenAlphaOverlay.tres")
 const GROW_POP_PARTICLES = preload("res://Effects/GrowPopParticles.tscn")
-func play_growth_pop_animation(old_stage):
+func play_growth_pop_animation(old_stage: int):
 	# TODO profile this function
 	var old_meshes : Array = Utility.get_all_mesh_instance_children(model_array[old_stage])
 	var new_meshes : Array = Utility.get_all_mesh_instance_children(current_model)
+	$GrowthAnimationTween.remove_all()
 	for mi in old_meshes:
 		mi = mi as MeshInstance
 		mi.material_overlay = GREEN_OVERLAY.duplicate()
 		$GrowthAnimationTween.interpolate_property(mi.material_overlay, "albedo_color:a", 0.0, 1.0, .7,Tween.TRANS_QUAD,Tween.EASE_OUT)
 	$GrowthAnimationTween.start()
-	yield($GrowthAnimationTween,"tween_all_completed")
+	#yield($GrowthAnimationTween,"tween_all_completed")
+	yield(get_tree().create_timer(.7),"timeout")
 	model_array[old_stage].visible = false
 	model_array[old_stage].scale = Vector3.ONE * DEFAULT_MODEL_SCALE
 	current_model.scale = Vector3.ONE * DEFAULT_MODEL_SCALE
 	current_model.visible = true
 	
-	if current_model == model_array[old_stage]:
+	if current_model == model_array[old_stage] or abs(old_stage-growth_stage) != 1:
 		Game.UI.set_diagnostics("ERROR with plant models???")
+		printerr("WTF????")
 	
 	for mi in old_meshes:
 		mi = mi as MeshInstance
@@ -323,7 +333,8 @@ func play_growth_pop_animation(old_stage):
 	yield(get_tree(), "idle_frame")
 	var dist:= self.global_translation.distance_to(Game.player.global_translation)
 	Audio.play_growth_stage(profile.name, growth_stage, dist)
-	yield($GrowthAnimationTween,"tween_all_completed")
+#	yield($GrowthAnimationTween,"tween_all_completed")
+	yield(get_tree().create_timer(1.0),"timeout")
 	for mi in new_meshes:
 		mi = mi as MeshInstance
 		mi.material_overlay = null

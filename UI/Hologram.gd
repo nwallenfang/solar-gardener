@@ -69,7 +69,7 @@ func grow_beam_juice(beam_active: bool, juice_left: float, plant_growing:=true):
 	$"%JuiceLeft".text = str(int(juice_left*100.0)) + "%"
 
 
-func show_plant_info(plant_name: String, plant_type: String, growth_stage: int, is_growing: bool):
+func show_plant_info(plant_name: String, plant_type: String, growth_stage: int, is_growing: bool, is_maxed: bool):
 	if current_screen != null:
 		current_screen.visible = false
 	$"%PlantInfo".visible = true
@@ -78,10 +78,13 @@ func show_plant_info(plant_name: String, plant_type: String, growth_stage: int, 
 	$"%PlantName".text = plant_name
 	$"%PlantType".text = plant_type
 	$"%GrowthStage".text = str(growth_stage-1)
-	if is_growing:
-		$"%CurrentlyGrowing".text = "growing"
+	if is_maxed:
+		$"%CurrentlyGrowing".text = "fully grown"
 	else:
-		$"%CurrentlyGrowing".text = "not growing"
+		if is_growing:
+			$"%CurrentlyGrowing".text = "growing"
+		else:
+			$"%CurrentlyGrowing".text = "not growing"
 	
 func show_seed_info(seed_name: String, seed_count: int):
 	if current_screen != null:
