@@ -15,8 +15,8 @@ float clamp_and_map(float value, float istart, float istop, float ostart, float 
 
 float clamp_map_pow(float value, float istart, float istop, float ostart, float ostop, float power) {
 	float c1 = clamp_and_map(value, istart, istop, 0.0, 1.0);
-	c1 = pow(c1, power);
-	return clamp_and_map(c1, 0.0 , 1.0, ostart, ostop);
+	c1 = pow(abs(c1), power);
+	return clamp_and_map(c1, 0.0, 1.0, ostart, ostop);
 }
 
 float inv(float x) {
@@ -36,5 +36,5 @@ void fragment() {
 	float ball_mask = clamp_map_pow(middle_dist, .3, .4, 1.0, 0.0, .2);
 	
 	ALBEDO = mix(albedo.rgb, albedo2.rgb, albedo_tex.r);
-	ALPHA = albedo.a * albedo_tex.a * ball_mask * alpha;
+	ALPHA = clamp(albedo.a * albedo_tex.a * ball_mask * alpha, 0.0, 1.0);
 }

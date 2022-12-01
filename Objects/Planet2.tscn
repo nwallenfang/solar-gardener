@@ -27,7 +27,7 @@ transform_array = PoolVector3Array( 0.473711, -0.371305, -1.42401, 0.0241323, -1
 [node name="Planet2" type="Spatial"]
 script = ExtResource( 5 )
 planet_name = "Rock Solitude"
-dirt_pile_color = Color( 0.419608, 0.443137, 0.454902, 1 )
+dirt_pile_color = Color( 0.4692, 0.4964, 0.51, 1 )
 soil_type = 2
 max_plants = 30
 gravity_modifier = 1.15
