@@ -41,6 +41,7 @@ bus = "SFX"
 one_shot = true
 
 [node name="VoiceOver" type="AudioStreamPlayer" parent="."]
+volume_db = 4.0
 bus = "SFX"
 
 [connection signal="finished" from="VoiceOver" to="." method="_on_VoiceOver_finished"]

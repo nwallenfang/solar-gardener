@@ -82,6 +82,7 @@ func _process(delta: float) -> void:
 			# So we open the settings as soon as the mouse mode changes for no reason
 			# (no journal/node mode)
 			if is_ingame() and OS.has_feature("HTML5") and intro_done and $SettingsOpenCooldown.is_stopped():
+				print("set SETTINGS")
 				set_game_state(State.SETTINGS)
 #	UI.set_diagnostics(["settings blocked: " + str(not $SettingsOpenCooldown.is_stopped())])
 	if Input.is_action_just_pressed("open_settings") and not OS.has_feature("HTML5"):  # show/hide settings UI
@@ -99,7 +100,7 @@ func _process(delta: float) -> void:
 		elif game_state == State.JOURNAL:
 			self.game_state = State.INGAME
 			
-	if Input.is_action_just_pressed("give_seeds"):
+	if OS.is_debug_build() and Input.is_action_just_pressed("give_seeds"):
 		print("gib tzieds")
 		PlantData.give_seeds("Grabroot", 10, false)
 		PlantData.give_seeds("Greatcap", 10, false)
@@ -108,7 +109,7 @@ func _process(delta: float) -> void:
 		PlantData.give_seeds("Moontree", 10, false)
 		PlantData.give_seeds("Cosmosun", 10, false)
 		
-	if Input.is_action_just_pressed("make_pref_known"):
+	if OS.is_debug_build() and Input.is_action_just_pressed("make_pref_known"):
 		print("pref known")
 		UI.get_node("JournalAndGuideUI").unlock_journal()
 		Game.multitool.activate_tool(Game.multitool.TOOL.GROW)
@@ -118,7 +119,7 @@ func _process(delta: float) -> void:
 #		UI.get_node("JournalAndGuideUI/JournalUI").make_preference_known("Grabroot", PlantData.PREFERENCES["Hates Sun"])
 #		UI.get_node("JournalAndGuideUI/JournalUI").make_preference_known("Grabroot", PlantData.PREFERENCES["Hates Sun"])
 		
-	if Input.is_action_just_pressed("unlock_all_tools"):
+	if OS.is_debug_build() and Input.is_action_just_pressed("unlock_all_tools"):
 		print("unlock all tools")
 		UI.get_node("JournalAndGuideUI").unlock_journal()
 		Game.multitool.activate_tool(Game.multitool.TOOL.GROW)
@@ -128,29 +129,29 @@ func _process(delta: float) -> void:
 		Game.multitool.death_beam_unlocked = true
 		Game.player.unlocked_jetpack = true
 		
-	if Input.is_action_just_pressed("play_spatial_audio"):
+	if OS.is_debug_build() and Input.is_action_just_pressed("play_spatial_audio"):
 		Audio.fade_in("growbeam")
 		
-	if Input.is_action_just_pressed("flashlight"):
+	if OS.is_debug_build() and Input.is_action_just_pressed("flashlight"):
 		Game.player.get_node("Head/Flashlight").visible = not Game.player.get_node("Head/Flashlight").visible
 		
-	if Input.is_action_just_pressed("lod_trigger"):
+	if OS.is_debug_build() and Input.is_action_just_pressed("lod_trigger"):
 		cheat_lod = not cheat_lod
 		Game.planet.trigger_lod(cheat_lod)
 		
-	if Input.is_action_just_pressed("sound_overload"):
+	if OS.is_debug_build() and Input.is_action_just_pressed("sound_overload"):
 		for i in range(20):
 			Audio.play("plant_growth_stage" + str(i%3 + 1))
 	
-	if Input.is_action_just_pressed("growth_cheat"):
+	if OS.is_debug_build() and Input.is_action_just_pressed("growth_cheat"):
 		print("growth cheat")
 		growth_cheat = true
 		
-	if Input.is_action_just_pressed("trigger_credits"):
+	if OS.is_debug_build() and Input.is_action_just_pressed("trigger_credits"):
 		print("trigger credits")
 		trigger_credits()
 		
-	if Input.is_action_just_pressed("melt_ice"):
+	if OS.is_debug_build() and Input.is_action_just_pressed("melt_ice"):
 		print("melt")
 		if planet.has_node("IceBlock"):
 			planet.get_node("IceBlock").melt()

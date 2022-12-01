@@ -18,6 +18,7 @@ func emit_credits_done():
 	emit_signal("credits_done")
 
 func _on_SkipCreditsButton_pressed() -> void:
+	$Credits2D.stop()
 	Game.credits_skipped()
 
 func start():
