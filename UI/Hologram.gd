@@ -69,7 +69,7 @@ func grow_beam_juice(beam_active: bool, juice_left: float, plant_growing:=true):
 	$"%JuiceLeft".text = str(int(juice_left*100.0)) + "%"
 
 
-func show_plant_info(plant_name: String, plant_type: String, growth_stage: int, is_growing: bool, is_maxed: bool):
+func show_plant_info(plant_name: String, plant_type: String, growth_stage: int, is_growing: bool, is_maxed: bool, needs_met: Array):
 	if current_screen != null:
 		current_screen.visible = false
 	$"%PlantInfo".visible = true
@@ -85,6 +85,9 @@ func show_plant_info(plant_name: String, plant_type: String, growth_stage: int, 
 			$"%CurrentlyGrowing".text = "growing"
 		else:
 			$"%CurrentlyGrowing".text = "not growing"
+			
+	if true: # later: if unlocked
+		Game.scanner_holo.show_preferences(needs_met)
 	
 func show_seed_info(seed_name: String, seed_count: int):
 	if current_screen != null:

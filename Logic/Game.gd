@@ -46,6 +46,7 @@ var shed: Shed
 var credits: Credits
 var growth_cheat := false
 
+var scanner_holo: ScannerHolo
 var first_grow_boost_of_the_game := false
 
 # progresses

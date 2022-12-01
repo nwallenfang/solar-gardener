@@ -5,7 +5,7 @@
 [ext_resource path="res://Assets/Fonts/Calistoga-Regular.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="DynamicFont" id=8]
-size = 79
+size = 57
 outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true

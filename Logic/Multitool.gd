@@ -549,7 +549,7 @@ func show_analyse_information():
 										plant_type = "Flower"
 								var is_growing : bool = (plant_obj.growth_stage != plant_obj.growth_lock)
 								var is_maxed : bool = (plant_obj.growth_stage == PlantData.GROWTH_STAGES.STAGE_4)
-								Game.hologram.show_plant_info(plant_obj.profile.name, plant_type, plant_obj.growth_stage, is_growing, is_maxed)
+								Game.hologram.show_plant_info(plant_obj.profile.name, plant_type, plant_obj.growth_stage, is_growing, is_maxed, plant_obj.needs_met)
 							else:
 								Game.hologram.show_analyse_info("Analyse further\ngrown plant\nto get more\ninformation")
 						elif object_to_analyse is Planet:
