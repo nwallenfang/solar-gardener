@@ -1,5 +1,6 @@
-[gd_scene load_steps=91 format=2]
+[gd_scene load_steps=89 format=2]
 
+[ext_resource path="res://Assets/Models/Modelplant_01_ziehende_ranken.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Models/Meshes/Meshplant_06_fractalrose_state032.res" type="ArrayMesh" id=2]
 [ext_resource path="res://Effects/Stars.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/IceBlock.tscn" type="PackedScene" id=4]
@@ -18,13 +19,7 @@
 [ext_resource path="res://Assets/Materials/SunAura.tres" type="Material" id=17]
 [ext_resource path="res://Assets/Materials/AuraShader.tres" type="Material" id=18]
 [ext_resource path="res://Assets/Textures/spore_mask.png" type="Texture" id=19]
-[ext_resource path="res://Objects/Gear.tscn" type="PackedScene" id=20]
-[ext_resource path="res://Objects/NoteCapsule.tscn" type="PackedScene" id=21]
-[ext_resource path="res://Objects/GrabrootGrabber.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Assets/Models/ModelSandPlanet.tscn" type="PackedScene" id=23]
-[ext_resource path="res://Assets/Models/ModelPillarSmall.tscn" type="PackedScene" id=24]
-[ext_resource path="res://Assets/Models/ModelPillarMiddle.tscn" type="PackedScene" id=25]
-[ext_resource path="res://Assets/Models/ModelPillarBig.tscn" type="PackedScene" id=26]
 [ext_resource path="res://Assets/Materials/Plants/moss_normal.png" type="Texture" id=27]
 [ext_resource path="res://Assets/Materials/Plants/moss_albedo_gray.png" type="Texture" id=28]
 [ext_resource path="res://Assets/Materials/Plants/AntennaMaterial.tres" type="Material" id=29]
@@ -292,6 +287,16 @@ radius = 22.8154
 
 [sub_resource type="OccluderShapeSphere" id=17]
 spheres = [ Plane( 0, 0, 0, 5.7328 ) ]
+
+[sub_resource type="CubeMesh" id=59]
+
+[sub_resource type="CapsuleShape" id=60]
+radius = 0.682344
+height = 3.34664
+
+[sub_resource type="CapsuleShape" id=61]
+radius = 1.07677
+height = 3.34664
 
 [sub_resource type="Shader" id=50]
 code = "// NOTE: Shader automatically converted from Godot Engine 3.5.1.stable's SpatialMaterial.
@@ -643,7 +648,7 @@ material = SubResource( 24 )
 
 [sub_resource type="SpatialMaterial" id=58]
 flags_unshaded = true
-albedo_color = Color( 0, 1, 0, 1 )
+albedo_color = Color( 0.87451, 0, 1, 1 )
 
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 10 )
@@ -860,57 +865,59 @@ shape = SubResource( 16 )
 [node name="Occluder" type="Occluder" parent="World/PlanetSand"]
 shape = SubResource( 17 )
 
-[node name="Model" parent="World/PlanetSand" instance=ExtResource( 23 )]
+[node name="GrabrootGrabber" type="Spatial" parent="World/PlanetSand"]
+transform = Transform( 0.962706, -0.23605, -0.233591, -0.0853918, 0.797852, -0.541724, 0.374056, 0.789658, 0.47752, -1.80382, 3.43359, 4.26652 )
+
+[node name="Model" type="Spatial" parent="World/PlanetSand/GrabrootGrabber"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.117, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="World/PlanetSand/GrabrootGrabber/Model"]
+transform = Transform( 0.0599319, 0, 0, 0, 2.02761, 0.0192536, 0, -0.687848, 0.0567551, -0.0784657, -1.53215, 0.170999 )
+visible = false
+mesh = SubResource( 59 )
+skeleton = NodePath("../..")
+
+[node name="MeshInstance2" type="MeshInstance" parent="World/PlanetSand/GrabrootGrabber/Model"]
+transform = Transform( -0.0378515, -0.681924, 0.0278638, -0.0140097, 2.02761, 0.0075804, -0.028801, -0.0900798, -0.0403071, 0.156821, -1.53215, 0.0437361 )
+visible = false
+mesh = SubResource( 59 )
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3" type="MeshInstance" parent="World/PlanetSand/GrabrootGrabber/Model"]
+transform = Transform( 0.0196289, 0.581012, -0.0381583, -0.0120501, 2.04241, 0.00712663, 0.0380519, 0.34707, 0.0219406, -0.176191, -1.53215, -0.063133 )
+visible = false
+mesh = SubResource( 59 )
+skeleton = NodePath("../..")
+
+[node name="Modelplant_01_ziehende_ranken" parent="World/PlanetSand/GrabrootGrabber/Model" instance=ExtResource( 1 )]
+transform = Transform( 0.612647, 0, 7.45058e-09, 0, 0.612647, -1.49012e-08, 1.49012e-08, 2.98023e-08, 0.612647, 0, 0.890839, 0.264963 )
+visible = false
+
+[node name="Tween" type="Tween" parent="World/PlanetSand/GrabrootGrabber"]
+
+[node name="StaticBody" type="StaticBody" parent="World/PlanetSand/GrabrootGrabber"]
+transform = Transform( 0.764299, 0, 0, 0, 0.764299, 0, 0, 0, 0.764299, 0, 0.253871, 0.0387657 )
+
+[node name="CollisionShape" type="CollisionShape" parent="World/PlanetSand/GrabrootGrabber/StaticBody"]
+transform = Transform( 1, 0, 0, 0, -0.0895375, -0.995983, 0, 0.995983, -0.0895375, 0.420216, -0.542902, -0.0811776 )
+shape = SubResource( 60 )
+
+[node name="Area" type="Area" parent="World/PlanetSand/GrabrootGrabber"]
+collision_layer = 12
+collision_mask = 0
+
+[node name="CollisionShape2" type="CollisionShape" parent="World/PlanetSand/GrabrootGrabber/Area"]
+transform = Transform( 0.641753, 0, 0, 0, -0.057461, -0.639176, 0, 0.639176, -0.057461, 0.333127, -0.013034, -0.00556708 )
+shape = SubResource( 61 )
+
+[node name="PlanetThumb" parent="World/PlanetSand" instance=ExtResource( 23 )]
 transform = Transform( 5.8573, 0, 0, 0, 5.8573, 0, 0, 0, 5.8573, 0, 0, 0 )
+visible = false
 
-[node name="GrabrootGrabber" parent="World/PlanetSand" instance=ExtResource( 22 )]
-transform = Transform( 0.962703, -0.23605, -0.233591, -0.0853918, 0.797853, -0.541724, 0.374056, 0.789657, 0.47752, -1.80382, 3.43359, 4.26652 )
+[node name="Modelplant_06_fractalrose_state03" type="Spatial" parent="World/PlanetSand/PlanetThumb"]
+transform = Transform( 0.144346, -0.0190284, 0.0462749, 0.01812, 0.151582, 0.00580897, -0.0466382, -1.13824e-09, 0.145479, -0.162128, 0.969768, 0.281749 )
 
-[node name="Ruins" type="Spatial" parent="World/PlanetSand"]
-
-[node name="ModelPillarSmall" parent="World/PlanetSand/Ruins" instance=ExtResource( 24 )]
-transform = Transform( 0.976956, -0.21344, -1.12952e-08, -0.0159662, -0.0730806, -0.997198, 0.212842, 0.974219, -0.0748044, 0.0261452, 0.0331568, 5.72306 )
-
-[node name="ModelPillarSmall7" parent="World/PlanetSand/Ruins" instance=ExtResource( 24 )]
-transform = Transform( 0.991982, 0.00658455, -0.12605, -0.00945326, 0.73032, -0.00287487, 0.126018, 0.00295313, 0.99202, -0.25109, -6.7289, -0.12116 )
-
-[node name="ModelPillarSmall5" parent="World/PlanetSand/Ruins" instance=ExtResource( 24 )]
-transform = Transform( 0.55451, -0.832177, -1.12952e-08, -0.0622505, -0.0414798, -0.997198, 0.829845, 0.552957, -0.0748044, -4.84911, 0.252865, 2.79419 )
-
-[node name="ModelPillarSmall2" parent="World/PlanetSand/Ruins" instance=ExtResource( 24 )]
-transform = Transform( 0.790924, 0.611914, -1.12952e-08, 0.0457738, -0.0591646, -0.997198, -0.610199, 0.788708, -0.0748044, 2.70673, 0.106506, 4.74526 )
-
-[node name="ModelPillarSmall3" parent="World/PlanetSand/Ruins" instance=ExtResource( 24 )]
-transform = Transform( 0.531576, 0.911534, 1.12952e-08, 0.0633601, -0.0427934, -0.997198, -0.844637, 0.570468, -0.0748044, 5.06804, 0.0424569, 2.59395 )
-
-[node name="ModelPillarSmall4" parent="World/PlanetSand/Ruins" instance=ExtResource( 24 )]
-transform = Transform( -0.869305, 0.507763, 0.14729, 0.036974, 0.386595, -0.932516, -0.492891, -0.866534, -0.329725, 3.08173, 0.102253, -4.46412 )
-
-[node name="ModelPillarMiddle" parent="World/PlanetSand/Ruins" instance=ExtResource( 25 )]
-transform = Transform( 0.22228, 0.830909, 0.100492, -9.01068e-09, -0.0883098, 0.994674, 0.974983, -0.189434, -0.0229105, 5.87934, -0.0146082, 0.0122031 )
-
-[node name="ModelPillarMiddle3" parent="World/PlanetSand/Ruins" instance=ExtResource( 25 )]
-transform = Transform( -0.95337, -0.258584, -1.31923e-08, 0, -3.74516e-08, 1, -0.301804, 0.81684, 4.16731e-08, -2.72877, 6.17578e-07, 5.02195 )
-
-[node name="ModelPillarMiddle2" parent="World/PlanetSand/Ruins" instance=ExtResource( 25 )]
-transform = Transform( 0.36853, 0.893431, 4.06348e-08, 0, -4.201e-08, 1, 0.929616, -0.354185, -1.6109e-08, 5.31185, 1.03642e-07, -2.5832 )
-
-[node name="ModelPillarBig" parent="World/PlanetSand/Ruins" instance=ExtResource( 26 )]
-transform = Transform( 0.999943, -0.00923818, -4.67653e-10, 0, -3.77443e-08, 1, -0.0106987, -0.86344, -4.37089e-08, -0.00384753, 1.16696e-07, -5.55858 )
-
-[node name="ModelPillarBig2" parent="World/PlanetSand/Ruins" instance=ExtResource( 26 )]
-transform = Transform( 0.855753, -0.446757, -2.26156e-08, 0, -3.77443e-08, 1, -0.517385, -0.738934, -3.74061e-08, -3.35326, 1.96428e-07, -4.10435 )
-
-[node name="Gear" parent="World/PlanetSand" instance=ExtResource( 20 )]
-transform = Transform( -1.99473, 0.0720952, 1.03101, -0.0744128, -2.24532, 0.0130384, 1.03085, -0.0225732, 1.99599, -0.229405, -6.76354, -0.13247 )
-
-[node name="NoteCapsule" parent="World/PlanetSand" instance=ExtResource( 21 )]
-transform = Transform( 0.777558, 0.229704, -0.585354, 0.115182, 0.863112, 0.491703, 0.618172, -0.449749, 0.644661, -3.44921, 0.356312, -4.8379 )
-
-[node name="Modelplant_06_fractalrose_state03" type="Spatial" parent="World/PlanetSand"]
-transform = Transform( 0.845478, -0.111455, 0.271046, 0.106134, 0.887862, 0.0340249, -0.273174, -6.667e-09, 0.852114, -0.949635, 5.68022, 1.65029 )
-
-[node name="Cube" type="MeshInstance" parent="World/PlanetSand/Modelplant_06_fractalrose_state03"]
+[node name="Cube" type="MeshInstance" parent="World/PlanetSand/PlanetThumb/Modelplant_06_fractalrose_state03"]
 transform = Transform( 0.766247, -0.130027, -1.49012e-08, 0.129818, 0.765011, -0.0441294, 0.00738306, 0.0435074, 0.775947, -0.0344028, -0.280024, -0.0874481 )
 mesh = ExtResource( 37 )
 material/0 = SubResource( 51 )
@@ -918,64 +925,64 @@ material/1 = SubResource( 52 )
 material/2 = SubResource( 53 )
 material/3 = SubResource( 54 )
 
-[node name="Empty" type="Spatial" parent="World/PlanetSand/Modelplant_06_fractalrose_state03"]
+[node name="Empty" type="Spatial" parent="World/PlanetSand/PlanetThumb/Modelplant_06_fractalrose_state03"]
 transform = Transform( 0.578894, 0, 0, 0, 0.578894, 0, 0, 0, 0.578894, -0.819407, 0.734998, -0.517354 )
 
-[node name="Empty001" type="Spatial" parent="World/PlanetSand/Modelplant_06_fractalrose_state03"]
+[node name="Empty001" type="Spatial" parent="World/PlanetSand/PlanetThumb/Modelplant_06_fractalrose_state03"]
 transform = Transform( 0.578894, 0, 0, 0, 0.578894, 0, 0, 0, 0.578894, 0.362124, 0.507172, -1.36992 )
 
-[node name="Empty002" type="Spatial" parent="World/PlanetSand/Modelplant_06_fractalrose_state03"]
+[node name="Empty002" type="Spatial" parent="World/PlanetSand/PlanetThumb/Modelplant_06_fractalrose_state03"]
 transform = Transform( 0.578894, 0, 0, 0, 0.578894, 0, 0, 0, 0.578894, -0.641605, 0.558706, 1.07433 )
 
-[node name="Cube003" type="MeshInstance" parent="World/PlanetSand/Modelplant_06_fractalrose_state03"]
+[node name="Cube003" type="MeshInstance" parent="World/PlanetSand/PlanetThumb/Modelplant_06_fractalrose_state03"]
 transform = Transform( 0.61099, -0.103681, -1.3411e-07, 0.103514, 0.610003, -0.0351878, 0.00588717, 0.0346919, 0.618724, -0.0344181, -0.280056, -0.0874939 )
 mesh = ExtResource( 2 )
 material/0 = ExtResource( 42 )
 
-[node name="Modelplant_04_Sporenpilz_state03" type="Spatial" parent="World/PlanetSand"]
-transform = Transform( 0.395798, 0.344949, -0.267039, -0.285952, 0.477458, 0.192928, 0.329441, -1.75545e-08, 0.488288, 3.43769, 4.78214, 0 )
+[node name="Modelplant_04_Sporenpilz_state03" type="Spatial" parent="World/PlanetSand/PlanetThumb"]
+transform = Transform( 0.0716045, 0.0559635, -0.047951, -0.0428771, 0.0930472, 0.0291224, 0.056101, -0.000314574, 0.08346, 0.45636, 0.930754, 0.00562716 )
 
-[node name="Cone" type="MeshInstance" parent="World/PlanetSand/Modelplant_04_Sporenpilz_state03"]
-transform = Transform( 7.31311, -1.13944e-07, -2.38419e-07, 3.90185e-07, 7.31311, 1.05735e-07, -9.53674e-07, -4.96752e-08, 7.31311, 0, 0.166428, 0 )
+[node name="Cone" type="MeshInstance" parent="World/PlanetSand/PlanetThumb/Modelplant_04_Sporenpilz_state03"]
+transform = Transform( 7.31311, -1.93715e-07, -2.38419e-07, 2.23517e-07, 7.31311, 2.38419e-07, -7.15256e-07, -3.42727e-07, 7.31311, -3.8147e-06, 0.16642, 0 )
 mesh = ExtResource( 33 )
 material/0 = SubResource( 55 )
 material/1 = ExtResource( 30 )
 
-[node name="Cylinder" type="MeshInstance" parent="World/PlanetSand/Modelplant_04_Sporenpilz_state03"]
+[node name="Cylinder" type="MeshInstance" parent="World/PlanetSand/PlanetThumb/Modelplant_04_Sporenpilz_state03"]
 transform = Transform( 7.31311, 0, 0, 0, 7.31311, 0, 0, 0, 7.31311, 0, 0.166426, 0 )
 mesh = ExtResource( 34 )
 material/0 = SubResource( 56 )
 
-[node name="NurbsPath" type="MeshInstance" parent="World/PlanetSand/Modelplant_04_Sporenpilz_state03"]
+[node name="NurbsPath" type="MeshInstance" parent="World/PlanetSand/PlanetThumb/Modelplant_04_Sporenpilz_state03"]
 transform = Transform( 7.31311, 0, 0, 0, 7.31311, 0, 0, 0, 7.31311, 0, 0.166426, 0 )
 mesh = ExtResource( 32 )
 material/0 = ExtResource( 29 )
 
-[node name="Empty" type="Spatial" parent="World/PlanetSand/Modelplant_04_Sporenpilz_state03"]
+[node name="Empty" type="Spatial" parent="World/PlanetSand/PlanetThumb/Modelplant_04_Sporenpilz_state03"]
 transform = Transform( 8.17464, 0, 0, 0, 8.17464, 0, 0, 0, 8.17464, 1.19018, 2.2231, 0.942151 )
 
-[node name="Empty001" type="Spatial" parent="World/PlanetSand/Modelplant_04_Sporenpilz_state03"]
+[node name="Empty001" type="Spatial" parent="World/PlanetSand/PlanetThumb/Modelplant_04_Sporenpilz_state03"]
 transform = Transform( 8.17464, 0, 0, 0, 8.17464, 0, 0, 0, 8.17464, 0.215549, 3.36191, 0.722463 )
 
-[node name="Empty002" type="Spatial" parent="World/PlanetSand/Modelplant_04_Sporenpilz_state03"]
+[node name="Empty002" type="Spatial" parent="World/PlanetSand/PlanetThumb/Modelplant_04_Sporenpilz_state03"]
 transform = Transform( 8.17464, 0, 0, 0, 8.17464, 0, 0, 0, 8.17464, -0.601003, 1.58223, 1.67652 )
 
-[node name="Empty003" type="Spatial" parent="World/PlanetSand/Modelplant_04_Sporenpilz_state03"]
+[node name="Empty003" type="Spatial" parent="World/PlanetSand/PlanetThumb/Modelplant_04_Sporenpilz_state03"]
 transform = Transform( 8.17464, 0, 0, 0, 8.17464, 0, 0, 0, 8.17464, -0.874224, 3.02367, 0.481135 )
 
-[node name="Empty004" type="Spatial" parent="World/PlanetSand/Modelplant_04_Sporenpilz_state03"]
+[node name="Empty004" type="Spatial" parent="World/PlanetSand/PlanetThumb/Modelplant_04_Sporenpilz_state03"]
 transform = Transform( 8.17464, 0, 0, 0, 8.17464, 0, 0, 0, 8.17464, -0.569274, 3.29481, -0.6454 )
 
-[node name="Empty005" type="Spatial" parent="World/PlanetSand/Modelplant_04_Sporenpilz_state03"]
+[node name="Empty005" type="Spatial" parent="World/PlanetSand/PlanetThumb/Modelplant_04_Sporenpilz_state03"]
 transform = Transform( 8.17464, 0, 0, 0, 8.17464, 0, 0, 0, 8.17464, -0.758431, 2.18726, -1.32612 )
 
-[node name="Empty006" type="Spatial" parent="World/PlanetSand/Modelplant_04_Sporenpilz_state03"]
+[node name="Empty006" type="Spatial" parent="World/PlanetSand/PlanetThumb/Modelplant_04_Sporenpilz_state03"]
 transform = Transform( 8.17464, 0, 0, 0, 8.17464, 0, 0, 0, 8.17464, 0.613283, 2.29939, -1.45225 )
 
-[node name="Empty007" type="Spatial" parent="World/PlanetSand/Modelplant_04_Sporenpilz_state03"]
+[node name="Empty007" type="Spatial" parent="World/PlanetSand/PlanetThumb/Modelplant_04_Sporenpilz_state03"]
 transform = Transform( 8.17464, 0, 0, 0, 8.17464, 0, 0, 0, 8.17464, 0.524074, 3.39147, -0.447148 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="World/PlanetSand/Modelplant_04_Sporenpilz_state03"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="World/PlanetSand/PlanetThumb/Modelplant_04_Sporenpilz_state03"]
 anims/ConeAction = SubResource( 38 )
 anims/CylinderAction = SubResource( 39 )
 anims/Empty = SubResource( 40 )
@@ -989,16 +996,16 @@ anims/Empty007 = SubResource( 47 )
 anims/KeyAction = SubResource( 48 )
 anims/NurbsPathAction = SubResource( 49 )
 
-[node name="SporeParticlesState03" type="Spatial" parent="World/PlanetSand/Modelplant_04_Sporenpilz_state03"]
+[node name="SporeParticlesState03" type="Spatial" parent="World/PlanetSand/PlanetThumb/Modelplant_04_Sporenpilz_state03"]
 transform = Transform( 0.650636, 0, 0, 0, 0.650636, 0, 0, 0, 0.650636, 0, 0.756401, 0 )
 visible = false
 script = ExtResource( 36 )
 
-[node name="MultiMeshInstance" type="MultiMeshInstance" parent="World/PlanetSand/Modelplant_04_Sporenpilz_state03/SporeParticlesState03"]
+[node name="MultiMeshInstance" type="MultiMeshInstance" parent="World/PlanetSand/PlanetThumb/Modelplant_04_Sporenpilz_state03/SporeParticlesState03"]
 transform = Transform( 63.521, 0, 0, 0, 5.61112, 0, 0, 0, 45.5721, 0, 3.75594, 0 )
 multimesh = SubResource( 36 )
 
-[node name="Particles" type="Particles" parent="World/PlanetSand/Modelplant_04_Sporenpilz_state03/SporeParticlesState03"]
+[node name="Particles" type="Particles" parent="World/PlanetSand/PlanetThumb/Modelplant_04_Sporenpilz_state03/SporeParticlesState03"]
 transform = Transform( 3.02046, 0, 0, 0, 3.94673, 0, 0, 0, 4.46399, 0, 0, 0 )
 visible = false
 amount = 64
@@ -1008,12 +1015,12 @@ visibility_aabb = AABB( -6.03231, -4, -4, 12.0646, 8, 8 )
 process_material = SubResource( 31 )
 draw_pass_1 = SubResource( 33 )
 
-[node name="SporeShapeScatter" type="MeshInstance" parent="World/PlanetSand/Modelplant_04_Sporenpilz_state03/SporeParticlesState03"]
+[node name="SporeShapeScatter" type="MeshInstance" parent="World/PlanetSand/PlanetThumb/Modelplant_04_Sporenpilz_state03/SporeParticlesState03"]
 transform = Transform( 3.0564, 0, 0, 0, 3.0564, 0, 0, 0, 3.0564, 0, 0, 0 )
 visible = false
 mesh = ExtResource( 35 )
 
-[node name="SrcMesh" type="MeshInstance" parent="World/PlanetSand/Modelplant_04_Sporenpilz_state03/SporeParticlesState03"]
+[node name="SrcMesh" type="MeshInstance" parent="World/PlanetSand/PlanetThumb/Modelplant_04_Sporenpilz_state03/SporeParticlesState03"]
 transform = Transform( 0.855, 0, 0, 0, 0.855, 0, 0, 0, 0.855, 13.3128, 0, 0 )
 visible = false
 mesh = ExtResource( 31 )
@@ -1036,9 +1043,9 @@ fov = 80.0
 far = 1400.0
 
 [node name="DirectionalLight" type="DirectionalLight" parent="SolarSystemCamera"]
-transform = Transform( 1, -7.45058e-09, 0, 0, 0.960639, 0.277801, 0, -0.277801, 0.960639, 3.8147e-06, 0.262642, 0 )
-light_color = Color( 0.403922, 0.254902, 0.145098, 1 )
-light_energy = 1.537
+transform = Transform( 0.699339, 5.21541e-08, -0.71479, 0.198569, 0.960639, 0.194277, 0.686655, -0.277801, 0.671812, 7.62939e-06, 5.03302, -1.37953 )
+light_color = Color( 0.960784, 0.890196, 0.121569, 1 )
+light_energy = 3.337
 shadow_enabled = true
 
 [node name="DirectionalLight2" type="DirectionalLight" parent="SolarSystemCamera"]
@@ -1048,6 +1055,9 @@ light_energy = 2.085
 shadow_enabled = true
 
 [node name="green" type="MeshInstance" parent="SolarSystemCamera"]
-transform = Transform( 66.0975, -1.43051e-06, 1.14441e-05, -2.38419e-07, 66.0975, 1.43051e-06, 7.62939e-06, -1.43051e-06, 66.0975, 7.62939e-06, -1.52588e-05, -22.0941 )
+transform = Transform( 66.0975, -1.90735e-06, 7.62939e-06, -7.15256e-07, 66.0975, 1.90735e-06, 1.14441e-05, -1.43051e-06, 66.0975, 1.90735e-05, -3.05176e-05, -22.0941 )
 mesh = SubResource( 57 )
 material/0 = SubResource( 58 )
+
+[node name="Modelplant_01_ziehende_ranken" parent="SolarSystemCamera" instance=ExtResource( 1 )]
+transform = Transform( 1.86219, -7.45058e-09, 2.02554, -2.98023e-08, 2.75147, 6.51926e-09, -2.02554, 0, 1.86219, -0.941319, 4.44753, -5.592 )

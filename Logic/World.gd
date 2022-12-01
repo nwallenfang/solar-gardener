@@ -62,6 +62,7 @@ func start_loading():
 
 var skipped = false
 func start_intro_flight():
+	Audio.fade_in("music_rock_2", 1.0)
 	Game.set_game_state(Game.State.INTRO_FLIGHT)
 	if (not OS.is_debug_build()) or TEST_INTRO:
 		Dialog.play_intro()
@@ -109,7 +110,7 @@ func end_intro_flight():
 	Game.planet.fade_in()
 	yield(get_tree().create_timer(2.0), "timeout")
 	set_process(false)
-	
+	Audio.fade_out("music_rock_2", 1.0)
 	if OS.is_debug_build() and not TEST_INTRO:
 		Events.tutorial_beginning()
 	

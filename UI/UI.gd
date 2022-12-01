@@ -8,11 +8,11 @@ enum INFO {
 	PLANT_SCANNED,
 }
 
-const DIAGNOSE_ON_WEB := true # set to true if diagnostics should show in web export
+const DIAGNOSE_ON_WEB := false # set to true if diagnostics should show in web export
 func _ready() -> void:
 	Game.connect("changed_state", self, "changed_state")
 	Game.multitool.connect("switched_to", self, "switched_to_tool")
-	if OS.is_debug_build() or DIAGNOSE_ON_WEB:
+	if false: # OS.is_debug_build() or DIAGNOSE_ON_WEB:
 		$Diagnostics.visible = true
 
 
@@ -42,8 +42,6 @@ func switched_to_tool(new_tool: int):
 		$"%MultitoolC2".visible = false
 		$"%MultitoolA2".visible = false
 
-
-
 var mode = null
 func _input(event):
 	if mode != null:
@@ -52,7 +50,6 @@ func _input(event):
 		Input.set_mouse_mode(mode)
 		yield(get_tree(),"idle_frame")
 		Input.set_mouse_mode(mode)
-		#mode = null
 
 func changed_state(state, prev_state):
 	match state:
@@ -124,6 +121,7 @@ func changed_state(state, prev_state):
 			$"%Crosshair".visible = false
 			$HotkeyGuide.visible = false
 			$TutorialPanel.visible = false
+			$SettingsUI.hide_settings()
 			$JournalAndGuideUI.hide()
 			$"%Crosshair".visible = false
 			$Toolbar.visible = false
