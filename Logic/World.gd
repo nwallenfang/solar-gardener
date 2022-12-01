@@ -28,7 +28,7 @@ func _ready() -> void:
 	
 #	$Planet/AudioStreamPlayer.play()
 
-var INTRO_LENGTH_FACTOR = 1.0
+var INTRO_LENGTH_FACTOR = 1.15
 var TEST_LENGTH_FACTOR = 0.02
 const TEST_INTRO = true
 func start_loading():
