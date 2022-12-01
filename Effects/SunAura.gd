@@ -23,9 +23,12 @@ func _physics_process(delta):
 	if Game.game_state == Game.State.CREDITS:
 		# should work always but just taking it for credits not to break anything
 		target = get_viewport().get_camera()
-
+	
+	if target == null:
+		target = get_viewport().get_camera()
+	
 	if target != null:
 		var up_vector: Vector3 = target.global_translation.direction_to(self.global_translation)
 		$Mesh.global_transform.basis = Utility.get_basis_y_aligned_with_z(up_vector, Vector3.UP)
 		$Mesh.global_transform.basis = $Mesh.global_transform.basis.orthonormalized().scaled(scale_saved * scale_factor)
-	
+
