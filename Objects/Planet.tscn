@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Objects/Planet.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Assets/Models/Meshes/MeshSmallStones1.res" type="ArrayMesh" id=10]
 [ext_resource path="res://Assets/Models/Meshes/MeshSmallStones2.res" type="ArrayMesh" id=11]
 [ext_resource path="res://Assets/Materials/DirtStoneDecoSmall.tres" type="Material" id=12]
+[ext_resource path="res://Objects/DecoGras.tscn" type="PackedScene" id=13]
 
 [sub_resource type="SphereMesh" id=9]
 resource_local_to_scene = true
@@ -65,7 +66,7 @@ gravity_vec = Vector3( 0, 0, 0 )
 shape = SubResource( 12 )
 
 [node name="Amber2" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.798316, -0.0207316, -0.00865781, 0.0195408, 0.792586, -0.0960958, 0.0110868, 0.0958451, 0.792786, 0.0830537, 5.50192, 1.11366 )
+transform = Transform( 0.798316, -0.0207316, -0.00865781, 0.0195408, 0.792586, -0.0960958, 0.0110868, 0.0958451, 0.792786, 0.0817721, 5.55092, 1.11958 )
 seed_name = "Grabroot"
 seed_count = 1
 
@@ -98,6 +99,13 @@ transform = Transform( -1.79991e-08, -0.410735, 0.0206488, 0.411254, -1.79765e-0
 transform = Transform( -1.79991e-08, -0.410735, 0.0206488, 0.411254, -1.79765e-08, 9.02589e-10, 1.13845e-12, 0.0206488, 0.410735, -5.10411, -0.363879, 0.508614 )
 type = 3
 
+[node name="ModelStones4" parent="DecoStones" instance=ExtResource( 9 )]
+transform = Transform( 0.401897, 0.0848853, 0.0200836, -0.0780837, 0.392302, -0.0955585, -0.038882, 0.089571, 0.399493, 0.913848, 4.91034, 2.00673 )
+type = 3
+
+[node name="ModelStones5" parent="DecoStones" instance=ExtResource( 9 )]
+transform = Transform( 0.332326, 0.0848853, 0.2269, -0.016727, 0.392302, -0.122265, -0.24168, 0.089571, 0.320464, 0.0920584, 4.87755, 2.38455 )
+
 [node name="ModelStones2" parent="DecoStones" instance=ExtResource( 9 )]
 transform = Transform( 0.0195053, -0.550841, 0.113593, 0.562417, 0.0199152, 4.96533e-09, -0.00401983, 0.113522, 0.551186, -5.07586, 0.584846, 0.869617 )
 type = 2
@@ -124,5 +132,17 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.179703 )
 material_override = ExtResource( 12 )
 cast_shadow = 0
 mesh = ExtResource( 11 )
+
+[node name="DecoGras" parent="MultiMesh" instance=ExtResource( 13 )]
+transform = Transform( -2.06307e-08, -1.28881, 3.83748e-08, 0.943557, -4.12442e-08, -0.877913, 0.877913, 1.40415e-08, 0.943557, -5.25907, 0.23866, -0.000311039 )
+
+[node name="DecoGras4" parent="MultiMesh" instance=ExtResource( 13 )]
+transform = Transform( 0.912135, 0.32983, -0.848677, -0.599319, 1.12184, -0.208139, 0.685461, 0.541956, 0.947342, 0.879021, 4.86508, 2.49124 )
+
+[node name="DecoGras2" parent="MultiMesh" instance=ExtResource( 13 )]
+transform = Transform( -0.811875, -0.490399, -0.872581, 0.943557, -4.12442e-08, -0.877913, 0.334051, -1.19186, 0.359029, -1.9558, -0.681812, -5.02512 )
+
+[node name="DecoGras3" parent="MultiMesh" instance=ExtResource( 13 )]
+transform = Transform( -0.922948, 0.218629, -0.872581, 0.673454, -0.660878, -0.877913, -0.59637, -1.08465, 0.359029, 0.518815, -2.78569, -4.88172 )
 
 [editable path="Model"]

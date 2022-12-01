@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Models/ModelSandPlanet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Amber.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Assets/Models/ModelPillarMiddle.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Models/ModelPillarBig.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Objects/Gear.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Objects/NoteCapsule.tscn" type="PackedScene" id=9]
 
 [sub_resource type="SphereShape" id=12]
 radius = 22.8154
@@ -89,4 +90,7 @@ transform = Transform( 0.999943, -0.00923818, -4.67653e-10, 0, -3.77443e-08, 1, 
 transform = Transform( 0.855753, -0.446757, -2.26156e-08, 0, -3.77443e-08, 1, -0.517385, -0.738934, -3.74061e-08, -3.35326, 1.96428e-07, -4.10435 )
 
 [node name="Gear" parent="." instance=ExtResource( 8 )]
-transform = Transform( -0.0816247, -2.24471, 0.0421892, 1.99409, -0.0918832, -1.03068, 1.03155, 4.1846e-09, 1.99576, -0.320482, -7.0978, 0 )
+transform = Transform( -1.99473, 0.0720952, 1.03101, -0.0744128, -2.24532, 0.0130384, 1.03085, -0.0225732, 1.99599, -0.229405, -6.76354, -0.13247 )
+
+[node name="NoteCapsule" parent="." instance=ExtResource( 9 )]
+transform = Transform( 0.777558, 0.229704, -0.585354, 0.115182, 0.863112, 0.491703, 0.618172, -0.449749, 0.644661, -3.44921, 0.356312, -4.8379 )
