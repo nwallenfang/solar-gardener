@@ -86,7 +86,7 @@ func show_plant_info(plant_name: String, plant_type: String, growth_stage: int, 
 		else:
 			$"%CurrentlyGrowing".text = "not growing"
 			
-	if true: # later: if unlocked
+	if Game.multitool.soil_unlocked:
 		Game.scanner_holo.show_preferences(needs_met)
 	
 func show_seed_info(seed_name: String, seed_count: int):
