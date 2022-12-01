@@ -14,7 +14,7 @@ func ugrade_once():
 			Game.UI.show_info_line("Planet travelling unlocked", 2)
 			Events.trigger("tutorial_completed")
 		2: # Soil
-			Game.UI.show_info_line("Planet scanning unlocked", 2)
+			Game.UI.show_info_line("Advanced scanning unlocked", 2)
 			Events.trigger("soil_unlocked")
 		3: # Remove
 			Game.UI.show_info_line("Plant removal unlocked", 2)
@@ -23,7 +23,7 @@ func ugrade_once():
 			Game.UI.show_info_line("Jetpack unlocked", 2)
 			Events.trigger("jetpack_unlocked")
 		5: # Flashlight
-			pass
+			Game.UI.show_info_line("nothing (thanks for your donation)", 2)
 
 func get_upgrades_screen_text() -> String:
 	var new_upgrades_count = gear_count - current_upgrade_level

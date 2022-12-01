@@ -204,7 +204,6 @@ func jetpack_unlocked():
 	Game.player.unlocked_jetpack = true
 	yield(get_tree().create_timer(4.0), "timeout")
 	Game.UI.add_tutorial_message("Jetpack", "Press space after jumping to use your jetpack.", duration)
-
 	next()
 
 func gear_scanned():
