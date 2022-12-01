@@ -80,6 +80,12 @@ func _process(delta):
 		var player = available.pop_front()
 		# Reset all player variables
 
+		if player == null:
+			# if this is music it should get special treatment <- see above
+			return
+		if not $Sounds.has_node(sound_name):
+			return
+
 		player.stream = $Sounds.get_node(sound_name).stream
 		player.sound = $Sounds.get_node(sound_name)
 		player.play()
@@ -113,7 +119,7 @@ func fade_in(sound_name: String, fade_duration:=1.0, random_start:=false):
 	var player: CustomAudioPlayer = available.pop_front()
 	if player == null:
 		# if this is music it should get special treatment <- see above
-		pass
+		return
 #	print(sound_name + " started")
 	if not $Sounds.has_node(sound_name):
 		printerr("unknown sound " + sound_name)

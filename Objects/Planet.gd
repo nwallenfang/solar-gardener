@@ -62,7 +62,7 @@ func setup():
 	configure_light(self)
 
 func growth_stage_reached(growth_stage: int):
-	if growth_stage == 4:
+	if growth_stage > 3:
 		return
 	if music_prefix == "obsidian":
 		return
