@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=2]
+[gd_scene load_steps=80 format=2]
 
 [ext_resource path="res://Effects/DirtExplosion.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Effects/Ubershader.gd" type="Script" id=2]
@@ -31,6 +31,7 @@
 [ext_resource path="res://Effects/JetpackFlames.tscn" type="PackedScene" id=29]
 [ext_resource path="res://Assets/Models/ModelPlant_01_ranke_state01.tscn" type="PackedScene" id=30]
 [ext_resource path="res://Assets/Models/ModelPlant_01_moontree_samen.tscn" type="PackedScene" id=31]
+[ext_resource path="res://Objects/Amber.tscn" type="PackedScene" id=32]
 
 [sub_resource type="QuadMesh" id=1]
 
@@ -1738,6 +1739,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.866004, 0.180626, -0.973787
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.03038, 0.545591, -0.338399 )
 
 [node name="GrowPopParticles2" parent="." instance=ExtResource( 5 )]
+
+[node name="Amber" parent="." instance=ExtResource( 32 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.463679, 0, -0.265003 )
 
 [editable path="DirtExplosion"]
 [editable path="ModelMultitoolOld/GrowBeamOrigin/EnergyBallCombo"]
